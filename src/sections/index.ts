@@ -1,0 +1,13 @@
+export { Header } from './Header';
+export { Hero } from './Hero';
+export { TrustedBy } from './TrustedBy';
+export { ValueJourney } from './ValueJourney';
+export { Features } from './Features';
+export { FeatureShowcase } from './FeatureShowcase';
+export { MobileDesktop } from './MobileDesktop';
+export { PerfectFor } from './PerfectFor';
+export { Integrations } from './Integrations';
+export { FAQ } from './FAQ';
+export { Pricing } from './Pricing';
+export { BookDemo } from './BookDemo';
+export { Footer } from './Footer';
