@@ -10,6 +10,7 @@ import {
   type LucideIcon
 } from 'lucide-react';
 import { Container } from '../components';
+import { useTheme } from '../context/ThemeContext';
 
 interface FeatureCategory {
   icon: LucideIcon;
@@ -127,7 +128,7 @@ const featureCategories: FeatureCategory[] = [
   },
 ];
 
-export function Features() {
+function FeaturesClassic() {
   return (
     <section id="all-features" className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
       <Container>
@@ -185,4 +186,85 @@ export function Features() {
       </Container>
     </section>
   );
+}
+
+function FeaturesNextGen() {
+  return (
+    <section id="all-features" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[120px]" />
+      </div>
+      
+      <Container className="relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm text-white/80 font-medium">Full Feature Suite</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
+            <span className="text-white">Built for </span>
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+              Modern Operations
+            </span>
+          </h2>
+          <p className="text-lg text-white/50">
+            Every feature designed with AI-first architecture. No legacy baggage.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {featureCategories.map((category, index) => (
+            <div 
+              key={category.title}
+              className="group relative bg-white/[0.02] backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/[0.05]"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Glow effect on hover */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${category.gradientFrom} ${category.gradientTo} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category.gradientFrom} ${category.gradientTo} flex items-center justify-center`}>
+                    <category.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">{category.title}</h3>
+                </div>
+
+                <ul className="space-y-2">
+                  {category.features.slice(0, 5).map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5 text-sm text-white/50 group-hover:text-white/70 transition-colors">
+                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.gradientFrom} ${category.gradientTo} flex-shrink-0 mt-1.5`} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                  {category.features.length > 5 && (
+                    <li className="text-sm text-white/30 pl-4">
+                      +{category.features.length - 5} more features
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)]"
+          >
+            Experience the Future
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function Features() {
+  const { theme } = useTheme();
+  return theme === 'nextgen' ? <FeaturesNextGen /> : <FeaturesClassic />;
 }

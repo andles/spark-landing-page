@@ -1,4 +1,6 @@
+import { ArrowRight } from 'lucide-react';
 import { Container } from '../components';
+import { useTheme } from '../context/ThemeContext';
 
 const tiles = [
   {
@@ -24,7 +26,7 @@ const tiles = [
   },
 ];
 
-export function ValueJourney() {
+function ValueJourneyClassic() {
   return (
     <section id="solutions" className="py-20 lg:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-3xl"></div>
@@ -85,4 +87,92 @@ export function ValueJourney() {
       </Container>
     </section>
   );
+}
+
+function ValueJourneyNextGen() {
+  return (
+    <section id="solutions" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[180px]" />
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px]" />
+      </div>
+      
+      <Container className="relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <span className="text-sm text-white/80 font-medium">Why Spark?</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
+            <span className="text-white">The </span>
+            <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+              Smarter Way
+            </span>
+            <span className="text-white"> to Scale</span>
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Set up in minutes, import your products, connect your sales channels, 
+            and start processing orders seamlessly.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+          {tiles.map((tile) => (
+            <div
+              key={tile.number}
+              className="group relative bg-white/[0.02] backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/[0.05] overflow-hidden"
+            >
+              {/* Glow effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${tile.accent} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
+              
+              {/* Step number */}
+              <div className="absolute top-4 right-4">
+                <span className={`text-6xl font-bold bg-gradient-to-br ${tile.accent} bg-clip-text text-transparent opacity-20`}>
+                  0{tile.number}
+                </span>
+              </div>
+              
+              {/* Image */}
+              <div className="relative rounded-2xl aspect-[4/3] mb-6 overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10">
+                <img 
+                  src={tile.image} 
+                  alt={tile.title}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 bg-gradient-to-br ${tile.accent} rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                    {tile.number}
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{tile.title}</h3>
+                </div>
+                
+                <p className="text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                  {tile.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-12 flex justify-center">
+          <button 
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)]"
+            onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Start Your Journey
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function ValueJourney() {
+  const { theme } = useTheme();
+  return theme === 'nextgen' ? <ValueJourneyNextGen /> : <ValueJourneyClassic />;
 }
