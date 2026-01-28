@@ -7,9 +7,13 @@ function HeroClassic() {
     <section className="pt-20 lg:pt-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 min-h-[600px] lg:min-h-[700px] relative overflow-hidden">
       <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[50%]">
         <div className="relative h-full w-full">
-          <img 
-            src="/hero-image.jpg" 
-            alt="Warehouse worker using Spark Inventory on laptop"
+          <video 
+            ref={(el) => { if (el) el.playbackRate = 0.5; }}
+            src="/hero-video.mp4" 
+            autoPlay
+            loop
+            muted
+            playsInline
             className="absolute inset-0 w-full h-full object-cover object-right"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-slate-700/40 to-transparent"></div>

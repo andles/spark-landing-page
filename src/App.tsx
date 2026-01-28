@@ -4,11 +4,9 @@ import {
   Hero,
   TrustedBy,
   ValueJourney,
-  Features,
   FeatureShowcase,
   CoreCapabilities,
   Integrations,
-  FAQ,
   Pricing,
   BookDemo,
   Footer,
@@ -39,10 +37,8 @@ function HomePage() {
         <CoreCapabilities />
         <ValueJourney />
         <FeatureShowcase />
-        {/* <Features /> */}
         <Integrations />
         <Pricing />
-        {/* <FAQ /> */}
         <BookDemo />
       </main>
       <Footer />
