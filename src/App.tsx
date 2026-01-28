@@ -6,7 +6,10 @@ import {
   ValueJourney,
   Features,
   FeatureShowcase,
+  CoreCapabilities,
   Integrations,
+  FAQ,
+  Pricing,
   BookDemo,
   Footer,
 } from './sections';
@@ -33,10 +36,13 @@ function HomePage() {
       <main>
         <Hero />
         <TrustedBy />
+        <CoreCapabilities />
         <ValueJourney />
         <FeatureShowcase />
-        <Features />
+        {/* <Features /> */}
         <Integrations />
+        <Pricing />
+        {/* <FAQ /> */}
         <BookDemo />
       </main>
       <Footer />

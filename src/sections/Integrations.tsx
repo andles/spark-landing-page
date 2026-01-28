@@ -19,7 +19,7 @@ const integrationLogos = [
 
 function IntegrationsClassic() {
   return (
-    <section id="integrations" className="py-20 lg:py-28 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600">
+    <section id="integrations" className="py-16 lg:py-20 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl lg:text-5xl font-bold text-white italic">
@@ -64,7 +64,7 @@ function IntegrationsClassic() {
 
 function IntegrationsNextGen() {
   return (
-    <section id="integrations" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+    <section id="integrations" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[200px]" />

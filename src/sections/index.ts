@@ -4,6 +4,8 @@ export { TrustedBy } from './TrustedBy';
 export { ValueJourney } from './ValueJourney';
 export { Features } from './Features';
 export { FeatureShowcase } from './FeatureShowcase';
+export { CoreCapabilities } from './CoreCapabilities';
+export { HowItWorks } from './HowItWorks';
 export { MobileDesktop } from './MobileDesktop';
 export { PerfectFor } from './PerfectFor';
 export { Integrations } from './Integrations';

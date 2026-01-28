@@ -28,7 +28,7 @@ const tiles = [
 
 function ValueJourneyClassic() {
   return (
-    <section id="solutions" className="py-20 lg:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+    <section id="solutions" className="py-16 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-cyan-500/5 to-pink-500/5 rounded-full blur-3xl"></div>
       
@@ -91,7 +91,7 @@ function ValueJourneyClassic() {
 
 function ValueJourneyNextGen() {
   return (
-    <section id="solutions" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+    <section id="solutions" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[180px]" />

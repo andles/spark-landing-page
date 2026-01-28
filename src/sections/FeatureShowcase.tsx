@@ -29,7 +29,7 @@ function FeatureShowcaseClassic() {
         <div className="h-[30%] bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600"></div>
       </div>
       
-      <Container className="relative z-10 py-20 lg:py-28">
+      <Container className="relative z-10 py-16 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <div className="absolute -inset-4 bg-white/80 rounded-3xl shadow-2xl backdrop-blur-sm"></div>
@@ -84,7 +84,7 @@ const platformFeatures = [
 
 function FeatureShowcaseNextGen() {
   return (
-    <section id="features" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+    <section id="features" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[180px] -translate-y-1/2" />

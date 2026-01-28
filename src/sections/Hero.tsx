@@ -33,7 +33,7 @@ function HeroClassic() {
                 className="bg-orange-500 hover:bg-orange-600 text-white"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book a demo!
+                See Spark in Action
               </Button>
               <Button 
                 variant="outline" 
@@ -91,7 +91,7 @@ function HeroNextGen() {
         <div className="flex flex-col items-center justify-center min-h-[100vh] text-center py-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
             <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm text-white/80 font-medium">Next-Generation Inventory Platform</span>
+            <span className="text-sm text-white/80 font-medium">AI Inventory Software</span>
           </div>
           
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold leading-[1.1] mb-8 tracking-tight">
@@ -113,7 +113,7 @@ function HeroNextGen() {
               onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Start Your Journey
+                See Spark in Action
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
@@ -123,22 +123,6 @@ function HeroNextGen() {
             >
               Explore Features
             </button>
-          </div>
-
-          {/* Floating stats */}
-          <div className="grid grid-cols-3 gap-8 lg:gap-16">
-            {[
-              { value: '10x', label: 'Faster Operations' },
-              { value: '99.9%', label: 'Accuracy Rate' },
-              { value: '24/7', label: 'AI Monitoring' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-white/40 mt-1">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </Container>

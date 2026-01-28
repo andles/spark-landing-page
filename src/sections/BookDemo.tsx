@@ -8,7 +8,7 @@ function BookDemoClassic() {
   };
 
   return (
-    <section id="book-demo" className="py-20 lg:py-28 bg-[#faf8f5]">
+    <section id="book-demo" className="py-16 lg:py-20 bg-[#faf8f5]">
       <Container>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -24,18 +24,6 @@ function BookDemoClassic() {
             <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openCalendly(); }}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                    placeholder="John Smith"
-                    required
-                  />
-                </div>
-                <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Work Email
                   </label>
@@ -47,8 +35,6 @@ function BookDemoClassic() {
                     required
                   />
                 </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                     Company Name
@@ -61,27 +47,12 @@ function BookDemoClassic() {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company Size
-                  </label>
-                  <select
-                    id="size"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-white"
-                    required
-                  >
-                    <option value="">Select...</option>
-                    <option value="1-10">1-10 employees</option>
-                    <option value="11-50">11-50 employees</option>
-                    <option value="51-200">51-200 employees</option>
-                    <option value="201+">201+ employees</option>
-                  </select>
-                </div>
               </div>
               <div className="text-center pt-4">
                 <Button type="submit" size="lg">
-                  Book a free demo today!
+                  Get Your Free Demo
                 </Button>
+                <p className="text-sm text-gray-500 mt-3">Takes less than 2 minutes to schedule</p>
               </div>
             </form>
           </div>
@@ -97,7 +68,7 @@ function BookDemoNextGen() {
   };
 
   return (
-    <section id="book-demo" className="py-24 lg:py-32 bg-black relative overflow-hidden">
+    <section id="book-demo" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[180px]" />
@@ -127,18 +98,6 @@ function BookDemoNextGen() {
             <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openCalendly(); }}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
-                    placeholder="John Smith"
-                    required
-                  />
-                </div>
-                <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white/70 mb-2">
                     Work Email
                   </label>
@@ -150,8 +109,6 @@ function BookDemoNextGen() {
                     required
                   />
                 </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-white/70 mb-2">
                     Company Name
@@ -164,31 +121,16 @@ function BookDemoNextGen() {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="size" className="block text-sm font-medium text-white/70 mb-2">
-                    Company Size
-                  </label>
-                  <select
-                    id="size"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
-                    required
-                  >
-                    <option value="" className="bg-slate-900">Select...</option>
-                    <option value="1-10" className="bg-slate-900">1-10 employees</option>
-                    <option value="11-50" className="bg-slate-900">11-50 employees</option>
-                    <option value="51-200" className="bg-slate-900">51-200 employees</option>
-                    <option value="201+" className="bg-slate-900">201+ employees</option>
-                  </select>
-                </div>
               </div>
               <div className="text-center pt-4">
                 <button
                   type="submit"
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)]"
                 >
-                  Book Your Demo
+                  Get Your Free Demo
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+                <p className="text-sm text-white/40 mt-3">Takes less than 2 minutes to schedule</p>
               </div>
             </form>
           </div>
