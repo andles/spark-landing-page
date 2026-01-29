@@ -20,6 +20,9 @@ import {
   ToolsServicesPage,
   AccountingPage,
 } from './pages/features';
+import { PartnersPage } from './pages/PartnersPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components';
 import { useTheme } from './context/ThemeContext';
@@ -60,6 +63,9 @@ function App() {
           <Route path="/features/warehousing" element={<WarehousingPage />} />
           <Route path="/features/tools-services" element={<ToolsServicesPage />} />
           <Route path="/features/accounting" element={<AccountingPage />} />
+          <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

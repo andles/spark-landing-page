@@ -1,0 +1,15 @@
+# NextGen theme build configuration
+# Use this config when creating the NextGen Netlify site:
+# netlify deploy --config netlify-nextgen.toml
+
+[build]
+  command = "npm run build:nextgen"
+  publish = "dist-nextgen"
+
+[build.environment]
+  VITE_THEME = "nextgen"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

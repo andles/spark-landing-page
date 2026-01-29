@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../spark-server"
+		},
+		{
+			"path": "../../fork-inventory-web-app"
+		}
+	]
+}

@@ -1,8 +1,17 @@
+# Default build (classic theme)
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "npm run build:classic"
+  publish = "dist-classic"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Context-specific builds for different deploy contexts
+# Use environment variable VITE_THEME to override in Netlify UI per site
+
+# For the NextGen site, create a separate Netlify site and set:
+# - Build command: npm run build:nextgen
+# - Publish directory: dist-nextgen
+# Or set environment variable VITE_THEME=nextgen in the Netlify UI

@@ -5,9 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:classic": "VITE_THEME=classic vite",
+    "dev:nextgen": "VITE_THEME=nextgen vite",
     "build": "tsc -b && vite build",
+    "build:classic": "tsc -b && VITE_THEME=classic vite build --outDir dist-classic",
+    "build:nextgen": "tsc -b && VITE_THEME=nextgen vite build --outDir dist-nextgen",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:classic": "vite preview --outDir dist-classic",
+    "preview:nextgen": "vite preview --outDir dist-nextgen"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",
