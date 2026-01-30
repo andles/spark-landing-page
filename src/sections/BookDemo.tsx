@@ -1,10 +1,31 @@
+import { useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button, Container } from '../components';
 import { useTheme } from '../context/ThemeContext';
 
 function BookDemoClassic() {
-  const openCalendly = () => {
-    window.open('https://calendly.com/spark-inventory/demo', '_blank');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+    
+    // Open Calendly regardless of submission result
+    window.open('https://calendly.com/jason-sparkinventory/30min', '_blank');
+    setIsSubmitting(false);
   };
 
   return (
@@ -21,7 +42,14 @@ function BookDemoClassic() {
           </div>
 
           <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100">
-            <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openCalendly(); }}>
+            <form 
+              name="demo-request" 
+              method="POST" 
+              data-netlify="true" 
+              className="space-y-6" 
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="demo-request" />
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -30,6 +58,7 @@ function BookDemoClassic() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     placeholder="john@company.com"
                     required
@@ -42,6 +71,7 @@ function BookDemoClassic() {
                   <input
                     type="text"
                     id="company"
+                    name="company"
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     placeholder="Acme Inc."
                     required
@@ -49,8 +79,8 @@ function BookDemoClassic() {
                 </div>
               </div>
               <div className="text-center pt-4">
-                <Button type="submit" size="lg">
-                  Get Your Free Demo
+                <Button type="submit" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Get Your Free Demo'}
                 </Button>
                 <p className="text-sm text-gray-500 mt-3">Takes less than 2 minutes to schedule</p>
               </div>
@@ -63,8 +93,28 @@ function BookDemoClassic() {
 }
 
 function BookDemoNextGen() {
-  const openCalendly = () => {
-    window.open('https://calendly.com/spark-inventory/demo', '_blank');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+    
+    // Open Calendly regardless of submission result
+    window.open('https://calendly.com/jason-sparkinventory/30min', '_blank');
+    setIsSubmitting(false);
   };
 
   return (
@@ -95,27 +145,36 @@ function BookDemoNextGen() {
           </div>
 
           <div className="bg-white/[0.03] backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10">
-            <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openCalendly(); }}>
+            <form 
+              name="demo-request" 
+              method="POST" 
+              data-netlify="true" 
+              className="space-y-6" 
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="demo-request" />
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/70 mb-2">
+                  <label htmlFor="email-ng" className="block text-sm font-medium text-white/70 mb-2">
                     Work Email
                   </label>
                   <input
                     type="email"
-                    id="email"
+                    id="email-ng"
+                    name="email"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
                     placeholder="john@company.com"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-white/70 mb-2">
+                  <label htmlFor="company-ng" className="block text-sm font-medium text-white/70 mb-2">
                     Company Name
                   </label>
                   <input
                     type="text"
-                    id="company"
+                    id="company-ng"
+                    name="company"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
                     placeholder="Acme Inc."
                     required
@@ -125,9 +184,10 @@ function BookDemoNextGen() {
               <div className="text-center pt-4">
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)]"
+                  disabled={isSubmitting}
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Get Your Free Demo
+                  {isSubmitting ? 'Submitting...' : 'Get Your Free Demo'}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <p className="text-sm text-white/40 mt-3">Takes less than 2 minutes to schedule</p>
