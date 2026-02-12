@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react';
 import { Container } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/ThemeContext';
-import { ThemeToggle } from '../components';
 
 interface Section {
   title: string;
@@ -259,7 +258,6 @@ function TermsOfServicePageNextGen() {
       </main>
       
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

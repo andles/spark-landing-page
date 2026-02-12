@@ -25,7 +25,6 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider } from './context/ThemeContext';
-import { ThemeToggle } from './components';
 import { useTheme } from './context/ThemeContext';
 
 function HomePage() {
@@ -46,7 +45,6 @@ function HomePage() {
         <BookDemo />
       </main>
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

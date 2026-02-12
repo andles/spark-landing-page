@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react';
 import { Container } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/ThemeContext';
-import { ThemeToggle } from '../components';
 
 const sections = [
   {
@@ -262,7 +261,6 @@ function PrivacyPolicyPageNextGen() {
       </main>
       
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

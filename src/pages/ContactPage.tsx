@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight, Check, Mail, User, MessageSquare } from 'lucide-
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/ThemeContext';
-import { ThemeToggle } from '../components';
 
 function ContactPageClassic() {
   const [formData, setFormData] = useState({
@@ -370,7 +369,6 @@ function ContactPageNextGen() {
       </main>
       
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

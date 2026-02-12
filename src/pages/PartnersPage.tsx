@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight, Users, DollarSign, BarChart3, Handshake, Sparkle
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/ThemeContext';
-import { ThemeToggle } from '../components';
 
 const benefits = [
   {
@@ -603,7 +602,6 @@ function PartnersPageNextGen() {
         </main>
       
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

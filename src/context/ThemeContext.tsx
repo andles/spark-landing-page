@@ -14,7 +14,7 @@ function getInitialTheme(): ThemeVariant {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     // Configure your domains here
-    if (hostname.includes('nextgen') || hostname.includes('new.sparkinventory')) {
+    if (hostname.includes('sparkinventory.ai') || hostname.includes('nextgen') || hostname.includes('new.sparkinventory')) {
       return 'nextgen';
     }
   }

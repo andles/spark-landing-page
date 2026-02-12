@@ -1,4 +1,4 @@
-# NextGen theme build configuration
+# NextGen theme — deployed to sparkinventory.ai
 # Use this config when creating the NextGen Netlify site:
 # netlify deploy --config netlify-nextgen.toml
 
