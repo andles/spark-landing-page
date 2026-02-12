@@ -2,8 +2,8 @@
 # sparkinventory.com  → no env var needed (defaults to classic)
 # sparkinventory.ai   → set VITE_THEME=nextgen in Netlify environment variables
 [build]
-  command = "npm run build:${VITE_THEME:-classic}"
-  publish = "dist-${VITE_THEME:-classic}"
+  command = "THEME=${VITE_THEME:-classic} && npm run build:$THEME && cp -r dist-$THEME dist"
+  publish = "dist"
 
 [[redirects]]
   from = "/*"
