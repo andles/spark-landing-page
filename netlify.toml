@@ -1,7 +1,9 @@
-# Classic theme — deployed to sparkinventory.com
+# Theme is determined by VITE_THEME env var set in Netlify UI per site
+# sparkinventory.com  → no env var needed (defaults to classic)
+# sparkinventory.ai   → set VITE_THEME=nextgen in Netlify environment variables
 [build]
-  command = "npm run build:classic"
-  publish = "dist-classic"
+  command = "npm run build:${VITE_THEME:-classic}"
+  publish = "dist-${VITE_THEME:-classic}"
 
 [[redirects]]
   from = "/*"
