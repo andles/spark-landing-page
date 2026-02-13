@@ -19,7 +19,7 @@ function getInitialTheme(): ThemeVariant {
     }
   }
   
-  return 'classic';
+  return 'nextgen';
 }
 
 interface ThemeContextType {

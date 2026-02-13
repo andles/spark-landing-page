@@ -227,7 +227,7 @@ function CoreCapabilitiesNextGen() {
   const graphics = [OrderManagementGraphicDark, ReportingGraphicDark, IntegrationsGraphicDark];
 
   return (
-    <section className="py-16 lg:py-20 bg-black relative overflow-hidden">
+    <section id="core-capabilities" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal-600/5 rounded-full blur-[200px]" />
@@ -294,12 +294,12 @@ function CoreCapabilitiesNextGen() {
                     </p>
                     
                     {/* Learn more link */}
-                    <button className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${capability.gradient} bg-clip-text text-transparent hover:gap-3 transition-all duration-300`}>
+                    <a href="#book-demo" className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${capability.gradient} bg-clip-text text-transparent hover:gap-3 transition-all duration-300`}>
                       Learn more
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

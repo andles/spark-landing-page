@@ -112,21 +112,21 @@ function HeroNextGen() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <button 
+            <a 
+              href="https://app.sparkinventory.com/sign-up"
               className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)]"
-              onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center gap-2">
-                See Spark in Action
+                Start Your Free Trial
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
-            <button 
+            </a>
+            <a 
+              href="#book-demo"
               className="px-8 py-4 rounded-full text-white font-semibold text-lg border border-white/20 hover:bg-white/5 transition-all hover:border-white/40"
-              onClick={() => document.getElementById('all-features')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Explore Features
-            </button>
+              Book a Call
+            </a>
           </div>
         </div>
       </Container>

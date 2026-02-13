@@ -467,16 +467,25 @@ function PricingNextGen() {
                 ))}
               </div>
 
-              <button
-                onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
-                className={`w-full py-3 rounded-xl font-medium transition-all duration-300 mt-auto ${
-                  plan.popular
-                    ? 'bg-gradient-to-r from-cyan-500 to-violet-500 text-white hover:shadow-lg hover:shadow-violet-500/25'
-                    : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
-                }`}
-              >
-                {plan.cta}
-              </button>
+              {plan.cta === 'Contact Sales' ? (
+                <button
+                  onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full py-3 rounded-xl font-medium transition-all duration-300 mt-auto bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20"
+                >
+                  {plan.cta}
+                </button>
+              ) : (
+                <a
+                  href="https://app.sparkinventory.com/sign-up"
+                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300 mt-auto text-center block ${
+                    plan.popular
+                      ? 'bg-gradient-to-r from-cyan-500 to-violet-500 text-white hover:shadow-lg hover:shadow-violet-500/25'
+                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              )}
             </div>
           ))}
         </div>

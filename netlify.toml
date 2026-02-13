@@ -1,8 +1,6 @@
-# Theme is determined by VITE_THEME env var set in Netlify UI per site
-# sparkinventory.com  → no env var needed (defaults to classic)
-# sparkinventory.ai   → set VITE_THEME=nextgen in Netlify environment variables
+# Both domains now use the nextgen theme
 [build]
-  command = "THEME=${VITE_THEME:-classic} && npm run build:$THEME && cp -r dist-$THEME dist"
+  command = "npm run build:nextgen && cp -r dist-nextgen dist"
   publish = "dist"
 
 [[redirects]]

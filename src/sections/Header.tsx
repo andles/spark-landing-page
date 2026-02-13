@@ -31,7 +31,7 @@ export function Header() {
                 className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-medium text-sm transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book a demo
+                Get Started
               </button>
             ) : (
               <Button 
@@ -65,7 +65,7 @@ export function Header() {
                     document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  Book a demo
+                  Get Started
                 </button>
               ) : (
                 <Button onClick={() => {
