@@ -7,6 +7,7 @@ import {
   FeatureShowcase,
   CoreCapabilities,
   Integrations,
+  CompetitorComparison,
   Pricing,
   BookDemo,
   Footer,
@@ -41,6 +42,7 @@ function HomePage() {
         <ValueJourney />
         <FeatureShowcase />
         <Integrations />
+        <CompetitorComparison />
         <Pricing />
         <BookDemo />
       </main>

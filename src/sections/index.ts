@@ -10,6 +10,7 @@ export { MobileDesktop } from './MobileDesktop';
 export { PerfectFor } from './PerfectFor';
 export { Integrations } from './Integrations';
 export { FAQ } from './FAQ';
+export { CompetitorComparison } from './CompetitorComparison';
 export { Pricing } from './Pricing';
 export { BookDemo } from './BookDemo';
 export { Footer } from './Footer';
