@@ -1,7 +1,7 @@
 # Both domains now use the nextgen theme
 [build]
-  command = "npm run build:nextgen && cp -r dist-nextgen dist"
-  publish = "dist"
+  command = "npm run build:nextgen"
+  publish = "dist-nextgen"
 
 [[redirects]]
   from = "/*"
