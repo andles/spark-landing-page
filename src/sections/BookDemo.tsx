@@ -87,7 +87,7 @@ export function HeroDemoFormNextGen() {
               {isSubmitting ? 'Submitting...' : 'Book Your Free Demo'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <p className="text-sm text-white/40 mt-3">Takes less than 2 minutes to schedule</p>
+            <p className="text-sm text-white/40 mt-3">Takes less than 30 seconds to schedule</p>
           </div>
         </form>
       </div>

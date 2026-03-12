@@ -63,7 +63,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
   // ── Margin 14-day: CTA buttons ─────────────────────────
   'margin-14d-cta': {
     badge: 'AI Inventory Software',
-    headline: ['Stop Losing Margin to Bad Forecasts —', 'Fix It in 14 Days'],
+    headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
     subheadline:
       'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
   },
@@ -71,7 +71,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
   // ── Margin 14-day: inline demo form ────────────────────
   'margin-14d-form': {
     badge: 'AI Inventory Software',
-    headline: ['Stop Losing Margin to Bad Forecasts —', 'Fix It in 14 Days'],
+    headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
     subheadline:
       'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
     heroDemoForm: true,
