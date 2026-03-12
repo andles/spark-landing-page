@@ -3,30 +3,100 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button, Container } from '../components';
 import { useTheme } from '../context/ThemeContext';
 
-function BookDemoClassic() {
+/* ────────────────────────────────────────────
+ * Shared submit handler used by every form instance
+ * ──────────────────────────────────────────── */
+async function submitDemoForm(
+  e: React.FormEvent<HTMLFormElement>,
+  setIsSubmitting: (v: boolean) => void,
+) {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+    });
+  } catch (error) {
+    console.error('Form submission error:', error);
+  }
+
+  window.open('https://calendly.com/jason-sparkinventory/30min', '_blank');
+  setIsSubmitting(false);
+}
+
+/* ────────────────────────────────────────────
+ * Inline hero-embeddable demo form (NextGen dark)
+ *
+ * Compact version of the bottom-of-page form designed
+ * to sit directly beneath hero messaging.
+ * ──────────────────────────────────────────── */
+export function HeroDemoFormNextGen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
-      });
-    } catch (error) {
-      console.error('Form submission error:', error);
-    }
-    
-    // Open Calendly regardless of submission result
-    window.open('https://calendly.com/jason-sparkinventory/30min', '_blank');
-    setIsSubmitting(false);
-  };
+  return (
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/10">
+        <form
+          name="demo-request"
+          method="POST"
+          data-netlify="true"
+          className="space-y-5"
+          onSubmit={(e) => submitDemoForm(e, setIsSubmitting)}
+        >
+          <input type="hidden" name="form-name" value="demo-request" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="hero-email" className="block text-sm font-medium text-white/60 mb-1.5">
+                Work Email
+              </label>
+              <input
+                type="email"
+                id="hero-email"
+                name="email"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
+                placeholder="john@company.com"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="hero-company" className="block text-sm font-medium text-white/60 mb-1.5">
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="hero-company"
+                name="company"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 outline-none transition-all"
+                placeholder="Acme Inc."
+                required
+              />
+            </div>
+          </div>
+          <div className="text-center pt-1">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Submitting...' : 'Book Your Free Demo'}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <p className="text-sm text-white/40 mt-3">Takes less than 2 minutes to schedule</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function BookDemoClassic() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <section id="book-demo" className="py-16 lg:py-20 bg-[#faf8f5]">
@@ -42,12 +112,12 @@ function BookDemoClassic() {
           </div>
 
           <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100">
-            <form 
-              name="demo-request" 
-              method="POST" 
-              data-netlify="true" 
-              className="space-y-6" 
-              onSubmit={handleSubmit}
+            <form
+              name="demo-request"
+              method="POST"
+              data-netlify="true"
+              className="space-y-6"
+              onSubmit={(e) => submitDemoForm(e, setIsSubmitting)}
             >
               <input type="hidden" name="form-name" value="demo-request" />
               <div className="grid md:grid-cols-2 gap-6">
@@ -95,28 +165,6 @@ function BookDemoClassic() {
 function BookDemoNextGen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
-      });
-    } catch (error) {
-      console.error('Form submission error:', error);
-    }
-    
-    // Open Calendly regardless of submission result
-    window.open('https://calendly.com/jason-sparkinventory/30min', '_blank');
-    setIsSubmitting(false);
-  };
-
   return (
     <section id="book-demo" className="py-16 lg:py-20 bg-black relative overflow-hidden">
       {/* Background effects */}
@@ -150,7 +198,7 @@ function BookDemoNextGen() {
               method="POST" 
               data-netlify="true" 
               className="space-y-6" 
-              onSubmit={handleSubmit}
+              onSubmit={(e) => submitDemoForm(e, setIsSubmitting)}
             >
               <input type="hidden" name="form-name" value="demo-request" />
               <div className="grid md:grid-cols-2 gap-6">

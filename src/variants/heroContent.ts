@@ -16,6 +16,8 @@ export interface HeroContent {
   headline: [string, string];
   /** Subheadline paragraph */
   subheadline: string;
+  /** When true, show the demo booking form inline in the hero and hide free trial CTA */
+  heroDemoForm?: boolean;
 }
 
 const heroContent: Record<LandingVariant, HeroContent> = {
@@ -31,6 +33,48 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
     subheadline:
       'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+  },
+
+  'demo-hero': {
+    badge: 'AI Inventory Software',
+    headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
+    subheadline:
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+    heroDemoForm: true,
+  },
+
+  // ── Forecasting 14-day: CTA buttons ─────────────────────
+  'forecasting-14d-cta': {
+    badge: 'AI Inventory Software',
+    headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
+    subheadline:
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+  },
+
+  // ── Forecasting 14-day: inline demo form ───────────────
+  'forecasting-14d-form': {
+    badge: 'AI Inventory Software',
+    headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
+    subheadline:
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+    heroDemoForm: true,
+  },
+
+  // ── Margin 14-day: CTA buttons ─────────────────────────
+  'margin-14d-cta': {
+    badge: 'AI Inventory Software',
+    headline: ['Stop Losing Margin to Bad Forecasts —', 'Fix It in 14 Days'],
+    subheadline:
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+  },
+
+  // ── Margin 14-day: inline demo form ────────────────────
+  'margin-14d-form': {
+    badge: 'AI Inventory Software',
+    headline: ['Stop Losing Margin to Bad Forecasts —', 'Fix It in 14 Days'],
+    subheadline:
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+    heroDemoForm: true,
   },
 
   // ── Future variants ──────────────────────────────────────
