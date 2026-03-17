@@ -91,7 +91,7 @@ function HeroNextGen() {
     : 'text-5xl sm:text-6xl lg:text-8xl';
 
   return (
-    <section className="pt-20 lg:pt-0 min-h-[100vh] relative overflow-hidden bg-black">
+    <section className="pt-20 lg:pt-0 min-h-[85vh] relative overflow-hidden bg-black">
       {/* Animated gradient background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/40 via-black to-black" />
@@ -110,7 +110,7 @@ function HeroNextGen() {
       />
 
       <Container className="relative z-10">
-        <div className="flex flex-col items-center justify-center min-h-[100vh] text-center py-20">
+        <div className="flex flex-col items-center justify-center min-h-[85vh] text-center py-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
             <Sparkles className="w-4 h-4 text-cyan-400" />
             <span className="text-sm text-white/80 font-medium">{content.badge}</span>
@@ -155,7 +155,7 @@ function HeroNextGen() {
       </Container>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent" />
     </section>
   );
 }

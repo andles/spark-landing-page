@@ -1,6 +1,7 @@
 export { Header } from './Header';
 export { Hero } from './Hero';
 export { TrustedBy } from './TrustedBy';
+export { OutcomeClaims } from './OutcomeClaims';
 export { ValueJourney } from './ValueJourney';
 export { Features } from './Features';
 export { FeatureShowcase } from './FeatureShowcase';

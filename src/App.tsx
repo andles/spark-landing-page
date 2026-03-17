@@ -7,6 +7,7 @@ import {
   FeatureShowcase,
   CoreCapabilities,
   Integrations,
+  OutcomeClaims,
   CompetitorComparison,
   Pricing,
   BookDemo,
@@ -37,6 +38,7 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
+        <OutcomeClaims />
         <TrustedBy />
         <CoreCapabilities />
         <ValueJourney />
