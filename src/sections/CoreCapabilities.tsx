@@ -34,11 +34,11 @@ const capabilities = [
 
 function OrderManagementGraphic() {
   return (
-    <div className="relative w-full aspect-[4/3] min-h-[280px] flex items-center justify-center p-4">
-      <img 
-        src="/forecast.png" 
-        alt="AI-powered demand forecasting and order management" 
-        className="w-full h-full object-contain rounded-xl"
+    <div className="relative w-full aspect-[3/2] min-h-[360px] flex items-center justify-center p-2">
+      <img
+        src="/mockup-ai-chat-signal (2).png"
+        alt="AI-powered demand forecasting and order management"
+        className="w-full h-full object-contain rounded-xl scale-110"
       />
     </div>
   );
@@ -330,11 +330,11 @@ function CoreCapabilitiesNextGen() {
 
 function OrderManagementGraphicDark() {
   return (
-    <div className="relative w-full aspect-[4/3] min-h-[280px] flex items-center justify-center p-4">
-      <img 
-        src="/forecast.png" 
-        alt="AI-powered demand forecasting and order management" 
-        className="w-full h-full object-contain rounded-xl"
+    <div className="relative w-full aspect-[3/2] min-h-[360px] flex items-center justify-center p-2">
+      <img
+        src="/mockup-ai-chat-signal (2).png"
+        alt="AI-powered demand forecasting and order management"
+        className="w-full h-full object-contain rounded-xl scale-110"
       />
     </div>
   );

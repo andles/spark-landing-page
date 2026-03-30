@@ -7,6 +7,9 @@ import {
   FeatureShowcase,
   CoreCapabilities,
   Integrations,
+  OutcomeClaims,
+  DemoVideo,
+  CompetitorComparison,
   Pricing,
   BookDemo,
   Footer,
@@ -24,11 +27,12 @@ import { PartnersPage } from './pages/PartnersPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { ContactPage } from './pages/ContactPage';
-import { ThemeProvider } from './context/ThemeContext';
-import { useTheme } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { VariantProvider, useVariant } from './context/VariantContext';
 
 function HomePage() {
   const { theme } = useTheme();
+  const { variant } = useVariant();
   const isNextGen = theme === 'nextgen';
   
   return (
@@ -36,11 +40,14 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
+        <OutcomeClaims />
+        {variant === 'video' && <DemoVideo />}
         <TrustedBy />
         <CoreCapabilities />
         <ValueJourney />
         <FeatureShowcase />
         <Integrations />
+        <CompetitorComparison />
         <Pricing />
         <BookDemo />
       </main>
@@ -52,22 +59,24 @@ function HomePage() {
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/features/inventory" element={<InventoryPage />} />
-          <Route path="/features/purchasing" element={<PurchasingPage />} />
-          <Route path="/features/sales" element={<SalesPage />} />
-          <Route path="/features/manufacturing" element={<ManufacturingPage />} />
-          <Route path="/features/warehousing" element={<WarehousingPage />} />
-          <Route path="/features/tools-services" element={<ToolsServicesPage />} />
-          <Route path="/features/accounting" element={<AccountingPage />} />
-          <Route path="/partners" element={<PartnersPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </BrowserRouter>
+      <VariantProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/features/inventory" element={<InventoryPage />} />
+            <Route path="/features/purchasing" element={<PurchasingPage />} />
+            <Route path="/features/sales" element={<SalesPage />} />
+            <Route path="/features/manufacturing" element={<ManufacturingPage />} />
+            <Route path="/features/warehousing" element={<WarehousingPage />} />
+            <Route path="/features/tools-services" element={<ToolsServicesPage />} />
+            <Route path="/features/accounting" element={<AccountingPage />} />
+            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </BrowserRouter>
+      </VariantProvider>
     </ThemeProvider>
   );
 }
