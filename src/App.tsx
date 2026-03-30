@@ -8,6 +8,7 @@ import {
   CoreCapabilities,
   Integrations,
   OutcomeClaims,
+  DemoVideo,
   CompetitorComparison,
   Pricing,
   BookDemo,
@@ -27,10 +28,11 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
-import { VariantProvider } from './context/VariantContext';
+import { VariantProvider, useVariant } from './context/VariantContext';
 
 function HomePage() {
   const { theme } = useTheme();
+  const { variant } = useVariant();
   const isNextGen = theme === 'nextgen';
   
   return (
@@ -39,6 +41,7 @@ function HomePage() {
       <main>
         <Hero />
         <OutcomeClaims />
+        {variant === 'video' && <DemoVideo />}
         <TrustedBy />
         <CoreCapabilities />
         <ValueJourney />

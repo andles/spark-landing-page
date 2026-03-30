@@ -77,6 +77,14 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     heroDemoForm: true,
   },
 
+  // ── Video variant: demo video below KPI strip ─────────────
+  video: {
+    badge: 'AI Inventory Software',
+    headline: ['Inventory', 'Reimagined'],
+    subheadline:
+      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
+  },
+
   // ── Future variants ──────────────────────────────────────
   // fba: {
   //   badge: 'Built for Amazon Sellers',

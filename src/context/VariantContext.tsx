@@ -15,7 +15,8 @@ export type LandingVariant =
   | 'forecasting-14d-cta'
   | 'forecasting-14d-form'
   | 'margin-14d-cta'
-  | 'margin-14d-form';
+  | 'margin-14d-form'
+  | 'video';
 // Future: | 'fba' | 'shopify' | 'wholesale' | 'manufacturing'
 
 function getVariantFromURL(): LandingVariant {
@@ -29,6 +30,7 @@ function getVariantFromURL(): LandingVariant {
     'forecasting-14d-form',
     'margin-14d-cta',
     'margin-14d-form',
+    'video',
   ];
   if (valid.includes(raw as LandingVariant)) return raw as LandingVariant;
   // Future variants: add slug to the array above

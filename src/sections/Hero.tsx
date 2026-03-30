@@ -89,6 +89,7 @@ function HeroNextGen() {
   const h1Size = isLongHeadline
     ? 'text-4xl sm:text-5xl lg:text-7xl'
     : 'text-5xl sm:text-6xl lg:text-8xl';
+  const ctaSpacing = variant === 'video' ? 'mb-8' : 'mb-16';
 
   return (
     <section className="pt-20 lg:pt-0 min-h-[85vh] relative overflow-hidden bg-black">
@@ -129,11 +130,11 @@ function HeroNextGen() {
           </p>
 
           {content.heroDemoForm ? (
-            <div className="w-full mb-16">
+            <div className={`w-full ${ctaSpacing}`}>
               <HeroDemoFormNextGen />
             </div>
           ) : (
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className={`flex flex-col sm:flex-row gap-4 ${ctaSpacing}`}>
               <a
                 href="https://app.sparkinventory.com/sign-up"
                 className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full text-white font-semibold text-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)]"
