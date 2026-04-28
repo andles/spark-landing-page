@@ -29,11 +29,17 @@ import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { VariantProvider, useVariant } from './context/VariantContext';
+import AgencyPage from './agency/AgencyPage';
 
 function HomePage() {
   const { theme } = useTheme();
   const { variant } = useVariant();
   const isNextGen = theme === 'nextgen';
+
+  // Agency redesign variant — completely separate page
+  if (variant === 'agency') {
+    return <AgencyPage />;
+  }
   
   return (
     <div className={`min-h-screen ${isNextGen ? 'bg-black' : 'bg-white'}`}>

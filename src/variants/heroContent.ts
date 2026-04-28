@@ -85,6 +85,14 @@ const heroContent: Record<LandingVariant, HeroContent> = {
       'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
   },
 
+  // ── Agency redesign variant (full page replacement) ────────
+  agency: {
+    badge: 'AI-Powered Inventory Platform',
+    headline: ['Inventory That', 'Thinks Ahead'],
+    subheadline:
+      'Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
+  },
+
   // ── Future variants ──────────────────────────────────────
   // fba: {
   //   badge: 'Built for Amazon Sellers',
