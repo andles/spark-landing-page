@@ -36,8 +36,8 @@ function HomePage() {
   const { variant } = useVariant();
   const isNextGen = theme === 'nextgen';
 
-  // Agency redesign variant — completely separate page
-  if (variant === 'agency') {
+  // Agency page is the default experience; old page still accessible via other variants
+  if (variant === 'default' || variant === 'agency') {
     return <AgencyPage />;
   }
   
