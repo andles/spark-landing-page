@@ -57,10 +57,12 @@
 
 body {
   @apply antialiased;
+  overflow-x: clip; /* Prevent horizontal scrollbar from large positioned backgrounds */
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 /* ── Agency design system ── */

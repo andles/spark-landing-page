@@ -2,7 +2,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function AgencyCTASection() {
   return (
-    <section id="book-demo" className="relative py-28 lg:py-36 bg-[#06080d]">
+    <section id="book-demo" className="relative py-20 lg:py-28 bg-[#06080d]">
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2200px] h-[1100px] pointer-events-none"
         style={{ background: "radial-gradient(ellipse 70% 55% at 50% 70%, rgba(80,40,160,0.18), rgba(40,20,100,0.10) 40%, transparent 70%)" }}
