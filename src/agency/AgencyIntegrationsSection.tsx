@@ -17,11 +17,11 @@ const integrations = [
 
 export default function AgencyIntegrationsSection() {
   return (
-    <section id="integrations" className="py-24 lg:py-32 bg-[#06080d] relative">
+    <section id="integrations" className="py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_50%,rgba(6,182,212,0.07),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: text */}
           <ScrollReveal>
             <div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-sm text-[#b8bfcc] mb-6">

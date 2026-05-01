@@ -318,13 +318,13 @@ export default function AgencyCoreCapabilities() {
   const [containerRef, activeIndex] = useActiveSection(features.length);
 
   return (
-    <section id="core-capabilities" className="py-24 lg:py-32 bg-[#06080d] relative overflow-x-clip">
+    <section id="core-capabilities" className="py-14 lg:py-20 bg-[#06080d] relative overflow-x-clip">
       <div className="absolute inset-0 dot-grid opacity-40" />
       <div className="absolute -top-[300px] left-[10%] w-[1200px] h-[1200px] bg-[radial-gradient(circle,rgba(13,148,136,0.08),transparent_60%)] pointer-events-none" />
       <div className="absolute -bottom-[200px] right-[10%] w-[1000px] h-[1000px] bg-[radial-gradient(circle,rgba(139,92,246,0.07),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6 md:px-8 lg:px-12">
-        <ScrollReveal className="text-center max-w-3xl mx-auto">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-2">
           <div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-sm text-[#b8bfcc] mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
@@ -350,7 +350,7 @@ export default function AgencyCoreCapabilities() {
         </ScrollReveal>
 
         {/* Desktop: scroll-linked layout */}
-        <div ref={containerRef} className="hidden lg:grid lg:grid-cols-[1fr_1fr] gap-20 mt-20">
+        <div ref={containerRef} className="hidden lg:grid lg:grid-cols-[1fr_1fr] gap-16 mt-14">
           <div>
             {features.map((feature, i) => (
               <div key={feature.title} data-section-index={i}
@@ -396,7 +396,7 @@ export default function AgencyCoreCapabilities() {
         </div>
 
         {/* Mobile: stacked layout */}
-        <div className="lg:hidden space-y-20 mt-20">
+        <div className="lg:hidden space-y-14 mt-12">
           {features.map((feature, i) => (
             <div key={feature.title}>
               <ScrollReveal>

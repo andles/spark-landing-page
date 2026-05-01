@@ -23,7 +23,7 @@ export default function AgencyHero() {
           </div>
 
           {/* H1 */}
-          <h1 className="animate-fade-up delay-100 text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
+          <h1 className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
             <span className="text-[#f0f2f5]">Inventory That</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
@@ -32,13 +32,13 @@ export default function AgencyHero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="animate-fade-up delay-200 text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-6">
-            Real-time visibility, predictive insights, and autonomous optimization,{" "}
-            <span className="whitespace-nowrap">all in one seamless experience.</span>
+          <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
+            Real-time visibility, predictive insights, and autonomous optimization —
+            all in one seamless experience.
           </p>
 
           {/* CTA row */}
-          <div className="animate-fade-up delay-300 mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="https://app.sparkinventory.com/sign-up"
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
@@ -54,9 +54,9 @@ export default function AgencyHero() {
           </div>
         </div>
 
-        {/* Dashboard visualization */}
-        <div className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full">
-          <div className="dash-enter relative w-full">
+        {/* Dashboard visualization — hidden on small phones, shown sm+ */}
+        <div className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
+          <div className="dash-enter relative w-full overflow-x-hidden">
             <DashboardMockup />
           </div>
         </div>

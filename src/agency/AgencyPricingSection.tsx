@@ -148,7 +148,7 @@ function PricingCard({ tier }: { tier: Tier }) {
 
 export default function AgencyPricingSection() {
   return (
-    <section id="pricing" className="py-24 lg:py-32 bg-[#06080d] relative">
+    <section id="pricing" className="py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute -top-[100px] -left-[200px] w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(6,182,212,0.07),transparent_60%)] pointer-events-none" />
       <div className="absolute -bottom-[100px] -right-[200px] w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
 
@@ -161,13 +161,14 @@ export default function AgencyPricingSection() {
             </span>
             Pricing
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-            Simple, <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Transparent</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
+            Simple,{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Transparent</span>
           </h2>
           <p className="mt-4 text-lg text-[#b8bfcc] max-w-2xl mx-auto">Choose the plan that fits your business. All plans include a 14-day free trial.</p>
         </ScrollReveal>
 
-        <ScrollReveal staggerChildren={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 max-w-7xl mx-auto">
+        <ScrollReveal staggerChildren={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 max-w-7xl mx-auto">
           {tiers.map((tier, i) => (
             <RevealItem key={tier.name} index={i}>
               <PricingCard tier={tier} />
