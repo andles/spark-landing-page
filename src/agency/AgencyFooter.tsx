@@ -41,9 +41,7 @@ export default function AgencyFooter() {
               <div>
                 <h4 className="text-white text-sm font-semibold mb-4">Company</h4>
                 <ul className="space-y-2.5">
-                  {["About", "Partners", "Careers"].map((item) => (
-                    <li key={item}><a href={`/${item.toLowerCase()}`} className="text-white/60 text-sm hover:text-white transition-colors duration-200">{item}</a></li>
-                  ))}
+                  <li><a href="/partners" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Partners</a></li>
                 </ul>
               </div>
               <div>

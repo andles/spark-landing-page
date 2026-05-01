@@ -23,7 +23,9 @@ export default function AgencyCTASection() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#"
+              href="https://calendly.com/jason-sparkinventory/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
             >
               Book a Call

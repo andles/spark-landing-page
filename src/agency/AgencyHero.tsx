@@ -1,6 +1,21 @@
+import { useState, useEffect, useRef } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
 
+// Place your hero video at /public/hero-video.mp4 (or update this path)
+const HERO_VIDEO_SRC = "/hero-video.mp4";
+
 export default function AgencyHero() {
+  // "video" → playing | "fading" → cross-fading out | "done" → mockup only
+  const [phase, setPhase] = useState<"video" | "fading" | "done">("video");
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (phase === "fading") {
+      const t = setTimeout(() => setPhase("done"), 700);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -46,7 +61,9 @@ export default function AgencyHero() {
               Start Free Trial
             </a>
             <a
-              href="#book-demo"
+              href="https://calendly.com/jason-sparkinventory/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center"
             >
               Book a Call
@@ -54,10 +71,33 @@ export default function AgencyHero() {
           </div>
         </div>
 
-        {/* Dashboard visualization — hidden on small phones, shown sm+ */}
+        {/* Hero visual — video plays once on load, then fades to dashboard mockup */}
         <div className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
           <div className="dash-enter relative w-full overflow-x-hidden">
-            <DashboardMockup />
+
+            {/* Dashboard mockup — always in the DOM (determines container height),
+                invisible while video is playing, fades in as video ends */}
+            <div className={`transition-opacity duration-700 ${phase === "video" ? "opacity-0" : "opacity-100"}`}>
+              <DashboardMockup />
+            </div>
+
+            {/* Video overlay — absolutely covers the mockup while playing,
+                cross-fades out on end, then removed from the DOM entirely */}
+            {phase !== "done" && (
+              <video
+                ref={videoRef}
+                src={HERO_VIDEO_SRC}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setPhase("fading")}
+                onError={() => setPhase("done")}
+                className={`absolute inset-0 w-full h-full object-cover rounded-xl transition-opacity duration-700 ${
+                  phase === "fading" ? "opacity-0" : "opacity-100"
+                }`}
+              />
+            )}
+
           </div>
         </div>
       </div>
