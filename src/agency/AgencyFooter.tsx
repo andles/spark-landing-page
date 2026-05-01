@@ -47,8 +47,19 @@ export default function AgencyFooter() {
               <div>
                 <h4 className="text-white text-sm font-semibold mb-4">Legal</h4>
                 <ul className="space-y-2.5">
-                  {["Privacy Policy", "Terms of Service"].map((item) => (
-                    <li key={item}><a href={`/${item.toLowerCase().replace(/\s+/g, "-")}`} className="text-white/60 text-sm hover:text-white transition-colors duration-200">{item}</a></li>
+                  {[
+                    { label: "Privacy Policy", href: "/privacy-policy" },
+                    { label: "Terms of Service", href: "/terms-of-service" },
+                    { label: "App Privacy Details", href: "/app-privacy" },
+                    { label: "Google Play — Data Safety", href: "/data-safety" },
+                    { label: "EULA", href: "/eula" },
+                    { label: "Support", href: "/support" },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors duration-200">
+                        {item.label}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </div>

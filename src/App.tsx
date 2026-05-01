@@ -26,6 +26,10 @@ import {
 import { PartnersPage } from './pages/PartnersPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { AppPrivacyPage } from './pages/AppPrivacyPage';
+import { DataSafetyPage } from './pages/DataSafetyPage';
+import { EulaPage } from './pages/EulaPage';
+import { SupportPage } from './pages/SupportPage';
 import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { VariantProvider, useVariant } from './context/VariantContext';
@@ -79,6 +83,10 @@ function App() {
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+            <Route path="/app-privacy" element={<AppPrivacyPage />} />
+            <Route path="/data-safety" element={<DataSafetyPage />} />
+            <Route path="/eula" element={<EulaPage />} />
+            <Route path="/support" element={<SupportPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </BrowserRouter>
