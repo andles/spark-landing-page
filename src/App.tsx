@@ -30,6 +30,7 @@ import { AppPrivacyPage } from './pages/AppPrivacyPage';
 import { DataSafetyPage } from './pages/DataSafetyPage';
 import { EulaPage } from './pages/EulaPage';
 import { SupportPage } from './pages/SupportPage';
+import { DeleteAccountPage } from './pages/DeleteAccountPage';
 import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { VariantProvider, useVariant } from './context/VariantContext';
@@ -87,6 +88,7 @@ function App() {
             <Route path="/data-safety" element={<DataSafetyPage />} />
             <Route path="/eula" element={<EulaPage />} />
             <Route path="/support" element={<SupportPage />} />
+            <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </BrowserRouter>

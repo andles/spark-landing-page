@@ -54,6 +54,7 @@ export default function AgencyFooter() {
                     { label: "Google Play — Data Safety", href: "/data-safety" },
                     { label: "EULA", href: "/eula" },
                     { label: "Support", href: "/support" },
+                    { label: "Delete Account", href: "/delete-account" },
                   ].map((item) => (
                     <li key={item.href}>
                       <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors duration-200">
