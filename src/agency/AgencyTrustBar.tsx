@@ -12,7 +12,7 @@ export default function AgencyTrustBar() {
   return (
     <section className="py-10 lg:py-14 relative">
       <p className="text-center text-white/80 text-sm font-medium tracking-wide mb-8">
-        Trusted by 500+ Businesses
+        Trusted by Industry Experts
       </p>
       <div
         className="relative max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12"
