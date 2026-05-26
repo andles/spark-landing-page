@@ -11,10 +11,10 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 05/01/2026"
+      subtitle="Effective date: 05/26/2026"
     >
       <LegalP>
-        This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile application (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
+        This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
       </LegalP>
 
       <LegalSection title="1. Information We Collect">
@@ -84,63 +84,39 @@ export function PrivacyPolicyPage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="5. Google Account Integration (Gmail)">
+      <LegalSection title="5. Google account integration (Gmail)">
         <LegalP>
-          Spark Inventory offers an optional integration that connects your Google account to allow the App to send emails on your behalf (for example, emailing purchase orders or invoices to vendors and customers). This section explains exactly how that integration works and what data we access.
+          Spark Inventory offers an optional integration with your Gmail account so you can send replies to suppliers and customers directly from the address they know you by. This section describes how we handle data accessed via Google's APIs.
         </LegalP>
-
-        <LegalSubSection title="5.1 What we access">
-          <LegalP>
-            When you connect your Google account, we request only the <strong className="text-[#f0f2f5]/80">gmail.send</strong> OAuth scope. This allows the App to compose and send emails from your Gmail address. We do <strong className="text-[#f0f2f5]/80">not</strong> access, read, index, or store:
-          </LegalP>
-          <LegalUl items={[
-            "Your inbox or any received emails;",
-            "Your contacts, calendar, or Google Drive;",
-            "Your email drafts or sent-mail folder (we only trigger the send action — Google records the sent copy in your Sent folder as normal).",
-          ]} />
-        </LegalSubSection>
-
-        <LegalSubSection title="5.2 When emails are sent">
-          <LegalP>
-            The App sends an email through your Gmail account <strong className="text-[#f0f2f5]/80">only</strong> when you explicitly trigger the action — for example, by tapping "Send" on a purchase order or invoice. We never send emails automatically or without your direct instruction.
-          </LegalP>
-        </LegalSubSection>
-
-        <LegalSubSection title="5.3 What we store">
-          <LegalUl items={[
-            <><strong className="text-[#f0f2f5]/80">Encrypted OAuth refresh token.</strong> To avoid requiring you to re-authorize on every session, we store an encrypted refresh token on our servers. This token is used solely to obtain short-lived access tokens for the gmail.send scope.</>,
-            <><strong className="text-[#f0f2f5]/80">Send audit log.</strong> For each email sent through the integration, we record the recipient address, subject line, timestamp, and the Spark Inventory document reference (e.g., PO #1234). This log is visible to workspace administrators and is retained as part of your workspace data under our standard retention policy (see Section 6).</>,
-          ]} />
-          <LegalP>
-            We do not store the body or attachments of sent emails on our servers beyond the time required to deliver them.
-          </LegalP>
-        </LegalSubSection>
-
-        <LegalSubSection title="5.4 Third-party sharing">
-          <LegalP>
-            Data obtained through the Gmail integration is used solely to send emails on your behalf. It is not shared with any third party other than Google (via the Gmail API) and our infrastructure providers who host our servers under confidentiality obligations. We do not use this data to train AI models or for advertising.
-          </LegalP>
-        </LegalSubSection>
-
-        <LegalSubSection title="5.5 Revoking access">
-          <LegalP>
-            You can disconnect the Gmail integration at any time from the App's Settings screen. You can also revoke access directly at{" "}
-            <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-              myaccount.google.com/permissions
-            </a>
-            . Upon revocation, we delete your stored refresh token within 30 days.
-          </LegalP>
-        </LegalSubSection>
-
-        <LegalSubSection title="5.6 Google API Services User Data Policy">
-          <LegalP>
-            Spark Inventory's use and transfer of information received from Google APIs adheres to the{" "}
-            <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-              Google API Services User Data Policy
-            </a>
-            , including the Limited Use requirements.
-          </LegalP>
-        </LegalSubSection>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">What we access.</strong> When you choose to connect a Gmail account in Spark Inventory, we request a single Google OAuth scope: gmail.send (described to you on Google's consent screen as "Send email on your behalf"). This is the narrowest Gmail scope that permits sending.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">What we do not access.</strong> With this scope, we cannot read, search, modify, label, archive, delete, or otherwise interact with any messages in your Gmail mailbox. We do not have access to your inbox, contacts, drafts, or any other Gmail data.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">How we use it.</strong> We send a message via Gmail only when you explicitly click "Send" on a reply or follow-up you have composed inside Spark Inventory. We do not send autonomous, bulk, or marketing email through this integration.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">How we store the data.</strong> Spark Inventory stores an encrypted OAuth refresh token tied to your Spark Inventory account so the integration continues to work without re-authentication. Outgoing messages and the events that triggered them are recorded in our internal logs for diagnostic and audit purposes.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Third parties.</strong> Outgoing messages are transmitted only between Spark Inventory's servers and Google's Gmail API. No other third party receives data obtained via Google's APIs.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">How to revoke access.</strong> You can disconnect your Gmail account at any time from Spark Inventory's Email accounts page (Profile → Email accounts). You can also revoke Spark Inventory's access directly from your Google Account at{" "}
+          <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            myaccount.google.com/permissions
+          </a>
+          . Disconnection deletes the stored refresh token within 30 days.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Limited Use compliance.</strong> Spark Inventory's use of information received from Google APIs adheres to the{" "}
+          <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            Google API Services User Data Policy
+          </a>
+          , including the Limited Use requirements. We do not transfer, use, or store Google user data for serving advertisements, and we do not allow humans to read Google user data except (a) with your explicit consent, (b) for security purposes such as investigating abuse, (c) to comply with applicable law, or (d) for limited internal operations where the data has been aggregated and anonymized.
+        </LegalP>
       </LegalSection>
 
       <LegalSection title="6. Data Retention">
