@@ -68,49 +68,92 @@ export function TermsOfServicePage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="8. Termination">
+      <LegalSection title="8. SMS / Text Message Service">
+        <LegalP>
+          Spark Inventory offers an optional SMS text message notification service to authenticated account holders. Participation in the SMS service is entirely voluntary and is not required to use Spark Inventory.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">What the SMS service is.</strong> The SMS service sends transactional operational notifications about activity in your Spark Inventory account — including inventory alerts, order updates, and other operational events that need attention. The service is operational, not promotional. We do not send marketing or recurring content over SMS.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Eligibility.</strong> The SMS service is available only to authenticated Spark Inventory account holders located in the United States, using US mobile phone numbers. You may not enroll a phone number that is not your own without the express prior consent of the number's owner.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Frequency and cost.</strong> Message frequency varies — typically up to a few messages per day, based on the activity in your account and which notification types you have enabled. Message and data rates may apply, as charged by your mobile carrier. Spark Inventory does not charge you for SMS.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Consent.</strong> By enabling SMS notifications in your Spark Inventory account settings, you affirmatively consent to receive the transactional SMS described above from Spark Inventory at the mobile number you provide. Consent to receive SMS is not a condition of using Spark Inventory.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Opt-out.</strong> You may revoke consent and stop receiving SMS at any time by:
+        </LegalP>
+        <LegalUl items={[
+          <>Replying <strong className="text-[#f0f2f5]/80">STOP</strong> to any Spark Inventory SMS, or</>,
+          <>Visiting <strong className="text-[#f0f2f5]/80">Profile → SMS notifications</strong> inside your Spark Inventory account and clicking "Turn off SMS".</>,
+        ]} />
+        <LegalP>
+          We record opt-outs immediately, and you will not receive further messages after a STOP request is processed.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Support.</strong> Reply <strong className="text-[#f0f2f5]/80">HELP</strong> to any Spark Inventory SMS for assistance, or email <LegalEmail email="support@sparkinventory.com" />.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Privacy.</strong> For details on how we collect, use, and protect SMS-related data — including the FCC-required disclosure that no mobile information will be sold or shared with third parties for promotional or marketing purposes — see our Privacy Policy at{" "}
+          <a href="https://sparkinventory.com/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            sparkinventory.com/privacy-policy
+          </a>.
+        </LegalP>
+        <LegalP>
+          <strong className="text-[#f0f2f5]/80">Program details.</strong> The full SMS program description, sample message content, and verbatim consent statement are available at{" "}
+          <a href="https://sparkinventory.com/sms-program" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            sparkinventory.com/sms-program
+          </a>.
+        </LegalP>
+      </LegalSection>
+
+      <LegalSection title="9. Termination">
         <LegalP>
           You may stop using the Service at any time. We may suspend or terminate your access if you violate these Terms, if required by law, or if continued provision becomes commercially unreasonable. On termination, your right to use the Service ceases immediately. Sections that by their nature should survive (including ownership, disclaimers, indemnity, and limitations of liability) will survive.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="9. Disclaimers">
+      <LegalSection title="10. Disclaimers">
         <LegalP>
           THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="10. Limitation of Liability">
+      <LegalSection title="11. Limitation of Liability">
         <LegalP>
           TO THE MAXIMUM EXTENT PERMITTED BY LAW, SPARK INVENTORY, INC WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR GOODWILL, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE. OUR AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS WILL NOT EXCEED THE GREATER OF (A) THE FEES YOU PAID US IN THE 12 MONTHS BEFORE THE EVENT GIVING RISE TO THE CLAIM, OR (B) USD 100.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="11. Indemnification">
+      <LegalSection title="12. Indemnification">
         <LegalP>
           You agree to indemnify and hold harmless Spark Inventory, INC and its officers, directors, employees, and agents from any claims, damages, liabilities, and expenses (including reasonable legal fees) arising from your breach of these Terms, your Customer Data, or your misuse of the Service.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="12. Governing Law and Disputes">
+      <LegalSection title="13. Governing Law and Disputes">
         <LegalP>
           These Terms are governed by the laws of the State of New York, without regard to conflict of laws principles. The courts located in the State of New York will have exclusive jurisdiction over any disputes, except that either party may seek injunctive relief in any competent court.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="13. Changes">
+      <LegalSection title="14. Changes">
         <LegalP>
           We may update these Terms from time to time. If we make material changes, we will notify you by email or in-app notice. Your continued use of the Service after changes take effect constitutes acceptance of the revised Terms.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="14. Apple App Store Additional Terms">
+      <LegalSection title="15. Apple App Store Additional Terms">
         <LegalP>
           If you obtained the App from the Apple App Store, the following also applies: these Terms are between you and Spark Inventory, INC only, not Apple. Apple is not responsible for the App or its content. Apple has no obligation to provide maintenance or support for the App. In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any). Apple is a third-party beneficiary of these Terms and may enforce them against you.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="15. Contact">
+      <LegalSection title="16. Contact">
         <LegalAddress />
       </LegalSection>
     </LegalPageShell>
