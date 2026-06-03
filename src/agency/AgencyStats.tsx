@@ -38,7 +38,7 @@ export default function AgencyStats() {
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
                 The #1 Platform for<br />
                 <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  FBA, Shopify &amp; B2B
+                  FBA &amp; B2B
                 </span>
               </h2>
             </div>
