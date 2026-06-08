@@ -110,10 +110,10 @@ export default function AgencyHero3PL() {
             className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-[#f0f2f5]">The tech-enabled 3PL wins the next decade.</span>
+            <span className="text-[#f0f2f5]">The tech-enabled 3PL</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              Be one, without building it.
+              wins the next decade.
             </span>
           </h1>
 
