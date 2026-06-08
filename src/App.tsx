@@ -35,6 +35,7 @@ import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { VariantProvider, useVariant } from './context/VariantContext';
 import AgencyPage from './agency/AgencyPage';
+import ThreePLPage from './agency/ThreePLPage';
 
 function HomePage() {
   const { theme } = useTheme();
@@ -74,6 +75,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/3pl" element={<ThreePLPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />
