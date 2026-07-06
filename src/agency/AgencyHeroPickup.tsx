@@ -113,7 +113,7 @@ export default function AgencyHeroPickup() {
 
           {/* H1 */}
           <h1
-            className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
+            className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
             <span className="text-[#f0f2f5]">The easiest way to offer</span>
@@ -125,22 +125,15 @@ export default function AgencyHeroPickup() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Everything is included, the Shopify connection, the automatic ticket printing, and the hardware on their counter.
+            Everything is included, the Shopify connection, the automatic ticket printing, and the hardware on the counter.
           </p>
 
-          {/* CTA row */}
+          {/* CTA row — single "Book a Call" routed through /book-a-call so a
+              Google Ads conversion fires before the prospect reaches Calendly */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://app.sparkinventory.com/sign-up"
+              href="/book-a-call"
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
-            >
-              Start Free Trial
-            </a>
-            <a
-              href="https://calendly.com/jason-sparkinventory/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center"
             >
               Book a Call
             </a>

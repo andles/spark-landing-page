@@ -37,6 +37,7 @@ import { VariantProvider, useVariant } from './context/VariantContext';
 import AgencyPage from './agency/AgencyPage';
 import ThreePLPage from './agency/ThreePLPage';
 import PickupPage from './agency/PickupPage';
+import BookRedirect from './agency/BookRedirect';
 
 function HomePage() {
   const { theme } = useTheme();
@@ -78,6 +79,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/3pl" element={<ThreePLPage />} />
             <Route path="/in-store-pickup" element={<PickupPage />} />
+            <Route path="/book-a-call" element={<BookRedirect />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />
