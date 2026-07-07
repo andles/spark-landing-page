@@ -38,6 +38,7 @@ import AgencyPage from './agency/AgencyPage';
 import ThreePLPage from './agency/ThreePLPage';
 import PickupPage from './agency/PickupPage';
 import BookRedirect from './agency/BookRedirect';
+import StockoutsPage from './agency/StockoutsPage';
 
 function HomePage() {
   const { theme } = useTheme();
@@ -80,6 +81,11 @@ function App() {
             <Route path="/3pl" element={<ThreePLPage />} />
             <Route path="/in-store-pickup" element={<PickupPage />} />
             <Route path="/book-a-call" element={<BookRedirect />} />
+            {/* Reduce Stockouts & Overstock campaign variant. The requested
+                "&" slug is registered as-is, plus a clean ampersand-free alias
+                (recommended for ad links, since "&" gets percent-encoded). */}
+            <Route path="/reduce-stockouts-&-overstock" element={<StockoutsPage />} />
+            <Route path="/reduce-stockouts-overstock" element={<StockoutsPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />
