@@ -1,28 +1,11 @@
 import { useEffect } from "react";
+import { CALENDLY_URL, GADS_CONVERSION_SEND_TO as CONVERSION_SEND_TO } from "./calendly";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// /book-a-call — conversion-tracking interstitial.
-//
-// The "Book a Call" CTA points here instead of straight to Calendly. This page
-// fires a Google Ads conversion, then forwards the prospect to Calendly. Because
-// every click lands on this single URL first, it's an easy, reliable place to
-// measure "Book a Call" conversions.
+// /book-a-call — conversion-tracking interstitial (kept as an alternative to the
+// Calendly popup: hitting this URL fires a Google Ads conversion, then forwards
+// to Calendly). The Calendly URL + conversion label live in ./calendly.
 // ─────────────────────────────────────────────────────────────────────────────
-
-// Where prospects ultimately land.
-const CALENDLY_URL = "https://calendly.com/jason-sparkinventory/30min";
-
-// Google Ads conversion "send_to". The account tag (AW-17962279599) is already
-// loaded globally in index.html — you only need to add the conversion LABEL:
-//
-//   Google Ads → Goals → Conversions → New conversion action → Website
-//   → create an action for "Book a Call" → copy its conversion label
-//     (looks like "AbC-D_efGhIjK12345")
-//   → set the value below to  "AW-17962279599/AbC-D_efGhIjK12345"
-//
-// Until you replace the label, the redirect still works; the conversion just
-// won't register in Google Ads.
-const CONVERSION_SEND_TO = "AW-17962279599/REPLACE_WITH_CONVERSION_LABEL";
 
 type Gtag = (...args: unknown[]) => void;
 
