@@ -2,6 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Google Consent Mode v2 — default state. MUST run before CookieYes and
+         any Google tag. Opt-in posture: all non-essential storage denied until
+         the visitor consents via the CookieYes banner (which then calls
+         gtag('consent','update',...)). Do not move below the tags below. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
     <!-- Start cookieyes banner -->
     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
