@@ -6,8 +6,28 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { useState, useEffect, useRef, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
+import ScrollReveal, { RevealItem } from "./ScrollReveal";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
+
+// Performance metrics — relocated into the hero (below the CTAs, above the video).
+const stats = [
+  {
+    value: "43%",
+    label: "Less excess inventory",
+    desc: "Optimized stock levels across all your sales channels.",
+  },
+  {
+    value: "2.4x",
+    label: "Fewer stockouts",
+    desc: "AI forecasting catches demand shifts before they hit.",
+  },
+  {
+    value: "< 1 hr",
+    label: "Less manual planning",
+    desc: "Automated reorder points and PO generation.",
+  },
+];
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -147,6 +167,24 @@ export default function AgencyHeroStockouts() {
             </a>
           </div>
         </div>
+
+        {/* Performance metrics — relocated from the stats section to sit directly
+            below the CTAs and above the hero video. Width + top margin match the
+            video block below so the horizontal edges and vertical rhythm align. */}
+        <ScrollReveal staggerChildren={120} className="mt-10 lg:mt-14 w-full max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+          {stats.map((s, i) => (
+            <RevealItem key={i} index={i} className="h-full">
+              <div className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 lg:p-8 hover:bg-white/[0.06] hover:border-white/[0.14] transition-all duration-300 overflow-hidden h-full">
+                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent mb-3 tabular-nums group-hover:from-cyan-400 group-hover:to-violet-400 transition-all duration-500" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
+                  {s.value}
+                </div>
+                <div className="text-white text-sm font-semibold mb-1.5">{s.label}</div>
+                <div className="text-[#8b95a8] text-sm leading-relaxed">{s.desc}</div>
+              </div>
+            </RevealItem>
+          ))}
+        </ScrollReveal>
 
         {/* ── Hero visual ─────────────────────────────────────────────────── */}
         <div className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
