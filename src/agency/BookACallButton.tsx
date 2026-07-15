@@ -1,11 +1,12 @@
 import { useEffect, useCallback } from "react";
-import { CALENDLY_URL, ensureCalendlyAssets, fireBookACallConversion, openCalendlyPopup } from "./calendly";
+import { CALENDLY_URL, ensureCalendlyAssets, openCalendlyPopup } from "./calendly";
 
-// "Book a Call" CTA — opens the Calendly scheduler in a popup overlay and fires
-// the Google Ads conversion on click, instead of navigating away. The href stays
-// the Calendly URL as a no-JS fallback. Shared across every landing page so all
-// Book a Call buttons behave identically; pass the caller's own className to keep
-// each button's existing styling.
+// "Book a Call" CTA — opens the Calendly scheduler in a popup overlay instead of
+// navigating away. The href stays the Calendly URL as a no-JS fallback. Shared
+// across every landing page; pass the caller's own className to keep each
+// button's styling. The Google Ads conversion is NOT fired here anymore: it
+// fires on the /meeting-confirmed page that Calendly redirects to after an
+// actual booking, so we count booked demos instead of clicks.
 export default function BookACallButton({
   className,
   children = "Book a Call",
@@ -20,7 +21,6 @@ export default function BookACallButton({
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    fireBookACallConversion();
     openCalendlyPopup();
   }, []);
 

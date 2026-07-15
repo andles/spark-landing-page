@@ -48,6 +48,10 @@ export function ensureCalendlyAssets(): void {
   }
 }
 
+// NOTE: not currently wired anywhere. Conversions are tracked with a URL-based
+// action in Google Ads that fires on the /meeting-confirmed page load. Kept here
+// in case you switch to an event-snippet conversion: set GADS_CONVERSION_SEND_TO
+// to your real label and call this from MeetingConfirmedPage's mount instead.
 /** Fire the Google Ads "Book a Call" conversion (no-op if gtag isn't present). */
 export function fireBookACallConversion(): void {
   const gtag = (window as unknown as { gtag?: Gtag }).gtag;
