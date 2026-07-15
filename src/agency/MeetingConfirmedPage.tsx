@@ -48,14 +48,16 @@ function useBookingDetails() {
 }
 
 const COVER_POINTS = [
-  "A look at your current pickup and inventory flow, so we tailor the demo to how your store actually runs.",
-  "The order to ticket workflow, from a customer buying online to a pickup ticket printing at your counter.",
-  "Setup and the counter hardware that comes included, so you know what going live really looks like.",
+  "A quick look at how you manage inventory today, so we tailor the rest of the call to your setup.",
+  "AI demand forecasting and automated reordering, the part that helps you hold less overstock and stop selling out of your best products.",
+  "Real-time visibility across every channel you sell on, connecting Shopify, Amazon, and your accounting in one place.",
+  "The workflows that fit how you operate, whether that is in-store pickup, wholesale, or FBA.",
 ];
 
 const PREP_POINTS = [
-  "Have your store and POS setup in mind, including whether you use Shopify POS or sell on Amazon.",
-  "Know your rough location count and how many products you carry. Estimates are fine.",
+  "Have a sense of the tools you use now, like Shopify, Amazon, QuickBooks, or spreadsheets.",
+  "Think about your biggest headache, whether that is stockouts, overstock, or the time purchasing takes.",
+  "A rough idea of your scale helps, like how many products or locations you manage. Estimates are fine.",
 ];
 
 export default function MeetingConfirmedPage() {
