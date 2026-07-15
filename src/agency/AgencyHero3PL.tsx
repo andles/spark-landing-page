@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
+import BookACallButton from "./BookACallButton";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
 
@@ -130,14 +131,7 @@ export default function AgencyHero3PL() {
             >
               Start Free Trial
             </a>
-            <a
-              href="https://calendly.com/jason-sparkinventory/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center"
-            >
-              Book a Call
-            </a>
+            <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center" />
           </div>
         </div>
 

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { useState, useEffect, useRef, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
-import { CALENDLY_URL, ensureCalendlyAssets, fireBookACallConversion, openCalendlyPopup } from "./calendly";
+import BookACallButton from "./BookACallButton";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
 
@@ -64,19 +64,6 @@ export default function AgencyHeroPickup() {
   useEffect(() => {
     if (videoRef.current) videoRef.current.muted = muted;
   }, [muted]);
-
-  // Preload the Calendly popup assets so "Book a Call" opens instantly.
-  useEffect(() => {
-    ensureCalendlyAssets();
-  }, []);
-
-  // "Book a Call" → fire the Google Ads conversion, then open the Calendly
-  // scheduler as a modal overlay (falls back to the href if JS is disabled).
-  const handleBookACall = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    fireBookACallConversion();
-    openCalendlyPopup();
-  }, []);
 
   const handleReplay = useCallback(() => {
     if (!videoRef.current) return;
@@ -146,15 +133,7 @@ export default function AgencyHeroPickup() {
               popup overlay and fires the Google Ads conversion on click. The
               href is a no-JS fallback that still reaches Calendly. */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={CALENDLY_URL}
-              onClick={handleBookACall}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
-            >
-              Book a Call
-            </a>
+            <BookACallButton className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center" />
           </div>
         </div>
 
