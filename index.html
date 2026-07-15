@@ -23,10 +23,12 @@
     <!-- Start cookieyes banner -->
     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
-    <!-- Start RB2B — consent-gated via CookieYes. type="text/plain" +
-         data-cookieyes keeps it blocked until the visitor accepts the
-         "advertisement" category; CookieYes then activates and runs it. -->
-    <script type="text/plain" data-cookieyes="cookieyes-advertisement">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("4N210HX77Z6Z");</script>
+    <!-- Start RB2B — installed unmodified per RB2B's guidance. RB2B natively
+         detects the CookieYes banner and only begins visitor identification
+         after the visitor consents (it polls the cookieyes-consent cookie
+         every 600ms). Do NOT wrap or block this script, or RB2B's consent
+         logic can't run and its installer can't validate. -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("4N210HX77Z6Z");</script>
     <!-- End RB2B -->
     <link rel="icon" type="image/png" href="/spark_icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
