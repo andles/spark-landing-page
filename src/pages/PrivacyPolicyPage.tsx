@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 05/26/2026"
+      subtitle="Effective date: 07/22/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -231,7 +231,31 @@ export function PrivacyPolicyPage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="13. Contact Us">
+      <LegalSection title="13. Third-Party Data Collection and Marketing">
+        <LegalP>
+          When you visit or log in to our website, cookies and similar technologies may be used by our online data partners or vendors to associate these activities with other personal information they or others have about you, including by association with your email. We (or service providers on our behalf) may then send communications and marketing to these email addresses. You may opt out of receiving this advertising by visiting{" "}
+          <a
+            href="https://app.retention.com/optout"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+          >
+            https://app.retention.com/optout
+          </a>
+          . You also have the option to opt out of the collection of your personal data in compliance with GDPR by visiting{" "}
+          <a
+            href="https://www.rb2b.com/rb2b-gdpr-opt-out"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+          >
+            https://www.rb2b.com/rb2b-gdpr-opt-out
+          </a>
+          .
+        </LegalP>
+      </LegalSection>
+
+      <LegalSection title="14. Contact Us">
         <LegalP>If you have questions about this Privacy Policy or our data practices, contact us at:</LegalP>
         <LegalAddress />
       </LegalSection>
