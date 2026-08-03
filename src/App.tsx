@@ -40,6 +40,7 @@ import PickupPage from './agency/PickupPage';
 import BookRedirect from './agency/BookRedirect';
 import StockoutsPage from './agency/StockoutsPage';
 import MeetingConfirmedPage from './agency/MeetingConfirmedPage';
+import ProspectReportRoute from './reports/StockSignalsReport';
 
 function HomePage() {
   const { theme } = useTheme();
@@ -83,6 +84,11 @@ function App() {
             <Route path="/in-store-pickup" element={<PickupPage />} />
             <Route path="/book-a-call" element={<BookRedirect />} />
             <Route path="/meeting-confirmed" element={<MeetingConfirmedPage />} />
+            {/* Unlisted prospect reports. Reached by direct URL only: no nav
+                links anywhere, noindex meta on the route, slugs unguessable.
+                New prospects are added in src/reports/prospects.ts, no new
+                routes or components needed. */}
+            <Route path="/r/:slug" element={<ProspectReportRoute />} />
             {/* Reduce Stockouts & Overstock campaign variant. The requested
                 "&" slug is registered as-is, plus a clean ampersand-free alias
                 (recommended for ad links, since "&" gets percent-encoded). */}
