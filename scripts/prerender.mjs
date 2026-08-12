@@ -55,8 +55,10 @@ const esc = (s) =>
 
 for (const route of routeMeta) {
   const appHtml = await renderToString(createApp(route.path));
+  // Netlify serves directory indexes at the trailing-slash URL (301 from the
+  // bare path), so canonicals must use the trailing-slash form.
   const canonicalPath = route.canonical ?? route.path;
-  const canonical = canonicalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${canonicalPath}`;
+  const canonical = canonicalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${canonicalPath}/`;
 
   const headTags = [
     `<link rel="canonical" href="${canonical}">`,
@@ -89,7 +91,7 @@ for (const route of routeMeta) {
 // sitemap.xml — indexable canonical routes only
 const urls = routeMeta
   .filter((r) => !r.noindex && !r.canonical)
-  .map((r) => `  <url><loc>${r.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${r.path}`}</loc></url>`)
+  .map((r) => `  <url><loc>${r.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${r.path}/`}</loc></url>`)
   .join('\n');
 writeFileSync(
   join(dist, 'sitemap.xml'),
