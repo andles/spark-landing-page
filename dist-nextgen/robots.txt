@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /r/
+Allow: /
+
+Sitemap: https://sparkinventory.com/sitemap.xml

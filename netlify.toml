@@ -3,7 +3,22 @@
   command = "npm run build:nextgen"
   publish = "dist-nextgen"
 
+# SPA fallback for routes without a prerendered file (/r/:slug, etc.).
+# Prerendered routes are real files and are served before this redirect runs.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/spa-shell.html"
   status = 200
+
+# Hashed build assets never change — cache forever
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Unlisted prospect reports: keep out of search indexes at the HTTP level
+# (more robust than the client-side-injected noindex meta)
+[[headers]]
+  for = "/r/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

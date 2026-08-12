@@ -1,83 +1,51 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {
-  Header,
-  Hero,
-  TrustedBy,
-  ValueJourney,
-  FeatureShowcase,
-  CoreCapabilities,
-  Integrations,
-  OutcomeClaims,
-  DemoVideo,
-  CompetitorComparison,
-  Pricing,
-  BookDemo,
-  Footer,
-} from './sections';
-import {
-  InventoryPage,
-  PurchasingPage,
-  SalesPage,
-  ManufacturingPage,
-  WarehousingPage,
-  ToolsServicesPage,
-  AccountingPage,
-} from './pages/features';
-import { PartnersPage } from './pages/PartnersPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-import { TermsOfServicePage } from './pages/TermsOfServicePage';
-import { AppPrivacyPage } from './pages/AppPrivacyPage';
-import { DataSafetyPage } from './pages/DataSafetyPage';
-import { EulaPage } from './pages/EulaPage';
-import { SupportPage } from './pages/SupportPage';
-import { DeleteAccountPage } from './pages/DeleteAccountPage';
-import { ContactPage } from './pages/ContactPage';
-import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import { VariantProvider, useVariant } from './context/VariantContext';
 import AgencyPage from './agency/AgencyPage';
-import ThreePLPage from './agency/ThreePLPage';
-import PickupPage from './agency/PickupPage';
-import BookRedirect from './agency/BookRedirect';
-import StockoutsPage from './agency/StockoutsPage';
-import MeetingConfirmedPage from './agency/MeetingConfirmedPage';
-import ProspectReportRoute from './reports/StockSignalsReport';
+
+// Everything except the default homepage is lazy-loaded so first-visit
+// traffic only downloads the code it renders.
+const LegacyHome = lazy(() => import('./LegacyHome'));
+const ThreePLPage = lazy(() => import('./agency/ThreePLPage'));
+const PickupPage = lazy(() => import('./agency/PickupPage'));
+const BookRedirect = lazy(() => import('./agency/BookRedirect'));
+const StockoutsPage = lazy(() => import('./agency/StockoutsPage'));
+const MeetingConfirmedPage = lazy(() => import('./agency/MeetingConfirmedPage'));
+const ProspectReportRoute = lazy(() => import('./reports/StockSignalsReport'));
+const InventoryPage = lazy(() => import('./pages/features/InventoryPage').then((m) => ({ default: m.InventoryPage })));
+const PurchasingPage = lazy(() => import('./pages/features/PurchasingPage').then((m) => ({ default: m.PurchasingPage })));
+const SalesPage = lazy(() => import('./pages/features/SalesPage').then((m) => ({ default: m.SalesPage })));
+const ManufacturingPage = lazy(() => import('./pages/features/ManufacturingPage').then((m) => ({ default: m.ManufacturingPage })));
+const WarehousingPage = lazy(() => import('./pages/features/WarehousingPage').then((m) => ({ default: m.WarehousingPage })));
+const ToolsServicesPage = lazy(() => import('./pages/features/ToolsServicesPage').then((m) => ({ default: m.ToolsServicesPage })));
+const AccountingPage = lazy(() => import('./pages/features/AccountingPage').then((m) => ({ default: m.AccountingPage })));
+const PartnersPage = lazy(() => import('./pages/PartnersPage').then((m) => ({ default: m.PartnersPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then((m) => ({ default: m.TermsOfServicePage })));
+const AppPrivacyPage = lazy(() => import('./pages/AppPrivacyPage').then((m) => ({ default: m.AppPrivacyPage })));
+const DataSafetyPage = lazy(() => import('./pages/DataSafetyPage').then((m) => ({ default: m.DataSafetyPage })));
+const EulaPage = lazy(() => import('./pages/EulaPage').then((m) => ({ default: m.EulaPage })));
+const SupportPage = lazy(() => import('./pages/SupportPage').then((m) => ({ default: m.SupportPage })));
+const DeleteAccountPage = lazy(() => import('./pages/DeleteAccountPage').then((m) => ({ default: m.DeleteAccountPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then((m) => ({ default: m.ContactPage })));
 
 function HomePage() {
-  const { theme } = useTheme();
   const { variant } = useVariant();
-  const isNextGen = theme === 'nextgen';
 
   // Agency page is the default experience; old page still accessible via other variants
   if (variant === 'default' || variant === 'agency') {
     return <AgencyPage />;
   }
-  
-  return (
-    <div className={`min-h-screen ${isNextGen ? 'bg-black' : 'bg-white'}`}>
-      <Header />
-      <main>
-        <Hero />
-        <OutcomeClaims />
-        {variant === 'video' && <DemoVideo />}
-        <TrustedBy />
-        <CoreCapabilities />
-        <ValueJourney />
-        <FeatureShowcase />
-        <Integrations />
-        <CompetitorComparison />
-        <Pricing />
-        <BookDemo />
-      </main>
-      <Footer />
-    </div>
-  );
+
+  return <LegacyHome />;
 }
 
 function App() {
   return (
     <ThemeProvider>
       <VariantProvider>
-        <BrowserRouter>
+        <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/3pl" element={<ThreePLPage />} />
@@ -111,7 +79,7 @@ function App() {
             <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
-        </BrowserRouter>
+        </Suspense>
       </VariantProvider>
     </ThemeProvider>
   );
