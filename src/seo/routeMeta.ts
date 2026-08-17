@@ -55,6 +55,12 @@ export const routeMeta: RouteMeta[] = [
     canonical: '/reduce-stockouts-overstock',
   },
   {
+    path: '/fishbowl-alternative',
+    title: 'Spark Inventory: the Fishbowl alternative built for Shopify and Amazon',
+    description:
+      'Switching from Fishbowl Inventory? Spark migrates your Fishbowl data in minutes, builds custom reports in seconds, syncs Shopify, Amazon and QuickBooks natively, and includes consultative onboarding. Free to start.',
+  },
+  {
     path: '/meeting-confirmed',
     title: 'Meeting Confirmed — SPARK Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',

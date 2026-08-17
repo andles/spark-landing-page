@@ -9,6 +9,7 @@ export const routeImports = {
   PickupPage: () => import('./agency/PickupPage'),
   BookRedirect: () => import('./agency/BookRedirect'),
   StockoutsPage: () => import('./agency/StockoutsPage'),
+  FishbowlPage: () => import('./agency/FishbowlPage'),
   MeetingConfirmedPage: () => import('./agency/MeetingConfirmedPage'),
   ProspectReportRoute: () => import('./reports/StockSignalsReport'),
   InventoryPage: () => import('./pages/features/InventoryPage'),

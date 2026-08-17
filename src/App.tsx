@@ -14,6 +14,7 @@ const ThreePLPage = lazy(R.ThreePLPage);
 const PickupPage = lazy(R.PickupPage);
 const BookRedirect = lazy(R.BookRedirect);
 const StockoutsPage = lazy(R.StockoutsPage);
+const FishbowlPage = lazy(R.FishbowlPage);
 const MeetingConfirmedPage = lazy(R.MeetingConfirmedPage);
 const ProspectReportRoute = lazy(R.ProspectReportRoute);
 const InventoryPage = lazy(() => R.InventoryPage().then((m) => ({ default: m.InventoryPage })));
@@ -65,6 +66,8 @@ function App() {
                 (recommended for ad links, since "&" gets percent-encoded). */}
             <Route path="/reduce-stockouts-&-overstock" element={<StockoutsPage />} />
             <Route path="/reduce-stockouts-overstock" element={<StockoutsPage />} />
+            {/* Fishbowl Inventory alternative campaign page (Google Ads). */}
+            <Route path="/fishbowl-alternative" element={<FishbowlPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />

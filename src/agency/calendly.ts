@@ -64,11 +64,11 @@ export function fireBookACallConversion(): void {
  * Open the Calendly scheduler as a modal popup. Falls back to opening the
  * Calendly page in a new tab if the widget script hasn't loaded (e.g. blocked).
  */
-export function openCalendlyPopup(): void {
+export function openCalendlyPopup(url: string = CALENDLY_URL): void {
   const cal = (window as unknown as { Calendly?: CalendlyGlobal }).Calendly;
   if (cal && typeof cal.initPopupWidget === "function") {
-    cal.initPopupWidget({ url: CALENDLY_URL });
+    cal.initPopupWidget({ url });
   } else {
-    window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 }

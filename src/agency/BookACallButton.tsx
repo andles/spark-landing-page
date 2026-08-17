@@ -7,26 +7,35 @@ import { CALENDLY_URL, ensureCalendlyAssets, openCalendlyPopup } from "./calendl
 // button's styling. The Google Ads conversion is NOT fired here anymore: it
 // fires on the /meeting-confirmed page that Calendly redirects to after an
 // actual booking, so we count booked demos instead of clicks.
+//
+// `url` lets a campaign page pass a tagged scheduling link (e.g. with UTM
+// params so the booking is attributable to that page). Defaults to the shared
+// CALENDLY_URL, so existing callers are unaffected.
 export default function BookACallButton({
   className,
   children = "Book a Call",
+  url = CALENDLY_URL,
 }: {
   className?: string;
   children?: React.ReactNode;
+  url?: string;
 }) {
   // Preload Calendly's popup assets so the scheduler opens instantly on click.
   useEffect(() => {
     ensureCalendlyAssets();
   }, []);
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    openCalendlyPopup();
-  }, []);
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      openCalendlyPopup(url);
+    },
+    [url]
+  );
 
   return (
     <a
-      href={CALENDLY_URL}
+      href={url}
       onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
