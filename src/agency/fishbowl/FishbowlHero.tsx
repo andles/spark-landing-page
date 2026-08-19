@@ -6,6 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import BookACallButton from "../BookACallButton";
 import HeroVideoShowcase from "../HeroVideoShowcase";
+import MobileHeroShowcase from "./MobileHeroShowcase";
 import { BOOK_URL, PRIMARY_CTA } from "./links";
 
 export default function FishbowlHero() {
@@ -63,6 +64,10 @@ export default function FishbowlHero() {
           </p>
         </div>
 
+        {/* < sm : tap-to-play video + mockup (mounted only on small screens,
+            and deliberately BEFORE the shared showcase; see MobileHeroShowcase).
+            sm+ : the shared autoplay video + mockup. */}
+        <MobileHeroShowcase />
         <HeroVideoShowcase />
       </div>
     </section>
