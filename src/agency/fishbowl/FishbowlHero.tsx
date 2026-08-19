@@ -7,9 +7,10 @@
 import BookACallButton from "../BookACallButton";
 import HeroVideoShowcase from "../HeroVideoShowcase";
 import MobileHeroShowcase from "./MobileHeroShowcase";
-import { BOOK_URL, PRIMARY_CTA } from "./links";
+import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 export default function FishbowlHero() {
+  const { bookUrl } = useCtaLinks();
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -53,7 +54,7 @@ export default function FishbowlHero() {
           {/* Single primary CTA */}
           <div className="animate-fade-up delay-300 mt-7 flex justify-center">
             <BookACallButton
-              url={BOOK_URL}
+              url={bookUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
               {PRIMARY_CTA}

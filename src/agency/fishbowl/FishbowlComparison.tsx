@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
 import BookACallButton from "../BookACallButton";
-import { BOOK_URL, PRIMARY_CTA } from "./links";
+import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 const rows = [
   {
@@ -46,8 +46,14 @@ const rows = [
 ];
 
 export default function FishbowlComparison() {
+  const { bookUrl } = useCtaLinks();
   return (
-    <section id="compare" className="py-14 lg:py-20 bg-[#06080d] relative">
+    // Google Ads sitelink anchors. "reports" (Custom reports / Customizing rows)
+    // and "sync" (Shopify, Amazon, QuickBooks row) both land on this table, so
+    // the section carries id="reports" and an unstyled wrapper carries id="sync".
+    // scroll-mt-16 offsets the fixed 64px header.
+    <div id="sync" className="scroll-mt-16">
+    <section id="reports" className="py-14 lg:py-20 bg-[#06080d] relative scroll-mt-16">
       <div className="absolute -top-[100px] right-[10%] w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
@@ -136,7 +142,7 @@ export default function FishbowlComparison() {
 
         <div className="mt-8 text-center">
           <BookACallButton
-            url={BOOK_URL}
+            url={bookUrl}
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
             {PRIMARY_CTA}
@@ -144,5 +150,6 @@ export default function FishbowlComparison() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

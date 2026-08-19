@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { useState, useEffect } from "react";
 import BookACallButton from "../BookACallButton";
-import { BOOK_URL, PRIMARY_CTA } from "./links";
+import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 const navLinks = [
-  { href: "#what-changes", label: "What changes" },
-  { href: "#compare", label: "Compare" },
+  { href: "#migrate", label: "What changes" },
+  { href: "#reports", label: "Compare" },
   { href: "#support", label: "Support" },
 ];
 
@@ -18,6 +18,7 @@ const ctaClass =
   "h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center";
 
 export default function FishbowlHeader() {
+  const { bookUrl } = useCtaLinks();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -54,7 +55,7 @@ export default function FishbowlHeader() {
           <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
             Sign In
           </a>
-          <BookACallButton url={BOOK_URL} className={ctaClass}>
+          <BookACallButton url={bookUrl} className={ctaClass}>
             {PRIMARY_CTA}
           </BookACallButton>
         </div>
@@ -84,7 +85,7 @@ export default function FishbowlHeader() {
           ))}
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
-            <BookACallButton url={BOOK_URL} className={ctaClass}>
+            <BookACallButton url={bookUrl} className={ctaClass}>
               {PRIMARY_CTA}
             </BookACallButton>
           </div>

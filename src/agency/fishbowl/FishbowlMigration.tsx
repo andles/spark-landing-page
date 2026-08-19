@@ -96,7 +96,9 @@ const cards = [
 
 export default function FishbowlMigration() {
   return (
-    <section id="what-changes" className="py-14 lg:py-20 bg-[#06080d] relative">
+    // id="migrate" is a Google Ads sitelink anchor (/fishbowl-alternative#migrate).
+    // scroll-mt-16 offsets the fixed 64px header so the heading lands below it.
+    <section id="migrate" className="py-14 lg:py-20 bg-[#06080d] relative scroll-mt-16">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(139,92,246,0.08),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
