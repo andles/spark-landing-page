@@ -69,6 +69,9 @@ for (const route of routeMeta) {
     `<meta property="og:description" content="${esc(route.description)}">`,
     `<meta property="og:url" content="${canonical}">`,
     '<meta name="twitter:card" content="summary">',
+    // Per-route raw head HTML (e.g. a Google Ads event snippet). Injected
+    // verbatim, last, so it runs after the global gtag base tag.
+    route.headHtml ?? null,
   ]
     .filter(Boolean)
     .join('\n    ');

@@ -4,10 +4,11 @@ import AgencyTrustBar from "./AgencyTrustBar";
 // ─────────────────────────────────────────────────────────────────────────────
 // /meeting-confirmed — shared demo confirmation page.
 //
-// Every variant's Calendly booking redirects here. The Google Ads conversion is
-// a URL-based action in Google Ads that fires off the base tag's page view on
-// this URL, so there is intentionally no gtag('event','conversion') snippet in
-// this component (that would double-count).
+// Every variant's Calendly booking redirects here. The Google Ads "Sign-up"
+// conversion event snippet is injected into this route's <head> at build time
+// (see MEETING_CONFIRMED_CONVERSION_SNIPPET in src/seo/routeMeta.ts, applied by
+// scripts/prerender.mjs), so there is intentionally no gtag('event',…) call in
+// this component: that would double-count.
 //
 // If Calendly is set to "Pass event details to your redirect", it appends
 // invitee_full_name + event_start_time (and more) to the URL, which we use to

@@ -20,7 +20,25 @@ export interface RouteMeta {
   noindex?: boolean;
   /** Canonical URL path when this route is an alias of another */
   canonical?: string;
+  /**
+   * Raw HTML injected into this route's <head> at prerender time, after the
+   * SEO tags (and therefore after the global gtag base tag in index.html).
+   * Used for per-page tracking snippets. Only runs on a full page load of the
+   * prerendered file, which is what a Calendly redirect produces.
+   */
+  headHtml?: string;
 }
+
+/**
+ * Google Ads event snippet for the "Sign-up" conversion action. Fires on the
+ * /meeting-confirmed page, which Calendly redirects to after a real booking,
+ * so one booking = one conversion. The AW-17962279599 base tag is loaded
+ * globally in index.html; this only sends the event.
+ */
+export const MEETING_CONFIRMED_CONVERSION_SNIPPET = `<!-- Event snippet for Sign-up conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-17962279599/4ZHsCJbXouQcEK_FivVC'});
+</script>`;
 
 export const routeMeta: RouteMeta[] = [
   {
@@ -65,6 +83,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Meeting Confirmed — SPARK Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',
     noindex: true,
+    headHtml: MEETING_CONFIRMED_CONVERSION_SNIPPET,
   },
   {
     path: '/features/inventory',

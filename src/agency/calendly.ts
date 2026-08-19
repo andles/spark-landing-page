@@ -9,13 +9,12 @@
 // The scheduling link prospects book through.
 export const CALENDLY_URL = "https://calendly.com/jason-sparkinventory/30min";
 
-// Google Ads conversion "send_to". The account tag (AW-17962279599) is already
-// loaded in index.html — you only need to add the conversion LABEL:
-//   Google Ads → Goals → Conversions → New conversion action → Website
-//   → create a "Book a Call" action → copy its label (e.g. "AbC-D_efGhIjK12345")
-//   → set this to  "AW-17962279599/AbC-D_efGhIjK12345"
-// Until then the popup still works; the conversion just won't register.
-export const GADS_CONVERSION_SEND_TO = "AW-17962279599/REPLACE_WITH_CONVERSION_LABEL";
+// Google Ads conversion "send_to" for the "Sign-up" conversion action. The
+// account tag (AW-17962279599) is loaded in index.html. The conversion itself
+// is fired by the event snippet baked into /meeting-confirmed's <head> at build
+// time (src/seo/routeMeta.ts); this constant is kept in sync for reference and
+// for fireBookACallConversion below.
+export const GADS_CONVERSION_SEND_TO = "AW-17962279599/4ZHsCJbXouQcEK_FivVC";
 
 const WIDGET_CSS = "https://assets.calendly.com/assets/external/widget.css";
 const WIDGET_JS = "https://assets.calendly.com/assets/external/widget.js";
@@ -48,10 +47,9 @@ export function ensureCalendlyAssets(): void {
   }
 }
 
-// NOTE: not currently wired anywhere. Conversions are tracked with a URL-based
-// action in Google Ads that fires on the /meeting-confirmed page load. Kept here
-// in case you switch to an event-snippet conversion: set GADS_CONVERSION_SEND_TO
-// to your real label and call this from MeetingConfirmedPage's mount instead.
+// NOTE: not currently wired anywhere. The conversion fires from the event
+// snippet in /meeting-confirmed's prerendered <head>. Do NOT also call this on
+// that page, or bookings will be counted twice.
 /** Fire the Google Ads "Book a Call" conversion (no-op if gtag isn't present). */
 export function fireBookACallConversion(): void {
   const gtag = (window as unknown as { gtag?: Gtag }).gtag;
