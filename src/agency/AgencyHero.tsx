@@ -1,7 +1,10 @@
 import BookACallButton from "./BookACallButton";
+import { useCtaLinks } from "./ctaLinks";
 import HeroVideoShowcase from "./HeroVideoShowcase";
+import MobileHeroShowcase from "./MobileHeroShowcase";
 
 export default function AgencyHero() {
+  const { signupUrl } = useCtaLinks();
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -44,7 +47,7 @@ export default function AgencyHero() {
           {/* CTA row */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://app.sparkinventory.com/sign-up"
+              href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
               Start Free Trial
@@ -53,6 +56,10 @@ export default function AgencyHero() {
           </div>
         </div>
 
+        {/* < sm : tap-to-play video + mockup (mounted only on small screens, and
+            deliberately BEFORE the shared showcase; see MobileHeroShowcase).
+            sm+ : the shared autoplay video + mockup. */}
+        <MobileHeroShowcase />
         <HeroVideoShowcase />
 
       </div>

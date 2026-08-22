@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import BookACallButton from "../BookACallButton";
 import HeroVideoShowcase from "../HeroVideoShowcase";
-import MobileHeroShowcase from "./MobileHeroShowcase";
+import MobileHeroShowcase from "../MobileHeroShowcase";
 import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 export default function FishbowlHero() {

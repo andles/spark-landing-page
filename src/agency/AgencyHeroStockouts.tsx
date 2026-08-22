@@ -6,6 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
 import BookACallButton from "./BookACallButton";
+import { useCtaLinks } from "./ctaLinks";
 import HeroVideoShowcase from "./HeroVideoShowcase";
 
 // Performance metrics — relocated into the hero (below the CTAs, above the video).
@@ -28,6 +29,7 @@ const stats = [
 ];
 
 export default function AgencyHeroStockouts() {
+  const { signupUrl } = useCtaLinks();
   return (
     /* ── HERO: Reduce Stockouts & Overstock campaign variant — only this hero differs from the default page ── */
     <section className="relative min-h-screen bg-[#06080d]">
@@ -70,7 +72,7 @@ export default function AgencyHeroStockouts() {
           {/* CTA row */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://app.sparkinventory.com/sign-up"
+              href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
               Start Free Trial

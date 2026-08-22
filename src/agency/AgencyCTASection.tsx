@@ -1,9 +1,11 @@
 import ScrollReveal from "./ScrollReveal";
+import { useCtaLinks } from "./ctaLinks";
 import BookACallButton from "./BookACallButton";
 
 export default function AgencyCTASection() {
+  const { signupUrl } = useCtaLinks();
   return (
-    <section id="book-demo" className="relative py-20 lg:py-28 bg-[#06080d]">
+    <section id="book-demo" className="scroll-mt-16 relative py-20 lg:py-28 bg-[#06080d]">
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2200px] h-[1100px] pointer-events-none"
         style={{ background: "radial-gradient(ellipse 70% 55% at 50% 70%, rgba(80,40,160,0.18), rgba(40,20,100,0.10) 40%, transparent 70%)" }}
@@ -25,7 +27,7 @@ export default function AgencyCTASection() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookACallButton className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300" />
             <a
-              href="https://app.sparkinventory.com/sign-up"
+              href={signupUrl}
               className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
             >
               Start Free Trial

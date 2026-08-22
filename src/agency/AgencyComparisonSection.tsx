@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { useCtaLinks } from "./ctaLinks";
 
 const rows = [
   {
@@ -34,6 +35,7 @@ const rows = [
 ];
 
 export default function AgencyComparisonSection() {
+  const { signupUrl } = useCtaLinks();
   return (
     <section className="py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute -top-[100px] right-[10%] w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
@@ -116,7 +118,7 @@ export default function AgencyComparisonSection() {
 
         <div className="mt-10 text-center">
           <a
-            href="https://app.sparkinventory.com/sign-up"
+            href={signupUrl}
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
             Start Free Trial

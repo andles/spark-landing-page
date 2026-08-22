@@ -1,4 +1,5 @@
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
+import { useCtaLinks } from "./ctaLinks";
 
 const integrations = [
   { src: "/logos/shopify-2 1.svg", alt: "Shopify" },
@@ -16,8 +17,9 @@ const integrations = [
 ];
 
 export default function AgencyIntegrationsSection() {
+  const { signupUrl } = useCtaLinks();
   return (
-    <section id="integrations" className="py-14 lg:py-20 bg-[#06080d] relative">
+    <section id="integrations" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_50%,rgba(6,182,212,0.07),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
@@ -40,7 +42,7 @@ export default function AgencyIntegrationsSection() {
               Shopify, Amazon, QuickBooks, Stripe, and dozens more. One-click setup, real-time sync, and a single source of truth across your entire stack.
             </p>
             <a
-              href="https://app.sparkinventory.com/sign-up"
+              href={signupUrl}
               className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
             >
               See All Integrations

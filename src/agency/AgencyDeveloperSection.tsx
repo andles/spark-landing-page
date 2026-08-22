@@ -59,7 +59,7 @@ export default function AgencyDeveloperSection() {
     <section
       id="features"
       ref={sectionRef as React.RefObject<HTMLElement>}
-      className="py-14 lg:py-20 bg-[#06080d] relative"
+      className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

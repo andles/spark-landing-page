@@ -56,7 +56,7 @@ const cards = [
 
 export default function AgencyWhySpark() {
   return (
-    <section id="solutions" className="py-14 lg:py-20 bg-[#06080d] relative">
+    <section id="solutions" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(139,92,246,0.08),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">

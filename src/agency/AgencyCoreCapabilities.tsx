@@ -318,7 +318,7 @@ export default function AgencyCoreCapabilities() {
   const [containerRef, activeIndex] = useActiveSection(features.length);
 
   return (
-    <section id="core-capabilities" className="py-14 lg:py-20 bg-[#06080d] relative overflow-x-clip">
+    <section id="core-capabilities" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative overflow-x-clip">
       <div className="absolute inset-0 dot-grid opacity-40" />
       <div className="absolute -top-[300px] left-[10%] w-[1200px] h-[1200px] bg-[radial-gradient(circle,rgba(13,148,136,0.08),transparent_60%)] pointer-events-none" />
       <div className="absolute -bottom-[200px] right-[10%] w-[1000px] h-[1000px] bg-[radial-gradient(circle,rgba(139,92,246,0.07),transparent_60%)] pointer-events-none" />

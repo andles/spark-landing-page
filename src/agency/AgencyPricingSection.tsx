@@ -148,7 +148,7 @@ function PricingCard({ tier }: { tier: Tier }) {
 
 export default function AgencyPricingSection() {
   return (
-    <section id="pricing" className="py-14 lg:py-20 bg-[#06080d] relative">
+    <section id="pricing" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute -top-[100px] -left-[200px] w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(6,182,212,0.07),transparent_60%)] pointer-events-none" />
       <div className="absolute -bottom-[100px] -right-[200px] w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
 
