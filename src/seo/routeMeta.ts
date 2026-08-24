@@ -23,7 +23,7 @@ export interface RouteMeta {
   /** Date of the last significant visible-content or structured-data change (YYYY-MM-DD). */
   lastModified?: string;
   /** More specific schema.org page type when WebPage is too generic. */
-  webPageType?: 'WebPage' | 'CollectionPage' | 'ContactPage';
+  webPageType?: 'WebPage' | 'CollectionPage' | 'ContactPage' | 'AboutPage';
   /** Exclude from search indexes (baked as <meta name="robots">, kept out of sitemap.xml) */
   noindex?: boolean;
   /** Canonical URL path when this route is an alias of another */
@@ -75,7 +75,7 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
       highPrice: '749',
       priceCurrency: 'USD',
       offerCount: '3',
-      url: `${SITE_URL}/#pricing`,
+      url: `${SITE_URL}/pricing/`,
     },
   },
   {
@@ -243,6 +243,79 @@ export const routeMeta: RouteMeta[] = [
       'Turn Shopify sales into forecasts, reorder recommendations, and draft purchase orders with agent-guided onboarding in Spark or over MCP.',
     lastModified: '2026-08-24',
     schema: [buildFaqSchema('shopify')],
+  },
+  {
+    path: '/pricing',
+    title: 'Spark Inventory Pricing | Plans from $199/Month',
+    description:
+      'Compare Spark Inventory plans, users, warehouses, AI actions, forecasting, manufacturing, onboarding, and enterprise options. Start free for 14 days.',
+    lastModified: '2026-08-24',
+    schema: [
+      {
+        '@type': 'Product',
+        '@id': `${SITE_URL}/pricing/#product`,
+        name: 'Spark Inventory',
+        description: 'AI inventory management software with demand forecasting, purchasing, warehousing, manufacturing, and agent-guided onboarding.',
+        brand: { '@id': `${SITE_URL}/#organization` },
+        offers: {
+          '@type': 'AggregateOffer',
+          lowPrice: '199',
+          highPrice: '749',
+          priceCurrency: 'USD',
+          offerCount: '3',
+          url: `${SITE_URL}/pricing/`,
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/pricing/#faq`,
+        mainEntity: [
+          ['Can I start using Spark before choosing a paid plan?', 'Yes. You can start free for 14 days, bring in your own operating data, and evaluate the workflow before selecting the plan that fits your team.'],
+          ['Is onboarding included?', 'Yes. Sparki can inspect, map, validate, and prepare your data in app. You can also use your own compatible AI assistant through Spark MCP. Every import is shown for approval before it lands.'],
+          ['Which plan is best for a multichannel or multi-warehouse team?', 'Professional is designed for growing operators that need multiple warehouses, pick and wave workflows, smart email processing, and more advanced demand forecasting.'],
+          ['Which plan includes manufacturing?', 'Business adds bills of materials, manufacturing orders, work orders, barcode and lot tracking, and higher automation volume for more complex operations.'],
+        ].map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+      },
+    ],
+  },
+  {
+    path: '/about',
+    title: 'About Spark Inventory | AI Planning with Human Control',
+    description:
+      'Learn how Spark connects inventory data, demand reasoning, and approval-led action for multichannel brands, operators, 3PLs, and manufacturers.',
+    lastModified: '2026-08-24',
+    webPageType: 'AboutPage',
+  },
+  {
+    path: '/what-is-inventory-management',
+    title: 'What Is Inventory Management? Planning Guide | Spark',
+    description:
+      'Learn inventory tracking, planning, reorder points, days of supply, lead-time demand, stockout causes, and how to evaluate inventory software.',
+    lastModified: '2026-08-24',
+    schema: [
+      {
+        '@type': 'Article',
+        '@id': `${SITE_URL}/what-is-inventory-management/#article`,
+        headline: 'What Is Inventory Management? A Decision System for Stock, Supply, and Demand',
+        description: 'A practical field guide to inventory tracking, planning, replenishment metrics, operating decisions, and software evaluation.',
+        datePublished: '2026-08-24',
+        dateModified: '2026-08-24',
+        author: { '@id': `${SITE_URL}/#organization` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        mainEntityOfPage: { '@id': `${SITE_URL}/what-is-inventory-management/#webpage` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/what-is-inventory-management/#faq`,
+        mainEntity: [
+          ['What is inventory management?', 'Inventory management is the system a business uses to know what it has, where it is, what is committed, what is coming, and what action should happen next. It connects item records, stock movements, demand, purchasing, production, warehousing, and fulfillment.'],
+          ['What is the difference between inventory tracking and inventory planning?', 'Inventory tracking records the current and historical position of stock. Inventory planning uses demand, supply timing, costs, and operating constraints to decide when and how much to buy, make, or move. A complete inventory system connects both.'],
+          ['What causes stockouts and overstock?', 'Common causes include incomplete stock data, changing demand, stale lead times, unrecorded incoming supply, fixed reorder rules, disconnected sales channels, supplier constraints, and decisions that optimize availability without considering cash and carrying cost.'],
+          ['What is a reorder point?', 'A reorder point is the inventory position at which replenishment should be triggered. A common starting formula is expected demand during lead time plus safety stock, but the useful decision also needs current allocations, incoming supply, supplier constraints, and changing demand.'],
+          ['How does AI improve inventory management?', 'AI can profile source data, detect demand changes, surface missing planning inputs, calculate inventory risk, and prepare replenishment actions. The strongest workflow keeps the supporting evidence visible and gives people approval control over imports and operational writes.'],
+        ].map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+      },
+    ],
   },
   {
     path: '/partners',

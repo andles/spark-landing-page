@@ -29,6 +29,9 @@ const WarehousingPage = lazy(() => R.WarehousingPage().then((m) => ({ default: m
 const ToolsServicesPage = lazy(() => R.ToolsServicesPage().then((m) => ({ default: m.ToolsServicesPage })));
 const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.AccountingPage })));
 const ShopifyInventoryPage = lazy(() => R.ShopifyInventoryPage().then((m) => ({ default: m.ShopifyInventoryPage })));
+const PricingPage = lazy(() => R.PricingPage().then((m) => ({ default: m.PricingPage })));
+const AboutPage = lazy(() => R.AboutPage().then((m) => ({ default: m.AboutPage })));
+const InventoryManagementGuidePage = lazy(() => R.InventoryManagementGuidePage().then((m) => ({ default: m.InventoryManagementGuidePage })));
 const PartnersPage = lazy(() => R.PartnersPage().then((m) => ({ default: m.PartnersPage })));
 const PrivacyPolicyPage = lazy(() => R.PrivacyPolicyPage().then((m) => ({ default: m.PrivacyPolicyPage })));
 const TermsOfServicePage = lazy(() => R.TermsOfServicePage().then((m) => ({ default: m.TermsOfServicePage })));
@@ -88,6 +91,9 @@ function App() {
             <Route path="/features/tools-services" element={<ToolsServicesPage />} />
             <Route path="/features/accounting" element={<AccountingPage />} />
             <Route path="/shopify-inventory-management" element={<ShopifyInventoryPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/what-is-inventory-management" element={<InventoryManagementGuidePage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />

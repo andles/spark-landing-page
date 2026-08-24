@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
+import { useCtaLinks } from "./ctaLinks";
 
 const CheckIcon = () => (
   <svg className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -30,7 +31,7 @@ const tiers: Tier[] = [
       { heading: "Inventory Management", items: ["Items & SKU management", "Item groups & categories", "Bundle items & kits", "Single-warehouse tracking", "Barcode generation & printing"] },
       { heading: "AI-Powered", items: ["Agentic onboarding with Sparki", "Intelligent data mapping", "Proactive inventory alerts", "Basic demand forecasting"] },
     ],
-    ctaLabel: "Get Started",
+    ctaLabel: "Start Free",
   },
   {
     name: "Professional", price: "$399", period: "/month", highlighted: true,
@@ -42,7 +43,7 @@ const tiers: Tier[] = [
       { heading: "Inventory Management", items: ["Multi-warehouse tracking", "Bin-level location management", "Transfer orders between locations"] },
       { heading: "AI-Powered", items: ["Smart email processing", "Automatic order extraction", "Advanced demand forecasting"] },
     ],
-    ctaLabel: "Get Started",
+    ctaLabel: "Start Free",
   },
   {
     name: "Business", price: "$749", period: "/month",
@@ -54,7 +55,7 @@ const tiers: Tier[] = [
       { heading: "Manufacturing", items: ["Multi-level bills of materials", "Manufacturing orders", "Work orders & approvals", "Shop floor control"] },
       { heading: "AI-Powered", items: ["High-volume AI automations", "Advanced proactive alerts", "Forecasting for procurement"] },
     ],
-    ctaLabel: "Get Started",
+    ctaLabel: "Start Free",
   },
   {
     name: "Custom", price: "Contact",
@@ -69,7 +70,7 @@ const tiers: Tier[] = [
   },
 ];
 
-function PricingCard({ tier }: { tier: Tier }) {
+function PricingCard({ tier, signupUrl }: { tier: Tier; signupUrl: string }) {
   const [expanded, setExpanded] = useState(false);
   const totalFeatures = tier.featureCategories.reduce((sum, cat) => sum + cat.items.length, 0);
 
@@ -137,7 +138,7 @@ function PricingCard({ tier }: { tier: Tier }) {
       </div>
 
       <div className="mt-auto pt-8">
-        <a href="https://app.sparkinventory.com" className={tier.highlighted
+        <a href={tier.name === "Custom" ? "/contact" : signupUrl} className={tier.highlighted
           ? "flex items-center justify-center w-full h-[46px] rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           : "flex items-center justify-center w-full h-[46px] rounded-full border border-white/[0.06] text-[#f0f2f5] text-sm font-semibold hover:bg-white/[0.04] hover:border-white/[0.12] hover:scale-[1.02] transition-all duration-300"
         }>{tier.ctaLabel}</a>
@@ -147,6 +148,8 @@ function PricingCard({ tier }: { tier: Tier }) {
 }
 
 export default function AgencyPricingSection() {
+  const { signupUrl } = useCtaLinks();
+
   return (
     <section id="pricing" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute -top-[100px] -left-[200px] w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(6,182,212,0.07),transparent_60%)] pointer-events-none" />
@@ -171,7 +174,7 @@ export default function AgencyPricingSection() {
         <ScrollReveal staggerChildren={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 max-w-7xl mx-auto">
           {tiers.map((tier, i) => (
             <RevealItem key={tier.name} index={i}>
-              <PricingCard tier={tier} />
+              <PricingCard tier={tier} signupUrl={signupUrl} />
             </RevealItem>
           ))}
         </ScrollReveal>

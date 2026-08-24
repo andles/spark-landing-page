@@ -6,12 +6,11 @@ import AgencyHeroStockouts from "./AgencyHeroStockouts";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsStockouts from "./AgencyStatsStockouts";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
-import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
-import AgencyPricingSection from "./AgencyPricingSection";
 import CampaignFAQSection from "./CampaignFAQSection";
 import CampaignCTASection from "./CampaignCTASection";
 import CampaignDecisionSection from "./CampaignDecisionSection";
+import CampaignPlatformSection from "./CampaignPlatformSection";
 import AgencyFooter from "./AgencyFooter";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
@@ -27,9 +26,8 @@ export default function StockoutsPage() {
         <AgencyStatsStockouts />
         <CampaignWorkflowSection kind="stockouts" />
         <CampaignDecisionSection kind="stockouts" />
-        <AgencyCoreCapabilities />
+        <CampaignPlatformSection kind="stockouts" />
         <AgencyIntegrationsSection />
-        <AgencyPricingSection />
         <CampaignFAQSection kind="stockouts" />
         <CampaignCTASection kind="stockouts" />
       </main>

@@ -24,6 +24,7 @@ export default function AgencyFooter() {
                 <h4 className="text-white text-sm font-semibold mb-4">Product</h4>
                 <ul className="space-y-2.5">
                   {[
+                    { label: "Pricing", href: "/pricing" },
                     { label: "All Features", href: "/features" },
                     { label: "Inventory Management", href: "/features/inventory" },
                     { label: "Purchasing & POs", href: "/features/purchasing" },
@@ -48,13 +49,14 @@ export default function AgencyFooter() {
                   <li><a href="/inflow-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">inFlow Alternative</a></li>
                   <li><a href="/3pl" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
                   <li><a href="/in-store-pickup" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
-                  <li><a href="/#pricing" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Pricing</a></li>
                 </ul>
               </div>
               <div>
                 <h4 className="text-white text-sm font-semibold mb-4">Company</h4>
                 <ul className="space-y-2.5">
                   <li><a href="/contact" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Contact</a></li>
+                  <li><a href="/about" className="text-white/60 text-sm hover:text-white transition-colors duration-200">About Spark</a></li>
+                  <li><a href="/what-is-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory Guide</a></li>
                   <li><a href="/partners" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Partners</a></li>
                   <li><a href="/#faq" className="text-white/60 text-sm hover:text-white transition-colors duration-200">FAQ</a></li>
                   <li><a href="/support" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Support</a></li>

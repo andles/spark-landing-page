@@ -24,6 +24,7 @@ const groups = [
     title: 'Product',
     description: 'Explore the core capabilities inside Spark Inventory.',
     links: [
+      ['/pricing', 'Pricing & Plans'],
       ['/features', 'All Product Features'],
       ['/features/inventory', 'Inventory Management'],
       ['/features/purchasing', 'Purchasing & Purchase Orders'],
@@ -39,6 +40,8 @@ const groups = [
     description: 'Learn about Spark, contact the team, or find support.',
     links: [
       ['/', 'Spark Inventory Home'],
+      ['/about', 'About Spark Inventory'],
+      ['/what-is-inventory-management', 'What Is Inventory Management?'],
       ['/partners', 'Partners'],
       ['/contact', 'Contact'],
       ['/support', 'Support'],
