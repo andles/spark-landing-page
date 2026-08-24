@@ -14,6 +14,7 @@ const features = [
       </svg>
     ),
     title: "Order Management & Forecasting",
+    href: "/features/inventory",
     description: "See every order in real time and know exactly what to reorder, when, and how much. Spark forecasts demand from your actual sales history, not guesswork.",
     bullets: [
       "Real-time order tracking across all channels",
@@ -32,6 +33,7 @@ const features = [
       </svg>
     ),
     title: "Spark Drafts, You Approve",
+    href: "/features/purchasing",
     description: "Spark operates as your inventory manager. It consolidates the reorder decisions that need to be made and drafts the purchase orders, so your team reviews and approves while the system automates the rest.",
     bullets: [
       "Every inventory decision in one approval queue",
@@ -50,6 +52,7 @@ const features = [
       </svg>
     ),
     title: "Custom Reporting & Signal",
+    href: "/features/tools-services",
     description: "Pull the numbers that actually matter to your business. Signal flags low stock, unusual velocity, and emerging trends so nothing slips through the cracks.",
     bullets: [
       "Custom dashboards with the metrics that matter",
@@ -68,6 +71,7 @@ const features = [
       </svg>
     ),
     title: "Unified Integrations & Workflow",
+    href: "/features/accounting",
     description: "Shopify, Amazon, QuickBooks, Stripe and more connect in minutes. Your data flows in one direction so your team works from a single source of truth.",
     bullets: [
       "One-click integrations with Shopify, Amazon, and more",
@@ -438,7 +442,7 @@ export default function AgencyCoreCapabilities() {
             <span className="lg:hidden bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">Modern Operations</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            One platform to track stock, fulfill orders, and plan purchases<br className="hidden sm:block" />
+            One platform to track stock, fulfill orders, and plan purchases<br className="hidden sm:block" />{" "}
             across every channel you sell on.
           </p>
         </ScrollReveal>
@@ -463,8 +467,8 @@ export default function AgencyCoreCapabilities() {
                     </li>
                   ))}
                 </ul>
-                <a href="#" className={`inline-flex items-center gap-2 mt-6 text-sm font-medium bg-gradient-to-r ${feature.accentGradient} bg-clip-text text-transparent transition-all`}>
-                  Learn More
+                <a href={feature.href} className={`inline-flex items-center gap-2 mt-6 text-sm font-medium bg-gradient-to-r ${feature.accentGradient} bg-clip-text text-transparent transition-all`}>
+                  Explore {feature.subtitle}
                   <svg className={`w-4 h-4 ${feature.accentColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
               </div>
@@ -507,6 +511,10 @@ export default function AgencyCoreCapabilities() {
                     </li>
                   ))}
                 </ul>
+                <a href={feature.href} className={`inline-flex items-center gap-2 mt-6 text-sm font-medium bg-gradient-to-r ${feature.accentGradient} bg-clip-text text-transparent transition-all`}>
+                  Explore {feature.subtitle}
+                  <svg className={`w-4 h-4 ${feature.accentColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
               </ScrollReveal>
               <ScrollReveal className="mt-8">
                 <div className="glass gradient-border rounded-2xl overflow-hidden">

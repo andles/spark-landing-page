@@ -3,8 +3,8 @@ import { FeaturePage } from './FeaturePage';
 
 const features = [
   {
-    title: 'AI-Powered CSV/Excel Import',
-    description: 'Upload any spreadsheet and let AI automatically map columns to the right fields. Import products, orders, and customers in seconds.',
+    title: 'Agentic Import & Onboarding',
+    description: 'Ask Sparki—or your own assistant over MCP—to inspect, map, repair, validate, and verify one or many data sources with approval before import.',
   },
   {
     title: 'Smart Email Processing',
@@ -36,7 +36,7 @@ const features = [
   },
   {
     title: 'MCP Protocol Support',
-    description: 'Model Context Protocol support for AI agent integrations. Let AI assistants interact with your inventory data.',
+    description: 'Connect Claude, ChatGPT, and other MCP clients to governed Spark tools for onboarding and ongoing inventory work.',
   },
   {
     title: 'Notification Settings',
@@ -51,9 +51,9 @@ const features = [
 export function ToolsServicesPage() {
   return (
     <FeaturePage
-      title="Tools & Services"
-      subtitle="Platform"
-      description="Powerful tools and AI-powered features to automate your workflows and integrate with your existing systems."
+      title="AI Inventory Automation"
+      subtitle="Imports, reporting, API, and agents"
+      description="Automate the manual work around inventory with intelligent imports, custom reporting, email processing, APIs, and AI-agent access."
       icon={Wrench}
       gradientFrom="from-pink-500"
       gradientTo="to-rose-400"

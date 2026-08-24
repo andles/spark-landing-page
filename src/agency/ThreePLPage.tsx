@@ -2,13 +2,15 @@ import AgencyHeader from "./AgencyHeader";
 import AgencyHero3PL from "./AgencyHero3PL";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStats3PL from "./AgencyStats3PL";
+import ThreePLPriceRunSection from "./ThreePLPriceRunSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
 import AgencyWhySpark from "./AgencyWhySpark";
 import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
 import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
-import AgencyCTASection from "./AgencyCTASection";
+import CampaignFAQSection from "./CampaignFAQSection";
+import CampaignCTASection from "./CampaignCTASection";
 import AgencyFooter from "./AgencyFooter";
 
 export default function ThreePLPage() {
@@ -19,13 +21,15 @@ export default function ThreePLPage() {
         <AgencyHero3PL />
         <AgencyTrustBar />
         <AgencyStats3PL />
+        <ThreePLPriceRunSection />
         <AgencyCoreCapabilities />
         <AgencyWhySpark />
         <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
         <AgencyComparisonSection />
         <AgencyPricingSection />
-        <AgencyCTASection />
+        <CampaignFAQSection kind="3pl" />
+        <CampaignCTASection kind="3pl" />
       </main>
       <AgencyFooter />
     </div>

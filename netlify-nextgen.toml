@@ -9,10 +9,23 @@
 [build.environment]
   VITE_THEME = "nextgen"
 
-# SPA fallback for routes without a prerendered file (/r/:slug, etc.).
-# Prerendered routes are real files and are served before this redirect runs.
+# Consolidate the legacy ampersand URL into the clean canonical URL.
 [[redirects]]
-  from = "/*"
+  from = "/reduce-stockouts-&-overstock"
+  to = "/reduce-stockouts-overstock/"
+  status = 301
+  force = true
+
+# Only the two genuinely client-only route families use the SPA shell.
+# Every public marketing route is a prerendered file; unknown paths therefore
+# fall through to Netlify's generated 404.html with a real 404 status.
+[[redirects]]
+  from = "/r/*"
+  to = "/spa-shell.html"
+  status = 200
+
+[[redirects]]
+  from = "/book-a-call"
   to = "/spa-shell.html"
   status = 200
 
@@ -27,4 +40,34 @@
 [[headers]]
   for = "/r/*"
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/meeting-confirmed/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/meeting-confirmed"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/book-a-call"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/spa-shell.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

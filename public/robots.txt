@@ -1,5 +1,10 @@
 User-agent: *
-Disallow: /r/
 Allow: /
+Disallow: /r/
+
+# Allow Spark's public pages to appear in ChatGPT search results.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /r/
 
 Sitemap: https://sparkinventory.com/sitemap.xml

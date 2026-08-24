@@ -47,9 +47,9 @@ const features = [
 export function WarehousingPage() {
   return (
     <FeaturePage
-      title="Warehousing"
-      subtitle="Fulfillment"
-      description="Optimize your warehouse operations from receiving to shipping. Increase accuracy and efficiency across all locations."
+      title="Warehouse Management"
+      subtitle="Multilocation inventory control"
+      description="Keep receiving, bins, transfers, picking, cycle counts, and shipping connected to accurate stock across every location."
       icon={Warehouse}
       gradientFrom="from-slate-600"
       gradientTo="to-slate-500"

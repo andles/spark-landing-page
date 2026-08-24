@@ -43,9 +43,9 @@ const features = [
 export function PurchasingPage() {
   return (
     <FeaturePage
-      title="Purchasing"
-      subtitle="Procurement"
-      description="Streamline your entire procurement process from supplier management to goods receiving. Never run out of stock again."
+      title="Purchasing & Purchase Orders"
+      subtitle="AI-assisted procurement software"
+      description="Turn live demand into supplier-ready purchase orders, manage approvals, and track every order from recommendation through receipt."
       icon={Truck}
       gradientFrom="from-violet-500"
       gradientTo="to-purple-400"

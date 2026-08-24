@@ -337,6 +337,76 @@ html {
 }
 .dev-content-enter { animation: devContentIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+@keyframes agentStageEnter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.agent-stage-enter { animation: agentStageEnter 0.32s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@keyframes priceRunProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes priceRunFlow {
+  0% { opacity: 0.35; transform: translateX(-12%); }
+  50% { opacity: 1; }
+  100% { opacity: 0.35; transform: translateX(12%); }
+}
+.price-run-progress { animation: priceRunProgress 3.6s linear both; }
+.price-run-flow { animation: priceRunFlow 2.2s ease-in-out infinite alternate; }
+
+@keyframes runwayDraw {
+  from { stroke-dashoffset: 1800; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes runwayMarkerIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes runPlanSweep {
+  from { left: -15%; opacity: 0; }
+  20%, 70% { opacity: 1; }
+  to { left: 105%; opacity: 0; }
+}
+.runway-line { stroke-dasharray: 1800; animation: runwayDraw 1.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.runway-marker { opacity: 0; transform-box: fill-box; transform-origin: center; animation: runwayMarkerIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.run-plan-sweep { animation: runPlanSweep 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+
+@keyframes runPlanChartDraw {
+  from { stroke-dashoffset: 760; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes runPlanCrosshairIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes runPlanDotIn {
+  0% { opacity: 0; transform: scale(0.25); }
+  70% { opacity: 1; transform: scale(1.18); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes runPlanHaloPulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.82); }
+  50% { opacity: 0.55; transform: scale(1.32); }
+}
+@keyframes runPlanScan {
+  from { left: -12%; opacity: 0; }
+  20%, 72% { opacity: 1; }
+  to { left: 104%; opacity: 0; }
+}
+@keyframes runPlanValueIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.run-plan-chart-line { stroke-dasharray: 760; animation: runPlanChartDraw 1.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.run-plan-line-delay { animation-delay: 0.12s; }
+.run-plan-line-delay-two { animation-delay: 0.24s; }
+.run-plan-crosshair { transform-box: fill-box; transform-origin: center; animation: runPlanCrosshairIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.62s both; }
+.run-plan-selected-dot { transform-box: fill-box; transform-origin: center; animation: runPlanDotIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) 0.76s both; }
+.run-plan-selected-halo { transform-box: fill-box; transform-origin: center; animation: runPlanHaloPulse 1.8s ease-in-out 0.9s infinite; }
+.run-plan-scan { animation: runPlanScan 2.15s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.run-plan-value { animation: runPlanValueIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
 @keyframes devBulletIn {
   from { opacity: 0; transform: translateX(-8px); }
   to { opacity: 1; transform: translateX(0); }
@@ -358,7 +428,10 @@ html {
   .dashboard-mockup.is-visible .dash-chart, .dashboard-mockup.is-visible .dash-velocity,
   .dashboard-mockup.is-visible .dash-invoices, .dashboard-mockup.is-visible .dash-top-selling,
   .dashboard-mockup.is-visible .dash-changes, .dashboard-mockup.is-visible .dash-row,
-  .dev-progress-bar, .dev-content-enter, .dev-bullet-in, .dev-mockup-panel {
+  .dev-progress-bar, .dev-content-enter, .dev-bullet-in, .dev-mockup-panel, .agent-stage-enter,
+  .price-run-progress, .price-run-flow, .runway-line, .runway-marker, .run-plan-sweep,
+  .run-plan-chart-line, .run-plan-crosshair, .run-plan-selected-dot, .run-plan-selected-halo,
+  .run-plan-scan, .run-plan-value {
     animation: none; opacity: 1; transform: none;
   }
   .scroll-reveal-item { opacity: 1; transform: none; transition: none; }

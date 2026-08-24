@@ -17,10 +17,10 @@ const cards = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
       </svg>
     ),
-    title: "Import in Minutes",
+    title: "Onboard with an Agent",
     description:
-      "Bring your data over with raw CSV exports. Spark maps, validates, and imports everything automatically, so you're live in minutes, not months.",
-    features: ["Raw CSV imports", "Automated field mapping", "Full validation"],
+      "Tell Sparki what you are moving, or bring your own AI assistant through MCP. Spark inspects what exists, maps and repairs the data, then asks you to approve the exact import.",
+    features: ["Sparki in-app agent", "Claude & ChatGPT via MCP", "Governed approvals"],
   },
   {
     number: "02",

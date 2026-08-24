@@ -5,19 +5,19 @@ import ScrollReveal, { RevealItem } from "./ScrollReveal";
 
 const stats = [
   {
-    value: "43%",
-    label: "Less excess inventory",
-    desc: "Optimized stock levels across all your sales channels.",
+    value: "Live",
+    label: "Location stock signal",
+    desc: "Base the pickup promise on inventory at the selected store.",
   },
   {
-    value: "2.4x",
-    label: "Fewer stockouts",
-    desc: "AI forecasting catches demand shifts before they hit.",
+    value: "Auto",
+    label: "Pickup ticket routing",
+    desc: "Send the order into the right store's preparation flow.",
   },
   {
-    value: "< 1 hr",
-    label: "Less manual planning",
-    desc: "Automated reorder points and PO generation.",
+    value: "1 flow",
+    label: "Promise to handoff",
+    desc: "Keep ecommerce, store staff, and inventory aligned.",
   },
 ];
 
@@ -36,19 +36,19 @@ export default function AgencyStatsPickup() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
                 </span>
-                Proven Results
+                Built for store operations
               </div>
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                The #1 Platform for<br />
+                One clean flow from<br />
                 <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  Shopify, FBA &amp; B2B
+                  click to counter
                 </span>
               </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              Built for high-volume sellers who need accurate stock levels, smarter purchasing decisions, and full visibility across every channel.
+              Make pickup easy for the customer without creating a second operating system for the people working in your stores.
             </p>
           </ScrollReveal>
         </div>

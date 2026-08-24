@@ -2,8 +2,10 @@ import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 import HeroVideoShowcase from "./HeroVideoShowcase";
 
+const CTA_OPTIONS = { source: "3pl" } as const;
+
 export default function AgencyHero3PL() {
-  const { signupUrl } = useCtaLinks();
+  const { bookUrl, signupUrl } = useCtaLinks(CTA_OPTIONS);
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -22,7 +24,7 @@ export default function AgencyHero3PL() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            AI-Powered Inventory Platform
+            Inventory intelligence for modern 3PLs
           </div>
 
           {/* H1 */}
@@ -39,19 +41,22 @@ export default function AgencyHero3PL() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Give your clients AI demand forecasting, real-time visibility, and a self-serve portal under your brand. The capability that's beating commodity warehouses.
+            Give every client forecasting, replenishment intelligence, and live inventory visibility under your brand—without adding more manual planning to your operation.
           </p>
 
           {/* CTA row */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={signupUrl}
+            <BookACallButton
+              url={bookUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start Free
+              Book a 3PL Demo
+            </BookACallButton>
+            <a href={signupUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              Start 14-Day Free Trial
             </a>
-            <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center" />
           </div>
+          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Client-scoped workspaces · branded portals · MCP access</p>
         </div>
 
         <HeroVideoShowcase />

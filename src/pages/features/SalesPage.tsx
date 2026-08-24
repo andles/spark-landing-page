@@ -47,9 +47,9 @@ const features = [
 export function SalesPage() {
   return (
     <FeaturePage
-      title="Sales"
-      subtitle="Order Management"
-      description="Manage your complete sales cycle from quote to cash. Delight customers with fast, accurate order processing."
+      title="Sales Order Management"
+      subtitle="Multichannel order software"
+      description="Bring quotes, orders, invoices, customers, and returns into the same real-time system that controls your inventory."
       icon={ShoppingCart}
       gradientFrom="from-blue-500"
       gradientTo="to-cyan-400"

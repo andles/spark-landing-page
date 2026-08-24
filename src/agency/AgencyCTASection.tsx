@@ -21,17 +21,20 @@ export default function AgencyCTASection() {
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Spark Today</span>
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed">
-            Upload a CSV and get your first reorder plan in minutes. Prefer a walkthrough? Book a personalized call with our team.
+            Ask Sparki to onboard your data and build your first reorder plan. Prefer a walkthrough? Book a personalized call with our team.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <BookACallButton className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300" />
             <a
               href={signupUrl}
-              className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
+              className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
             >
-              Start Free
+              Start 14-Day Free Trial
             </a>
+            <BookACallButton className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300">
+              Book a 30-Minute Demo
+            </BookACallButton>
           </div>
+          <p className="mt-3 text-xs text-white/40">Use Sparki in app or your own assistant over MCP. You approve every import.</p>
         </ScrollReveal>
       </div>
     </section>

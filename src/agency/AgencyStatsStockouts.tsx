@@ -18,19 +18,19 @@ export default function AgencyStatsStockouts() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
                 </span>
-                Proven Results
+                Decision-ready forecasting
               </div>
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                The #1 Platform for<br />
+                Every reorder starts<br />
                 <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  Shopify, FBA &amp; B2B
+                  with the evidence
                 </span>
               </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              Built for high-volume sellers who need accurate stock levels, smarter purchasing decisions, and full visibility across every channel.
+              See the sales, stock, lead-time, and policy signals behind every recommendation—then decide what your team wants Spark to do next.
             </p>
           </ScrollReveal>
         </div>

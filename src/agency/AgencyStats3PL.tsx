@@ -2,19 +2,19 @@ import ScrollReveal, { RevealItem } from "./ScrollReveal";
 
 const stats = [
   {
-    value: "43%",
-    label: "Less excess inventory",
-    desc: "Optimized stock levels across all your sales channels.",
+    value: "1 view",
+    label: "Every client operation",
+    desc: "See inventory, orders, purchasing, and risk without switching systems.",
   },
   {
-    value: "2.4x",
-    label: "Fewer stockouts",
-    desc: "AI forecasting catches demand shifts before they hit.",
+    value: "Live",
+    label: "Client inventory visibility",
+    desc: "Give clients the answers they need through a portal under your brand.",
   },
   {
-    value: "< 1 hr",
-    label: "Less manual planning",
-    desc: "Automated reorder points and PO generation.",
+    value: "AI",
+    label: "Demand and replenishment",
+    desc: "Move from fulfillment history to a reviewable inventory plan.",
   },
 ];
 
@@ -33,19 +33,19 @@ export default function AgencyStats3PL() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
                 </span>
-                Proven Results
+                Built for client retention
               </div>
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                The #1 Platform for<br />
+                A client experience<br />
                 <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  Modern 3PLs
+                  worth staying for
                 </span>
               </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              Built for high-volume sellers who need accurate stock levels, smarter purchasing decisions, and full visibility across every channel.
+              Help clients make better inventory decisions while your team delivers the operational visibility and service that commodity warehouses cannot.
             </p>
           </ScrollReveal>
         </div>

@@ -5,13 +5,15 @@ import AgencyHeader from "./AgencyHeader";
 import AgencyHeroPickup from "./AgencyHeroPickup";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsPickup from "./AgencyStatsPickup";
+import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
 import AgencyWhySpark from "./AgencyWhySpark";
 import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
 import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
-import AgencyCTASection from "./AgencyCTASection";
+import CampaignFAQSection from "./CampaignFAQSection";
+import CampaignCTASection from "./CampaignCTASection";
 import AgencyFooter from "./AgencyFooter";
 
 export default function PickupPage() {
@@ -22,13 +24,15 @@ export default function PickupPage() {
         <AgencyHeroPickup />
         <AgencyTrustBar />
         <AgencyStatsPickup />
+        <CampaignWorkflowSection kind="pickup" />
         <AgencyCoreCapabilities />
         <AgencyWhySpark />
         <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
         <AgencyComparisonSection />
         <AgencyPricingSection />
-        <AgencyCTASection />
+        <CampaignFAQSection kind="pickup" />
+        <CampaignCTASection kind="pickup" />
       </main>
       <AgencyFooter />
     </div>

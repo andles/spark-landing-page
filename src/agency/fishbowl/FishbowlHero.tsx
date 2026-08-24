@@ -10,7 +10,7 @@ import MobileHeroShowcase from "../MobileHeroShowcase";
 import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 export default function FishbowlHero() {
-  const { bookUrl } = useCtaLinks();
+  const { bookUrl, signupUrl } = useCtaLinks();
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -48,20 +48,22 @@ export default function FishbowlHero() {
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
             Fishbowl counts your stock fine. The trouble is everything around it: reports you pay
             a consultant for, Shopify and QuickBooks syncs you babysit, support tickets that sit.
-            Spark handles those, and brings your Fishbowl data over in minutes.
+            Spark handles those, while Sparki—or your own AI assistant over MCP—takes on the migration work.
           </p>
 
-          {/* Single primary CTA */}
-          <div className="animate-fade-up delay-300 mt-7 flex justify-center">
+          <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <BookACallButton
               url={bookUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
               {PRIMARY_CTA}
             </BookACallButton>
+            <a href={signupUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              Start 14-Day Free Trial
+            </a>
           </div>
           <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">
-            20 minutes. Bring a Fishbowl export if you like. No card, no commitment.
+            Agent-led mapping · every row validated · you approve the import
           </p>
         </div>
 

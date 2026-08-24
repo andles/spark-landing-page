@@ -14,17 +14,17 @@ const stats = [
   {
     value: "43%",
     label: "Less excess inventory",
-    desc: "Optimized stock levels across all your sales channels.",
+    desc: "Observed across the Spark merchant cohort.",
   },
   {
-    value: "2.4x",
+    value: "56%",
     label: "Fewer stockouts",
-    desc: "AI forecasting catches demand shifts before they hit.",
+    desc: "Observed across the Spark merchant cohort.",
   },
   {
     value: "< 1 hr",
-    label: "Less manual planning",
-    desc: "Automated reorder points and PO generation.",
+    label: "Weekly planning time",
+    desc: "Typical weekly planning time with Spark.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function AgencyHeroStockouts() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            AI-Powered Inventory Platform
+            Explainable AI inventory planning
           </div>
 
           {/* H1 */}
@@ -75,10 +75,11 @@ export default function AgencyHeroStockouts() {
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start Free
+              Start 14-Day Free Trial
             </a>
             <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center" />
           </div>
+          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Agentic onboarding · recommendations with reasoning · your team approves</p>
         </div>
 
         {/* Performance metrics — relocated from the stats section to sit directly
@@ -98,6 +99,9 @@ export default function AgencyHeroStockouts() {
             </RevealItem>
           ))}
         </ScrollReveal>
+        <p className="mt-4 max-w-[1100px] w-full text-center text-[11px] leading-relaxed text-white/35">
+          Cohort outcomes are based on observed Spark merchant results. Individual results vary by catalog, channel mix, and operating process.
+        </p>
 
         <HeroVideoShowcase />
 

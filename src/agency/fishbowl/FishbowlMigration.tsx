@@ -24,7 +24,7 @@ const cards = [
     ),
     title: "Your Fishbowl data comes with you, in minutes",
     description:
-      "Export from Fishbowl, connect it to Spark, and your parts, vendors, customers, and sales history land mapped and validated. No weekend of spreadsheet cleanup. No re-keying.",
+      "Give the exports to Sparki in app—or your own AI assistant over MCP—and your parts, vendors, customers, and history land through a mapped, validated, approval-gated workflow.",
     complaint: "Switching sounds worse than staying.",
     features: ["Automatic field mapping", "Sales history included", "Undo any import"],
   },
@@ -78,7 +78,7 @@ const cards = [
   },
   {
     number: "05",
-    badge: "Onboarding",
+    badge: "Guided launch",
     badgeColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
     iconBg: "from-emerald-500 to-cyan-500",
     icon: (
@@ -86,11 +86,11 @@ const cards = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     ),
-    title: "Start free, with a person walking you through it",
+    title: "Start with an agent and a person when you need one",
     description:
-      "No license to buy before you know it fits. Onboarding is a series of working sessions with someone from Spark who has seen your kind of operation before, and it's included, not an add-on.",
+      "Sparki handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you during the trial instead of leaving you with a checklist.",
     complaint: "Steep learning curve, and support that doesn't pick up.",
-    features: ["Free to start", "Consultative onboarding included", "Talk to a human"],
+    features: ["14-day free trial", "Agentic onboarding", "Talk to a human"],
   },
 ];
 

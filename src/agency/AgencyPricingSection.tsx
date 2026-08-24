@@ -28,7 +28,7 @@ const tiers: Tier[] = [
     heroFeatures: ["Multi-channel inventory sync", "Real-time stock tracking", "Basic order management", "Purchase order creation", "2 e-commerce integrations"],
     featureCategories: [
       { heading: "Inventory Management", items: ["Items & SKU management", "Item groups & categories", "Bundle items & kits", "Single-warehouse tracking", "Barcode generation & printing"] },
-      { heading: "AI-Powered", items: ["AI-powered CSV/Excel import", "Intelligent data mapping", "Proactive inventory alerts", "Basic demand forecasting"] },
+      { heading: "AI-Powered", items: ["Agentic onboarding with Sparki", "Intelligent data mapping", "Proactive inventory alerts", "Basic demand forecasting"] },
     ],
     ctaLabel: "Get Started",
   },
@@ -165,7 +165,7 @@ export default function AgencyPricingSection() {
             Simple,{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Transparent</span>
           </h2>
-          <p className="mt-4 text-lg text-[#b8bfcc] max-w-2xl mx-auto">Choose the plan that fits your business. All plans include a 14-day free trial, and setup takes minutes with a CSV import.</p>
+          <p className="mt-4 text-lg text-[#b8bfcc] max-w-2xl mx-auto">Choose the plan that fits your business. All plans include a 14-day free trial and agent-guided onboarding.</p>
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 max-w-7xl mx-auto">

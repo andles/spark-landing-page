@@ -19,6 +19,7 @@ export const routeImports = {
   WarehousingPage: () => import('./pages/features/WarehousingPage'),
   ToolsServicesPage: () => import('./pages/features/ToolsServicesPage'),
   AccountingPage: () => import('./pages/features/AccountingPage'),
+  ShopifyInventoryPage: () => import('./pages/ShopifyInventoryPage'),
   PartnersPage: () => import('./pages/PartnersPage'),
   PrivacyPolicyPage: () => import('./pages/PrivacyPolicyPage'),
   TermsOfServicePage: () => import('./pages/TermsOfServicePage'),
@@ -28,6 +29,8 @@ export const routeImports = {
   SupportPage: () => import('./pages/SupportPage'),
   DeleteAccountPage: () => import('./pages/DeleteAccountPage'),
   ContactPage: () => import('./pages/ContactPage'),
+  SitemapPage: () => import('./pages/SitemapPage'),
+  NotFoundPage: () => import('./pages/NotFoundPage'),
 };
 
 /** Fetch every route chunk in the background. Safe to call repeatedly —

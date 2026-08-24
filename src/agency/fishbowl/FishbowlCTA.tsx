@@ -23,14 +23,13 @@ export default function FishbowlCTA() {
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
         <ScrollReveal className="text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-            Bring a Fishbowl export.
+            Bring the Fishbowl data.
             <br className="hidden sm:block" />{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">We'll show you your own numbers.</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Let Sparki build the migration plan.</span>
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed max-w-2xl">
-            Twenty minutes with someone from Spark. We load your data, build the report you've been
-            wanting, and you decide whether it's worth a closer look. If your renewal is coming up,
-            that's a good time to do it.
+            See how your catalog, history, suppliers, and inventory move through mapping, validation,
+            approval, and readiness—then decide whether Spark is worth a broader switch.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookACallButton
@@ -43,7 +42,7 @@ export default function FishbowlCTA() {
               href={signupUrl}
               className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
             >
-              Start free on your own
+              Start 14-Day Free Trial
             </a>
           </div>
         </ScrollReveal>

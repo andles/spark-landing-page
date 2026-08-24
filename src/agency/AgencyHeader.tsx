@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useCtaLinks } from "./ctaLinks";
 
 const navLinks = [
-  { href: "#solutions", label: "Solutions" },
-  { href: "#core-capabilities", label: "Features" },
-  { href: "#integrations", label: "Integrations" },
-  { href: "#pricing", label: "Pricing" },
+  { href: "/#solutions", label: "How It Works" },
+  { href: "/#core-capabilities", label: "Features" },
+  { href: "/#integrations", label: "Integrations" },
+  { href: "/#pricing", label: "Pricing" },
 ];
 
 export default function AgencyHeader() {
@@ -50,7 +50,7 @@ export default function AgencyHeader() {
             href={signupUrl}
             className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
           >
-            Start Free
+            Start Free Trial
           </a>
         </div>
 
@@ -79,7 +79,7 @@ export default function AgencyHeader() {
           ))}
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
-            <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free</a>
+            <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free Trial</a>
           </div>
         </div>
       )}

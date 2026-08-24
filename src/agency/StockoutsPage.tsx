@@ -5,13 +5,15 @@ import AgencyHeader from "./AgencyHeader";
 import AgencyHeroStockouts from "./AgencyHeroStockouts";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsStockouts from "./AgencyStatsStockouts";
+import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
 import AgencyWhySpark from "./AgencyWhySpark";
 import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
 import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
-import AgencyCTASection from "./AgencyCTASection";
+import CampaignFAQSection from "./CampaignFAQSection";
+import CampaignCTASection from "./CampaignCTASection";
 import AgencyFooter from "./AgencyFooter";
 
 export default function StockoutsPage() {
@@ -22,13 +24,15 @@ export default function StockoutsPage() {
         <AgencyHeroStockouts />
         <AgencyTrustBar />
         <AgencyStatsStockouts />
+        <CampaignWorkflowSection kind="stockouts" />
         <AgencyCoreCapabilities />
         <AgencyWhySpark />
         <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
         <AgencyComparisonSection />
         <AgencyPricingSection />
-        <AgencyCTASection />
+        <CampaignFAQSection kind="stockouts" />
+        <CampaignCTASection kind="stockouts" />
       </main>
       <AgencyFooter />
     </div>

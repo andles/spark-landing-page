@@ -43,9 +43,9 @@ const features = [
 export function InventoryPage() {
   return (
     <FeaturePage
-      title="Inventory"
-      subtitle="Core Feature"
-      description="Complete control over your product catalog and stock levels. Track every item across all locations with real-time accuracy."
+      title="Inventory Management"
+      subtitle="Multichannel inventory software"
+      description="Track every SKU, order, and location in real time—then use AI demand forecasting to know what to reorder, when, and how much."
       icon={Package}
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"

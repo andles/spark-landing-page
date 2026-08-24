@@ -5,8 +5,12 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import BookACallButton from "./BookACallButton";
 import HeroVideoShowcase from "./HeroVideoShowcase";
+import { useCtaLinks } from "./ctaLinks";
+
+const CTA_OPTIONS = { source: "in-store-pickup" } as const;
 
 export default function AgencyHeroPickup() {
+  const { bookUrl, signupUrl } = useCtaLinks(CTA_OPTIONS);
   return (
     /* ── HERO: In-Store Pickup campaign variant — only this hero differs from the default page ── */
     <section className="relative min-h-screen bg-[#06080d]">
@@ -26,7 +30,7 @@ export default function AgencyHeroPickup() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            AI-Powered Inventory Platform
+            Shopify pickup, connected to real store stock
           </div>
 
           {/* H1 */}
@@ -43,15 +47,21 @@ export default function AgencyHeroPickup() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Everything is included, the Shopify connection, the automatic ticket printing, and the hardware on the counter.
+            Make an accurate pickup promise online, route the order to the right store, and give staff one clear flow from preparation to customer handoff.
           </p>
 
           {/* CTA row — single "Book a Call" opens the Calendly scheduler in a
               popup overlay and fires the Google Ads conversion on click. The
               href is a no-JS fallback that still reaches Calendly. */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-            <BookACallButton className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center" />
+            <BookACallButton url={bookUrl} className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center">
+              Book a Pickup Walkthrough
+            </BookACallButton>
+            <a href={signupUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              Start 14-Day Free Trial
+            </a>
           </div>
+          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Shopify connection · automatic ticket printing · guided rollout</p>
         </div>
 
         <HeroVideoShowcase />

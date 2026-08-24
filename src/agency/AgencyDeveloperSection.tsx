@@ -114,7 +114,7 @@ export default function AgencyDeveloperSection() {
                       ))}
                     </ul>
                     <div className={`mt-7 ${active === i ? "dev-bullet-in" : ""}`} style={active === i ? { animationDelay: `${150 + t.bullets.length * 80 + 40}ms` } : undefined}>
-                      <a href="#" className="inline-flex items-center h-[42px] sm:h-[46px] px-6 sm:px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300">Explore Platform</a>
+                      <a href="/features/tools-services" className="inline-flex items-center h-[42px] sm:h-[46px] px-6 sm:px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300">Explore AI Tools &amp; Automation</a>
                     </div>
                   </div>
                 ))}

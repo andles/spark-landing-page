@@ -43,9 +43,9 @@ const features = [
 export function AccountingPage() {
   return (
     <FeaturePage
-      title="QuickBooks & Accounting"
-      subtitle="Financial"
-      description="Keep your books accurate with seamless accounting integrations. Eliminate double entry and reduce errors."
+      title="QuickBooks & Accounting Integration"
+      subtitle="Inventory and financial sync"
+      description="Keep invoices, payments, inventory adjustments, and your general ledger aligned without re-entering the same transaction twice."
       icon={Calculator}
       gradientFrom="from-green-600"
       gradientTo="to-emerald-500"

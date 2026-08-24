@@ -10,17 +10,17 @@ const stats = [
   {
     value: "43%",
     label: "Less excess inventory",
-    desc: "Right-sized stock levels across every channel you sell on.",
+    desc: "Observed across the Spark merchant cohort.",
   },
   {
-    value: "2.4x",
+    value: "56%",
     label: "Fewer stockouts",
-    desc: "AI forecasting catches demand shifts before they hit.",
+    desc: "Observed across the Spark merchant cohort.",
   },
   {
     value: "< 1 hr",
     label: "Weekly planning time",
-    desc: "Spark drafts reorders and POs. You just approve.",
+    desc: "Typical weekly planning time with Spark.",
   },
 ];
 
@@ -37,14 +37,14 @@ export default function AgencyHero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-24 pb-12">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow pill */}
           <div className="animate-fade-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            Set Up in Minutes with a CSV Import
+            AI inventory management for multichannel brands
           </div>
 
           {/* H1 */}
@@ -52,18 +52,18 @@ export default function AgencyHero() {
             className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-[#f0f2f5]">Fix Your Inventory</span>
+            <span className="text-[#f0f2f5]">AI Inventory Management</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              in 14 Days
+              That Plans Every Reorder
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Upload a raw CSV and be live in minutes, no migration project required.
-            Spark's AI tells you what to reorder, when, and how much. Your team
-            approves, and Spark handles the rest.
+            Spark turns your Shopify, Amazon, and wholesale sales into demand
+            forecasts and draft purchase orders. Your team approves the plan—so
+            cash stays out of overstock and bestsellers stay available.
           </p>
 
           {/* CTA row */}
@@ -72,10 +72,15 @@ export default function AgencyHero() {
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start Free
+              Start 14-Day Free Trial
             </a>
-            <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center" />
+            <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              Book a 30-Minute Demo
+            </BookACallButton>
           </div>
+          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">
+            Onboard with Sparki in app or your own AI assistant over MCP.
+          </p>
         </div>
 
         {/* Performance metrics: relocated from the stats section to sit directly
@@ -96,6 +101,9 @@ export default function AgencyHero() {
             </RevealItem>
           ))}
         </ScrollReveal>
+        <p className="mt-4 max-w-[1100px] w-full text-center text-[11px] leading-relaxed text-white/35">
+          Cohort outcomes are based on observed Spark merchant results. Individual results vary by catalog, channel mix, and operating process.
+        </p>
 
         {/* < sm : tap-to-play video + mockup (mounted only on small screens, and
             deliberately BEFORE the shared showcase; see MobileHeroShowcase).

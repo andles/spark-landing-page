@@ -18,10 +18,10 @@ export default function AgencyStats() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
                 </span>
-                Proven Results
+                Built for multichannel operators
               </div>
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                The #1 Platform for<br />
+                One Inventory Plan for<br />
                 <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
                   Shopify, FBA &amp; B2B
                 </span>
@@ -30,9 +30,9 @@ export default function AgencyStats() {
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              Built for high-volume sellers. Because Spark decides what to reorder,
-              when, and how much, teams carry less stock, miss fewer sales, and
-              spend almost no time planning.
+              Built for operators who have outgrown spreadsheet forecasting but do
+              not want another long ERP implementation. Spark turns live sales and
+              stock data into decisions your team can review and approve.
             </p>
           </ScrollReveal>
         </div>

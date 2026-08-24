@@ -43,9 +43,9 @@ const features = [
 export function ManufacturingPage() {
   return (
     <FeaturePage
-      title="Manufacturing"
-      subtitle="Production"
-      description="Transform raw materials into finished products with complete visibility and control over your production process."
+      title="Manufacturing & BOM"
+      subtitle="Production and materials planning"
+      description="Plan components, bills of materials, and production against live demand so finished goods and raw materials stay in sync."
       icon={Factory}
       gradientFrom="from-orange-500"
       gradientTo="to-amber-400"

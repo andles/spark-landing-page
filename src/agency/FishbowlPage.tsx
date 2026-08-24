@@ -13,9 +13,11 @@
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import FishbowlHeader from "./fishbowl/FishbowlHeader";
 import FishbowlHero from "./fishbowl/FishbowlHero";
+import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
 import FishbowlComparison from "./fishbowl/FishbowlComparison";
 import FishbowlTrust from "./fishbowl/FishbowlTrust";
+import CampaignFAQSection from "./CampaignFAQSection";
 import FishbowlCTA from "./fishbowl/FishbowlCTA";
 import AgencyFooter from "./AgencyFooter";
 
@@ -27,9 +29,11 @@ export default function FishbowlPage() {
       <FishbowlHeader />
       <main>
         <FishbowlHero />
+        <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />
         <FishbowlComparison />
         <FishbowlTrust />
+        <CampaignFAQSection kind="fishbowl" />
         <FishbowlCTA />
       </main>
       <AgencyFooter />

@@ -12,7 +12,7 @@ export default function AgencyTrustBar() {
   return (
     <section className="py-10 lg:py-14 relative">
       <p className="text-center text-white/80 text-sm font-medium tracking-wide mb-8">
-        Trusted by Industry Experts
+        Connect the commerce and accounting tools you already use
       </p>
       <div
         className="relative max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12"
@@ -28,7 +28,7 @@ export default function AgencyTrustBar() {
                 key={`a-${i}`}
                 src={logo.src}
                 alt={logo.alt}
-                className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer"
+                className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300"
               />
             ))}
           </div>
@@ -38,7 +38,7 @@ export default function AgencyTrustBar() {
                 key={`b-${i}`}
                 src={logo.src}
                 alt={logo.alt}
-                className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer"
+                className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300"
               />
             ))}
           </div>

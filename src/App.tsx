@@ -24,6 +24,7 @@ const ManufacturingPage = lazy(() => R.ManufacturingPage().then((m) => ({ defaul
 const WarehousingPage = lazy(() => R.WarehousingPage().then((m) => ({ default: m.WarehousingPage })));
 const ToolsServicesPage = lazy(() => R.ToolsServicesPage().then((m) => ({ default: m.ToolsServicesPage })));
 const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.AccountingPage })));
+const ShopifyInventoryPage = lazy(() => R.ShopifyInventoryPage().then((m) => ({ default: m.ShopifyInventoryPage })));
 const PartnersPage = lazy(() => R.PartnersPage().then((m) => ({ default: m.PartnersPage })));
 const PrivacyPolicyPage = lazy(() => R.PrivacyPolicyPage().then((m) => ({ default: m.PrivacyPolicyPage })));
 const TermsOfServicePage = lazy(() => R.TermsOfServicePage().then((m) => ({ default: m.TermsOfServicePage })));
@@ -33,6 +34,8 @@ const EulaPage = lazy(() => R.EulaPage().then((m) => ({ default: m.EulaPage })))
 const SupportPage = lazy(() => R.SupportPage().then((m) => ({ default: m.SupportPage })));
 const DeleteAccountPage = lazy(() => R.DeleteAccountPage().then((m) => ({ default: m.DeleteAccountPage })));
 const ContactPage = lazy(() => R.ContactPage().then((m) => ({ default: m.ContactPage })));
+const SitemapPage = lazy(() => R.SitemapPage().then((m) => ({ default: m.SitemapPage })));
+const NotFoundPage = lazy(() => R.NotFoundPage().then((m) => ({ default: m.NotFoundPage })));
 
 function HomePage() {
   const { variant } = useVariant();
@@ -75,6 +78,7 @@ function App() {
             <Route path="/features/warehousing" element={<WarehousingPage />} />
             <Route path="/features/tools-services" element={<ToolsServicesPage />} />
             <Route path="/features/accounting" element={<AccountingPage />} />
+            <Route path="/shopify-inventory-management" element={<ShopifyInventoryPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />
@@ -84,6 +88,9 @@ function App() {
             <Route path="/support" element={<SupportPage />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/sitemap" element={<SitemapPage />} />
+            <Route path="/404" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </VariantProvider>

@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#migrate", label: "What changes" },
   { href: "#reports", label: "Compare" },
   { href: "#support", label: "Support" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 const ctaClass =
