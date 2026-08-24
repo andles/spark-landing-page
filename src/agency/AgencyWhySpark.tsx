@@ -17,14 +17,14 @@ const cards = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
       </svg>
     ),
-    title: "AI Data Migration",
+    title: "Import in Minutes",
     description:
-      "Our team handles your full data migration. Products, sales history, suppliers, and customers imported with zero manual setup.",
-    features: ["Automated field mapping", "Zero-downtime cutover", "Full validation"],
+      "Bring your data over with raw CSV exports. Spark maps, validates, and imports everything automatically, so you're live in minutes, not months.",
+    features: ["Raw CSV imports", "Automated field mapping", "Full validation"],
   },
   {
     number: "02",
-    badge: "AI Agent",
+    badge: "AI Forecasting",
     badgeColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
     iconBg: "from-violet-500 to-cyan-500",
     icon: (
@@ -32,25 +32,25 @@ const cards = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    title: "Drive Efficiency",
+    title: "AI Plans Your Inventory",
     description:
-      "Spark's AI agent acts as an extension of your team with real-time insights and actionable recommendations to optimize operations.",
-    features: ["Proactive alerts", "Natural language chat", "One-click actions"],
+      "Spark's forecasting intelligence tells you exactly what to reorder, when to reorder, and how much, based on your actual sales history.",
+    features: ["Demand forecasting", "Reorder timing", "Order quantities"],
   },
   {
     number: "03",
-    badge: "Sales Portals",
+    badge: "Approvals",
     badgeColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
     iconBg: "from-cyan-500 to-teal-500",
     icon: (
       <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
       </svg>
     ),
-    title: "Boost Revenue",
+    title: "You Approve, Spark Executes",
     description:
-      "White-labeled seller and vendor portals transform how customers buy and suppliers stay aligned, unlocking new revenue channels.",
-    features: ["Branded portals", "Self-service ordering", "Live catalog sync"],
+      "Spark operates as your inventory manager, consolidating every decision into one queue. Your team approves, and the system automates the rest.",
+    features: ["One approval queue", "Draft POs ready to send", "One-click approve"],
   },
 ];
 

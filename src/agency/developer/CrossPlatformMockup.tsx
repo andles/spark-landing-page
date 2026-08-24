@@ -8,7 +8,7 @@ const devices = [
   { name: "MacBook Pro", type: "desktop", status: "Active now", icon: "laptop", online: true },
   { name: "iPad Air", type: "tablet", status: "Active now", icon: "tablet", online: true },
   { name: "iPhone 15", type: "phone", status: "Synced 2m ago", icon: "phone", online: true },
-  { name: "Warehouse Scanner", type: "scanner", status: "Offline — 3 queued", icon: "scanner", online: false },
+  { name: "Warehouse Scanner", type: "scanner", status: "Offline · 3 queued", icon: "scanner", online: false },
 ];
 
 const activity = [

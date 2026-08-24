@@ -14,11 +14,29 @@ const features = [
       </svg>
     ),
     title: "Order Management & Forecasting",
-    description: "See every order in real time and know exactly what to reorder before you run out. Spark forecasts demand based on your actual sales history, not guesswork.",
+    description: "See every order in real time and know exactly what to reorder, when, and how much. Spark forecasts demand from your actual sales history, not guesswork.",
     bullets: [
       "Real-time order tracking across all channels",
-      "AI-powered demand forecasting from sales history",
+      "AI forecasting: what to reorder, when, and how much",
       "Automated reorder point alerts before stockouts",
+    ],
+  },
+  {
+    subtitle: "Autonomous Operations",
+    iconGradient: "from-emerald-500 to-teal-500",
+    accentGradient: "from-emerald-400 to-teal-400",
+    accentColor: "text-emerald-400",
+    icon: (
+      <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "Spark Drafts, You Approve",
+    description: "Spark operates as your inventory manager. It consolidates the reorder decisions that need to be made and drafts the purchase orders, so your team reviews and approves while the system automates the rest.",
+    bullets: [
+      "Every inventory decision in one approval queue",
+      "Draft POs with quantities and reasoning included",
+      "One click to approve and send",
     ],
   },
   {
@@ -178,6 +196,82 @@ function OrdersMockup({ isActive }: MockupProps) {
   );
 }
 
+function ApprovalMockup({ isActive }: MockupProps) {
+  const [animatedIn, setAnimatedIn] = useState(false);
+  const [approved, setApproved] = useState<number[]>([]);
+  useEffect(() => {
+    if (isActive) { const t = setTimeout(() => setAnimatedIn(true), 150); return () => clearTimeout(t); }
+    setAnimatedIn(false);
+    setApproved([]);
+  }, [isActive]);
+
+  const decisions = [
+    { po: "PO-1042", item: "USB-C Hub Adapter", supplier: "Shenzhen Audio Co.", qty: "240 units", cost: "$3,120", reason: "3 days of stock left at current velocity", urgency: "Urgent", urgencyColor: "text-rose-400 bg-rose-400/15" },
+    { po: "PO-1043", item: "Mech Keyboard v2", supplier: "Keytech Mfg", qty: "150 units", cost: "$6,750", reason: "Below reorder point · 21-day lead time", urgency: "This week", urgencyColor: "text-amber-400 bg-amber-400/15" },
+    { po: "PO-1044", item: "Laptop Stand Pro", supplier: "Standtech Ltd", qty: "80 units", cost: "$1,440", reason: "Demand up 40% week over week", urgency: "Scheduled", urgencyColor: "text-cyan-400 bg-cyan-400/15" },
+  ];
+
+  return (
+    <div className="p-4 h-full flex flex-col">
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-sm font-semibold text-[#f0f2f5]">Decisions Awaiting Approval</span>
+        <span className="inline-flex items-center gap-1.5 rounded-full glass px-2.5 py-1 text-[10px] text-[#b8bfcc]">
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-glow-pulse" />
+          {decisions.length - approved.length} pending
+        </span>
+      </div>
+
+      <div className="space-y-2.5 flex-1">
+        {decisions.map((d, idx) => {
+          const isApproved = approved.includes(idx);
+          return (
+            <div key={d.po} className="rounded-xl bg-[#0c1019] border border-white/[0.06] px-3.5 py-3 transition-all duration-500"
+              style={{ opacity: animatedIn ? 1 : 0, transform: animatedIn ? "translateY(0)" : "translateY(8px)", transitionDelay: `${idx * 90}ms` }}>
+              <div className="flex items-center justify-between gap-2 mb-1.5">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="font-mono text-xs text-[#8b95a8] shrink-0">{d.po}</span>
+                  <span className="text-xs font-medium text-[#f0f2f5] truncate">{d.item}</span>
+                </div>
+                <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium shrink-0 ${d.urgencyColor}`}>{d.urgency}</span>
+              </div>
+              <div className="text-[10px] text-[#8b95a8] mb-2.5">
+                {d.qty} from {d.supplier} · {d.cost} · <span className="text-[#b8bfcc]">{d.reason}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                {isApproved ? (
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    Approved · PO sent to supplier
+                  </span>
+                ) : (
+                  <>
+                    <button onClick={() => setApproved((a) => [...a, idx])}
+                      className="px-3 py-1 rounded-md bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[11px] font-semibold hover:scale-[1.03] transition-all duration-200 cursor-pointer">
+                      Approve
+                    </button>
+                    <button className="px-3 py-1 rounded-md border border-white/[0.1] text-[#b8bfcc] text-[11px] font-medium hover:bg-white/[0.04] transition-all duration-200 cursor-pointer">
+                      Adjust
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-3 rounded-lg bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 px-3 py-2.5"
+        style={{ opacity: animatedIn ? 1 : 0, transition: "opacity 0.5s ease-out", transitionDelay: "400ms" }}>
+        <div className="flex items-center gap-2">
+          <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="text-[11px] font-semibold text-emerald-400">Spark drafted every decision above</span>
+        </div>
+        <p className="text-[10px] text-[#8b95a8] ml-5">Quantities, timing, and suppliers included. Approving takes one click.</p>
+      </div>
+    </div>
+  );
+}
+
 function ReportMockup({ isActive }: MockupProps) {
   const [animatedIn, setAnimatedIn] = useState(false);
   useEffect(() => {
@@ -193,9 +287,9 @@ function ReportMockup({ isActive }: MockupProps) {
   ];
 
   const signals = [
-    { color: "text-amber-400 bg-amber-400/10 border-amber-500/20", label: "Unusual velocity spike", detail: "Wireless Headphones — 3x normal rate since Monday" },
-    { color: "text-rose-400 bg-rose-400/10 border-rose-500/20", label: "Critical stock warning", detail: "USB-C Hub Adapter — 3 days until stockout at current velocity" },
-    { color: "text-violet-400 bg-violet-400/10 border-violet-500/20", label: "Emerging trend detected", detail: "Laptop Stand Pro — 40% week-over-week growth" },
+    { color: "text-amber-400 bg-amber-400/10 border-amber-500/20", label: "Unusual velocity spike", detail: "Wireless Headphones · 3x normal rate since Monday" },
+    { color: "text-rose-400 bg-rose-400/10 border-rose-500/20", label: "Critical stock warning", detail: "USB-C Hub Adapter · 3 days until stockout at current velocity" },
+    { color: "text-violet-400 bg-violet-400/10 border-violet-500/20", label: "Emerging trend detected", detail: "Laptop Stand Pro · 40% week-over-week growth" },
   ];
 
   return (
@@ -256,10 +350,10 @@ function IntegrationsMockup({ isActive }: MockupProps) {
   const integrations = [
     { label: "Shopify", synced: "2m ago", orders: "1,247", icon: "🛍️" },
     { label: "Amazon", synced: "5m ago", orders: "892", icon: "📦" },
-    { label: "QuickBooks", synced: "1m ago", orders: "—", icon: "📊" },
-    { label: "Stripe", synced: "Real-time", orders: "—", icon: "💳" },
+    { label: "QuickBooks", synced: "1m ago", orders: "", icon: "📊" },
+    { label: "Stripe", synced: "Real-time", orders: "", icon: "💳" },
     { label: "WooCommerce", synced: "3m ago", orders: "634", icon: "🛒" },
-    { label: "Xero", synced: "10m ago", orders: "—", icon: "📒" },
+    { label: "Xero", synced: "10m ago", orders: "", icon: "📒" },
   ];
 
   const activityLog = [
@@ -312,7 +406,7 @@ function IntegrationsMockup({ isActive }: MockupProps) {
   );
 }
 
-const mockups = [OrdersMockup, ReportMockup, IntegrationsMockup];
+const mockups = [OrdersMockup, ApprovalMockup, ReportMockup, IntegrationsMockup];
 
 export default function AgencyCoreCapabilities() {
   const [containerRef, activeIndex] = useActiveSection(features.length);

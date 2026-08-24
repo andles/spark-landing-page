@@ -76,7 +76,7 @@ export default function McpMockup({ isActive }: Props) {
           <div className={base} style={{ opacity: animatedIn ? 1 : 0, transform: animatedIn ? "translateY(0)" : "translateY(8px)", transitionDelay: "600ms" }}>
             <div className="max-w-[90%] px-3 py-2 rounded-xl rounded-tl-sm bg-violet-500/10 border border-violet-500/15">
               <p className="text-white/70 text-[11px] leading-relaxed">
-                Done — <span className="text-white font-medium">PO-3042</span> covers 2 items that&apos;ll stockout within 7 days. Ready for your approval.
+                Done: <span className="text-white font-medium">PO-3042</span> covers 2 items that&apos;ll stockout within 7 days. Ready for your approval.
               </p>
             </div>
           </div>

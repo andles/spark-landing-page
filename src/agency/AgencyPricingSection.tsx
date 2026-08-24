@@ -165,7 +165,7 @@ export default function AgencyPricingSection() {
             Simple,{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Transparent</span>
           </h2>
-          <p className="mt-4 text-lg text-[#b8bfcc] max-w-2xl mx-auto">Choose the plan that fits your business. All plans include a 14-day free trial.</p>
+          <p className="mt-4 text-lg text-[#b8bfcc] max-w-2xl mx-auto">Choose the plan that fits your business. All plans include a 14-day free trial, and setup takes minutes with a CSV import.</p>
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 max-w-7xl mx-auto">

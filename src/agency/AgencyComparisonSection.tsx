@@ -9,13 +9,18 @@ const rows = [
   },
   {
     category: "Onboarding",
-    spark: "AI-powered data migration gets you live in days. No manual CSV wrangling.",
+    spark: "Upload raw CSV exports and go live in minutes. Spark maps and validates your data automatically.",
     others: "Manual imports, lengthy setup calls, and expensive onboarding fees.",
   },
   {
     category: "Forecasting",
-    spark: "Built-in AI forecasting that analyzes sales velocity and recommends reorder points.",
+    spark: "Built-in AI forecasting that tells you exactly what to reorder, when, and how much.",
     others: "No forecasting, or basic static rules that don't adapt to trends.",
+  },
+  {
+    category: "Who does the work",
+    spark: "Spark drafts reorders, POs, and transfers. Your team just approves.",
+    others: "You run the reports and figure out the ordering yourself.",
   },
   {
     category: "Integrations",
@@ -121,7 +126,7 @@ export default function AgencyComparisonSection() {
             href={signupUrl}
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
-            Start Free Trial
+            Start Free
           </a>
         </div>
       </div>

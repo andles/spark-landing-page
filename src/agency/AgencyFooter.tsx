@@ -51,7 +51,7 @@ export default function AgencyFooter() {
                     { label: "Privacy Policy", href: "/privacy-policy" },
                     { label: "Terms of Service", href: "/terms-of-service" },
                     { label: "App Privacy Details", href: "/app-privacy" },
-                    { label: "Google Play — Data Safety", href: "/data-safety" },
+                    { label: "Google Play - Data Safety", href: "/data-safety" },
                     { label: "EULA", href: "/eula" },
                     { label: "Support", href: "/support" },
                     { label: "Delete Account", href: "/delete-account" },

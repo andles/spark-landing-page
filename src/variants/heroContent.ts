@@ -25,21 +25,21 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Inventory', 'Reimagined'],
     subheadline:
-      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
+      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization, all in one seamless experience.',
   },
 
   forecasting: {
     badge: 'AI Inventory Software',
     headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
   },
 
   'demo-hero': {
     badge: 'AI Inventory Software',
     headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
     heroDemoForm: true,
   },
 
@@ -48,7 +48,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
   },
 
   // ── Forecasting 14-day: inline demo form ───────────────
@@ -56,7 +56,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
     heroDemoForm: true,
   },
 
@@ -65,7 +65,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
   },
 
   // ── Margin 14-day: inline demo form ────────────────────
@@ -73,7 +73,7 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering — so you can run leaner inventory with confidence.',
+      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
     heroDemoForm: true,
   },
 
@@ -82,15 +82,15 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Inventory', 'Reimagined'],
     subheadline:
-      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
+      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization, all in one seamless experience.',
   },
 
   // ── Agency redesign variant (full page replacement) ────────
   agency: {
-    badge: 'AI-Powered Inventory Platform',
-    headline: ['Inventory That', 'Thinks Ahead'],
+    badge: 'Set Up in Minutes with a CSV Import',
+    headline: ['Fix Your Inventory', 'in 14 Days'],
     subheadline:
-      'Real-time visibility, predictive insights, and autonomous optimization — all in one seamless experience.',
+      "Upload a raw CSV and be live in minutes, no migration project required. Spark's AI tells you what to reorder, when, and how much. Your team approves, and Spark handles the rest.",
   },
 
   // ── Future variants ──────────────────────────────────────
