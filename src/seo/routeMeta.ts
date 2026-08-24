@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { buildFaqSchema } from '../agency/campaignFaqs';
+import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
 // Per-route SEO metadata - single source of truth.
 //
@@ -142,6 +143,30 @@ export const routeMeta: RouteMeta[] = [
     schema: [buildFaqSchema('fishbowl')],
   },
   {
+    path: '/cin7-alternative',
+    title: 'Cin7 Alternative for Shopify, Amazon & QuickBooks | Spark',
+    description:
+      'Compare Spark with Cin7 Core and Omni across pricing, forecasting, integrations, manufacturing, MCP access, onboarding, and operational fit.',
+    lastModified: '2026-08-24',
+    schema: [buildCompetitorFaqSchema('cin7')],
+  },
+  {
+    path: '/zoho-inventory-alternative',
+    title: 'Zoho Inventory Alternative for Growing Sellers | Spark',
+    description:
+      'Compare Spark with Zoho Inventory across order limits, planning depth, Shopify, Amazon, QuickBooks, shipping, manufacturing, and price.',
+    lastModified: '2026-08-24',
+    schema: [buildCompetitorFaqSchema('zoho')],
+  },
+  {
+    path: '/inflow-alternative',
+    title: 'inFlow Alternative for Inventory Planning & Purchasing | Spark',
+    description:
+      'Compare Spark with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows.',
+    lastModified: '2026-08-24',
+    schema: [buildCompetitorFaqSchema('inflow')],
+  },
+  {
     path: '/meeting-confirmed',
     title: 'Meeting Confirmed - SPARK Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',
@@ -153,6 +178,14 @@ export const routeMeta: RouteMeta[] = [
     title: 'Page Not Found - SPARK Inventory',
     description: 'The page you requested could not be found. Browse Spark Inventory solutions, product features, or support.',
     noindex: true,
+  },
+  {
+    path: '/features',
+    title: 'Inventory Management Features - Spark Inventory',
+    description:
+      'Explore Spark Inventory features for inventory, purchasing, sales, manufacturing, warehouses, QuickBooks, Sparki, and governed MCP automation.',
+    lastModified: '2026-08-24',
+    webPageType: 'CollectionPage',
   },
   {
     path: '/features/inventory',
@@ -228,6 +261,13 @@ export const routeMeta: RouteMeta[] = [
     description: 'Browse every public Spark Inventory product, solution, company, support, and legal page.',
     lastModified: '2026-08-24',
     webPageType: 'CollectionPage',
+  },
+  {
+    path: '/sms-program',
+    title: 'SMS Program Details - Spark Inventory',
+    description:
+      'Spark Inventory transactional SMS program details, message frequency, opt-in, STOP and HELP instructions, costs, and privacy information.',
+    lastModified: '2026-08-24',
   },
   {
     path: '/support',

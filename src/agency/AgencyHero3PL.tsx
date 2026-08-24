@@ -53,7 +53,7 @@ export default function AgencyHero3PL() {
               Book a 3PL Demo
             </BookACallButton>
             <a href={signupUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
-              Start 14-Day Free Trial
+              Start Free
             </a>
           </div>
           <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Client-scoped workspaces · branded portals · MCP access</p>

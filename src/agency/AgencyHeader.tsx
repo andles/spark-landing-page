@@ -1,12 +1,48 @@
 import { useState, useEffect } from "react";
 import { useCtaLinks } from "./ctaLinks";
 
-const navLinks = [
-  { href: "/#solutions", label: "How It Works" },
-  { href: "/#core-capabilities", label: "Features" },
-  { href: "/#integrations", label: "Integrations" },
-  { href: "/#pricing", label: "Pricing" },
+const productLinks = [
+  { href: "/features", label: "All product features", description: "See the complete Spark platform" },
+  { href: "/features/inventory", label: "Inventory", description: "SKUs, stock, locations, and control" },
+  { href: "/features/purchasing", label: "Purchasing", description: "Planning, POs, suppliers, and receiving" },
+  { href: "/features/sales", label: "Sales", description: "Orders, invoices, customers, and returns" },
+  { href: "/features/manufacturing", label: "Manufacturing", description: "BOMs, materials, and production" },
+  { href: "/features/warehousing", label: "Warehousing", description: "Bins, transfers, picking, and counts" },
+  { href: "/features/accounting", label: "Accounting", description: "QuickBooks, invoices, and payments" },
+  { href: "/features/tools-services", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
 ];
+
+const solutionLinks = [
+  { href: "/shopify-inventory-management", label: "Shopify inventory", description: "Plan the next buy from Shopify demand" },
+  { href: "/3pl", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
+  { href: "/reduce-stockouts-overstock", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
+  { href: "/in-store-pickup", label: "In-store pickup", description: "Location-aware promise and handoff" },
+  { href: "/fishbowl-alternative", label: "Fishbowl alternative", description: "A guided path out of Fishbowl" },
+  { href: "/cin7-alternative", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
+  { href: "/zoho-inventory-alternative", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
+  { href: "/inflow-alternative", label: "inFlow alternative", description: "Planning depth beyond the reorder point" },
+];
+
+function DesktopMenu({ label, links }: { label: string; links: typeof productLinks }) {
+  return (
+    <div className="group relative">
+      <button type="button" className="inline-flex cursor-pointer items-center gap-1.5 py-5 text-sm text-[#b8bfcc] transition-colors group-hover:text-white group-focus-within:text-white" aria-haspopup="true">
+        {label}
+        <svg className="h-3.5 w-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
+      </button>
+      <div className="invisible absolute left-1/2 top-[56px] w-[560px] -translate-x-1/2 translate-y-2 rounded-2xl border border-white/[0.1] bg-[#0a0d14]/[0.98] p-3 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+        <div className="grid grid-cols-2 gap-1">
+          {links.map((link, index) => (
+            <a key={link.href} href={link.href} className={`rounded-xl px-4 py-3 transition-colors hover:bg-white/[0.06] focus:bg-white/[0.06] focus:outline-none ${index === 0 && label === "Product" ? "border border-cyan-300/10 bg-cyan-300/[0.04]" : ""}`}>
+              <span className="block text-sm font-semibold text-white">{link.label}</span>
+              <span className="mt-1 block text-xs leading-5 text-white/40">{link.description}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function AgencyHeader() {
   const { signupUrl } = useCtaLinks();
@@ -33,12 +69,11 @@ export default function AgencyHeader() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-7">
+          <DesktopMenu label="Product" links={productLinks} />
+          <DesktopMenu label="Solutions" links={solutionLinks} />
+          <a href="/#integrations" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
+          <a href="/#pricing" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
         </nav>
 
         {/* CTAs */}
@@ -50,7 +85,7 @@ export default function AgencyHeader() {
             href={signupUrl}
             className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
           >
-            Start Free Trial
+            Start Free
           </a>
         </div>
 
@@ -71,15 +106,26 @@ export default function AgencyHeader() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden glass border-t border-white/[0.06] px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="block text-sm text-[#b8bfcc] hover:text-white transition-colors py-1" onClick={() => setMenuOpen(false)}>
-              {link.label}
-            </a>
-          ))}
+        <div className="md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/[0.06] bg-[#080b12]/[0.98] px-6 py-5 backdrop-blur-xl">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-2">
+            <div>
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-cyan-300">Product</p>
+              {productLinks.map((link) => (
+                <a key={link.href} href={link.href} className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>{link.label}</a>
+              ))}
+            </div>
+            <div>
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-violet-300">Solutions</p>
+              {solutionLinks.map((link) => (
+                <a key={link.href} href={link.href} className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>{link.label}</a>
+              ))}
+              <a href="/#integrations" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
+              <a href="/#pricing" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
+            </div>
+          </div>
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
-            <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free Trial</a>
+            <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free</a>
           </div>
         </div>
       )}

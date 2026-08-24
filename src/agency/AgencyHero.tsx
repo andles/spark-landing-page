@@ -72,7 +72,7 @@ export default function AgencyHero() {
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start 14-Day Free Trial
+              Start Free
             </a>
             <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
               Book a 30-Minute Demo

@@ -10,8 +10,10 @@ export const routeImports = {
   BookRedirect: () => import('./agency/BookRedirect'),
   StockoutsPage: () => import('./agency/StockoutsPage'),
   FishbowlPage: () => import('./agency/FishbowlPage'),
+  CompetitorAlternativePages: () => import('./agency/CompetitorAlternativePages'),
   MeetingConfirmedPage: () => import('./agency/MeetingConfirmedPage'),
   ProspectReportRoute: () => import('./reports/StockSignalsReport'),
+  FeaturesOverviewPage: () => import('./pages/features/FeaturesOverviewPage'),
   InventoryPage: () => import('./pages/features/InventoryPage'),
   PurchasingPage: () => import('./pages/features/PurchasingPage'),
   SalesPage: () => import('./pages/features/SalesPage'),
@@ -30,6 +32,7 @@ export const routeImports = {
   DeleteAccountPage: () => import('./pages/DeleteAccountPage'),
   ContactPage: () => import('./pages/ContactPage'),
   SitemapPage: () => import('./pages/SitemapPage'),
+  SmsProgramPage: () => import('./pages/SmsProgramPage'),
   NotFoundPage: () => import('./pages/NotFoundPage'),
 };
 

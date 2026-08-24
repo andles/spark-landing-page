@@ -31,8 +31,8 @@ const features = [
     description: 'Configure workstations for specific tasks like packing, receiving, or cycle counting. Optimize workflows.',
   },
   {
-    title: 'API Access & Integrations',
-    description: 'Full REST API for custom integrations. Connect Spark to any system in your tech stack.',
+    title: 'Integration & Agent Access',
+    description: 'Connect channels and approved external assistants to the same governed Spark operating context.',
   },
   {
     title: 'MCP Protocol Support',

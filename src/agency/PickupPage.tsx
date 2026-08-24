@@ -7,16 +7,17 @@ import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsPickup from "./AgencyStatsPickup";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
-import AgencyWhySpark from "./AgencyWhySpark";
-import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
-import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
 import CampaignFAQSection from "./CampaignFAQSection";
 import CampaignCTASection from "./CampaignCTASection";
+import CampaignDecisionSection from "./CampaignDecisionSection";
 import AgencyFooter from "./AgencyFooter";
+import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
 export default function PickupPage() {
+  useScrollToHashOnMount();
+
   return (
     <div className="min-h-screen bg-[#06080d]">
       <AgencyHeader />
@@ -25,11 +26,9 @@ export default function PickupPage() {
         <AgencyTrustBar />
         <AgencyStatsPickup />
         <CampaignWorkflowSection kind="pickup" />
+        <CampaignDecisionSection kind="pickup" />
         <AgencyCoreCapabilities />
-        <AgencyWhySpark />
-        <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
-        <AgencyComparisonSection />
         <AgencyPricingSection />
         <CampaignFAQSection kind="pickup" />
         <CampaignCTASection kind="pickup" />

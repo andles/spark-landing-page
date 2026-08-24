@@ -203,7 +203,7 @@ function CompetitorComparisonClassic() {
             }
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark shadow-lg hover:shadow-xl transition-all duration-200"
           >
-            Start Your Free Trial
+            Start Free
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -351,7 +351,7 @@ function CompetitorComparisonNextGen() {
             href="https://app.sparkinventory.com/sign-up"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300"
           >
-            Start Your Free Trial
+            Start Free
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

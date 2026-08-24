@@ -42,7 +42,7 @@ export default function FishbowlCTA() {
               href={signupUrl}
               className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
             >
-              Start 14-Day Free Trial
+              Start Free
             </a>
           </div>
         </ScrollReveal>

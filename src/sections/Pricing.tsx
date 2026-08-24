@@ -97,7 +97,7 @@ const plans: Plan[] = [
         ],
       },
     ],
-    cta: 'Start Free Trial',
+    cta: 'Start Free',
     popular: false,
   },
   {
@@ -162,7 +162,7 @@ const plans: Plan[] = [
         ],
       },
     ],
-    cta: 'Start Free Trial',
+    cta: 'Start Free',
     popular: true,
   },
   {
@@ -229,7 +229,7 @@ const plans: Plan[] = [
         ],
       },
     ],
-    cta: 'Start Free Trial',
+    cta: 'Start Free',
     popular: false,
   },
   {
@@ -288,7 +288,7 @@ function PricingClassic() {
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-gray-600">
-            Choose the plan that fits your business. All plans include a 14-day free trial.
+            Choose the plan that fits your business. Start free for 14 days.
           </p>
         </div>
 
@@ -393,7 +393,7 @@ function PricingNextGen() {
             </span>
           </h2>
           <p className="text-lg text-white/50">
-            Choose the plan that fits your business. All plans include a 14-day free trial.
+            Choose the plan that fits your business. Start free for 14 days.
           </p>
         </div>
 

@@ -19,7 +19,7 @@ const content: Record<SupportedKind, { title: string; gradient: string; body: st
     gradient: "before it happens",
     body: "Bring your actual sales and inventory signal. Spark will show the risk, the recommendation, and the reasoning your team can review.",
     primary: "trial",
-    microcopy: "14-day free trial · agent-guided onboarding · human-approved actions",
+    microcopy: "Start free for 14 days · agent-guided onboarding · human-approved actions",
     options: { source: "reduce-stockouts-overstock" },
   },
   pickup: {
@@ -38,7 +38,7 @@ export default function CampaignCTASection({ kind }: { kind: SupportedKind }) {
 
   const trial = (
     <a href={signupUrl} className={`${copy.primary === "trial" ? "bg-gradient-to-r from-cyan-500 to-violet-500" : "glass border border-white/15 hover:bg-white/[0.06] hover:border-white/25"} inline-flex h-[46px] items-center rounded-full px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02]`}>
-      Start 14-Day Free Trial
+      Start Free
     </a>
   );
   const demo = (

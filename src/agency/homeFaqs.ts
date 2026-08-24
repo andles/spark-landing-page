@@ -20,9 +20,9 @@ export const homeFaqs = [
       'Spark forecasts demand by SKU, flags changing sales velocity, recommends what to reorder and when, and drafts purchase orders with quantities and reasoning. Your team stays in control: review, adjust, and approve before anything is sent.',
   },
   {
-    question: 'Can I try Spark before choosing a paid plan?',
+    question: 'Can I start before choosing a paid plan?',
     answer:
-      'Yes. Every plan includes a 14-day free trial. Paid plans start at $199 per month, with options for multi-warehouse teams, manufacturing workflows, and higher automation volume.',
+      'Yes. Start free for 14 days. Paid plans begin at $199 per month, with options for multi-warehouse teams, manufacturing workflows, and higher automation volume.',
   },
   {
     question: 'Who is Spark best for?',

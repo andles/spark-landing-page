@@ -24,10 +24,13 @@ export default function AgencyFooter() {
                 <h4 className="text-white text-sm font-semibold mb-4">Product</h4>
                 <ul className="space-y-2.5">
                   {[
+                    { label: "All Features", href: "/features" },
                     { label: "Inventory Management", href: "/features/inventory" },
                     { label: "Purchasing & POs", href: "/features/purchasing" },
+                    { label: "Sales & Invoicing", href: "/features/sales" },
                     { label: "Warehouse Management", href: "/features/warehousing" },
                     { label: "Manufacturing & BOM", href: "/features/manufacturing" },
+                    { label: "QuickBooks & Accounting", href: "/features/accounting" },
                     { label: "AI Tools & Automation", href: "/features/tools-services" },
                   ].map((item) => (
                     <li key={item.href}><a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors duration-200">{item.label}</a></li>
@@ -40,6 +43,9 @@ export default function AgencyFooter() {
                   <li><a href="/shopify-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Shopify Inventory</a></li>
                   <li><a href="/reduce-stockouts-overstock" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Reduce Stockouts</a></li>
                   <li><a href="/fishbowl-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Fishbowl Alternative</a></li>
+                  <li><a href="/cin7-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Cin7 Alternative</a></li>
+                  <li><a href="/zoho-inventory-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Zoho Inventory Alternative</a></li>
+                  <li><a href="/inflow-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">inFlow Alternative</a></li>
                   <li><a href="/3pl" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
                   <li><a href="/in-store-pickup" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
                   <li><a href="/#pricing" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Pricing</a></li>
@@ -64,6 +70,7 @@ export default function AgencyFooter() {
                     { label: "App Privacy Details", href: "/app-privacy" },
                     { label: "Google Play - Data Safety", href: "/data-safety" },
                     { label: "EULA", href: "/eula" },
+                    { label: "SMS Program", href: "/sms-program" },
                     { label: "Support", href: "/support" },
                     { label: "Delete Account", href: "/delete-account" },
                   ].map((item) => (

@@ -15,8 +15,12 @@ const PickupPage = lazy(R.PickupPage);
 const BookRedirect = lazy(R.BookRedirect);
 const StockoutsPage = lazy(R.StockoutsPage);
 const FishbowlPage = lazy(R.FishbowlPage);
+const Cin7AlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.Cin7AlternativePage })));
+const ZohoInventoryAlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.ZohoInventoryAlternativePage })));
+const InflowAlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.InflowAlternativePage })));
 const MeetingConfirmedPage = lazy(R.MeetingConfirmedPage);
 const ProspectReportRoute = lazy(R.ProspectReportRoute);
+const FeaturesOverviewPage = lazy(() => R.FeaturesOverviewPage().then((m) => ({ default: m.FeaturesOverviewPage })));
 const InventoryPage = lazy(() => R.InventoryPage().then((m) => ({ default: m.InventoryPage })));
 const PurchasingPage = lazy(() => R.PurchasingPage().then((m) => ({ default: m.PurchasingPage })));
 const SalesPage = lazy(() => R.SalesPage().then((m) => ({ default: m.SalesPage })));
@@ -35,6 +39,7 @@ const SupportPage = lazy(() => R.SupportPage().then((m) => ({ default: m.Support
 const DeleteAccountPage = lazy(() => R.DeleteAccountPage().then((m) => ({ default: m.DeleteAccountPage })));
 const ContactPage = lazy(() => R.ContactPage().then((m) => ({ default: m.ContactPage })));
 const SitemapPage = lazy(() => R.SitemapPage().then((m) => ({ default: m.SitemapPage })));
+const SmsProgramPage = lazy(() => R.SmsProgramPage().then((m) => ({ default: m.SmsProgramPage })));
 const NotFoundPage = lazy(() => R.NotFoundPage().then((m) => ({ default: m.NotFoundPage })));
 
 function HomePage() {
@@ -71,6 +76,10 @@ function App() {
             <Route path="/reduce-stockouts-overstock" element={<StockoutsPage />} />
             {/* Fishbowl Inventory alternative campaign page (Google Ads). */}
             <Route path="/fishbowl-alternative" element={<FishbowlPage />} />
+            <Route path="/cin7-alternative" element={<Cin7AlternativePage />} />
+            <Route path="/zoho-inventory-alternative" element={<ZohoInventoryAlternativePage />} />
+            <Route path="/inflow-alternative" element={<InflowAlternativePage />} />
+            <Route path="/features" element={<FeaturesOverviewPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />
@@ -89,6 +98,7 @@ function App() {
             <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/sitemap" element={<SitemapPage />} />
+            <Route path="/sms-program" element={<SmsProgramPage />} />
             <Route path="/404" element={<NotFoundPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

@@ -88,9 +88,9 @@ const cards = [
     ),
     title: "Start with an agent and a person when you need one",
     description:
-      "Sparki handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you during the trial instead of leaving you with a checklist.",
+      "Sparki handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started instead of leaving you with a checklist.",
     complaint: "Steep learning curve, and support that doesn't pick up.",
-    features: ["14-day free trial", "Agentic onboarding", "Talk to a human"],
+    features: ["Start free for 14 days", "Agentic onboarding", "Talk to a human"],
   },
 ];
 

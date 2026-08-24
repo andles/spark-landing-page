@@ -415,6 +415,49 @@ html {
 
 .dev-mockup-panel { transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 
+/* Keep first-visit consent visible and compliant without turning it into a
+   second hero. CookieYes injects these classes after the app has rendered. */
+.cky-consent-container {
+  left: max(12px, env(safe-area-inset-left)) !important;
+  right: auto !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  width: min(430px, calc(100vw - 24px)) !important;
+}
+.cky-consent-container .cky-consent-bar {
+  padding: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 18px !important;
+  background: rgba(10, 13, 20, 0.96) !important;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.52) !important;
+  backdrop-filter: blur(18px) !important;
+}
+.cky-consent-container .cky-title {
+  margin-bottom: 6px !important;
+  color: #f0f2f5 !important;
+  font-size: 15px !important;
+}
+.cky-consent-container .cky-notice-des,
+.cky-consent-container .cky-notice-des p {
+  color: #aeb6c5 !important;
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+.cky-consent-container .cky-notice-btn-wrapper {
+  margin-top: 12px !important;
+  gap: 8px !important;
+}
+.cky-consent-container .cky-btn {
+  min-height: 40px !important;
+  margin: 0 !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+}
+@media (max-width: 480px) {
+  .cky-consent-container .cky-consent-bar { padding: 14px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper { flex-wrap: wrap !important; }
+  .cky-consent-container .cky-btn { flex: 1 1 calc(50% - 4px) !important; }
+}
+
 /* Comparison gradient border glow */
 @keyframes borderGlow {
   0%, 100% { opacity: 0.6; }

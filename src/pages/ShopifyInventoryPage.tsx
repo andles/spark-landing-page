@@ -63,7 +63,7 @@ export function ShopifyInventoryPage() {
                 Spark forecasts demand by SKU, recommends what to reorder and when, and drafts the PO your team approves—across Shopify, Amazon, wholesale, and every place you hold stock.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start 14-Day Free Trial</a>
+                <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
                 <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a 30-Minute Demo</BookACallButton>
               </div>
               <p className="mt-3 text-xs text-white/40">Connect Shopify, ask Sparki, or onboard through your AI assistant over MCP.</p>
@@ -151,7 +151,7 @@ export function ShopifyInventoryPage() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">See what your Shopify inventory needs next</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#b8bfcc]">Bring the data you already have. Spark will turn it into the decisions your team needs to review.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start 14-Day Free Trial</a>
+              <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
               <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white hover:bg-white/[0.08]">Book a Demo</BookACallButton>
             </div>
           </ScrollReveal>

@@ -116,7 +116,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "Do we have to commit before seeing Spark with our data?",
       answer:
-        "No. You can start with a free trial or book a working session using your own data, then decide whether the workflow is a fit before committing to a broader migration.",
+        "No. Start free or book a working session using your own data, then decide whether the workflow is a fit before committing to a broader migration.",
     },
   ],
   shopify: [
@@ -143,7 +143,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "How much does Spark cost?",
       answer:
-        "Plans start at $199 per month and include a 14-day free trial. Higher tiers add more warehouses, users, manufacturing workflows, and AI automation volume.",
+        "Plans start at $199 per month. You can start free for 14 days; higher tiers add more warehouses, users, manufacturing workflows, and AI automation volume.",
     },
   ],
 };

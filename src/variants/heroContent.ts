@@ -16,7 +16,7 @@ export interface HeroContent {
   headline: [string, string];
   /** Subheadline paragraph */
   subheadline: string;
-  /** When true, show the demo booking form inline in the hero and hide free trial CTA */
+  /** When true, show the demo booking form inline in the hero and hide the self-serve signup CTA */
   heroDemoForm?: boolean;
 }
 

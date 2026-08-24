@@ -4,16 +4,17 @@ import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStats3PL from "./AgencyStats3PL";
 import ThreePLPriceRunSection from "./ThreePLPriceRunSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
-import AgencyWhySpark from "./AgencyWhySpark";
-import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
-import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
 import CampaignFAQSection from "./CampaignFAQSection";
 import CampaignCTASection from "./CampaignCTASection";
+import CampaignDecisionSection from "./CampaignDecisionSection";
 import AgencyFooter from "./AgencyFooter";
+import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
 export default function ThreePLPage() {
+  useScrollToHashOnMount();
+
   return (
     <div className="min-h-screen bg-[#06080d]">
       <AgencyHeader />
@@ -22,11 +23,9 @@ export default function ThreePLPage() {
         <AgencyTrustBar />
         <AgencyStats3PL />
         <ThreePLPriceRunSection />
+        <CampaignDecisionSection kind="3pl" />
         <AgencyCoreCapabilities />
-        <AgencyWhySpark />
-        <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
-        <AgencyComparisonSection />
         <AgencyPricingSection />
         <CampaignFAQSection kind="3pl" />
         <CampaignCTASection kind="3pl" />

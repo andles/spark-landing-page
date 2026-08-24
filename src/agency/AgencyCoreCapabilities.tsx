@@ -434,7 +434,7 @@ export default function AgencyCoreCapabilities() {
             <span className="text-white">Intelligent Inventory for</span>
             <br />
             <span className="hidden lg:inline-flex relative overflow-hidden h-[1.3em] align-bottom">
-              <span className="invisible font-bold">Business Intelligence</span>
+              <span className="invisible font-bold" aria-hidden="true">Business Intelligence</span>
               {features.map((f, i) => (
                 <span key={f.subtitle} className={`absolute inset-0 bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent dynamic-subtitle ${activeIndex === i ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} aria-hidden={activeIndex !== i}>{f.subtitle}</span>
               ))}
@@ -502,7 +502,7 @@ export default function AgencyCoreCapabilities() {
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${feature.iconGradient} flex items-center justify-center`}>{feature.icon}</div>
                   <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#f0f2f5]" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>{feature.title}</h3>
+                <p className="text-2xl font-bold text-[#f0f2f5]" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>{feature.title}</p>
                 <p className="mt-4 text-[#b8bfcc] leading-relaxed">{feature.description}</p>
                 <ul className="mt-5 space-y-2.5">
                   {feature.bullets.map((bullet) => (

@@ -7,16 +7,17 @@ import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsStockouts from "./AgencyStatsStockouts";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
-import AgencyWhySpark from "./AgencyWhySpark";
-import AgencyDeveloperSection from "./AgencyDeveloperSection";
 import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
-import AgencyComparisonSection from "./AgencyComparisonSection";
 import AgencyPricingSection from "./AgencyPricingSection";
 import CampaignFAQSection from "./CampaignFAQSection";
 import CampaignCTASection from "./CampaignCTASection";
+import CampaignDecisionSection from "./CampaignDecisionSection";
 import AgencyFooter from "./AgencyFooter";
+import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
 export default function StockoutsPage() {
+  useScrollToHashOnMount();
+
   return (
     <div className="min-h-screen bg-[#06080d]">
       <AgencyHeader />
@@ -25,11 +26,9 @@ export default function StockoutsPage() {
         <AgencyTrustBar />
         <AgencyStatsStockouts />
         <CampaignWorkflowSection kind="stockouts" />
+        <CampaignDecisionSection kind="stockouts" />
         <AgencyCoreCapabilities />
-        <AgencyWhySpark />
-        <AgencyDeveloperSection />
         <AgencyIntegrationsSection />
-        <AgencyComparisonSection />
         <AgencyPricingSection />
         <CampaignFAQSection kind="stockouts" />
         <CampaignCTASection kind="stockouts" />

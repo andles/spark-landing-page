@@ -54,7 +54,7 @@ export default function CrossPlatformMockup({ isActive }: Props) {
           <div className="flex items-center gap-1.5">
             <span className="flex items-center gap-1 text-[9px] text-emerald-400"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />3 online</span>
             <span className="text-white/15 text-[9px]">·</span>
-            <span className="flex items-center gap-1 text-[9px] text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-400/60" />1 offline</span>
+            <span className="flex items-center gap-1 text-[9px] text-cyan-300"><span className="w-1.5 h-1.5 rounded-full bg-cyan-300/60" />1 mobile</span>
           </div>
         </div>
         <div className="p-3 space-y-2 flex-1">

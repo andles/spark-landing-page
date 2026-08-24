@@ -243,7 +243,7 @@ function BookDemoNextGen() {
                     href="https://app.sparkinventory.com/sign-up"
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(217,70,239,0.3)]"
                   >
-                    Start Free Trial
+                    Start Free
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>

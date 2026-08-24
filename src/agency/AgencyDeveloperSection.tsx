@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useInView } from "../hooks/useInView";
-import ApiMockup from "./developer/ApiMockup";
+import AgenticImportMockup from "./developer/AgenticImportMockup";
 import McpMockup from "./developer/McpMockup";
 import CrossPlatformMockup from "./developer/CrossPlatformMockup";
 
 const tabs = [
   {
-    id: "api",
-    label: "Open API",
+    id: "onboarding",
+    label: "Agentic Import",
     icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>,
-    headline: "Connect anything with a full REST API.",
+    headline: "Start with the data you already trust.",
     bullets: [
-      "Pull inventory data, push orders, or sync stock levels from any system you already use.",
-      "Webhooks fire in real time so external tools always stay up to date without polling.",
+      "Connect a store, upload spreadsheets for Sparki, or let Claude or ChatGPT bring data through MCP.",
+      "Spark maps the records, checks readiness, and presents the proposed import before anything lands.",
     ],
     glowColor: "bg-cyan-500/10",
   },
@@ -20,10 +20,10 @@ const tabs = [
     id: "mcp",
     label: "MCP Protocol",
     icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>,
-    headline: "Let AI agents work with your inventory directly.",
+    headline: "Let your AI assistant work through governed tools.",
     bullets: [
-      "AI agents can query, update, and reason about your inventory through MCP with zero custom glue code.",
-      "Point any LLM at Spark and it understands your catalog, stock levels, and order history out of the box.",
+      "Connected assistants can inspect onboarding state, data readiness, inventory, demand, suppliers, price books, and run plans.",
+      "Writes use preview, approval, scoped credentials, and an audit trail so the agent never gets a blank check.",
     ],
     glowColor: "bg-violet-500/10",
   },
@@ -31,16 +31,16 @@ const tabs = [
     id: "cross",
     label: "Cross-Platform",
     icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
-    headline: "Desktop, tablet, or phone. Same experience everywhere.",
+    headline: "The operation stays connected across screens.",
     bullets: [
-      "Scan barcodes on your phone, review POs on your tablet, run reports on desktop. Full feature parity everywhere.",
-      "Offline mode keeps your warehouse team moving. Changes sync automatically when connectivity returns.",
+      "Scan and handle warehouse work on mobile, review purchasing on a tablet, and analyze the operation on desktop.",
+      "Every surface works from the same inventory, order, and approval context when connected.",
     ],
     glowColor: "bg-fuchsia-500/10",
   },
 ];
 
-const mockups = [ApiMockup, McpMockup, CrossPlatformMockup];
+const mockups = [AgenticImportMockup, McpMockup, CrossPlatformMockup];
 
 export default function AgencyDeveloperSection() {
   const [active, setActive] = useState(0);
@@ -57,7 +57,7 @@ export default function AgencyDeveloperSection() {
 
   return (
     <section
-      id="features"
+      id="agent-ready-operations"
       ref={sectionRef as React.RefObject<HTMLElement>}
       className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative"
       onMouseEnter={() => setIsPaused(true)}
@@ -74,13 +74,11 @@ export default function AgencyDeveloperSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            Platform Architecture
+            Agent-ready operations
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-            <span className="text-white">Built for </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Developers</span>
-            <span className="text-white"> &amp; </span>
-            <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">AI Agents</span>
+            <span className="text-white">Built for people and the </span>
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">agents they trust</span>
           </h2>
         </div>
 
@@ -101,7 +99,7 @@ export default function AgencyDeveloperSection() {
               {/* Fixed-height panel prevents layout shift when tabs switch */}
               <div className="relative" style={{ minHeight: "280px" }}>
                 {tabs.map((t, i) => (
-                  <div key={t.id} className={`absolute inset-0 ${active === i ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-opacity duration-500`}>
+                  <div key={t.id} aria-hidden={active !== i} className={`absolute inset-0 ${active === i ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-opacity duration-500`}>
                     <h3 className={`text-xl sm:text-2xl lg:text-[1.7rem] font-bold text-white leading-snug mb-5 ${active === i ? "dev-content-enter" : ""}`} style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>{t.headline}</h3>
                     <ul className="space-y-3.5">
                       {t.bullets.map((b, bi) => (

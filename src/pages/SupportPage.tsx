@@ -26,18 +26,19 @@ export function SupportPage() {
 
         <LegalP>When emailing, please include:</LegalP>
         <LegalUl items={[
-          "The device you're using (e.g. iPhone 15, Pixel 8)",
-          "The app version (Settings → About in the app)",
+          "Where you're working (web, iOS, or Android) and your browser or device",
+          "The app version, when reporting a mobile issue (Settings → About)",
           "A description of what you were trying to do",
           "A screenshot or screen recording, if possible",
         ]} />
       </LegalSection>
 
       <LegalSection title="Common Topics">
-        <LegalSubSection title="Getting Started">
+        <LegalSubSection title="Getting Started and Imports">
           <LegalUl items={[
-            "Sign in with the credentials provided by your workspace administrator.",
-            "Select your workspace on first launch.",
+            "Choose how to start: connect a sales channel, upload spreadsheets for Sparki, or connect your AI assistant through MCP.",
+            "Review the onboarding readiness checks for inventory, sales history, suppliers, lead times, and purchase orders.",
+            "Approve proposed imports and verify the resulting counts before moving into live planning.",
           ]} />
         </LegalSubSection>
 
@@ -48,7 +49,7 @@ export function SupportPage() {
           ]} />
         </LegalSubSection>
 
-        <LegalSubSection title="Sync and Offline Use">
+        <LegalSubSection title="Connectivity and Sync">
           <LegalP>
             Spark Inventory requires an internet connection to load and sync data. If you encounter sync issues, pull down to refresh on most screens.
           </LegalP>
