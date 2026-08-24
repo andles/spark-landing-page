@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 07/22/2026"
+      subtitle="Effective date: 08/24/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -49,7 +49,7 @@ export function PrivacyPolicyPage() {
         <LegalSubSection title="1.5 Information we do not collect">
           <LegalUl items={[
             "We do not collect your contacts, photos, microphone audio, precise location, or biometric data.",
-            "We do not use third-party advertising networks or sell personal information.",
+            "We do not sell personal information. Our public website uses analytics and marketing technologies as described in Section 14. Shopify protected customer data and authenticated customer workspace data are not provided to these marketing vendors or used for advertising.",
           ]} />
         </LegalSubSection>
       </LegalSection>
@@ -60,7 +60,7 @@ export function PrivacyPolicyPage() {
           "Provide, maintain, and improve the Service;",
           "Authenticate you and secure your account;",
           "Synchronize your workspace data across devices;",
-          "Provide AI-assisted chat features (see Section 4);",
+          "Provide AI-assisted chat features (see Section 5);",
           "Diagnose and fix bugs, crashes, and performance issues;",
           "Communicate with you about service updates, security alerts, and support requests;",
           "Comply with legal obligations and enforce our terms.",
@@ -78,13 +78,52 @@ export function PrivacyPolicyPage() {
         <LegalP>We do <strong className="text-[#f0f2f5]/80">not</strong> sell your personal information.</LegalP>
       </LegalSection>
 
-      <LegalSection title="4. AI Features">
+      <LegalSection title="4. Shopify Integration">
+        <LegalP>
+          When a merchant installs or connects Spark Inventory through Shopify, we receive the merchant's shop domain and shop profile information, including shop name, account email, owner name, country, time zone, and currency. Depending on the features the merchant enables, we also receive product and variant information, SKUs, barcodes, prices, images, metafields, costs, locations, inventory quantities, customer names and contact information, order details, shipping addresses, fulfillment information, and refund or cancellation information.
+        </LegalP>
+        <LegalP>
+          We use Shopify data only to provision and secure the merchant's Spark account; import and synchronize products, inventory, customers, and orders; manage inventory and fulfillment workflows; provide support; and comply with legal and privacy obligations. We do not sell Shopify protected customer data, share it with advertising providers, or use it for unrelated marketing.
+        </LegalP>
+        <LegalP>
+          For Shopify merchant and customer data processed on a merchant's behalf, Spark Inventory acts as a service provider or data processor. Spark Inventory may act as a data controller for information used to administer Spark accounts, provide support, secure the service, meet legal obligations, and maintain compliance records.
+        </LegalP>
+
+        <LegalSubSection title="Retention and deletion">
+          <LegalP>
+            Processed Shopify webhook payload content is normally removed within 7 days, and completed webhook records are removed within 30 days. Failed or pending webhook records may be retained for up to 90 days so they can be retried and investigated.
+          </LegalP>
+          <LegalP>
+            When Shopify sends a customer deletion request, we delete the customer's Shopify linkage, remove linked contact and address records, erase stored export snapshots, and anonymize identity fields in business records that must be retained. When Shopify sends a shop deletion request following uninstall, we delete stored Shopify credentials, raw Shopify payloads, location mappings, and Shopify linkage records.
+          </LegalP>
+          <LegalP>
+            If a merchant independently activates and uses Spark Inventory outside Shopify, we may retain non-personal operational or accounting records as necessary to provide the merchant's Spark service, meet legal obligations, or preserve legitimate business records. Personal identity, contact, and address information associated with deleted Shopify data is removed or anonymized. Accounts created through the Shopify App Store that were never activated or used are anonymized.
+          </LegalP>
+          <LegalP>
+            We retain pseudonymous deletion receipts for up to seven years for compliance auditing. These receipts contain identifiers such as a hashed shop reference and timestamps, but not the shop domain or raw Shopify payload.
+          </LegalP>
+        </LegalSubSection>
+
+        <LegalSubSection title="Security">
+          <LegalP>
+            Shopify data is encrypted in transit and at rest, including application-level protection of Shopify access and refresh tokens. Access is restricted to authorized personnel and subject to logging and access controls.
+          </LegalP>
+        </LegalSubSection>
+
+        <LegalSubSection title="Disconnection and contact">
+          <LegalP>
+            Merchants can disconnect Shopify from Spark Inventory or request deletion by contacting <LegalEmail email="support@sparkinventory.com" />. Customers whose information originated from a Shopify merchant can also exercise their privacy rights by contacting that merchant.
+          </LegalP>
+        </LegalSubSection>
+      </LegalSection>
+
+      <LegalSection title="5. AI Features">
         <LegalP>
           The App includes an AI chat assistant. When you interact with it, your messages and relevant workspace context are sent to our AI processing provider to generate a response. We do not use your data to train third-party foundation models. You can avoid using AI features by not opening the chat tab.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="5. Google account integration (Gmail)">
+      <LegalSection title="6. Google Account Integration (Gmail)">
         <LegalP>
           Spark Inventory offers an optional integration with your Gmail account so you can send replies to suppliers and customers directly from the address they know you by. This section describes how we handle data accessed via Google's APIs.
         </LegalP>
@@ -119,7 +158,7 @@ export function PrivacyPolicyPage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="6. SMS / Text Message Communications">
+      <LegalSection title="7. SMS / Text Message Communications">
         <LegalP>
           This section describes how we collect, use, and protect the information you provide when you opt in to receive SMS text messages from Spark Inventory.
         </LegalP>
@@ -173,19 +212,22 @@ export function PrivacyPolicyPage() {
         </LegalSubSection>
       </LegalSection>
 
-      <LegalSection title="7. Data Retention">
+      <LegalSection title="8. Data Retention">
         <LegalP>
           We retain your account and workspace data for as long as your account is active. If you or your organization delete your account, we delete associated data within 30 days, except where we are required to retain it for legal, tax, or audit purposes.
         </LegalP>
+        <LegalP>
+          Shopify-sourced information is retained and deleted according to the Shopify Integration section above. Certain non-personal business records and pseudonymous compliance receipts may be retained for the periods described there.
+        </LegalP>
       </LegalSection>
 
-      <LegalSection title="8. Data Security">
+      <LegalSection title="9. Data Security">
         <LegalP>
           We use industry-standard measures to protect your information, including encryption in transit (TLS) and at rest, role-based access controls, and audit logging. No system is perfectly secure; if we become aware of a breach affecting your data, we will notify you in accordance with applicable law.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="9. Your Rights">
+      <LegalSection title="10. Your Rights">
         <LegalP>Depending on where you live, you may have rights to:</LegalP>
         <LegalUl items={[
           "Access the personal data we hold about you;",
@@ -200,38 +242,38 @@ export function PrivacyPolicyPage() {
           To exercise any of these rights, contact us at <LegalEmail email="support@sparkinventory.com" />. We will respond within the time required by applicable law.
         </LegalP>
 
-        <LegalSubSection title="9.1 California residents (CCPA/CPRA)">
+        <LegalSubSection title="10.1 California residents (CCPA/CPRA)">
           <LegalP>
             California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect and the right not to be discriminated against for exercising these rights. We do not sell or share personal information for cross-context behavioral advertising.
           </LegalP>
         </LegalSubSection>
 
-        <LegalSubSection title="9.2 European Economic Area, UK, and Switzerland (GDPR)">
+        <LegalSubSection title="10.2 European Economic Area, UK, and Switzerland (GDPR)">
           <LegalP>
             If you are in the EEA, UK, or Switzerland, our legal bases for processing are: performance of a contract (providing the Service), legitimate interests (improving and securing the Service), and consent (where applicable). Data may be transferred to and processed in countries outside your jurisdiction; where required, we use Standard Contractual Clauses or equivalent safeguards.
           </LegalP>
         </LegalSubSection>
       </LegalSection>
 
-      <LegalSection title="10. Children">
+      <LegalSection title="11. Children">
         <LegalP>
           The Service is not directed to children under 13 (or 16 in the EEA). We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, contact <LegalEmail email="support@sparkinventory.com" /> and we will delete it.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="11. International Users">
+      <LegalSection title="12. International Users">
         <LegalP>
           The Service is operated from the State of New York. If you access the Service from outside the United States, your information may be transferred to, stored, and processed in the United States or other countries.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="12. Changes to This Policy">
+      <LegalSection title="13. Changes to This Policy">
         <LegalP>
           We may update this Privacy Policy from time to time. We will post the new policy here and update the "Effective date" at the top. Material changes will be communicated via email or in-app notice.
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="13. Third-Party Data Collection and Marketing">
+      <LegalSection title="14. Third-Party Data Collection and Marketing">
         <LegalP>
           When you visit or log in to our website, cookies and similar technologies may be used by our online data partners or vendors to associate these activities with other personal information they or others have about you, including by association with your email. We (or service providers on our behalf) may then send communications and marketing to these email addresses. You may opt out of receiving this advertising by visiting{" "}
           <a
@@ -253,9 +295,12 @@ export function PrivacyPolicyPage() {
           </a>
           .
         </LegalP>
+        <LegalP>
+          These website marketing technologies are not applied to Shopify protected customer data or data stored inside authenticated Spark Inventory workspaces.
+        </LegalP>
       </LegalSection>
 
-      <LegalSection title="14. Contact Us">
+      <LegalSection title="15. Contact Us">
         <LegalP>If you have questions about this Privacy Policy or our data practices, contact us at:</LegalP>
         <LegalAddress />
       </LegalSection>
