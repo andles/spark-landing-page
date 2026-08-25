@@ -459,6 +459,29 @@ html {
   border-radius: 999px !important;
   font-size: 12px !important;
 }
+/* The CookieYes dashboard theme is light (navy text/borders on white) and is
+   applied as inline styles; on our dark card the outlined Customise button
+   vanished. Ghost buttons for Customise/Reject, solid primary for Accept. */
+.cky-consent-container .cky-btn-customize,
+.cky-consent-container .cky-btn-reject {
+  color: #f0f2f5 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  background: transparent !important;
+}
+.cky-consent-container .cky-btn-customize:hover,
+.cky-consent-container .cky-btn-reject:hover {
+  border-color: rgba(255, 255, 255, 0.32) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+.cky-consent-container .cky-btn-accept {
+  color: #06080d !important;
+  border-color: #f0f2f5 !important;
+  background: #f0f2f5 !important;
+}
+.cky-consent-container .cky-btn-accept:hover {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
 @media (max-width: 480px) {
   .cky-consent-container .cky-consent-bar { padding: 14px !important; }
   .cky-consent-container .cky-notice-btn-wrapper { flex-wrap: wrap !important; }
