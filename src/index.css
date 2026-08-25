@@ -442,8 +442,15 @@ html {
   font-size: 12px !important;
   line-height: 1.55 !important;
 }
+/* CookieYes ships its "banner" (full-width bar) layout: notice-group is a
+   flex row with text left / buttons right. Inside our 430px box that starves
+   the text down to ~50px on desktop, so stack the group instead. */
+.cky-consent-container .cky-notice-group {
+  display: block !important;
+}
 .cky-consent-container .cky-notice-btn-wrapper {
   margin-top: 12px !important;
+  margin-left: 0 !important;
   gap: 8px !important;
 }
 .cky-consent-container .cky-btn {
