@@ -19,6 +19,26 @@ export interface CompetitorConfig {
   sourceLabel: string;
   sourceUrl: string;
   snapshot: Array<{ label: string; value: string; note: string }>;
+  packagingComparison?: {
+    question: string;
+    incumbent: {
+      vendor: string;
+      packageName: string;
+      packageNote: string;
+      price: string;
+      priceNote: string;
+      addOn: { label: string; name: string; note: string; status: string };
+    };
+    spark: {
+      vendor: string;
+      packageName: string;
+      packageNote: string;
+      price: string;
+      priceNote: string;
+      included: string[];
+    };
+    takeaway: string;
+  };
   migrationSignals: string[];
   themes: Array<{
     number: string;
@@ -68,6 +88,31 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { label: 'Planning', value: 'ForesightAI add-on', note: 'Listed as an add-on across plans' },
       { label: 'Spark', value: 'From $199/mo', note: 'Planning and governed MCP included' },
     ],
+    packagingComparison: {
+      question: 'Is demand planning included in the inventory subscription, or added as a separate product?',
+      incumbent: {
+        vendor: 'Cin7',
+        packageName: 'Core subscription',
+        packageNote: 'Three public Core tiers',
+        price: '$349–$1,199/mo',
+        priceNote: 'Base inventory platform pricing',
+        addOn: {
+          label: 'Cin7 forecasting add-on',
+          name: 'ForesightAI',
+          note: 'Listed as an add-on across Core plans',
+          status: 'Separate add-on',
+        },
+      },
+      spark: {
+        vendor: 'Spark Inventory',
+        packageName: 'One planning stack',
+        packageNote: 'Inventory operations and planning together',
+        price: 'From $199/mo',
+        priceNote: 'Starter plan pricing',
+        included: ['Demand forecasting', 'Replenishment planning', 'Sparki onboarding', 'Governed MCP access'],
+      },
+      takeaway: 'Cin7 separates the forecasting layer. Spark includes planning in the core subscription.',
+    },
     migrationSignals: ['Products + variants', 'Customers + suppliers', 'Sales + purchasing history'],
     themes: [
       {

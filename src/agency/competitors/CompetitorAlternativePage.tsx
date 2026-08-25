@@ -67,6 +67,81 @@ const leanClasses: Record<ComparisonLean, string> = {
   tradeoff: 'border-violet-300/20 bg-violet-300/[0.07] text-violet-200',
 };
 
+function PackagingComparison({ competitorKey }: { competitorKey: CompetitorKey }) {
+  const comparison = competitorConfigs[competitorKey].packagingComparison;
+
+  if (!comparison) return null;
+
+  return (
+    <div className="p-5 sm:p-6">
+      <p className="mx-auto max-w-[520px] text-center text-xs leading-5 text-[#9aa4b4]">
+        {comparison.question}
+      </p>
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-[minmax(0,1fr)_32px_minmax(0,1fr)] sm:items-stretch">
+        <section aria-label="Cin7 packaging" className="rounded-[20px] border border-white/[0.08] bg-white/[0.025] p-4">
+          <p className="text-[11px] font-medium text-white/45">{comparison.incumbent.vendor}</p>
+          <h3 className="mt-1 text-base font-semibold tracking-tight text-white">{comparison.incumbent.packageName}</h3>
+          <p className="mt-1 text-[11px] leading-4 text-white/35">{comparison.incumbent.packageNote}</p>
+          <p className="mt-5 font-mono text-xl font-semibold tracking-tight text-white">{comparison.incumbent.price}</p>
+          <p className="mt-1 text-[10px] leading-4 text-[#7f8999]">{comparison.incumbent.priceNote}</p>
+
+          <div className="my-4 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-amber-300/80" aria-hidden="true">
+            <span className="h-px flex-1 bg-amber-300/15" />
+            Plus
+            <span className="h-px flex-1 bg-amber-300/15" />
+          </div>
+
+          <div className="rounded-2xl border border-amber-300/15 bg-amber-300/[0.045] p-3.5">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <p className="text-[10px] font-medium text-amber-200">{comparison.incumbent.addOn.label}</p>
+                <p className="mt-1 text-sm font-semibold text-white">{comparison.incumbent.addOn.name}</p>
+              </div>
+              <span className="font-mono text-[8px] uppercase tracking-[0.1em] text-amber-300">{comparison.incumbent.addOn.status}</span>
+            </div>
+            <p className="mt-2 text-[10px] leading-4 text-[#8b95a8]">{comparison.incumbent.addOn.note}</p>
+          </div>
+        </section>
+
+        <div className="flex items-center justify-center font-mono text-[9px] tracking-[0.16em] text-white/25" aria-hidden="true">
+          <span className="sm:hidden">VERSUS</span>
+          <span className="hidden sm:inline">VS</span>
+        </div>
+
+        <section aria-label="Spark Inventory packaging" className="relative overflow-hidden rounded-[20px] border border-cyan-300/25 bg-[linear-gradient(145deg,rgba(34,211,238,0.10),rgba(139,92,246,0.06))] p-4 shadow-[0_18px_50px_rgba(6,182,212,0.08)]">
+          <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
+          <div className="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p className="text-[11px] font-medium text-white/45">{comparison.spark.vendor}</p>
+              <h3 className="mt-1 text-base font-semibold tracking-tight text-white">{comparison.spark.packageName}</h3>
+            </div>
+            <span className="font-mono text-[8px] uppercase tracking-[0.1em] text-emerald-300">Included</span>
+          </div>
+          <p className="mt-1 text-[11px] leading-4 text-white/35">{comparison.spark.packageNote}</p>
+          <p className="mt-5 font-mono text-xl font-semibold tracking-tight text-cyan-200">{comparison.spark.price}</p>
+          <p className="mt-1 text-[10px] leading-4 text-[#7f8999]">{comparison.spark.priceNote}</p>
+
+          <ul className="mt-4 space-y-2.5 border-t border-white/[0.08] pt-4">
+            {comparison.spark.included.map((item) => (
+              <li key={item} className="flex items-center gap-2 text-[11px] leading-4 text-[#cbd2dc]">
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-300/[0.09] text-emerald-300" aria-hidden="true">
+                  <Check className="h-2.5 w-2.5" strokeWidth={2.5} />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <p className="mt-4 rounded-xl bg-white/[0.025] px-4 py-3 text-center text-[11px] leading-5 text-[#aeb6c3]">
+        <strong className="font-semibold text-white">Clear takeaway:</strong> {comparison.takeaway}
+      </p>
+    </div>
+  );
+}
+
 function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
@@ -116,20 +191,24 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
               <span className={`rounded-full border px-2.5 py-1 font-mono text-[9px] ${colors.border} ${colors.soft} ${colors.subtleText}`}>FACT-CHECKED</span>
             </div>
 
-            <div className="grid gap-3 p-5 sm:p-6">
-              {config.snapshot.map((item, index) => (
-                <div key={item.label} className={`relative overflow-hidden rounded-2xl border p-4 ${index === 2 ? `${colors.border} ${colors.soft}` : 'border-white/[0.07] bg-white/[0.025]'}`}>
-                  <div className="flex items-start justify-between gap-5">
-                    <div>
-                      <p className="text-xs font-medium text-white/45">{item.label}</p>
-                      <p className={`mt-1 text-xl font-semibold tracking-tight ${index === 2 ? colors.subtleText : 'text-white'}`}>{item.value}</p>
+            {config.packagingComparison ? (
+              <PackagingComparison competitorKey={competitorKey} />
+            ) : (
+              <div className="grid gap-3 p-5 sm:p-6">
+                {config.snapshot.map((item, index) => (
+                  <div key={item.label} className={`relative overflow-hidden rounded-2xl border p-4 ${index === 2 ? `${colors.border} ${colors.soft}` : 'border-white/[0.07] bg-white/[0.025]'}`}>
+                    <div className="flex items-start justify-between gap-5">
+                      <div>
+                        <p className="text-xs font-medium text-white/45">{item.label}</p>
+                        <p className={`mt-1 text-xl font-semibold tracking-tight ${index === 2 ? colors.subtleText : 'text-white'}`}>{item.value}</p>
+                      </div>
+                      <span className="mt-1 font-mono text-[9px] text-white/25">0{index + 1}</span>
                     </div>
-                    <span className="mt-1 font-mono text-[9px] text-white/25">0{index + 1}</span>
+                    <p className="mt-2 text-xs leading-5 text-[#8b95a8]">{item.note}</p>
                   </div>
-                  <p className="mt-2 text-xs leading-5 text-[#8b95a8]">{item.note}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <a href={config.sourceUrl} target="_blank" rel="noreferrer" className="group flex items-center justify-between border-t border-white/[0.07] px-5 py-4 text-xs text-[#8b95a8] transition hover:bg-white/[0.025] hover:text-white sm:px-6">
               <span>{config.sourceLabel}</span>
