@@ -482,6 +482,16 @@ html {
   background: #ffffff !important;
   border-color: #ffffff !important;
 }
+/* "Powered by CookieYes" badge (free-plan branding, must stay). It has no
+   class and inline near-black text; the logo SVG inherits via currentColor.
+   Mute it so it reads as a footer credit instead of vanishing on the card. */
+.cky-consent-container div:has(> a[href*="cookieyes.com"]) {
+  color: #6b7486 !important;
+  margin-top: 10px !important;
+}
+.cky-consent-container div:has(> a[href*="cookieyes.com"]) a {
+  color: inherit !important;
+}
 @media (max-width: 480px) {
   .cky-consent-container .cky-consent-bar { padding: 14px !important; }
   .cky-consent-container .cky-notice-btn-wrapper { flex-wrap: wrap !important; }
