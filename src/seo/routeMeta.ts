@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { buildFaqSchema } from '../agency/campaignFaqs';
+import { buildCharityFaqSchema } from '../agency/charity/charityFaqs';
 import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
 // Per-route SEO metadata - single source of truth.
@@ -116,6 +117,14 @@ export const routeMeta: RouteMeta[] = [
       'Run buy-online-pickup-in-store on inventory that is actually accurate. Real-time stock sync, pickup order tracking, and AI demand forecasting in one platform.',
     lastModified: '2026-08-24',
     schema: [buildFaqSchema('pickup')],
+  },
+  {
+    path: '/charity-retail',
+    title: 'AI Inventory Management for Charity Retail | Spark',
+    description:
+      'Spark prices donated goods with computer vision and live resale comps, routes every item to its best channel, and turns dead stock into funding for the mission.',
+    lastModified: '2026-08-26',
+    schema: [buildCharityFaqSchema()],
   },
   {
     path: '/reduce-stockouts-overstock',

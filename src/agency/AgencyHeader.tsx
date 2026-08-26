@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 
 const productLinks = [
@@ -18,6 +19,7 @@ const solutionLinks = [
   { href: "/3pl", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
   { href: "/reduce-stockouts-overstock", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
   { href: "/in-store-pickup", label: "In-store pickup", description: "Location-aware promise and handoff" },
+  { href: "/charity-retail", label: "Charity retail", description: "Price, route, and sell every donated item" },
   { href: "/fishbowl-alternative", label: "Fishbowl alternative", description: "A guided path out of Fishbowl" },
   { href: "/cin7-alternative", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
   { href: "/zoho-inventory-alternative", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
@@ -45,8 +47,11 @@ function DesktopMenu({ label, links }: { label: string; links: typeof productLin
   );
 }
 
-export default function AgencyHeader() {
-  const { signupUrl } = useCtaLinks();
+// cta="demo" swaps the header's Start Free button for a Book a Demo CTA on
+// pages that sell through a pilot conversation instead of self-serve signup
+// (e.g. /charity-retail). Every other page keeps the default signup CTA.
+export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "demo" }) {
+  const { signupUrl, bookUrl } = useCtaLinks();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -82,12 +87,21 @@ export default function AgencyHeader() {
           <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
             Sign In
           </a>
-          <a
-            href={signupUrl}
-            className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
-          >
-            Start Free
-          </a>
+          {cta === "demo" ? (
+            <BookACallButton
+              url={bookUrl}
+              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
+            >
+              Book a Demo
+            </BookACallButton>
+          ) : (
+            <a
+              href={signupUrl}
+              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
+            >
+              Start Free
+            </a>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -126,7 +140,11 @@ export default function AgencyHeader() {
           </div>
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
-            <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free</a>
+            {cta === "demo" ? (
+              <BookACallButton url={bookUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Book a Demo</BookACallButton>
+            ) : (
+              <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free</a>
+            )}
           </div>
         </div>
       )}

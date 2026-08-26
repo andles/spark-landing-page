@@ -12,6 +12,7 @@ const R = routeImports;
 const LegacyHome = lazy(R.LegacyHome);
 const ThreePLPage = lazy(R.ThreePLPage);
 const PickupPage = lazy(R.PickupPage);
+const CharityRetailPage = lazy(R.CharityRetailPage);
 const BookRedirect = lazy(R.BookRedirect);
 const StockoutsPage = lazy(R.StockoutsPage);
 const FishbowlPage = lazy(R.FishbowlPage);
@@ -65,6 +66,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/3pl" element={<ThreePLPage />} />
             <Route path="/in-store-pickup" element={<PickupPage />} />
+            <Route path="/charity-retail" element={<CharityRetailPage />} />
             <Route path="/book-a-call" element={<BookRedirect />} />
             <Route path="/meeting-confirmed" element={<MeetingConfirmedPage />} />
             {/* Unlisted prospect reports. Reached by direct URL only: no nav

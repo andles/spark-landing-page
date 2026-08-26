@@ -14,6 +14,7 @@ const groups = [
       ['/3pl', 'Inventory Intelligence for 3PLs'],
       ['/reduce-stockouts-overstock', 'Reduce Stockouts & Overstock'],
       ['/in-store-pickup', 'In-Store Pickup'],
+      ['/charity-retail', 'Charity Retail'],
       ['/fishbowl-alternative', 'Fishbowl Alternative'],
       ['/cin7-alternative', 'Cin7 Alternative'],
       ['/zoho-inventory-alternative', 'Zoho Inventory Alternative'],
@@ -78,7 +79,7 @@ export function SitemapPage() {
               </div>
               <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Spark Inventory sitemap</h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Every public product, solution, company, support, and legal page—organized so people and search engines can find the right answer quickly.
+                Every public product, solution, company, support, and legal page, organized so people and search engines can find the right answer quickly.
               </p>
             </ScrollReveal>
           </div>

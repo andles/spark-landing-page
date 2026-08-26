@@ -49,6 +49,7 @@ export default function AgencyFooter() {
                   <li><a href="/inflow-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">inFlow Alternative</a></li>
                   <li><a href="/3pl" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
                   <li><a href="/in-store-pickup" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
+                  <li><a href="/charity-retail" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Charity Retail</a></li>
                 </ul>
               </div>
               <div>

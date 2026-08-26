@@ -7,6 +7,7 @@ export const routeImports = {
   LegacyHome: () => import('./LegacyHome'),
   ThreePLPage: () => import('./agency/ThreePLPage'),
   PickupPage: () => import('./agency/PickupPage'),
+  CharityRetailPage: () => import('./agency/charity/CharityRetailPage'),
   BookRedirect: () => import('./agency/BookRedirect'),
   StockoutsPage: () => import('./agency/StockoutsPage'),
   FishbowlPage: () => import('./agency/FishbowlPage'),
