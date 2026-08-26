@@ -197,7 +197,7 @@ export function PrivacyPolicyPage() {
         <LegalSubSection title="How to revoke consent">
           <LegalP>You can revoke your consent to receive SMS at any time by either:</LegalP>
           <LegalUl items={[
-            <>Replying <strong className="text-[#f0f2f5]/80">STOP</strong> to any Spark Inventory SMS — your opt-out is recorded immediately, and you will not receive further messages.</>,
+            <>Replying <strong className="text-[#f0f2f5]/80">STOP</strong> to any Spark Inventory SMS: your opt-out is recorded immediately, and you will not receive further messages.</>,
             <>Visiting <strong className="text-[#f0f2f5]/80">Profile → SMS notifications</strong> inside your Spark Inventory account and clicking "Turn off SMS".</>,
           ]} />
           <LegalP>

@@ -45,7 +45,7 @@ export function InventoryPage() {
     <FeaturePage
       title="Inventory Management"
       subtitle="Multichannel inventory software"
-      description="Track every SKU, order, and location in real time—then use AI demand forecasting to know what to reorder, when, and how much."
+      description="Track every SKU, order, and location in real time, then use AI demand forecasting to know what to reorder, when, and how much."
       icon={Package}
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"

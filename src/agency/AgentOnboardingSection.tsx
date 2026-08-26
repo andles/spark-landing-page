@@ -137,7 +137,7 @@ export default function AgentOnboardingSection() {
             </span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc] lg:text-lg">
-            Tell Sparki what you are moving—or ask your own AI assistant through Spark MCP. Both paths inspect, map, repair, validate, and verify your data instead of handing you a migration project.
+            Tell Sparki what you are moving, or ask your own AI assistant through Spark MCP. Both paths inspect, map, repair, validate, and verify your data instead of handing you a migration project.
           </p>
 
           <ul className="mt-7 space-y-3">
@@ -152,7 +152,7 @@ export default function AgentOnboardingSection() {
           </ul>
 
           <p className="mt-7 max-w-lg border-l border-cyan-400/30 pl-4 text-sm leading-6 text-[#8b95a8]">
-            Spreadsheet upload still works. It is one input—not the onboarding strategy.
+            Spreadsheet upload still works. It is one input, not the onboarding strategy.
           </p>
         </ScrollReveal>
 

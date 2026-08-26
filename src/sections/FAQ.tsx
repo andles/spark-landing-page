@@ -6,11 +6,11 @@ import { useTheme } from '../context/ThemeContext';
 const faqs = [
   {
     question: 'What is Spark Inventory?',
-    answer: 'Spark is a modern inventory platform that helps manufacturers, wholesalers, and retailers stay on top of their products, orders, stock levels, and ops — with AI giving you a nudge when you need it.',
+    answer: 'Spark is a modern inventory platform that helps manufacturers, wholesalers, and retailers stay on top of their products, orders, stock levels, and ops, with AI giving you a nudge when you need it.',
   },
   {
     question: 'Who is Spark for?',
-    answer: "Small to mid-sized businesses that are tired of spreadsheets and clunky software. If you make, move, or sell stuff — Spark gets you.",
+    answer: "Small to mid-sized businesses that are tired of spreadsheets and clunky software. If you make, move, or sell stuff, Spark gets you.",
   },
   {
     question: 'Is Spark cloud-based?',
@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     question: 'Can I ask it questions like "show me sales over $10K"?',
-    answer: "Yes. Spark's AI lets you type or say what you want, and it'll pull the data, filter results, or even trigger actions — like magic, but nerdier.",
+    answer: "Yes. Spark's AI lets you type or say what you want, and it'll pull the data, filter results, or even trigger actions. Like magic, but nerdier.",
   },
   {
     question: 'How long to get started?',
-    answer: "SaaS plans are plug-and-play — live in a few days. Custom setups usually launch in 4–6 weeks.",
+    answer: "SaaS plans are plug-and-play: live in a few days. Custom setups usually launch in 4–6 weeks.",
   },
   {
     question: 'Is it customizable?',
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: 'Is my data safe?',
-    answer: "Yes. Fully encrypted, securely stored, regularly backed up, and 100% yours — always exportable.",
+    answer: "Yes. Fully encrypted, securely stored, regularly backed up, and 100% yours, always exportable.",
   },
 ];
 
@@ -53,7 +53,7 @@ function FAQClassic() {
             Still got questions?
           </h2>
           <p className="text-lg text-gray-600">
-            No worries — we've got answers.
+            No worries. We've got answers.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ function FAQNextGen() {
             </span>
           </h2>
           <p className="text-lg text-white/50">
-            No worries — we've got answers.
+            No worries. We've got answers.
           </p>
         </div>
 

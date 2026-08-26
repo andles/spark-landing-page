@@ -53,7 +53,7 @@ export function AboutPage() {
                 <span className="block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">end in a decision.</span>
               </h1>
               <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Spark connects the records that describe an inventory operation with the reasoning and approval path behind what happens next—from onboarding through forecasting, purchasing, warehousing, and production.
+                Spark connects the records that describe an inventory operation with the reasoning and approval path behind what happens next, from onboarding through forecasting, purchasing, warehousing, and production.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold transition-transform hover:scale-[1.02]">Start Free</a>

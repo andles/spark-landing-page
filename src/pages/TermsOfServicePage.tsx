@@ -73,13 +73,13 @@ export function TermsOfServicePage() {
           Spark Inventory offers an optional SMS text message notification service to authenticated account holders. Participation in the SMS service is entirely voluntary and is not required to use Spark Inventory.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">What the SMS service is.</strong> The SMS service sends transactional operational notifications about activity in your Spark Inventory account — including inventory alerts, order updates, and other operational events that need attention. The service is operational, not promotional. We do not send marketing or recurring content over SMS.
+          <strong className="text-[#f0f2f5]/80">What the SMS service is.</strong> The SMS service sends transactional operational notifications about activity in your Spark Inventory account, including inventory alerts, order updates, and other operational events that need attention. The service is operational, not promotional. We do not send marketing or recurring content over SMS.
         </LegalP>
         <LegalP>
           <strong className="text-[#f0f2f5]/80">Eligibility.</strong> The SMS service is available only to authenticated Spark Inventory account holders located in the United States, using US mobile phone numbers. You may not enroll a phone number that is not your own without the express prior consent of the number's owner.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">Frequency and cost.</strong> Message frequency varies — typically up to a few messages per day, based on the activity in your account and which notification types you have enabled. Message and data rates may apply, as charged by your mobile carrier. Spark Inventory does not charge you for SMS.
+          <strong className="text-[#f0f2f5]/80">Frequency and cost.</strong> Message frequency varies, typically up to a few messages per day, based on the activity in your account and which notification types you have enabled. Message and data rates may apply, as charged by your mobile carrier. Spark Inventory does not charge you for SMS.
         </LegalP>
         <LegalP>
           <strong className="text-[#f0f2f5]/80">Consent.</strong> By enabling SMS notifications in your Spark Inventory account settings, you affirmatively consent to receive the transactional SMS described above from Spark Inventory at the mobile number you provide. Consent to receive SMS is not a condition of using Spark Inventory.
@@ -98,7 +98,7 @@ export function TermsOfServicePage() {
           <strong className="text-[#f0f2f5]/80">Support.</strong> Reply <strong className="text-[#f0f2f5]/80">HELP</strong> to any Spark Inventory SMS for assistance, or email <LegalEmail email="support@sparkinventory.com" />.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">Privacy.</strong> For details on how we collect, use, and protect SMS-related data — including the FCC-required disclosure that no mobile information will be sold or shared with third parties for promotional or marketing purposes — see our Privacy Policy at{" "}
+          <strong className="text-[#f0f2f5]/80">Privacy.</strong> For details on how we collect, use, and protect SMS-related data, including the FCC-required disclosure that no mobile information will be sold or shared with third parties for promotional or marketing purposes, see our Privacy Policy at{" "}
           <a href="https://sparkinventory.com/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">
             sparkinventory.com/privacy-policy
           </a>.

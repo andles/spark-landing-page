@@ -84,7 +84,7 @@ const stages: Stage[] = [
   {
     label: "Price books",
     title: "Model the rate card exactly",
-    description: "Keep house or client-specific vendor pricing by SKU, specification, or cost component—including quantity breaks and setup costs.",
+    description: "Keep house or client-specific vendor pricing by SKU, specification, or cost component, including quantity breaks and setup costs.",
     icon: BookOpen,
   },
   {

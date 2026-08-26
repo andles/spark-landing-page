@@ -29,7 +29,7 @@ export default function FishbowlCTA() {
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed max-w-2xl">
             See how your catalog, history, suppliers, and inventory move through mapping, validation,
-            approval, and readiness—then decide whether Spark is worth a broader switch.
+            approval, and readiness, then decide whether Spark is worth a broader switch.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookACallButton

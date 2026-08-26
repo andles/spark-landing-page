@@ -24,7 +24,7 @@ interface DecisionContent {
 const content: Record<CampaignDecisionKind, DecisionContent> = {
   '3pl': {
     eyebrow: 'Built around the client relationship',
-    title: 'Operate every client separately—without running separate systems',
+    title: 'Operate every client separately, without running separate systems',
     description: 'Spark connects client-scoped data, shared operator workflows, price-book economics, and the approvals that keep a 3PL in control.',
     cards: [
       {
@@ -68,7 +68,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
       },
       {
         title: 'Show the reasoning',
-        body: 'See which evidence moved the recommendation—rather than accepting a black-box score or rebuilding the model in another sheet.',
+        body: 'See which evidence moved the recommendation, rather than accepting a black-box score or rebuilding the model in another sheet.',
         proof: 'Demand evidence and readiness gates',
         icon: TrendingUp,
       },
@@ -95,7 +95,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
     cards: [
       {
         title: 'Promise from location stock',
-        body: 'Use the selected store’s inventory position—not an optimistic global count—to inform whether pickup should be offered.',
+        body: 'Use the selected store’s inventory position, not an optimistic global count, to inform whether pickup should be offered.',
         proof: 'Location inventory and channel integration context',
         icon: Store,
       },

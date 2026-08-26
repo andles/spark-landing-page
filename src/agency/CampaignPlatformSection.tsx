@@ -39,7 +39,7 @@ const content: Record<CampaignPlatformKind, PlatformContent> = {
     eyebrow: 'The 3PL operating layer',
     title: 'Add planning services without turning every client into a custom project',
     description:
-      'Spark keeps the client boundary, economic model, and operator approval path connected—so a 3PL can deliver a repeatable planning service across very different customer operations.',
+      'Spark keeps the client boundary, economic model, and operator approval path connected, so a 3PL can deliver a repeatable planning service across very different customer operations.',
     cards: [
       {
         title: 'Client-scoped context',

@@ -6,7 +6,7 @@ const capabilities = [
   {
     id: 'order-management',
     headline: 'Order Management & Forecasting',
-    description: 'Spark gives you a complete understanding of your inventory — what\'s on order, in the warehouse, reserved, and available for sale. Using AI-driven analytics across order history, market trends, seasonality, and vendor data, Spark intelligently forecasts demand and recommends replenishment strategies that optimize ROI.',
+    description: 'Spark gives you a complete understanding of your inventory: what\'s on order, in the warehouse, reserved, and available for sale. Using AI-driven analytics across order history, market trends, seasonality, and vendor data, Spark intelligently forecasts demand and recommends replenishment strategies that optimize ROI.',
     gradient: 'from-teal-500 to-cyan-400',
     bgGradient: 'from-teal-500/10 to-cyan-500/5',
     borderColor: 'border-teal-200/60',
@@ -15,7 +15,7 @@ const capabilities = [
   {
     id: 'custom-reporting',
     headline: 'Custom Reporting & Signal',
-    description: 'Create powerful, custom reports without being a data scientist. Spark\'s reporting tools surface exactly what matters, while Signal, Spark\'s AI-powered intelligence layer, proactively alerts you when something needs attention — so your inventory can talk to you.',
+    description: 'Create powerful, custom reports without being a data scientist. Spark\'s reporting tools surface exactly what matters, while Signal, Spark\'s AI-powered intelligence layer, proactively alerts you when something needs attention, so your inventory can talk to you.',
     gradient: 'from-violet-500 to-purple-400',
     bgGradient: 'from-violet-500/10 to-purple-500/5',
     borderColor: 'border-violet-200/60',
@@ -24,7 +24,7 @@ const capabilities = [
   {
     id: 'unified-integrations',
     headline: 'Unified Integrations & Workflow',
-    description: 'Connect all of your tools into one streamlined system. With dozens of native integrations and hundreds of custom integrations via API, Spark ensures your systems work together seamlessly — eliminating silos and manual handoffs.',
+    description: 'Connect all of your tools into one streamlined system. With dozens of native integrations and hundreds of custom integrations via API, Spark ensures your systems work together seamlessly, eliminating silos and manual handoffs.',
     gradient: 'from-blue-500 to-indigo-400',
     bgGradient: 'from-blue-500/10 to-indigo-500/5',
     borderColor: 'border-blue-200/60',

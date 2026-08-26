@@ -236,7 +236,7 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
             Move the operation.
             <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Not the spreadsheet cleanup.</span>
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app—or your compatible AI assistant through Spark MCP—can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
+          <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app, or your compatible AI assistant through Spark MCP, can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
           <div className="mt-7 flex flex-wrap gap-2">
             {config.migrationSignals.map((signal) => (
               <span key={signal} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/55">{signal}</span>
@@ -294,7 +294,7 @@ function DecisionThemes({ competitorKey }: { competitorKey: CompetitorKey }) {
         <ScrollReveal className="mx-auto max-w-3xl text-center">
           <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Where the decision gets hard</p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Five tradeoffs worth deciding explicitly</h2>
-          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">These are evaluation themes—not anonymous customer quotations. The factual details are checked against the vendor’s published pricing and product material.</p>
+          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">These are evaluation themes, not anonymous customer quotations. The factual details are checked against the vendor’s published pricing and product material.</p>
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={90} className="mt-12 flex flex-wrap justify-center gap-5">
@@ -336,7 +336,7 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
       <div className="relative mx-auto max-w-[1240px]">
         <ScrollReveal className="mx-auto max-w-3xl text-center">
           <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Honest side by side</p>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Choose the workflow—not the longest feature list</h2>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Choose the workflow, not the longest feature list</h2>
           <p className="mt-5 text-base leading-8 text-[#b8bfcc]">Spark does not win every row. That is the point of making the tradeoffs visible before your team starts a migration.</p>
         </ScrollReveal>
 
@@ -484,7 +484,7 @@ function ClosingCta({ competitorKey }: { competitorKey: CompetitorKey }) {
       <ScrollReveal className="relative z-10 mx-auto max-w-4xl">
         <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Decide with your own operation</p>
         <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">Bring the {config.name} data.<span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Let Sparki build the migration plan.</span></h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">See the mapping, validation, approval, and readiness workflow using the records your team actually depends on—then decide whether Spark is the better operating fit.</p>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">See the mapping, validation, approval, and readiness workflow using the records your team actually depends on, then decide whether Spark is the better operating fit.</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <BookACallButton url={bookUrl} className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}>See It With Your Data</BookACallButton>
           <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.035] px-7 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[0.07]">Start Free</a>

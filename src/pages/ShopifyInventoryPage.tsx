@@ -16,7 +16,7 @@ const capabilities = [
   {
     icon: Sparkles,
     title: 'Reorder recommendations with reasoning',
-    body: 'See what to buy, when to buy it, and how much—with the underlying demand and stock risk visible to your team.',
+    body: 'See what to buy, when to buy it, and how much, with the underlying demand and stock risk visible to your team.',
   },
   {
     icon: FileSpreadsheet,
@@ -31,7 +31,7 @@ const capabilities = [
 ];
 
 const steps = [
-  ['Ask Sparki to onboard you', 'Connect Shopify, then let Sparki—or your AI assistant over MCP—bring in the history and supply data Spark still needs.'],
+  ['Ask Sparki to onboard you', 'Connect Shopify, then let Sparki, or your AI assistant over MCP, bring in the history and supply data Spark still needs.'],
   ['Review the first inventory plan', 'Spark highlights stockout risk, excess stock, demand changes, and the purchase decisions that need attention.'],
   ['Approve what happens next', 'Adjust recommendations when needed, approve the draft PO, and keep a clear record of why the decision was made.'],
 ];
@@ -60,7 +60,7 @@ export function ShopifyInventoryPage() {
                 <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 bg-clip-text text-transparent">Your Next Purchase Order</span>
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Spark forecasts demand by SKU, recommends what to reorder and when, and drafts the PO your team approves—across Shopify, Amazon, wholesale, and every place you hold stock.
+                Spark forecasts demand by SKU, recommends what to reorder and when, and drafts the PO your team approves, across Shopify, Amazon, wholesale, and every place you hold stock.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>

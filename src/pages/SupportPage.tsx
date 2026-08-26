@@ -45,7 +45,7 @@ export function SupportPage() {
         <LegalSubSection title="Barcode Scanning">
           <LegalUl items={[
             "The camera scanner works with most 1D and 2D barcode formats.",
-            "For high-volume scanning, you can connect a Bluetooth or USB hardware scanner — once paired with your device, it will work directly inside the app.",
+            "For high-volume scanning, you can connect a Bluetooth or USB hardware scanner. Once paired with your device, it will work directly inside the app.",
           ]} />
         </LegalSubSection>
 
@@ -64,7 +64,7 @@ export function SupportPage() {
 
         <LegalSubSection title="Reporting a Bug">
           <LegalP>
-            Please email <LegalEmail email="support@sparkinventory.com" /> with the details listed above. If the app has crashed, we may already have the crash log — but a description of what you were doing helps us reproduce it faster.
+            Please email <LegalEmail email="support@sparkinventory.com" /> with the details listed above. If the app has crashed, we may already have the crash log, but a description of what you were doing helps us reproduce it faster.
           </LegalP>
         </LegalSubSection>
       </LegalSection>

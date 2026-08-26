@@ -4,7 +4,7 @@ import { FeaturePage } from './FeaturePage';
 const features = [
   {
     title: 'Agentic Import & Onboarding',
-    description: 'Ask Sparki—or your own assistant over MCP—to inspect, map, repair, validate, and verify one or many data sources with approval before import.',
+    description: 'Ask Sparki, or your own assistant over MCP, to inspect, map, repair, validate, and verify one or many data sources with approval before import.',
   },
   {
     title: 'Smart Email Processing',

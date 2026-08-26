@@ -9,7 +9,7 @@ const planningLoop = [
   ['02', 'Position inventory', 'Separate on-hand, allocated, available, incoming, and location-specific stock instead of treating one total as the truth.'],
   ['03', 'Model supply', 'Add supplier lead times, order cadence, minimums, price breaks, production capacity, and uncertainty.'],
   ['04', 'Make the decision', 'Choose the timing and quantity that balance availability, working capital, carrying cost, and operating constraints.'],
-  ['05', 'Execute and learn', 'Move the approved decision into purchasing, production, transfer, or fulfillment—and update the next plan with what happened.'],
+  ['05', 'Execute and learn', 'Move the approved decision into purchasing, production, transfer, or fulfillment, then update the next plan with what happened.'],
 ] as const;
 
 const metrics = [
@@ -105,7 +105,7 @@ export function InventoryManagementGuidePage() {
             <div className="mx-auto max-w-[1180px]">
               <ScrollReveal className="max-w-4xl">
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">The inventory operating loop</p>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Five connected jobs—not five disconnected tools</h2>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Five connected jobs, not five disconnected tools</h2>
                 <p className="mt-5 max-w-3xl text-base leading-8 text-[#b8bfcc]">Weak systems stop after reporting a number. Strong systems preserve the context from the original demand signal through the approved operational action.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={70} className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">

@@ -79,7 +79,7 @@ function PartnersPageClassic() {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
                   <Sparkles className="w-4 h-4 text-white" />
-                  <span className="text-white/90 text-sm font-medium">Partner Program — Now Accepting Applications</span>
+                  <span className="text-white/90 text-sm font-medium">Partner Program: Now Accepting Applications</span>
                 </div>
                 
                 {/* Headline */}
@@ -368,7 +368,7 @@ function PartnersPageNextGen() {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-6">
                   <Sparkles className="w-4 h-4 text-violet-400" />
-                  <span className="text-white/80 text-sm font-medium">Partner Program — Now Accepting Applications</span>
+                  <span className="text-white/80 text-sm font-medium">Partner Program: Now Accepting Applications</span>
                 </div>
                 
                 {/* Headline */}

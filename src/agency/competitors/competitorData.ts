@@ -151,7 +151,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         number: '05',
         label: 'Migration',
         title: 'Make the import a reviewed proposal',
-        body: 'A migration should explain what it understood, what it repaired, and what still needs a judgment call—not silently map columns and hope.',
+        body: 'A migration should explain what it understood, what it repaired, and what still needs a judgment call, not silently map columns and hope.',
         incumbent: 'Cin7 offers group, one-to-one, and partner-led onboarding options.',
         spark: 'Sparki profiles the exports, maps records, validates the dataset, and presents the proposed import for approval.',
       },
@@ -270,7 +270,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     switchReasons: [
       'The order meter is driving plan changes more than the capabilities are.',
-      'QuickBooks Online—not Zoho Books—is the accounting system of record.',
+      'QuickBooks Online, not Zoho Books, is the accounting system of record.',
       'You want the system to forecast, draft the buy, and wait for approval.',
     ],
     staySummary: 'Zoho Inventory is a very strong value when the operation fits its caps and suite. Spark becomes relevant when the planning gap costs more than the software price difference.',
@@ -297,7 +297,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     eyebrow: 'For teams comparing inFlow Inventory and Spark',
     accent: 'amber',
     heroBody:
-      'inFlow is respected for approachable inventory control, barcode workflows, hardware, and support. Spark is the alternative when the harder problem is planning the buy—not scanning the bin—and you want the forecast, purchasing decision, and approval in one loop.',
+      'inFlow is respected for approachable inventory control, barcode workflows, hardware, and support. Spark is the alternative when the harder problem is planning the buy, not scanning the bin, and you want the forecast, purchasing decision, and approval in one loop.',
     sourceLabel: 'inFlow Inventory pricing and plan details',
     sourceUrl: 'https://www.inflowinventory.com/software-pricing-inflow',
     snapshot: [
@@ -334,7 +334,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       {
         number: '04',
         label: 'MCP',
-        title: 'Both products support MCP—the packaging differs',
+        title: 'Both products support MCP, but the packaging differs',
         body: 'Spark should not claim uniqueness here. inFlow publishes MCP as part of API access, which is an add-on on its first two Inventory tiers and included higher up.',
         incumbent: 'API access, including the inFlow MCP server, is a paid add-on on the first two tiers.',
         spark: 'Governed MCP workflows are part of Spark’s product and onboarding story.',

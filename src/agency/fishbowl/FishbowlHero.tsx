@@ -48,7 +48,7 @@ export default function FishbowlHero() {
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
             Fishbowl counts your stock fine. The trouble is everything around it: reports you pay
             a consultant for, Shopify and QuickBooks syncs you babysit, support tickets that sit.
-            Spark handles those, while Sparki—or your own AI assistant over MCP—takes on the migration work.
+            Spark handles those, while Sparki, or your own AI assistant over MCP, takes on the migration work.
           </p>
 
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">

@@ -24,7 +24,7 @@ const cards = [
     ),
     title: "Your Fishbowl data comes with you, in minutes",
     description:
-      "Give the exports to Sparki in app—or your own AI assistant over MCP—and your parts, vendors, customers, and history land through a mapped, validated, approval-gated workflow.",
+      "Give the exports to Sparki in app, or to your own AI assistant over MCP, and your parts, vendors, customers, and history land through a mapped, validated, approval-gated workflow.",
     complaint: "Switching sounds worse than staying.",
     features: ["Automatic field mapping", "Sales history included", "Undo any import"],
   },

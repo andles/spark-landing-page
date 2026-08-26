@@ -41,7 +41,7 @@ export default function AgencyHero3PL() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Give every client forecasting, replenishment intelligence, and live inventory visibility under your brand—without adding more manual planning to your operation.
+            Give every client forecasting, replenishment intelligence, and live inventory visibility under your brand, without adding more manual planning to your operation.
           </p>
 
           {/* CTA row */}

@@ -119,7 +119,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Decide",
         title: "Calculate what to buy and when",
-        body: "The recommendation includes timing, quantity, and the evidence behind the decision—not a black-box score.",
+        body: "The recommendation includes timing, quantity, and the evidence behind the decision, not a black-box score.",
         signals: ["Days of supply", "Safety stock", "Order cadence"],
         resultLabel: "RECOMMENDATION",
         resultValue: "420 units · Jun 18",
@@ -149,7 +149,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Promise",
         title: "Offer pickup from available store stock",
-        body: "The customer chooses a location from inventory that belongs to that store—not an optimistic global count.",
+        body: "The customer chooses a location from inventory that belongs to that store, not an optimistic global count.",
         signals: ["Shopify order", "Store on-hand", "Location rules"],
         resultLabel: "AVAILABLE TO PROMISE",
         resultValue: "Downtown · in stock",
@@ -186,7 +186,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
   },
   fishbowl: {
     eyebrow: "Agent-led migration",
-    title: "Move the operation—not the",
+    title: "Move the operation, not the",
     gradientTitle: "spreadsheet cleanup",
     description:
       "Sparki or your own AI assistant takes on the inspection, mapping, repair, and validation work while your team keeps control of the import.",

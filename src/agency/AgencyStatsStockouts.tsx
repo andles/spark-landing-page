@@ -30,7 +30,7 @@ export default function AgencyStatsStockouts() {
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              See the sales, stock, lead-time, and policy signals behind every recommendation—then decide what your team wants Spark to do next.
+              See the sales, stock, lead-time, and policy signals behind every recommendation, then decide what your team wants Spark to do next.
             </p>
           </ScrollReveal>
         </div>

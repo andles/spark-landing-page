@@ -11,7 +11,7 @@ export function AppPrivacyPage() {
   return (
     <LegalPageShell
       title="App Privacy Details"
-      subtitle="Apple App Store — App Privacy. Kept in sync with our Privacy Policy and Google Play Data Safety form."
+      subtitle="Apple App Store App Privacy. Kept in sync with our Privacy Policy and Google Play Data Safety form."
     >
       <LegalSection title="Privacy Practices">
         <LegalSubSection title="Data Linked to You">
@@ -37,7 +37,7 @@ export function AppPrivacyPage() {
         </LegalSubSection>
 
         <LegalSubSection title="Data Not Linked to You">
-          <LegalP>None — all data we collect is associated with an authenticated account.</LegalP>
+          <LegalP>None. All data we collect is associated with an authenticated account.</LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="Data Used to Track You">
@@ -69,7 +69,7 @@ export function AppPrivacyPage() {
           Only the decoded barcode value (a short string) is sent to our servers when needed for inventory lookups.
         </LegalP>
         <LegalP>
-          In App Privacy, this means <strong className="text-[#f0f2f5]/80">Camera does not appear</strong> under collected data types — the camera is used in-session only.
+          In App Privacy, this means <strong className="text-[#f0f2f5]/80">Camera does not appear</strong> under collected data types. The camera is used in-session only.
         </LegalP>
       </LegalSection>
 
@@ -92,28 +92,28 @@ export function AppPrivacyPage() {
         </LegalP>
         <LegalDl items={[
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryUserDefaults</code> — reason <LegalBadge>CA92.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryUserDefaults</code>: reason <LegalBadge>CA92.1</LegalBadge></span> as any,
             definition: "Accessing UserDefaults to read/write information that is only accessible to the app itself.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryFileTimestamp</code> — reason <LegalBadge>C617.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryFileTimestamp</code>: reason <LegalBadge>C617.1</LegalBadge></span> as any,
             definition: "Display to the user.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryDiskSpace</code> — reason <LegalBadge>E174.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryDiskSpace</code>: reason <LegalBadge>E174.1</LegalBadge></span> as any,
             definition: "Write or delete files based on available space.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategorySystemBootTime</code> — reason <LegalBadge>35F9.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategorySystemBootTime</code>: reason <LegalBadge>35F9.1</LegalBadge></span> as any,
             definition: "System boot time access.",
           },
         ]} />
       </LegalSection>
 
-      <LegalSection title="Privacy Nutrition Label — Summary">
+      <LegalSection title="Privacy Nutrition Label: Summary">
         <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
           <LegalP>
-            Spark Inventory collects only the data needed to run your account: your email, basic device identifiers, app usage and crash diagnostics, and the inventory data your team enters. We do not track you across apps, do not sell your data, and do not use third-party advertising SDKs. The camera is used for on-device barcode scanning only — no photos or video are ever recorded or uploaded.
+            Spark Inventory collects only the data needed to run your account: your email, basic device identifiers, app usage and crash diagnostics, and the inventory data your team enters. We do not track you across apps, do not sell your data, and do not use third-party advertising SDKs. The camera is used for on-device barcode scanning only. No photos or video are ever recorded or uploaded.
           </LegalP>
         </div>
       </LegalSection>

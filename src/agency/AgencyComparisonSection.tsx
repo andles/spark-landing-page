@@ -9,7 +9,7 @@ const rows = [
   },
   {
     category: "Onboarding",
-    spark: "Ask Sparki—or your own AI assistant over MCP—to inspect, map, validate, and verify your data with approval before import.",
+    spark: "Ask Sparki, or your own AI assistant over MCP, to inspect, map, validate, and verify your data with approval before import.",
     others: "Manual imports, lengthy setup calls, and expensive onboarding fees.",
   },
   {

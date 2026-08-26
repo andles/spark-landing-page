@@ -111,7 +111,7 @@ export function PricingPage() {
             <ScrollReveal>
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Pricing FAQ</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Clear answers before you start</h2>
-              <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Use your own operation to evaluate Spark. The important question is not how many boxes a plan checks—it is whether the workflow reaches a better decision.</p>
+              <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Use your own operation to evaluate Spark. The important question is not how many boxes a plan checks. It is whether the workflow reaches a better decision.</p>
             </ScrollReveal>
             <ScrollReveal staggerChildren={60} className="divide-y divide-white/[0.07] border-y border-white/[0.07]">
               {pricingFaqs.map((faq, index) => (

@@ -62,10 +62,10 @@ export function DeleteAccountPage() {
 
       <LegalSection title="What Is Retained, and for How Long">
         <LegalUl items={[
-          <><strong className="text-[#f0f2f5]/80">Encrypted database backups</strong> containing your data — up to 35 days after deletion. Disaster-recovery backups roll off automatically.</>,
-          <><strong className="text-[#f0f2f5]/80">Billing and invoice records</strong> (subscription history, payment receipts) — up to 7 years. Required for tax and accounting compliance.</>,
-          <><strong className="text-[#f0f2f5]/80">Anonymized / aggregated usage analytics</strong> — indefinitely. No longer linked to you and cannot be used to identify you.</>,
-          <><strong className="text-[#f0f2f5]/80">Records required by law, court order, or to resolve a dispute</strong> — as required by the legal obligation.</>,
+          <><strong className="text-[#f0f2f5]/80">Encrypted database backups</strong> containing your data: up to 35 days after deletion. Disaster-recovery backups roll off automatically.</>,
+          <><strong className="text-[#f0f2f5]/80">Billing and invoice records</strong> (subscription history, payment receipts): up to 7 years. Required for tax and accounting compliance.</>,
+          <><strong className="text-[#f0f2f5]/80">Anonymized / aggregated usage analytics</strong>: indefinitely. No longer linked to you and cannot be used to identify you.</>,
+          <><strong className="text-[#f0f2f5]/80">Records required by law, court order, or to resolve a dispute</strong>: as required by the legal obligation.</>,
         ]} />
       </LegalSection>
 

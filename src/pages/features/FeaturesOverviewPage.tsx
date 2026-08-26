@@ -110,7 +110,7 @@ export function FeaturesOverviewPage() {
               </span>
             </h1>
             <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-              Track the operation, understand demand, and move the next decision forward—from the first import through purchasing, fulfillment, and accounting.
+              Track the operation, understand demand, and move the next decision forward, from the first import through purchasing, fulfillment, and accounting.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold transition-transform hover:scale-[1.02]">
@@ -128,7 +128,7 @@ export function FeaturesOverviewPage() {
             <ScrollReveal className="max-w-3xl">
               <p className="text-sm font-semibold text-cyan-300">Explore the product</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Go deep on the workflow your team owns</h2>
-              <p className="mt-4 leading-7 text-[#b8bfcc]">Every capability shares the same inventory, order, supplier, and decision context—so work does not disappear between modules.</p>
+              <p className="mt-4 leading-7 text-[#b8bfcc]">Every capability shares the same inventory, order, supplier, and decision context, so work does not disappear between modules.</p>
             </ScrollReveal>
 
             <ScrollReveal staggerChildren={70} className="mt-10 grid gap-4 md:grid-cols-2">
