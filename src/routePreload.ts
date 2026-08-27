@@ -1,7 +1,6 @@
-// Central registry of the lazy route chunks. App.tsx builds its React.lazy
-// components from these, and main.tsx prefetches them all during idle time
-// after the initial page is interactive — so the first load stays small but
-// in-app navigation never waits on a network fetch.
+// Central registry of lazy route chunks. App.tsx loads only the chunk needed
+// for the current route so the homepage does not spend bandwidth and CPU on
+// pages the visitor may never open.
 
 export const routeImports = {
   LegacyHome: () => import('./LegacyHome'),
@@ -25,6 +24,7 @@ export const routeImports = {
   ShopifyInventoryPage: () => import('./pages/ShopifyInventoryPage'),
   PricingPage: () => import('./pages/PricingPage'),
   AboutPage: () => import('./pages/AboutPage'),
+  BlogPage: () => import('./pages/BlogPage'),
   InventoryManagementGuidePage: () => import('./pages/InventoryManagementGuidePage'),
   PartnersPage: () => import('./pages/PartnersPage'),
   PrivacyPolicyPage: () => import('./pages/PrivacyPolicyPage'),
@@ -39,15 +39,3 @@ export const routeImports = {
   SmsProgramPage: () => import('./pages/SmsProgramPage'),
   NotFoundPage: () => import('./pages/NotFoundPage'),
 };
-
-/** Fetch every route chunk in the background. Safe to call repeatedly —
- *  the browser and Vite's module cache dedupe the requests. */
-export function prefetchAllRoutes() {
-  if (typeof navigator !== 'undefined' && 'connection' in navigator) {
-    const conn = (navigator as { connection?: { saveData?: boolean } }).connection;
-    if (conn?.saveData) return; // respect data-saver mode
-  }
-  for (const load of Object.values(routeImports)) {
-    load().catch(() => {}); // prefetch failures are harmless; route load retries on demand
-  }
-}

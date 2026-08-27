@@ -9,7 +9,7 @@ export default function AgencyFooter() {
             {/* Left: brand block */}
             <div>
               <a href="/" className="flex items-center gap-2.5 mb-4">
-                <img src="/spark_icon.png" alt="Spark Inventory" className="w-8 h-8" />
+                <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" loading="lazy" decoding="async" className="w-8 h-8" />
                 <span className="font-bold text-lg text-white" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>Spark Inventory</span>
               </a>
               <p className="text-white/60 text-sm leading-relaxed mb-6">
@@ -57,6 +57,7 @@ export default function AgencyFooter() {
                 <ul className="space-y-2.5">
                   <li><a href="/contact" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Contact</a></li>
                   <li><a href="/about" className="text-white/60 text-sm hover:text-white transition-colors duration-200">About Spark</a></li>
+                  <li><a href="/blog" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Blog</a></li>
                   <li><a href="/what-is-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory Guide</a></li>
                   <li><a href="/partners" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Partners</a></li>
                   <li><a href="/#faq" className="text-white/60 text-sm hover:text-white transition-colors duration-200">FAQ</a></li>

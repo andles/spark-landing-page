@@ -32,6 +32,7 @@ const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.A
 const ShopifyInventoryPage = lazy(() => R.ShopifyInventoryPage().then((m) => ({ default: m.ShopifyInventoryPage })));
 const PricingPage = lazy(() => R.PricingPage().then((m) => ({ default: m.PricingPage })));
 const AboutPage = lazy(() => R.AboutPage().then((m) => ({ default: m.AboutPage })));
+const BlogPage = lazy(R.BlogPage);
 const InventoryManagementGuidePage = lazy(() => R.InventoryManagementGuidePage().then((m) => ({ default: m.InventoryManagementGuidePage })));
 const PartnersPage = lazy(() => R.PartnersPage().then((m) => ({ default: m.PartnersPage })));
 const PrivacyPolicyPage = lazy(() => R.PrivacyPolicyPage().then((m) => ({ default: m.PrivacyPolicyPage })));
@@ -95,6 +96,7 @@ function App() {
             <Route path="/shopify-inventory-management" element={<ShopifyInventoryPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/blog" element={<BlogPage />} />
             <Route path="/what-is-inventory-management" element={<InventoryManagementGuidePage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

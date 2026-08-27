@@ -70,7 +70,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5">
-          <img src="/spark_icon.png" alt="Spark Inventory" className="w-8 h-8" />
+          <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" decoding="async" className="w-8 h-8" />
           <span className="font-bold text-white text-base tracking-tight">Spark Inventory</span>
         </a>
 
@@ -80,6 +80,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
           <DesktopMenu label="Solutions" links={solutionLinks} />
           <a href="/#integrations" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
           <a href="/pricing" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
+          <a href="/blog" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
         </nav>
 
         {/* CTAs */}
@@ -136,6 +137,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
               ))}
               <a href="/#integrations" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
               <a href="/pricing" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
+              <a href="/blog" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Blog</a>
             </div>
           </div>
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">

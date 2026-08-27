@@ -21,26 +21,47 @@
       });
     </script>
     <!-- Start cookieyes banner -->
-    <script id="cookieyes" type="text/javascript" defer src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
+    <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
+    <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
-    <link rel="icon" type="image/png" href="/spark_icon.png" />
+    <link rel="icon" type="image/webp" href="/spark-icon-64.webp" />
     <link rel="canonical" href="https://sparkinventory.com/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Forecast demand, reduce stockouts, and turn sales into draft purchase orders. AI inventory management for Shopify, Amazon, and wholesale brands." />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17962279599"></script>
+    <!-- Google tag (gtag.js). Queue consent and conversion calls immediately,
+         but keep the 187 KiB tag off the critical rendering path. It loads on
+         first intent or shortly after the page is fully loaded. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-17962279599');
+
+      (function () {
+        var loaded = false;
+        var fallbackTimer;
+        function loadGoogleTag() {
+          if (loaded) return;
+          loaded = true;
+          if (fallbackTimer) window.clearTimeout(fallbackTimer);
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17962279599';
+          document.head.appendChild(script);
+        }
+        window.addEventListener('pointerdown', loadGoogleTag, { once: true, passive: true });
+        window.addEventListener('keydown', loadGoogleTag, { once: true });
+        window.addEventListener('load', function () {
+          fallbackTimer = window.setTimeout(loadGoogleTag, 5000);
+        }, { once: true });
+      })();
     </script>
     <!-- Inter is self-hosted (see src/index.css); preload the latin subset
          used by virtually all text so the first paint uses the real font -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <title>AI Inventory Management Software for Shopify &amp; Amazon | Spark</title>
-    <script type="module" crossorigin src="/assets/index-CgH-Uaop.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DECiMYp7.css">
+    <script type="module" crossorigin src="/assets/index-D0ZH8B8s.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CbBJ5swJ.css">
   </head>
   <body>
     <div id="root"></div>

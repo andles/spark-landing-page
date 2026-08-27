@@ -85,7 +85,7 @@ export default function MeetingConfirmedPage() {
             href="/"
             className="flex items-center gap-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
           >
-            <img src="/spark_icon.png" alt="" className="w-8 h-8" />
+            <img src="/spark-icon-64.webp" alt="" width="32" height="32" decoding="async" className="w-8 h-8" />
             <span className="font-bold text-white text-base tracking-tight">Spark Inventory</span>
           </a>
         </div>

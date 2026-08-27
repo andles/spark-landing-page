@@ -1,5 +1,9 @@
-import { useEffect, useCallback } from "react";
-import { ensureCalendlyAssets, openCalendlyPopup } from "./calendly";
+import { useCallback } from "react";
+import {
+  ensureCalendlyAssets,
+  isCalendlyReady,
+  openCalendlyPopup,
+} from "./calendly";
 import { useCtaLinks } from "./ctaLinks";
 
 // "Book a Call" CTA — opens the Calendly scheduler in a popup overlay instead of
@@ -24,15 +28,15 @@ export default function BookACallButton({
   const { bookUrl } = useCtaLinks();
   const href = url ?? bookUrl;
 
-  // Preload Calendly's popup assets so the scheduler opens instantly on click.
-  useEffect(() => {
-    ensureCalendlyAssets();
-  }, []);
-
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      openCalendlyPopup(href);
+      // Hover/focus normally has the popup ready by click time. If it is not
+      // ready (for example, a quick mobile tap), keep the anchor's native
+      // new-tab navigation instead of making the visitor wait on a script.
+      if (isCalendlyReady()) {
+        e.preventDefault();
+        openCalendlyPopup(href);
+      }
     },
     [href]
   );
@@ -41,6 +45,9 @@ export default function BookACallButton({
     <a
       href={href}
       onClick={handleClick}
+      onPointerEnter={ensureCalendlyAssets}
+      onFocus={ensureCalendlyAssets}
+      onTouchStart={ensureCalendlyAssets}
       target="_blank"
       rel="noopener noreferrer"
       className={className}

@@ -2,18 +2,18 @@ import ScrollReveal, { RevealItem } from "./ScrollReveal";
 import { useCtaLinks } from "./ctaLinks";
 
 const integrations = [
-  { src: "/logos/shopify-2 1.svg", alt: "Shopify" },
-  { src: "/logos/amazon.svg", alt: "Amazon" },
-  { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
-  { src: "/logos/stripe.svg", alt: "Stripe" },
-  { src: "/logos/woocommerce (2).svg", alt: "WooCommerce" },
-  { src: "/logos/Square_Logo_2025_White.svg", alt: "Square" },
-  { src: "/logos/Zoho-Books-logo 2.svg", alt: "Zoho Books" },
-  { src: "/logos/tiktok.svg", alt: "TikTok Shop" },
-  { src: "/logos/meta 1.svg", alt: "Meta" },
-  { src: "/logos/edi 1.svg", alt: "EDI" },
-  { src: "/logos/logo-ss-primary-rgb-1-1 1.svg", alt: "ShipStation" },
-  { src: "/logos/RXO 1.svg", alt: "RXO" },
+  { src: "/logos/shopify-2 1.svg", alt: "Shopify", width: 100, height: 29 },
+  { src: "/logos/amazon.svg", alt: "Amazon", width: 70, height: 21 },
+  { src: "/logos/quickbooks.svg", alt: "QuickBooks", width: 114, height: 30 },
+  { src: "/logos/stripe.svg", alt: "Stripe", width: 2498, height: 1037 },
+  { src: "/logos/woocommerce (2).svg", alt: "WooCommerce", width: 751, height: 152 },
+  { src: "/logos/Square_Logo_2025_White.svg", alt: "Square", width: 2000, height: 501 },
+  { src: "/logos/Zoho-Books-logo 2.svg", alt: "Zoho Books", width: 1334, height: 400 },
+  { src: "/logos/tiktok.svg", alt: "TikTok Shop", width: 913, height: 208 },
+  { src: "/logos/meta 1.svg", alt: "Meta", width: 961, height: 194 },
+  { src: "/logos/edi 1.svg", alt: "EDI", width: 251, height: 94 },
+  { src: "/logos/logo-ss-primary-rgb-1-1 1.svg", alt: "ShipStation", width: 466, height: 72 },
+  { src: "/logos/RXO 1.svg", alt: "RXO", width: 426, height: 150 },
 ];
 
 export default function AgencyIntegrationsSection() {
@@ -57,6 +57,10 @@ export default function AgencyIntegrationsSection() {
                   <img
                     src={logo.src}
                     alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    loading="lazy"
+                    decoding="async"
                     className="h-5 w-auto object-contain opacity-50 group-hover:opacity-90 transition-opacity duration-300"
                   />
                 </div>

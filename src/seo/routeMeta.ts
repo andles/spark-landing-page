@@ -296,6 +296,14 @@ export const routeMeta: RouteMeta[] = [
     webPageType: 'AboutPage',
   },
   {
+    path: '/blog',
+    title: 'Inventory Management Blog | Spark Inventory',
+    description:
+      'Practical guides to demand planning, purchasing, multichannel inventory, stockouts, overstock, and smarter inventory operations from Spark.',
+    lastModified: '2026-08-27',
+    webPageType: 'CollectionPage',
+  },
+  {
     path: '/what-is-inventory-management',
     title: 'What Is Inventory Management? Planning Guide | Spark',
     description:

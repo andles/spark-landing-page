@@ -5,7 +5,7 @@ export default function DashboardSidebar() {
     <div className="dash-sidebar hidden lg:flex flex-col w-[185px] shrink-0 border-r border-white/[0.06] py-4 px-3" style={{ background: "rgba(8,11,20,0.7)" }}>
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-3 py-2 mb-4">
-        <img src="/spark_icon.png" alt="" className="w-7 h-7" />
+        <img src="/spark-icon-64.webp" alt="" width="28" height="28" loading="lazy" decoding="async" className="w-7 h-7" />
         <span className="text-white text-[11px] font-bold tracking-tight whitespace-nowrap">Spark Inventory</span>
       </div>
 
