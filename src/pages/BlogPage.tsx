@@ -30,7 +30,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative overflow-hidden px-6 pb-12 pt-32 md:px-8 lg:pb-16 lg:pt-40">
+        <section className="relative overflow-hidden px-6 pb-12 pt-28 md:px-8 lg:pb-16 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-25" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(6,182,212,0.13),transparent_68%)]" />
           <div className="relative z-10 mx-auto max-w-[1180px] text-center">

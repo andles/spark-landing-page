@@ -148,7 +148,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
   const { bookUrl, signupUrl } = useCtaLinks(config.ctaOptions);
 
   return (
-    <section className="relative overflow-hidden bg-[#06080d] px-6 pb-20 pt-32 md:px-8 lg:pb-28 lg:pt-40">
+    <section className="relative overflow-hidden bg-[#06080d] px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
       <div className="absolute inset-0 dot-grid opacity-35" />
       <div className="absolute inset-0 noise opacity-60" />
       <div

@@ -45,7 +45,7 @@ export function ShopifyInventoryPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative overflow-hidden px-6 pb-20 pt-32 md:px-8 lg:pb-28 lg:pt-40">
+        <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-35" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_0%,rgba(34,197,94,0.13),transparent_65%)]" />
           <div className="absolute -right-40 top-40 h-[640px] w-[640px] rounded-full bg-cyan-500/[0.08] blur-[130px]" />

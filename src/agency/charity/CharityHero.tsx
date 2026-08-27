@@ -15,7 +15,7 @@ export default function CharityHero() {
       <div className="absolute inset-0 noise" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-40 pb-20 lg:pt-48 lg:pb-28">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-28 pb-16 lg:pt-32 lg:pb-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow pill */}
           <div className="animate-fade-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">

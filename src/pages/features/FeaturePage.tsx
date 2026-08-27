@@ -59,7 +59,7 @@ export function FeaturePage({
       <AgencyHeader />
 
       <main>
-        <section className="relative overflow-hidden px-6 pb-20 pt-32 md:px-8 lg:pb-28 lg:pt-40">
+        <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-35" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_75%_10%,rgba(6,182,212,0.12),transparent_62%)]" />
           <div className="absolute -left-56 top-48 h-[620px] w-[620px] rounded-full bg-violet-500/[0.07] blur-[130px]" />

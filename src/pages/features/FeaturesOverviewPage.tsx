@@ -97,7 +97,7 @@ export function FeaturesOverviewPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative overflow-hidden px-6 pb-20 pt-32 md:px-8 lg:pb-28 lg:pt-40">
+        <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-30" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-8%,rgba(6,182,212,0.14),transparent_62%)]" />
           <div className="absolute -right-56 top-44 h-[620px] w-[620px] rounded-full bg-violet-500/[0.08] blur-[140px]" />

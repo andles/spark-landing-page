@@ -41,7 +41,7 @@ export function AboutPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative min-h-[760px] overflow-hidden px-6 pb-24 pt-32 md:px-8 lg:flex lg:items-center lg:pb-28 lg:pt-36">
+        <section className="relative min-h-[760px] overflow-hidden px-6 pb-24 pt-28 md:px-8 lg:flex lg:items-center lg:pb-28 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-25" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_65%_at_30%_0%,rgba(6,182,212,0.14),transparent_66%)]" />
           <div className="absolute bottom-[-220px] right-[-120px] h-[680px] w-[680px] rounded-full border border-violet-400/10 bg-violet-500/[0.06] blur-[2px]" />
