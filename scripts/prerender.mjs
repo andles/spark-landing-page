@@ -19,7 +19,6 @@ import { copyFileSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { prerender } from 'react-dom/static';
-import { generate as generateCriticalCss } from 'critical';
 
 const dist = process.argv[2];
 if (!dist) {
@@ -246,69 +245,3 @@ writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 );
 console.log(`wrote ${urls ? routeMeta.filter((r) => !r.noindex && !r.canonical).length : 0} sitemap URLs, ${dist}/404.html, and ${dist}/spa-shell.html`);
-
-// The homepage owns the site's performance score and has a stable,
-// prerendered first screen. Extract the rules needed at mobile and desktop
-// viewports, inline them, and turn the full stylesheet into a non-blocking
-// preload. Other routes retain the normal blocking stylesheet: each has a
-// different first screen, so sharing the homepage's critical subset would
-// risk a flash of unstyled content.
-const homepagePath = join(dist, 'index.html');
-const homepage = readFileSync(homepagePath, 'utf8');
-const stylesheetTagMatch = homepage.match(
-  /<link\s+rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/,
-);
-if (!stylesheetTagMatch) {
-  throw new Error('homepage is missing its production stylesheet link');
-}
-
-const stylesheetHref = stylesheetTagMatch[1];
-const stylesheetPath = join(dist, stylesheetHref.replace(/^\//, ''));
-const fullStylesheet = readFileSync(stylesheetPath, 'utf8');
-const { css: criticalCss } = await generateCriticalCss({
-  base: dist,
-  src: homepagePath,
-  css: [stylesheetPath],
-  inline: false,
-  dimensions: [
-    { width: 390, height: 844 },
-    { width: 1440, height: 900 },
-  ],
-  penthouse: {
-    blockJSRequests: true,
-    renderWaitTime: 100,
-    timeout: 30_000,
-  },
-});
-
-if (criticalCss.length < 10_000 || criticalCss.length > 120_000) {
-  throw new Error(`unexpected critical CSS size: ${criticalCss.length} bytes`);
-}
-
-// Penthouse removes font-face declarations even when their font is used.
-// Preserve the already-preloaded Latin subset so the first paint uses Inter
-// instead of swapping from the system fallback when the async CSS arrives.
-const latinFontFace = fullStylesheet.match(
-  /@font-face\{[^{}]*\/fonts\/inter-latin\.woff2[^{}]*\}/,
-)?.[0];
-if (!latinFontFace) {
-  throw new Error('production stylesheet is missing the Inter Latin font face');
-}
-const inlinedCriticalCss = `${latinFontFace}${criticalCss}`;
-
-const asyncStylesheet = [
-  `<style data-critical-css>${inlinedCriticalCss}</style>`,
-  `<link rel="preload" as="style" href="${stylesheetHref}" crossorigin onload="this.onload=null;this.rel='stylesheet'">`,
-  `<noscript>${stylesheetTagMatch[0]}</noscript>`,
-].join('\n    ');
-
-writeFileSync(
-  homepagePath,
-  homepage.replace(stylesheetTagMatch[0], asyncStylesheet),
-);
-console.log(`inlined ${Math.round(inlinedCriticalCss.length / 1024)} kB of homepage critical CSS`);
-
-// penthouse-esm can leave Chromium handles alive after parallel viewport
-// extraction. All build artifacts above are written synchronously, so exit
-// explicitly instead of making Netlify wait for those orphaned handles.
-process.exit(0);

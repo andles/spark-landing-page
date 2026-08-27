@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@source not "../scripts";
 
 /* ── Self-hosted Inter (variable, 400-700) ─────────────────────────────────
    Replaces the render-blocking Google Fonts stylesheet. Files live in
