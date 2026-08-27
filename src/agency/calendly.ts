@@ -25,8 +25,9 @@ type Gtag = (...args: unknown[]) => void;
 let assetsRequested = false;
 
 /**
- * Inject Calendly's widget CSS + JS once. Call this on mount of any page that
- * has a popup CTA so the modal is ready to open instantly on click.
+ * Inject Calendly's widget CSS + JS once. Call this when a visitor shows intent
+ * to book (hover, focus, or touch) so the third-party stylesheet never delays
+ * the page's first paint.
  */
 export function ensureCalendlyAssets(): void {
   if (assetsRequested || typeof document === "undefined") return;
@@ -45,6 +46,13 @@ export function ensureCalendlyAssets(): void {
     script.async = true;
     document.body.appendChild(script);
   }
+}
+
+/** Whether Calendly's popup API is ready to open without delaying navigation. */
+export function isCalendlyReady(): boolean {
+  if (typeof window === "undefined") return false;
+  const cal = (window as unknown as { Calendly?: CalendlyGlobal }).Calendly;
+  return Boolean(cal && typeof cal.initPopupWidget === "function");
 }
 
 // NOTE: not currently wired anywhere. The conversion fires from the event
