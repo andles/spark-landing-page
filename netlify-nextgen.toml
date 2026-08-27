@@ -35,6 +35,16 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Unlisted prospect reports: keep out of search indexes at the HTTP level
 # (more robust than the client-side-injected noindex meta)
 [[headers]]

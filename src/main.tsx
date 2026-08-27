@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import RouteMetaUpdater from './seo/RouteMetaUpdater'
-import { prefetchAllRoutes } from './routePreload'
 
 const app = (
   <StrictMode>
@@ -28,13 +27,3 @@ if (container.hasChildNodes() && !hasVariant) {
   container.innerHTML = ''
   createRoot(container).render(app)
 }
-
-// Once the page is loaded and idle, warm every route chunk so in-app
-// navigation doesn't wait on the network.
-window.addEventListener('load', () => {
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(() => prefetchAllRoutes())
-  } else {
-    setTimeout(prefetchAllRoutes, 2000)
-  }
-})

@@ -41,6 +41,7 @@ const groups = [
     links: [
       ['/', 'Spark Inventory Home'],
       ['/about', 'About Spark Inventory'],
+      ['/blog', 'Spark Inventory Blog'],
       ['/what-is-inventory-management', 'What Is Inventory Management?'],
       ['/partners', 'Partners'],
       ['/contact', 'Contact'],

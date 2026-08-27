@@ -56,6 +56,7 @@ export default function AgencyFooter() {
                 <ul className="space-y-2.5">
                   <li><a href="/contact" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Contact</a></li>
                   <li><a href="/about" className="text-white/60 text-sm hover:text-white transition-colors duration-200">About Spark</a></li>
+                  <li><a href="/blog" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Blog</a></li>
                   <li><a href="/what-is-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory Guide</a></li>
                   <li><a href="/partners" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Partners</a></li>
                   <li><a href="/#faq" className="text-white/60 text-sm hover:text-white transition-colors duration-200">FAQ</a></li>

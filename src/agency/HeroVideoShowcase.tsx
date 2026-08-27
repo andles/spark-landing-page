@@ -7,9 +7,9 @@
 // - The mockup is visible immediately and stays visible until the video has
 //   actually started playing (onPlaying), so a slow video download never
 //   shows as an empty black box.
-// - The <video> is only mounted on `sm`+ viewports. The wrapper is hidden
-//   below `sm` anyway, but a mounted <video autoPlay> still downloads the
-//   full file on mobile.
+// - The <video> is only mounted on `sm`+ viewports once the showcase is near
+//   the viewport. This keeps the demo from competing with the critical page
+//   load while preserving autoplay when a visitor reaches it.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useState, useEffect, useRef, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
@@ -53,20 +53,37 @@ export default function HeroVideoShowcase() {
   // Decided in an effect so a prerendered page and the first client render
   // agree (no hydration mismatch).
   const [mountVideo, setMountVideo] = useState(false);
+  const showcaseRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const progress = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0;
   const remaining = Math.max(0, duration - currentTime);
 
   useEffect(() => {
-    if (window.matchMedia("(min-width: 640px)").matches) {
-      // Must run post-mount (not in the initial state) so prerendered HTML
-      // and the first client render agree — matchMedia is client-only.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setMountVideo(true);
-    } else {
-      setPhase("done");
+    if (!window.matchMedia("(min-width: 640px)").matches) {
+      const frame = window.requestAnimationFrame(() => setPhase("done"));
+      return () => window.cancelAnimationFrame(frame);
     }
+
+    const showcase = showcaseRef.current;
+    if (!showcase || !("IntersectionObserver" in window)) {
+      const frame = window.requestAnimationFrame(() => setMountVideo(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setMountVideo(true);
+        observer.disconnect();
+      },
+      // Do not start the download merely because the top edge peeks into a
+      // tall desktop viewport. Wait until the visitor is moving toward it.
+      { rootMargin: "0px 0px -35% 0px" }
+    );
+
+    observer.observe(showcase);
+    return () => observer.disconnect();
   }, []);
 
   // "fading" → "done" after transition completes
@@ -113,7 +130,7 @@ export default function HeroVideoShowcase() {
   );
 
   return (
-    <div className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
+    <div ref={showcaseRef} className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
       <div className="dash-enter relative w-full">
 
         {/* Dashboard mockup — always in the DOM so the container has height.
@@ -151,6 +168,7 @@ export default function HeroVideoShowcase() {
               autoPlay
               muted
               playsInline
+              preload="metadata"
               onPlaying={() => setPhase((p) => (p === "loading" ? "video" : p))}
               onEnded={() => setPhase("fading")}
               onError={() => setPhase("done")}
