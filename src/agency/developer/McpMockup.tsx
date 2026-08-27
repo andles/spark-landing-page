@@ -55,7 +55,7 @@ export default function McpMockup({ isActive }: Props) {
             <div className="max-w-[90%] rounded-lg border border-violet-500/15 bg-violet-500/[0.06] p-3">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <img src="/spark_icon.png" alt="" className="w-3.5 h-3.5" />
+                  <img src="/spark-icon-64.webp" alt="" width="14" height="14" loading="lazy" decoding="async" className="w-3.5 h-3.5" />
                   <span className="text-white text-[10px] font-semibold">PO-3042</span>
                   <span className="px-1.5 py-0.5 rounded text-[8px] bg-emerald-500/15 text-emerald-400 font-medium">Draft</span>
                 </div>

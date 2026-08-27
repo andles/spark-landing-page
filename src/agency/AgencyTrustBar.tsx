@@ -1,11 +1,11 @@
 const logos = [
-  { src: "/logos/shopify-2 1.svg", alt: "Shopify" },
-  { src: "/logos/amazon.svg", alt: "Amazon" },
-  { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
-  { src: "/logos/stripe.svg", alt: "Stripe" },
-  { src: "/logos/woocommerce (2).svg", alt: "WooCommerce" },
-  { src: "/logos/Square_Logo_2025_White.svg", alt: "Square" },
-  { src: "/logos/Zoho-Books-logo 2.svg", alt: "Zoho" },
+  { src: "/logos/shopify-2 1.svg", alt: "Shopify", width: 100, height: 29 },
+  { src: "/logos/amazon.svg", alt: "Amazon", width: 70, height: 21 },
+  { src: "/logos/quickbooks.svg", alt: "QuickBooks", width: 114, height: 30 },
+  { src: "/logos/stripe.svg", alt: "Stripe", width: 2498, height: 1037 },
+  { src: "/logos/woocommerce (2).svg", alt: "WooCommerce", width: 751, height: 152 },
+  { src: "/logos/Square_Logo_2025_White.svg", alt: "Square", width: 2000, height: 501 },
+  { src: "/logos/Zoho-Books-logo 2.svg", alt: "Zoho", width: 1334, height: 400 },
 ];
 
 export default function AgencyTrustBar() {
@@ -28,6 +28,10 @@ export default function AgencyTrustBar() {
                 key={`a-${i}`}
                 src={logo.src}
                 alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                loading="lazy"
+                decoding="async"
                 className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300"
               />
             ))}
@@ -38,6 +42,10 @@ export default function AgencyTrustBar() {
                 key={`b-${i}`}
                 src={logo.src}
                 alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                loading="lazy"
+                decoding="async"
                 className="h-6 lg:h-8 w-auto object-contain opacity-60 shrink-0 hover:opacity-100 hover:scale-110 transition-all duration-300"
               />
             ))}

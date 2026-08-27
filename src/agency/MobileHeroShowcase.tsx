@@ -24,7 +24,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
-const HERO_VIDEO_POSTER = "/hero-video-poster.jpg";
+const HERO_VIDEO_POSTER = "/hero-video-poster-mobile.webp";
 
 export default function MobileHeroShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);

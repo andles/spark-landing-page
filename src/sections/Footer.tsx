@@ -18,7 +18,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center gap-2 mb-4">
-              <img src="/spark_icon.png" alt="Spark Inventory" className="w-9 h-9" />
+              <img src="/spark-icon-64.webp" alt="Spark Inventory" width="36" height="36" loading="lazy" decoding="async" className="w-9 h-9" />
               <span className="text-xl font-semibold text-white">Spark Inventory</span>
             </a>
             <p className={`text-sm max-w-xs ${isNextGen ? 'text-white/40' : 'text-gray-400'}`}>

@@ -39,7 +39,7 @@ export default function AgencyHero() {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-24 pb-12">
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow pill */}
-          <div className="animate-fade-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
@@ -49,7 +49,7 @@ export default function AgencyHero() {
 
           {/* H1 */}
           <h1
-            className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
+            className="text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
             <span className="text-[#f0f2f5]">AI Inventory Management</span>
@@ -60,14 +60,14 @@ export default function AgencyHero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
+          <p className="text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
             Spark turns your Shopify, Amazon, and wholesale sales into demand
             forecasts and draft purchase orders. Your team approves the plan—so
             cash stays out of overstock and bestsellers stay available.
           </p>
 
           {/* CTA row */}
-          <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
@@ -78,7 +78,7 @@ export default function AgencyHero() {
               Book a 30-Minute Demo
             </BookACallButton>
           </div>
-          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">
+          <p className="mt-3 text-xs text-[#8b95a8]">
             Onboard with Sparki in app or your own AI assistant over MCP.
           </p>
         </div>

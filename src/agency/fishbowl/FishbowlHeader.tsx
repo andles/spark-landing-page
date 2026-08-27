@@ -38,7 +38,7 @@ export default function FishbowlHeader() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5">
-          <img src="/spark_icon.png" alt="Spark Inventory" className="w-8 h-8" />
+          <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" decoding="async" className="w-8 h-8" />
           <span className="font-bold text-white text-base tracking-tight">Spark Inventory</span>
         </a>
 
