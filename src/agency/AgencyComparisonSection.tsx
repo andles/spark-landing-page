@@ -4,8 +4,8 @@ import { useCtaLinks } from "./ctaLinks";
 const rows = [
   {
     category: "Pricing",
-    spark: "Flat-rate, predictable pricing on every plan. No surprises as you scale.",
-    others: "Usage-based or tiered pricing that spikes with catalog size and order volume.",
+    spark: "Free forecast audit, unlimited users, and predictable order bands. Upgrade for operating depth—not seats or SKUs.",
+    others: "Seat, SKU, warehouse, and connection limits can turn growth into a pricing spreadsheet.",
   },
   {
     category: "Onboarding",
@@ -34,7 +34,7 @@ const rows = [
   },
   {
     category: "Support",
-    spark: "Responsive support with real SLAs. No pay-to-talk support tiers.",
+    spark: "AI help on every plan, email support on Operate, and priority human escalation on Scale.",
     others: "Slow resolution, expensive premium support, opaque cancellation policies.",
   },
 ];

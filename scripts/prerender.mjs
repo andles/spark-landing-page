@@ -26,7 +26,8 @@ if (!dist) {
   process.exit(1);
 }
 
-const ssrEntry = resolve(`${dist}-ssr`, 'entry-server.js');
+const ssrDir = process.argv[3] ?? `${dist}-ssr`;
+const ssrEntry = resolve(ssrDir, 'entry-server.js');
 const { createApp, routeMeta, SITE_URL } = await import(pathToFileURL(ssrEntry).href);
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');

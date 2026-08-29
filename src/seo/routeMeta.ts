@@ -4,6 +4,7 @@ import { buildFaqSchema } from '../agency/campaignFaqs';
 import { buildCharityFaqSchema } from '../agency/charity/charityFaqs';
 import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
+import { pricingFaqs } from '../agency/pricingData';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -72,10 +73,10 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
     ],
     offers: {
       '@type': 'AggregateOffer',
-      lowPrice: '199',
+      lowPrice: '0',
       highPrice: '749',
       priceCurrency: 'USD',
-      offerCount: '3',
+      offerCount: '4',
       url: `${SITE_URL}/pricing/`,
     },
   },
@@ -99,7 +100,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'AI Inventory Management Software for Shopify & Amazon | Spark',
     description:
       'Forecast demand, reduce stockouts, and turn sales into draft purchase orders. AI inventory management for Shopify, Amazon, and wholesale brands.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: HOME_SCHEMA,
   },
   {
@@ -131,7 +132,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting - SPARK',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildFaqSchema('stockouts')],
   },
   {
@@ -139,7 +140,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting - SPARK',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     canonical: '/reduce-stockouts-overstock',
     schema: [buildFaqSchema('stockouts')],
   },
@@ -148,7 +149,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Spark Inventory: the Fishbowl alternative built for Shopify and Amazon',
     description:
       'Switching from Fishbowl Inventory? Spark migrates your Fishbowl data in minutes, builds custom reports in seconds, syncs Shopify, Amazon and QuickBooks natively, and includes consultative onboarding. Free to start.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildFaqSchema('fishbowl')],
   },
   {
@@ -156,7 +157,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Cin7 Alternative for Shopify, Amazon & QuickBooks | Spark',
     description:
       'Compare Spark with Cin7 Core and Omni across pricing, forecasting, integrations, manufacturing, MCP access, onboarding, and operational fit.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
   {
@@ -164,7 +165,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Zoho Inventory Alternative for Growing Sellers | Spark',
     description:
       'Compare Spark with Zoho Inventory across order limits, planning depth, Shopify, Amazon, QuickBooks, shipping, manufacturing, and price.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('zoho')],
   },
   {
@@ -172,7 +173,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'inFlow Alternative for Inventory Planning & Purchasing | Spark',
     description:
       'Compare Spark with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('inflow')],
   },
   {
@@ -250,15 +251,15 @@ export const routeMeta: RouteMeta[] = [
     title: 'Shopify Inventory Management & Forecasting Software | Spark',
     description:
       'Turn Shopify sales into forecasts, reorder recommendations, and draft purchase orders with agent-guided onboarding in Spark or over MCP.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-29',
     schema: [buildFaqSchema('shopify')],
   },
   {
     path: '/pricing',
-    title: 'Spark Inventory Pricing | Plans from $199/Month',
+    title: 'Spark Inventory Pricing | Plans from $0, Unlimited Users',
     description:
-      'Compare Spark Inventory plans, users, warehouses, AI actions, forecasting, manufacturing, onboarding, and enterprise options. Start free for 14 days.',
-    lastModified: '2026-08-24',
+      'Start with a free inventory forecast. Compare Pulse, Operate, Scale, and Network for live planning, purchasing, manufacturing, 3PL workflows, and unlimited users.',
+    lastModified: '2026-08-29',
     schema: [
       {
         '@type': 'Product',
@@ -268,22 +269,21 @@ export const routeMeta: RouteMeta[] = [
         brand: { '@id': `${SITE_URL}/#organization` },
         offers: {
           '@type': 'AggregateOffer',
-          lowPrice: '199',
+          lowPrice: '0',
           highPrice: '749',
           priceCurrency: 'USD',
-          offerCount: '3',
+          offerCount: '4',
           url: `${SITE_URL}/pricing/`,
         },
       },
       {
         '@type': 'FAQPage',
         '@id': `${SITE_URL}/pricing/#faq`,
-        mainEntity: [
-          ['Can I start using Spark before choosing a paid plan?', 'Yes. You can start free for 14 days, bring in your own operating data, and evaluate the workflow before selecting the plan that fits your team.'],
-          ['Is onboarding included?', 'Yes. Sparki can inspect, map, validate, and prepare your data in app. You can also use your own compatible AI assistant through Spark MCP. Every import is shown for approval before it lands.'],
-          ['Which plan is best for a multichannel or multi-warehouse team?', 'Professional is designed for growing operators that need multiple warehouses, pick and wave workflows, smart email processing, and more advanced demand forecasting.'],
-          ['Which plan includes manufacturing?', 'Business adds bills of materials, manufacturing orders, work orders, barcode and lot tracking, and higher automation volume for more complex operations.'],
-        ].map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+        mainEntity: pricingFaqs.map(({ question, answer }) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
       },
     ],
   },

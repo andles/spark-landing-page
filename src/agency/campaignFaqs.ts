@@ -143,7 +143,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "How much does Spark cost?",
       answer:
-        "Plans start at $199 per month. You can start free for 14 days; higher tiers add more warehouses, users, manufacturing workflows, and AI automation volume.",
+        "Start with a free monthly forecast audit for up to 500 orders. Pulse is $99 per month for live intelligence, Operate is $349 for purchasing and fulfillment, and Scale is $749 for manufacturing and custom workflows. Every plan includes unlimited users.",
     },
   ],
 };

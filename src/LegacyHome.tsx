@@ -9,10 +9,10 @@ import {
   OutcomeClaims,
   DemoVideo,
   CompetitorComparison,
-  Pricing,
   BookDemo,
   Footer,
 } from './sections';
+import AgencyPricingSection from './agency/AgencyPricingSection';
 import { useTheme } from './context/ThemeContext';
 import { useVariant } from './context/VariantContext';
 
@@ -37,7 +37,7 @@ export default function LegacyHome() {
         <FeatureShowcase />
         <Integrations />
         <CompetitorComparison />
-        <Pricing />
+        <AgencyPricingSection />
         <BookDemo />
       </main>
       <Footer />

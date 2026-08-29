@@ -90,7 +90,7 @@ const cards = [
     description:
       "Sparki handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started instead of leaving you with a checklist.",
     complaint: "Steep learning curve, and support that doesn't pick up.",
-    features: ["Start free for 14 days", "Agentic onboarding", "Talk to a human"],
+    features: ["Free monthly forecast", "Agentic onboarding", "Talk to a human"],
   },
 ];
 

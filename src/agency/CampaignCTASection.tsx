@@ -19,7 +19,7 @@ const content: Record<SupportedKind, { title: string; gradient: string; body: st
     gradient: "before it happens",
     body: "Bring your actual sales and inventory signal. Spark will show the risk, the recommendation, and the reasoning your team can review.",
     primary: "trial",
-    microcopy: "Start free for 14 days · agent-guided onboarding · human-approved actions",
+    microcopy: "Free monthly forecast audit · unlimited users · human-approved actions",
     options: { source: "reduce-stockouts-overstock" },
   },
   pickup: {

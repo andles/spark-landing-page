@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Can I start before choosing a paid plan?',
     answer:
-      'Yes. Start free for 14 days. Paid plans begin at $199 per month, with options for multi-warehouse teams, manufacturing workflows, and higher automation volume.',
+      'Yes. Free includes a monthly forecast audit for up to 500 orders per month, including stock-risk reports, reorder recommendations, and a buying plan. Pulse starts at $99 per month for live intelligence, and every plan includes unlimited users.',
   },
   {
     question: 'Who is Spark best for?',

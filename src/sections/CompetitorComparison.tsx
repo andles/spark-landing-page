@@ -31,7 +31,7 @@ const competitors: Competitor[] = [
       'Gaps in the broader e-commerce stack',
     ],
     sparkAdvantages: [
-      'Stable flat-rate pricing across every plan',
+      'Free forecast audit with predictable order bands',
       'B2B customer and vendor portals included',
       'Full e-commerce and fulfillment stack built in',
     ],
