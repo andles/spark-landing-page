@@ -10,7 +10,7 @@ export function TermsOfServicePage() {
   return (
     <LegalPageShell
       title="Terms of Service"
-      subtitle="Effective date: 05/01/2026"
+      subtitle="Effective date: 08/30/2026"
     >
       <LegalP>
         These Terms of Service ("Terms") govern your access to and use of the Spark Inventory mobile application and related services (the "Service") provided by Spark Inventory, INC ("we", "us", or "our"). By creating an account or using the Service, you agree to these Terms.
@@ -43,10 +43,10 @@ export function TermsOfServicePage() {
 
       <LegalSection title="4. Customer Data">
         <LegalP>
-          You retain all rights to data you submit to the Service ("Customer Data"). You grant us a limited, worldwide, non-exclusive license to host, copy, transmit, display, and process Customer Data solely to provide the Service and as otherwise permitted by these Terms and our Privacy Policy.
+          You retain all rights to data submitted, uploaded, imported, transmitted, synchronized, or otherwise made available to the Service by or on behalf of Customer ("Customer Data"). You grant us a limited, worldwide, non-exclusive license to access, host, copy, transmit, display, store, process, analyze, and transform Customer Data solely to provide the Service to Customer, including to provide demand forecasts, analytics, inventory planning, replenishment and purchasing recommendations, recommended order quantities, draft purchase order generation, alerts, reports, and other features of the Service, and as otherwise permitted by these Terms and our Privacy Policy.
         </LegalP>
         <LegalP>
-          You are responsible for the accuracy, legality, and appropriateness of Customer Data and for obtaining all necessary rights and consents to submit it to the Service.
+          You are responsible for the accuracy, legality, and appropriateness of Customer Data and for obtaining all necessary rights and consents to provide or make Customer Data available to the Service.
         </LegalP>
       </LegalSection>
 

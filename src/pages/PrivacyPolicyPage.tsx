@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 08/24/2026"
+      subtitle="Effective date: 08/30/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -21,7 +21,7 @@ export function PrivacyPolicyPage() {
         <LegalSubSection title="1.1 Information you provide">
           <LegalUl items={[
             <><strong className="text-[#f0f2f5]/80">Account information.</strong> When you sign in, we collect your email address and authentication credentials.</>,
-            <><strong className="text-[#f0f2f5]/80">Workspace data.</strong> Inventory items, locations, sales orders, purchase orders, packing records, and other operational data you or your organization enter into the App.</>,
+            <><strong className="text-[#f0f2f5]/80">Workspace data.</strong> Inventory items, products, SKUs, locations, sales and order history, purchase orders, supplier information, customer information, packing and fulfillment records, accounting and transaction data, and other operational data that you or your organization enter into, upload to, synchronize with, or otherwise make available to the App.</>,
             <><strong className="text-[#f0f2f5]/80">Support communications.</strong> Messages, screenshots, or attachments you send to our support team.</>,
           ]} />
         </LegalSubSection>
@@ -57,7 +57,7 @@ export function PrivacyPolicyPage() {
       <LegalSection title="2. How We Use Information">
         <LegalP>We use the information we collect to:</LegalP>
         <LegalUl items={[
-          "Provide, maintain, and improve the Service;",
+          "Provide, maintain, operate, secure, troubleshoot, and improve the functionality and performance of the Service;",
           "Authenticate you and secure your account;",
           "Synchronize your workspace data across devices;",
           "Provide AI-assisted chat features (see Section 5);",
@@ -65,6 +65,12 @@ export function PrivacyPolicyPage() {
           "Communicate with you about service updates, security alerts, and support requests;",
           "Comply with legal obligations and enforce our terms.",
         ]} />
+
+        <LegalSubSection title="2.1 Forecasting, analytics, and recommendations">
+          <LegalP>
+            We use workspace data, including historical sales, order, inventory, purchasing, product, supplier, and related operational data, to provide demand forecasts, inventory analytics and planning, replenishment and purchasing recommendations, recommended order quantities, draft purchase order generation, alerts, reports, and other Service features for the workspace associated with that data. These features may use automated, statistical, algorithmic, machine-learning, or artificial-intelligence technologies.
+          </LegalP>
+        </LegalSubSection>
       </LegalSection>
 
       <LegalSection title="3. How We Share Information">
