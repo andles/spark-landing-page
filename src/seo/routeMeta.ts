@@ -256,9 +256,9 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/pricing',
-    title: 'Spark Inventory Pricing | Plans from $0, Unlimited Users',
+    title: 'Spark Inventory Pricing | Free Monthly Forecasting',
     description:
-      'Start with a free inventory forecast. Compare Pulse, Operate, Scale, and Network for live planning, purchasing, manufacturing, 3PL workflows, and unlimited users.',
+      'Forecast inventory free every month for one user. Compare Pulse and Operate for live planning and execution, plus advanced Scale and Network paths.',
     lastModified: '2026-08-29',
     schema: [
       {

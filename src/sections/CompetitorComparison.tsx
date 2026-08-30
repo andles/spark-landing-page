@@ -31,7 +31,7 @@ const competitors: Competitor[] = [
       'Gaps in the broader e-commerce stack',
     ],
     sparkAdvantages: [
-      'Free forecast audit with predictable order bands',
+      'Free monthly forecasting with predictable order bands',
       'B2B customer and vendor portals included',
       'Full e-commerce and fulfillment stack built in',
     ],
@@ -70,7 +70,7 @@ const competitors: Competitor[] = [
       'Lacks AI-driven insights and automation',
     ],
     sparkAdvantages: [
-      'Generous user limits with room to scale',
+      'One user on Free; unlimited users on paid plans',
       'Full manufacturing support with BOMs and work orders',
       'AI capabilities and proactive alerts built in',
     ],

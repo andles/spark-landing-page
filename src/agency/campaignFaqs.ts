@@ -143,7 +143,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "How much does Spark cost?",
       answer:
-        "Start with a free monthly forecast audit for up to 500 orders. Pulse is $99 per month for live intelligence, Operate is $349 for purchasing and fulfillment, and Scale is $749 for manufacturing and custom workflows. Every plan includes unlimited users.",
+        "Free gives one user monthly forecasting for up to 500 orders. Pulse is $99 per month for live intelligence, and Operate is $349 for purchasing and fulfillment. Paid plans include unlimited users. Manufacturers and multi-client operators can explore the separate Scale and Network paths.",
     },
   ],
 };

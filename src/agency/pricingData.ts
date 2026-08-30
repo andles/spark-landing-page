@@ -8,6 +8,7 @@ export interface PricingTier {
   promise: string;
   description: string;
   orders: string;
+  users: string;
   overage: string;
   refresh: string;
   onboarding: string;
@@ -21,26 +22,34 @@ export interface PricingTier {
   accent: 'cyan' | 'sky' | 'lime' | 'violet' | 'fuchsia';
 }
 
+export interface AdvancedPricingTier extends PricingTier {
+  operator: string;
+  fit: string;
+  exploreHref: string;
+  exploreLabel: string;
+}
+
 export const pricingTiers: PricingTier[] = [
   {
     name: 'Free',
     stage: '01 / See',
     price: '$0',
     promise: 'See your forecast',
-    description: 'A monthly inventory audit that turns your sales history into a concrete buying plan.',
+    description: 'Free forecasting for one operator, refreshed every month from the inventory data you already have.',
     orders: '500 / month',
+    users: '1 user',
     overage: 'Upgrade to Pulse',
     refresh: 'Monthly',
     onboarding: 'Self-serve',
-    aiCredits: 'Trial allotment',
+    aiCredits: 'Monthly allotment',
     support: 'Community + AI',
     features: [
-      'Shopify connection or CSV import',
+      'Supported source connection or file import',
       'Per-SKU forecast and seasonal curves',
       'Dead stock and days-of-supply reports',
-      'Reorder plan with draft POs visible',
+      'Monthly reorder and buying plan',
     ],
-    ctaLabel: 'Run my free forecast',
+    ctaLabel: 'Start forecasting free',
     ctaKind: 'signup',
     accent: 'cyan',
   },
@@ -52,6 +61,7 @@ export const pricingTiers: PricingTier[] = [
     promise: 'Live intelligence',
     description: 'For operators who need the forecast, stock risk, and buying plan to stay current.',
     orders: '2,500 / month',
+    users: 'Unlimited',
     overage: '+$49 / 2,500',
     refresh: 'Live',
     onboarding: 'Self-serve',
@@ -61,10 +71,10 @@ export const pricingTiers: PricingTier[] = [
     features: [
       'Continuous forecasts and buying plans',
       'Live reorder and stockout alerts',
-      'Multiple sales channel connections',
+      'Multiple supported data connections',
       'Inventory policy management',
     ],
-    ctaLabel: 'Start with Free',
+    ctaLabel: 'Start forecasting free',
     ctaKind: 'signup',
     accent: 'sky',
   },
@@ -76,6 +86,7 @@ export const pricingTiers: PricingTier[] = [
     promise: 'Act on the plan',
     description: 'For teams ready to turn recommendations into purchasing, receiving, and fulfillment.',
     orders: '10,000 / month',
+    users: 'Unlimited',
     overage: '+$49 / 2,500',
     refresh: 'Live',
     onboarding: 'Self-serve + services',
@@ -88,19 +99,23 @@ export const pricingTiers: PricingTier[] = [
       'Receiving and exception workflows',
       'Transfers and multi-warehouse operations',
     ],
-    ctaLabel: 'Start with Free',
+    ctaLabel: 'Start forecasting free',
     ctaKind: 'signup',
     highlighted: true,
     accent: 'lime',
   },
+];
+
+export const advancedPricingTiers: AdvancedPricingTier[] = [
   {
     name: 'Scale',
-    stage: '04 / Make',
+    stage: 'Advanced / Make',
     price: '$749',
     period: '/mo',
     promise: 'Run your operation',
     description: 'For manufacturers and teams that need Spark shaped around a more complex workflow.',
     orders: '25,000 / month',
+    users: 'Unlimited',
     overage: '+$49 / 2,500',
     refresh: 'Live',
     onboarding: 'Guided implementation',
@@ -116,20 +131,25 @@ export const pricingTiers: PricingTier[] = [
     ctaLabel: 'Plan my implementation',
     ctaKind: 'contact',
     accent: 'violet',
+    operator: 'For manufacturers',
+    fit: 'Production planning, component economics, and workflows that need structured implementation.',
+    exploreHref: '/features/manufacturing',
+    exploreLabel: 'Explore manufacturing',
   },
   {
     name: 'Network',
-    stage: '05 / Orchestrate',
+    stage: 'Advanced / Orchestrate',
     price: 'Let\'s talk',
     promise: 'Multi-client operations',
     description: 'For 3PLs and fulfillment providers operating inventory on behalf of many clients.',
     orders: 'Negotiated',
+    users: 'Unlimited',
     overage: 'Contracted',
     refresh: 'Live',
     onboarding: 'Full implementation',
     aiCredits: 'Negotiated',
     support: 'Dedicated',
-    inherits: 'Scale',
+    inherits: 'Operate',
     features: [
       'Multi-client workspaces and entitlements',
       'Per-client catalogs and order feeds',
@@ -139,6 +159,10 @@ export const pricingTiers: PricingTier[] = [
     ctaLabel: 'Talk about Network',
     ctaKind: 'contact',
     accent: 'fuchsia',
+    operator: 'For 3PLs and service operators',
+    fit: 'Client-separated inventory intelligence, shared operations, and a commercial model built for managed services.',
+    exploreHref: '/3pl',
+    exploreLabel: 'Explore 3PL operations',
   },
 ];
 
@@ -168,7 +192,7 @@ export const implementationServices = [
 export const pricingFaqs = [
   {
     question: 'Is Free a trial?',
-    answer: 'No. Free is a real monthly forecast audit for up to 500 orders per month. Your connected data stays in sync, and Spark regenerates the forecast, stock-risk reports, reorder recommendations, and buying plan each month.',
+    answer: 'No. Free is an ongoing single-user plan for up to 500 orders per month. Spark refreshes your forecast, stock-risk reports, reorder recommendations, and buying plan every month.',
   },
   {
     question: 'What changes when I upgrade to Pulse?',
@@ -179,8 +203,8 @@ export const pricingFaqs = [
     answer: 'Choose Operate when you are ready to commit the draft purchase orders Spark recommends. Operate adds the full PO lifecycle, suppliers and quotes, receiving, transfers, sales orders, and multi-warehouse workflows.',
   },
   {
-    question: 'Which plan includes manufacturing?',
-    answer: 'Scale adds multi-level bills of materials, production specifications, component- and spec-priced vendor books, advanced integrations, and a scoped custom module configuration. A guided implementation is required.',
+    question: 'What are the advanced plans?',
+    answer: 'Scale is the advanced path for manufacturers that need bills of materials, production specifications, component economics, and custom workflows. Network is a separate path for 3PLs and service operators managing inventory across many clients. Both include guided implementation.',
   },
   {
     question: 'How do order overages work?',
@@ -188,7 +212,11 @@ export const pricingFaqs = [
   },
   {
     question: 'Do you charge per user, SKU, or warehouse?',
-    answer: 'No. Every plan includes unlimited users, and Spark does not meter SKUs or warehouse count. Plans are separated by operating capability, included monthly orders, and AI usage.',
+    answer: 'Free includes one user. Paid plans include unlimited users, and Spark does not meter SKUs or warehouse count. Plans are separated by operating capability, included monthly orders, and AI usage.',
+  },
+  {
+    question: 'What data can Spark use?',
+    answer: 'Spark is designed to work from the operational data your business already has. Supported connections and file imports can bring together sales, inventory, purchasing, supplier, warehouse, accounting, marketplace, or ERP data without making one commerce platform the center of the model.',
   },
   {
     question: 'How are AI credits priced?',

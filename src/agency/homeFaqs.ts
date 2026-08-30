@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Can I start before choosing a paid plan?',
     answer:
-      'Yes. Free includes a monthly forecast audit for up to 500 orders per month, including stock-risk reports, reorder recommendations, and a buying plan. Pulse starts at $99 per month for live intelligence, and every plan includes unlimited users.',
+      'Yes. Free gives one user a refreshed monthly forecast for up to 500 orders per month, including stock-risk reports, reorder recommendations, and a buying plan. Pulse starts at $99 per month for live intelligence, and paid plans include unlimited users.',
   },
   {
     question: 'Who is Spark best for?',

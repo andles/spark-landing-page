@@ -480,7 +480,7 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
               </p>
               <div className="mt-6 flex justify-center">
                 <BookACallButton className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center">
-                  Get your first forecast free
+                  Start forecasting free
                 </BookACallButton>
               </div>
               <p className="mt-3 text-[#8b95a8] text-sm">No card, no contract, and the forecast is yours either way.</p>

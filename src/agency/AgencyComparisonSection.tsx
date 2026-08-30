@@ -4,7 +4,7 @@ import { useCtaLinks } from "./ctaLinks";
 const rows = [
   {
     category: "Pricing",
-    spark: "Free forecast audit, unlimited users, and predictable order bands. Upgrade for operating depth—not seats or SKUs.",
+    spark: "Free monthly forecasting for one user, unlimited users on paid plans, and predictable order bands. Upgrade for freshness, operating depth, or scale—not SKUs.",
     others: "Seat, SKU, warehouse, and connection limits can turn growth into a pricing spreadsheet.",
   },
   {

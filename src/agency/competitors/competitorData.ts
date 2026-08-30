@@ -108,7 +108,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         packageName: 'One planning stack',
         packageNote: 'Inventory operations and planning together',
         price: 'Free; paid from $99/mo',
-        priceNote: 'Forecast audit through live operations',
+        priceNote: 'Monthly forecasting through live operations',
         included: ['Demand forecasting', 'Replenishment planning', 'Sparki onboarding', 'Governed MCP access'],
       },
       takeaway: 'Cin7 separates the forecasting layer. Spark includes planning in the core subscription.',
@@ -137,7 +137,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         title: 'Fewer meters to model before the first order',
         body: 'Cin7 Core publishes limits for users, integrations, and annual sale-order volume, with additional capacity available for purchase.',
         incumbent: 'The limits are explicit and can scale, but the final package depends on operating volume and add-ons.',
-        spark: 'Spark uses two meters: published monthly order bands and included AI usage. Users and SKUs are not metered.',
+        spark: 'Spark uses published monthly order bands and included AI usage. Free is a single-user workspace; paid plans include unlimited users, and SKUs are not metered.',
       },
       {
         number: '04',
@@ -158,7 +158,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     comparison: [
       { category: 'Product model', competitor: 'Core and Omni cover different operating depths and buyer profiles.', spark: 'One cloud product with tiered capabilities.', lean: 'tradeoff' },
-      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free forecast audit; Pulse $99, Operate $349, Scale $749, and Network quoted.', lean: 'spark' },
+      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free monthly forecasting; Pulse $99 and Operate $349. Advanced Scale is $749; Network is quoted.', lean: 'spark' },
       { category: 'Forecasting', competitor: 'Cin7 ForesightAI is listed as an add-on.', spark: 'Forecasting, inventory risk, and draft purchase orders are part of the operating workflow.', lean: 'spark' },
       { category: 'Channels', competitor: 'More than 700 integrations and a mature partner ecosystem.', spark: 'Focused native paths for Shopify, Amazon, QuickBooks Online, and core commerce workflows.', lean: 'competitor' },
       { category: 'Order and integration limits', competitor: 'Published limits by Core tier, with more capacity available for purchase.', spark: '500 to 25,000 included monthly orders by tier; paid capacity adds in $49 blocks of 2,500.', lean: 'tradeoff' },
@@ -207,7 +207,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     snapshot: [
       { label: 'Zoho', value: '$0–$249/mo', note: 'Annual billing, with order caps' },
       { label: 'Order ceiling', value: '50–15,000/mo', note: 'Varies by Zoho plan' },
-      { label: 'Spark', value: '$0-$749/mo', note: 'Forecast audit through manufacturing' },
+      { label: 'Spark', value: '$0-$749/mo', note: 'Monthly forecasting through manufacturing' },
     ],
     migrationSignals: ['Items + composites', 'Customers + vendors', 'Orders + purchasing history'],
     themes: [
@@ -247,13 +247,13 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         number: '05',
         label: 'Price honesty',
         title: 'Compare the free plans honestly',
-        body: 'Zoho’s free tier is a low-volume operating ledger. Spark Free is a read-only monthly forecast audit. The better entry point depends on whether the immediate job is recording stock or planning the next buy.',
+        body: 'Zoho’s free tier is a low-volume operating ledger. Spark Free is a single-user monthly forecasting workspace. The better entry point depends on whether the immediate job is recording stock or planning the next buy.',
         incumbent: 'Zoho has a forever-free plan and paid plans starting at $29 per organization per month when billed annually.',
         spark: 'Spark Free covers up to 500 orders per month; live intelligence begins with Pulse at $99 per month.',
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free monthly forecast audit; Pulse begins at $99 per month.', lean: 'tradeoff' },
+      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free monthly forecasting for one user; Pulse begins at $99 per month.', lean: 'tradeoff' },
       { category: 'Order limits', competitor: '50, 500, 3,000, 7,500, or 15,000 orders per month by plan.', spark: '500, 2,500, 10,000, or 25,000 included monthly orders; paid overage is $49 per 2,500.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder levels, replenishment, and Zoho AI capabilities within a broad SMB inventory suite.', spark: 'Forecast-to-draft-PO workflow with reasoning and human approval.', lean: 'spark' },
       { category: 'Commerce', competitor: 'Native multichannel capabilities, including Shopify and Amazon.', spark: 'Focused Shopify and Amazon inventory-planning workflows.', lean: 'tradeoff' },
@@ -349,7 +349,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free monthly forecast audit; Pulse begins at $99 per month.', lean: 'spark' },
+      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free monthly forecasting for one user; Pulse begins at $99 per month.', lean: 'spark' },
       { category: 'Order limits', competitor: '100 monthly orders on Entrepreneur, 1,000 on Small Business, unlimited on Mid-Size.', spark: '500, 2,500, 10,000, or 25,000 included monthly orders; paid overage is $49 per 2,500.', lean: 'tradeoff' },
       { category: 'Integrations', competitor: 'One, three, or five active integrations on public tiers; additional connections are available.', spark: 'One channel on Free and multiple channels from Pulse, without a per-connection meter.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder points, recommended reorder points, notifications, and PO generation.', spark: 'Demand and supply context produces a reasoned draft purchasing recommendation for approval.', lean: 'spark' },
