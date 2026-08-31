@@ -7,7 +7,7 @@ export interface PricingTier {
   period?: string;
   promise: string;
   description: string;
-  orders: string;
+  orders?: string;
   users: string;
   overage: string;
   refresh: string;
@@ -36,7 +36,6 @@ export const pricingTiers: PricingTier[] = [
     price: '$0',
     promise: 'See your forecast',
     description: 'Free forecasting for one operator, refreshed every month from the inventory data you already have.',
-    orders: '500 / month',
     users: '1 user',
     overage: 'Upgrade to Pulse',
     refresh: 'Monthly',
@@ -192,7 +191,7 @@ export const implementationServices = [
 export const pricingFaqs = [
   {
     question: 'Is Free a trial?',
-    answer: 'No. Free is an ongoing single-user plan for up to 500 orders per month. Spark refreshes your forecast, stock-risk reports, reorder recommendations, and buying plan every month.',
+    answer: 'No. Free is an ongoing single-user forecasting plan. Spark refreshes your forecast, stock-risk reports, reorder recommendations, and buying plan every month. Live order operations begin with Pulse.',
   },
   {
     question: 'What changes when I upgrade to Pulse?',
@@ -208,11 +207,11 @@ export const pricingFaqs = [
   },
   {
     question: 'How do order overages work?',
-    answer: 'Pulse, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free moves to Pulse above 500 monthly orders. Network volume is contracted.',
+    answer: 'Pulse, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free is forecast-only and has no order allowance. Network volume is contracted.',
   },
   {
     question: 'Do you charge per user, SKU, or warehouse?',
-    answer: 'Free includes one user. Paid plans include unlimited users, and Spark does not meter SKUs or warehouse count. Plans are separated by operating capability, included monthly orders, and AI usage.',
+    answer: 'Free includes one user. Paid plans include unlimited users, and Spark does not meter SKUs or warehouse count. Paid plans are separated by operating capability, included monthly orders, and AI usage.',
   },
   {
     question: 'What data can Spark use?',

@@ -86,11 +86,13 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
         <p className="mt-3 min-h-[72px] text-sm leading-6 text-[#8f98a9]">{tier.description}</p>
       </div>
 
-      <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-2xl border border-white/[0.07] bg-black/20">
-        <div className="border-r border-white/[0.07] px-3 py-3.5">
-          <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Orders</p>
-          <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.orders}</p>
-        </div>
+      <div className={`mt-5 grid overflow-hidden rounded-2xl border border-white/[0.07] bg-black/20 ${tier.orders ? 'grid-cols-3' : 'grid-cols-2'}`}>
+        {tier.orders && (
+          <div className="border-r border-white/[0.07] px-3 py-3.5">
+            <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Orders</p>
+            <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.orders}</p>
+          </div>
+        )}
         <div className="border-r border-white/[0.07] px-3 py-3.5">
           <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Users</p>
           <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.users}</p>
@@ -134,7 +136,7 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
 
 function PlanComparison() {
   const rows = [
-    { label: 'Included orders / mo', values: pricingTiers.map((tier) => tier.orders) },
+    { label: 'Included orders / mo', values: pricingTiers.map((tier) => tier.orders ?? 'Forecast only') },
     { label: 'Users', values: pricingTiers.map((tier) => tier.users) },
     { label: 'Order overage', values: pricingTiers.map((tier) => tier.overage) },
     { label: 'Forecast refresh', values: pricingTiers.map((tier) => tier.refresh) },
@@ -219,7 +221,7 @@ function AdvancedPlanCard({ tier }: { tier: AdvancedPricingTier }) {
         <div className="min-w-[180px] sm:text-right">
           <span className="font-mono text-3xl font-bold tracking-[-0.05em] text-white">{tier.price}</span>
           {tier.period && <span className="ml-1 text-sm text-white/45">{tier.period}</span>}
-          <p className="mt-2 text-xs text-white/40">{tier.orders} orders · {tier.users} users</p>
+          <p className="mt-2 text-xs text-white/40">{tier.orders ? `${tier.orders} orders · ` : ''}{tier.users} users</p>
         </div>
       </div>
 

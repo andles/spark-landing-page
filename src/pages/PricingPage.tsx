@@ -11,7 +11,7 @@ const planSignals = [
   {
     icon: Gauge,
     title: 'One visible scale meter',
-    body: 'Choose by included monthly orders, then add capacity in predictable 2,500-order blocks. No per-order taxi meter.',
+    body: 'Paid plans include a clear monthly order allowance, then add capacity in predictable 2,500-order blocks. Free stays focused on forecasting.',
   },
   {
     icon: UsersRound,
