@@ -9,7 +9,7 @@ import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 import HeroVideoShowcase from "./HeroVideoShowcase";
 
-// Performance metrics — relocated into the hero (below the CTAs, above the video).
+// Performance metrics: relocated into the hero (below the CTAs, above the video).
 const stats = [
   {
     value: "43%",
@@ -31,7 +31,7 @@ const stats = [
 export default function AgencyHeroStockouts() {
   const { signupUrl } = useCtaLinks();
   return (
-    /* ── HERO: Reduce Stockouts & Overstock campaign variant — only this hero differs from the default page ── */
+    /* ── HERO: Reduce Stockouts & Overstock campaign variant. Only this hero differs from the default page. ── */
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#06080d]" />
@@ -82,7 +82,7 @@ export default function AgencyHeroStockouts() {
           <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Agentic onboarding · recommendations with reasoning · your team approves</p>
         </div>
 
-        {/* Performance metrics — relocated from the stats section to sit directly
+        {/* Performance metrics: relocated from the stats section to sit directly
             below the CTAs and above the hero video. Width + top margin match the
             video block below so the horizontal edges and vertical rhythm align. */}
         <ScrollReveal staggerChildren={120} className="mt-10 lg:mt-14 w-full max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">

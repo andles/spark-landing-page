@@ -17,7 +17,7 @@ const app = (
 const container = document.getElementById('root')!
 
 // Prerendered pages are hydrated; the plain SPA shell is rendered from
-// scratch. `?variant=` URLs are also rendered from scratch — the prerendered
+// scratch. `?variant=` URLs are also rendered from scratch. The prerendered
 // homepage is the default variant, so hydrating a different variant into it
 // would mismatch.
 const hasVariant = new URLSearchParams(window.location.search).has('variant')

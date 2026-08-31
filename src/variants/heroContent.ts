@@ -6,7 +6,7 @@ import type { LandingVariant } from '../context/VariantContext';
  * To add a new variant:
  * 1. Add the slug to `LandingVariant` in VariantContext.tsx
  * 2. Add an entry here with the hero copy
- * 3. That's it — Hero.tsx reads from this map automatically
+ * 3. That's it. Hero.tsx reads from this map automatically
  */
 
 export interface HeroContent {

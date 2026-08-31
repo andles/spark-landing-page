@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { CALENDLY_URL } from "./calendly";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// /book-a-call — pure redirect to Calendly. It no longer fires a Google Ads
+// /book-a-call: pure redirect to Calendly. It no longer fires a Google Ads
 // conversion: conversions are now counted on /meeting-confirmed (the post-booking
 // redirect), so a visit to this URL must not be counted as a conversion.
 // ─────────────────────────────────────────────────────────────────────────────

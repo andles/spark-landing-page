@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import AgencyTrustBar from "./AgencyTrustBar";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// /meeting-confirmed — shared demo confirmation page.
+// /meeting-confirmed: shared demo confirmation page.
 //
 // Every variant's Calendly booking redirects here. The Google Ads "Sign-up"
 // conversion event snippet is injected into this route's <head> at build time
@@ -72,13 +72,13 @@ export default function MeetingConfirmedPage() {
 
   return (
     <div className="relative min-h-screen bg-[#06080d] flex flex-col">
-      {/* Background layers — same as the hero, so the page feels native */}
+      {/* Background layers: same as the hero, so the page feels native */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.12),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_60%,rgba(139,92,246,0.08),transparent_50%)]" />
       <div className="absolute inset-0 dot-grid" />
       <div className="absolute inset-0 noise" />
 
-      {/* Minimal header — logo only, no nav or secondary CTAs, to keep focus */}
+      {/* Minimal header: logo only, no nav or secondary CTAs, to keep focus */}
       <header className="relative z-10">
         <div className="max-w-[720px] mx-auto px-6 h-16 flex items-center">
           <a
@@ -180,12 +180,12 @@ export default function MeetingConfirmedPage() {
         </p>
       </main>
 
-      {/* 6. Light social proof — reuse the existing logo strip */}
+      {/* 6. Light social proof: reuse the existing logo strip */}
       <div className="relative z-10 border-t border-white/[0.06]">
         <AgencyTrustBar />
       </div>
 
-      {/* Slim footer — only what is needed */}
+      {/* Slim footer: only what is needed */}
       <footer className="relative z-10 border-t border-white/[0.06] py-6">
         <div className="max-w-[720px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[#8b95a8] text-xs">&copy; 2026 Spark Inventory. All rights reserved.</p>

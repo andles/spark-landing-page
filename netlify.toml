@@ -23,7 +23,7 @@
   to = "/spa-shell.html"
   status = 200
 
-# Hashed build assets never change — cache forever
+# Hashed build assets never change, so cache forever
 [[headers]]
   for = "/assets/*"
   [headers.values]

@@ -1,6 +1,6 @@
 // REDUCE STOCKOUTS & OVERSTOCK campaign landing page (Google Ads message-match).
 // Identical to AgencyPage.tsx except it swaps in the stockouts hero + stats
-// components. Everything else — sections, CTAs, footer — is unchanged.
+// components. Everything else, including sections, CTAs, and footer, is unchanged.
 import AgencyHeader from "./AgencyHeader";
 import AgencyHeroStockouts from "./AgencyHeroStockouts";
 import AgencyTrustBar from "./AgencyTrustBar";

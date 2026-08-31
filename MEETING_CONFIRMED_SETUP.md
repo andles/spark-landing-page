@@ -1,4 +1,4 @@
-# /meeting-confirmed — setup and verification
+# /meeting-confirmed: setup and verification
 
 Shared demo confirmation page. Every variant's "Book a Call" opens the same
 Calendly event, and Calendly redirects to `https://sparkinventory.com/meeting-confirmed`

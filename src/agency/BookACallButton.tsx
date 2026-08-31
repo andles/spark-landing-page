@@ -6,7 +6,7 @@ import {
 } from "./calendly";
 import { useCtaLinks } from "./ctaLinks";
 
-// "Book a Call" CTA — opens the Calendly scheduler in a popup overlay instead of
+// "Book a Call" CTA: opens the Calendly scheduler in a popup overlay instead of
 // navigating away. The href stays the Calendly URL as a no-JS fallback. Shared
 // across every landing page; pass the caller's own className to keep each
 // button's styling. The Google Ads conversion is NOT fired here: it fires on

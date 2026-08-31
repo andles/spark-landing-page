@@ -1,4 +1,4 @@
-# NextGen theme — deployed to sparkinventory.ai
+# NextGen theme, deployed to sparkinventory.ai
 # Use this config when creating the NextGen Netlify site:
 # netlify deploy --config netlify-nextgen.toml
 
@@ -29,7 +29,7 @@
   to = "/spa-shell.html"
   status = 200
 
-# Hashed build assets never change — cache forever
+# Hashed build assets never change, so cache forever
 [[headers]]
   for = "/assets/*"
   [headers.values]

@@ -47,7 +47,7 @@ Define activation as the earliest action that predicts future value. Recommended
 
 `A new workspace completes agent-guided onboarding or connects inventory data, then views its first reorder recommendation within 24 hours.`
 
-Treat Sparki and MCP as first-class onboarding paths—not supporting import features. Attribute activation by `onboarding_path` (`sparki`, `mcp`, `integration`, or `spreadsheet`) so the team can compare time-to-value, completion, and retained usage.
+Treat Sparki and MCP as first-class onboarding paths, not supporting import features. Attribute activation by `onboarding_path` (`sparki`, `mcp`, `integration`, or `spreadsheet`) so the team can compare time-to-value, completion, and retained usage.
 
 Validate this definition against retention before using it as the permanent north-star activation event.
 
@@ -99,11 +99,11 @@ Google recommends clear titles, crawlable internal links, useful page content, a
 
 ### Bottom-of-funnel pages
 
-1. `/shopify-inventory-management` — implemented.
-2. `/amazon-inventory-management` — Amazon/FBA stock visibility, forecasting, and purchasing.
-3. `/multichannel-inventory-management` — one source of truth across commerce, wholesale, and warehouses.
-4. `/inventory-forecasting-software` — demand forecasting tied to reorder and PO execution.
-5. `/purchase-order-software` — reorder recommendations, approvals, receiving, and supplier workflows.
+1. `/shopify-inventory-management`: implemented.
+2. `/amazon-inventory-management`: Amazon/FBA stock visibility, forecasting, and purchasing.
+3. `/multichannel-inventory-management`: one source of truth across commerce, wholesale, and warehouses.
+4. `/inventory-forecasting-software`: demand forecasting tied to reorder and PO execution.
+5. `/purchase-order-software`: reorder recommendations, approvals, receiving, and supplier workflows.
 
 Each page must include unique examples, product screenshots, objections, internal links, and a clear next step. Do not create thin location/keyword variants.
 
@@ -113,7 +113,7 @@ Only publish comparisons that are factual, sourced, and maintained:
 
 - Spark vs. Prediko: full inventory operations vs. Shopify-first planning.
 - Spark vs. Cin7: faster adoption and decision workflow vs. broad ERP depth.
-- Spark vs. Fishbowl: the existing page should remain the model—source public review themes and distinguish reported claims from Spark claims.
+- Spark vs. Fishbowl: the existing page should remain the model. Source public review themes and distinguish reported claims from Spark claims.
 
 ### Educational cluster
 

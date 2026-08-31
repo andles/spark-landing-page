@@ -12,7 +12,7 @@ const CTA_OPTIONS = { source: "in-store-pickup" } as const;
 export default function AgencyHeroPickup() {
   const { bookUrl, signupUrl } = useCtaLinks(CTA_OPTIONS);
   return (
-    /* ── HERO: In-Store Pickup campaign variant — only this hero differs from the default page ── */
+    /* ── HERO: In-Store Pickup campaign variant. Only this hero differs from the default page. ── */
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#06080d]" />
@@ -50,7 +50,7 @@ export default function AgencyHeroPickup() {
             Make an accurate pickup promise online, route the order to the right store, and give staff one clear flow from preparation to customer handoff.
           </p>
 
-          {/* CTA row — single "Book a Call" opens the Calendly scheduler in a
+          {/* CTA row: single "Book a Call" opens the Calendly scheduler in a
               popup overlay and fires the Google Ads conversion on click. The
               href is a no-JS fallback that still reaches Calendly. */}
           <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">

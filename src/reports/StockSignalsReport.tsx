@@ -4,7 +4,7 @@ import BookACallButton from "../agency/BookACallButton";
 import { PROSPECTS, type ProspectReport } from "./prospects";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// /r/<slug> — prospect-specific stock signals report.
+// /r/<slug>: prospect-specific stock signals report.
 //
 // One shared component; everything prospect-specific comes from the data
 // object in ./prospects.ts. Section 1 renders measured facts exactly as given.

@@ -1,6 +1,6 @@
 // IN-STORE PICKUP campaign landing page (Google Ads message-match variant).
 // Identical to AgencyPage.tsx except it swaps in the pickup hero + stats
-// components. Everything else — sections, CTAs, footer — is unchanged.
+// components. Everything else, including sections, CTAs, and footer, is unchanged.
 import AgencyHeader from "./AgencyHeader";
 import AgencyHeroPickup from "./AgencyHeroPickup";
 import AgencyTrustBar from "./AgencyTrustBar";

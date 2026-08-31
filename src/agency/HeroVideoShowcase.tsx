@@ -133,13 +133,13 @@ export default function HeroVideoShowcase() {
     <div ref={showcaseRef} className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
       <div className="dash-enter relative w-full">
 
-        {/* Dashboard mockup — always in the DOM so the container has height.
+        {/* Dashboard mockup: always in the DOM so the container has height.
             Visible until the video actually plays, fades back in as it ends. */}
         <div className={`transition-opacity duration-700 ${phase === "video" ? "opacity-0" : "opacity-100"}`}>
           <DashboardMockup />
         </div>
 
-        {/* Play button — centered overlay shown only after video finishes */}
+        {/* Play button: centered overlay shown only after video finishes */}
         {phase === "done" && mountVideo && (
           <div className="absolute inset-0 flex items-center justify-center">
             <button
@@ -181,7 +181,7 @@ export default function HeroVideoShowcase() {
               className="w-full h-full object-cover"
             />
 
-            {/* Controls — gradient scrim + progress bar + time + mute */}
+            {/* Controls: gradient scrim + progress bar + time + mute */}
             {(phase === "video" || phase === "fading") && (
               <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-14 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none">
 
@@ -200,7 +200,7 @@ export default function HeroVideoShowcase() {
                     className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyan-400 to-violet-400 rounded-full pointer-events-none"
                     style={{ width: `${progress}%` }}
                   />
-                  {/* Scrubber knob — appears on hover */}
+                  {/* Scrubber knob: appears on hover */}
                   <div
                     className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150"
                     style={{ left: `calc(${progress}% - 6px)` }}

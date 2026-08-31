@@ -232,7 +232,7 @@ for (const route of routeMeta) {
 // /404/ remains a directly reviewable route during local development.
 copyFileSync(join(dist, '404', 'index.html'), join(dist, '404.html'));
 
-// sitemap.xml — indexable canonical routes only
+// sitemap.xml: indexable canonical routes only
 const urls = routeMeta
   .filter((r) => !r.noindex && !r.canonical)
   .map((r) => {
