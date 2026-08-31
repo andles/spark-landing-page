@@ -29,7 +29,7 @@ const accentStyles: Record<PricingTier['accent'], { line: string; badge: string;
     line: 'from-lime-300 to-emerald-400',
     badge: 'border-lime-300/25 bg-lime-300/[0.09] text-lime-200',
     glow: 'bg-lime-300/[0.1]',
-    button: 'border-lime-200 bg-lime-300 text-[#071009] hover:bg-lime-200',
+    button: 'border-lime-200 bg-lime-300 !text-[#071009] hover:bg-lime-200',
   },
   violet: {
     line: 'from-violet-300 to-violet-500',
