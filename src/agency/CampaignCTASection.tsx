@@ -25,7 +25,7 @@ const content: Record<SupportedKind, { title: string; gradient: string; body: st
   pickup: {
     title: "Put the whole pickup flow",
     gradient: "in front of your store team",
-    body: "Walk through the Shopify connection, location stock promise, ticket routing, counter hardware, and customer handoff.",
+    body: "Walk through order intake, the location stock promise, ticket routing, counter hardware, and customer handoff.",
     primary: "demo",
     microcopy: "Start with one location, prove the workflow, then expand.",
     options: { source: "in-store-pickup" },

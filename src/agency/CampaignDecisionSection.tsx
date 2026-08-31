@@ -90,7 +90,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
   },
   pickup: {
     eyebrow: 'A location-aware fulfillment loop',
-    title: 'Keep the Shopify promise aligned with the store handoff',
+    title: 'Keep the pickup promise aligned with store stock',
     description: 'Spark connects location inventory, the pickup queue, staff preparation, and the final order record so each promise has an operational path behind it.',
     cards: [
       {

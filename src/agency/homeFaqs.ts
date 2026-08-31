@@ -27,6 +27,6 @@ export const homeFaqs = [
   {
     question: 'Who is Spark best for?',
     answer:
-      'Spark is built for product businesses that have outgrown spreadsheets or lightweight store plugins, especially teams selling across Shopify, Amazon, wholesale, multiple warehouses, or a mix of those channels. It is also a fit for manufacturers that need bills of materials and production visibility tied to live stock.',
+      'Spark is a fit for operators running inventory across wholesale, multiple warehouses, or a mix of channels, with or without a storefront. It is also a fit for manufacturers that need bills of materials and production visibility tied to live stock.',
   },
 ] as const;

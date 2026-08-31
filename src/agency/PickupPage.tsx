@@ -1,14 +1,11 @@
 // IN-STORE PICKUP campaign landing page (Google Ads message-match variant).
-// Identical to AgencyPage.tsx except it swaps in the pickup hero + stats
-// components. Everything else, including sections, CTAs, and footer, is unchanged.
+// This route intentionally stays focused on the BOPIS promise, store workflow,
+// and handoff instead of repeating the broader homepage narrative.
 import AgencyHeader from "./AgencyHeader";
 import AgencyHeroPickup from "./AgencyHeroPickup";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStatsPickup from "./AgencyStatsPickup";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
-import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
-import AgencyIntegrationsSection from "./AgencyIntegrationsSection";
-import AgencyPricingSection from "./AgencyPricingSection";
 import CampaignFAQSection from "./CampaignFAQSection";
 import CampaignCTASection from "./CampaignCTASection";
 import CampaignDecisionSection from "./CampaignDecisionSection";
@@ -27,9 +24,6 @@ export default function PickupPage() {
         <AgencyStatsPickup />
         <CampaignWorkflowSection kind="pickup" />
         <CampaignDecisionSection kind="pickup" />
-        <AgencyCoreCapabilities />
-        <AgencyIntegrationsSection />
-        <AgencyPricingSection />
         <CampaignFAQSection kind="pickup" />
         <CampaignCTASection kind="pickup" />
       </main>

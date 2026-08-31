@@ -141,7 +141,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
     title: "Promise pickup only when the",
     gradientTitle: "stock is really there",
     description:
-      "Connect the Shopify promise to the store's preparation and handoff workflow, with location-level inventory behind every step.",
+      "Connect the pickup promise to the store's preparation and handoff workflow, with location-level inventory behind every step.",
     workspace: "DOWNTOWN STORE / PICKUP QUEUE",
     promises: ["Location-aware promise", "Automatic store workflow", "Clear customer handoff"],
     accent: "emerald",
@@ -150,7 +150,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
         label: "Promise",
         title: "Offer pickup from available store stock",
         body: "The customer chooses a location from inventory that belongs to that store, not an optimistic global count.",
-        signals: ["Shopify order", "Store on-hand", "Location rules"],
+        signals: ["Pickup order", "Store on-hand", "Location rules"],
         resultLabel: "AVAILABLE TO PROMISE",
         resultValue: "Downtown · in stock",
         icon: Store,

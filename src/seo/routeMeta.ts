@@ -114,7 +114,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/in-store-pickup',
-    title: 'In-Store Pickup & Order Management - SPARK Inventory',
+    title: 'In-Store Pickup on Accurate Inventory | Spark Inventory',
     description:
       'Run buy-online-pickup-in-store on inventory that is actually accurate. Real-time stock sync, pickup order tracking, and AI demand forecasting in one platform.',
     lastModified: '2026-08-31',
