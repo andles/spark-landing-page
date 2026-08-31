@@ -61,3 +61,8 @@ export const PROSPECTS: Record<string, ProspectReport> = {
     launches: { n: 60, withSoldOut: 15, variants: 704, oosVariants: 36, withMarkdown: 5 },
   },
 };
+
+// Internal alias: same Drake Waterfowl report under a long unguessable slug,
+// used as the team-facing example link. The original slug stays valid in case
+// it was already shared externally.
+PROSPECTS["dw-example-5fje3v79r12qdi"] = PROSPECTS["drakewaterfowl-k7q2"];
