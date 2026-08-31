@@ -29,7 +29,7 @@ const solutionLinks = [
 function DesktopMenu({ label, links }: { label: string; links: typeof productLinks }) {
   return (
     <div className="group relative">
-      <button type="button" className="inline-flex cursor-pointer items-center gap-1.5 py-5 text-sm text-[#b8bfcc] transition-colors group-hover:text-white group-focus-within:text-white" aria-haspopup="true">
+      <button type="button" className="inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap py-5 text-sm text-[#b8bfcc] transition-colors group-hover:text-white group-focus-within:text-white" aria-haspopup="true">
         {label}
         <svg className="h-3.5 w-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
       </button>
@@ -63,42 +63,42 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass border-b border-white/[0.06]" : "bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 border-b border-white/[0.05] bg-[#06080d]/[0.9] backdrop-blur-2xl transition-shadow duration-300 ${
+        scrolled ? "shadow-md shadow-black/20" : "shadow-none"
       }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5">
+        <a href="/" className="flex shrink-0 items-center gap-2.5 whitespace-nowrap">
           <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" decoding="async" className="w-8 h-8" />
           <span className="font-bold text-white text-base tracking-tight">Spark Inventory</span>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden min-[900px]:flex items-center gap-5 2xl:gap-7">
           <DesktopMenu label="Product" links={productLinks} />
           <DesktopMenu label="Solutions" links={solutionLinks} />
-          <a href="/#integrations" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
-          <a href="/pricing" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
-          <a href="/blog" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
+          <a href="/#integrations" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
+          <a href="/pricing" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
+          <a href="/blog" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
         </nav>
 
         {/* CTAs */}
-        <div className="hidden md:flex items-center gap-3">
-          <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
+        <div className="hidden min-[900px]:flex shrink-0 items-center gap-3">
+          <a href="https://app.sparkinventory.com" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
             Sign In
           </a>
           {cta === "demo" ? (
             <BookACallButton
               url={bookUrl}
-              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
+              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold whitespace-nowrap hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
             >
               Book a Demo
             </BookACallButton>
           ) : (
             <a
               href={signupUrl}
-              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
+              className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold whitespace-nowrap hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
             >
               Start Free
             </a>
@@ -107,7 +107,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-white/[0.06] transition-colors duration-200"
+          className="min-[900px]:hidden p-2 rounded-lg hover:bg-white/[0.06] transition-colors duration-200"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -122,7 +122,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/[0.06] bg-[#080b12]/[0.98] px-6 py-5 backdrop-blur-xl">
+        <div className="min-[900px]:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/[0.06] bg-[#080b12]/[0.98] px-6 py-5 backdrop-blur-xl">
           <div className="grid grid-cols-2 gap-x-5 gap-y-2">
             <div>
               <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-cyan-300">Product</p>
