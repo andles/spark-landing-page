@@ -38,10 +38,10 @@ export function PricingPage() {
           <div className="absolute -right-48 top-28 h-[560px] w-[560px] rounded-full bg-violet-500/[0.1] blur-[130px]" />
           <ScrollReveal className="relative z-10 mx-auto max-w-[1080px] text-center">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-lime-200">Spark Inventory pricing</p>
-            <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-bold leading-[1.01] tracking-[-0.045em] sm:text-6xl lg:text-[4.85rem]">
+            <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-bold leading-[1.08] tracking-[-0.045em] sm:text-6xl lg:text-[4.85rem]">
               Forecasting is free.
               <span
-                className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text text-transparent"
+                className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text pb-[0.1em] text-transparent"
                 style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
               >
                 Upgrade when you need it live.
