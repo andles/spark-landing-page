@@ -426,13 +426,9 @@ export default function AgencyCoreCapabilities() {
             What You Get
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-            <span className="text-white">Intelligent Inventory for</span>
+            <span className="text-white">Inventory Software That</span>
             <br />
-            <span className="hidden lg:inline-flex relative overflow-hidden h-[1.3em] align-bottom">
-              <span className="invisible font-bold" aria-hidden="true">Business Intelligence</span>
-              <span key={features[activeIndex].subtitle} className="absolute inset-0 bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent dynamic-subtitle opacity-100 translate-y-0">{features[activeIndex].subtitle}</span>
-            </span>
-            <span className="lg:hidden bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">Modern Operations</span>
+            <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">Plans the Next Buy.</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
             One platform to track stock, fulfill orders, and plan purchases<br className="hidden sm:block" />{" "}

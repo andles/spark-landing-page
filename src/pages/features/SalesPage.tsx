@@ -48,6 +48,7 @@ export function SalesPage() {
   return (
     <FeaturePage
       title="Sales Order Management"
+      heroOutcome="Connected to Inventory"
       subtitle="Multichannel order software"
       description="Bring quotes, orders, invoices, customers, and returns into the same real-time system that controls your inventory."
       icon={ShoppingCart}

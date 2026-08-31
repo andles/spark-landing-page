@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // IN-STORE PICKUP campaign variant (Google Ads message-match).
 // Identical to AgencyHero.tsx except the hero headline + subhead. Targets
-// Shopify merchants with a physical retail component who want in-store pickup.
+// Operators with physical locations who want accurate in-store pickup.
 // ─────────────────────────────────────────────────────────────────────────────
 import BookACallButton from "./BookACallButton";
 import HeroVideoShowcase from "./HeroVideoShowcase";
@@ -30,7 +30,7 @@ export default function AgencyHeroPickup() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            Shopify pickup, connected to real store stock
+            Location-aware pickup, connected to real store stock
           </div>
 
           {/* H1 */}
@@ -38,10 +38,10 @@ export default function AgencyHeroPickup() {
             className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-[#f0f2f5]">The easiest way to offer</span>
+            <span className="text-[#f0f2f5]">In-Store Pickup on Inventory</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              in-store pickup on Shopify.
+              That’s Actually Accurate
             </span>
           </h1>
 
@@ -61,7 +61,7 @@ export default function AgencyHeroPickup() {
               Start Free
             </a>
           </div>
-          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Shopify connection · automatic ticket printing · guided rollout</p>
+          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Accurate store stock · automatic ticket printing · guided rollout</p>
         </div>
 
         <HeroVideoShowcase />

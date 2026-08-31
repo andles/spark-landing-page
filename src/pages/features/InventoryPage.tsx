@@ -44,6 +44,7 @@ export function InventoryPage() {
   return (
     <FeaturePage
       title="Inventory Management"
+      heroOutcome="That Keeps Every Location Accurate"
       subtitle="Multichannel inventory software"
       description="Track every SKU, order, and location in real time, then use AI demand forecasting to know what to reorder, when, and how much."
       icon={Package}

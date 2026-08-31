@@ -44,6 +44,7 @@ export function PurchasingPage() {
   return (
     <FeaturePage
       title="Purchasing & Purchase Orders"
+      heroOutcome="Built From Live Demand"
       subtitle="AI-assisted procurement software"
       description="Turn live demand into supplier-ready purchase orders, manage approvals, and track every order from recommendation through receipt."
       icon={Truck}

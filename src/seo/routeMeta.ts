@@ -117,7 +117,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'In-Store Pickup & Order Management - SPARK Inventory',
     description:
       'Run buy-online-pickup-in-store on inventory that is actually accurate. Real-time stock sync, pickup order tracking, and AI demand forecasting in one platform.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
     schema: [buildFaqSchema('pickup')],
   },
   {
@@ -203,35 +203,35 @@ export const routeMeta: RouteMeta[] = [
     title: 'Inventory Management Software - SPARK',
     description:
       'SKU and variant management, bundles and kits, barcodes, and real-time stock levels across every location and sales channel.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/features/purchasing',
     title: 'Purchasing & Purchase Order Software - SPARK',
     description:
       'Purchase orders from request to receipt, supplier management, automated reordering, and AI-recommended order quantities.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/features/sales',
     title: 'Sales Orders & Invoicing Software - SPARK',
     description:
       'Sales order management, invoicing and billing, backorders, and multichannel order sync in one system of record.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/features/manufacturing',
     title: 'Manufacturing & BOM Software - SPARK',
     description:
       'Multi-level bills of materials, manufacturing orders, and component availability planning tied directly to live inventory.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/features/warehousing',
     title: 'Warehouse Management Software - SPARK',
     description:
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/features/tools-services',
@@ -256,7 +256,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Accounting & QuickBooks Integration - SPARK',
     description:
       'Two-way QuickBooks Online sync: invoices, payments, and inventory adjustments flow automatically with no double entry.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-08-31',
   },
   {
     path: '/shopify-inventory-management',

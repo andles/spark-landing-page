@@ -10,6 +10,14 @@
   status = 301
   force = true
 
+# Preserve links from the earlier forecasting campaign while consolidating
+# authority on the current stockout and overstock landing page.
+[[redirects]]
+  from = "/forecasting"
+  to = "/reduce-stockouts-overstock/"
+  status = 301
+  force = true
+
 # Only the two genuinely client-only route families use the SPA shell.
 # Every public marketing route is a prerendered file; unknown paths therefore
 # fall through to Netlify's generated 404.html with a real 404 status.

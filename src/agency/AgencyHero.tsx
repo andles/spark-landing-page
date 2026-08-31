@@ -1,8 +1,6 @@
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
 import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
-import HeroVideoShowcase from "./HeroVideoShowcase";
-import MobileHeroShowcase from "./MobileHeroShowcase";
 
 // Performance metrics live in the hero (below the CTAs, above the video),
 // matching the /reduce-stockouts-overstock variant's placement.
@@ -104,12 +102,6 @@ export default function AgencyHero() {
         <p className="mt-4 max-w-[1100px] w-full text-center text-[11px] leading-relaxed text-white/35">
           Cohort outcomes are based on observed Spark merchant results. Individual results vary by catalog, channel mix, and operating process.
         </p>
-
-        {/* < sm : tap-to-play video + mockup (mounted only on small screens, and
-            deliberately BEFORE the shared showcase; see MobileHeroShowcase).
-            sm+ : the shared autoplay video + mockup. */}
-        <MobileHeroShowcase />
-        <HeroVideoShowcase />
 
       </div>
     </section>

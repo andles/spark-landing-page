@@ -7,7 +7,7 @@ export const homeFaqs = [
   {
     question: 'Which sales channels and accounting tools does Spark connect to?',
     answer:
-      'Spark is designed for multichannel operators selling through Shopify, Amazon, wholesale, and other commerce channels. It also connects with accounting and payment tools such as QuickBooks, Stripe, and Zoho Books so inventory decisions are made from one consistent set of data.',
+      'Spark is for operators who want stock, purchase orders, invoices, and forecasts in one place, with or without a storefront. Shopify and Amazon are optional channels, not the center of the system. Spark can also use wholesale, accounting, marketplace, warehouse, ERP, and file-based data.',
   },
   {
     question: 'How long does setup take?',

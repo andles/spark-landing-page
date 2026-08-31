@@ -14,6 +14,7 @@ export interface FeatureItem {
 
 export interface FeaturePageProps {
   title: string;
+  heroOutcome: string;
   subtitle: string;
   description: string;
   capabilityLabel?: string;
@@ -47,6 +48,7 @@ const decisionSteps = [
 
 export function FeaturePage({
   title,
+  heroOutcome,
   subtitle,
   description,
   capabilityLabel,
@@ -89,7 +91,7 @@ export function FeaturePage({
                   <span className="text-[#f0f2f5]">{title}</span>
                   <br />
                   <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                    Without the Spreadsheet Work
+                    {heroOutcome}
                   </span>
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">{description}</p>

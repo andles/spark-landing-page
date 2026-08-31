@@ -48,6 +48,7 @@ export function WarehousingPage() {
   return (
     <FeaturePage
       title="Warehouse Management"
+      heroOutcome="With Accurate Stock at Every Step"
       subtitle="Multilocation inventory control"
       description="Keep receiving, bins, transfers, picking, cycle counts, and shipping connected to accurate stock across every location."
       icon={Warehouse}

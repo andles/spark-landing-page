@@ -54,6 +54,7 @@ export function ToolsServicesPage() {
   return (
     <FeaturePage
       title="Sparki and MCP Inventory Automation"
+      heroOutcome="With Human Approval Built In"
       subtitle="Sparki, MCP, and automation"
       description="Sparki is Spark’s in-app AI inventory agent. Spark MCP lets approved assistants such as ChatGPT and Claude use the same governed inventory tools, with previews and approval before operational changes."
       capabilityLabel="Sparki and MCP inventory automation"

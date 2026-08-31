@@ -10,8 +10,8 @@
 // title / description / canonical / Open Graph tags into the built
 // index.html template, and writes <distDir>/<route>/index.html. Netlify
 // serves real files before applying redirects, so these are picked up
-// automatically; client-only routes (/r/:slug, ?variant=…) fall through to
-// the untouched template saved as spa-shell.html.
+// automatically; client-only routes (/r/:slug, ?variant=…) and legacy
+// redirects fall through to the untouched template saved as spa-shell.html.
 //
 // Also emits sitemap.xml (prerendered, indexable routes only).
 // ─────────────────────────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ if (!template.includes('rel="canonical"')) {
 const appSource = readFileSync(resolve('src/App.tsx'), 'utf8');
 const registeredPaths = [...appSource.matchAll(/<Route\s+path="([^"]+)"/g)].map((match) => match[1]);
 const staticPaths = registeredPaths.filter(
-  (path) => path !== '*' && path !== '/book-a-call' && !path.includes(':'),
+  (path) => path !== '*' && path !== '/book-a-call' && path !== '/forecasting' && !path.includes(':'),
 );
 const metaPaths = routeMeta.map(({ path }) => path);
 const duplicatePaths = metaPaths.filter((path, index) => metaPaths.indexOf(path) !== index);

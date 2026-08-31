@@ -44,6 +44,7 @@ export function ManufacturingPage() {
   return (
     <FeaturePage
       title="Manufacturing & BOM"
+      heroOutcome="Planned Against Real Demand"
       subtitle="Production and materials planning"
       description="Plan components, bills of materials, and production against live demand so finished goods and raw materials stay in sync."
       icon={Factory}

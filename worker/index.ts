@@ -49,6 +49,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (pathname === "/forecasting") {
+      url.pathname = "/reduce-stockouts-overstock/";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if ((pathname.startsWith("/r/") || pathname === "/book-a-call") && (request.method === "GET" || request.method === "HEAD")) {
       const shellUrl = new URL("/spa-shell/", url.origin);
       const shellRequest = new Request(shellUrl, request);

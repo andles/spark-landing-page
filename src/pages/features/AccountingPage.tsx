@@ -44,6 +44,7 @@ export function AccountingPage() {
   return (
     <FeaturePage
       title="QuickBooks & Accounting Integration"
+      heroOutcome="Without Duplicate Entry"
       subtitle="Inventory and financial sync"
       description="Keep invoices, payments, inventory adjustments, and your general ledger aligned without re-entering the same transaction twice."
       icon={Calculator}
