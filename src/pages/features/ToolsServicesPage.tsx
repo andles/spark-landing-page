@@ -1,4 +1,5 @@
 import { Wrench } from 'lucide-react';
+import AgentOnboardingSection from '../../agency/AgentOnboardingSection';
 import { FeaturePage } from './FeaturePage';
 
 const features = [
@@ -58,6 +59,7 @@ export function ToolsServicesPage() {
       gradientFrom="from-pink-500"
       gradientTo="to-rose-400"
       features={features}
+      showcase={<AgentOnboardingSection />}
       prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
       nextCategory={{ name: 'QuickBooks & Accounting', href: '/features/accounting' }}
     />

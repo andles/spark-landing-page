@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, type LucideIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 import AgencyHeader from '../../agency/AgencyHeader';
 import AgencyFooter from '../../agency/AgencyFooter';
 import BookACallButton from '../../agency/BookACallButton';
@@ -19,6 +20,7 @@ export interface FeaturePageProps {
   gradientFrom: string;
   gradientTo: string;
   features: FeatureItem[];
+  showcase?: ReactNode;
   nextCategory?: { name: string; href: string };
   prevCategory?: { name: string; href: string };
 }
@@ -49,6 +51,7 @@ export function FeaturePage({
   gradientFrom,
   gradientTo,
   features,
+  showcase,
   nextCategory,
   prevCategory,
 }: FeaturePageProps) {
@@ -119,6 +122,8 @@ export function FeaturePage({
             </div>
           </div>
         </section>
+
+        {showcase}
 
         <section className="relative border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-24">
           <div className="mx-auto max-w-[1180px]">
