@@ -70,7 +70,7 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
       </div>
 
       <div className="relative mt-6">
-        <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-white/55">{tier.name}</h3>
+        <h3 className="text-xl font-semibold tracking-[-0.015em] text-white/95">{tier.name}</h3>
         <div className="mt-2 flex min-h-12 items-baseline gap-1">
           <span className="font-mono text-[2.65rem] font-bold tracking-[-0.05em] text-white">
             {tier.price}
