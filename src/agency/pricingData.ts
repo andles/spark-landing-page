@@ -136,10 +136,10 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     exploreLabel: 'Explore manufacturing',
   },
   {
-    name: 'Custom & Multi-client Operations',
+    name: 'Custom',
     stage: 'Advanced / Orchestrate',
     price: 'Let\'s talk',
-    promise: 'One operation. Every client.',
+    promise: 'Multi-client operations',
     description: 'For 3PLs and fulfillment providers operating inventory on behalf of many clients.',
     orders: 'Negotiated',
     users: 'Unlimited',
