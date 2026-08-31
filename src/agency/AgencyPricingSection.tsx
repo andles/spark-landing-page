@@ -86,20 +86,20 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
         <p className="mt-3 min-h-[72px] text-sm leading-6 text-[#8f98a9]">{tier.description}</p>
       </div>
 
-      <div className={`mt-5 grid overflow-hidden rounded-2xl border border-white/[0.07] bg-black/20 ${tier.orders ? 'grid-cols-3' : 'grid-cols-2'}`}>
+      <div className={`mt-5 grid overflow-hidden rounded-2xl border border-white/[0.07] bg-black/20 ${tier.orders ? 'grid-cols-[1.25fr_0.9fr_0.85fr]' : 'grid-cols-2'}`}>
         {tier.orders && (
-          <div className="border-r border-white/[0.07] px-3 py-3.5">
+          <div className="min-w-0 border-r border-white/[0.07] px-2.5 py-3.5">
             <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Orders</p>
-            <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.orders}</p>
+            <p className="mt-1.5 whitespace-nowrap text-[13px] font-semibold text-white/90">{tier.orders}</p>
           </div>
         )}
-        <div className="border-r border-white/[0.07] px-3 py-3.5">
+        <div className="min-w-0 border-r border-white/[0.07] px-2.5 py-3.5">
           <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Users</p>
-          <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.users}</p>
+          <p className="mt-1.5 whitespace-nowrap text-[13px] font-semibold text-white/90">{tier.users}</p>
         </div>
-        <div className="px-3 py-3.5">
+        <div className="min-w-0 px-2.5 py-3.5">
           <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Refresh</p>
-          <p className="mt-1.5 text-sm font-semibold text-white/90">{tier.refresh}</p>
+          <p className="mt-1.5 whitespace-nowrap text-[13px] font-semibold text-white/90">{tier.refresh}</p>
         </div>
       </div>
 
