@@ -63,7 +63,7 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
     applicationSubCategory: 'Inventory Management Software',
     operatingSystem: 'Web, iOS, Android',
     description:
-      'AI inventory management software for multichannel brands selling on Shopify, Amazon, and wholesale channels.',
+      'AI inventory management software that connects demand forecasting, purchasing, sales, warehousing, manufacturing, and accounting.',
     publisher: { '@id': `${SITE_URL}/#organization` },
     featureList: [
       'AI demand forecasting',
@@ -98,9 +98,9 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
 export const routeMeta: RouteMeta[] = [
   {
     path: '/',
-    title: 'AI Inventory Management for Shopify & Amazon | Spark',
+    title: 'AI Inventory Management & Demand Forecasting | Spark',
     description:
-      'Forecast demand, reduce stockouts, and turn sales into draft purchase orders. AI inventory management for Shopify, Amazon, and wholesale brands.',
+      'Forecast demand, reduce stockouts, and turn live inventory data into draft purchase orders. Spark connects purchasing, sales, warehousing, manufacturing, and accounting.',
     lastModified: '2026-08-31',
     schema: HOME_SCHEMA,
   },

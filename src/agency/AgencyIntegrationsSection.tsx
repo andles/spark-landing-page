@@ -39,7 +39,7 @@ export default function AgencyIntegrationsSection() {
               you already use
             </h2>
             <p className="text-lg text-[#b8bfcc] leading-relaxed mb-8">
-              Shopify, Amazon, QuickBooks, Stripe, and dozens more. One-click setup, real-time sync, and a single source of truth across your entire stack.
+              Bring storefronts, marketplaces, accounting, payments, fulfillment, and more into one operating view. Start with guided setup and keep every system current with real-time sync.
             </p>
             <a
               href={signupUrl}

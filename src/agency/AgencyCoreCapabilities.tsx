@@ -72,9 +72,9 @@ const features = [
     ),
     title: "Unified Integrations & Workflow",
     href: "/features/accounting",
-    description: "Shopify, Amazon, QuickBooks, Stripe and more connect in minutes. Your data flows in one direction so your team works from a single source of truth.",
+    description: "Connect commerce, marketplaces, accounting, payments, and fulfillment in minutes. Your team works from one consistent source of truth.",
     bullets: [
-      "One-click integrations with Shopify, Amazon, and more",
+      "One-click connections to the tools you already use",
       "Bi-directional sync keeps every platform current",
       "Single source of truth for your entire team",
     ],

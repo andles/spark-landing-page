@@ -28,7 +28,7 @@ const principles = [
 ] as const;
 
 const audiences = [
-  ['Multichannel brands', 'Keep Shopify, Amazon, wholesale, and location inventory connected to one planning process.', '/shopify-inventory-management'],
+  ['Multichannel brands', 'Keep ecommerce, marketplaces, wholesale, and location inventory connected to one planning process.', '/features/inventory'],
   ['Inventory operators', 'Replace static reorder sheets with explainable risk, timing, quantities, and draft purchase actions.', '/reduce-stockouts-overstock'],
   ['3PL teams', 'Offer client-scoped inventory planning using price books, run economics, and governed operator workflows.', '/3pl'],
   ['Manufacturers', 'Connect bills of materials, component availability, production work, and finished-goods demand.', '/features/manufacturing'],

@@ -13,7 +13,7 @@ export default function AgencyFooter() {
                 <span className="font-bold text-lg text-white" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>Spark Inventory</span>
               </a>
               <p className="text-white/60 text-sm leading-relaxed mb-6">
-                AI inventory management for teams selling<br />on Shopify, Amazon, and wholesale channels.
+                AI inventory management for multichannel<br />product businesses and inventory operators.
               </p>
               <a href="/contact" className="inline-flex text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors">Talk to the Spark team →</a>
             </div>
@@ -41,15 +41,15 @@ export default function AgencyFooter() {
               <div>
                 <h4 className="text-white text-sm font-semibold mb-4">Solutions</h4>
                 <ul className="space-y-2.5">
-                  <li><a href="/shopify-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Shopify Inventory</a></li>
                   <li><a href="/reduce-stockouts-overstock" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Reduce Stockouts</a></li>
+                  <li><a href="/3pl" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
+                  <li><a href="/in-store-pickup" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
+                  <li><a href="/charity-retail" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Charity Retail</a></li>
+                  <li><a href="/shopify-inventory-management" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Shopify Inventory</a></li>
                   <li><a href="/fishbowl-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Fishbowl Alternative</a></li>
                   <li><a href="/cin7-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Cin7 Alternative</a></li>
                   <li><a href="/zoho-inventory-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Zoho Inventory Alternative</a></li>
                   <li><a href="/inflow-alternative" className="text-white/60 text-sm hover:text-white transition-colors duration-200">inFlow Alternative</a></li>
-                  <li><a href="/3pl" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
-                  <li><a href="/in-store-pickup" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
-                  <li><a href="/charity-retail" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Charity Retail</a></li>
                 </ul>
               </div>
               <div>

@@ -61,9 +61,9 @@ export default function AgencyHero() {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Spark turns your Shopify, Amazon, and wholesale sales into demand
-            forecasts and draft purchase orders. Your team approves the plan, so
-            cash stays out of overstock and bestsellers stay available.
+            Spark turns sales, inventory, and supply data from every channel into
+            demand forecasts and draft purchase orders. Your team approves the
+            plan, so cash stays out of overstock and bestsellers stay available.
           </p>
 
           {/* CTA row */}

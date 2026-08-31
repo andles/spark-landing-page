@@ -15,11 +15,11 @@ const productLinks = [
 ];
 
 const solutionLinks = [
-  { href: "/shopify-inventory-management", label: "Shopify inventory", description: "Plan the next buy from Shopify demand" },
-  { href: "/3pl", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
   { href: "/reduce-stockouts-overstock", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
+  { href: "/3pl", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
   { href: "/in-store-pickup", label: "In-store pickup", description: "Location-aware promise and handoff" },
   { href: "/charity-retail", label: "Charity retail", description: "Price, route, and sell every donated item" },
+  { href: "/shopify-inventory-management", label: "Shopify inventory", description: "Plan the next buy from Shopify demand" },
   { href: "/fishbowl-alternative", label: "Fishbowl alternative", description: "A guided path out of Fishbowl" },
   { href: "/cin7-alternative", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
   { href: "/zoho-inventory-alternative", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
