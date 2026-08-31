@@ -16,10 +16,12 @@ export interface FeaturePageProps {
   title: string;
   subtitle: string;
   description: string;
+  capabilityLabel?: string;
   icon: LucideIcon;
   gradientFrom: string;
   gradientTo: string;
   features: FeatureItem[];
+  faqs?: ReadonlyArray<{ question: string; answer: string }>;
   showcase?: ReactNode;
   nextCategory?: { name: string; href: string };
   prevCategory?: { name: string; href: string };
@@ -47,10 +49,12 @@ export function FeaturePage({
   title,
   subtitle,
   description,
+  capabilityLabel,
   icon: Icon,
   gradientFrom,
   gradientTo,
   features,
+  faqs,
   showcase,
   nextCategory,
   prevCategory,
@@ -129,7 +133,7 @@ export function FeaturePage({
           <div className="mx-auto max-w-[1180px]">
             <ScrollReveal className="max-w-3xl">
               <p className="text-sm font-semibold text-cyan-300">Complete capability</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Everything you need to run {title.toLowerCase()}</h2>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Everything you need to run {capabilityLabel ?? title.toLowerCase()}</h2>
               <p className="mt-4 text-base leading-7 text-[#b8bfcc]">Built into the same system that tracks stock, orders, purchasing, warehouses, and the decisions between them.</p>
             </ScrollReveal>
 
@@ -169,6 +173,30 @@ export function FeaturePage({
             </ScrollReveal>
           </div>
         </section>
+
+        {faqs && faqs.length > 0 && (
+          <section className="relative border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-24" aria-labelledby="feature-faq-heading">
+            <div className="mx-auto grid max-w-[1080px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+              <ScrollReveal>
+                <p className="text-sm font-semibold text-cyan-300">Sparki and MCP, explained</p>
+                <h2 id="feature-faq-heading" className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Answers before you connect an assistant</h2>
+                <p className="mt-4 max-w-md text-base leading-7 text-[#b8bfcc]">Understand the agent, the protocol, and the controls that keep inventory work reviewable.</p>
+              </ScrollReveal>
+
+              <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+                {faqs.map((faq, index) => (
+                  <details key={faq.question} className="group" open={index === 0}>
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-left text-base font-semibold text-white marker:content-none">
+                      {faq.question}
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.10] text-cyan-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                    </summary>
+                    <p className="max-w-3xl pb-5 pr-12 text-sm leading-7 text-[#9ba5b6]">{faq.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {(prevCategory || nextCategory) && (
           <nav aria-label="Related feature pages" className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-6 md:px-8">

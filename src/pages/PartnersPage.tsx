@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Users, DollarSign, BarChart3, Handshake, Sparkles, Check } from 'lucide-react';
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 const benefits = [
   {

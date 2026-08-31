@@ -1,6 +1,7 @@
 import { Wrench } from 'lucide-react';
 import AgentOnboardingSection from '../../agency/AgentOnboardingSection';
 import { FeaturePage } from './FeaturePage';
+import { toolsServicesFaqs } from './toolsServicesData';
 
 const features = [
   {
@@ -36,7 +37,7 @@ const features = [
     description: 'Connect channels and approved external assistants to the same governed Spark operating context.',
   },
   {
-    title: 'MCP Protocol Support',
+    title: 'Model Context Protocol (MCP)',
     description: 'Connect Claude, ChatGPT, and other MCP clients to governed Spark tools for onboarding and ongoing inventory work.',
   },
   {
@@ -52,13 +53,15 @@ const features = [
 export function ToolsServicesPage() {
   return (
     <FeaturePage
-      title="AI Inventory Automation"
-      subtitle="Imports, reporting, API, and agents"
-      description="Automate the manual work around inventory with intelligent imports, custom reporting, email processing, APIs, and AI-agent access."
+      title="Sparki and MCP Inventory Automation"
+      subtitle="Sparki, MCP, and automation"
+      description="Sparki is Spark’s in-app AI inventory agent. Spark MCP lets approved assistants such as ChatGPT and Claude use the same governed inventory tools, with previews and approval before operational changes."
+      capabilityLabel="Sparki and MCP inventory automation"
       icon={Wrench}
       gradientFrom="from-pink-500"
       gradientTo="to-rose-400"
       features={features}
+      faqs={toolsServicesFaqs}
       showcase={<AgentOnboardingSection />}
       prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
       nextCategory={{ name: 'QuickBooks & Accounting', href: '/features/accounting' }}

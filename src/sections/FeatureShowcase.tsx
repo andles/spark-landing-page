@@ -1,6 +1,6 @@
 import { Check, ArrowRight, Cpu, Smartphone, Globe } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 const features = [
   'Open API for custom integrations',

@@ -1,8 +1,8 @@
 // Central registry of lazy route chunks. App.tsx loads only the chunk needed
-// for the current route so the homepage does not spend bandwidth and CPU on
-// pages the visitor may never open.
+// for the current route so each entry page avoids code it will not render.
 
 export const routeImports = {
+  AgencyPage: () => import('./agency/AgencyPage'),
   LegacyHome: () => import('./LegacyHome'),
   ThreePLPage: () => import('./agency/ThreePLPage'),
   PickupPage: () => import('./agency/PickupPage'),

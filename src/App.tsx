@@ -1,14 +1,14 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { VariantProvider, useVariant } from './context/VariantContext';
-import AgencyPage from './agency/AgencyPage';
+import { VariantProvider } from './context/VariantContext';
+import { useVariant } from './context/variant';
 import { routeImports } from './routePreload';
 
-// Everything except the default homepage is lazy-loaded so first-visit
-// traffic only downloads the code it renders. main.tsx prefetches all of
-// these during idle time so in-app navigation stays instant.
+// Every page, including the default homepage, is lazy-loaded so an inner-page
+// visit does not download the much larger homepage experience.
 const R = routeImports;
+const AgencyPage = lazy(R.AgencyPage);
 const LegacyHome = lazy(R.LegacyHome);
 const ThreePLPage = lazy(R.ThreePLPage);
 const PickupPage = lazy(R.PickupPage);

@@ -68,6 +68,8 @@ for (const route of routeMeta) {
 
 // Untouched shell for routes that are not prerendered (SPA fallback target)
 writeFileSync(join(dist, 'spa-shell.html'), template);
+mkdirSync(join(dist, 'spa-shell'), { recursive: true });
+writeFileSync(join(dist, 'spa-shell', 'index.html'), template);
 
 async function renderToString(node) {
   const { prelude } = await prerender(node);

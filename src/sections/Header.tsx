@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 export function Header() {
   const { theme } = useTheme();

@@ -2,8 +2,8 @@
 // Mobile (< sm) hero visual, shared by the hero variants that use HeroVideoShowcase.
 //
 // The shared HeroVideoShowcase is hidden below `sm` and never mounts its
-// <video> there, because the hero video is ~88 MB and autoplaying it on a
-// phone is a bad idea. This component fills that gap on mobile only:
+// <video> there, because autoplaying a product demo on a phone can consume
+// data before the visitor asks for it. This component fills that gap on mobile:
 //   1. a 16:9 tap-to-play video (poster frame, preload="none", so nothing
 //      downloads until the visitor taps), then
 //   2. the same DashboardMockup the desktop page shows, which already
@@ -23,7 +23,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
 
-const HERO_VIDEO_SRC = "/hero-video.mp4";
 const HERO_VIDEO_POSTER = "/hero-video-poster-mobile.webp";
 
 export default function MobileHeroShowcase() {
@@ -57,14 +56,16 @@ export default function MobileHeroShowcase() {
       <div className="relative rounded-xl overflow-hidden border border-white/[0.08] bg-[#0c1019] aspect-video">
         <video
           ref={videoRef}
-          src={HERO_VIDEO_SRC}
           poster={HERO_VIDEO_POSTER}
           preload="none"
           playsInline
           controls={started}
           onEnded={() => setStarted(false)}
           className="w-full h-full object-cover"
-        />
+        >
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         {!started && (
           <button
             type="button"

@@ -1,4 +1,4 @@
-import type { LandingVariant } from '../context/VariantContext';
+import type { LandingVariant } from '../context/variant';
 
 /**
  * Hero copy per landing variant.

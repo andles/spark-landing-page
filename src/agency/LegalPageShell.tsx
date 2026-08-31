@@ -112,7 +112,7 @@ export function LegalEmail({ email }: { email: string }) {
 export function LegalDl({
   items,
 }: {
-  items: { term: string; definition: React.ReactNode }[];
+  items: { term: React.ReactNode; definition: React.ReactNode }[];
 }) {
   return (
     <dl className="space-y-3">

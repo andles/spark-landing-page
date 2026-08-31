@@ -1,7 +1,7 @@
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
-import { useVariant } from '../context/VariantContext';
+import { useTheme } from '../context/theme';
+import { useVariant } from '../context/variant';
 import { getHeroContent } from '../variants/heroContent';
 import { HeroDemoFormNextGen } from './BookDemo';
 

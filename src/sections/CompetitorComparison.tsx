@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Shield, AlertTriangle, Sparkles, ChevronDown, ArrowRight } from 'lucide-react';
 import { Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 interface Competitor {
   name: string;

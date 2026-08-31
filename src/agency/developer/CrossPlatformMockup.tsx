@@ -36,7 +36,6 @@ export default function CrossPlatformMockup({ isActive }: Props) {
       const t = setTimeout(() => setAnimatedIn(true), 150);
       return () => clearTimeout(t);
     }
-    setAnimatedIn(false);
   }, [isActive]);
 
   const base = "transition-all duration-500 ease-out";

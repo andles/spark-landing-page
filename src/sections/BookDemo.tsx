@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 /* ────────────────────────────────────────────
  * Shared submit handler used by every form instance

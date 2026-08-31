@@ -1,5 +1,5 @@
 import { Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 const steps = [
   {

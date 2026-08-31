@@ -1,6 +1,6 @@
 import { Check, Sparkles, Users, Warehouse, Zap, Link2 } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 interface PlanLimit {
   icon: 'users' | 'warehouse' | 'ai' | 'integrations';

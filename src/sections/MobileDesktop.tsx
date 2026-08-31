@@ -1,6 +1,6 @@
 import { Monitor, Smartphone, Tablet, ArrowRight } from 'lucide-react';
 import { Button, Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 function MobileDesktopClassic() {
   return (

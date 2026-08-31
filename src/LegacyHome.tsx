@@ -13,8 +13,8 @@ import {
   Footer,
 } from './sections';
 import AgencyPricingSection from './agency/AgencyPricingSection';
-import { useTheme } from './context/ThemeContext';
-import { useVariant } from './context/VariantContext';
+import { useTheme } from './context/theme';
+import { useVariant } from './context/variant';
 
 // The pre-agency landing page, still reachable via ?variant=<slug>. Kept in
 // its own lazy chunk so default/agency traffic doesn't download the old

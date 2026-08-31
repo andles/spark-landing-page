@@ -89,7 +89,6 @@ function OrdersMockup({ isActive }: MockupProps) {
   const [animatedIn, setAnimatedIn] = useState(false);
   useEffect(() => {
     if (isActive) { const t = setTimeout(() => setAnimatedIn(true), 150); return () => clearTimeout(t); }
-    setAnimatedIn(false);
   }, [isActive]);
 
   const orders = [
@@ -205,8 +204,6 @@ function ApprovalMockup({ isActive }: MockupProps) {
   const [approved, setApproved] = useState<number[]>([]);
   useEffect(() => {
     if (isActive) { const t = setTimeout(() => setAnimatedIn(true), 150); return () => clearTimeout(t); }
-    setAnimatedIn(false);
-    setApproved([]);
   }, [isActive]);
 
   const decisions = [
@@ -280,7 +277,6 @@ function ReportMockup({ isActive }: MockupProps) {
   const [animatedIn, setAnimatedIn] = useState(false);
   useEffect(() => {
     if (isActive) { const t = setTimeout(() => setAnimatedIn(true), 150); return () => clearTimeout(t); }
-    setAnimatedIn(false);
   }, [isActive]);
 
   const metrics = [
@@ -348,7 +344,6 @@ function IntegrationsMockup({ isActive }: MockupProps) {
   const [animatedIn, setAnimatedIn] = useState(false);
   useEffect(() => {
     if (isActive) { const t = setTimeout(() => setAnimatedIn(true), 150); return () => clearTimeout(t); }
-    setAnimatedIn(false);
   }, [isActive]);
 
   const integrations = [
@@ -435,9 +430,7 @@ export default function AgencyCoreCapabilities() {
             <br />
             <span className="hidden lg:inline-flex relative overflow-hidden h-[1.3em] align-bottom">
               <span className="invisible font-bold" aria-hidden="true">Business Intelligence</span>
-              {features.map((f, i) => (
-                <span key={f.subtitle} className={`absolute inset-0 bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent dynamic-subtitle ${activeIndex === i ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} aria-hidden={activeIndex !== i}>{f.subtitle}</span>
-              ))}
+              <span key={features[activeIndex].subtitle} className="absolute inset-0 bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent dynamic-subtitle opacity-100 translate-y-0">{features[activeIndex].subtitle}</span>
             </span>
             <span className="lg:hidden bg-gradient-to-r from-teal-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">Modern Operations</span>
           </h2>
@@ -482,11 +475,14 @@ export default function AgencyCoreCapabilities() {
                   <span className="ml-3 text-xs font-mono text-[#8b95a8]">spark.inventory</span>
                 </div>
                 <div className="relative" style={{ minHeight: "460px" }}>
-                  {mockups.map((Mockup, i) => (
-                    <div key={i} className={`absolute inset-0 mockup-panel ${activeIndex === i ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.97] translate-y-2 pointer-events-none"}`} aria-hidden={activeIndex !== i}>
-                      <Mockup isActive={activeIndex === i} />
-                    </div>
-                  ))}
+                  {(() => {
+                    const ActiveMockup = mockups[activeIndex];
+                    return (
+                      <div key={activeIndex} className="absolute inset-0 mockup-panel opacity-100 scale-100 translate-y-0">
+                        <ActiveMockup isActive />
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             </div>

@@ -14,8 +14,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
 
-const HERO_VIDEO_SRC = "/hero-video.mp4";
-
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return "0:00";
   const m = Math.floor(s / 60);
@@ -164,7 +162,6 @@ export default function HeroVideoShowcase() {
           >
             <video
               ref={videoRef}
-              src={HERO_VIDEO_SRC}
               autoPlay
               muted
               playsInline
@@ -179,7 +176,10 @@ export default function HeroVideoShowcase() {
                 videoRef.current && setDuration(videoRef.current.duration)
               }
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/hero-video.webm" type="video/webm" />
+              <source src="/hero-video.mp4" type="video/mp4" />
+            </video>
 
             {/* Controls: gradient scrim + progress bar + time + mute */}
             {(phase === "video" || phase === "fading") && (

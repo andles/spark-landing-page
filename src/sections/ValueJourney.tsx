@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Container } from '../components';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/theme';
 
 const tiles = [
   {

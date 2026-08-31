@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, Palette, Sparkles, Layers } from 'lucide-react';
-import { useTheme, type ThemeVariant } from '../context/ThemeContext';
+import { useTheme, type ThemeVariant } from '../context/theme';
 
 const themes: { id: ThemeVariant; name: string; icon: typeof Palette; description: string }[] = [
   { id: 'classic', name: 'Classic', icon: Layers, description: 'Current design' },

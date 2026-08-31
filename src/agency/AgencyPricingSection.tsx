@@ -336,12 +336,12 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
         <ScrollReveal className="mx-auto max-w-4xl text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.23em] text-cyan-300">Three clear starting points</p>
           <h2 className="mt-5 text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-            Forecasting is free.{' '}
+            {detailed ? 'Choose the planning cadence ' : 'Forecasting is free. '}
             <span
               className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text text-transparent sm:inline"
               style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
             >
-              Upgrade when you need it live.
+              {detailed ? 'your operation needs.' : 'Upgrade when you need it live.'}
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#9aa3b2] sm:text-lg">

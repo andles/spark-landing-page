@@ -92,19 +92,19 @@ export function AppPrivacyPage() {
         </LegalP>
         <LegalDl items={[
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryUserDefaults</code>: reason <LegalBadge>CA92.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryUserDefaults</code>, reason <LegalBadge>CA92.1</LegalBadge></span>,
             definition: "Accessing UserDefaults to read/write information that is only accessible to the app itself.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryFileTimestamp</code>: reason <LegalBadge>C617.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryFileTimestamp</code>, reason <LegalBadge>C617.1</LegalBadge></span>,
             definition: "Display to the user.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryDiskSpace</code>: reason <LegalBadge>E174.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategoryDiskSpace</code>, reason <LegalBadge>E174.1</LegalBadge></span>,
             definition: "Write or delete files based on available space.",
           },
           {
-            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategorySystemBootTime</code>: reason <LegalBadge>35F9.1</LegalBadge></span> as any,
+            term: <span><code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">NSPrivacyAccessedAPICategorySystemBootTime</code>, reason <LegalBadge>35F9.1</LegalBadge></span>,
             definition: "System boot time access.",
           },
         ]} />

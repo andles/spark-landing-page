@@ -5,6 +5,7 @@ import { buildCharityFaqSchema } from '../agency/charity/charityFaqs';
 import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
 import { pricingFaqs } from '../agency/pricingData';
+import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -97,7 +98,7 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
 export const routeMeta: RouteMeta[] = [
   {
     path: '/',
-    title: 'AI Inventory Management Software for Shopify & Amazon | Spark',
+    title: 'AI Inventory Management for Shopify & Amazon | Spark',
     description:
       'Forecast demand, reduce stockouts, and turn sales into draft purchase orders. AI inventory management for Shopify, Amazon, and wholesale brands.',
     lastModified: '2026-08-31',
@@ -107,7 +108,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/3pl',
     title: 'SPARK for 3PLs - AI Forecasting, Price Books & Run Planning',
     description:
-      'Give clients AI demand forecasting and live visibility while your team manages vendor price books, run economics, purchasing, and client workspaces in one 3PL platform.',
+      'Give clients AI forecasting and live visibility while your team manages price books, purchasing, run economics, and client workspaces in one platform.',
     lastModified: '2026-08-24',
     schema: [buildFaqSchema('3pl')],
   },
@@ -146,9 +147,9 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Spark Inventory: the Fishbowl alternative built for Shopify and Amazon',
+    title: 'Fishbowl Alternative for Shopify & Amazon | Spark',
     description:
-      'Switching from Fishbowl Inventory? Spark migrates your Fishbowl data in minutes, builds custom reports in seconds, syncs Shopify, Amazon and QuickBooks natively, and includes consultative onboarding. Free to start.',
+      'Compare Spark with Fishbowl Inventory for Shopify, Amazon, QuickBooks, forecasting, migration, reporting, onboarding, and pricing. Start free.',
     lastModified: '2026-08-29',
     schema: [buildFaqSchema('fishbowl')],
   },
@@ -170,7 +171,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/inflow-alternative',
-    title: 'inFlow Alternative for Inventory Planning & Purchasing | Spark',
+    title: 'inFlow Alternative for Planning & Purchasing | Spark',
     description:
       'Compare Spark with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows.',
     lastModified: '2026-08-29',
@@ -234,10 +235,21 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/features/tools-services',
-    title: 'AI Tools & Services - SPARK Inventory',
+    title: 'Sparki AI Agent & MCP Inventory Automation | Spark',
     description:
-      'Agentic onboarding with Sparki, governed MCP access, smart email processing, and automations that remove manual inventory work.',
-    lastModified: '2026-08-24',
+      'Meet Sparki, Spark’s in-app AI inventory agent, and connect ChatGPT, Claude, or another approved assistant through governed Spark MCP tools.',
+    lastModified: '2026-08-31',
+    schema: [
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/features/tools-services/#faq`,
+        mainEntity: toolsServicesFaqs.map(({ question, answer }) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+      },
+    ],
   },
   {
     path: '/features/accounting',
