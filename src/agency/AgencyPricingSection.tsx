@@ -264,7 +264,7 @@ function AdvancedPlans() {
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-300">Advanced operator paths</p>
           <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Built for a different kind of operator.</h3>
           <p className="mt-4 text-sm leading-7 text-[#8f98a9] sm:text-base">
-            Scale and Network are guided plans for businesses with manufacturing complexity or multi-client operations. They stay separate so the core choice remains clear.
+            Scale and Custom are guided plans for businesses with manufacturing complexity or multi-client operations. They stay separate so the core choice remains clear.
           </p>
         </div>
         <div className="grid gap-5 lg:grid-cols-2">
@@ -289,7 +289,7 @@ function AdvancedPlanLink() {
           <p className="mt-2 text-sm font-semibold text-white">Manufacturing products or managing inventory for clients?</p>
         </div>
         <span className="flex shrink-0 items-center gap-2 text-sm font-semibold text-violet-200">
-          See Scale and Network
+          See Scale and Custom
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </span>
       </a>

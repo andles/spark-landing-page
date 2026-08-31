@@ -6,6 +6,7 @@ import AgencyPricingSection from '../agency/AgencyPricingSection';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks } from '../agency/ctaLinks';
 import { pricingFaqs } from '../agency/pricingData';
+import { useScrollToHashOnMount } from '../hooks/useScrollToHash';
 
 const planSignals = [
   {
@@ -27,6 +28,7 @@ const planSignals = [
 
 export function PricingPage() {
   const { signupUrl } = useCtaLinks();
+  useScrollToHashOnMount();
 
   return (
     <div className="min-h-screen bg-[#06080d] text-white">
@@ -94,7 +96,7 @@ export function PricingPage() {
             <ScrollReveal>
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Pricing FAQ</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Clear answers before you start</h2>
-              <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Three core plans cover forecasting through execution. Scale and Network are separate advanced paths for manufacturers and multi-client operators.</p>
+              <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Three core plans cover forecasting through execution. Scale and Custom are separate advanced paths for manufacturers and multi-client operators.</p>
             </ScrollReveal>
             <ScrollReveal staggerChildren={60} className="divide-y divide-white/[0.07] border-y border-white/[0.07]">
               {pricingFaqs.map((faq, index) => (

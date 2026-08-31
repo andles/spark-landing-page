@@ -136,7 +136,7 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     exploreLabel: 'Explore manufacturing',
   },
   {
-    name: 'Network',
+    name: 'Custom',
     stage: 'Advanced / Orchestrate',
     price: 'Let\'s talk',
     promise: 'Multi-client operations',
@@ -155,7 +155,7 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
       'External warehouse inventory feeds',
       'Dedicated support and named contact',
     ],
-    ctaLabel: 'Talk about Network',
+    ctaLabel: 'Talk about Custom',
     ctaKind: 'contact',
     accent: 'fuchsia',
     operator: 'For 3PLs and service operators',
@@ -184,7 +184,7 @@ export const implementationServices = [
   {
     name: '3PL client onboarding',
     price: '$250 / client',
-    note: 'Available individually or bundled into a Network annual commitment.',
+    note: 'Available individually or bundled into a Custom annual commitment.',
   },
 ] as const;
 
@@ -203,11 +203,11 @@ export const pricingFaqs = [
   },
   {
     question: 'What are the advanced plans?',
-    answer: 'Scale is the advanced path for manufacturers that need bills of materials, production specifications, component economics, and custom workflows. Network is a separate path for 3PLs and service operators managing inventory across many clients. Both include guided implementation.',
+    answer: 'Scale is the advanced path for manufacturers that need bills of materials, production specifications, component economics, and custom workflows. Custom is a separate path for 3PLs and service operators managing inventory across many clients. Both include guided implementation.',
   },
   {
     question: 'How do order overages work?',
-    answer: 'Pulse, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free is forecast-only and has no order allowance. Network volume is contracted.',
+    answer: 'Pulse, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free is forecast-only and has no order allowance. Custom volume is contracted.',
   },
   {
     question: 'Do you charge per user, SKU, or warehouse?',

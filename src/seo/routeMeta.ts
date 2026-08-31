@@ -100,7 +100,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'AI Inventory Management Software for Shopify & Amazon | Spark',
     description:
       'Forecast demand, reduce stockouts, and turn sales into draft purchase orders. AI inventory management for Shopify, Amazon, and wholesale brands.',
-    lastModified: '2026-08-29',
+    lastModified: '2026-08-31',
     schema: HOME_SCHEMA,
   },
   {
@@ -258,8 +258,8 @@ export const routeMeta: RouteMeta[] = [
     path: '/pricing',
     title: 'Spark Inventory Pricing | Free Monthly Forecasting',
     description:
-      'Forecast inventory free every month for one user. Compare Pulse and Operate for live planning and execution, plus advanced Scale and Network paths.',
-    lastModified: '2026-08-29',
+      'Forecast inventory free every month for one user. Compare Pulse and Operate for live planning and execution, plus advanced Scale and Custom paths.',
+    lastModified: '2026-08-31',
     schema: [
       {
         '@type': 'Product',

@@ -158,7 +158,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     comparison: [
       { category: 'Product model', competitor: 'Core and Omni cover different operating depths and buyer profiles.', spark: 'One cloud product with tiered capabilities.', lean: 'tradeoff' },
-      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free monthly forecasting; Pulse $99 and Operate $349. Advanced Scale is $749; Network is quoted.', lean: 'spark' },
+      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free monthly forecasting; Pulse $99 and Operate $349. Advanced Scale is $749; Custom is quoted.', lean: 'spark' },
       { category: 'Forecasting', competitor: 'Cin7 ForesightAI is listed as an add-on.', spark: 'Forecasting, inventory risk, and draft purchase orders are part of the operating workflow.', lean: 'spark' },
       { category: 'Channels', competitor: 'More than 700 integrations and a mature partner ecosystem.', spark: 'Focused native paths for Shopify, Amazon, QuickBooks Online, and core commerce workflows.', lean: 'competitor' },
       { category: 'Order and integration limits', competitor: 'Published limits by Core tier, with more capacity available for purchase.', spark: 'Paid plans include 2,500 to 25,000 monthly orders; additional capacity comes in $49 blocks of 2,500.', lean: 'tradeoff' },
