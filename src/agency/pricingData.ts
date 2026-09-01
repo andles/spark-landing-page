@@ -1,4 +1,5 @@
 export type PricingCtaKind = 'signup' | 'contact';
+export type SignupPlanSlug = 'free' | 'pulse' | 'operate' | 'scale' | 'custom';
 
 export interface PricingTier {
   name: string;
@@ -18,6 +19,10 @@ export interface PricingTier {
   features: string[];
   ctaLabel: string;
   ctaKind: PricingCtaKind;
+  signupPlan: SignupPlanSlug;
+  signupBusinessType?: '3pl';
+  trialLabel?: string;
+  signupNote?: string;
   highlighted?: boolean;
   accent: 'cyan' | 'sky' | 'lime' | 'violet' | 'fuchsia';
 }
@@ -40,7 +45,7 @@ export const pricingTiers: PricingTier[] = [
     overage: 'Upgrade to Pulse',
     refresh: 'Monthly',
     onboarding: 'Self-serve',
-    aiCredits: 'Monthly allotment',
+    aiCredits: '3,000 one-time',
     support: 'Community + AI',
     features: [
       'Supported source connection or file import',
@@ -50,6 +55,7 @@ export const pricingTiers: PricingTier[] = [
     ],
     ctaLabel: 'Start forecasting free',
     ctaKind: 'signup',
+    signupPlan: 'free',
     accent: 'cyan',
   },
   {
@@ -73,8 +79,10 @@ export const pricingTiers: PricingTier[] = [
       'Multiple supported data connections',
       'Inventory policy management',
     ],
-    ctaLabel: 'Start Pulse',
+    ctaLabel: 'Start Pulse free',
     ctaKind: 'signup',
+    signupPlan: 'pulse',
+    trialLabel: '14-day free trial',
     accent: 'sky',
   },
   {
@@ -98,8 +106,10 @@ export const pricingTiers: PricingTier[] = [
       'Receiving and exception workflows',
       'Transfers and multi-warehouse operations',
     ],
-    ctaLabel: 'Run POs in Spark',
+    ctaLabel: 'Start Operate free',
     ctaKind: 'signup',
+    signupPlan: 'operate',
+    trialLabel: '14-day free trial',
     highlighted: true,
     accent: 'lime',
   },
@@ -127,8 +137,10 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
       'One scoped custom module configuration',
       'Advanced integration support',
     ],
-    ctaLabel: 'Plan my implementation',
-    ctaKind: 'contact',
+    ctaLabel: 'Start Scale free',
+    ctaKind: 'signup',
+    signupPlan: 'scale',
+    trialLabel: '14-day free trial',
     accent: 'violet',
     operator: 'For manufacturers',
     fit: 'Production planning, component economics, and workflows that need structured implementation.',
@@ -155,8 +167,11 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
       'External warehouse inventory feeds',
       'Dedicated support and named contact',
     ],
-    ctaLabel: 'Talk about Custom',
-    ctaKind: 'contact',
+    ctaLabel: 'Start a free 3PL workspace',
+    ctaKind: 'signup',
+    signupPlan: 'custom',
+    signupBusinessType: '3pl',
+    signupNote: 'Opens a free, seeded 3PL workspace. Add a tailored Custom agreement when you are ready.',
     accent: 'fuchsia',
     operator: 'For 3PLs and service operators',
     fit: 'Client-separated inventory intelligence, shared operations, and a commercial model built for managed services.',
@@ -203,7 +218,11 @@ export const pricingFaqs = [
   },
   {
     question: 'What are the advanced plans?',
-    answer: 'Scale is the advanced path for manufacturers that need bills of materials, production specifications, component economics, and custom workflows. Custom is a separate path for 3PLs and service operators managing inventory across many clients. Both include guided implementation.',
+    answer: 'Scale is the advanced path for manufacturers that need bills of materials, production specifications, component economics, and custom workflows. Custom is a separate path for 3PLs and service operators managing inventory across many clients. Scale starts with a 14-day free trial. Custom opens as a free, seeded 3PL workspace before guided implementation.',
+  },
+  {
+    question: 'Do paid plans include a free trial?',
+    answer: 'Yes. Pulse, Operate, and Scale include a 14-day free trial. You can explore the selected workflow before the paid subscription begins. Custom starts with a free, seeded 3PL workspace so multi-client operators can evaluate the model before a tailored agreement.',
   },
   {
     question: 'How do order overages work?',

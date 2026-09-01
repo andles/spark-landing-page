@@ -17,6 +17,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useState } from "react";
 import { CALENDLY_URL } from "./calendly";
+import type { SignupPlanSlug } from "./pricingData";
 
 export const SIGNUP_URL_BASE = "https://app.sparkinventory.com/sign-up";
 
@@ -33,6 +34,22 @@ export interface CtaLinkOptions {
 export interface CtaLinks {
   bookUrl: string;
   signupUrl: string;
+}
+
+export interface SignupIntent {
+  plan: SignupPlanSlug;
+  businessType?: '3pl';
+}
+
+/**
+ * Adds a plan-selection contract to an app signup URL without disturbing its
+ * attribution parameters. The app allowlists these values before using them.
+ */
+export function withSignupIntent(signupUrl: string, intent: SignupIntent): string {
+  const url = new URL(signupUrl);
+  url.searchParams.set('plan', intent.plan);
+  if (intent.businessType) url.searchParams.set('business_type', intent.businessType);
+  return url.toString();
 }
 
 export function buildCtaUrls(search: string = "", opts: CtaLinkOptions = {}): CtaLinks {
