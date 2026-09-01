@@ -147,18 +147,18 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Fishbowl Alternative for Shopify & Amazon | Spark',
+    title: 'Fishbowl Alternative for Inventory Planning | Spark',
     description:
-      'Compare Spark with Fishbowl Inventory for Shopify, Amazon, QuickBooks, forecasting, migration, reporting, onboarding, and pricing. Start free.',
-    lastModified: '2026-08-29',
+      'Compare Spark with Fishbowl across forecasting, purchasing, reporting, migration, onboarding, integrations, and pricing. Build your inventory plan free.',
+    lastModified: '2026-09-01',
     schema: [buildFaqSchema('fishbowl')],
   },
   {
     path: '/cin7-alternative',
-    title: 'Cin7 Alternative for Shopify, Amazon & QuickBooks | Spark',
+    title: 'Cin7 Alternative for Inventory Planning & Operations | Spark',
     description:
-      'Compare Spark with Cin7 Core and Omni across pricing, forecasting, integrations, manufacturing, MCP access, onboarding, and operational fit.',
-    lastModified: '2026-08-29',
+      'Compare Spark with Cin7 Core and Omni across forecasting, purchasing, inventory operations, manufacturing, integrations, onboarding, and pricing.',
+    lastModified: '2026-09-01',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
   {
