@@ -20,7 +20,6 @@ export interface PricingTier {
   ctaLabel: string;
   ctaKind: PricingCtaKind;
   signupPlan: SignupPlanSlug;
-  signupBusinessType?: '3pl';
   trialLabel?: string;
   signupNote?: string;
   highlighted?: boolean;
@@ -170,7 +169,6 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     ctaLabel: 'Start a free 3PL workspace',
     ctaKind: 'signup',
     signupPlan: 'custom',
-    signupBusinessType: '3pl',
     signupNote: 'Opens a free, seeded 3PL workspace. Add a tailored Custom agreement when you are ready.',
     accent: 'fuchsia',
     operator: 'For 3PLs and service operators',

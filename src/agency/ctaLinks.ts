@@ -38,7 +38,6 @@ export interface CtaLinks {
 
 export interface SignupIntent {
   plan: SignupPlanSlug;
-  businessType?: '3pl';
 }
 
 /**
@@ -48,7 +47,6 @@ export interface SignupIntent {
 export function withSignupIntent(signupUrl: string, intent: SignupIntent): string {
   const url = new URL(signupUrl);
   url.searchParams.set('plan', intent.plan);
-  if (intent.businessType) url.searchParams.set('business_type', intent.businessType);
   return url.toString();
 }
 

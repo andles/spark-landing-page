@@ -49,7 +49,7 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
   const accent = accentStyles[tier.accent];
   const href = tier.ctaKind === 'contact'
     ? '/contact'
-    : withSignupIntent(signupUrl, { plan: tier.signupPlan, businessType: tier.signupBusinessType });
+    : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
     <article
@@ -197,7 +197,7 @@ function AdvancedPlanCard({ tier, signupUrl }: { tier: AdvancedPricingTier; sign
   const accent = accentStyles[tier.accent];
   const href = tier.ctaKind === 'contact'
     ? '/contact'
-    : withSignupIntent(signupUrl, { plan: tier.signupPlan, businessType: tier.signupBusinessType });
+    : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
     <article className="group relative overflow-hidden rounded-[28px] border border-white/[0.09] bg-[#0a0d14] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.17] sm:p-8">
