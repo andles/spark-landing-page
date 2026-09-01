@@ -7,7 +7,7 @@ import {
   type AdvancedPricingTier,
   type PricingTier,
 } from './pricingData';
-import { useCtaLinks } from './ctaLinks';
+import { useCtaLinks, withSignupIntent } from './ctaLinks';
 
 const HOME_PRICING_CTA_OPTIONS = { source: 'home_pricing' } as const;
 const PRICING_PAGE_CTA_OPTIONS = { source: 'pricing_page' } as const;
@@ -47,7 +47,9 @@ const accentStyles: Record<PricingTier['accent'], { line: string; badge: string;
 
 function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string }) {
   const accent = accentStyles[tier.accent];
-  const href = tier.ctaKind === 'contact' ? '/contact' : signupUrl;
+  const href = tier.ctaKind === 'contact'
+    ? '/contact'
+    : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
     <article
@@ -122,6 +124,11 @@ function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string
           <span>AI: {tier.aiCredits}</span>
           <span>{tier.support}</span>
         </div>
+        {(tier.trialLabel || tier.signupNote) && (
+          <p className={`mb-3 text-center text-xs leading-5 ${tier.trialLabel ? 'font-semibold text-lime-200' : 'text-fuchsia-200/80'}`}>
+            {tier.trialLabel ?? tier.signupNote}
+          </p>
+        )}
         <a
           href={href}
           className={`flex min-h-12 w-full items-center justify-center gap-2 rounded-full border px-4 text-center text-sm font-semibold text-white transition-all duration-300 ${accent.button}`}
@@ -185,9 +192,12 @@ function PlanComparison() {
   );
 }
 
-function AdvancedPlanCard({ tier }: { tier: AdvancedPricingTier }) {
+function AdvancedPlanCard({ tier, signupUrl }: { tier: AdvancedPricingTier; signupUrl: string }) {
   const Icon = tier.name === 'Scale' ? Factory : Network;
   const accent = accentStyles[tier.accent];
+  const href = tier.ctaKind === 'contact'
+    ? '/contact'
+    : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
     <article className="group relative overflow-hidden rounded-[28px] border border-white/[0.09] bg-[#0a0d14] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.17] sm:p-8">
@@ -238,7 +248,7 @@ function AdvancedPlanCard({ tier }: { tier: AdvancedPricingTier }) {
 
       <div className="relative mt-7 flex flex-col gap-3 sm:flex-row">
         <a
-          href="/contact"
+          href={href}
           className={`flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full border px-5 text-sm font-semibold text-white transition-all duration-300 ${accent.button}`}
         >
           {tier.ctaLabel}
@@ -252,11 +262,16 @@ function AdvancedPlanCard({ tier }: { tier: AdvancedPricingTier }) {
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>
+      {(tier.trialLabel || tier.signupNote) && (
+        <p className={`relative mt-3 text-xs leading-5 ${tier.trialLabel ? 'font-semibold text-lime-200' : 'text-fuchsia-200/80'}`}>
+          {tier.trialLabel ?? tier.signupNote}
+        </p>
+      )}
     </article>
   );
 }
 
-function AdvancedPlans() {
+function AdvancedPlans({ signupUrl }: { signupUrl: string }) {
   return (
     <div id="advanced-plans" className="scroll-mt-24">
       <ScrollReveal className="mx-auto mt-24 max-w-[1320px]">
@@ -269,7 +284,7 @@ function AdvancedPlans() {
         </div>
         <div className="grid gap-5 lg:grid-cols-2">
           {advancedPricingTiers.map((tier) => (
-            <AdvancedPlanCard key={tier.name} tier={tier} />
+            <AdvancedPlanCard key={tier.name} tier={tier} signupUrl={signupUrl} />
           ))}
         </div>
       </ScrollReveal>
@@ -351,10 +366,10 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
 
         <ScrollReveal className="mx-auto mt-9 flex max-w-4xl flex-col items-center justify-between gap-4 rounded-2xl border border-lime-200/20 bg-lime-300/[0.055] px-5 py-4 text-center sm:flex-row sm:text-left">
           <div>
-            <p className="text-sm font-semibold text-lime-100">Free for one operator. Paid plans include the team.</p>
-            <p className="mt-1 text-xs text-white/45">Users become unlimited from Pulse onward, so collaboration never becomes the upgrade trigger.</p>
+            <p className="text-sm font-semibold text-lime-100">Free for one operator. Paid plans include the team and a 14-day free trial.</p>
+            <p className="mt-1 text-xs text-white/45">Users become unlimited from Pulse onward, so collaboration never becomes the upgrade trigger. Custom begins as a free, seeded 3PL workspace.</p>
           </div>
-          <span className="shrink-0 rounded-full border border-lime-200/20 bg-black/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-lime-200">1 user free · unlimited paid</span>
+          <span className="shrink-0 rounded-full border border-lime-200/20 bg-black/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-lime-200">14 days free on paid plans</span>
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={90} className="mx-auto mt-14 grid max-w-[1180px] gap-5 lg:grid-cols-3 lg:items-stretch">
@@ -367,7 +382,7 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
 
         {!detailed && <AdvancedPlanLink />}
         {detailed && <PlanComparison />}
-        {detailed && <AdvancedPlans />}
+        {detailed && <AdvancedPlans signupUrl={signupUrl} />}
         {detailed && <ServicesPricing />}
       </div>
     </section>

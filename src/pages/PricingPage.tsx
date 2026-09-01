@@ -4,7 +4,7 @@ import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
 import AgencyPricingSection from '../agency/AgencyPricingSection';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
-import { useCtaLinks } from '../agency/ctaLinks';
+import { useCtaLinks, withSignupIntent } from '../agency/ctaLinks';
 import { pricingFaqs } from '../agency/pricingData';
 import { useScrollToHashOnMount } from '../hooks/useScrollToHash';
 
@@ -28,6 +28,7 @@ const planSignals = [
 
 export function PricingPage() {
   const { signupUrl } = useCtaLinks();
+  const freeSignupUrl = withSignupIntent(signupUrl, { plan: 'free' });
   useScrollToHashOnMount();
 
   return (
@@ -53,7 +54,7 @@ export function PricingPage() {
               Bring sales and inventory history from the systems you already use. Spark refreshes your forecast every month at $0, then adds live intelligence and execution when you need them. Manufacturing and multi-client operations have dedicated advanced paths.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-8 text-sm font-semibold text-[#071009] transition-all hover:scale-[1.02] hover:bg-lime-200">
+              <a href={freeSignupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-8 text-sm font-semibold text-[#071009] transition-all hover:scale-[1.02] hover:bg-lime-200">
                 Start Forecasting Free
               </a>
               <a href="#plans" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold transition-colors hover:bg-white/[0.08]">

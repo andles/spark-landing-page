@@ -12,13 +12,15 @@
 // - The URL hash (#section) is not part of the query string, so in-page
 //   anchors never interfere with any of this.
 //
-// useCtaLinks() renders the default links first (so prerendered HTML and the
-// first client render agree) and swaps in the merged links in an effect.
+// useCtaLinks() renders default links during SSR and hydration, then reads the
+// live browser query string so attribution is preserved.
 // ─────────────────────────────────────────────────────────────────────────────
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { CALENDLY_URL } from "./calendly";
+import type { SignupPlanSlug } from "./pricingData";
 
-export const SIGNUP_URL_BASE = "https://app.sparkinventory.com/sign-up";
+export const SIGNUP_URL_BASE =
+  import.meta.env.VITE_SIGNUP_URL_BASE?.trim() || "https://app.sparkinventory.com/sign-up";
 
 /** Params Calendly and the app both accept. */
 const FORWARDED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
@@ -33,6 +35,24 @@ export interface CtaLinkOptions {
 export interface CtaLinks {
   bookUrl: string;
   signupUrl: string;
+}
+
+export interface SignupIntent {
+  plan: SignupPlanSlug;
+}
+
+const subscribeToSearch = () => () => {};
+const getClientSearch = () => window.location.search;
+const getServerSearch = () => "";
+
+/**
+ * Adds a plan-selection contract to an app signup URL without disturbing its
+ * attribution parameters. The app allowlists these values before using them.
+ */
+export function withSignupIntent(signupUrl: string, intent: SignupIntent): string {
+  const url = new URL(signupUrl);
+  url.searchParams.set('plan', intent.plan);
+  return url.toString();
 }
 
 export function buildCtaUrls(search: string = "", opts: CtaLinkOptions = {}): CtaLinks {
@@ -58,17 +78,10 @@ export function buildCtaUrls(search: string = "", opts: CtaLinkOptions = {}): Ct
 }
 
 /**
- * CTA links for the current page, with the page's UTMs merged in after mount.
+ * CTA links for the current page, with the page's UTMs merged after hydration.
  * `opts` must be stable across renders (module constant or memoized).
  */
 export function useCtaLinks(opts?: CtaLinkOptions): CtaLinks {
-  const [links, setLinks] = useState<CtaLinks>(() => buildCtaUrls("", opts));
-  useEffect(() => {
-    const search = window.location.search;
-    if (!search) return;
-    setLinks(buildCtaUrls(search, opts));
-    // opts is expected to be referentially stable; see docblock.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return links;
+  const search = useSyncExternalStore(subscribeToSearch, getClientSearch, getServerSearch);
+  return buildCtaUrls(search, opts);
 }
