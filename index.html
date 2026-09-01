@@ -35,7 +35,12 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'AW-17962279599');
+      gtag('set', 'linker', {
+        'domains': ['sparkinventory.com', 'app.sparkinventory.com']
+      });
+      gtag('config', 'AW-17962279599', {
+        'allow_enhanced_conversions': true
+      });
 
       (function () {
         var loaded = false;
