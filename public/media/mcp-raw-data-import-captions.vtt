@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00.000 --> 00:01.760
+Your inventory data is already there.
+
+00:01.760 --> 00:04.280
+Supplier sheets, counts, sales exports.
+
+00:04.280 --> 00:08.320
+Connect Spark to ChatGPT or Claude through MCP.
+
+00:08.320 --> 00:11.320
+Your assistant reads raw data, understands columns,
+
+00:11.320 --> 00:14.720
+matches your catalog, and calls Spark's tools.
+
+00:14.720 --> 00:18.520
+Seed items, import history, set stock, keep custom fields.
+
+00:18.520 --> 00:21.400
+Spark previews changes and flags exceptions.
+
+00:21.400 --> 00:23.120
+You review. You approve.
+
+00:23.120 --> 00:25.240
+Raw files become live inventory
+
+00:25.240 --> 00:27.640
+without rebuilding another CSV.
+
+00:27.640 --> 00:29.880
+Spark Inventory. Connect your assistant.

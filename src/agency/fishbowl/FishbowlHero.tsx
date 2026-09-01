@@ -5,8 +5,7 @@
 // single primary CTA (booking) instead of a two-button row.
 // ─────────────────────────────────────────────────────────────────────────────
 import BookACallButton from "../BookACallButton";
-import HeroVideoShowcase from "../HeroVideoShowcase";
-import MobileHeroShowcase from "../MobileHeroShowcase";
+import MarketingVideo from "../MarketingVideo";
 import { useCtaLinks, PRIMARY_CTA } from "./links";
 
 export default function FishbowlHero() {
@@ -67,11 +66,17 @@ export default function FishbowlHero() {
           </p>
         </div>
 
-        {/* < sm : tap-to-play video + mockup (mounted only on small screens,
-            and deliberately BEFORE the shared showcase; see MobileHeroShowcase).
-            sm+ : the shared autoplay video + mockup. */}
-        <MobileHeroShowcase />
-        <HeroVideoShowcase />
+        <MarketingVideo
+          mp4Src="/media/mcp-raw-data-import.mp4"
+          webmSrc="/media/mcp-raw-data-import.webm"
+          posterSrc="/media/mcp-raw-data-import-poster.jpg"
+          captionsSrc="/media/mcp-raw-data-import-captions.vtt"
+          videoLabel="Thirty second walkthrough of importing raw inventory data with Spark MCP"
+          eyebrow="30 second migration walkthrough"
+          title="Turn the files you already have into live inventory."
+          summary="Spark MCP lets an approved assistant map your exports, preview exceptions, and wait for your approval before import."
+          className="mt-8 w-full max-w-[900px] lg:mt-10"
+        />
       </div>
     </section>
   );

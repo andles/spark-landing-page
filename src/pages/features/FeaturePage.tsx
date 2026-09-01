@@ -23,6 +23,7 @@ export interface FeaturePageProps {
   gradientTo: string;
   features: FeatureItem[];
   faqs?: ReadonlyArray<{ question: string; answer: string }>;
+  heroMedia?: ReactNode;
   showcase?: ReactNode;
   nextCategory?: { name: string; href: string };
   prevCategory?: { name: string; href: string };
@@ -57,6 +58,7 @@ export function FeaturePage({
   gradientTo,
   features,
   faqs,
+  heroMedia,
   showcase,
   nextCategory,
   prevCategory,
@@ -107,23 +109,25 @@ export function FeaturePage({
               </ScrollReveal>
 
               <ScrollReveal delay={0.12}>
-                <div className="relative rounded-3xl border border-white/[0.09] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 shadow-2xl shadow-cyan-950/20 sm:p-8">
-                  <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">What your team gets</p>
-                  <div className="mt-6 space-y-5">
-                    {features.slice(0, 4).map((feature) => (
-                      <div key={feature.title} className="flex gap-4 border-b border-white/[0.06] pb-5 last:border-0 last:pb-0">
-                        <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10">
-                          <Check className="h-3.5 w-3.5 text-cyan-300" />
-                        </span>
-                        <div>
-                          <h2 className="text-sm font-semibold text-white">{feature.title}</h2>
-                          <p className="mt-1 text-sm leading-6 text-[#8b95a8]">{feature.description}</p>
+                {heroMedia ?? (
+                  <div className="relative rounded-3xl border border-white/[0.09] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 shadow-2xl shadow-cyan-950/20 sm:p-8">
+                    <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">What your team gets</p>
+                    <div className="mt-6 space-y-5">
+                      {features.slice(0, 4).map((feature) => (
+                        <div key={feature.title} className="flex gap-4 border-b border-white/[0.06] pb-5 last:border-0 last:pb-0">
+                          <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10">
+                            <Check className="h-3.5 w-3.5 text-cyan-300" />
+                          </span>
+                          <div>
+                            <h2 className="text-sm font-semibold text-white">{feature.title}</h2>
+                            <p className="mt-1 text-sm leading-6 text-[#8b95a8]">{feature.description}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </ScrollReveal>
             </div>
           </div>

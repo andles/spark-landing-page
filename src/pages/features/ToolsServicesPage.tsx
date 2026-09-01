@@ -1,5 +1,6 @@
 import { Wrench } from 'lucide-react';
 import AgentOnboardingSection from '../../agency/AgentOnboardingSection';
+import MarketingVideo from '../../agency/MarketingVideo';
 import { FeaturePage } from './FeaturePage';
 import { toolsServicesFaqs } from './toolsServicesData';
 
@@ -63,6 +64,18 @@ export function ToolsServicesPage() {
       gradientTo="to-rose-400"
       features={features}
       faqs={toolsServicesFaqs}
+      heroMedia={(
+        <MarketingVideo
+          mp4Src="/media/sparki-mcp-overview.mp4"
+          webmSrc="/media/sparki-mcp-overview.webm"
+          posterSrc="/media/sparki-mcp-overview-poster.jpg"
+          captionsSrc="/media/sparki-mcp-overview-captions.vtt"
+          videoLabel="Thirty second overview of Sparki and Spark MCP"
+          eyebrow="30 second overview"
+          title="Sparki in app. Your assistant over MCP."
+          summary="See both paths use the same governed inventory context and stop for your approval before anything changes."
+        />
+      )}
       showcase={<AgentOnboardingSection />}
       prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
       nextCategory={{ name: 'QuickBooks & Accounting', href: '/features/accounting' }}
