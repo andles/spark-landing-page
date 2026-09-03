@@ -76,5 +76,29 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- LinkedIn Insight Tag. CookieYes runs this only after the visitor
+         grants advertising consent. The noscript pixel is intentionally
+         omitted because it cannot be gated by the consent banner. -->
+    <script type="text/plain" data-cookieyes="cookieyes-advertisement">
+      _linkedin_partner_id = "9629434";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+
+      (function (linkedInTrack) {
+        if (!linkedInTrack) {
+          window.lintrk = function (firstArgument, secondArgument) {
+            window.lintrk.q.push([firstArgument, secondArgument]);
+          };
+          window.lintrk.q = [];
+        }
+
+        var firstScript = document.getElementsByTagName("script")[0];
+        var insightScript = document.createElement("script");
+        insightScript.type = "text/javascript";
+        insightScript.async = true;
+        insightScript.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        firstScript.parentNode.insertBefore(insightScript, firstScript);
+      })(window.lintrk);
+    </script>
   </body>
 </html>
