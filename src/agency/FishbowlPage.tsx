@@ -27,7 +27,7 @@ export default function FishbowlPage() {
   useScrollToHashOnMount();
 
   return (
-    <div className="fishbowl-brand-theme min-h-screen bg-[#06080d]">
+    <div className="min-h-screen bg-[#06080d]">
       <FishbowlHeader />
       <main>
         <FishbowlHero />
