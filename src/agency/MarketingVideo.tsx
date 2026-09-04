@@ -1,12 +1,12 @@
 type MarketingVideoProps = {
   mp4Src: string;
-  webmSrc: string;
+  webmSrc?: string;
   posterSrc: string;
   captionsSrc: string;
   videoLabel: string;
-  eyebrow: string;
-  title: string;
-  summary: string;
+  eyebrow?: string;
+  title?: string;
+  summary?: string;
   className?: string;
 };
 
@@ -32,7 +32,7 @@ export default function MarketingVideo({
           aria-label={videoLabel}
           className="h-full w-full object-cover"
         >
-          <source src={webmSrc} type="video/webm" />
+          {webmSrc && <source src={webmSrc} type="video/webm" />}
           <source src={mp4Src} type="video/mp4" />
           <track
             kind="captions"
@@ -45,13 +45,17 @@ export default function MarketingVideo({
         </video>
       </div>
 
-      <figcaption className="mt-4 px-1">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-          {eyebrow}
-        </p>
-        <p className="mt-1.5 text-sm font-semibold text-white">{title}</p>
-        <p className="mt-1 text-xs leading-5 text-[#8b95a8]">{summary}</p>
-      </figcaption>
+      {(eyebrow || title || summary) && (
+        <figcaption className="mt-4 px-1">
+          {eyebrow && (
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+              {eyebrow}
+            </p>
+          )}
+          {title && <p className="mt-1.5 text-sm font-semibold text-white">{title}</p>}
+          {summary && <p className="mt-1 text-xs leading-5 text-[#8b95a8]">{summary}</p>}
+        </figcaption>
+      )}
     </figure>
   );
 }

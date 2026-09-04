@@ -13,6 +13,7 @@
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import FishbowlHeader from "./fishbowl/FishbowlHeader";
 import FishbowlHero from "./fishbowl/FishbowlHero";
+import MarketingVideo from "./MarketingVideo";
 import FishbowlOffer from "./fishbowl/FishbowlOffer";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
@@ -32,6 +33,14 @@ export default function FishbowlPage() {
       <FishbowlHeader />
       <main>
         <FishbowlHero />
+        <div className="mx-auto w-full max-w-[1180px] px-5 pb-4 sm:px-6 md:px-8 lg:px-12">
+          <MarketingVideo
+            mp4Src="/media/fishbowl-bridge.mp4"
+            posterSrc="/media/fishbowl-bridge-poster.jpg"
+            captionsSrc="/media/fishbowl-bridge-captions.vtt"
+            videoLabel="Spark for Fishbowl teams: product overview"
+          />
+        </div>
         <FishbowlOffer />
         <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />

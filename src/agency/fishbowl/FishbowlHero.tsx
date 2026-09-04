@@ -6,14 +6,14 @@ export default function FishbowlHero() {
   const { signupUrl } = useCtaLinks();
 
   return (
-    <section className="relative flex min-h-svh items-center overflow-hidden bg-[#06080d]">
+    <section className="relative overflow-hidden bg-[#06080d]">
       <div className="absolute inset-0 bg-[#06080d]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_74%_56%_at_50%_-8%,rgba(6,182,212,0.15),transparent_64%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_48%_38%_at_82%_62%,rgba(139,92,246,0.10),transparent_62%)]" />
       <div className="absolute inset-0 dot-grid opacity-70" />
       <div className="absolute inset-0 noise" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 pb-8 pt-20 sm:px-6 sm:pb-12 sm:pt-24 md:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 pb-12 pt-24 sm:px-6 sm:pt-28 md:px-8 lg:px-12">
         <div className="mx-auto max-w-4xl text-center">
           <div className="animate-fade-up inline-flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.045] px-3.5 py-1.5 text-xs text-[#b8bfcc] backdrop-blur-xl sm:px-4 sm:py-2 sm:text-sm">
             <span className="relative flex h-2 w-2">
@@ -31,10 +31,7 @@ export default function FishbowlHero() {
           </h1>
 
           <p className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
-            Spark learns what sells, predicts what’s next, and tells you what to order. See the confidence behind every forecast.
-          </p>
-          <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[760px] text-sm leading-relaxed text-[#d0d6e0] sm:text-base">
-            Run alongside Fishbowl, free until your contract ends.
+            Spark forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
           </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
