@@ -8,12 +8,11 @@
 //
 // Sitelink anchors (Google Ads sitelink assets deep-link into the page):
 //   #migrate  FishbowlMigration      #reports / #sync  FishbowlComparison
-//   #book     FishbowlCTA
+// Booking CTAs open Calendly in a modal and preserve campaign attribution.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import FishbowlHeader from "./fishbowl/FishbowlHeader";
 import FishbowlHero from "./fishbowl/FishbowlHero";
-import FishbowlBooking from "./fishbowl/FishbowlBooking";
 import FishbowlOffer from "./fishbowl/FishbowlOffer";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
@@ -22,16 +21,17 @@ import FishbowlTrust from "./fishbowl/FishbowlTrust";
 import CampaignFAQSection from "./CampaignFAQSection";
 import FishbowlCTA from "./fishbowl/FishbowlCTA";
 import AgencyFooter from "./AgencyFooter";
+import { useFishbowlBookingTracking } from "./fishbowl/useFishbowlBookingTracking";
 
 export default function FishbowlPage() {
   useScrollToHashOnMount();
+  useFishbowlBookingTracking();
 
   return (
     <div className="min-h-screen bg-[#06080d]">
       <FishbowlHeader />
       <main>
         <FishbowlHero />
-        <FishbowlBooking />
         <FishbowlOffer />
         <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />

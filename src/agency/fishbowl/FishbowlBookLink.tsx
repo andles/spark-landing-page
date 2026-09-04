@@ -1,6 +1,10 @@
-import type { ReactNode } from "react";
-
-export const FISHBOWL_BOOKING_INTENT_EVENT = "spark:fishbowl-booking-intent";
+import { useCallback, type ReactNode } from "react";
+import {
+  ensureCalendlyAssets,
+  isCalendlyReady,
+  openCalendlyPopup,
+} from "../calendly";
+import { useCtaLinks } from "./links";
 
 export default function FishbowlBookLink({
   children,
@@ -9,12 +13,40 @@ export default function FishbowlBookLink({
   children: ReactNode;
   className?: string;
 }) {
-  const handleClick = () => {
-    window.dispatchEvent(new Event(FISHBOWL_BOOKING_INTENT_EVENT));
-  };
+  const { bookUrl } = useCtaLinks();
+
+  const handleClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    ensureCalendlyAssets();
+
+    if (isCalendlyReady()) {
+      openCalendlyPopup(bookUrl);
+      return;
+    }
+
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      attempts += 1;
+      if (isCalendlyReady()) {
+        window.clearInterval(timer);
+        openCalendlyPopup(bookUrl);
+      } else if (attempts >= 60) {
+        window.clearInterval(timer);
+        window.location.assign(bookUrl);
+      }
+    }, 50);
+  }, [bookUrl]);
 
   return (
-    <a href="#book" onClick={handleClick} className={className}>
+    <a
+      href={bookUrl}
+      onClick={handleClick}
+      onPointerEnter={ensureCalendlyAssets}
+      onFocus={ensureCalendlyAssets}
+      onTouchStart={ensureCalendlyAssets}
+      aria-haspopup="dialog"
+      className={className}
+    >
       {children}
     </a>
   );
