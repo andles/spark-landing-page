@@ -1,15 +1,15 @@
 // Keep the player, visible transcript, and search metadata in sync.
 export const fishbowlVideo = {
-  name: 'Run Spark alongside Fishbowl',
-  description: 'See how Fishbowl teams can evaluate Spark with their own inventory and sales history, forecast demand, and plan purchases. Migration and onboarding are included, with free access until the current Fishbowl contract ends.',
-  mp4Src: '/media/fishbowl-bridge.mp4',
-  posterSrc: '/media/fishbowl-bridge-poster.jpg',
-  captionsSrc: '/media/fishbowl-bridge-captions.vtt',
-  uploadDate: '2026-09-04T20:38:03Z',
-  duration: 'PT34S',
+  name: 'Move beyond Fishbowl with Spark DemandIQ',
+  description: 'See how Spark DemandIQ considers each product’s demand patterns and planned changes, then turns forecasts into reorder points and draft purchase orders. Move from Fishbowl on your timeline, with free access until your current contract ends and migration and onboarding included.',
+  mp4Src: '/media/fishbowl-bridge-v3.mp4',
+  posterSrc: '/media/fishbowl-bridge-v3-poster.jpg',
+  captionsSrc: '/media/fishbowl-bridge-v3-captions.vtt',
+  uploadDate: '2026-09-04',
+  duration: 'PT33.9S',
   transcript: [
-    'Still running Fishbowl? Keep it running. See what Spark can add. Start with your own inventory and sales history, with migration and onboarding included.',
-    "Spot the seasonal patterns behind demand, not just an average. See what's on hand, what's coming in, and where your next purchase needs attention.",
-    'Evaluate Spark alongside Fishbowl using your own numbers. And Spark is free until your current Fishbowl contract ends. Compare before you commit. Start at sparkinventory.com.',
+    'Ready to move beyond Fishbowl? Start your move to Spark. Bring your inventory and sales history.',
+    "Spark DemandIQ considers each product's demand patterns, from seasonal peaks to growing sales, plus the changes you're planning for. Turn that forecast into reorder points and draft purchase orders.",
+    'See the difference using your own numbers. Move on your timeline. Spark is free until your current Fishbowl contract ends, with migration and onboarding included. Start your move at Spark Inventory dot com.',
   ],
 };

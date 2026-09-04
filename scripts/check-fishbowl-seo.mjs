@@ -46,13 +46,15 @@ for (const question of faq[0].mainEntity) {
 const video = schema['@graph'].find((node) => node['@type'] === 'VideoObject');
 assert(video && video.name && video.description && video.uploadDate);
 assert(!Number.isNaN(Date.parse(video.uploadDate)));
-assert.equal(video.duration, 'PT34S');
+assert.equal(video.duration, 'PT33.9S');
 assert(bodyText.includes(video.transcript), 'Transcript must be available as page text');
 for (const url of [video.contentUrl, ...video.thumbnailUrl]) {
   assert.equal(new URL(url).origin, 'https://sparkinventory.com');
   assert(existsSync(join(clientDir, new URL(url).pathname)), `Missing video asset: ${url}`);
 }
-const captions = readFileSync(join(clientDir, 'media/fishbowl-bridge-captions.vtt'), 'utf8');
+const captionsPath = body.match(/<track[^>]*src="([^"]+)"/)?.[1];
+assert(captionsPath, 'Video must include a caption source');
+const captions = readFileSync(join(clientDir, captionsPath), 'utf8');
 const captionText = captions.split('\n').filter((line) => line.trim() && line !== 'WEBVTT' && !line.includes('-->'))
   .join(' ').replace(/\s+/g, ' ').trim();
 assert.equal(video.transcript, captionText, 'Transcript must match supplied captions');
