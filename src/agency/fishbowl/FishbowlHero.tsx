@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
-import { useCtaLinks, PRIMARY_CTA } from "./links";
+import { useCtaLinks, BOOKING_CTA } from "./links";
 
 type HeroCopy = {
   firstLine: string;
@@ -75,13 +75,13 @@ export default function FishbowlHero() {
           </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
-            <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
-              {PRIMARY_CTA}
-              <CalendarDays className="h-4 w-4" aria-hidden="true" />
-            </FishbowlBookLink>
-            <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
+            <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
               Start Free
             </a>
+            <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
+              {BOOKING_CTA}
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+            </FishbowlBookLink>
           </div>
 
           <p className="animate-fade-up delay-300 mt-3 text-[11px] text-[#7f8998] sm:text-xs">

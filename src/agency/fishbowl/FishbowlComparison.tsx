@@ -4,8 +4,7 @@
 // what reviewers report, not as flat claims about the product.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
-import FishbowlBookLink from "./FishbowlBookLink";
-import { PRIMARY_CTA } from "./links";
+import { useCtaLinks } from "./links";
 
 const rows = [
   {
@@ -46,6 +45,7 @@ const rows = [
 ];
 
 export default function FishbowlComparison() {
+  const { signupUrl } = useCtaLinks();
   return (
     // Google Ads sitelink anchors. "reports" (Custom reports / Customizing rows)
     // and "sync" (Shopify, Amazon, QuickBooks row) both land on this table, so
@@ -140,11 +140,11 @@ export default function FishbowlComparison() {
         </p>
 
         <div className="mt-8 text-center">
-          <FishbowlBookLink
+          <a href={signupUrl}
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
-            {PRIMARY_CTA}
-          </FishbowlBookLink>
+            Start Free
+          </a>
         </div>
       </div>
     </section>

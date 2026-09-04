@@ -1,6 +1,6 @@
 import { ArrowRight, Database, Layers3, ShieldCheck } from "lucide-react";
 import ScrollReveal, { RevealItem } from "../ScrollReveal";
-import FishbowlBookLink from "./FishbowlBookLink";
+import { useCtaLinks } from "./links";
 
 const offerPoints = [
   {
@@ -27,6 +27,7 @@ const offerPoints = [
 ];
 
 export default function FishbowlOffer() {
+  const { signupUrl } = useCtaLinks();
   return (
     <section id="offer" className="relative overflow-hidden bg-[#06080d] py-16 lg:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_56%_44%_at_50%_0%,rgba(139,92,246,0.09),transparent_72%)]" />
@@ -64,10 +65,10 @@ export default function FishbowlOffer() {
           <p className="max-w-3xl text-xs leading-5 text-[#7f899a]">
             Free access runs to the end date of your current Fishbowl agreement. Migration and onboarding are included.
           </p>
-          <FishbowlBookLink className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full border border-white/10 px-5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] sm:self-auto">
-            Book 20 minutes
+          <a href={signupUrl} className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-5 text-sm font-semibold text-white transition hover:scale-[1.02] sm:self-auto">
+            Start Free
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </FishbowlBookLink>
+          </a>
         </ScrollReveal>
       </div>
     </section>

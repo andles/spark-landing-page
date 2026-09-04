@@ -32,5 +32,5 @@ export function useCtaLinks(): CtaLinks {
   return useSharedCtaLinks(OPTIONS);
 }
 
-/** Primary CTA label, used in the hero and the closing section. */
-export const PRIMARY_CTA = "Book 20 minutes";
+/** Secondary booking CTA label, used in the hero and closing section. */
+export const BOOKING_CTA = "Book 20 minutes";

@@ -2,11 +2,10 @@
 // Header for the Fishbowl campaign page. Same markup and styling as
 // AgencyHeader.tsx, but the nav anchors point at this page's sections (the
 // shared header links to #pricing/#integrations, which don't exist here) and
-// the CTA is the page's single tagged booking action.
+// the CTA is the page's tagged free signup action.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useState, useEffect } from "react";
-import FishbowlBookLink from "./FishbowlBookLink";
-import { PRIMARY_CTA } from "./links";
+import { useCtaLinks } from "./links";
 
 const navLinks = [
   { href: "#offer", label: "Offer" },
@@ -19,6 +18,7 @@ const ctaClass =
   "h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center";
 
 export default function FishbowlHeader() {
+  const { signupUrl } = useCtaLinks();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -55,9 +55,7 @@ export default function FishbowlHeader() {
           <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">
             Sign In
           </a>
-          <FishbowlBookLink className={ctaClass}>
-            {PRIMARY_CTA}
-          </FishbowlBookLink>
+          <a href={signupUrl} className={ctaClass}>Start Free</a>
         </div>
 
         {/* Mobile hamburger */}
@@ -85,9 +83,7 @@ export default function FishbowlHeader() {
           ))}
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
-            <FishbowlBookLink className={ctaClass}>
-              {PRIMARY_CTA}
-            </FishbowlBookLink>
+            <a href={signupUrl} className={ctaClass}>Start Free</a>
           </div>
         </div>
       )}

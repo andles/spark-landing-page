@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Closing CTA. Same layout and background as AgencyCTASection.tsx; primary
-// action matches the hero (booking), free start is secondary.
+// action matches the hero (free signup), booking is secondary.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
 import FishbowlBookLink from "./FishbowlBookLink";
-import { useCtaLinks, PRIMARY_CTA } from "./links";
+import { useCtaLinks, BOOKING_CTA } from "./links";
 
 export default function FishbowlCTA() {
   const { signupUrl } = useCtaLinks();
@@ -29,17 +29,14 @@ export default function FishbowlCTA() {
             Sparki handles the mapping and prepares the import. You approve it, then compare Spark and Fishbowl on your own numbers.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <FishbowlBookLink
-              className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
-            >
-              {PRIMARY_CTA}
-            </FishbowlBookLink>
-            <a
-              href={signupUrl}
-              className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
-            >
+            <a href={signupUrl} className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300">
               Start Free
             </a>
+            <FishbowlBookLink
+              className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"
+            >
+              {BOOKING_CTA}
+            </FishbowlBookLink>
           </div>
         </ScrollReveal>
       </div>
