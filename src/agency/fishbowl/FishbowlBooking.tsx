@@ -41,6 +41,7 @@ function buildConfirmationUrl(): string {
 
 export default function FishbowlBooking() {
   const { bookUrl } = useCtaLinks();
+  const sectionRef = useRef<HTMLElement>(null);
   const widgetRef = useRef<HTMLDivElement>(null);
   const initializedRef = useRef(false);
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -65,10 +66,35 @@ export default function FishbowlBooking() {
   }, []);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    if (window.location.hash === "#book") {
+      const frame = window.requestAnimationFrame(() => setShouldLoad(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoad(true);
+        observer.disconnect();
+      },
+      { rootMargin: "240px 0px", threshold: 0.01 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!shouldLoad || initializedRef.current || !widgetRef.current) return;
 
     ensureCalendlyAssets();
     let attempts = 0;
+    let readyFallback: number | undefined;
     const timer = window.setInterval(() => {
       attempts += 1;
       const calendly = calendlyGlobal();
@@ -80,19 +106,28 @@ export default function FishbowlBooking() {
           parentElement: widgetRef.current,
           resize: true,
         });
-        setIsInitialized(true);
+        readyFallback = window.setTimeout(() => setIsInitialized(true), 5000);
       } else if (attempts >= 120) {
         window.clearInterval(timer);
         setLoadFailed(true);
       }
     }, 100);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearInterval(timer);
+      if (readyFallback) window.clearTimeout(readyFallback);
+    };
   }, [bookUrl, shouldLoad]);
 
   useEffect(() => {
     const handleCalendlyEvent = (event: MessageEvent) => {
       if (event.origin !== "https://calendly.com") return;
+      if (
+        event.data?.event === "calendly.profile_page_viewed" ||
+        event.data?.event === "calendly.event_type_viewed"
+      ) {
+        setIsInitialized(true);
+      }
       if (event.data?.event === "calendly.event_scheduled") {
         window.location.assign(buildConfirmationUrl());
       }
@@ -104,6 +139,7 @@ export default function FishbowlBooking() {
 
   return (
     <section
+      ref={sectionRef}
       id="book"
       className="relative scroll-mt-16 overflow-hidden border-y border-white/[0.07] bg-[#080b12] py-14 lg:py-20"
       aria-labelledby="fishbowl-booking-title"
@@ -149,25 +185,30 @@ export default function FishbowlBooking() {
           </div>
         </div>
 
-        <div className="min-w-0 overflow-hidden rounded-[24px] border border-white/[0.10] bg-white shadow-[0_30px_100px_rgba(0,0,0,0.42)]">
-          <div className="relative min-h-[690px] w-full bg-white" aria-label="Schedule a working session with Spark">
+        <div className="min-w-0 overflow-hidden rounded-[24px] border border-white/[0.10] bg-[#0b1020] shadow-[0_30px_100px_rgba(0,0,0,0.42)]">
+          <div className="relative min-h-[690px] w-full" aria-label="Schedule a working session with Spark">
             <div ref={widgetRef} className="absolute inset-0" />
             {!shouldLoad && (
               <button
                 type="button"
                 onClick={() => setShouldLoad(true)}
-                className="absolute inset-0 flex w-full flex-col items-center justify-center gap-4 bg-[#f7f9fc] px-8 text-center text-[#101522]"
+                className="group absolute inset-0 flex w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[#0b1020] px-8 text-center text-white"
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0b1020] text-cyan-300 shadow-xl">
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(6,182,212,0.16),transparent_36%),radial-gradient(circle_at_76%_72%,rgba(139,92,246,0.12),transparent_34%)]" />
+                <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 text-[#06080d] shadow-[0_16px_45px_rgba(6,182,212,0.22)] transition group-hover:scale-105">
                   <CalendarDays className="h-6 w-6" aria-hidden="true" />
                 </span>
-                <span className="text-lg font-semibold">Load available times</span>
-                <span className="max-w-sm text-sm leading-6 text-[#5b6473]">The scheduler loads only when you are ready, keeping the landing page fast.</span>
+                <span className="relative text-lg font-semibold">Load available times</span>
+                <span className="relative max-w-sm text-sm leading-6 text-[#8f99aa]">The scheduler loads only when you are ready, keeping the landing page fast.</span>
               </button>
             )}
             {shouldLoad && !isInitialized && !loadFailed && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#f7f9fc] text-sm font-medium text-[#5b6473]">
-                Loading available times...
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 overflow-hidden bg-[#0b1020] px-8 text-center">
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(6,182,212,0.16),transparent_36%),radial-gradient(circle_at_76%_72%,rgba(139,92,246,0.12),transparent_34%)]" />
+                <span className="relative flex h-14 w-14 animate-pulse items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 text-[#06080d] shadow-[0_16px_45px_rgba(6,182,212,0.22)]">
+                  <CalendarDays className="h-6 w-6" aria-hidden="true" />
+                </span>
+                <span className="relative text-sm font-medium text-[#aeb7c7]">Loading available times...</span>
               </div>
             )}
             {loadFailed && (
