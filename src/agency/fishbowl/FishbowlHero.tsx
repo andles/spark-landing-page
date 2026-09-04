@@ -31,7 +31,7 @@ export default function FishbowlHero() {
           </h1>
 
           <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
-            Your Fishbowl backup. Your first Spark forecast.
+            Stop guessing what to order. Spark already knows.
           </h2>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
