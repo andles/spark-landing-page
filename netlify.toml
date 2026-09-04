@@ -25,21 +25,6 @@
   status = 301
   force = true
 
-# Match the campaign headline before the browser paints the page.
-[[redirects]]
-  from = "/fishbowl-alternative/"
-  to = "/fishbowl-alternative/_variants/alongside/index.html"
-  status = 200
-  force = true
-  query = { utm_content = "alongside" }
-
-[[redirects]]
-  from = "/fishbowl-alternative/"
-  to = "/fishbowl-alternative/_variants/capterra/index.html"
-  status = 200
-  force = true
-  query = { utm_content = "capterra" }
-
 # Only the two genuinely client-only route families use the SPA shell.
 # Every public marketing route is a prerendered file; unknown paths therefore
 # fall through to Netlify's generated 404.html with a real 404 status.

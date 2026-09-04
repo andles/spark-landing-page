@@ -15,7 +15,7 @@
 //
 // Also emits sitemap.xml (prerendered, indexable routes only).
 // ─────────────────────────────────────────────────────────────────────────────
-import { copyFileSync, readFileSync, writeFileSync, mkdirSync, unlinkSync } from 'node:fs';
+import { copyFileSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { prerender } from 'react-dom/static';
@@ -228,24 +228,6 @@ for (const route of routeMeta) {
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, html);
   console.log(`prerendered ${route.path} (${Math.round(appHtml.length / 1024)} kB) → ${outPath}`);
-
-  // Serve campaign copy in the initial HTML, using the same router query
-  // that the browser hydrates. All variants keep the public page canonical.
-  if (route.path === '/fishbowl-alternative') {
-    for (const angle of ['alongside', 'capterra']) {
-      const variantApp = await renderToString(createApp(`${route.path}/?utm_content=${angle}`));
-      const variantHtml = html.replace(`<div id="root">${appHtml}</div>`, `<div id="root">${variantApp}</div>`);
-      const variantPath = join(dist, 'fishbowl-alternative', '_variants', angle, 'index.html');
-      mkdirSync(dirname(variantPath), { recursive: true });
-      writeFileSync(variantPath, variantHtml);
-    }
-    const defaultPath = join(dist, 'fishbowl-alternative', '_variants', 'default', 'index.html');
-    mkdirSync(dirname(defaultPath), { recursive: true });
-    writeFileSync(defaultPath, html);
-    // Assets-first hosts must reach the Worker at the public campaign URL.
-    // Keep all HTML in internal asset paths for that deployment only.
-    if (process.argv.includes('--worker-campaign-routing')) unlinkSync(outPath);
-  }
 }
 
 // Netlify's final fallback serves this document with a true 404 status, while

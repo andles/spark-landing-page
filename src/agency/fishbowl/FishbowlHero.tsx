@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
 import { useCtaLinks, BOOKING_CTA } from "./links";
@@ -29,17 +30,19 @@ const ALONGSIDE_COPY: HeroCopy = {
   body: DEFAULT_COPY.body,
 };
 
-function useHeroCopy(): HeroCopy {
-  const { search } = useLocation();
-  const content = new URLSearchParams(search).get("utm_content")?.toLowerCase();
-  if (content === "capterra") return CAPTERRA_COPY;
-  if (content === "alongside") return ALONGSIDE_COPY;
-  return DEFAULT_COPY;
-}
+const HERO_VARIANTS = { default: DEFAULT_COPY, alongside: ALONGSIDE_COPY, capterra: CAPTERRA_COPY };
 
 export default function FishbowlHero() {
   const { signupUrl } = useCtaLinks();
-  const copy = useHeroCopy();
+  const { search } = useLocation();
+
+  // The head selects the initial variant. Keep client-side navigation in sync
+  // before paint without replacing prerendered headline text during hydration.
+  useLayoutEffect(() => {
+    const angle = new URLSearchParams(search).get("utm_content")?.toLowerCase();
+    document.documentElement.dataset.fishbowlAngle =
+      angle === "alongside" || angle === "capterra" ? angle : "default";
+  }, [search]);
 
   return (
     <section className="relative flex min-h-svh items-center overflow-hidden bg-[#06080d]">
@@ -60,10 +63,14 @@ export default function FishbowlHero() {
           </div>
 
           <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
-            <span className="text-[#f4f6f9]">{copy.firstLine}</span>
-            <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
-              {copy.secondLine}
-            </span>
+            {Object.entries(HERO_VARIANTS).map(([angle, copy]) => (
+              <span key={angle} data-fishbowl-copy={angle}>
+                <span className="text-[#f4f6f9]">{copy.firstLine}</span>
+                <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+                  {copy.secondLine}
+                </span>
+              </span>
+            ))}
           </h1>
 
           <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
@@ -71,7 +78,9 @@ export default function FishbowlHero() {
           </h2>
 
           <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
-            {copy.body}
+            {Object.entries(HERO_VARIANTS).map(([angle, copy]) => (
+              <span key={angle} data-fishbowl-copy={angle}>{copy.body}</span>
+            ))}
           </p>
 
           <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
