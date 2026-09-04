@@ -30,9 +30,9 @@ export default function FishbowlHero() {
             </span>
           </h1>
 
-          <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
-            Stop guessing what to order. Spark already knows.
-          </h2>
+          <p className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
+            Spark reads your sales history and treats a summer product, a growing one, and a sporadic one differently, folds in what you already know is coming, and puts a confidence grade on every forecast so you can see how much to trust it. Then it turns that into reorder points and draft POs, so the pile of unsold stock and the empty shelf both stop happening. Run it alongside Fishbowl, free until your contract ends.
+          </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
             <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
