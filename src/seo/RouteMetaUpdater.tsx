@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { findRouteMeta, SITE_URL } from './routeMeta';
+import { findRouteMeta } from './routeMeta';
+import { buildSchemaGraph, canonicalUrl, robotsContent } from './schemaGraph';
 
 function upsertMeta(selector: string, attribute: 'name' | 'property', key: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -22,11 +23,8 @@ export default function RouteMetaUpdater() {
     const meta = findRouteMeta(pathname) ?? (!isDynamicUtilityRoute ? findRouteMeta('/404') : undefined);
     if (!meta) return;
 
-    const canonicalPath = meta.canonical ?? meta.path;
-    const canonical = canonicalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${canonicalPath}/`;
-    const robots = meta.noindex
-      ? 'noindex, nofollow, noarchive'
-      : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    const canonical = canonicalUrl(meta);
+    const robots = robotsContent(meta, import.meta.env.VITE_SITE_NOINDEX === 'true');
 
     document.title = meta.title;
     upsertMeta('meta[name="description"]', 'name', 'description', meta.description);
@@ -44,6 +42,15 @@ export default function RouteMetaUpdater() {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.href = canonical;
+
+    let structuredData = document.head.querySelector<HTMLScriptElement>('#route-jsonld');
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.id = 'route-jsonld';
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify(buildSchemaGraph(meta)).replace(/</g, '\\u003c');
   }, [pathname]);
 
   return null;

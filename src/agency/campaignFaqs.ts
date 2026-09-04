@@ -104,6 +104,21 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
         "Spark runs alongside Fishbowl while you evaluate it. Fishbowl keeps running as it does today. Drop your database backup into Spark, let Sparki prepare the import, and compare the two using your own inventory before you decide whether to switch.",
     },
     {
+      question: "What is Spark Inventory, and why consider it as a Fishbowl alternative?",
+      answer:
+        "Spark Inventory is inventory management and demand forecasting software. Fishbowl teams can use Spark to forecast demand by product, calculate reorder points, and prepare draft purchase orders. Start by importing a Fishbowl database backup and evaluating Spark alongside your existing system.",
+    },
+    {
+      question: "How does Spark forecast seasonal or sporadic demand?",
+      answer:
+        "Spark forecasts each product according to its sales pattern, including seasonal, growing, steady, and sporadic demand. It incorporates what your team knows is coming and gives each forecast a confidence grade, so you can judge how much to rely on the recommendation.",
+    },
+    {
+      question: "Does Spark send purchase orders automatically?",
+      answer:
+        "Spark turns forecasts into reorder points and draft purchase orders. Your team reviews the recommendations and approves the purchase orders before they are sent or committed.",
+    },
+    {
       question: "How does Spark migrate data out of Fishbowl?",
       answer:
         "Drop your Fishbowl database backup into the importer. Sparki identifies the records and relationships, maps the fields, validates the data, and presents the exact import for your approval.",

@@ -28,7 +28,8 @@ if (!dist) {
 
 const ssrDir = process.argv[3] ?? `${dist}-ssr`;
 const ssrEntry = resolve(ssrDir, 'entry-server.js');
-const { createApp, routeMeta, SITE_URL } = await import(pathToFileURL(ssrEntry).href);
+const { createApp, routeMeta, SITE_URL, buildSchemaGraph, canonicalUrl, robotsContent } = await import(pathToFileURL(ssrEntry).href);
+const previewNoindex = process.env.SITE_NOINDEX === 'true';
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 if (!template.includes('<div id="root"></div>')) {
@@ -67,9 +68,10 @@ for (const route of routeMeta) {
 }
 
 // Untouched shell for routes that are not prerendered (SPA fallback target)
-writeFileSync(join(dist, 'spa-shell.html'), template);
+const shellTemplate = template.replace('</head>', '<meta name="robots" content="noindex, nofollow, noarchive">\n</head>');
+writeFileSync(join(dist, 'spa-shell.html'), shellTemplate);
 mkdirSync(join(dist, 'spa-shell'), { recursive: true });
-writeFileSync(join(dist, 'spa-shell', 'index.html'), template);
+writeFileSync(join(dist, 'spa-shell', 'index.html'), shellTemplate);
 
 async function renderToString(node) {
   const { prelude } = await prerender(node);
@@ -97,99 +99,12 @@ for (const route of routeMeta) {
   }
   // Netlify serves directory indexes at the trailing-slash URL (301 from the
   // bare path), so canonicals must use the trailing-slash form.
-  const canonicalPath = route.canonical ?? route.path;
-  const canonical = canonicalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${canonicalPath}/`;
+  const canonical = canonicalUrl(route);
   const socialImage = `${SITE_URL}/hero-video-poster.jpg`;
-  const breadcrumb = route.path === '/'
-    ? []
-    : [{
-        '@type': 'BreadcrumbList',
-        '@id': `${canonical}#breadcrumb`,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Spark Inventory',
-            item: `${SITE_URL}/`,
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: route.title.replace(/\s[-|]\sSPARK(?: Inventory)?$/i, ''),
-            item: canonical,
-          },
-        ],
-      }];
-  const schemaGraph = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': `${SITE_URL}/#organization`,
-        name: 'Spark Inventory',
-        url: `${SITE_URL}/`,
-        description: 'AI inventory management software for multichannel product businesses.',
-        email: 'info@sparkinventory.com',
-        logo: {
-          '@type': 'ImageObject',
-          url: `${SITE_URL}/spark_icon.png`,
-          contentUrl: `${SITE_URL}/spark_icon.png`,
-          width: 293,
-          height: 284,
-        },
-        contactPoint: [
-          {
-            '@type': 'ContactPoint',
-            contactType: 'sales',
-            email: 'info@sparkinventory.com',
-          },
-          {
-            '@type': 'ContactPoint',
-            contactType: 'customer support',
-            email: 'support@sparkinventory.com',
-          },
-        ],
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${SITE_URL}/#website`,
-        name: 'Spark Inventory',
-        alternateName: 'SPARK Intelligent Inventory',
-        url: `${SITE_URL}/`,
-        inLanguage: 'en-US',
-        publisher: { '@id': `${SITE_URL}/#organization` },
-      },
-      {
-        '@type': route.webPageType ?? 'WebPage',
-        '@id': `${canonical}#webpage`,
-        url: canonical,
-        name: route.title,
-        description: route.description,
-        inLanguage: 'en-US',
-        isPartOf: { '@id': `${SITE_URL}/#website` },
-        about: { '@id': `${SITE_URL}/#organization` },
-        primaryImageOfPage: { '@id': `${SITE_URL}/#primaryimage` },
-        ...(route.lastModified ? { dateModified: route.lastModified } : {}),
-        ...(route.path === '/' ? {} : { breadcrumb: { '@id': `${canonical}#breadcrumb` } }),
-      },
-      {
-        '@type': 'ImageObject',
-        '@id': `${SITE_URL}/#primaryimage`,
-        url: socialImage,
-        contentUrl: socialImage,
-        caption: 'Spark Inventory AI inventory management dashboard',
-        width: 1280,
-        height: 720,
-      },
-      ...breadcrumb,
-      ...(route.schema ?? []),
-    ],
-  };
+  const schemaGraph = buildSchemaGraph(route);
 
   const headTags = [
-    route.noindex
-      ? '<meta name="robots" content="noindex, nofollow, noarchive">'
-      : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
+    `<meta name="robots" content="${robotsContent(route, previewNoindex)}">`,
     '<meta property="og:type" content="website">',
     '<meta property="og:site_name" content="SPARK Intelligent Inventory">',
     '<meta property="og:locale" content="en_US">',

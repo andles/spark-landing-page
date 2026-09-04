@@ -8,7 +8,7 @@
     "dev:classic": "VITE_THEME=classic vite",
     "dev:nextgen": "VITE_THEME=nextgen vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs dist",
-    "build:sites": "rimraf dist dist-sites-ssr && tsc -b && WRANGLER_LOG_PATH=.wrangler/sites-build.log VITE_THEME=nextgen vite build --config vite.sites.config.ts && VITE_THEME=nextgen vite build --ssr src/entry-server.tsx --outDir dist-sites-ssr && node scripts/prerender.mjs dist/client dist-sites-ssr",
+    "build:sites": "rimraf dist dist-sites-ssr && tsc -b && WRANGLER_LOG_PATH=.wrangler/sites-build.log VITE_THEME=nextgen vite build --config vite.sites.config.ts && VITE_THEME=nextgen vite build --ssr src/entry-server.tsx --outDir dist-sites-ssr && SITE_NOINDEX=true node scripts/prerender.mjs dist/client dist-sites-ssr",
     "build:classic": "tsc -b && VITE_THEME=classic vite build --outDir dist-classic && VITE_THEME=classic vite build --ssr src/entry-server.tsx --outDir dist-classic-ssr && node scripts/prerender.mjs dist-classic",
     "build:nextgen": "tsc -b && VITE_THEME=nextgen vite build --outDir dist-nextgen && VITE_THEME=nextgen vite build --ssr src/entry-server.tsx --outDir dist-nextgen-ssr && node scripts/prerender.mjs dist-nextgen",
     "lint": "eslint .",

@@ -6,6 +6,7 @@ import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
 import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
+import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -151,7 +152,23 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Run Spark alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
     lastModified: '2026-09-04',
-    schema: [buildFaqSchema('fishbowl')],
+    schema: [
+      { ...buildFaqSchema('fishbowl'), '@id': `${SITE_URL}/fishbowl-alternative/#faq` },
+      {
+        '@type': 'VideoObject',
+        '@id': `${SITE_URL}/fishbowl-alternative/#video`,
+        name: fishbowlVideo.name,
+        description: fishbowlVideo.description,
+        thumbnailUrl: [`${SITE_URL}${fishbowlVideo.posterSrc}`],
+        contentUrl: `${SITE_URL}${fishbowlVideo.mp4Src}`,
+        uploadDate: fishbowlVideo.uploadDate,
+        duration: fishbowlVideo.duration,
+        inLanguage: 'en',
+        transcript: fishbowlVideo.transcript.join(' '),
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        isPartOf: { '@id': `${SITE_URL}/fishbowl-alternative/#webpage` },
+      },
+    ],
   },
   {
     path: '/cin7-alternative',
