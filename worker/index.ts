@@ -67,8 +67,9 @@ export default {
     }
 
     const angle = url.searchParams.get("utm_content")?.toLowerCase();
-    if (pathname === "/fishbowl-alternative" && (angle === "alongside" || angle === "capterra") && (request.method === "GET" || request.method === "HEAD")) {
-      const variantUrl = new URL(`/fishbowl-alternative/_variants/${angle}/`, url.origin);
+    if (pathname === "/fishbowl-alternative" && (request.method === "GET" || request.method === "HEAD")) {
+      const variant = angle === "alongside" || angle === "capterra" ? angle : "default";
+      const variantUrl = new URL(`/fishbowl-alternative/_variants/${variant}/`, url.origin);
       const response = await env.ASSETS.fetch(new Request(variantUrl, request));
       return withResponseHeaders(response, pathname);
     }

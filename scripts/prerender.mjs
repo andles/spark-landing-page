@@ -15,7 +15,7 @@
 //
 // Also emits sitemap.xml (prerendered, indexable routes only).
 // ─────────────────────────────────────────────────────────────────────────────
-import { copyFileSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { copyFileSync, readFileSync, writeFileSync, mkdirSync, unlinkSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { prerender } from 'react-dom/static';
@@ -239,6 +239,12 @@ for (const route of routeMeta) {
       mkdirSync(dirname(variantPath), { recursive: true });
       writeFileSync(variantPath, variantHtml);
     }
+    const defaultPath = join(dist, 'fishbowl-alternative', '_variants', 'default', 'index.html');
+    mkdirSync(dirname(defaultPath), { recursive: true });
+    writeFileSync(defaultPath, html);
+    // Assets-first hosts must reach the Worker at the public campaign URL.
+    // Keep all HTML in internal asset paths for that deployment only.
+    if (process.argv.includes('--worker-campaign-routing')) unlinkSync(outPath);
   }
 }
 
