@@ -29,9 +29,9 @@ const points = [
     iconBg: "from-violet-500 to-purple-600",
   },
   {
-    title: "Free to start, and your data is yours",
+    title: "Free until your Fishbowl contract ends",
     body:
-      "Bring your Fishbowl export, run Spark alongside it for as long as you need, and decide with real numbers. Export everything any time. No renewal cliff, no surprise invoice.",
+      "Drop in your Fishbowl database backup, run Spark alongside it, and decide with real numbers. When your Fishbowl agreement ends, choose a Spark plan or export everything at any time.",
     icon: (
       <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

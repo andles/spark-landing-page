@@ -147,10 +147,10 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Fishbowl Alternative for Inventory Planning | Spark',
+    title: 'Fishbowl Alternative with Demand Forecasting | Spark',
     description:
-      'Compare Spark with Fishbowl across forecasting, purchasing, reporting, migration, onboarding, integrations, and pricing. Build your inventory plan free.',
-    lastModified: '2026-09-01',
+      'Run Spark alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
+    lastModified: '2026-09-04',
     schema: [buildFaqSchema('fishbowl')],
   },
   {

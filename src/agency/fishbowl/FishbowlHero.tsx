@@ -1,82 +1,102 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// FISHBOWL ALTERNATIVE campaign hero (Google Ads message-match).
-// Same background layers, eyebrow, type scale and video showcase as
-// AgencyHero.tsx. Differences: Fishbowl-specific headline + subhead, and a
-// single primary CTA (booking) instead of a two-button row.
-// ─────────────────────────────────────────────────────────────────────────────
-import BookACallButton from "../BookACallButton";
-import MarketingVideo from "../MarketingVideo";
+import { useSyncExternalStore } from "react";
+import { ArrowDown, Check } from "lucide-react";
+import FishbowlBookLink from "./FishbowlBookLink";
 import { useCtaLinks, PRIMARY_CTA } from "./links";
 
+type HeroCopy = {
+  firstLine: string;
+  secondLine: string;
+  body: string;
+};
+
+const DEFAULT_COPY: HeroCopy = {
+  firstLine: "Fishbowl tracks it.",
+  secondLine: "Spark forecasts it.",
+  body:
+    "Run Spark alongside Fishbowl, free until your current Fishbowl contract ends. Your data is in Spark in minutes, Fishbowl keeps running as it does today, and Spark starts telling you what to order and when.",
+};
+
+const CAPTERRA_COPY: HeroCopy = {
+  firstLine: "Built around what Fishbowl",
+  secondLine: "reviewers say is missing.",
+  body:
+    "We analyzed 449 public Fishbowl reviews. Support, reporting, integrations, and customization were recurring complaints. Spark was built to address all four, and it is free until your Fishbowl contract ends.",
+};
+
+const ALONGSIDE_COPY: HeroCopy = {
+  firstLine: "Keep Fishbowl.",
+  secondLine: "Run Spark next to it.",
+  body: DEFAULT_COPY.body,
+};
+
+const subscribeToSearch = () => () => {};
+const getClientSearch = () => window.location.search;
+const getServerSearch = () => "";
+
+function useHeroCopy(): HeroCopy {
+  const search = useSyncExternalStore(subscribeToSearch, getClientSearch, getServerSearch);
+  const content = new URLSearchParams(search).get("utm_content")?.toLowerCase();
+  if (content === "capterra") return CAPTERRA_COPY;
+  if (content === "alongside") return ALONGSIDE_COPY;
+  return DEFAULT_COPY;
+}
+
 export default function FishbowlHero() {
-  const { bookUrl, signupUrl } = useCtaLinks();
+  const { signupUrl } = useCtaLinks();
+  const copy = useHeroCopy();
+
   return (
-    <section className="relative min-h-screen bg-[#06080d]">
-      {/* Background layers */}
+    <section className="relative flex min-h-svh items-center overflow-hidden bg-[#06080d]">
       <div className="absolute inset-0 bg-[#06080d]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.12),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_60%,rgba(139,92,246,0.08),transparent_50%)]" />
-      <div className="absolute inset-0 dot-grid" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_74%_56%_at_50%_-8%,rgba(6,182,212,0.15),transparent_64%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_48%_38%_at_82%_62%,rgba(139,92,246,0.10),transparent_62%)]" />
+      <div className="absolute inset-0 dot-grid opacity-70" />
       <div className="absolute inset-0 noise" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-24 pb-12">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Eyebrow pill */}
-          <div className="animate-fade-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 pb-8 pt-20 sm:px-6 sm:pb-12 sm:pt-24 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="animate-fade-up inline-flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.045] px-3.5 py-1.5 text-xs text-[#b8bfcc] backdrop-blur-xl sm:px-4 sm:py-2 sm:text-sm">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
             </span>
             For teams running Fishbowl Inventory
           </div>
 
-          {/* H1 */}
-          <h1
-            className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight"
-            style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
-          >
-            <span className="text-[#f0f2f5]">Using Fishbowl?</span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              Here's what's different.
+          <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
+            <span className="text-[#f4f6f9]">{copy.firstLine}</span>
+            <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+              {copy.secondLine}
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Fishbowl counts your stock fine. The trouble is everything around it: reports you pay
-            a consultant for, Shopify and QuickBooks syncs you babysit, support tickets that sit.
-            Spark handles those, while Sparki, or your own AI assistant over MCP, takes on the migration work.
+          <p className="animate-fade-up delay-200 mx-auto mt-4 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:mt-5 sm:text-base sm:leading-7 lg:text-lg">
+            {copy.body}
           </p>
 
-          <div className="animate-fade-up delay-300 mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-            <BookACallButton
-              url={bookUrl}
-              className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
-            >
+          <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
+            <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
               {PRIMARY_CTA}
-            </BookACallButton>
-            <a href={signupUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
+            </FishbowlBookLink>
+            <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
               Start Free
             </a>
           </div>
-          <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">
-            Agent-led mapping · every row validated · you approve the import
-          </p>
-        </div>
 
-        <MarketingVideo
-          mp4Src="/media/mcp-raw-data-import.mp4"
-          webmSrc="/media/mcp-raw-data-import.webm"
-          posterSrc="/media/mcp-raw-data-import-poster.jpg"
-          captionsSrc="/media/mcp-raw-data-import-captions.vtt"
-          videoLabel="Thirty second walkthrough of importing raw inventory data with Spark MCP"
-          eyebrow="30 second migration walkthrough"
-          title="Turn the files you already have into live inventory."
-          summary="Spark MCP lets an approved assistant map your exports, preview exceptions, and wait for your approval before import."
-          className="mt-8 w-full max-w-[900px] lg:mt-10"
-        />
+          <p className="animate-fade-up delay-300 mt-3 text-[11px] text-[#7f8998] sm:text-xs">
+            Twenty minutes. Your own inventory. No deck.
+          </p>
+
+          <div className="animate-fade-up delay-300 mx-auto mt-5 hidden max-w-2xl items-center justify-center gap-5 text-xs text-[#8993a3] sm:flex">
+            {["Fishbowl keeps running", "Database backup to forecast", "No commitment to compare"].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-emerald-300" aria-hidden="true" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -4,8 +4,8 @@
 // what reviewers report, not as flat claims about the product.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
-import BookACallButton from "../BookACallButton";
-import { useCtaLinks, PRIMARY_CTA } from "./links";
+import FishbowlBookLink from "./FishbowlBookLink";
+import { PRIMARY_CTA } from "./links";
 
 const rows = [
   {
@@ -46,7 +46,6 @@ const rows = [
 ];
 
 export default function FishbowlComparison() {
-  const { bookUrl } = useCtaLinks();
   return (
     // Google Ads sitelink anchors. "reports" (Custom reports / Customizing rows)
     // and "sync" (Shopify, Amazon, QuickBooks row) both land on this table, so
@@ -141,12 +140,11 @@ export default function FishbowlComparison() {
         </p>
 
         <div className="mt-8 text-center">
-          <BookACallButton
-            url={bookUrl}
+          <FishbowlBookLink
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
             {PRIMARY_CTA}
-          </BookACallButton>
+          </FishbowlBookLink>
         </div>
       </div>
     </section>

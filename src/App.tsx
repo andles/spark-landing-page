@@ -82,6 +82,7 @@ function App() {
             <Route path="/reduce-stockouts-overstock" element={<StockoutsPage />} />
             <Route path="/forecasting" element={<Navigate to="/reduce-stockouts-overstock" replace />} />
             {/* Fishbowl Inventory alternative campaign page (Google Ads). */}
+            <Route path="/fishbowl" element={<Navigate to="/fishbowl-alternative" replace />} />
             <Route path="/fishbowl-alternative" element={<FishbowlPage />} />
             <Route path="/cin7-alternative" element={<Cin7AlternativePage />} />
             <Route path="/zoho-inventory-alternative" element={<ZohoInventoryAlternativePage />} />

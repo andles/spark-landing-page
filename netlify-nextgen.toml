@@ -16,6 +16,13 @@
   status = 301
   force = true
 
+# Preserve the short URL used in Fishbowl ads and outbound messages.
+[[redirects]]
+  from = "/fishbowl"
+  to = "/fishbowl-alternative/"
+  status = 301
+  force = true
+
 # Only the two genuinely client-only route families use the SPA shell.
 # Every public marketing route is a prerendered file; unknown paths therefore
 # fall through to Netlify's generated 404.html with a real 404 status.

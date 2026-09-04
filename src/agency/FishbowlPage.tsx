@@ -13,6 +13,8 @@
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import FishbowlHeader from "./fishbowl/FishbowlHeader";
 import FishbowlHero from "./fishbowl/FishbowlHero";
+import FishbowlBooking from "./fishbowl/FishbowlBooking";
+import FishbowlOffer from "./fishbowl/FishbowlOffer";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
 import FishbowlComparison from "./fishbowl/FishbowlComparison";
@@ -25,10 +27,12 @@ export default function FishbowlPage() {
   useScrollToHashOnMount();
 
   return (
-    <div className="min-h-screen bg-[#06080d]">
+    <div className="fishbowl-brand-theme min-h-screen bg-[#06080d]">
       <FishbowlHeader />
       <main>
         <FishbowlHero />
+        <FishbowlBooking />
+        <FishbowlOffer />
         <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />
         <FishbowlComparison />

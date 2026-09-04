@@ -17,7 +17,7 @@ import AgencyTrustBar from "./AgencyTrustBar";
 
 function useBookingDetails() {
   return useMemo(() => {
-    const empty = { firstName: "", dateLabel: "", timeLabel: "" };
+    const empty = { firstName: "", dateLabel: "", timeLabel: "", isFishbowl: false };
     if (typeof window === "undefined") return empty;
 
     const params = new URLSearchParams(window.location.search);
@@ -44,7 +44,9 @@ function useBookingDetails() {
       }
     }
 
-    return { firstName, dateLabel, timeLabel };
+    const isFishbowl = params.get("source") === "fishbowl_lp" || params.get("utm_content") === "fishbowl_lp";
+
+    return { firstName, dateLabel, timeLabel, isFishbowl };
   }, []);
 }
 
@@ -61,14 +63,29 @@ const PREP_POINTS = [
   "A rough idea of your scale helps, like how many products or locations you manage. Estimates are fine.",
 ];
 
+const FISHBOWL_COVER_POINTS = [
+  "How Fishbowl supports the operation today and where planning still takes manual work.",
+  "How Spark turns sales history, inventory, and lead times into SKU-level forecasts and draft purchase orders.",
+  "How to drop in the Fishbowl database backup, review Sparki's mapping, and approve the import.",
+  "How to run Spark alongside Fishbowl at no cost until the current Fishbowl agreement ends.",
+];
+
+const FISHBOWL_PREP_POINTS = [
+  "Bring the Fishbowl database backup if you want to work from your own inventory during the session.",
+  "Know the end date of your current Fishbowl agreement so we can confirm the free-access period.",
+  "Choose one purchasing decision or inventory problem you want Spark to make clearer.",
+];
+
 export default function MeetingConfirmedPage() {
-  const { firstName, dateLabel, timeLabel } = useBookingDetails();
+  const { firstName, dateLabel, timeLabel, isFishbowl } = useBookingDetails();
+  const coverPoints = isFishbowl ? FISHBOWL_COVER_POINTS : COVER_POINTS;
+  const prepPoints = isFishbowl ? FISHBOWL_PREP_POINTS : PREP_POINTS;
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-    document.title = "Demo confirmed | Spark Inventory";
-  }, []);
+    document.title = isFishbowl ? "Fishbowl working session confirmed | Spark Inventory" : "Demo confirmed | Spark Inventory";
+  }, [isFishbowl]);
 
   return (
     <div className="relative min-h-screen bg-[#06080d] flex flex-col">
@@ -106,7 +123,9 @@ export default function MeetingConfirmedPage() {
             {firstName ? `You're booked, ${firstName}` : "You're booked"}
           </h1>
           <p className="mt-3 text-[#b8bfcc] text-base sm:text-lg leading-relaxed">
-            Your Spark in-store pickup demo is confirmed. Here is what happens next.
+            {isFishbowl
+              ? "Your Fishbowl working session with Spark is confirmed. Here is what happens next."
+              : "Your Spark working session is confirmed. Here is what happens next."}
           </p>
         </div>
 
@@ -124,7 +143,7 @@ export default function MeetingConfirmedPage() {
             </div>
             <div>
               <dt className="text-[#8b95a8] text-xs font-medium uppercase tracking-wider mb-1.5">Duration</dt>
-              <dd className="text-[#f0f2f5] text-sm font-semibold">30 minutes</dd>
+              <dd className="text-[#f0f2f5] text-sm font-semibold">{isFishbowl ? "20 minutes" : "30 minutes"}</dd>
             </div>
           </dl>
           <p className="mt-5 pt-5 border-t border-white/[0.08] text-[#b8bfcc] text-sm leading-relaxed">
@@ -142,7 +161,7 @@ export default function MeetingConfirmedPage() {
             What we will cover
           </h2>
           <ul className="mt-4 space-y-3">
-            {COVER_POINTS.map((point, i) => (
+            {coverPoints.map((point, i) => (
               <li key={i} className="flex gap-3">
                 <span className="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-cyan-500/15 border border-cyan-400/25 text-cyan-400 text-xs font-semibold flex items-center justify-center">
                   {i + 1}
@@ -163,7 +182,7 @@ export default function MeetingConfirmedPage() {
             How to prepare
           </h2>
           <ul className="mt-4 space-y-3">
-            {PREP_POINTS.map((point, i) => (
+            {prepPoints.map((point, i) => (
               <li key={i} className="flex gap-3">
                 <svg className="shrink-0 mt-1 w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

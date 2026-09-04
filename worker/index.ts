@@ -49,6 +49,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (pathname === "/fishbowl") {
+      url.pathname = "/fishbowl-alternative/";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (pathname === "/forecasting") {
       url.pathname = "/reduce-stockouts-overstock/";
       return Response.redirect(url.toString(), 301);

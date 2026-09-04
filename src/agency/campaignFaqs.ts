@@ -94,9 +94,19 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
   ],
   fishbowl: [
     {
+      question: "Is Spark really free until my Fishbowl contract ends?",
+      answer:
+        "Yes. Spark is free through the end date of your current Fishbowl agreement. Migration and onboarding are included. After that, choose the Spark plan that fits or export your data at any time.",
+    },
+    {
+      question: "Does Spark run alongside Fishbowl or replace it?",
+      answer:
+        "Spark runs alongside Fishbowl while you evaluate it. Fishbowl keeps running as it does today. Drop your database backup into Spark, let Sparki prepare the import, and compare the two using your own inventory before you decide whether to switch.",
+    },
+    {
       question: "How does Spark migrate data out of Fishbowl?",
       answer:
-        "Bring your Fishbowl exports to Sparki in app, or let your AI assistant run the migration through Spark MCP. The agent identifies the files, maps the fields, validates every row, and presents the exact import for approval.",
+        "Drop your Fishbowl database backup into the importer. Sparki identifies the records and relationships, maps the fields, validates the data, and presents the exact import for your approval.",
     },
     {
       question: "Will our historical sales and purchasing data come across?",
@@ -116,7 +126,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "Do we have to commit before seeing Spark with our data?",
       answer:
-        "No. Start free or book a working session using your own data, then decide whether the workflow is a fit before committing to a broader migration.",
+        "No. Run Spark alongside Fishbowl and compare both systems using your own data. Nothing is replaced until you decide the workflow is a fit.",
     },
   ],
   shopify: [

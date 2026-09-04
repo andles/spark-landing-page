@@ -22,14 +22,16 @@ import type { SignupPlanSlug } from "./pricingData";
 export const SIGNUP_URL_BASE =
   import.meta.env.VITE_SIGNUP_URL_BASE?.trim() || "https://app.sparkinventory.com/sign-up";
 
-/** Params Calendly and the app both accept. */
-const FORWARDED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
+/** Attribution params preserved across the landing, booking, and signup flow. */
+const FORWARDED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "li_fat_id"];
 
 export interface CtaLinkOptions {
   /** Applied only when the visitor arrived without their own UTMs. */
   defaults?: Record<string, string>;
   /** Page identifier, added as utm_content (unless the ad set one) and source=. */
   source?: string;
+  /** Optional campaign-specific scheduling URL. */
+  bookUrlBase?: string;
 }
 
 export interface CtaLinks {
@@ -70,9 +72,10 @@ export function buildCtaUrls(search: string = "", opts: CtaLinkOptions = {}): Ct
   const signupParams = new URLSearchParams(opts.source ? { source: opts.source } : {});
   for (const [k, v] of Object.entries(params)) signupParams.set(k, v);
   const signupQs = signupParams.toString();
+  const bookUrlBase = opts.bookUrlBase?.trim() || CALENDLY_URL;
 
   return {
-    bookUrl: qs ? `${CALENDLY_URL}?${qs}` : CALENDLY_URL,
+    bookUrl: qs ? `${bookUrlBase}?${qs}` : bookUrlBase,
     signupUrl: signupQs ? `${SIGNUP_URL_BASE}?${signupQs}` : SIGNUP_URL_BASE,
   };
 }

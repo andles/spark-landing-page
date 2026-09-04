@@ -19,8 +19,8 @@ const headings: Record<CampaignKind, { eyebrow: string; title: string; body: str
   },
   fishbowl: {
     eyebrow: "Fishbowl migration FAQ",
-    title: "The questions teams ask before they switch",
-    body: "How the data comes across, what Spark replaces, and how to evaluate it before committing to a migration.",
+    title: "Questions before you run Spark alongside Fishbowl",
+    body: "How the offer works, how your database comes across, and what stays in place while you compare the two.",
   },
   shopify: {
     eyebrow: "Shopify inventory FAQ",

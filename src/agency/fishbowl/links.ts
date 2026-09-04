@@ -8,11 +8,15 @@
 // outside the query string, so anchors never interfere with this.
 // ─────────────────────────────────────────────────────────────────────────────
 import { buildCtaUrls, useCtaLinks as useSharedCtaLinks, type CtaLinks, type CtaLinkOptions } from "../ctaLinks";
+import { CALENDLY_URL } from "../calendly";
 
 export const LEAD_SOURCE = "fishbowl_lp";
+export const FISHBOWL_CALENDLY_URL =
+  import.meta.env.VITE_FISHBOWL_CALENDLY_URL?.trim() || CALENDLY_URL;
 
 const OPTIONS: CtaLinkOptions = {
   source: LEAD_SOURCE,
+  bookUrlBase: FISHBOWL_CALENDLY_URL,
   defaults: {
     utm_source: LEAD_SOURCE,
     utm_medium: "landing_page",
@@ -29,4 +33,4 @@ export function useCtaLinks(): CtaLinks {
 }
 
 /** Primary CTA label, used in the hero and the closing section. */
-export const PRIMARY_CTA = "See it with your data";
+export const PRIMARY_CTA = "Book 20 minutes";

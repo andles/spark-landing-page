@@ -43,7 +43,7 @@ if (!template.includes('rel="canonical"')) {
 const appSource = readFileSync(resolve('src/App.tsx'), 'utf8');
 const registeredPaths = [...appSource.matchAll(/<Route\s+path="([^"]+)"/g)].map((match) => match[1]);
 const staticPaths = registeredPaths.filter(
-  (path) => path !== '*' && path !== '/book-a-call' && path !== '/forecasting' && !path.includes(':'),
+  (path) => path !== '*' && path !== '/book-a-call' && path !== '/forecasting' && path !== '/fishbowl' && !path.includes(':'),
 );
 const metaPaths = routeMeta.map(({ path }) => path);
 const duplicatePaths = metaPaths.filter((path, index) => metaPaths.indexOf(path) !== index);

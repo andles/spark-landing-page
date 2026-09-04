@@ -14,6 +14,22 @@ const CheckIcon = () => (
 const cards = [
   {
     number: "01",
+    badge: "Forecasting",
+    badgeColor: "text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/20",
+    iconBg: "from-fuchsia-500 to-violet-600",
+    icon: (
+      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    title: "Know what to order, not just what you have",
+    description:
+      "Spark reads your sales history, changing velocity, seasonality, inventory position, and supplier lead times. It forecasts demand by SKU, flags stockout and overstock risk, and turns the result into reorder points and draft POs.",
+    complaint: "It tracks stock, but doesn't tell me what to buy.",
+    features: ["Demand forecast by SKU", "Stockout and overstock risk", "Draft purchase orders"],
+  },
+  {
+    number: "02",
     badge: "Migration",
     badgeColor: "text-rose-400 bg-rose-500/10 border-rose-500/20",
     iconBg: "from-violet-500 to-purple-600",
@@ -24,12 +40,12 @@ const cards = [
     ),
     title: "Your Fishbowl data comes with you, in minutes",
     description:
-      "Give the exports to Sparki in app, or to your own AI assistant over MCP, and your parts, vendors, customers, and history land through a mapped, validated, approval-gated workflow.",
+      "Drop in your Fishbowl database backup. Sparki maps the data, prepares the import, validates the result, and asks you to approve it before anything lands.",
     complaint: "Switching sounds worse than staying.",
     features: ["Automatic field mapping", "Sales history included", "Undo any import"],
   },
   {
-    number: "02",
+    number: "03",
     badge: "MCP",
     badgeColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
     iconBg: "from-violet-500 to-cyan-500",
@@ -45,7 +61,7 @@ const cards = [
     features: ["Works with any MCP client", "Full REST API too", "No consultant required"],
   },
   {
-    number: "03",
+    number: "04",
     badge: "Reports",
     badgeColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
     iconBg: "from-cyan-500 to-teal-500",
@@ -59,22 +75,6 @@ const cards = [
       "Describe the report in the reports playground and Spark builds it from your live data. Margin by channel, aging stock by vendor, whatever the meeting needs. Save it, share it, run it again tomorrow.",
     complaint: "Reporting is weak, and custom reports cost extra.",
     features: ["Describe it, get it", "Save and rerun", "Export anywhere"],
-  },
-  {
-    number: "04",
-    badge: "Forecasting",
-    badgeColor: "text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/20",
-    iconBg: "from-fuchsia-500 to-violet-600",
-    icon: (
-      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
-    title: "Know what to order, not just what you have",
-    description:
-      "Spark reads your sales velocity and lead times, flags the SKUs about to run short and the ones piling up, and turns that into reorder points and draft POs you can approve in one click.",
-    complaint: "It tracks stock, but doesn't tell me what to buy.",
-    features: ["Stockout and overstock alerts", "Reorder points that adapt", "One-click POs"],
   },
   {
     number: "05",
@@ -108,18 +108,18 @@ export default function FishbowlMigration() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            What changes when you switch
+            What Spark adds while Fishbowl keeps running
           </div>
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-white">Five things Fishbowl users </span>
-            <span className="bg-gradient-to-r from-pink-400 to-violet-400 bg-clip-text text-transparent">ask us for first</span>
+            <span className="text-white">From tracking stock to </span>
+            <span className="bg-gradient-to-r from-pink-400 to-violet-400 bg-clip-text text-transparent">planning the next buy</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            We read 449 Fishbowl reviews. Almost nobody complained about stock accuracy. They
-            complained about the edges. This is how Spark handles each one.
+            Start with the decision Fishbowl does not make for you, then evaluate the migration,
+            reporting, extensibility, and support around it.
           </p>
         </ScrollReveal>
 
