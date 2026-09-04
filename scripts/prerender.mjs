@@ -228,6 +228,18 @@ for (const route of routeMeta) {
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, html);
   console.log(`prerendered ${route.path} (${Math.round(appHtml.length / 1024)} kB) → ${outPath}`);
+
+  // Serve campaign copy in the initial HTML, using the same router query
+  // that the browser hydrates. All variants keep the public page canonical.
+  if (route.path === '/fishbowl-alternative') {
+    for (const angle of ['alongside', 'capterra']) {
+      const variantApp = await renderToString(createApp(`${route.path}/?utm_content=${angle}`));
+      const variantHtml = html.replace(`<div id="root">${appHtml}</div>`, `<div id="root">${variantApp}</div>`);
+      const variantPath = join(dist, 'fishbowl-alternative', '_variants', angle, 'index.html');
+      mkdirSync(dirname(variantPath), { recursive: true });
+      writeFileSync(variantPath, variantHtml);
+    }
+  }
 }
 
 // Netlify's final fallback serves this document with a true 404 status, while

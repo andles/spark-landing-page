@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useLocation } from "react-router-dom";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
 import { useCtaLinks, BOOKING_CTA } from "./links";
@@ -29,12 +29,8 @@ const ALONGSIDE_COPY: HeroCopy = {
   body: DEFAULT_COPY.body,
 };
 
-const subscribeToSearch = () => () => {};
-const getClientSearch = () => window.location.search;
-const getServerSearch = () => "";
-
 function useHeroCopy(): HeroCopy {
-  const search = useSyncExternalStore(subscribeToSearch, getClientSearch, getServerSearch);
+  const { search } = useLocation();
   const content = new URLSearchParams(search).get("utm_content")?.toLowerCase();
   if (content === "capterra") return CAPTERRA_COPY;
   if (content === "alongside") return ALONGSIDE_COPY;
