@@ -1,40 +1,9 @@
-import { useLocation } from "react-router-dom";
-import { useLayoutEffect } from "react";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
 import { useCtaLinks, BOOKING_CTA } from "./links";
 
-type HeroCopy = {
-  body: string;
-};
-
-const DEFAULT_COPY: HeroCopy = {
-  body:
-    "Drop in your database backup. Sparki maps your data and prepares the import. You review and approve, then see what to order and when.",
-};
-
-const CAPTERRA_COPY: HeroCopy = {
-  body:
-    "We analyzed 449 public Fishbowl reviews. Support, reporting, integrations, and customization were recurring complaints. Spark was built to address all four.",
-};
-
-const ALONGSIDE_COPY: HeroCopy = {
-  body: DEFAULT_COPY.body,
-};
-
-const HERO_VARIANTS = { default: DEFAULT_COPY, alongside: ALONGSIDE_COPY, capterra: CAPTERRA_COPY };
-
 export default function FishbowlHero() {
   const { signupUrl } = useCtaLinks();
-  const { search } = useLocation();
-
-  // The head selects the initial variant. Keep client-side navigation in sync
-  // before paint without replacing prerendered headline text during hydration.
-  useLayoutEffect(() => {
-    const angle = new URLSearchParams(search).get("utm_content")?.toLowerCase();
-    document.documentElement.dataset.fishbowlAngle =
-      angle === "alongside" || angle === "capterra" ? angle : "default";
-  }, [search]);
 
   return (
     <section className="relative flex min-h-svh items-center overflow-hidden bg-[#06080d]">
@@ -64,16 +33,6 @@ export default function FishbowlHero() {
           <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
             Your Fishbowl backup. Your first Spark forecast.
           </h2>
-
-          <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
-            {Object.entries(HERO_VARIANTS).map(([angle, copy]) => (
-              <span key={angle} data-fishbowl-copy={angle}>{copy.body}</span>
-            ))}
-          </p>
-
-          <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
-            Run alongside Fishbowl, free until your current contract ends.
-          </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
             <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">

@@ -2,20 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Select campaign copy before first paint, including on static hosts. -->
-    <script>
-      var fishbowlAngle = new URLSearchParams(window.location.search).get('utm_content');
-      fishbowlAngle = fishbowlAngle ? fishbowlAngle.toLowerCase() : 'default';
-      document.documentElement.dataset.fishbowlAngle =
-        fishbowlAngle === 'alongside' || fishbowlAngle === 'capterra' ? fishbowlAngle : 'default';
-    </script>
-    <style>
-      [data-fishbowl-copy] { display: none; }
-      html:not([data-fishbowl-angle]) [data-fishbowl-copy="default"],
-      html[data-fishbowl-angle="default"] [data-fishbowl-copy="default"],
-      html[data-fishbowl-angle="alongside"] [data-fishbowl-copy="alongside"],
-      html[data-fishbowl-angle="capterra"] [data-fishbowl-copy="capterra"] { display: block; }
-    </style>
     <!-- Google Consent Mode v2 default state. MUST run before CookieYes and
          any Google tag. Opt-in posture: all non-essential storage denied until
          the visitor consents via the CookieYes banner (which then calls
