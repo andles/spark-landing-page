@@ -13,14 +13,14 @@ const DEFAULT_COPY: HeroCopy = {
   firstLine: "Fishbowl tracks it.",
   secondLine: "Spark forecasts it.",
   body:
-    "Run Spark alongside Fishbowl, free until your current Fishbowl contract ends. Your data is in Spark in minutes, Fishbowl keeps running as it does today, and Spark starts telling you what to order and when.",
+    "Drop in your database backup. Sparki maps your data and prepares the import. You review and approve, then see what to order and when.",
 };
 
 const CAPTERRA_COPY: HeroCopy = {
   firstLine: "Built around what Fishbowl",
   secondLine: "reviewers say is missing.",
   body:
-    "We analyzed 449 public Fishbowl reviews. Support, reporting, integrations, and customization were recurring complaints. Spark was built to address all four, and it is free until your Fishbowl contract ends.",
+    "We analyzed 449 public Fishbowl reviews. Support, reporting, integrations, and customization were recurring complaints. Spark was built to address all four.",
 };
 
 const ALONGSIDE_COPY: HeroCopy = {
@@ -70,8 +70,16 @@ export default function FishbowlHero() {
             </span>
           </h1>
 
-          <p className="animate-fade-up delay-200 mx-auto mt-4 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:mt-5 sm:text-base sm:leading-7 lg:text-lg">
+          <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
+            Your Fishbowl backup. Your first Spark forecast.
+          </h2>
+
+          <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
             {copy.body}
+          </p>
+
+          <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
+            Run alongside Fishbowl, free until your current contract ends.
           </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
@@ -84,8 +92,8 @@ export default function FishbowlHero() {
             </FishbowlBookLink>
           </div>
 
-          <p className="animate-fade-up delay-300 mt-3 text-[11px] text-[#7f8998] sm:text-xs">
-            Twenty minutes. Your own inventory. No deck.
+          <p className="animate-fade-up delay-300 mx-auto mt-3 max-w-md text-xs leading-5 text-[#9da7b8] sm:text-sm">
+            Bring your backup. Sparki handles the mapping. You approve the import.
           </p>
 
           <div className="animate-fade-up delay-300 mx-auto mt-5 hidden max-w-2xl items-center justify-center gap-5 text-xs text-[#8993a3] sm:flex">
