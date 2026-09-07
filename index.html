@@ -2,6 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Select the Fishbowl campaign hero before first paint. The clean URL
+         remains the indexable default; any explicit utm_content uses the
+         paid-campaign message while keeping the same canonical page. -->
+    <script>
+      (function () {
+        var hasCampaignContent = new URLSearchParams(window.location.search).has('utm_content');
+        document.documentElement.dataset.fishbowlVariant = hasCampaignContent ? 'campaign' : 'organic';
+      })();
+    </script>
+    <style>
+      [data-fishbowl-variant-copy] { display: none; }
+      html:not([data-fishbowl-variant]) [data-fishbowl-variant-copy="organic"],
+      html[data-fishbowl-variant="organic"] [data-fishbowl-variant-copy="organic"],
+      html[data-fishbowl-variant="campaign"] [data-fishbowl-variant-copy="campaign"] { display: block; }
+    </style>
     <!-- Google Consent Mode v2 default state. MUST run before CookieYes and
          any Google tag. Opt-in posture: all non-essential storage denied until
          the visitor consents via the CookieYes banner (which then calls

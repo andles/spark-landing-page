@@ -1,9 +1,17 @@
+import { useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
 import { useCtaLinks, BOOKING_CTA } from "./links";
 
 export default function FishbowlHero() {
   const { signupUrl } = useCtaLinks();
+  const { search } = useLocation();
+
+  useLayoutEffect(() => {
+    const hasCampaignContent = new URLSearchParams(search).has("utm_content");
+    document.documentElement.dataset.fishbowlVariant = hasCampaignContent ? "campaign" : "organic";
+  }, [search]);
 
   return (
     <section className="relative overflow-hidden bg-[#06080d]">
@@ -24,13 +32,33 @@ export default function FishbowlHero() {
           </div>
 
           <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
-            <span className="text-[#f4f6f9]">Live in Minutes.</span>
-            <span className="mt-2 block text-balance bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-[1.85rem] leading-[1.1] text-transparent sm:text-4xl lg:text-[3.1rem]">
-              Free until your Fishbowl Contract Ends
+            <span data-fishbowl-variant-copy="organic">
+              <span className="text-[#f4f6f9]">Fishbowl tracks it.</span>
+              <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+                Spark forecasts it.
+              </span>
+            </span>
+            <span data-fishbowl-variant-copy="campaign" data-nosnippet>
+              <span className="text-[#f4f6f9]">Live in Minutes.</span>
+              <span className="mt-2 block text-balance bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-[1.85rem] leading-[1.1] text-transparent sm:text-4xl lg:text-[3.1rem]">
+                Free until your Fishbowl Contract Ends
+              </span>
             </span>
           </h1>
 
-          <p className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
+          <div data-fishbowl-variant-copy="organic">
+            <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
+              Your Fishbowl backup. Your first Spark forecast.
+            </h2>
+            <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
+              Drop in your database backup. Sparki maps your data and prepares the import. You review and approve, then see what to order and when.
+            </p>
+            <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
+              Run alongside Fishbowl, free until your current contract ends.
+            </p>
+          </div>
+
+          <p data-fishbowl-variant-copy="campaign" data-nosnippet className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
             Spark forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
           </p>
 
