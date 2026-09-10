@@ -1,4 +1,4 @@
-import { hasAnalyticsConsent } from './analyticsConsent';
+import { getAnalyticsConsent, hasAnalyticsConsent } from './analyticsConsent';
 function runAnalytics(action: () => void): void {
   try { action(); } catch { console.warn("PostHog analytics could not capture this action."); }
 }
@@ -18,56 +18,15 @@ const allowedProperties = new Set([
 ]);
 const allowedEvents = new Set(['$pageview', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked']);
 let initialized = false;
+let appliedConsent: ReturnType<typeof getAnalyticsConsent> = 'pending';
 const suppressed = false;
 
-export function initializeAnalytics(): boolean {
-  if (!hasAnalyticsConsent()) {
-    if (initialized) posthog.opt_out_capturing();
-    return false;
-  }
-  if (initialized) {
-    if (posthog.has_opted_out_capturing()) posthog.opt_in_capturing({ captureEventName: false });
-    return true;
-  }
-  const token = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN?.trim();
-  const host = import.meta.env.VITE_POSTHOG_HOST?.trim();
-  if (!import.meta.env.PROD || typeof window === 'undefined' || !['sparkinventory.com', 'www.sparkinventory.com'].includes(window.location.hostname) || !token || !host) return false;
-  posthog.init(token, {
-    api_host: host,
-    defaults: '2026-05-30',
-    persistence: 'localStorage+cookie',
-    cross_subdomain_cookie: true,
-    cookieWinsOnConflict: true,
-    cookie_persisted_properties: ['utm_source', 'utm_medium', 'utm_campaign', 'initial_referring_domain'],
-    secure_cookie: true,
-    opt_out_persistence_by_default: true,
-    autocapture: false,
-    capture_pageview: false,
-    capture_pageleave: false,
-    capture_dead_clicks: false,
-    capture_exceptions: false,
-    capture_heatmaps: false,
-    capture_performance: false,
-    disable_session_recording: true,
-    disable_surveys: true,
-    advanced_disable_flags: true,
-    person_profiles: 'identified_only',
-    save_campaign_params: false,
-    save_referrer: false,
-    before_send: (event) => {
-      if (!event || !hasAnalyticsConsent() || suppressed || !allowedEvents.has(event.event)) return null;
-      const properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) => allowedProperties.has(key)));
-      properties.surface = 'landing';
-      if (event.event === '$pageview') {
-        properties.$pathname = properties.route;
-        properties.$current_url = `https://sparkinventory.com${properties.route}`;
-      }
-      return { ...event, properties, $set: undefined, $set_once: undefined };
-    },
-  });
-  initialized = true;
-  // Affirmative CMP consent must also enable persistence on a fresh SDK.
-  posthog.opt_in_capturing({ captureEventName: false });
+// Recording is opt-in and excludes account, authentication and billing routes.
+function replayAllowed(): boolean {
+  return !suppressed && hasAnalyticsConsent() && !['/book-a-call', '/meeting-confirmed'].includes(window.location.pathname.replace(/\/+$/, '').toLowerCase());
+}
+
+function registerAttribution(): void {
   const campaign: Record<string, string> = {};
   const params = new URLSearchParams(window.location.search);
   ['utm_source', 'utm_medium', 'utm_campaign'].forEach((key) => {
@@ -85,6 +44,105 @@ export function initializeAnalytics(): boolean {
     }
   }
   posthog.register_once(campaign);
+}
+
+function applyConsent(): void {
+  const consent = getAnalyticsConsent();
+  if (consent !== appliedConsent || posthog.get_explicit_consent_status() !== (consent === 'accepted' ? 'granted' : 'denied')) {
+    posthog.stopSessionRecording();
+    if (consent === 'accepted') { posthog.opt_in_capturing({ captureEventName: false }); registerAttribution(); }
+    else posthog.opt_out_capturing();
+    appliedConsent = consent;
+  }
+  if (replayAllowed()) posthog.startSessionRecording();
+  else posthog.stopSessionRecording();
+}
+
+export function initializeAnalytics(): boolean {
+  const consent = getAnalyticsConsent();
+  if (consent === 'pending') {
+    if (initialized) {
+      posthog.stopSessionRecording();
+      posthog.opt_out_capturing();
+      appliedConsent = 'pending';
+    }
+    return false;
+  }
+  if (initialized) {
+    applyConsent();
+    return true;
+  }
+  const token = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN?.trim();
+  const host = import.meta.env.VITE_POSTHOG_HOST?.trim();
+  if (!import.meta.env.PROD || typeof window === 'undefined' || !['sparkinventory.com', 'www.sparkinventory.com'].includes(window.location.hostname) || !token || !host) return false;
+  posthog.init(token, {
+    api_host: host,
+    defaults: '2026-05-30',
+    cookieless_mode: 'on_reject',
+    persistence: 'localStorage+cookie',
+    cross_subdomain_cookie: true,
+    cookieWinsOnConflict: true,
+    cookie_persisted_properties: ['utm_source', 'utm_medium', 'utm_campaign', 'initial_referring_domain'],
+    secure_cookie: true,
+    opt_out_persistence_by_default: true,
+    autocapture: false,
+    capture_pageview: false,
+    capture_pageleave: false,
+    capture_dead_clicks: false,
+    capture_exceptions: false,
+    capture_heatmaps: false,
+    capture_performance: false,
+    disable_session_recording: true,
+    disable_surveys: true,
+    advanced_disable_feature_flags: true,
+    enable_recording_console_log: false,
+    session_recording: {
+      maskAllInputs: true,
+      maskTextSelector: "*",
+      maskAllElementAttributes: true,
+      blockSelector: 'iframe, img, video, canvas, object, embed, [role="dialog"], [data-analytics-private], input[type="hidden"], input[type="file"]',
+      recordCrossOriginIframes: false,
+      recordHeaders: false,
+      recordBody: false,
+      captureJsonLd: false,
+      maskCapturedNetworkRequestFn: (data) => 'entryType' in data ? null : ({ entryType: 'navigation', startTime: 0, duration: 0, name: "https://sparkinventory.com/" }),
+    },
+    person_profiles: 'identified_only',
+    save_campaign_params: false,
+    save_referrer: false,
+    before_send: (event) => {
+      const consent = getAnalyticsConsent();
+      if (!event || consent === 'pending' || suppressed) return null;
+      if (event.event === '$snapshot') {
+        if (consent !== 'accepted' || !replayAllowed()) return null;
+        const properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) =>
+          ['token', 'distinct_id', '$snapshot_data', '$snapshot_bytes', '$session_id', '$window_id'].includes(key)));
+        return { ...event, properties, $set: undefined, $set_once: undefined };
+      }
+      if (consent === 'accepted' && event.properties.$cookieless_mode === true) return null;
+      if (!allowedEvents.has(event.event)) return null;
+      if (consent === 'rejected' && ['$identify', '$groupidentify'].includes(event.event)) return null;
+      const properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) => allowedProperties.has(key)));
+      if (consent === 'rejected') {
+        // Discard any event queued under a previously identified session.
+        if (event.properties.$cookieless_mode !== true) return null;
+        for (const key of Object.keys(properties)) {
+          if (!['token', 'route', 'signup_source'].includes(key)) delete properties[key];
+        }
+        properties.distinct_id = '$posthog_cookieless';
+        properties.$cookieless_mode = true;
+      }
+      properties.surface = 'landing';
+      if (event.event === '$pageview') {
+        properties.$pathname = properties.route;
+        properties.$current_url = `https://sparkinventory.com${properties.route}`;
+      }
+      return { ...event, properties, $set: undefined, $set_once: undefined };
+    },
+  });
+  initialized = true;
+  applyConsent();
+
   return true;
 }
 

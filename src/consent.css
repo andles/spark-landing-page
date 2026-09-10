@@ -1,0 +1,39 @@
+/* CookieYes retains consent storage, category controls and Google Consent Mode.
+   Spark owns only the presentation and application dialog layering. */
+.cky-consent-container {
+  left: max(12px, env(safe-area-inset-left)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  right: auto !important;
+  width: min(460px, calc(100vw - 24px)) !important;
+}
+.cky-consent-container .cky-consent-bar {
+  padding: 24px !important;
+  border-radius: 18px !important;
+  background: var(--consent-background, #fff) !important;
+  border: 1px solid var(--consent-border, #dce5ed) !important;
+  box-shadow: 0 12px 64px #101c3330 !important;
+}
+.cky-consent-container .cky-title { font-size: 19px !important; font-weight: 650 !important; color: var(--consent-title, #15243b) !important; margin: 0 0 10px !important; }
+.cky-consent-container .cky-notice-des, .cky-consent-container .cky-notice-des p { font-size: 13px !important; line-height: 1.6 !important; color: var(--consent-text, #59687c) !important; }
+.cky-consent-container .cky-notice-group { display: block !important; }
+.cky-consent-container .cky-notice-btn-wrapper { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; margin: 18px 0 0 !important; }
+.cky-consent-container .cky-btn { min-height: 42px !important; margin: 0 !important; border-radius: 8px !important; padding: 10px 12px !important; font-size: 13px !important; font-weight: 600 !important; }
+.cky-consent-container .cky-btn-reject { background: var(--consent-background, #fff) !important; color: var(--consent-title, #203047) !important; border-color: var(--consent-border, #ccd9e5) !important; }
+.cky-consent-container .cky-btn-accept { background: var(--consent-accent, #087faf) !important; color: var(--consent-accent-text, #fff) !important; border-color: var(--consent-accent, #087faf) !important; }
+.cky-consent-container .cky-btn-customize { grid-column: 1 / -1 !important; grid-row: 2 !important; border: 0 !important; background: transparent !important; color: var(--consent-text, #50627a) !important; min-height: 30px !important; }
+.cky-consent-container .cky-btn:focus-visible, .spark-privacy:focus-visible { outline: 3px solid #38bdf8 !important; outline-offset: 3px !important; }
+.spark-privacy { font-size: 11px; line-height: 1.2; min-height: 36px; padding: 10px 8px; white-space: nowrap; cursor: pointer; }
+.spark-privacy:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Keep the vendor control as fallback on layouts without Spark's link. */
+body:has(.spark-privacy) .cky-btn-revisit-wrapper { display: none !important; }
+/* Radix deliberately locks interaction outside its active modal. Defer all
+   CMP surfaces until that modal closes rather than disabling its focus trap. */
+body:has([role="dialog"][data-state="open"]) .cky-consent-container,
+body:has([role="dialog"][data-state="open"]) .cky-modal,
+body:has([role="dialog"][data-state="open"]) .cky-overlay { visibility: hidden !important; pointer-events: none !important; }
+@media (max-width: 600px) { .cky-consent-container .cky-consent-bar { padding: 20px !important; } }
+
+:root { --consent-background: #101722; --consent-border: #45566b; --consent-title: #f1f5f9; --consent-text: #b3c0d1; --consent-accent: #73dfef; --consent-accent-text: #091824; }
+
+.cky-consent-container div:has(> a[href*="cookieyes.com"]) { color: #aebbd0 !important; margin-top: 10px !important; }
+.cky-consent-container div:has(> a[href*="cookieyes.com"]) a { color: inherit !important; }

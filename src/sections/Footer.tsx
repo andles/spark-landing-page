@@ -50,6 +50,7 @@ export function Footer() {
           </p>
         </div>
       </Container>
+    <div className="text-center text-slate-300"><button type="button" className="cky-banner-element spark-privacy">Privacy preferences</button></div>
     </footer>
   );
 }
