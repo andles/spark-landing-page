@@ -1,4 +1,5 @@
 import { Container } from '../components';
+import { SocialLinks } from '../components/SocialLinks';
 import { useTheme } from '../context/theme';
 
 const footerLinks = [
@@ -27,6 +28,7 @@ export function Footer() {
                 : 'Modern inventory management for growing businesses. Streamline operations and scale with confidence.'
               }
             </p>
+            <SocialLinks />
           </div>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">

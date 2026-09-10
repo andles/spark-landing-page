@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { SocialLinks } from "../components/SocialLinks";
 
 export default function AgencyFooter() {
   return (
@@ -16,6 +17,7 @@ export default function AgencyFooter() {
                 AI inventory management for multichannel<br />product businesses and inventory operators.
               </p>
               <a href="/contact" className="inline-flex text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors">Talk to the Spark team →</a>
+              <SocialLinks />
             </div>
 
             {/* Right: nav columns */}
