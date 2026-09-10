@@ -1,16 +1,24 @@
-// CookieYes is the existing marketing consent authority. Both Spark frontends
-// require affirmative analytics consent, including direct app visits.
-type ConsentWindow = Window & { getCkyConsent?: () => { categories?: { analytics?: boolean } } };
+// CookieYes owns the consent choice on both Spark domains. Its initial
+// analytics:no value is not a rejection until action:yes records a decision.
+export type AnalyticsConsent = 'pending' | 'accepted' | 'rejected';
+
+export function getAnalyticsConsent(): AnalyticsConsent {
+  if (typeof document === 'undefined') return 'pending';
+  const cookie = document.cookie?.split(';').map((part) => part.trim()).find((entry) => entry.startsWith('cookieyes-consent='));
+  if (!cookie) return 'pending';
+  try {
+    const values = decodeURIComponent(cookie.slice('cookieyes-consent='.length)).split(',');
+    if (!values.includes('action:yes')) return 'pending';
+    if (values.includes('analytics:yes')) return 'accepted';
+    if (values.includes('analytics:no')) return 'rejected';
+  } catch {
+    // Malformed or expired consent never authorizes collection.
+  }
+  return 'pending';
+}
 
 export function hasAnalyticsConsent(): boolean {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return false;
-  const cookie = document.cookie?.split('; ').find((entry) => entry.startsWith('cookieyes-consent='));
-  if (cookie) {
-    try {
-      return decodeURIComponent(cookie.slice('cookieyes-consent='.length)).split(',').includes('analytics:yes');
-    } catch { return false; }
-  }
-  return (window as ConsentWindow).getCkyConsent?.().categories?.analytics === true;
+  return getAnalyticsConsent() === 'accepted';
 }
 
 export function subscribeAnalyticsConsent(onChange: () => void): () => void {

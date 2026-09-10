@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 08/30/2026"
+      subtitle="Effective date: 09/10/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -279,7 +279,15 @@ export function PrivacyPolicyPage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="14. Third-Party Data Collection and Marketing">
+      <LegalSection title="14. Analytics, Cookies and Marketing">
+        <LegalSubSection title="Product analytics and session replay">
+          <LegalP>
+            We use PostHog on our public website and web application to understand usage and diagnose problems. We wait for your cookie choice before collecting these analytics. If you accept analytics cookies, we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
+          </LegalP>
+          <LegalP>
+            If you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. You can change your choice using Privacy in the app sidebar or Privacy preferences in the website footer. CookieYes stores your choice, and advertising cookies remain a separate preference.
+          </LegalP>
+        </LegalSubSection>
         <LegalP>
           When you visit or log in to our website, cookies and similar technologies may be used by our online data partners or vendors to associate these activities with other personal information they or others have about you, including by association with your email. We (or service providers on our behalf) may then send communications and marketing to these email addresses. You may opt out of receiving this advertising by visiting{" "}
           <a

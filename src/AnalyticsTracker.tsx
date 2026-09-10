@@ -1,4 +1,4 @@
-import { hasAnalyticsConsent, subscribeAnalyticsConsent } from './analyticsConsent';
+import { getAnalyticsConsent, subscribeAnalyticsConsent } from './analyticsConsent';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { captureCta, capturePageview, initializeAnalytics } from './analytics';
@@ -9,9 +9,10 @@ export default function Analytics() {
   useEffect(() => subscribeAnalyticsConsent(() => setConsentRevision((value) => value + 1)), []);
   const previous = useRef<string | undefined>(undefined);
   useEffect(() => {
-    if (!hasAnalyticsConsent()) { initializeAnalytics(); previous.current = undefined; return; }
-    if (previous.current === pathname) return;
-    previous.current = pathname;
+    if (!initializeAnalytics()) { previous.current = undefined; return; }
+    const key = JSON.stringify([pathname, getAnalyticsConsent()]);
+    if (previous.current === key) return;
+    previous.current = key;
     capturePageview(pathname);
   }, [pathname, consentRevision]);
   useEffect(() => {
