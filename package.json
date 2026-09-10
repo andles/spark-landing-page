@@ -14,10 +14,12 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "preview:classic": "vite preview --outDir dist-classic",
-    "preview:nextgen": "vite preview --outDir dist-nextgen"
+    "preview:nextgen": "vite preview --outDir dist-nextgen",
+    "test": "vitest run"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",
+    "posthog-js": "^1.429.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0"
@@ -41,6 +43,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^8.2.2",
+    "vitest": "^4.1.11",
     "wrangler": "^4.127.1"
   }
 }

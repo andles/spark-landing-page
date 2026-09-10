@@ -3,12 +3,14 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
+import Analytics from './AnalyticsTracker'
 import RouteMetaUpdater from './seo/RouteMetaUpdater'
 
 const app = (
   <StrictMode>
     <BrowserRouter>
       <RouteMetaUpdater />
+      <Analytics />
       <App />
     </BrowserRouter>
   </StrictMode>
