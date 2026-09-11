@@ -131,10 +131,17 @@ export default function HeroVideoShowcase() {
     <div ref={showcaseRef} className="dash-parallax mt-10 lg:mt-14 max-w-[1100px] mx-auto w-full hidden sm:block">
       <div className="dash-enter relative w-full">
 
-        {/* Dashboard mockup: always in the DOM so the container has height.
-            Visible until the video actually plays, fades back in as it ends. */}
+        {/* Tablet playback needs a landscape frame independent of the stacked
+            dashboard's height. Desktop keeps the dashboard transition. */}
         <div className={`transition-opacity duration-700 ${phase === "video" ? "opacity-0" : "opacity-100"}`}>
-          <DashboardMockup />
+          <img
+            src="/hero-video-poster-mobile.webp"
+            alt="Spark product demo"
+            width={1920}
+            height={1080}
+            className="aspect-video w-full rounded-xl object-contain bg-[#0c1019] lg:hidden"
+          />
+          <div className="hidden lg:block"><DashboardMockup /></div>
         </div>
 
         {/* Play button: centered overlay shown only after video finishes */}
@@ -175,7 +182,7 @@ export default function HeroVideoShowcase() {
               onLoadedMetadata={() =>
                 videoRef.current && setDuration(videoRef.current.duration)
               }
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain bg-[#0c1019]"
             >
               <source src="/hero-video.webm" type="video/webm" />
               <source src="/hero-video.mp4" type="video/mp4" />

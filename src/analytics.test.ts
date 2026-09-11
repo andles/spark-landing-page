@@ -132,7 +132,7 @@ describe('hybrid consent privacy boundary', () => {
     analytics.capturePageview('/dashboard');
     expect(sdk.startSessionRecording).toHaveBeenCalled();
     const config = sdk.init.mock.calls[0][1];
-    expect(config.session_recording).toMatchObject({maskAllInputs:true,maskTextSelector:'*',maskAllElementAttributes:true,recordBody:false,recordHeaders:false});
+    expect(config.session_recording).toMatchObject({maskAllInputs:true,maskTextSelector:'input, textarea, select, [contenteditable], [data-analytics-private], .ph-mask',maskAllElementAttributes:false,recordBody:false,recordHeaders:false});
     expect(config.session_recording.blockSelector).toContain('[role="dialog"]');
     expect(config.session_recording.blockSelector).toContain('iframe');
     expect(config.session_recording.maskCapturedNetworkRequestFn({entryType:'resource',name:'https://private-url'})).toBeNull();
@@ -156,7 +156,7 @@ it('preserves attribution when rejection changes to acceptance', async () => {
   expect(sdk.register_once).toHaveBeenCalledWith({ utm_source: 'google', initial_referring_domain: 'search.example' });
 });
 
-it.each(['/meeting-confirmed/', '/MEETING-CONFIRMED', '/book-a-call/'])('excludes replay on equivalent booking route %s', async (pathname) => {
+it.each(['/meeting-confirmed/', '/MEETING-CONFIRMED', '/book-a-call/', '/r/prospect', '/R/PROSPECT/'])('excludes replay on equivalent booking route %s', async (pathname) => {
   const analytics = await import('./analytics');
   window.location.pathname = pathname;
   analytics.capturePageview(pathname);
