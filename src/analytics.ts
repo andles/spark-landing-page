@@ -1,3 +1,4 @@
+import { maskReplayAttribute } from './replayPrivacy';
 import { getAnalyticsConsent, hasAnalyticsConsent } from './analyticsConsent';
 function runAnalytics(action: () => void): void {
   try { action(); } catch { console.warn("PostHog analytics could not capture this action."); }
@@ -23,7 +24,9 @@ const suppressed = false;
 
 // Recording is opt-in and excludes account, authentication and billing routes.
 function replayAllowed(): boolean {
-  return !suppressed && hasAnalyticsConsent() && !['/book-a-call', '/meeting-confirmed'].includes(window.location.pathname.replace(/\/+$/, '').toLowerCase());
+  const path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+  return !suppressed && hasAnalyticsConsent() && !path.startsWith('/r/')
+    && !['/book-a-call', '/meeting-confirmed'].includes(path);
 }
 
 function registerAttribution(): void {
@@ -98,9 +101,10 @@ export function initializeAnalytics(): boolean {
     enable_recording_console_log: false,
     session_recording: {
       maskAllInputs: true,
-      maskTextSelector: "*",
-      maskAllElementAttributes: true,
-      blockSelector: 'iframe, img, video, canvas, object, embed, [role="dialog"], [data-analytics-private], input[type="hidden"], input[type="file"]',
+      maskTextSelector: 'input, textarea, select, [contenteditable], [data-analytics-private], .ph-mask',
+      maskAllElementAttributes: false,
+      maskAttributeFn: maskReplayAttribute,
+      blockSelector: 'iframe, video, canvas, object, embed, [role="dialog"], [data-analytics-private], input[type="hidden"], input[type="file"]',
       recordCrossOriginIframes: false,
       recordHeaders: false,
       recordBody: false,
