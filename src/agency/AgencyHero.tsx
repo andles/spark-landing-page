@@ -31,18 +31,18 @@ export default function AgencyHero() {
             className="text-[2.4rem] sm:text-5xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-[#f0f2f5]">See Demand.</span>
+            <span className="text-[#f0f2f5]">AI Inventory Management</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              Plan Your Next Move.
+              That Plans Every Reorder
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            See what is selling, what is in stock, and what is on the way.
-            Spark DemandIQ helps you plan what to buy next, while Sparki helps
-            turn your decision into a draft purchase order you can review.
+            Spark turns sales, inventory, and supply data from every channel into
+            demand forecasts and draft purchase orders. Your team approves the
+            plan, so cash stays out of overstock and bestsellers stay available.
           </p>
 
           {/* CTA row */}
@@ -51,7 +51,7 @@ export default function AgencyHero() {
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start Forecasting Free
+              Start Free
             </a>
             <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
               Book a 30-Minute Demo
