@@ -2,9 +2,9 @@ import { Container } from '../components';
 import { useTheme } from '../context/theme';
 
 const claims = [
-  { value: '43%', label: 'Less excess inventory' },
-  { value: '56%', label: 'Fewer stockouts' },
-  { value: '47%', label: 'Less time spent on manual inventory planning' },
+  { value: 'See demand', label: 'Explore your forecast and seasonal patterns' },
+  { value: 'Plan the buy', label: 'Review stock, supply, and suggested quantities' },
+  { value: 'Stay in control', label: 'Review the draft before you commit' },
 ];
 
 function OutcomeClaimsClassic() {
@@ -14,7 +14,7 @@ function OutcomeClaimsClassic() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-12 max-w-4xl mx-auto text-center">
           {claims.map((claim, i) => (
             <div key={i}>
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent mb-2">
+              <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent mb-2">
                 {claim.value}
               </div>
               <p className="text-slate-600 text-sm lg:text-base leading-snug">
@@ -35,7 +35,7 @@ function OutcomeClaimsNextGen() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-12 max-w-4xl mx-auto text-center">
           {claims.map((claim, i) => (
             <div key={i}>
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-2">
+              <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-2">
                 {claim.value}
               </div>
               <p className="text-white/50 text-sm lg:text-base leading-snug">

@@ -1,26 +1,7 @@
-import ScrollReveal, { RevealItem } from "./ScrollReveal";
+import ProductProofCards from "./ProductProofCards";
 import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 
-// Performance metrics live in the hero (below the CTAs, above the video),
-// matching the /reduce-stockouts-overstock variant's placement.
-const stats = [
-  {
-    value: "43%",
-    label: "Less excess inventory",
-    desc: "Observed across the Spark merchant cohort.",
-  },
-  {
-    value: "56%",
-    label: "Fewer stockouts",
-    desc: "Observed across the Spark merchant cohort.",
-  },
-  {
-    value: "< 1 hr",
-    label: "Weekly planning time",
-    desc: "Typical weekly planning time with Spark.",
-  },
-];
 
 export default function AgencyHero() {
   const { signupUrl } = useCtaLinks();
@@ -81,27 +62,7 @@ export default function AgencyHero() {
           </p>
         </div>
 
-        {/* Performance metrics: relocated from the stats section to sit directly
-            below the CTAs and above the hero video, matching the stockouts
-            variant. Width + top margin match the video block below so the
-            horizontal edges and vertical rhythm align. */}
-        <ScrollReveal staggerChildren={120} className="mt-10 lg:mt-14 w-full max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
-          {stats.map((s, i) => (
-            <RevealItem key={i} index={i} className="h-full">
-              <div className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 lg:p-8 hover:bg-white/[0.06] hover:border-white/[0.14] transition-all duration-300 overflow-hidden h-full">
-                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent mb-3 tabular-nums group-hover:from-cyan-400 group-hover:to-violet-400 transition-all duration-500" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                  {s.value}
-                </div>
-                <div className="text-white text-sm font-semibold mb-1.5">{s.label}</div>
-                <div className="text-[#8b95a8] text-sm leading-relaxed">{s.desc}</div>
-              </div>
-            </RevealItem>
-          ))}
-        </ScrollReveal>
-        <p className="mt-4 max-w-[1100px] w-full text-center text-[11px] leading-relaxed text-white/35">
-          Cohort outcomes are based on observed Spark merchant results. Individual results vary by catalog, channel mix, and operating process.
-        </p>
+        <ProductProofCards />
 
       </div>
     </section>

@@ -152,7 +152,7 @@ function OutputTile({ value, label, muted }: { value: string; label: string; mut
 
 const PRESETS = [
   { name: "Conservative", lostRate: 8, promoShare: 50 },
-  { name: "Typical", lostRate: 12.5, promoShare: 30 },
+  { name: "Middle scenario", lostRate: 12.5, promoShare: 30 },
   { name: "Aggressive", lostRate: 20, promoShare: 15 },
 ] as const;
 
@@ -167,12 +167,14 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
   const [margin, setMargin] = useState(55);
   const [promoShare, setPromoShare] = useState(30);
   const [inventoryRaw, setInventoryRaw] = useState("");
+  const [recoveryRate, setRecoveryRate] = useState(0);
+  const [excessReduction, setExcessReduction] = useState(0);
 
   const calc = useMemo(() => {
     const revenue = Number(revenueRaw) || 0;
     const inventory = Number(inventoryRaw) || 0;
     const lostMonthly = revenue * (lostRate / 100);
-    const recoveredMonthly = lostMonthly * 0.5;
+    const recoveredMonthly = lostMonthly * recoveryRate / 100;
     const annualized = recoveredMonthly * 12;
     const overbuyShare = data.mdRate * (1 - promoShare / 100);
     return {
@@ -184,9 +186,9 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
       annualized,
       profitImpact: annualized * (margin / 100),
       overbuyShare,
-      cashFreed: inventory * overbuyShare * 0.43,
+      cashFreed: inventory * overbuyShare * excessReduction / 100,
     };
-  }, [revenueRaw, inventoryRaw, lostRate, margin, promoShare, data.mdRate]);
+  }, [revenueRaw, inventoryRaw, lostRate, margin, promoShare, data.mdRate, recoveryRate, excessReduction]);
 
   const hasRevenue = calc.revenue > 0;
   const hasInventory = calc.inventory > 0;
@@ -357,6 +359,19 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
                 onChange={setPromoShare}
               />
 
+              <SliderField
+                id="recovery-rate"
+                label="Sales recovery scenario"
+                sub="Choose a hypothetical share of lost sales to recover. Starts at zero; this is not a Spark performance estimate."
+                value={recoveryRate} min={0} max={100} step={5} onChange={setRecoveryRate}
+              />
+              <SliderField
+                id="excess-reduction"
+                label="Excess inventory reduction scenario"
+                sub="Choose a hypothetical reduction to model. Starts at zero; no customer result is implied."
+                value={excessReduction} min={0} max={100} step={5} onChange={setExcessReduction}
+              />
+
               <CurrencyField
                 id="inventory-on-hand"
                 label="Inventory on hand at cost (optional, unlocks the cash estimate)"
@@ -370,27 +385,27 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
 
           {/* ── Section 3: What's available ── */}
           <section aria-labelledby="whats-available" className="animate-fade-up delay-300 mt-14">
-            <SectionLabel n={3} title="What's available" />
+            <SectionLabel n={3} title="Explore a scenario" />
             <p id="whats-available" className="text-[#b8bfcc] text-sm sm:text-base leading-relaxed">
               {hasRevenue
-                ? "Live estimates from your inputs above. Adjust anything and these follow."
-                : "Showing $0 until you enter revenue. Add your monthly revenue in section 2 and these fill in live."}
+                ? "Hypothetical outcomes from your chosen assumptions, not a forecast or a measured Spark result. Set a recovery or reduction scenario above to explore the math."
+                : "Enter your revenue and choose a hypothetical recovery percentage in section 2 to model a scenario. Recovery and reduction start at zero."}
             </p>
 
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <OutputTile
                 value={fmtMoney(calc.firstTwoMonths)}
-                label="recovered revenue, first two months"
+                label="hypothetical recovered revenue, first two months"
                 muted={!hasRevenue}
               />
               <OutputTile
                 value={fmtMoney(calc.annualized)}
-                label="recovered revenue, annualized"
+                label="hypothetical recovered revenue, annualized"
                 muted={!hasRevenue}
               />
               <OutputTile
                 value={fmtMoney(calc.profitImpact)}
-                label={`profit impact at your ${margin}% margin, annualized`}
+                label={`hypothetical gross profit impact at your ${margin}% margin, annualized`}
                 muted={!hasRevenue}
               />
             </div>
@@ -405,7 +420,7 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
                     {fmtMoney(calc.cashFreed)}
                   </div>
                   <p className="text-[#8b95a8] text-sm mt-1.5 leading-relaxed">
-                    estimated cash freed from excess inventory, based on your {fmtMoney(calc.inventory)} at cost and a {fmtPct1(calc.overbuyShare)} overbuy share of markdowns
+                    hypothetical cash release from excess inventory, based on your {fmtMoney(calc.inventory)} at cost and a {fmtPct1(calc.overbuyShare)} overbuy share of markdowns
                   </p>
                 </>
               ) : (
@@ -428,7 +443,7 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
                   Lost each month = {fmtMoney(calc.revenue)} revenue × {lostRate}% lost rate = {fmtMoney(calc.lostMonthly)}
                 </p>
                 <p className="font-mono text-[13px]">
-                  Recovered each month = {fmtMoney(calc.lostMonthly)} × 0.5 = {fmtMoney(calc.recoveredMonthly)} (stockouts more than halved is our measured cohort result)
+                  Recovered each month = {fmtMoney(calc.lostMonthly)} × {recoveryRate}% chosen recovery = {fmtMoney(calc.recoveredMonthly)}
                 </p>
                 <p className="font-mono text-[13px]">
                   First two months = {fmtMoney(calc.recoveredMonthly)} × 2 = {fmtMoney(calc.firstTwoMonths)}
@@ -444,11 +459,11 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
                 </p>
                 <p className="font-mono text-[13px]">
                   {hasInventory
-                    ? `Cash freed = ${fmtMoney(calc.inventory)} inventory at cost × ${fmtPct1(calc.overbuyShare)} × 43% = ${fmtMoney(calc.cashFreed)} (43% less excess is our measured cohort result)`
-                    : "Cash freed = inventory at cost × overbuy share × 43% (43% less excess is our measured cohort result)"}
+                    ? `Cash freed = ${fmtMoney(calc.inventory)} inventory at cost × ${fmtPct1(calc.overbuyShare)} × ${excessReduction}% chosen reduction = ${fmtMoney(calc.cashFreed)}`
+                    : "Cash freed = inventory at cost × overbuy share × your chosen reduction percentage"}
                 </p>
                 <p className="pt-2 border-t border-white/[0.08]">
-                  The catalog numbers are measured from your public storefront. The revenue and cash numbers are estimates driven entirely by the inputs you set above.
+                  The catalog numbers are measured from your public storefront. The revenue and cash numbers are hypothetical scenarios driven by your assumptions. They are not measured customer outcomes, promises, or forecasts. Markdown share is only a proxy for excess inventory; confirm it against your actual stock records.
                 </p>
               </div>
             </details>
@@ -459,9 +474,9 @@ export function StockSignalsReport({ data }: { data: ProspectReport }) {
             <SectionLabel n={4} title="How Spark closes these gaps" />
             <ul id="closing-gaps" className="space-y-4">
               {[
-                { head: "Overstock", body: "buys get sized to forecasted demand instead of gut feel, and slow movers surface before they become clearance. Merchants on Spark usually end up carrying about 43% less excess inventory." },
-                { head: "Stockouts", body: "Spark forecasts demand per variant and sets reorder points from your actual sales history, so the sizes and colors that break first get bought deeper and reordered sooner. Merchants running Spark usually see stockouts more than halved." },
-                { head: "Planning time", body: "the forecasting, reorder math, and buy planning that live in spreadsheets today collapse into a review. Merchants on Spark usually get planning down to under an hour." },
+                { head: "Overstock", body: "buys get sized to forecasted demand instead of gut feel, and slow movers surface before they become clearance. Review the recommendation against your stock and incoming supply before committing cash." },
+                { head: "Stockouts", body: "Spark forecasts demand per variant and sets reorder points from your actual sales history, so the sizes and colors that break first get bought deeper and reordered sooner. Review stock coverage and demand together to decide which items need attention." },
+                { head: "Planning time", body: "the forecasting, reorder math, and buy planning that live in spreadsheets today collapse into a review. Sparki can help prepare a draft purchase order for your review." },
               ].map((item) => (
                 <li key={item.head} className="flex gap-3">
                   <svg aria-hidden="true" className="shrink-0 mt-1 w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
