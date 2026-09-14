@@ -2,7 +2,7 @@ import { ChartNoAxesCombined, ClipboardList, ShieldCheck } from "lucide-react";
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
 
 const capabilities = [
-  { icon: ChartNoAxesCombined, title: "See demand clearly", label: "Spark DemandIQ", description: "Explore sales history, seasonal patterns, and the forecast behind your next buying decision." },
+  { icon: ChartNoAxesCombined, title: "See demand clearly", label: "Spark Farsight", description: "Explore sales history, seasonal patterns, and the forecast behind your next buying decision." },
   { icon: ClipboardList, title: "Know what to buy", label: "From insight to action", description: "Review suggested quantities alongside stock and incoming supply. Turn the recommendation into a draft purchase order." },
   { icon: ShieldCheck, title: "Keep control", label: "Sparki or your AI assistant", description: "Prepare the order with Sparki in Spark, or use your preferred AI assistant through an MCP connector. Same capabilities, your choice of workspace. Review the details and confirm before the draft is created." },
 ];
