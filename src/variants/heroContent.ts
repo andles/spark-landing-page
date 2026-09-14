@@ -25,55 +25,55 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Inventory', 'Reimagined'],
     subheadline:
-      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization, all in one seamless experience.',
+      'See your stock, explore demand forecasts, and turn buying decisions into draft purchase orders with Sparki.',
   },
 
   forecasting: {
     badge: 'AI Inventory Software',
-    headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
+    headline: ['AI Inventory Forecasting That', 'Turns Demand Into a Buying Plan'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
   },
 
   'demo-hero': {
     badge: 'AI Inventory Software',
-    headline: ['AI Inventory Forecasting That', 'Improves Planning in 14 Days'],
+    headline: ['AI Inventory Forecasting That', 'Turns Demand Into a Buying Plan'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
     heroDemoForm: true,
   },
 
   // ── Forecasting 14-day: CTA buttons ─────────────────────
   'forecasting-14d-cta': {
     badge: 'AI Inventory Software',
-    headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
+    headline: ['See Demand Before', 'You Commit to More Stock'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
   },
 
   // ── Forecasting 14-day: inline demo form ───────────────
   'forecasting-14d-form': {
     badge: 'AI Inventory Software',
-    headline: ['AI Forecasting That Reduces', 'Stockouts & Overstock in 14 Days'],
+    headline: ['See Demand Before', 'You Commit to More Stock'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
     heroDemoForm: true,
   },
 
   // ── Margin 14-day: CTA buttons ─────────────────────────
   'margin-14d-cta': {
     badge: 'AI Inventory Software',
-    headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
+    headline: ['Put Your Next Purchase Order', 'in Perspective'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
   },
 
   // ── Margin 14-day: inline demo form ────────────────────
   'margin-14d-form': {
     badge: 'AI Inventory Software',
-    headline: ['Stop Losing Margin to Bad Forecasts,', 'Fix It in 14 Days'],
+    headline: ['Put Your Next Purchase Order', 'in Perspective'],
     subheadline:
-      'Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.',
+      'Explore demand forecasts alongside stock and incoming supply. Review suggested quantities and prepare your next purchase order with Sparki.',
     heroDemoForm: true,
   },
 
@@ -82,15 +82,15 @@ const heroContent: Record<LandingVariant, HeroContent> = {
     badge: 'AI Inventory Software',
     headline: ['Inventory', 'Reimagined'],
     subheadline:
-      'The AI-native inventory platform that thinks ahead. Real-time visibility, predictive insights, and autonomous optimization, all in one seamless experience.',
+      'See your stock, explore demand forecasts, and turn buying decisions into draft purchase orders with Sparki.',
   },
 
   // ── Agency redesign variant (full page replacement) ────────
   agency: {
-    badge: 'Set Up in Minutes with a CSV Import',
-    headline: ['Fix Your Inventory', 'in 14 Days'],
+    badge: 'Bring Your Inventory Data Into Spark',
+    headline: ['Understand Your Inventory.', 'Plan Your Next Move.'],
     subheadline:
-      "Upload a raw CSV and be live in minutes, no migration project required. Spark's AI tells you what to reorder, when, and how much. Your team approves, and Spark handles the rest.",
+      "Bring your sales and inventory data into Spark. Explore the forecast, review reorder recommendations, and ask Sparki to prepare a draft purchase order.",
   },
 
   // ── Future variants ──────────────────────────────────────

@@ -53,7 +53,7 @@ function IntegrationsClassic() {
               Power your inventory operations, optimized for growth
             </h3>
             <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Join hundreds of businesses scaling smarter with Spark
+              Connect your channels to one inventory workspace
             </p>
           </div>
         </Container>
@@ -129,7 +129,7 @@ function IntegrationsNextGen() {
               Ready to Connect Everything?
             </h3>
             <p className="text-white/50 mb-8 max-w-xl mx-auto">
-              Join hundreds of businesses scaling smarter with unified inventory operations
+              Bring sales, stock, and supply into one planning workflow
             </p>
             <button
               className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.3)]"

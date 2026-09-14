@@ -2,31 +2,13 @@
 // REDUCE STOCKOUTS & OVERSTOCK campaign variant (Google Ads message-match).
 // Identical to AgencyHero.tsx except the hero headline + subhead (and a smaller
 // lg headline size so the longer headline fits two lines). Targets the
-// "AI forecasting / 14 days" ad angle.
+// "AI forecasting" ad angle.
 // ─────────────────────────────────────────────────────────────────────────────
-import ScrollReveal, { RevealItem } from "./ScrollReveal";
+import ProductProofCards from "./ProductProofCards";
 import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 import HeroVideoShowcase from "./HeroVideoShowcase";
 
-// Performance metrics: relocated into the hero (below the CTAs, above the video).
-const stats = [
-  {
-    value: "43%",
-    label: "Less excess inventory",
-    desc: "Observed across the Spark merchant cohort.",
-  },
-  {
-    value: "56%",
-    label: "Fewer stockouts",
-    desc: "Observed across the Spark merchant cohort.",
-  },
-  {
-    value: "< 1 hr",
-    label: "Weekly planning time",
-    desc: "Typical weekly planning time with Spark.",
-  },
-];
 
 export default function AgencyHeroStockouts() {
   const { signupUrl } = useCtaLinks();
@@ -57,16 +39,16 @@ export default function AgencyHeroStockouts() {
             className="animate-fade-up delay-100 text-[2.4rem] sm:text-5xl lg:text-[3.375rem] font-bold leading-[1.08] tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-[#f0f2f5]">AI Forecasting That Reduces</span>
+            <span className="text-[#f0f2f5]">See Demand Before</span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              Stockouts &amp; Overstock in 14 Days
+              You Commit to More Stock
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Spark uses AI to predict demand, prevent stockouts, and automate reordering, so you can run leaner inventory with confidence.
+            Review seasonal demand, stock coverage, and incoming supply in one place. Use Spark DemandIQ to inform your next reorder, then ask Sparki to prepare a draft for your review.
           </p>
 
           {/* CTA row */}
@@ -75,33 +57,14 @@ export default function AgencyHeroStockouts() {
               href={signupUrl}
               className="h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold text-base transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center"
             >
-              Start Free
+              Start Forecasting Free
             </a>
             <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center" />
           </div>
           <p className="animate-fade-up delay-300 mt-3 text-xs text-[#8b95a8]">Agentic onboarding · recommendations with reasoning · your team approves</p>
         </div>
 
-        {/* Performance metrics: relocated from the stats section to sit directly
-            below the CTAs and above the hero video. Width + top margin match the
-            video block below so the horizontal edges and vertical rhythm align. */}
-        <ScrollReveal staggerChildren={120} className="mt-10 lg:mt-14 w-full max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
-          {stats.map((s, i) => (
-            <RevealItem key={i} index={i} className="h-full">
-              <div className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 lg:p-8 hover:bg-white/[0.06] hover:border-white/[0.14] transition-all duration-300 overflow-hidden h-full">
-                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent mb-3 tabular-nums group-hover:from-cyan-400 group-hover:to-violet-400 transition-all duration-500" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-                  {s.value}
-                </div>
-                <div className="text-white text-sm font-semibold mb-1.5">{s.label}</div>
-                <div className="text-[#8b95a8] text-sm leading-relaxed">{s.desc}</div>
-              </div>
-            </RevealItem>
-          ))}
-        </ScrollReveal>
-        <p className="mt-4 max-w-[1100px] w-full text-center text-[11px] leading-relaxed text-white/35">
-          Cohort outcomes are based on observed Spark merchant results. Individual results vary by catalog, channel mix, and operating process.
-        </p>
+        <ProductProofCards />
 
         <HeroVideoShowcase />
 

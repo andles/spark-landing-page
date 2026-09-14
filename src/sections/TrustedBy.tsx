@@ -13,7 +13,7 @@ function TrustedByClassic() {
     <section className="py-12 lg:py-16 bg-white">
       <Container>
         <h2 className="text-3xl lg:text-4xl font-bold text-center text-slate-800 italic mb-12 max-w-2xl mx-auto">
-          The #1 inventory platform for FBA, Shopify, and B2B Wholesale
+          Plan inventory across FBA, Shopify, and B2B Wholesale
         </h2>
         
         <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
@@ -40,11 +40,11 @@ function TrustedByNextGen() {
       <Container>
         <div className="text-center mb-10">
           <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-4">
-            Trusted by Industry Leaders
+            Built for multichannel operations
           </p>
           <h2 className="text-2xl lg:text-3xl font-bold max-w-2xl mx-auto">
-            <span className="text-white">The </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">#1 Platform</span>
+            <span className="text-white">Inventory </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">planning</span>
             <span className="text-white"> for FBA, Shopify & B2B</span>
           </h2>
         </div>

@@ -179,16 +179,13 @@ function CoreCapabilitiesClassic() {
                       </div>
                       <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-slate-200 to-transparent" />
                     </div>
-                    
-                    <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-5 leading-tight">
+                          <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-5 leading-tight">
                       {capability.headline}
                     </h3>
-                    
-                    <p className="text-slate-600 leading-relaxed text-base lg:text-lg mb-6">
+                          <p className="text-slate-600 leading-relaxed text-base lg:text-lg mb-6">
                       {capability.description}
                     </p>
-                    
-                    {/* Learn more link */}
+                          {/* Learn more link */}
                     <button className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${capability.gradient} bg-clip-text text-transparent hover:gap-3 transition-all duration-300`}>
                       Learn more
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -209,12 +206,7 @@ function CoreCapabilitiesClassic() {
               Built for serious operators who demand intelligent, scalable solutions.
             </p>
             <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-              <span className="ml-2 text-sm text-slate-600">Trusted by 500+ businesses</span>
+              <span className="ml-2 text-sm text-slate-600">Explore the workflow with your own inventory</span>
             </div>
           </div>
         </div>
@@ -284,16 +276,13 @@ function CoreCapabilitiesNextGen() {
                       </div>
                       <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-white/20 to-transparent" />
                     </div>
-                    
-                    <h3 className="text-2xl lg:text-3xl font-bold text-white mb-5 leading-tight group-hover:text-teal-400 transition-colors">
+                          <h3 className="text-2xl lg:text-3xl font-bold text-white mb-5 leading-tight group-hover:text-teal-400 transition-colors">
                       {capability.headline}
                     </h3>
-                    
-                    <p className="text-white/50 leading-relaxed text-base lg:text-lg mb-6 group-hover:text-white/70 transition-colors">
+                          <p className="text-white/50 leading-relaxed text-base lg:text-lg mb-6 group-hover:text-white/70 transition-colors">
                       {capability.description}
                     </p>
-                    
-                    {/* Learn more link */}
+                          {/* Learn more link */}
                     <a href="#book-demo" className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${capability.gradient} bg-clip-text text-transparent hover:gap-3 transition-all duration-300`}>
                       Learn more
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -314,12 +303,7 @@ function CoreCapabilitiesNextGen() {
               Built for serious operators who demand intelligent, scalable solutions.
             </p>
             <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-              <span className="ml-2 text-sm text-white/50">Trusted by 500+ businesses</span>
+              <span className="ml-2 text-sm text-white/50">Explore the workflow with your own inventory</span>
             </div>
           </div>
         </div>
