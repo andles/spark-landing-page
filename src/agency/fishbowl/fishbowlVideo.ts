@@ -2,11 +2,11 @@
 export const fishbowlVideo = {
   name: 'Move beyond Fishbowl with Demand ESP',
   description: 'See how Demand ESP considers each product’s demand patterns and planned changes, then turns forecasts into reorder points and draft purchase orders. Move from Fishbowl on your timeline, with free access until your current contract ends and migration and onboarding included.',
-  mp4Src: '/media/fishbowl-final-v4.mp4',
-  posterSrc: '/media/fishbowl-final-v4-poster.jpg',
-  captionsSrc: '/media/fishbowl-final-v4-captions.vtt',
-  uploadDate: '2026-09-06',
-  duration: 'PT33.9S',
+  mp4Src: '/media/fishbowl-demand-esp-v5.mp4',
+  posterSrc: '/media/fishbowl-demand-esp-v5-poster.jpg',
+  captionsSrc: '/media/fishbowl-demand-esp-v5-captions.vtt',
+  uploadDate: '2026-09-14',
+  duration: 'PT35.433S',
   transcript: [
     'Ready to move beyond Fishbowl? Start your move to Spark. Bring your inventory and sales history.',
     "Demand ESP considers each product's demand patterns, from seasonal peaks to growing sales, plus the changes you're planning for. Turn that forecast into reorder points and draft purchase orders.",

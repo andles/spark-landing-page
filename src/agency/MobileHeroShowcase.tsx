@@ -63,8 +63,8 @@ export default function MobileHeroShowcase() {
           onEnded={() => setStarted(false)}
           className="w-full h-full object-cover"
         >
-          <source src="/hero-video.webm" type="video/webm" />
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/media/hero-original-final.webm" type="video/webm" />
+          <source src="/media/hero-original-final.mp4" type="video/mp4" />
         </video>
         {!started && (
           <button

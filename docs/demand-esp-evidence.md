@@ -18,4 +18,4 @@ Source: site owner's explicit attestation on 2026-09-14 of a completed onboardin
 
 ## Branding and media
 
-Source copy, video metadata, visible transcript, and captions use Demand ESP. Existing video and image binaries were not re-recorded or edited; embedded spoken or visual branding still needs a separate media review.
+Source copy, Fishbowl video narration, metadata, visible transcript, and captions use Demand ESP. The approved September 14 media refresh replaces the old homepage inside the original hero video’s laptop shot with a fitted current-brand layout, preserving the original soundtrack and runtime. The outgoing swipe moves the laptop and replacement display together. The Fishbowl video uses fresh synthetic Northstar demo charts and continuous ESP pronunciation. Final media is referenced through new filenames to avoid stale cached playback. Intermediate review drafts are not deployed.
