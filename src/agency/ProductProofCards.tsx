@@ -8,7 +8,7 @@ const capabilities = [
     headline: "19% lower",
     accent: "forecast error*",
     title: "See six months ahead.",
-    description: "Lower error than using last month’s sales to forecast six months ahead, in our public-data backtest.",
+    description: "Lower error than using last month’s sales to forecast six months ahead.",
   },
   {
     icon: Boxes,
