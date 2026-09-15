@@ -86,7 +86,7 @@ export default function FishbowlComparison() {
               </div>
               <div className="px-6 py-4 border-l border-white/[0.06]">
                 <div className="flex items-center gap-2.5">
-                  <img src="/spark-icon-64.webp" alt="Spark" width="20" height="20" loading="lazy" decoding="async" className="w-5 h-5 rounded" />
+                  <img src="/spark-favicon.png" alt="Spark" width="20" height="20" loading="lazy" decoding="async" className="w-5 h-5 rounded" />
                   <span className="text-sm font-semibold text-white">Spark</span>
                 </div>
               </div>

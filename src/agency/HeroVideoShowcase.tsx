@@ -184,8 +184,8 @@ export default function HeroVideoShowcase() {
               }
               className="w-full h-full object-contain bg-[#0c1019]"
             >
-              <source src="/media/hero-original-final.webm" type="video/webm" />
-              <source src="/media/hero-original-final.mp4" type="video/mp4" />
+              <source src="/media/hero-original-brand-v3.webm" type="video/webm" />
+              <source src="/media/hero-original-brand-v3.mp4" type="video/mp4" />
             </video>
 
             {/* Controls: gradient scrim + progress bar + time + mute */}

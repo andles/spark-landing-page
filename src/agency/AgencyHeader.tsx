@@ -70,8 +70,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
         {/* Logo */}
         <a href="/" className="flex shrink-0 items-center gap-2.5 whitespace-nowrap">
-          <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" decoding="async" className="w-8 h-8" />
-          <span className="font-bold text-white text-base tracking-tight">Spark Inventory</span>
+          <img src="/spark-logo-light.png" alt="Spark Inventory" width="514" height="70" decoding="async" className="w-[220px] max-w-full h-auto" />
         </a>
 
         {/* Desktop nav */}
