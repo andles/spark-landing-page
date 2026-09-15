@@ -23,7 +23,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import DashboardMockup from "./dashboard/DashboardMockup";
 
-const HERO_VIDEO_POSTER = "/hero-video-poster-mobile.webp";
+const HERO_VIDEO_POSTER = "/media/hero-original-final-poster.webp";
 
 export default function MobileHeroShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);

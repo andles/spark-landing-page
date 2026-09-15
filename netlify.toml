@@ -3,6 +3,91 @@
   command = "npm run build:nextgen"
   publish = "dist-nextgen"
 
+# Retired marketing media resolves to the approved versions, including existing files.
+[[redirects]]
+  from = "/hero-video.mp4"
+  to = "/media/hero-original-final.mp4"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-video.webm"
+  to = "/media/hero-original-final.webm"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/spark-demo.mp4"
+  to = "/media/hero-original-final.mp4"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-video-poster-mobile.webp"
+  to = "/media/hero-original-final-poster.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-video-poster.jpg"
+  to = "/media/hero-original-final-poster.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-final-v4.mp4"
+  to = "/media/fishbowl-demand-esp-v5.mp4"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-final-v4-poster.jpg"
+  to = "/media/fishbowl-demand-esp-v5-poster.jpg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-final-v4-captions.vtt"
+  to = "/media/fishbowl-demand-esp-v5-captions.vtt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge.mp4"
+  to = "/media/fishbowl-demand-esp-v5.mp4"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge-poster.jpg"
+  to = "/media/fishbowl-demand-esp-v5-poster.jpg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge-captions.vtt"
+  to = "/media/fishbowl-demand-esp-v5-captions.vtt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge-v3.mp4"
+  to = "/media/fishbowl-demand-esp-v5.mp4"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge-v3-poster.jpg"
+  to = "/media/fishbowl-demand-esp-v5-poster.jpg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/media/fishbowl-bridge-v3-captions.vtt"
+  to = "/media/fishbowl-demand-esp-v5-captions.vtt"
+  status = 301
+  force = true
+
 # Consolidate the legacy ampersand URL into the clean canonical URL.
 [[redirects]]
   from = "/reduce-stockouts-&-overstock"

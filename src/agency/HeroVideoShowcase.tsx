@@ -135,7 +135,7 @@ export default function HeroVideoShowcase() {
             dashboard's height. Desktop keeps the dashboard transition. */}
         <div className={`transition-opacity duration-700 ${phase === "video" ? "opacity-0" : "opacity-100"}`}>
           <img
-            src="/hero-video-poster-mobile.webp"
+            src="/media/hero-original-final-poster.webp"
             alt="Spark product demo"
             width={1920}
             height={1080}

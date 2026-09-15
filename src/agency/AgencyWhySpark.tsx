@@ -34,7 +34,7 @@ const cards = [
     ),
     title: "AI Plans Your Inventory",
     description:
-      "Spark's forecasting intelligence tells you exactly what to reorder, when to reorder, and how much, based on your actual sales history.",
+      "Demand ESP uses your sales history to recommend what to reorder, when, and how much. Review the forecast and the plan before acting.",
     features: ["Demand forecasting", "Reorder timing", "Order quantities"],
   },
   {

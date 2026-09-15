@@ -15,7 +15,7 @@ const features = [
     ),
     title: "Order Management & Forecasting",
     href: "/features/inventory",
-    description: "See every order in real time and know exactly what to reorder, when, and how much. Spark forecasts demand from your actual sales history, not guesswork.",
+    description: "See every order in real time and review recommendations for what to reorder, when, and how much. Demand ESP builds forecasts from your sales history.",
     bullets: [
       "Real-time order tracking across all channels",
       "AI forecasting: what to reorder, when, and how much",

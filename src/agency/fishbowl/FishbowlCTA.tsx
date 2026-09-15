@@ -26,7 +26,7 @@ export default function FishbowlCTA() {
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">See what Spark forecasts.</span>
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed max-w-2xl">
-            Sparki handles the mapping and prepares the import. You approve it, then compare Spark and Fishbowl on your own numbers.
+            Sparki in app or your own AI assistant over MCP handles the mapping and prepares the import. You approve it, then compare Spark and Fishbowl on your own numbers.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={signupUrl} className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300">

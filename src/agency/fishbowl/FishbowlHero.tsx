@@ -51,7 +51,7 @@ export default function FishbowlHero() {
               Your Fishbowl backup. Your first Spark forecast.
             </h2>
             <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
-              Drop in your database backup. Sparki maps your data and prepares the import. You review and approve, then see what to order and when.
+              Drop in your database backup. Use Sparki in app or your own AI assistant over MCP to map your data and prepare the import. You review and approve, then see what to order and when.
             </p>
             <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
               Run alongside Fishbowl, free until your current contract ends.
@@ -73,7 +73,7 @@ export default function FishbowlHero() {
           </div>
 
           <p className="animate-fade-up delay-300 mx-auto mt-3 max-w-md text-xs leading-5 text-[#9da7b8] sm:text-sm">
-            Bring your backup. Sparki handles the mapping. You approve the import.
+            Bring your backup. Choose Sparki or your AI over MCP. You approve the import.
           </p>
 
           <div className="animate-fade-up delay-300 mx-auto mt-5 hidden max-w-2xl items-center justify-center gap-5 text-xs text-[#8993a3] sm:flex">
