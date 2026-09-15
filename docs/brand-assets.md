@@ -12,4 +12,4 @@ The complete logo includes both the symbol and the lettering. Display it with pr
 
 The supplied wordmarks are 514 by 70 pixels. Use the original vector or a higher-resolution approved master for large-format printing, rather than inventing or tracing a replacement.
 
-The hero's `hero-original-brand-v2` files preserve the prior video and its timing. Frames 279 through 319 use the supplied complete light wordmark, following the original horizontal settling and upward exit. The MP4 retains the original audio stream without re-encoding.
+The hero's `hero-original-brand-v3` files preserve the prior video and its timing. Frames 279 through 319 retain the original animated icon and use the supplied light wordmark lettering with a nine-frame reveal, following the original horizontal settling and upward exit. The MP4 retains the original audio stream without re-encoding.
