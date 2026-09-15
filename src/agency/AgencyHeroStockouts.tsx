@@ -48,7 +48,7 @@ export default function AgencyHeroStockouts() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Review seasonal demand, stock coverage, and incoming supply in one place. Use Demand ESP to inform your next reorder, then ask Sparki to prepare a draft for your review.
+            Review seasonal demand, stock coverage, and incoming supply in one place. Use Demand ESP to inform your next reorder, then use Sparki in app or your own AI assistant over MCP to prepare a draft for your review.
           </p>
 
           {/* CTA row */}

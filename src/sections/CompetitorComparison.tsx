@@ -13,22 +13,22 @@ const competitors: Competitor[] = [
   {
     name: 'Cin7',
     concerns: [
-      'Frequent support complaints and slow resolution',
-      'Steep, unpredictable price increases over time',
-      'Opaque cancellation and contract experience',
+      'Compare support channels and escalation options',
+      'Ask how pricing changes as your business grows',
+      'Review contract length and cancellation terms',
     ],
     sparkAdvantages: [
       'Transparent, predictable pricing from day one',
-      'Responsive support with real SLAs',
+      'Email support on Operate; priority escalation on Scale',
       'AI-native platform with simpler onboarding',
     ],
   },
   {
     name: 'Katana',
     concerns: [
-      'Usage-based pricing that scales unpredictably',
-      'No B2B portal for wholesale or vendor workflows',
-      'Gaps in the broader e-commerce stack',
+      'Check usage bands and the cost of exceeding them',
+      'Confirm customer and vendor portal requirements',
+      'Check coverage for your commerce and fulfillment tools',
     ],
     sparkAdvantages: [
       'Free monthly forecasting with predictable order bands',
@@ -39,35 +39,35 @@ const competitors: Competitor[] = [
   {
     name: 'Fishbowl',
     concerns: [
-      'Legacy desktop architecture showing its age',
-      'Expensive support tiers and add-on costs',
-      'Limited cloud and mobile capabilities',
+      'Compare the deployment options for your edition',
+      'Ask which support and onboarding services cost extra',
+      'Try the workflows your team needs on each device',
     ],
     sparkAdvantages: [
       'Cloud-native architecture, accessible anywhere',
       'AI-first design with intelligent automation',
-      'No hidden fees for support or onboarding',
+      'Review plan-specific support and onboarding options',
     ],
   },
   {
     name: 'inFlow',
     concerns: [
-      'Limited third-party integrations out of the box',
-      'No built-in AI or forecasting capabilities',
-      'API access sold separately as a paid add-on',
+      'Confirm which connectors support your workflow',
+      'Compare forecasting methods and automation options',
+      'Check API availability and plan requirements',
     ],
     sparkAdvantages: [
       'AI-powered forecasting included in every plan',
-      'MCP protocol for advanced extensibility',
+      'Sparki in app or your own AI assistant over MCP',
       'Broad native integrations with REST API included',
     ],
   },
   {
     name: 'Zoho Inventory',
     concerns: [
-      'Strict per-user limits on most plans',
-      'No dedicated manufacturing workflows',
-      'Lacks AI-driven insights and automation',
+      'Compare user limits and the cost of adding teammates',
+      'Check BOM and work-order support for your operation',
+      'Compare available insights, alerts, and approval controls',
     ],
     sparkAdvantages: [
       'One user on Free; unlimited users on paid plans',
@@ -147,7 +147,7 @@ function CompetitorComparisonClassic() {
                               <AlertTriangle className="w-4 h-4 text-amber-600" />
                             </div>
                             <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                              Common Concerns
+                              Questions to Ask
                             </h4>
                           </div>
                           <ul className="space-y-3">
@@ -297,7 +297,7 @@ function CompetitorComparisonNextGen() {
                               <AlertTriangle className="w-4 h-4 text-amber-400" />
                             </div>
                             <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wide">
-                              Common Concerns
+                              Questions to Ask
                             </h4>
                           </div>
                           <ul className="space-y-3">

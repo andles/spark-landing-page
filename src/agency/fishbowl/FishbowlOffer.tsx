@@ -14,7 +14,7 @@ const offerPoints = [
     icon: Database,
     label: "Import in minutes",
     title: "Drop in the database backup",
-    body: "Sparki maps the data, prepares the import, and asks you to approve it. No migration project and no spreadsheet cleanup.",
+    body: "Use Sparki in app or your own AI assistant over MCP to map the data and prepare the import. Review proposed fixes and approve before anything lands.",
     accent: "from-violet-400 to-fuchsia-400",
   },
   {

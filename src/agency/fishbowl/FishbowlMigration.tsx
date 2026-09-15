@@ -40,7 +40,7 @@ const cards = [
     ),
     title: "Your Fishbowl data comes with you, in minutes",
     description:
-      "Drop in your Fishbowl database backup. Sparki maps the data, prepares the import, validates the result, and asks you to approve it before anything lands.",
+      "Drop in your Fishbowl database backup. Sparki in app or your own AI assistant over MCP maps the data, prepares the import, validates the result, and asks you to approve it before anything lands.",
     complaint: "Switching sounds worse than staying.",
     features: ["Automatic field mapping", "Sales history included", "Undo any import"],
   },
@@ -88,7 +88,7 @@ const cards = [
     ),
     title: "Start with an agent and a person when you need one",
     description:
-      "Sparki handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started instead of leaving you with a checklist.",
+      "Sparki in app or your own AI assistant over MCP handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started instead of leaving you with a checklist.",
     complaint: "Steep learning curve, and support that doesn't pick up.",
     features: ["Free monthly forecast", "Agentic onboarding", "Talk to a human"],
   },

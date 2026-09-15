@@ -5,37 +5,37 @@ const rows = [
   {
     category: "Pricing",
     spark: "Free monthly forecasting for one user, unlimited users on paid plans, and predictable order bands. Upgrade for freshness, operating depth, or scale, not SKUs.",
-    others: "Seat, SKU, warehouse, and connection limits can turn growth into a pricing spreadsheet.",
+    others: "Check user, SKU, warehouse, and connection limits, plus the cost of growing beyond them.",
   },
   {
     category: "Onboarding",
     spark: "Ask Sparki, or your own AI assistant over MCP, to inspect, map, validate, and verify your data with approval before import.",
-    others: "Manual imports, lengthy setup calls, and expensive onboarding fees.",
+    others: "Ask which import steps are assisted, what you must prepare, and whether onboarding costs extra.",
   },
   {
     category: "Forecasting",
-    spark: "Built-in AI forecasting that tells you exactly what to reorder, when, and how much.",
-    others: "No forecasting, or basic static rules that don't adapt to trends.",
+    spark: "Demand ESP forecasts demand and recommends reorder timing and quantities for your review.",
+    others: "Compare forecasting methods, seasonal demand support, refresh frequency, and visibility into the forecast.",
   },
   {
     category: "Who does the work",
     spark: "Spark drafts reorders, POs, and transfers. Your team just approves.",
-    others: "You run the reports and figure out the ordering yourself.",
+    others: "Check whether recommendations become reviewable drafts or require manual re-entry.",
   },
   {
     category: "Integrations",
     spark: "Native connectors for Shopify, Amazon, QuickBooks, Stripe. Full REST API and MCP included.",
-    others: "Limited integrations. API access often sold as a paid add-on.",
+    others: "Confirm supported connectors, sync direction, API access, and any additional charges.",
   },
   {
     category: "B2B & Wholesale",
     spark: "Customer portals, vendor workflows, and B2B ordering built into the platform.",
-    others: "No B2B portal. Wholesale workflows require third-party tools.",
+    others: "Check whether customer portals and wholesale workflows are included or need other tools.",
   },
   {
     category: "Support",
     spark: "AI help on every plan, email support on Operate, and priority human escalation on Scale.",
-    others: "Slow resolution, expensive premium support, opaque cancellation policies.",
+    others: "Compare support channels, escalation options, onboarding help, and cancellation terms.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function AgencyComparisonSection() {
                 </div>
               </div>
               <div className="px-6 py-4 border-l border-white/[0.06]">
-                <span className="text-sm font-semibold text-[#8b95a8]">Others</span>
+                <span className="text-sm font-semibold text-[#8b95a8]">What to compare</span>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export default function AgencyComparisonSection() {
                     <p className="text-sm text-[#b8bfcc] leading-relaxed">{row.spark}</p>
                   </div>
                   <div className="border-t border-white/[0.04] pt-3">
-                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Others</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">What to compare</div>
                     <p className="text-sm text-[#8b95a8] leading-relaxed">{row.others}</p>
                   </div>
                 </div>
