@@ -15,7 +15,7 @@ function HeroClassic() {
         <div className="relative h-full w-full">
           <video
             ref={(el) => { if (el) el.playbackRate = 0.5; }}
-            src="/media/hero-original-final.mp4"
+            src="/media/hero-original-brand-v2.mp4"
             autoPlay
             loop
             muted

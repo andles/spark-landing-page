@@ -7,7 +7,7 @@ function DemoVideoClassic() {
       <Container>
         <div className="max-w-4xl mx-auto">
           <video
-            src="/media/hero-original-final.mp4"
+            src="/media/hero-original-brand-v2.mp4"
             autoPlay
             loop
             muted
@@ -28,7 +28,7 @@ function DemoVideoNextGen() {
         <div className="max-w-4xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(139,92,246,0.15)]">
             <video
-              src="/media/hero-original-final.mp4"
+              src="/media/hero-original-brand-v2.mp4"
               autoPlay
               loop
               muted

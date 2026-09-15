@@ -10,8 +10,7 @@ export default function AgencyFooter() {
             {/* Left: brand block */}
             <div>
               <a href="/" className="flex items-center gap-2.5 mb-4">
-                <img src="/spark-icon-64.webp" alt="Spark Inventory" width="32" height="32" loading="lazy" decoding="async" className="w-8 h-8" />
-                <span className="font-bold text-lg text-white" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>Spark Inventory</span>
+                <img src="/spark-logo-light.png" alt="Spark Inventory" width="514" height="70" decoding="async" className="w-[220px] max-w-full h-auto" />
               </a>
               <p className="text-white/60 text-sm leading-relaxed mb-6">
                 AI inventory management for multichannel<br />product businesses and inventory operators.

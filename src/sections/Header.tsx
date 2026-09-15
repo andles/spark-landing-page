@@ -15,8 +15,7 @@ export function Header() {
       <Container>
         <nav className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/spark-icon-64.webp" alt="Spark Inventory" width="36" height="36" decoding="async" className="w-9 h-9" />
-            <span className={`text-xl font-semibold ${isNextGen ? 'text-white' : 'text-gray-900'}`}>Spark Inventory</span>
+            <img src={isNextGen ? "/spark-logo-light.png" : "/spark-logo-dark.png"} alt="Spark Inventory" width="514" height="70" decoding="async" className="w-[220px] max-w-full h-auto" />
           </Link>
 
           <div className="hidden lg:flex items-center gap-3">

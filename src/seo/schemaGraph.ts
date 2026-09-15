@@ -36,8 +36,8 @@ export function buildSchemaGraph(route: RouteMeta) {
         description: 'AI inventory management software for multichannel product businesses.',
         email: 'info@sparkinventory.com',
         logo: {
-          '@type': 'ImageObject', url: `${SITE_URL}/spark_icon.png`,
-          contentUrl: `${SITE_URL}/spark_icon.png`, width: 293, height: 284,
+          '@type': 'ImageObject', url: `${SITE_URL}/spark-logo-dark.png`,
+          contentUrl: `${SITE_URL}/spark-logo-dark.png`, width: 514, height: 70,
         },
         contactPoint: [
           { '@type': 'ContactPoint', contactType: 'sales', email: 'info@sparkinventory.com' },

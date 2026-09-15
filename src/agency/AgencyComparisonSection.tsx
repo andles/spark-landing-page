@@ -71,8 +71,7 @@ export default function AgencyComparisonSection() {
               <div className="px-6 py-4" />
               <div className="px-6 py-4 border-l border-white/[0.06]">
                 <div className="flex items-center gap-2.5">
-                  <img src="/spark-icon-64.webp" alt="Spark" width="20" height="20" loading="lazy" decoding="async" className="w-5 h-5 rounded" />
-                  <span className="text-sm font-semibold text-white">Spark Inventory</span>
+                  <img src="/spark-logo-light.png" alt="Spark Inventory" width="514" height="70" decoding="async" className="w-[220px] max-w-full h-auto" />
                 </div>
               </div>
               <div className="px-6 py-4 border-l border-white/[0.06]">
