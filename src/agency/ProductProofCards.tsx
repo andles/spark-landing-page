@@ -73,7 +73,7 @@ export default function ProductProofCards() {
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 12% measures</h3>
-            <p>On 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost. No confidence interval was calculated. This is a simulation, not a customer result.</p>
+            <p>In an inventory simulation using 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost. No confidence interval was calculated.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 19% measures</h3>
