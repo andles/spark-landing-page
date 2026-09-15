@@ -8,8 +8,7 @@ const capabilities = [
     headline: "19% lower",
     accent: "forecast error*",
     title: "See six months ahead.",
-    description: "Six months ahead, Demand ESP beat forecasting from last month’s sales in our public-data backtest.",
-    evidence: "799 items · Six-month horizon · Public-data backtest.",
+    description: "Lower error than using last month’s sales to forecast six months ahead, in our public-data backtest.",
   },
   {
     icon: Boxes,
@@ -17,8 +16,7 @@ const capabilities = [
     headline: "12% less",
     accent: "stock held†",
     title: "Hold less. Keep orders moving.",
-    description: "Demand ESP needed 12% less inventory than forecasting from last month’s sales, while achieving the same 98% fill rate.",
-    evidence: "400 items · Same ordering policy.",
+    description: "Less inventory than last-month forecasting, at the same 98% fill rate.",
   },
   {
     icon: Timer,
@@ -26,27 +24,27 @@ const capabilities = [
     headline: "Under 1",
     accent: "hour to forecast",
     title: "Bring your files. Start planning.",
-    description: "Go from export files to a working forecast with Sparki or your own AI assistant. Get your data in and your first buying plan underway.",
-    evidence: "Time to a working forecast.",
+    description: "From export files to a working forecast with Sparki or your own AI assistant.",
   },
 ];
 
 export default function ProductProofCards() {
   return (
-    <div className="mt-10 lg:mt-14 w-full max-w-[1100px] mx-auto text-left">
+    <div className="mt-8 lg:mt-10 w-full max-w-[1100px] mx-auto text-left">
       <ScrollReveal staggerChildren={120} className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
-        {capabilities.map(({ icon: Icon, title, label, headline, accent, description, evidence }, i) => (
+        {capabilities.map(({ icon: Icon, title, label, headline, accent, description }, i) => (
           <RevealItem key={title} index={i} className="h-full">
-            <article className="flex flex-col rounded-2xl border border-white/[0.10] bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-6 lg:p-8 h-full hover:border-violet-400/30 transition-colors">
-              <Icon aria-hidden="true" className="h-7 w-7 text-cyan-400 mb-5" />
-              <p className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b8bfcc] mb-5">{label}</p>
-              <h2 className="font-bold tracking-tight leading-[1.08] mb-7">
+            <article className="flex flex-col rounded-2xl border border-white/[0.10] bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-6 h-full hover:border-violet-400/30 transition-colors">
+              <div className="flex items-center gap-3 mb-5">
+                <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-cyan-400" />
+                <p className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b8bfcc]">{label}</p>
+              </div>
+              <h2 className="font-bold tracking-tight leading-[1.08] mb-5">
                 <span className="block text-[42px] lg:text-[50px] text-white">{headline}</span>
-                <span className="block mt-2 text-[27px] lg:text-[32px] text-violet-300">{accent}</span>
+                <span className="block mt-1 text-[25px] lg:text-[28px] text-violet-300">{accent}</span>
               </h2>
-              <h3 className="text-base font-semibold text-white mb-3">{title}</h3>
-              <p className="text-[#b8bfcc] text-sm leading-7 flex-1">{description}</p>
-              <p className="mt-6 pt-5 border-t border-white/[0.08] text-xs leading-5 text-[#a3adbd]">{evidence}</p>
+              <h3 className="text-base font-semibold text-white mb-2">{title}</h3>
+              <p className="text-[#b8bfcc] text-sm leading-6">{description}</p>
             </article>
           </RevealItem>
         ))}
