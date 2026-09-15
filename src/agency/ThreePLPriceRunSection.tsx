@@ -96,7 +96,7 @@ const stages: Stage[] = [
   {
     label: "Run plan",
     title: "Balance unit cost, cadence, and capital",
-    description: "Compare explainable run-size scenarios instead of optimizing one number while inventory, carrying cost, or cash suffers somewhere else.",
+    description: "Compare run-size scenarios with inventory, carrying cost, and cash impact visible together.",
     icon: Route,
   },
   {

@@ -7,12 +7,12 @@ export const homeFaqs = [
   {
     question: 'Which sales channels and accounting tools does Spark connect to?',
     answer:
-      'Spark is for operators who want stock, purchase orders, invoices, and forecasts in one place, with or without a storefront. Shopify and Amazon are optional channels, not the center of the system. Spark can also use wholesale, accounting, marketplace, warehouse, ERP, and file-based data.',
+      'Spark is for operators who want stock, purchase orders, invoices, and forecasts in one place, with or without a storefront. Connect Shopify and Amazon when they are part of your operation. Spark can also use wholesale, accounting, marketplace, warehouse, ERP, and file-based data.',
   },
   {
     question: 'How long does setup take?',
     answer:
-      'Start by telling Sparki what you are moving, or connect your own AI assistant through Spark MCP. The agent inspects what already exists, profiles and maps the source data, validates every row, asks only when a real judgment call is needed, and shows the exact import for approval. Spreadsheet upload and live store connections remain available inputs, without a long ERP migration project.',
+      'Start by telling Sparki what you are moving, or connect your own AI assistant through Spark MCP. The agent inspects what already exists, profiles and maps the source data, validates every row, asks only when a real judgment call is needed, and shows the exact import for approval. Bring spreadsheets or live store connections into the same guided workflow.',
   },
   {
     question: "What does Spark's AI actually automate?",
@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Can I start before choosing a paid plan?',
     answer:
-      'Yes. Free gives one user a refreshed monthly forecast, including stock-risk reports, reorder recommendations, and a buying plan. Live order operations begin with Pulse at $99 per month, and paid plans include unlimited users.',
+      'Yes. Free gives one user a refreshed monthly forecast, including stock-risk reports, reorder recommendations, and a buying plan. Pulse adds live intelligence at $99 per month. Operate adds purchasing, receiving, and fulfillment workflows. Paid plans include unlimited users.',
   },
   {
     question: 'Who is Spark best for?',

@@ -88,7 +88,7 @@ const cards = [
     ),
     title: "Start with an agent and a person when you need one",
     description:
-      "Sparki in app or your own AI assistant over MCP handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started instead of leaving you with a checklist.",
+      "Sparki in app or your own AI assistant over MCP handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started.",
     complaint: "Steep learning curve, and support that doesn't pick up.",
     features: ["Free monthly forecast", "Agentic onboarding", "Talk to a human"],
   },
@@ -118,7 +118,7 @@ export default function FishbowlMigration() {
             <span className="bg-gradient-to-r from-pink-400 to-violet-400 bg-clip-text text-transparent">planning the next buy</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            Start with the decision Fishbowl does not make for you, then evaluate the migration,
+            Start with your next purchasing decision, then evaluate the migration,
             reporting, extensibility, and support around it.
           </p>
         </ScrollReveal>

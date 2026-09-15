@@ -92,7 +92,7 @@ export function AboutPage() {
           <div className="mx-auto max-w-[1180px]">
             <ScrollReveal className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">What guides the product</p>
-              <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Built around the decision, not the demo</h2>
+              <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Built around your next inventory decision</h2>
             </ScrollReveal>
             <ScrollReveal staggerChildren={90} className="mt-12 grid gap-4 md:grid-cols-3">
               {principles.map((principle, index) => {

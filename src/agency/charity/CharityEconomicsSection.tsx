@@ -1,21 +1,9 @@
 import ScrollReveal, { RevealItem } from "../ScrollReveal";
 
 const stats = [
-  {
-    value: "10 to 15%",
-    label: "Net yield lift",
-    desc: "From better pricing, placement, and channel routing across the estate.",
-  },
-  {
-    value: "£5m+",
-    label: "Additional annual funding",
-    desc: "Illustrative for a chain doing £50m a year in retail.",
-  },
-  {
-    value: "£0",
-    label: "In new stock required",
-    desc: "The lift comes from donations already flowing through your shops.",
-  },
+  { value: "Price", label: "Review each item's potential", desc: "Use item details and sales context to inform pricing decisions." },
+  { value: "Place", label: "Find the right selling channel", desc: "Compare the shop floor, online sale, and transfer options." },
+  { value: "Learn", label: "Use sales to guide the next decision", desc: "Review which items sell, where they sell, and at what price." },
 ];
 
 export default function CharityEconomicsSection() {
@@ -33,7 +21,7 @@ export default function CharityEconomicsSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
                 </span>
-                The economics
+                Put every donation to work
               </div>
               <h2 className="text-3xl lg:text-[2.8rem] font-bold text-white leading-tight tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
                 More funding from<br />
@@ -45,9 +33,8 @@ export default function CharityEconomicsSection() {
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
-              Better pricing, placement, and channel routing lift net yield
-              without a single extra donation. Every additional pound flows
-              straight to the mission.
+              Bring pricing, placement, and channel decisions together to make
+              more informed choices about the donations already in your shops.
             </p>
           </ScrollReveal>
         </div>
@@ -66,9 +53,7 @@ export default function CharityEconomicsSection() {
             </RevealItem>
           ))}
         </ScrollReveal>
-        <p className="mt-4 text-center text-[11px] leading-relaxed text-white/35">
-          Illustrative economics, not a client result. Actual lift depends on donation mix, estate size, and current pricing practice. No named or identifiable charity is referenced.
-        </p>
+
       </div>
     </section>
   );
