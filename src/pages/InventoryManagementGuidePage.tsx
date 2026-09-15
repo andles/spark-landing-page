@@ -6,7 +6,7 @@ import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 
 const planningLoop = [
   ['01', 'Capture demand', 'Use orders and sales history to understand what is moving, where it is moving, and how that pattern is changing.'],
-  ['02', 'Position inventory', 'Separate on-hand, allocated, available, incoming, and location-specific stock instead of treating one total as the truth.'],
+  ['02', 'Position inventory', 'Review on-hand, allocated, available, incoming, and location-specific stock together.'],
   ['03', 'Model supply', 'Add supplier lead times, order cadence, minimums, price breaks, production capacity, and uncertainty.'],
   ['04', 'Make the decision', 'Choose the timing and quantity that balance availability, working capital, carrying cost, and operating constraints.'],
   ['05', 'Execute and learn', 'Move the approved decision into purchasing, production, transfer, or fulfillment, then update the next plan with what happened.'],
@@ -129,7 +129,7 @@ export function InventoryManagementGuidePage() {
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">A practical planning trace</p>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Why “low stock” is not enough information</h2>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">The same on-hand quantity can lead to a different decision when demand velocity, incoming supply, lead time, supplier minimums, or capital constraints change.</p>
-                <p className="mt-5 rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] p-5 text-sm leading-7 text-amber-100/70">A reorder formula is a starting point, not a substitute for the operating context around the SKU.</p>
+                <p className="mt-5 rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] p-5 text-sm leading-7 text-amber-100/70">Combine reorder calculations with lead times, stock availability, and expected demand.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={80} className="space-y-3">
                 {[

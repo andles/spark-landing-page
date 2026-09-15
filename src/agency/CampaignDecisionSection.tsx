@@ -40,7 +40,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
         icon: TrendingUp,
       },
       {
-        title: 'Give clients an answer, not a spreadsheet',
+        title: 'Give clients a clear inventory plan',
         body: 'Share current inventory, risk, and reviewed next actions through a branded operating experience while your team retains control.',
         proof: 'Scoped visibility with governed operator actions',
         icon: ShieldCheck,
@@ -68,7 +68,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
       },
       {
         title: 'Show the reasoning',
-        body: 'See which evidence moved the recommendation, rather than accepting a black-box score or rebuilding the model in another sheet.',
+        body: 'See the demand and inventory evidence behind each recommendation.',
         proof: 'Demand evidence and readiness gates',
         icon: TrendingUp,
       },
@@ -95,7 +95,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
     cards: [
       {
         title: 'Promise from location stock',
-        body: 'Use the selected store’s inventory position, not an optimistic global count, to inform whether pickup should be offered.',
+        body: 'Use the selected store’s available inventory to inform whether pickup should be offered.',
         proof: 'Location inventory and channel integration context',
         icon: Store,
       },

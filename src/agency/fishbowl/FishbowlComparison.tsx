@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Fishbowl vs Spark, on the complaint dimensions only. Same table/card
-// markup as AgencyComparisonSection.tsx. The Fishbowl column is phrased as
-// what reviewers report, not as flat claims about the product.
+// Buyer questions for evaluating an existing Fishbowl edition alongside Spark.
+// Shares the table/card layout used by AgencyComparisonSection.tsx.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
 import { useCtaLinks } from "./links";
@@ -10,35 +9,35 @@ const rows = [
   {
     category: "Custom reports",
     fishbowl:
-      "Reviewers say the built-in reports don't cover what they need, and that custom ones are slow to get or cost extra.",
+      "Check whether your required reports are included and how custom reporting is delivered and priced.",
     spark:
       "Describe the report you want in the reports playground and it's built from your live data in seconds. Included on every plan.",
   },
   {
     category: "Shopify, Amazon, QuickBooks",
     fishbowl:
-      "Reviewers describe syncs that need watching, break after updates, or need a third-party connector to work at all.",
+      "Confirm the connectors, sync direction, and maintenance requirements for your edition.",
     spark:
       "Native connectors for Shopify, Amazon, and QuickBooks Online. Orders and stock levels sync both ways without a plugin to babysit.",
   },
   {
     category: "Customizing and extending",
     fishbowl:
-      "The most common complaint in the reviews we read: a feature is missing and there's no practical way to add it yourself.",
+      "Check API access, extension options, and any implementation support your workflow requires.",
     spark:
       "Full REST API and an MCP server, so your own tools and your own AI can read and write your inventory. No consultant in between.",
   },
   {
     category: "Support and onboarding",
     fishbowl:
-      "Reviewers report long waits, tickets that stall, and a steep learning curve that pushed them toward paid training.",
+      "Compare available support channels, training, onboarding scope, and any additional fees.",
     spark:
       "A small team you can reach. Onboarding is consultative working sessions with a person, and it's included.",
   },
   {
     category: "Where it runs",
     fishbowl:
-      "Reviewers running the desktop and server edition mention maintaining the server and updates that break workflows.",
+      "Confirm whether your edition is hosted or self-managed and who maintains the server and updates.",
     spark:
       "Cloud-based. Nothing to install or maintain, same experience on desktop, tablet, and phone.",
   },
@@ -68,11 +67,11 @@ export default function FishbowlComparison() {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-white">Only the things </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">people actually complain about</span>
+            <span className="text-white">Compare the workflows </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">your team relies on</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            No feature-grid padding. The Fishbowl column is what reviewers say, not our opinion.
+            Compare reporting, integrations, onboarding, and daily operations.
           </p>
         </ScrollReveal>
 
@@ -83,7 +82,7 @@ export default function FishbowlComparison() {
             <div className="grid grid-cols-[200px_1fr_1fr] border-b border-white/[0.08] bg-white/[0.02]">
               <div className="px-6 py-4" />
               <div className="px-6 py-4 border-l border-white/[0.06]">
-                <span className="text-sm font-semibold text-[#8b95a8]">Fishbowl, as reviewers report</span>
+                <span className="text-sm font-semibold text-[#8b95a8]">Check in your Fishbowl edition</span>
               </div>
               <div className="px-6 py-4 border-l border-white/[0.06]">
                 <div className="flex items-center gap-2.5">
@@ -121,7 +120,7 @@ export default function FishbowlComparison() {
                 <div className="text-sm font-semibold text-cyan-400 mb-3">{row.category}</div>
                 <div className="space-y-3">
                   <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Fishbowl, as reviewers report</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Check in your Fishbowl edition</div>
                     <p className="text-sm text-[#8b95a8] leading-relaxed">{row.fishbowl}</p>
                   </div>
                   <div className="border-t border-white/[0.04] pt-3">

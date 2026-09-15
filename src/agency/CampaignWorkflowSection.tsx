@@ -71,7 +71,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Act",
         title: "Turn risk into replenishment",
-        body: "Recommendations become reviewable purchasing actions instead of another report someone has to interpret manually.",
+        body: "Turn recommendations into purchasing actions your team can review and approve.",
         signals: ["Reorder evidence", "Vendor terms", "Client policy"],
         resultLabel: "NEXT ACTION",
         resultValue: "Draft plan ready",
@@ -101,7 +101,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Listen",
         title: "Unify demand and supply signals",
-        body: "Sales history, stock, incoming supply, and lead times become one planning signal instead of competing tabs.",
+        body: "Bring sales history, stock, incoming supply, and lead times into one planning view.",
         signals: ["Sales history", "On-hand + incoming", "Lead times"],
         resultLabel: "SIGNAL COVERAGE",
         resultValue: "Demand + supply",
@@ -119,7 +119,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Decide",
         title: "Calculate what to buy and when",
-        body: "The recommendation includes timing, quantity, and the evidence behind the decision, not a black-box score.",
+        body: "Review recommended timing, quantity, and the evidence behind each decision.",
         signals: ["Days of supply", "Safety stock", "Order cadence"],
         resultLabel: "RECOMMENDATION",
         resultValue: "420 units · Jun 18",
@@ -149,7 +149,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Promise",
         title: "Offer pickup from available store stock",
-        body: "The customer chooses a location from inventory that belongs to that store, not an optimistic global count.",
+        body: "The customer chooses a pickup location based on that store’s inventory.",
         signals: ["Pickup order", "Store on-hand", "Location rules"],
         resultLabel: "AVAILABLE TO PROMISE",
         resultValue: "Downtown · in stock",
@@ -206,7 +206,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       {
         label: "Map",
         title: "Build the Spark data model",
-        body: "Fishbowl fields are mapped to the right Spark records and missing context is surfaced instead of silently guessed.",
+        body: "Map Fishbowl fields to Spark records and flag missing context for review.",
         signals: ["Field mapping", "Entity matching", "Missing references"],
         resultLabel: "MAPPING",
         resultValue: "42 fields resolved",
@@ -271,7 +271,7 @@ const workflows: Record<CampaignKind, WorkflowContent> = {
       },
       {
         label: "Approve",
-        title: "Review the PO instead of rebuilding it",
+        title: "Review the prepared purchase order",
         body: "Your team sees the reasoning, adjusts when needed, and approves the supplier-ready draft from one place.",
         signals: ["Supplier grouping", "Order quantities", "Decision evidence"],
         resultLabel: "PURCHASING",

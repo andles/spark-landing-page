@@ -15,12 +15,12 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "Can each 3PL client have a separate workspace and view?",
       answer:
-        "Yes. Spark keeps client inventory and operating context scoped while giving your team a consolidated way to work. Client-facing access can be branded so the experience reinforces your 3PL, not another software vendor.",
+        "Yes. Spark keeps client inventory and operating context scoped while giving your team a consolidated way to work. Client-facing access can be branded so the experience reinforces your 3PL.",
     },
     {
       question: "Can clients connect Shopify, Amazon, and other channels?",
       answer:
-        "Yes. Spark is designed for multichannel operations. Client stores, order history, inventory, and supply data can feed the same planning workflow instead of living in separate spreadsheets and portals.",
+        "Yes. Spark is designed for multichannel operations. Client stores, order history, inventory, and supply data feed the same planning workflow.",
     },
     {
       question: "How do price books and run planning work for a 3PL?",
@@ -74,7 +74,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "How does Spark prevent pickup promises on unavailable stock?",
       answer:
-        "Spark keeps location-level inventory and order activity together so the pickup workflow is based on the stock available at the selected store, not a disconnected spreadsheet or stale manual count.",
+        "Spark keeps location-level inventory and order activity together so the pickup workflow is based on the stock available at the selected store.",
     },
     {
       question: "Can we run pickup across multiple stores?",
@@ -136,7 +136,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "Does Spark connect to Shopify and QuickBooks?",
       answer:
-        "Yes. Spark supports commerce and accounting integrations so inventory, orders, and financial workflows do not depend on the brittle handoffs many Fishbowl teams are trying to replace.",
+        "Yes. Spark supports commerce and accounting integrations to keep inventory, orders, and financial workflows connected.",
     },
     {
       question: "Do we have to commit before seeing Spark with our data?",

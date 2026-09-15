@@ -50,7 +50,7 @@ const accentStyles = {
 
 const migrationSteps = [
   { number: '01', title: 'Inspect', body: 'Classify every source and understand the relationships in the export.', icon: ScanSearch },
-  { number: '02', title: 'Map', body: 'Resolve fields and surface missing references instead of silently guessing.', icon: GitCompareArrows },
+  { number: '02', title: 'Map', body: 'Map fields and flag missing references for review.', icon: GitCompareArrows },
   { number: '03', title: 'Validate', body: 'Explain safe repairs and return real judgment calls to your team.', icon: ShieldCheck },
   { number: '04', title: 'Approve', body: 'Present record counts and proposed changes before anything lands.', icon: CircleCheck },
 ] as const;
@@ -234,7 +234,7 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
           <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Agent-led migration</p>
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
             Move the operation.
-            <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Not the spreadsheet cleanup.</span>
+            <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>With guided data mapping.</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app, or your compatible AI assistant through Spark MCP, can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
           <div className="mt-7 flex flex-wrap gap-2">
@@ -336,8 +336,8 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
       <div className="relative mx-auto max-w-[1240px]">
         <ScrollReveal className="mx-auto max-w-3xl text-center">
           <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Honest side by side</p>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Choose the workflow, not the longest feature list</h2>
-          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">Spark does not win every row. That is the point of making the tradeoffs visible before your team starts a migration.</p>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Choose the workflow that fits your team</h2>
+          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">Compare the workflows, integrations, and operating requirements that matter to your team.</p>
         </ScrollReveal>
 
         <ScrollReveal className="mt-12">
