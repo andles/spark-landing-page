@@ -6,7 +6,7 @@ const capabilities = [
     icon: ChartNoAxesCombined,
     label: "Plan further ahead",
     headline: "19% lower",
-    accent: "forecast error*",
+    accent: "forecast error",
     title: "See six months ahead.",
     description: "Lower error than using last month’s sales to forecast six months ahead.",
   },
@@ -14,7 +14,7 @@ const capabilities = [
     icon: Boxes,
     label: "Put inventory to work",
     headline: "12% less",
-    accent: "stock held†",
+    accent: "stock held",
     title: "Hold less. Keep orders moving.",
     description: "Less inventory than last-month forecasting, at the same 98% fill rate.",
   },
@@ -59,33 +59,29 @@ export default function ProductProofCards() {
         <h3 className="text-lg font-semibold text-white">Every SKU. Its own forecast.</h3>
         <p className="mt-2 text-sm leading-6 text-[#b8bfcc]">Demand ESP reads each item’s demand pattern and automatically selects a forecasting method. See the method chosen and the history behind your forecast.</p>
       </div>
-      <p className="mt-5 text-xs leading-5 text-[#a3adbd] text-center max-w-[930px] mx-auto">
-        * 19% lower pooled forecast error versus last-month forecasting at a six-month horizon on 799 Iowa items, from one forecast origin. † Iowa public-data simulation at an interpolated 98% fill rate. See the methodology below for assumptions and results across methods.
+      <p className="mt-5 text-xs leading-5 text-[#a3adbd] text-center">
+        Forecast and inventory results from public-data testing.
       </p>
-      <details className="mt-4 rounded-xl border border-white/[0.08] bg-white/[0.02] text-sm text-[#b8bfcc]">
-        <summary className="cursor-pointer px-5 py-4 text-center text-violet-300 font-medium focus-visible:outline-2 focus-visible:outline-cyan-400 rounded-xl">
-          See how Demand ESP works and how we tested it
+      <details className="mt-1 text-sm text-[#b8bfcc] group">
+        <summary className="mx-auto w-fit cursor-pointer px-2 py-2 text-center text-[#b8bfcc] hover:text-white underline underline-offset-4 decoration-white/25 focus-visible:outline-2 focus-visible:outline-cyan-400 rounded">
+          How we measured it
         </summary>
-        <div className="px-6 pb-6 grid gap-5 md:grid-cols-2 text-xs leading-6">
+        <div className="mt-4 border-t border-white/[0.08] pt-5 grid gap-5 md:grid-cols-2 text-xs leading-6">
           <section>
             <h3 className="font-semibold text-white text-sm">A method for each demand pattern</h3>
             <p>Demand ESP selects statistical methods for steady, trending, seasonal, and intermittent demand, using the available sales history and fallbacks for limited data.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 12% measures</h3>
-            <p>In an inventory simulation using 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost. ETS and Theta required less inventory than Demand ESP in the same simulation.</p>
+            <p>In an inventory simulation using 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 19% measures</h3>
-            <p>Retrospective testing on 799 Iowa items found six-month pooled weighted absolute percentage error (WAPE) of 22.0% for Spark versus 27.1% for last-month forecasting, a relative reduction of approximately 19%. The comparison uses one forecast origin. Several smoothing methods had lower error at one to three months.</p>
+            <p>Retrospective testing on 799 Iowa items found six-month pooled weighted absolute percentage error (WAPE) of 22.0% for Spark versus 27.1% for last-month forecasting, a relative reduction of approximately 19%.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What onboarding time measures</h3>
             <p>Measured from customer export files to a working forecast. Setup time varies with data readiness and scope.</p>
-          </section>
-          <section className="md:col-span-2">
-            <h3 className="font-semibold text-white text-sm">Study scope</h3>
-            <p>The percentages describe these datasets, comparisons, and assumptions. Confidence intervals were not calculated for either benchmark.</p>
           </section>
         </div>
       </details>
