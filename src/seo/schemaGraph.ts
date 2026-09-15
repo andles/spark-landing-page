@@ -61,8 +61,8 @@ export function buildSchemaGraph(route: RouteMeta) {
       },
       {
         '@type': 'ImageObject', '@id': `${SITE_URL}/#primaryimage`,
-        url: `${SITE_URL}/hero-video-poster.jpg`, contentUrl: `${SITE_URL}/hero-video-poster.jpg`,
-        caption: 'Spark Inventory AI inventory management dashboard', width: 1280, height: 720,
+        url: `${SITE_URL}/spark-demand-esp-social-v1.jpg`, contentUrl: `${SITE_URL}/spark-demand-esp-social-v1.jpg`,
+        caption: 'Spark Inventory: AI Inventory Management That Plans Every Reorder. Powered by Demand ESP.', width: 1200, height: 630,
       },
       ...breadcrumb,
       ...(route.schema ?? []),

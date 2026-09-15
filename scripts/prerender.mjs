@@ -100,27 +100,27 @@ for (const route of routeMeta) {
   // Netlify serves directory indexes at the trailing-slash URL (301 from the
   // bare path), so canonicals must use the trailing-slash form.
   const canonical = canonicalUrl(route);
-  const socialImage = `${SITE_URL}/hero-video-poster.jpg`;
+  const socialImage = `${SITE_URL}/spark-demand-esp-social-v1.jpg`;
   const schemaGraph = buildSchemaGraph(route);
 
   const headTags = [
     `<meta name="robots" content="${robotsContent(route, previewNoindex)}">`,
     '<meta property="og:type" content="website">',
-    '<meta property="og:site_name" content="SPARK Intelligent Inventory">',
+    '<meta property="og:site_name" content="Spark Inventory">',
     '<meta property="og:locale" content="en_US">',
     `<meta property="og:title" content="${esc(route.title)}">`,
     `<meta property="og:description" content="${esc(route.description)}">`,
     `<meta property="og:url" content="${canonical}">`,
     `<meta property="og:image" content="${socialImage}">`,
     '<meta property="og:image:type" content="image/jpeg">',
-    '<meta property="og:image:width" content="1280">',
-    '<meta property="og:image:height" content="720">',
-    '<meta property="og:image:alt" content="Spark Inventory AI inventory management dashboard">',
+    '<meta property="og:image:width" content="1200">',
+    '<meta property="og:image:height" content="630">',
+    '<meta property="og:image:alt" content="Spark Inventory: AI Inventory Management That Plans Every Reorder. Powered by Demand ESP.">',
     '<meta name="twitter:card" content="summary_large_image">',
     `<meta name="twitter:title" content="${esc(route.title)}">`,
     `<meta name="twitter:description" content="${esc(route.description)}">`,
     `<meta name="twitter:image" content="${socialImage}">`,
-    '<meta name="twitter:image:alt" content="Spark Inventory AI inventory management dashboard">',
+    '<meta name="twitter:image:alt" content="Spark Inventory: AI Inventory Management That Plans Every Reorder. Powered by Demand ESP.">',
     `<script id="route-jsonld" type="application/ld+json">${jsonLd(schemaGraph)}</script>`,
     // Per-route raw head HTML (e.g. a Google Ads event snippet). Injected
     // verbatim, last, so it runs after the global gtag base tag.
