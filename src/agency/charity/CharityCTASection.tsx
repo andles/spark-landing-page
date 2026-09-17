@@ -17,14 +17,14 @@ export default function CharityCTASection() {
             <span className="bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">into funding for the work you exist to do</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#b8bfcc]">
-            A 30-minute walkthrough of intake, pricing, and channel routing, shaped around your estate and your donation mix.
+            A 20-minute walkthrough of intake, pricing, and channel routing, shaped around your estate and your donation mix.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <BookACallButton
               url={bookUrl}
               className="inline-flex h-[46px] items-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02]"
             >
-              Book a 30-Minute Demo
+              Book a 20-Minute Demo
             </BookACallButton>
             <a
               href="/contact"

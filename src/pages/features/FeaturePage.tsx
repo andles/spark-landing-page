@@ -102,7 +102,7 @@ export function FeaturePage({
                     Start Free
                   </a>
                   <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">
-                    Book a 30-Minute Demo
+                    Book a 20-Minute Demo
                   </BookACallButton>
                 </div>
                 <p className="mt-3 text-xs text-white/40">Onboard with Sparki in app or your own AI assistant over MCP.</p>

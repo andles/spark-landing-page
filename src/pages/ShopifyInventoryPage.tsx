@@ -64,7 +64,7 @@ export function ShopifyInventoryPage() {
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
-                <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a 30-Minute Demo</BookACallButton>
+                <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a 20-Minute Demo</BookACallButton>
               </div>
               <p className="mt-3 text-xs text-white/40">Connect Shopify, ask Sparki, or onboard through your AI assistant over MCP.</p>
             </ScrollReveal>

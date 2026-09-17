@@ -31,7 +31,7 @@ export const charityFaqs: CharityFaq[] = [
   {
     question: "How is a pilot structured and priced?",
     answer:
-      "A pilot starts with intake and pricing in 15 to 20 shops, measured against comparable baseline shops. Pricing depends on the scale and scope of your estate, so the practical next step is a 30-minute conversation. Book a demo and we will shape it together.",
+      "A pilot starts with intake and pricing in 15 to 20 shops, measured against comparable baseline shops. Pricing depends on the scale and scope of your estate, so the practical next step is a 20-minute conversation. Book a demo and we will shape it together.",
   },
 ];
 

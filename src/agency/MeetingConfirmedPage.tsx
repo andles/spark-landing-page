@@ -142,7 +142,7 @@ export default function MeetingConfirmedPage() {
             </div>
             <div>
               <dt className="text-[#8b95a8] text-xs font-medium uppercase tracking-wider mb-1.5">Duration</dt>
-              <dd className="text-[#f0f2f5] text-sm font-semibold">{isFishbowl ? "20 minutes" : "30 minutes"}</dd>
+              <dd className="text-[#f0f2f5] text-sm font-semibold">20 minutes</dd>
             </div>
           </dl>
           <p className="mt-5 pt-5 border-t border-white/[0.08] text-[#b8bfcc] text-sm leading-relaxed">

@@ -31,7 +31,7 @@ export default function AgencyCTASection() {
               Start Free
             </a>
             <BookACallButton className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300">
-              Book a 30-Minute Demo
+              Book a 20-Minute Demo
             </BookACallButton>
           </div>
           <p className="mt-3 text-xs text-white/40">Use Sparki in app or your own assistant over MCP. You approve every import.</p>

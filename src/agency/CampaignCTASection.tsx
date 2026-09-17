@@ -11,7 +11,7 @@ const content: Record<SupportedKind, { title: string; gradient: string; body: st
     gradient: "clients will not outgrow",
     body: "See how client workspaces, branded visibility, forecasting, and replenishment fit around the operation you already run.",
     primary: "demo",
-    microcopy: "A focused 30-minute walkthrough for your client and warehouse model.",
+    microcopy: "A focused 20-minute walkthrough for your client and warehouse model.",
     options: { source: "3pl" },
   },
   stockouts: {
@@ -43,7 +43,7 @@ export default function CampaignCTASection({ kind }: { kind: SupportedKind }) {
   );
   const demo = (
     <BookACallButton url={bookUrl} className={`${copy.primary === "demo" ? "bg-gradient-to-r from-cyan-500 to-violet-500" : "glass border border-white/15 hover:bg-white/[0.06] hover:border-white/25"} inline-flex h-[46px] items-center rounded-full px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02]`}>
-      Book a 30-Minute Demo
+      Book a 20-Minute Demo
     </BookACallButton>
   );
 
