@@ -7,6 +7,7 @@ import { homeFaqs } from '../agency/homeFaqs';
 import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
+import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -364,6 +365,29 @@ export const routeMeta: RouteMeta[] = [
     ],
   },
   {
+    path: '/inventory-reorder-walkthrough',
+    title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark',
+    description:
+      'Watch Spark connect sales history, demand forecasting, seasonality, stock, incoming supply, purchasing constraints, and human review into a draft purchase order.',
+    lastModified: '2026-09-17',
+    schema: [
+      {
+        '@type': 'VideoObject',
+        '@id': `${SITE_URL}/inventory-reorder-walkthrough/#video`,
+        name: 'From Demand Signal to Reviewed Purchase Order',
+        description: 'A three minute Spark Inventory product walkthrough using clearly labeled example data.',
+        thumbnailUrl: [`${SITE_URL}/walkthrough/full-reorder-walkthrough-poster.png`],
+        contentUrl: `${SITE_URL}/walkthrough/full-reorder-walkthrough.mp4`,
+        uploadDate: '2026-09-17',
+        duration: 'PT2M50S',
+        inLanguage: 'en',
+        transcript: inventoryReorderWalkthroughTranscript.join(' '),
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        isPartOf: { '@id': `${SITE_URL}/inventory-reorder-walkthrough/#webpage` },
+      },
+    ],
+  },
+  {
     path: '/partners',
     title: 'Partners - SPARK Inventory',
     description: 'Partner with SPARK: integrations, referrals, and solution partnerships for inventory-driven businesses.',
@@ -378,7 +402,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/sitemap',
     title: 'Sitemap - SPARK Inventory',
     description: 'Browse every public Spark Inventory product, solution, company, support, and legal page.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-09-17',
     webPageType: 'CollectionPage',
   },
   {

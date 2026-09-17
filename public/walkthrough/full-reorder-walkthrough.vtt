@@ -1,0 +1,273 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.508
+A reorder recommendation should be more than a
+
+2
+00:00:02.508 --> 00:00:03.046
+number.
+
+3
+00:00:03.239 --> 00:00:05.252
+It should show you what demand is doing.
+
+4
+00:00:05.306 --> 00:00:07.279
+what you already have. what is on the
+
+5
+00:00:07.279 --> 00:00:10.453
+way. and what your team should review next.
+
+6
+00:00:11.134 --> 00:00:13.781
+This is a Spark demo workspace using example
+
+7
+00:00:13.781 --> 00:00:14.307
+data.
+
+8
+00:00:14.501 --> 00:00:16.885
+We will follow one item from sales history
+
+9
+00:00:16.939 --> 00:00:19.911
+through the planning decision. then show the approval
+
+10
+00:00:19.911 --> 00:00:22.504
+step with a second captured recommendation.
+
+11
+00:00:22.813 --> 00:00:24.489
+Start with the item itself.
+
+12
+00:00:24.868 --> 00:00:28.003
+Spark brings the current stock. incoming supply. days
+
+13
+00:00:28.003 --> 00:00:31.649
+of cover. planning rate. stock health. recent sales.
+
+14
+00:00:31.649 --> 00:00:34.799
+and the current recommendation into the same view.
+
+15
+00:00:35.271 --> 00:00:37.756
+The demand view separates what happened from what
+
+16
+00:00:37.756 --> 00:00:39.106
+Spark expects next.
+
+17
+00:00:39.485 --> 00:00:42.287
+Completed months remain visible as actuals.
+
+18
+00:00:42.667 --> 00:00:45.395
+The forecast continues forward with a range. so
+
+19
+00:00:45.395 --> 00:00:47.372
+the team can see both the expected level
+
+20
+00:00:47.426 --> 00:00:49.195
+and the uncertainty around it.
+
+21
+00:00:49.505 --> 00:00:51.029
+Seasonality matters too.
+
+22
+00:00:51.118 --> 00:00:53.742
+This item has a clear annual shape. with
+
+23
+00:00:53.742 --> 00:00:55.638
+demand rising into the middle of the year
+
+24
+00:00:55.693 --> 00:00:57.067
+and falling afterward.
+
+25
+00:00:57.539 --> 00:01:00.813
+Demand ESP reads that pattern for the item
+
+26
+00:01:00.813 --> 00:01:02.984
+instead of forcing every product into the same
+
+27
+00:01:02.984 --> 00:01:03.917
+monthly average.
+
+28
+00:01:04.389 --> 00:01:06.599
+Now check the operational context.
+
+29
+00:01:06.978 --> 00:01:09.486
+The warehouse view shows current stock. the reorder
+
+30
+00:01:09.486 --> 00:01:12.206
+point. incoming supply. and the planning rate.
+
+31
+00:01:12.678 --> 00:01:15.348
+Timing still matters. even when another order is
+
+32
+00:01:15.348 --> 00:01:16.362
+already on the way.
+
+33
+00:01:16.556 --> 00:01:19.296
+The purchasing tab adds the vendor. minimum order
+
+34
+00:01:19.296 --> 00:01:22.829
+quantity. cost. lead time. and incoming delivery date.
+
+35
+00:01:23.208 --> 00:01:25.658
+That keeps the recommendation grounded in how the
+
+36
+00:01:25.658 --> 00:01:28.863
+item can actually be replenished. instead of treating
+
+37
+00:01:28.863 --> 00:01:31.049
+the forecast as an isolated chart.
+
+38
+00:01:31.858 --> 00:01:34.819
+Spark brings those signals together into a recommendation
+
+39
+00:01:34.819 --> 00:01:36.181
+your team can inspect.
+
+40
+00:01:36.491 --> 00:01:38.801
+The goal is to make the demand. stock.
+
+41
+00:01:38.801 --> 00:01:42.168
+supply. and constraints visible before anyone commits cash
+
+42
+00:01:42.168 --> 00:01:43.182
+to another order.
+
+43
+00:01:43.492 --> 00:01:45.512
+The existing purchase order stays part of the
+
+44
+00:01:45.512 --> 00:01:46.189
+decision.
+
+45
+00:01:46.441 --> 00:01:50.341
+The inbound quantity. expected delivery. supplier. line items.
+
+46
+00:01:50.341 --> 00:01:53.074
+and total are all available for review.
+
+47
+00:01:53.546 --> 00:01:56.332
+That context helps prevent a duplicate order made
+
+48
+00:01:56.332 --> 00:01:57.950
+from an incomplete stock count.
+
+49
+00:01:58.515 --> 00:02:00.442
+To show the approval step. here is a
+
+50
+00:02:00.442 --> 00:02:02.513
+second captured demo recommendation.
+
+51
+00:02:03.078 --> 00:02:05.922
+Sparki found an item needing replenishment. prepared a
+
+52
+00:02:05.922 --> 00:02:09.347
+purchase order proposal. and showed the vendor. destination.
+
+53
+00:02:09.347 --> 00:02:13.236
+quantity. unit cost. and estimated total before creating
+
+54
+00:02:13.236 --> 00:02:13.948
+anything.
+
+55
+00:02:14.757 --> 00:02:18.174
+After review. the user selected Create P O.
+
+56
+00:02:18.484 --> 00:02:20.794
+Spark created a draft purchase order with the
+
+57
+00:02:20.794 --> 00:02:23.747
+item and supplier details already filled in.
+
+58
+00:02:24.126 --> 00:02:26.371
+The draft remained under team control.
+
+59
+00:02:26.843 --> 00:02:28.561
+It was not issued or emailed to the
+
+60
+00:02:28.561 --> 00:02:29.122
+vendor.
+
+61
+00:02:29.374 --> 00:02:31.777
+The same workflow can begin in Sparki or
+
+62
+00:02:31.777 --> 00:02:33.720
+through Spark's MCP connector.
+
+63
+00:02:34.285 --> 00:02:37.118
+Ask what needs attention. inspect the evidence. and
+
+64
+00:02:37.118 --> 00:02:38.875
+prepare a draft for review.
+
+65
+00:02:39.254 --> 00:02:42.725
+Forecasting is available free. while purchase order workflows
+
+66
+00:02:42.725 --> 00:02:44.958
+are part of Spark's operating plans.
+
+67
+00:02:45.639 --> 00:02:48.217
+See the full walkthrough at Spark Inventory dot
+
+68
+00:02:48.217 --> 00:02:48.975
+com.

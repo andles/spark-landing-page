@@ -34,6 +34,7 @@ const groups = [
       ['/features/warehousing', 'Warehouse Management'],
       ['/features/accounting', 'Accounting & QuickBooks'],
       ['/features/tools-services', 'AI Tools, Sparki & MCP'],
+      ['/inventory-reorder-walkthrough', 'Inventory Reorder Walkthrough'],
     ],
   },
   {

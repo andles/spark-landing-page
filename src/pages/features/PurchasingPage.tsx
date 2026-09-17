@@ -1,4 +1,5 @@
-import { Truck } from 'lucide-react';
+import { ArrowRight, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { FeaturePage } from './FeaturePage';
 
 const features = [
@@ -51,6 +52,18 @@ export function PurchasingPage() {
       gradientFrom="from-violet-500"
       gradientTo="to-purple-400"
       features={features}
+      showcase={
+        <section className="px-6 pb-16 md:px-8 lg:pb-24">
+          <div className="mx-auto flex max-w-[1120px] flex-col items-start justify-between gap-5 rounded-3xl border border-cyan-300/15 bg-cyan-300/[0.035] p-7 sm:flex-row sm:items-center sm:p-9">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-300">See the full workflow</p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">From demand signal to reviewed draft PO</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#9da8b9]">Watch a three minute walkthrough using real Spark screens and clearly labeled example data.</p>
+            </div>
+            <Link to="/inventory-reorder-walkthrough" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-100">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+          </div>
+        </section>
+      }
       prevCategory={{ name: 'Inventory', href: '/features/inventory' }}
       nextCategory={{ name: 'Sales', href: '/features/sales' }}
     />
