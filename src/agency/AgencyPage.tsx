@@ -15,6 +15,8 @@ import AgencyFooter from "./AgencyFooter";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import MobileHeroShowcase from "./MobileHeroShowcase";
 import HeroVideoShowcase from "./HeroVideoShowcase";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function AgencyPage() {
   // Header + footer link to #solutions / #core-capabilities / #integrations /
@@ -30,6 +32,14 @@ export default function AgencyPage() {
           <div className="mx-auto max-w-[1100px]">
             <MobileHeroShowcase />
             <HeroVideoShowcase />
+            <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6 sm:flex-row sm:items-center sm:p-8">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-300">3 minute product walkthrough</p>
+                <h2 className="mt-2 text-xl font-semibold text-white">See a reorder decision from demand signal to reviewed draft PO</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8b95a8]">Real product screens, clearly labeled example data, and the full planning context behind the action.</p>
+              </div>
+              <Link to="/inventory-reorder-walkthrough" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-200">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
           </div>
         </section>
         <AgencyTrustBar />
