@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useCtaLinks } from "./links";
 
 const navLinks = [
+  { href: "#price-compare", label: "Pricing" },
   { href: "#offer", label: "Offer" },
   { href: "#migrate", label: "What Spark adds" },
   { href: "#reports", label: "Compare" },

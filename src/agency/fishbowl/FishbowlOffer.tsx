@@ -38,7 +38,7 @@ export default function FishbowlOffer() {
             Free until your Fishbowl contract ends.
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#9da7b8] lg:text-lg">
-            Start proving the forecast before you pay for another inventory system.
+            The ongoing Free plan gives any operator a monthly forecast. The Fishbowl bridge goes further: run Spark alongside your current system at no charge through the end of your contract.
           </p>
         </ScrollReveal>
 
@@ -66,7 +66,7 @@ export default function FishbowlOffer() {
             Free access runs to the end date of your current Fishbowl agreement. Migration and onboarding are included.
           </p>
           <a href={signupUrl} className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-5 text-sm font-semibold text-white transition hover:scale-[1.02] sm:self-auto">
-            Start Free
+            Start Forecasting Free
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </ScrollReveal>

@@ -62,9 +62,25 @@ export default function FishbowlHero() {
             Spark forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
           </p>
 
+          <div className="animate-fade-up delay-300 mx-auto mt-5 grid max-w-[760px] gap-2.5 text-left sm:mt-6 sm:grid-cols-2">
+            <a href="#price-compare" className="group rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] px-4 py-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.1]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-cyan-300">Ongoing free plan</span>
+              <strong className="mt-1 block text-sm font-semibold text-white">Forecast monthly for $0</strong>
+              <span className="mt-1 block text-xs text-[#8f99a9]">Upgrade when you need the forecast to stay live.</span>
+            </a>
+            <a href="#offer" className="group rounded-2xl border border-violet-300/20 bg-violet-300/[0.06] px-4 py-3 transition hover:border-violet-300/35 hover:bg-violet-300/[0.1]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-violet-300">Fishbowl bridge</span>
+              <strong className="mt-1 block text-sm font-semibold text-white">Run Spark free until your contract ends</strong>
+              <span className="mt-1 block text-xs text-[#8f99a9]">Migration and onboarding are included.</span>
+            </a>
+          </div>
+          <p className="animate-fade-up delay-300 mx-auto mt-2 text-[11px] text-white/40 sm:text-xs">
+            Pulse is $99/month when you need live intelligence. Paid plans include unlimited users.
+          </p>
+
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
             <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
-              Start Free
+              Start Forecasting Free
             </a>
             <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
               {BOOKING_CTA}

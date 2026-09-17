@@ -15,6 +15,7 @@ import FishbowlHeader from "./fishbowl/FishbowlHeader";
 import FishbowlHero from "./fishbowl/FishbowlHero";
 import MarketingVideo from "./MarketingVideo";
 import { fishbowlVideo } from "./fishbowl/fishbowlVideo";
+import FishbowlPriceComparison from "./fishbowl/FishbowlPriceComparison";
 import FishbowlOffer from "./fishbowl/FishbowlOffer";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
@@ -50,6 +51,7 @@ export default function FishbowlPage() {
             </div>
           </details>
         </div>
+        <FishbowlPriceComparison />
         <FishbowlOffer />
         <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />
