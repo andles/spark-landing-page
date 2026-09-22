@@ -55,7 +55,8 @@ describe('PostHog capture boundary', () => {
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageview', $set_once: { $initial_current_url: 'private-reset-token' }, properties: { distinct_id: 'anonymous', route: '/', $current_url: 'https://sparkinventory.com/reset?token=secret', $title: 'Customer Name', $set: { email: 'private@example.com' }, $set_once: { $initial_current_url: 'secret' }, record: { name: 'private' } } });
     expect(result.$set_once).toBeUndefined();
-    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
+    // The page URL in this suite carries ?utm_source=google, so the landing hit reports it.
+    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', utm_source: 'google', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
     expect(filter({ event: '$autocapture', properties: {} })).toBeNull();
   });
   it('does not let an unavailable SDK block navigation', async () => {
@@ -209,5 +210,81 @@ describe('meeting_booked', () => {
     document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
     analytics.captureMeetingBooked();
     expect(sdk.capture).toHaveBeenCalledWith('meeting_booked', expect.objectContaining({ booking_source: 'fishbowl_lp' }));
+  });
+});
+
+describe('coverage for bot filtering, channels, scroll depth and web vitals', () => {
+  it('keeps the user agent, referring domain and timezone but never the full referrer', async () => {
+    const analytics = await import('./analytics');
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/', $raw_user_agent: 'Mozilla/5.0', $referring_domain: 'www.google.com', $referrer: 'https://www.google.com/search?q=private', $timezone: 'America/Denver' } });
+    expect(result.properties).toMatchObject({ $raw_user_agent: 'Mozilla/5.0', $referring_domain: 'www.google.com', $timezone: 'America/Denver', $host: 'sparkinventory.com' });
+    expect(result.properties.$referrer).toBeUndefined();
+  });
+  it('enables page leave and web vitals without network timing', async () => {
+    const analytics = await import('./analytics');
+    analytics.capturePageview('/');
+    expect(sdk.init.mock.calls[0][1]).toMatchObject({ capture_pageleave: true, capture_performance: { web_vitals: true, network_timing: false } });
+  });
+  it('labels page leave with a route and redacts the previous path', async () => {
+    const analytics = await import('./analytics');
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageleave', properties: { $current_url: 'https://sparkinventory.com/r/private-prospect?x=1', $prev_pageview_pathname: '/r/private-prospect', $prev_pageview_max_scroll_percentage: 0.8, $prev_pageview_duration: 12 } });
+    expect(result.properties).toMatchObject({ route: '/r/:slug', $prev_pageview_pathname: '/r/:slug', $prev_pageview_max_scroll_percentage: 0.8, $prev_pageview_duration: 12, $current_url: 'https://sparkinventory.com/r/:slug' });
+  });
+  it('keeps web vitals values but not their attribution objects', async () => {
+    const analytics = await import('./analytics');
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$web_vitals', properties: { $current_url: 'https://sparkinventory.com/pricing?gclid=x', $web_vitals_LCP_value: 2100, $web_vitals_LCP_event: { attribution: { element: 'div.private' } } } });
+    expect(result.properties).toMatchObject({ route: '/pricing', $web_vitals_LCP_value: 2100 });
+    expect(result.properties.$web_vitals_LCP_event).toBeUndefined();
+  });
+  it('reports campaign values only on the page whose URL carries them', async () => {
+    const analytics = await import('./analytics');
+    window.location.search = '';
+    analytics.capturePageview('/pricing');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/pricing', gclid: 'old-click', utm_source: 'google', initial_referring_domain: 'www.google.com' } });
+    expect(result.properties.gclid).toBeUndefined();
+    expect(result.properties.utm_source).toBeUndefined();
+    expect(result.properties.initial_referring_domain).toBe('www.google.com');
+  });
+  it('reports a new ad click instead of the stored first-touch one', async () => {
+    const analytics = await import('./analytics');
+    window.location.search = '?gclid=second-click';
+    analytics.capturePageview('/pricing');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/pricing', gclid: 'first-click', utm_source: 'google' } });
+    expect(result.properties.gclid).toBe('second-click');
+    expect(result.properties.utm_source).toBeUndefined();
+  });
+  it('keeps what the cookieless hash needs and drops engagement events after rejection', async () => {
+    const analytics = await import('./analytics');
+    document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $referring_domain: 'www.google.com', $browser: 'Chrome' } });
+    expect(result.properties).toMatchObject({ distinct_id: '$posthog_cookieless', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $host: 'sparkinventory.com' });
+    expect(result.properties.$referring_domain).toBeUndefined();
+    expect(result.properties.$browser).toBeUndefined();
+    expect(filter({ event: '$pageleave', properties: { $cookieless_mode: true } })).toBeNull();
+    expect(filter({ event: '$web_vitals', properties: { $cookieless_mode: true } })).toBeNull();
+  });
+  it('lets a team device opt out with spark_internal and back in', async () => {
+    const store = new Map<string, string>();
+    (window as unknown as { localStorage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'> }).localStorage = { getItem: (k) => store.get(k) ?? null, setItem: (k, v) => { store.set(k, v); }, removeItem: (k) => { store.delete(k); } };
+    const analytics = await import('./analytics');
+    window.location.search = '?spark_internal=1';
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: '$pageview', properties: { route: '/' } })).toBeNull();
+    expect(sdk.startSessionRecording).not.toHaveBeenCalled();
+    window.location.search = '';
+    expect(filter({ event: '$pageview', properties: { route: '/' } })).toBeNull();
+    window.location.search = '?spark_internal=0';
+    expect(filter({ event: '$pageview', properties: { route: '/' } })).not.toBeNull();
   });
 });
