@@ -211,7 +211,7 @@ function PartnersPageClassic() {
                             LinkedIn Profile
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="linkedin"
                             value={formData.linkedin}
                             onChange={(e) => updateField('linkedin', e.target.value)}
@@ -224,11 +224,11 @@ function PartnersPageClassic() {
                             Company Website
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="website"
                             value={formData.website}
                             onChange={(e) => updateField('website', e.target.value)}
-                            placeholder="https://example.com"
+                            placeholder="example.com"
                             className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all text-slate-800 placeholder:text-slate-400"
                           />
                         </div>
@@ -501,7 +501,7 @@ function PartnersPageNextGen() {
                             LinkedIn Profile
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="linkedin-ng"
                             value={formData.linkedin}
                             onChange={(e) => updateField('linkedin', e.target.value)}
@@ -514,11 +514,11 @@ function PartnersPageNextGen() {
                             Company Website
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="website-ng"
                             value={formData.website}
                             onChange={(e) => updateField('website', e.target.value)}
-                            placeholder="https://example.com"
+                            placeholder="example.com"
                             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all text-white placeholder:text-white/30"
                           />
                         </div>
