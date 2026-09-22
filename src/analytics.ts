@@ -14,10 +14,17 @@ const allowedProperties = new Set([
   '$session_id', '$window_id', '$lib', '$lib_version', '$browser', '$browser_version',
   '$os', '$os_version', '$device_type', '$screen_height', '$screen_width',
   '$viewport_height', '$viewport_width', '$is_identified', '$process_person_profile',
-  '$groups', '$group_type', '$group_key', 'surface', 'route', 'signup_source',
-  'utm_source', 'utm_medium', 'utm_campaign', 'initial_referring_domain',
+  '$groups', '$group_type', '$group_key', 'surface', 'route', 'signup_source', 'booking_source',
+  'initial_referring_domain',
 ]);
-const allowedEvents = new Set(['$pageview', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked']);
+// First-touch campaign parameters. Keep this list aligned with the app, which
+// reads the same cross-subdomain cookie so signups inherit the landing click.
+export const attributionParams = [
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
+] as const;
+attributionParams.forEach((key) => allowedProperties.add(key));
+const allowedEvents = new Set(['$pageview', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'meeting_booked']);
+const meetingBookedKey = 'spark:meeting_booked';
 let initialized = false;
 let appliedConsent: ReturnType<typeof getAnalyticsConsent> = 'pending';
 const suppressed = false;
@@ -32,7 +39,7 @@ function replayAllowed(): boolean {
 function registerAttribution(): void {
   const campaign: Record<string, string> = {};
   const params = new URLSearchParams(window.location.search);
-  ['utm_source', 'utm_medium', 'utm_campaign'].forEach((key) => {
+  attributionParams.forEach((key) => {
     const value = params.get(key);
     if (value) campaign[key] = value.slice(0, 200);
   });
@@ -85,7 +92,7 @@ export function initializeAnalytics(): boolean {
     persistence: 'localStorage+cookie',
     cross_subdomain_cookie: true,
     cookieWinsOnConflict: true,
-    cookie_persisted_properties: ['utm_source', 'utm_medium', 'utm_campaign', 'initial_referring_domain'],
+    cookie_persisted_properties: [...attributionParams, 'initial_referring_domain'],
     secure_cookie: true,
     opt_out_persistence_by_default: true,
     autocapture: false,
@@ -137,7 +144,9 @@ export function initializeAnalytics(): boolean {
         properties.$cookieless_mode = true;
       }
       properties.surface = 'landing';
-      if (event.event === '$pageview') {
+      // Every captured event carries a route label. Rebuild the URL from it so
+      // $current_url filters work for clicks too, without leaking the raw query.
+      if (typeof properties.route === 'string') {
         properties.$pathname = properties.route;
         properties.$current_url = `https://sparkinventory.com${properties.route}`;
       }
@@ -171,3 +180,15 @@ export function captureCta(event: 'signup_clicked' | 'demo_clicked'): void {
   });
 }
 
+// Calendly redirects to /meeting-confirmed after a real booking. Count it once
+// per browser session so a refresh or a later consent change does not re-count.
+export function captureMeetingBooked(): void {
+  runAnalytics(() => {
+    if (!initializeAnalytics()) return;
+    try { if (window.sessionStorage.getItem(meetingBookedKey)) return; } catch { /* storage unavailable */ }
+    const params = new URLSearchParams(window.location.search);
+    const bookingSource = params.get('source') === 'fishbowl_lp' || params.get('utm_content') === 'fishbowl_lp' ? 'fishbowl_lp' : 'demo';
+    posthog.capture('meeting_booked', { route: '/meeting-confirmed', booking_source: bookingSource });
+    try { window.sessionStorage.setItem(meetingBookedKey, '1'); } catch { /* storage unavailable */ }
+  });
+}
