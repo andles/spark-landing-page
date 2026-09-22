@@ -50,7 +50,7 @@ function PartnersPageClassic() {
     setIsSubmitting(true);
     setSubmitError('');
     try {
-      const res = await fetch('/api/partner-application', {
+      const res = await fetch('https://forms.sparkinventory.com/api/partner-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -356,7 +356,7 @@ function PartnersPageNextGen() {
     setIsSubmitting(true);
     setSubmitError('');
     try {
-      const res = await fetch('/api/partner-application', {
+      const res = await fetch('https://forms.sparkinventory.com/api/partner-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
