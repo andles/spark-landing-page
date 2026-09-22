@@ -1,7 +1,7 @@
 import { getAnalyticsConsent, subscribeAnalyticsConsent } from './analyticsConsent';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { captureCta, capturePageview, initializeAnalytics } from './analytics';
+import { analyticsRoute, captureCta, captureMeetingBooked, capturePageview, initializeAnalytics } from './analytics';
 
 export default function Analytics() {
   const { pathname } = useLocation();
@@ -14,6 +14,7 @@ export default function Analytics() {
     if (previous.current === key) return;
     previous.current = key;
     capturePageview(pathname);
+    if (analyticsRoute(pathname) === '/meeting-confirmed') captureMeetingBooked();
   }, [pathname, consentRevision]);
   useEffect(() => {
     const trackLink = (event: MouseEvent) => {

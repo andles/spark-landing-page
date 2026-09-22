@@ -162,3 +162,52 @@ it.each(['/meeting-confirmed/', '/MEETING-CONFIRMED', '/book-a-call/', '/r/prosp
   analytics.capturePageview(pathname);
   expect(sdk.startSessionRecording).not.toHaveBeenCalled();
 });
+
+it('keeps Google click ids and full UTM attribution for first-touch analysis', async () => {
+  const analytics = await import('./analytics');
+  window.location.search = '?gclid=Cj0abc&gbraid=gb1&wbraid=wb1&utm_source=google&utm_medium=cpc&utm_campaign=brand&utm_term=fishbowl&utm_content=ad1&email=private@example.com';
+  analytics.capturePageview('/pricing');
+  expect(sdk.register_once).toHaveBeenCalledWith({ gclid: 'Cj0abc', gbraid: 'gb1', wbraid: 'wb1', utm_source: 'google', utm_medium: 'cpc', utm_campaign: 'brand', utm_term: 'fishbowl', utm_content: 'ad1', initial_referring_domain: 'search.example' });
+  const config = sdk.init.mock.calls[0][1];
+  expect(config.cookie_persisted_properties).toEqual(expect.arrayContaining(['gclid', 'gbraid', 'wbraid', 'utm_term', 'utm_content']));
+  const result = config.before_send({ event: '$pageview', properties: { route: '/pricing', gclid: 'Cj0abc', utm_term: 'fishbowl', email: 'private@example.com' } });
+  expect(result.properties).toMatchObject({ gclid: 'Cj0abc', utm_term: 'fishbowl' });
+  expect(result.properties.email).toBeUndefined();
+});
+
+it('gives click events the same route-derived page URL as pageviews', async () => {
+  const analytics = await import('./analytics');
+  window.location.pathname = '/fishbowl-alternative';
+  analytics.captureCta('demo_clicked');
+  expect(sdk.capture).toHaveBeenCalledWith('demo_clicked', { route: '/fishbowl-alternative' });
+  const filter = sdk.init.mock.calls[0][1].before_send;
+  const result = filter({ event: 'demo_clicked', properties: { route: '/fishbowl-alternative', $current_url: 'https://sparkinventory.com/fishbowl-alternative?secret=1' } });
+  expect(result.properties).toMatchObject({ $current_url: 'https://sparkinventory.com/fishbowl-alternative', $pathname: '/fishbowl-alternative' });
+});
+
+describe('meeting_booked', () => {
+  beforeEach(() => {
+    const store = new Map<string, string>();
+    window.location.pathname = '/meeting-confirmed';
+    window.location.search = '?source=fishbowl_lp&invitee_full_name=Private%20Person';
+    vi.stubGlobal('sessionStorage', { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => { store.set(k, v); } });
+    (window as unknown as { sessionStorage: Storage }).sessionStorage = globalThis.sessionStorage;
+  });
+  it('captures one booking per session without invitee details', async () => {
+    const analytics = await import('./analytics');
+    analytics.captureMeetingBooked();
+    analytics.captureMeetingBooked();
+    const bookings = sdk.capture.mock.calls.filter(([name]) => name === 'meeting_booked');
+    expect(bookings).toEqual([['meeting_booked', { route: '/meeting-confirmed', booking_source: 'fishbowl_lp' }]]);
+    expect(sdk.init.mock.calls[0][1].before_send({ event: 'meeting_booked', properties: { route: '/meeting-confirmed', booking_source: 'demo' } })).not.toBeNull();
+  });
+  it('waits for a consent choice before counting', async () => {
+    const analytics = await import('./analytics');
+    document.cookie = '';
+    analytics.captureMeetingBooked();
+    expect(sdk.capture).not.toHaveBeenCalled();
+    document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
+    analytics.captureMeetingBooked();
+    expect(sdk.capture).toHaveBeenCalledWith('meeting_booked', expect.objectContaining({ booking_source: 'fishbowl_lp' }));
+  });
+});
