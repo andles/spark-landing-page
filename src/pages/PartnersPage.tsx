@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Users, DollarSign, BarChart3, Handshake, Sparkles, Check } from 'lucide-react';
 import { Container, Button } from '../components';
@@ -38,18 +38,33 @@ function PartnersPageClassic() {
     website: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Partner application submitted:', formData);
-    setIsSubmitted(true);
-  };
+    setIsSubmitting(true);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/partner-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Submission failed');
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError('Something went wrong. Please try again or email us at andy@sparkinventory.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [formData]);
 
-  const isFormValid = formData.email.includes('@') && formData.email.includes('.') && 
+  const isFormValid = formData.email.includes('@') && formData.email.includes('.') &&
                       formData.fullName.trim().length > 0 && formData.company.trim().length > 0;
 
   return (
@@ -211,7 +226,7 @@ function PartnersPageClassic() {
                             LinkedIn Profile
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="linkedin"
                             value={formData.linkedin}
                             onChange={(e) => updateField('linkedin', e.target.value)}
@@ -224,11 +239,11 @@ function PartnersPageClassic() {
                             Company Website
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="website"
                             value={formData.website}
                             onChange={(e) => updateField('website', e.target.value)}
-                            placeholder="https://example.com"
+                            placeholder="example.com"
                             className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all text-slate-800 placeholder:text-slate-400"
                           />
                         </div>
@@ -238,11 +253,14 @@ function PartnersPageClassic() {
                         type="submit"
                         size="lg"
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={!isFormValid}
+                        disabled={!isFormValid || isSubmitting}
                       >
-                        Submit Application
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2" />}
                       </Button>
+                      {submitError && (
+                        <p className="text-red-500 text-sm text-center mt-2">{submitError}</p>
+                      )}
 
                       <p className="text-center text-sm text-slate-500">
                         Questions? Email <a href="mailto:partners@sparkinventory.com" className="text-violet-600 hover:underline">partners@sparkinventory.com</a>
@@ -326,18 +344,33 @@ function PartnersPageNextGen() {
     website: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Partner application submitted:', formData);
-    setIsSubmitted(true);
-  };
+    setIsSubmitting(true);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/partner-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Submission failed');
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError('Something went wrong. Please try again or email us at andy@sparkinventory.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [formData]);
 
-  const isFormValid = formData.email.includes('@') && formData.email.includes('.') && 
+  const isFormValid = formData.email.includes('@') && formData.email.includes('.') &&
                       formData.fullName.trim().length > 0 && formData.company.trim().length > 0;
 
   return (
@@ -501,7 +534,7 @@ function PartnersPageNextGen() {
                             LinkedIn Profile
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="linkedin-ng"
                             value={formData.linkedin}
                             onChange={(e) => updateField('linkedin', e.target.value)}
@@ -514,11 +547,11 @@ function PartnersPageNextGen() {
                             Company Website
                           </label>
                           <input
-                            type="url"
+                            type="text"
                             id="website-ng"
                             value={formData.website}
                             onChange={(e) => updateField('website', e.target.value)}
-                            placeholder="https://example.com"
+                            placeholder="example.com"
                             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all text-white placeholder:text-white/30"
                           />
                         </div>
@@ -527,11 +560,14 @@ function PartnersPageNextGen() {
                       <button
                         type="submit"
                         className="w-full py-3 px-6 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl text-white font-semibold text-lg transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                        disabled={!isFormValid}
+                        disabled={!isFormValid || isSubmitting}
                       >
-                        Submit Application
-                        <ArrowRight className="w-5 h-5 ml-2 inline" />
+                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2 inline" />}
                       </button>
+                      {submitError && (
+                        <p className="text-red-400 text-sm text-center mt-2">{submitError}</p>
+                      )}
 
                       <p className="text-center text-sm text-white/40">
                         Questions? Email <a href="mailto:partners@sparkinventory.com" className="text-cyan-400 hover:underline">partners@sparkinventory.com</a>
