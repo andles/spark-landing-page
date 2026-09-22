@@ -251,6 +251,15 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(result.properties.utm_source).toBeUndefined();
     expect(result.properties.initial_referring_domain).toBe('www.google.com');
   });
+  it('reports a new ad click instead of the stored first-touch one', async () => {
+    const analytics = await import('./analytics');
+    window.location.search = '?gclid=second-click';
+    analytics.capturePageview('/pricing');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/pricing', gclid: 'first-click', utm_source: 'google' } });
+    expect(result.properties.gclid).toBe('second-click');
+    expect(result.properties.utm_source).toBeUndefined();
+  });
   it('keeps what the cookieless hash needs and drops engagement events after rejection', async () => {
     const analytics = await import('./analytics');
     document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';

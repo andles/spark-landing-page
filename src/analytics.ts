@@ -184,7 +184,11 @@ export function initializeAnalytics(): boolean {
       // visit from the browser would repeat the first ad click and PostHog
       // would classify it as that paid channel.
       const pageParams = new URLSearchParams(window.location.search);
-      attributionParams.forEach((key) => { if (!pageParams.has(key)) delete properties[key]; });
+      attributionParams.forEach((key) => {
+        const value = pageParams.get(key);
+        if (value) properties[key] = value.slice(0, 200);
+        else delete properties[key];
+      });
       if (consent === 'rejected') {
         // Discard any event queued under a previously identified session.
         if (event.properties.$cookieless_mode !== true || !cookielessEvents.has(event.event)) return null;
