@@ -80,28 +80,32 @@ async function handlePartnerApplication(
     );
   }
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "Spark Partners <partners@sparkinventory.com>",
-      to: [NOTIFICATION_EMAIL],
-      reply_to: data.email,
-      subject: `Partner Application: ${data.fullName} — ${data.company}`,
-      html: buildEmailHtml(data),
-    }),
-  });
+  console.log("Partner application received:", JSON.stringify(data));
 
-  if (!res.ok) {
-    const body = await res.text();
-    console.error("Resend API error:", res.status, body);
-    return Response.json(
-      { error: "Failed to send notification" },
-      { status: 502 }
-    );
+  if (env.RESEND_API_KEY) {
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${env.RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Spark Partners <partners@sparkinventory.com>",
+          to: [NOTIFICATION_EMAIL],
+          reply_to: data.email,
+          subject: `Partner Application: ${data.fullName} — ${data.company}`,
+          html: buildEmailHtml(data),
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.text();
+        console.error("Resend API error:", res.status, body);
+      }
+    } catch (err) {
+      console.error("Failed to send partner application email:", err);
+    }
   }
 
   return Response.json(
