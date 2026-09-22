@@ -55,7 +55,8 @@ describe('PostHog capture boundary', () => {
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageview', $set_once: { $initial_current_url: 'private-reset-token' }, properties: { distinct_id: 'anonymous', route: '/', $current_url: 'https://sparkinventory.com/reset?token=secret', $title: 'Customer Name', $set: { email: 'private@example.com' }, $set_once: { $initial_current_url: 'secret' }, record: { name: 'private' } } });
     expect(result.$set_once).toBeUndefined();
-    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
+    // The page URL in this suite carries ?utm_source=google, so the landing hit reports it.
+    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', utm_source: 'google', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
     expect(filter({ event: '$autocapture', properties: {} })).toBeNull();
   });
   it('does not let an unavailable SDK block navigation', async () => {
