@@ -3,6 +3,12 @@
   "name": "server",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-08-29",
+  "routes": [
+    {
+      "pattern": "forms.sparkinventory.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist/client",
     "binding": "ASSETS",
