@@ -8,6 +8,9 @@ const SORO_EMBED_URL =
 export default function BlogPage() {
   const embedHostRef = useRef<HTMLDivElement>(null);
   const [embedFailed, setEmbedFailed] = useState(false);
+  const [edgeHtml] = useState(() =>
+    typeof document === 'undefined' ? '' : document.getElementById('soro-blog')?.innerHTML ?? '',
+  );
 
   useEffect(() => {
     const embedHost = embedHostRef.current;
@@ -44,7 +47,10 @@ export default function BlogPage() {
 
         <section className="border-t border-white/[0.06] px-6 py-12 md:px-8 lg:py-16">
           <div ref={embedHostRef} className="mx-auto min-h-[640px] max-w-[1180px]">
-            <div id="soro-blog" />
+            {/* The edge function (netlify/edge-functions/soro-blog.ts) fills this
+                with crawlable article links or the article text. Hydrating
+                with that same markup keeps it until Soro's widget renders. */}
+            <div id="soro-blog" dangerouslySetInnerHTML={{ __html: edgeHtml }} />
             {embedFailed && (
               <div role="status" className="rounded-3xl border border-white/[0.08] bg-white/[0.025] px-6 py-16 text-center">
                 <p className="text-lg font-semibold text-white">The Spark blog is being prepared.</p>
