@@ -16,10 +16,14 @@ function upsertMeta(selector: string, attribute: 'name' | 'property', key: strin
 // Keeps the search and social metadata coherent after client-side navigation.
 // Initial-load values come from the prerendered HTML.
 export default function RouteMetaUpdater() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
     const isDynamicUtilityRoute = pathname === '/book-a-call' || pathname.startsWith('/r/');
+    // Soro article URLs (/blog/?post=<slug>) get their head tags from the edge
+    // function and Soro's widget; resetting them to the /blog/ values here
+    // would point every article's canonical back at /blog/.
+    if (findRouteMeta(pathname)?.path === '/blog' && new URLSearchParams(search).has('post')) return;
     const meta = findRouteMeta(pathname) ?? (!isDynamicUtilityRoute ? findRouteMeta('/404') : undefined);
     if (!meta) return;
 
@@ -51,7 +55,7 @@ export default function RouteMetaUpdater() {
       document.head.appendChild(structuredData);
     }
     structuredData.textContent = JSON.stringify(buildSchemaGraph(meta)).replace(/</g, '\\u003c');
-  }, [pathname]);
+  }, [pathname, search]);
 
   return null;
 }
