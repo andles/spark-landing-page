@@ -40,7 +40,7 @@ export function ConnectAssistantPage() {
             Plugin Creator is a conversational builder, not the MCP connection form.
           </LegalP>
           <LegalP>
-            Enter Spark Inventory and a short description. Under <strong>Connection</strong>, enter the public
+            Enter a unique test name, such as Spark Inventory (prod), and a short description. Under <strong>Connection</strong>, enter the public
             MCP URL above and use OAuth. Create the connection, then complete Spark sign-in and consent below.
             Review the discovered tools before testing. Availability depends on your account and workspace policy.
           </LegalP>
@@ -49,6 +49,12 @@ export function ConnectAssistantPage() {
             <strong>Refresh</strong>. Add the connection to a new conversation to test it.
           </LegalP>
         </LegalSubSection>
+        <LegalP>
+          Use distinct custom test names, such as <strong>Spark Inventory (prod)</strong> and{" "}
+          <strong>Spark Inventory (dev)</strong>, when connecting multiple environments. The public
+          directory name remains Spark Inventory. Select the intended connection and verify its
+          workspace before testing.
+        </LegalP>
         <LegalSubSection title="In Claude">
           <LegalP>
             Open <strong>Customize → Connectors</strong> and add a custom connector using the server URL above.
@@ -116,6 +122,7 @@ export function ConnectAssistantPage() {
       <LegalSection title="If something is not working">
         <LegalUl items={[
           "If sign-in or consent fails, check that you are using the intended Spark account, your email is verified, and an authorized administrator is approving access.",
+          "If Create MCP app shows a generic creation error, first check whether the chosen name already exists. Retry with an unused name when applicable. A duplicate name is one possible cause, not the explanation for every creation error.",
           "If the connection cannot be added, check your assistant plan and workspace connection policy, then confirm the exact server URL above.",
           "If a tool is unavailable or denied, check the connection's access level and the Spark feature permissions. Do not paste a token or password into chat to work around a denial.",
           "If results are empty, check the selected workspace and whether it contains the requested items or orders.",
