@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Users, DollarSign, BarChart3, Handshake, Sparkle
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/theme';
+import { PartnerApplicationRejected, submitPartnerApplication } from '../partnerApplication';
 
 const benefits = [
   {
@@ -50,15 +51,14 @@ function PartnersPageClassic() {
     setIsSubmitting(true);
     setSubmitError('');
     try {
-      const res = await fetch('https://forms.sparkinventory.com/api/partner-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) throw new Error('Submission failed');
+      await submitPartnerApplication(formData);
       setIsSubmitted(true);
-    } catch {
-      setSubmitError('Something went wrong. Please try again or email us at andy@sparkinventory.com.');
+    } catch (error) {
+      setSubmitError(
+        error instanceof PartnerApplicationRejected && error.status === 429
+          ? 'Too many applications from this network. Please try again later or email us at andy@sparkinventory.com.'
+          : 'Something went wrong. Please check your details and try again, or email us at andy@sparkinventory.com.',
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -356,15 +356,14 @@ function PartnersPageNextGen() {
     setIsSubmitting(true);
     setSubmitError('');
     try {
-      const res = await fetch('https://forms.sparkinventory.com/api/partner-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) throw new Error('Submission failed');
+      await submitPartnerApplication(formData);
       setIsSubmitted(true);
-    } catch {
-      setSubmitError('Something went wrong. Please try again or email us at andy@sparkinventory.com.');
+    } catch (error) {
+      setSubmitError(
+        error instanceof PartnerApplicationRejected && error.status === 429
+          ? 'Too many applications from this network. Please try again later or email us at andy@sparkinventory.com.'
+          : 'Something went wrong. Please check your details and try again, or email us at andy@sparkinventory.com.',
+      );
     } finally {
       setIsSubmitting(false);
     }
