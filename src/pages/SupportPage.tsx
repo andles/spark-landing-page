@@ -42,6 +42,12 @@ export function SupportPage() {
           ]} />
         </LegalSubSection>
 
+        <LegalSubSection title="AI Assistant Connections">
+          <LegalP>
+            Follow the <a href="/connect-spark-to-your-assistant" className="text-cyan-400 hover:text-cyan-300 transition-colors">ChatGPT and Claude connection guide</a> for setup, access levels, revocation, and troubleshooting.
+          </LegalP>
+        </LegalSubSection>
+
         <LegalSubSection title="Barcode Scanning">
           <LegalUl items={[
             "The camera scanner works with most 1D and 2D barcode formats.",

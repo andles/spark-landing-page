@@ -413,6 +413,12 @@ export const routeMeta: RouteMeta[] = [
     lastModified: '2026-08-24',
   },
   {
+    path: '/connect-spark-to-your-assistant',
+    title: 'Connect Spark Inventory to ChatGPT or Claude',
+    description: 'Connect your Spark workspace to an AI assistant. Learn about setup, read and write access, data sharing, revocation, and troubleshooting.',
+    lastModified: '2026-09-25',
+  },
+  {
     path: '/support',
     title: 'Support - SPARK Inventory',
     description: 'Help and support resources for SPARK Intelligent Inventory.',

@@ -78,6 +78,7 @@ export function PrivacyPolicyPage() {
         <LegalUl items={[
           <><strong className="text-[#f0f2f5]/80">With your organization.</strong> Data you enter into a workspace is visible to other authorized members of that workspace.</>,
           <><strong className="text-[#f0f2f5]/80">With service providers.</strong> We use trusted third parties to host infrastructure, deliver push notifications, monitor errors, and process AI requests. These providers may only use your data to perform services for us.</>,
+          <><strong className="text-[#f0f2f5]/80">With an external assistant you authorize.</strong> When you connect an external AI assistant, we return permitted workspace information to that assistant as described in Section 5.2.</>,
           <><strong className="text-[#f0f2f5]/80">For legal reasons.</strong> We may disclose information if required by law, subpoena, or to protect the rights, property, or safety of our users or others.</>,
           <><strong className="text-[#f0f2f5]/80">In a business transfer.</strong> If we are involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction.</>,
         ]} />
@@ -124,9 +125,25 @@ export function PrivacyPolicyPage() {
       </LegalSection>
 
       <LegalSection title="5. AI Features">
-        <LegalP>
-          The App includes an AI chat assistant. When you interact with it, your messages and relevant workspace context are sent to our AI processing provider to generate a response. We do not use your data to train third-party foundation models. You can avoid using AI features by not opening the chat tab.
-        </LegalP>
+        <LegalSubSection title="5.1 Spark's in-app assistant">
+          <LegalP>
+            The App includes an AI chat assistant. When you interact with it, your messages and relevant workspace context are sent to our AI processing provider to generate a response. We do not use your data to train third-party foundation models. You can avoid this in-app assistant by not opening the chat tab.
+          </LegalP>
+        </LegalSubSection>
+        <LegalSubSection title="5.2 External assistants you connect">
+          <LegalP>
+            You may choose to connect an external AI assistant, such as ChatGPT or Claude, to your Spark workspace. Within the access you authorize, the assistant can request information and supported actions through Spark's connector. Depending on the tools used and enabled features, returned information can include products and SKUs, warehouse stock, demand and replenishment information, customer and supplier business records, purchase and sales orders, and workspace setup or integration status. Business records may include personal information, such as contact names, contact details, and addresses, as well as tax identifiers or supplier payment details when returned by the requested tool.
+          </LegalP>
+          <LegalP>
+            Read-only connections can retrieve permitted information. Connections with write access can also perform supported changes within Spark's authorization rules. Some workflows separate preview from commitment. A connection does not authorize access to another customer's workspace.
+          </LegalP>
+          <LegalP>
+            Information returned to an external assistant is processed by that assistant's provider under its applicable terms and your account's privacy settings. The statement about Spark's use of data for model training in Section 5.1 does not describe an external provider's independent practices. Spark's handling of workspace and account data remains subject to this Privacy Policy, including its retention and deletion provisions.
+          </LegalP>
+          <LegalP>
+            You can revoke Spark-side access in Spark's AI Assistants settings and remove the connection in the assistant. Revoking access does not necessarily delete information already included in an assistant conversation; use that provider's conversation and data controls for those copies. For access or privacy requests, contact <LegalEmail email="support@sparkinventory.com" />. Complete sign-in and verification in Spark's browser pages, and do not send passwords or verification codes in chat.
+          </LegalP>
+        </LegalSubSection>
       </LegalSection>
 
       <LegalSection title="6. Email Integrations and Google User Data">
