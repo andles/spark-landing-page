@@ -1,5 +1,6 @@
 import LegalPageShell, {
   LegalSection,
+  LegalSubSection,
   LegalP,
   LegalUl,
   LegalEmail,
@@ -31,16 +32,42 @@ export function ConnectAssistantPage() {
       <LegalSection title="Connect your workspace">
         <LegalP>Use this server URL in your assistant's custom connection settings:</LegalP>
         <pre className="overflow-x-auto rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] p-5 text-sm text-cyan-200" aria-label="Spark MCP server URL"><code>https://api.sparkinventory.com/mcp</code></pre>
+        <LegalSubSection title="In ChatGPT">
+          <LegalP>
+            Enable <strong>Settings → Security and login → Developer mode</strong>, then open{" "}
+            <a className={linkClass} href="https://chatgpt.com/plugins">ChatGPT Plugins</a> and select <strong>+</strong>.
+            If this opens a conversation with Plugin Creator, use the separate <strong>Create MCP app</strong> control.
+            Plugin Creator is a conversational builder, not the MCP connection form.
+          </LegalP>
+          <LegalP>
+            Enter Spark Inventory and a short description. Under <strong>Connection</strong>, enter the public
+            MCP URL above and use OAuth. Create the connection, then complete Spark sign-in and consent below.
+            Review the discovered tools before testing. Availability depends on your account and workspace policy.
+          </LegalP>
+          <LegalP>
+            After Spark's tool metadata changes, open the connection in <strong>Plugins</strong> and select{" "}
+            <strong>Refresh</strong>. Add the connection to a new conversation to test it.
+          </LegalP>
+        </LegalSubSection>
+        <LegalSubSection title="In Claude">
+          <LegalP>
+            Open <strong>Customize → Connectors</strong> and add a custom connector using the server URL above.
+            On Team or Enterprise, an owner first adds it in <strong>Organization settings → Connectors</strong>.
+            Choose OAuth sign-in and automatic client registration if those options are requested, then connect.
+          </LegalP>
+        </LegalSubSection>
+        <LegalSubSection title="Approve access in Spark">
         <ol className="list-decimal pl-5 space-y-3 text-[#b8bfcc] leading-relaxed">
-          <li>Open your assistant's connection settings and add a custom remote MCP connection with the URL above. Choose OAuth if asked for an authentication method.</li>
           <li>Start the connection and sign in to Spark in the browser window that opens.</li>
           <li>Check the requesting app, redirect destination, and intended workspace on Spark's consent screen.</li>
           <li>Choose Read-only for questions about your data. Choose Read &amp; write only if you want supported changes, and review any additional operational permissions.</li>
           <li>Approve the connection, return to the assistant, and try a question from the examples below.</li>
         </ol>
+        </LegalSubSection>
         <LegalP>
           Menu names and connection availability can change. Follow the current host guidance for{" "}
-          <a className={linkClass} href="https://developers.openai.com/plugins/deploy/connect-chatgpt">ChatGPT custom MCP testing</a>{" "}
+          <a className={linkClass} href="https://developers.openai.com/plugins/deploy/connect-chatgpt">ChatGPT custom MCP testing</a>,{" "}
+          <a className={linkClass} href="https://help.openai.com/en/articles/20001256-plugins-in-chatgpt-and-codex">Plugin Creator and MCP app controls</a>,{" "}
           or <a className={linkClass} href="https://claude.com/docs/connectors/custom/remote-mcp">Claude remote connectors</a>.
           Adding a custom connection does not mean Spark is listed or endorsed in either directory.
         </LegalP>
