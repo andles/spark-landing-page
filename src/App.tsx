@@ -41,6 +41,7 @@ const TermsOfServicePage = lazy(() => R.TermsOfServicePage().then((m) => ({ defa
 const AppPrivacyPage = lazy(() => R.AppPrivacyPage().then((m) => ({ default: m.AppPrivacyPage })));
 const DataSafetyPage = lazy(() => R.DataSafetyPage().then((m) => ({ default: m.DataSafetyPage })));
 const EulaPage = lazy(() => R.EulaPage().then((m) => ({ default: m.EulaPage })));
+const ConnectAssistantPage = lazy(() => R.ConnectAssistantPage().then((m) => ({ default: m.ConnectAssistantPage })));
 const SupportPage = lazy(() => R.SupportPage().then((m) => ({ default: m.SupportPage })));
 const DeleteAccountPage = lazy(() => R.DeleteAccountPage().then((m) => ({ default: m.DeleteAccountPage })));
 const ContactPage = lazy(() => R.ContactPage().then((m) => ({ default: m.ContactPage })));
@@ -108,6 +109,7 @@ function App() {
             <Route path="/app-privacy" element={<AppPrivacyPage />} />
             <Route path="/data-safety" element={<DataSafetyPage />} />
             <Route path="/eula" element={<EulaPage />} />
+            <Route path="/connect-spark-to-your-assistant" element={<ConnectAssistantPage />} />
             <Route path="/support" element={<SupportPage />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="/contact" element={<ContactPage />} />

@@ -33,6 +33,7 @@ export const routeImports = {
   AppPrivacyPage: () => import('./pages/AppPrivacyPage'),
   DataSafetyPage: () => import('./pages/DataSafetyPage'),
   EulaPage: () => import('./pages/EulaPage'),
+  ConnectAssistantPage: () => import('./pages/ConnectAssistantPage'),
   SupportPage: () => import('./pages/SupportPage'),
   DeleteAccountPage: () => import('./pages/DeleteAccountPage'),
   ContactPage: () => import('./pages/ContactPage'),
