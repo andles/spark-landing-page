@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 09/25/2026"
+      subtitle="Effective date: 09/28/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -77,12 +77,15 @@ export function PrivacyPolicyPage() {
         <LegalP>We share information only as described below:</LegalP>
         <LegalUl items={[
           <><strong className="text-[#f0f2f5]/80">With your organization.</strong> Data you enter into a workspace is visible to other authorized members of that workspace.</>,
-          <><strong className="text-[#f0f2f5]/80">With service providers.</strong> We use trusted third parties to host infrastructure, deliver push notifications, monitor errors, and process AI requests. These providers may only use your data to perform services for us.</>,
+          <><strong className="text-[#f0f2f5]/80">With service providers.</strong> We use trusted third parties to host infrastructure, deliver push notifications and SMS messages, monitor errors, and process AI requests. These providers may only use your data to perform services for us.</>,
           <><strong className="text-[#f0f2f5]/80">With an external assistant you authorize.</strong> When you connect an external AI assistant, we return permitted workspace information to that assistant as described in Section 5.2.</>,
           <><strong className="text-[#f0f2f5]/80">For legal reasons.</strong> We may disclose information if required by law, subpoena, or to protect the rights, property, or safety of our users or others.</>,
           <><strong className="text-[#f0f2f5]/80">In a business transfer.</strong> If we are involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction.</>,
         ]} />
         <LegalP>We do <strong className="text-[#f0f2f5]/80">not</strong> sell your personal information.</LegalP>
+        <LegalP>
+          The categories of sharing above exclude text messaging opt-in data and consent, which are never shared with third parties. Mobile phone numbers are shared only with our SMS delivery provider, as described in Section 7.
+        </LegalP>
       </LegalSection>
 
       <LegalSection title="4. Shopify Integration">
@@ -223,12 +226,12 @@ export function PrivacyPolicyPage() {
 
       <LegalSection title="7. SMS / Text Message Communications">
         <LegalP>
-          This section describes how we collect, use, and protect the information you provide when you opt in to receive SMS text messages from Spark Inventory.
+          This section describes how we collect, use, and protect the information you provide when you opt in to either of our SMS programs: Spark Inventory Notifications (one-way operational alerts) and Texting with Spark, also called Spark by Text (a two-way assistant for account owners and admins).
         </LegalP>
 
         <LegalSubSection title="What we collect when you opt in to SMS">
           <LegalP>
-            When you enable SMS notifications from your Spark Inventory account settings, we collect and store:
+            When you enable SMS notifications or turn on Texting with Spark from your Spark Inventory account settings, we collect and store:
           </LegalP>
           <LegalUl items={[
             "The mobile phone number you provide",
@@ -240,17 +243,20 @@ export function PrivacyPolicyPage() {
           <LegalP>
             We also retain a per-message delivery log (timestamp, carrier-reported status, and provider message identifier) so that we can troubleshoot delivery problems and honor opt-out requests reliably.
           </LegalP>
+          <LegalP>
+            If you use Texting with Spark, we also store the texts you send to your business's Spark number and Spark's replies, as part of your assistant conversation history.
+          </LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="How we use this information">
           <LegalP>
-            Mobile phone numbers collected through the SMS opt-in are used solely to deliver the transactional operational notifications you have subscribed to (inventory alerts, order updates, and similar operational events in your Spark account), and to support opt-out (STOP) and help (HELP) requests. We do not use SMS opt-in data for marketing or promotional outreach. We do not send marketing SMS.
+            Mobile phone numbers collected through SMS opt-in are used solely to deliver the program you enrolled in: the operational notifications you have subscribed to (inventory alerts, order updates, and similar operational events in your Spark account) or, for Texting with Spark, alerts, summaries, and replies to the texts you send; and to support opt-out (STOP) and help (HELP) requests. The text of messages you send to Spark is processed by our AI processing provider to generate a reply, as described in Section 5; your mobile phone number is not used for that purpose. We do not use SMS opt-in data for marketing or promotional outreach. We do not send marketing SMS.
           </LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="How we protect and share this information">
           <LegalP>
-            No mobile information will be sold or shared with third parties for promotional or marketing purposes. We do not rent, sell, or otherwise make available any mobile phone numbers, opt-in records, or related data to third parties for advertising or marketing.
+            No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent will not be shared with any third parties. We do not rent, sell, or otherwise make available any mobile phone numbers, opt-in records, or related data to third parties for advertising or marketing. The sharing described elsewhere in this Privacy Policy, including in Section 14, excludes mobile phone numbers, text messaging opt-in data, and consent.
           </LegalP>
           <LegalP>
             We share mobile phone numbers only with the SMS service provider that delivers the messages on our behalf (currently Twilio), strictly for the purpose of sending the message and receiving delivery status confirmations. Our SMS service provider is bound by their own contractual confidentiality and data-handling obligations.
@@ -264,10 +270,17 @@ export function PrivacyPolicyPage() {
             <>Visiting <strong className="text-[#f0f2f5]/80">Profile → SMS notifications</strong> inside your Spark Inventory account and clicking "Turn off SMS".</>,
           ]} />
           <LegalP>
+            You can also leave Texting with Spark on its own from <strong className="text-[#f0f2f5]/80">Profile → SMS</strong>.
+          </LegalP>
+          <LegalP>
             Replying <strong className="text-[#f0f2f5]/80">HELP</strong> to any Spark Inventory SMS will return a brief description of the program and our support contact (<LegalEmail email="support@sparkinventory.com" />).
           </LegalP>
           <LegalP>
-            For full details about the SMS program, including the verbatim consent statement, frequency expectations, and sample message content, see{" "}
+            For full details about the SMS programs, including the verbatim consent statements, frequency expectations, and sample message content, see{" "}
+            <a href="https://app.sparkinventory.com/sms-program" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              app.sparkinventory.com/sms-program
+            </a>{" "}
+            and{" "}
             <a href="https://sparkinventory.com/sms-program" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               sparkinventory.com/sms-program
             </a>.
@@ -367,7 +380,7 @@ export function PrivacyPolicyPage() {
           .
         </LegalP>
         <LegalP>
-          These website marketing technologies are not applied to Shopify protected customer data or data stored inside authenticated Spark Inventory workspaces.
+          These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
         </LegalP>
       </LegalSection>
 
