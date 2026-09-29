@@ -10,7 +10,7 @@ export function TermsOfServicePage() {
   return (
     <LegalPageShell
       title="Terms of Service"
-      subtitle="Effective date: 09/28/2026"
+      subtitle="Effective date: 09/29/2026"
     >
       <LegalP>
         These Terms of Service ("Terms") govern your access to and use of the Spark Inventory mobile application and related services (the "Service") provided by Spark Inventory, INC ("we", "us", or "our"). By creating an account or using the Service, you agree to these Terms.
@@ -107,7 +107,7 @@ export function TermsOfServicePage() {
           <strong className="text-[#f0f2f5]/80">Carrier liability.</strong> Carriers are not liable for any delayed or undelivered messages.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">Privacy.</strong> No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. For details on how we collect, use, and protect SMS-related data, see our{" "}
+          <strong className="text-[#f0f2f5]/80">Privacy.</strong> No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. We do not sell or share your SMS opt-in data or personal information with third parties for marketing purposes. For details on how we collect, use, and protect SMS-related data, see our{" "}
           <a href="https://sparkinventory.com/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">
             Privacy Policy
           </a>.

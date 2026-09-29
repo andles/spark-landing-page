@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 09/28/2026"
+      subtitle="Effective date: 09/29/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -256,7 +256,7 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="How we protect and share this information">
           <LegalP>
-            No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent will not be shared with any third parties. We do not rent, sell, or otherwise make available any mobile phone numbers, opt-in records, or related data to third parties for advertising or marketing. The sharing described elsewhere in this Privacy Policy, including in Section 14, excludes mobile phone numbers, text messaging opt-in data, and consent.
+            We do not sell or share your SMS opt-in data or personal information with third parties for marketing purposes. No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent will not be shared with any third parties. We do not rent, sell, or otherwise make available any mobile phone numbers, opt-in records, or related data to third parties for advertising or marketing. The sharing described elsewhere in this Privacy Policy, including in Section 14, excludes mobile phone numbers, text messaging opt-in data, and consent.
           </LegalP>
           <LegalP>
             We share mobile phone numbers only with the SMS service provider that delivers the messages on our behalf (currently Twilio), strictly for the purpose of sending the message and receiving delivery status confirmations. Our SMS service provider is bound by their own contractual confidentiality and data-handling obligations.
@@ -358,27 +358,6 @@ export function PrivacyPolicyPage() {
             If you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. You can change your choice using Privacy in the app sidebar or Privacy preferences in the website footer. CookieYes stores your choice, and advertising cookies remain a separate preference.
           </LegalP>
         </LegalSubSection>
-        <LegalP>
-          When you visit or log in to our website, cookies and similar technologies may be used by our online data partners or vendors to associate these activities with other personal information they or others have about you, including by association with your email. We (or service providers on our behalf) may then send communications and marketing to these email addresses. You may opt out of receiving this advertising by visiting{" "}
-          <a
-            href="https://app.retention.com/optout"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors"
-          >
-            https://app.retention.com/optout
-          </a>
-          . You also have the option to opt out of the collection of your personal data in compliance with GDPR by visiting{" "}
-          <a
-            href="https://www.rb2b.com/rb2b-gdpr-opt-out"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors"
-          >
-            https://www.rb2b.com/rb2b-gdpr-opt-out
-          </a>
-          .
-        </LegalP>
         <LegalP>
           These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
         </LegalP>
