@@ -3,6 +3,7 @@ import AgencyHero from "./AgencyHero";
 import AgencyTrustBar from "./AgencyTrustBar";
 import AgencyStats from "./AgencyStats";
 import AgentOnboardingSection from "./AgentOnboardingSection";
+import GmailOrderCaptureSection from "./GmailOrderCaptureSection";
 import AgencyCoreCapabilities from "./AgencyCoreCapabilities";
 import AgencyWhySpark from "./AgencyWhySpark";
 import AgencyDeveloperSection from "./AgencyDeveloperSection";
@@ -45,6 +46,7 @@ export default function AgencyPage() {
         <AgencyTrustBar />
         <AgencyStats />
         <AgentOnboardingSection />
+        <GmailOrderCaptureSection />
         <AgencyCoreCapabilities />
         <AgencyWhySpark />
         <AgencyDeveloperSection />
