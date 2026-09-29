@@ -22,7 +22,7 @@ const assistantDetails = [
 const assistantSamples = [
   'Spark alert: A7 Blue Mug 12oz is below its reorder point (4 left). Reply 1 A7 to approve the draft PO for 48 from Kiln Co, 2 A7 to dismiss.',
   'Spark: You have 36 Blue Mug 12oz at Main and 12 in transit. Reply YES B3 to order 48 more from Kiln Co for $412 or NO B3 to skip.',
-  'Spark: You\'re enrolled in Texting with Spark. Up to 10 alerts/day plus replies. Msg&data rates may apply. Reply HELP for help, STOP to opt out.',
+  'Spark Inventory: You\'re enrolled in Texting with Spark. Up to 10 alerts/day plus replies. Msg & data rates may apply. Reply HELP for help, STOP to opt out.',
 ] as const;
 
 export function SmsProgramPage() {
