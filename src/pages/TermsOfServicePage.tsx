@@ -104,12 +104,12 @@ export function TermsOfServicePage() {
           <strong className="text-[#f0f2f5]/80">Support.</strong> Reply <strong className="text-[#f0f2f5]/80">HELP</strong> to any Spark Inventory SMS for assistance, or email <LegalEmail email="support@sparkinventory.com" />.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">Carrier liability.</strong> Mobile carriers are not liable for delayed or undelivered messages.
+          <strong className="text-[#f0f2f5]/80">Carrier liability.</strong> Carriers are not liable for any delayed or undelivered messages.
         </LegalP>
         <LegalP>
-          <strong className="text-[#f0f2f5]/80">Privacy.</strong> No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. For details on how we collect, use, and protect SMS-related data, see our Privacy Policy at{" "}
+          <strong className="text-[#f0f2f5]/80">Privacy.</strong> No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. For details on how we collect, use, and protect SMS-related data, see our{" "}
           <a href="https://sparkinventory.com/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-            sparkinventory.com/privacy-policy
+            Privacy Policy
           </a>.
         </LegalP>
         <LegalP>
