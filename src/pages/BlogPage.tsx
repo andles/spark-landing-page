@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
 
@@ -6,6 +7,10 @@ const SORO_EMBED_URL =
   'https://app.trysoro.com/api/embed/8a7f0d25-8c1f-451d-81aa-277ecf3a5ae9?theme=dark';
 
 export default function BlogPage() {
+  // Set on /blog/<slug>/, where the edge function has already rendered the
+  // article. Soro's widget only knows ?post= URLs and would replace it with
+  // the article list, so it runs on /blog/ alone.
+  const { slug } = useParams();
   const embedHostRef = useRef<HTMLDivElement>(null);
   const [embedFailed, setEmbedFailed] = useState(false);
   const [edgeHtml] = useState(() =>
@@ -14,7 +19,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     const embedHost = embedHostRef.current;
-    if (!embedHost) return;
+    if (!embedHost || slug) return;
 
     const script = document.createElement('script');
     script.src = SORO_EMBED_URL;
@@ -27,7 +32,7 @@ export default function BlogPage() {
       script.remove();
       document.getElementById('soro-blog')?.replaceChildren();
     };
-  }, []);
+  }, [slug]);
 
   return (
     <div className="min-h-screen bg-[#06080d] text-white">

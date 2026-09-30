@@ -1,12 +1,18 @@
-// Request-time SEO for the live Soro blog embed.
+// Request-time SEO for the live Soro blog.
 //
-// Soro's widget renders the blog in the browser: the list at /blog/ and each
-// article at /blog/?post=<slug>. Without help, crawlers get the same /blog/
-// HTML for every article (with a /blog/ canonical) and no sitemap entry, so
-// Google never learns the articles exist. The Netlify edge function in
-// netlify/edge-functions/soro-blog.ts uses these helpers to add, on each
-// request and without a rebuild, the article's head tags and text, crawlable
-// links on /blog/, and sitemap entries for every published article.
+// Soro's widget renders the blog in the browser and addresses each article as
+// /blog/?post=<slug>. Google treats that query parameter as a weak signal: for
+// weeks every ?post= URL returned the /blog/ page with a /blog/ canonical, so
+// it learned the parameter does not change the content and now leaves new
+// ?post= articles as "Discovered, currently not indexed" until someone asks by
+// hand. The widget also sets the canonical to the full browser URL, so any
+// tracking parameter creates yet another variant.
+//
+// The Netlify edge function in netlify/edge-functions/soro-blog.ts therefore
+// gives every article its own path, /blog/<slug>/, rendered on each request
+// from Soro's live article list (no rebuild when Soro publishes). ?post= links
+// permanently redirect there, /blog/ links to the paths, and the sitemap lists
+// them. Soro's widget still runs on /blog/ itself.
 //
 // Everything here is plain TypeScript with no imports so it runs in both the
 // Deno edge runtime and Vitest.
@@ -30,6 +36,8 @@ export interface SoroArticle {
 }
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export const isArticleSlug = (value: string) => SLUG_PATTERN.test(value);
 
 /** Returns the raw SORO_ARTICLES array literal from the embed script. */
 export function extractSoroArticles(script: string): unknown[] {
@@ -121,7 +129,8 @@ export async function loadSoroArticleContent(article: SoroArticle, fetchImpl: Fe
   return cleanArticleHtml(content);
 }
 
-export const articleUrl = (slug: string) => `${SITE_URL}/blog/?post=${slug}`;
+export const articlePath = (slug: string) => `/blog/${slug}/`;
+export const articleUrl = (slug: string) => `${SITE_URL}${articlePath(slug)}`;
 
 const esc = (value: string) =>
   value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -137,8 +146,7 @@ const SORO_MOUNT = /<div id="soro-blog"><\/div>/;
 
 /**
  * Turns the prerendered /blog/ page into the article's own page: title,
- * description, a self-referencing canonical (marked data-soro so the widget
- * updates it instead of adding a second one), social tags, BlogPosting
+ * description, a self-referencing canonical, social tags, BlogPosting
  * structured data, and the article text inside the widget's mount point.
  */
 export function renderArticlePage(html: string, article: SoroArticle, content: string): string {
@@ -163,7 +171,7 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   let page = html;
   page = setHeadTag(page, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
   page = setHeadTag(page, /<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${esc(description)}">`);
-  page = setHeadTag(page, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${esc(url)}" data-soro="true">`);
+  page = setHeadTag(page, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${esc(url)}">`);
   page = setHeadTag(page, /<meta property="og:type" content="[^"]*"\s*\/?>/, '<meta property="og:type" content="article">');
   page = setHeadTag(page, /<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${esc(title)}">`);
   page = setHeadTag(page, /<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${esc(description)}">`);
@@ -184,7 +192,7 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   const date = article.publishedDate ? `<time datetime="${article.publishedDate}">${formatArticleDate(article.publishedDate)}</time>` : '';
   return page.replace(
     SORO_MOUNT,
-    `<div id="soro-blog"><article><h2>${esc(article.title)}</h2>${date}<div>${content}</div><p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+    `<div id="soro-blog"><article class="soro-article"><h2>${esc(article.title)}</h2>${date}<div>${content}</div><p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
   );
 }
 
@@ -192,7 +200,7 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
 export function renderBlogIndex(html: string, articles: SoroArticle[]): string {
   if (!articles.length) return html;
   const items = articles
-    .map((article) => `<li><a href="/blog/?post=${article.slug}">${esc(article.title)}</a>${article.excerpt ? `<p>${esc(article.excerpt)}</p>` : ''}</li>`)
+    .map((article) => `<li><a href="${articlePath(article.slug)}">${esc(article.title)}</a>${article.excerpt ? `<p>${esc(article.excerpt)}</p>` : ''}</li>`)
     .join('');
   return html.replace(SORO_MOUNT, `<div id="soro-blog"><ul>${items}</ul></div>`);
 }
@@ -213,4 +221,9 @@ export function formatArticleDate(date: string): string {
   const [year, month, day] = date.split('-').map(Number);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return `${months[month - 1]} ${day}, ${year}`;
+}
+
+/** The /blog/ page with its article links, marked noindex, for a slug Soro does not publish. */
+export function renderMissingArticle(html: string, articles: SoroArticle[]): string {
+  return setHeadTag(renderBlogIndex(html, articles), /<meta name="robots" content="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex, follow">');
 }

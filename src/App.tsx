@@ -101,6 +101,7 @@ function App() {
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPage />} />
             <Route path="/what-is-inventory-management" element={<InventoryManagementGuidePage />} />
             <Route path="/inventory-reorder-walkthrough" element={<InventoryReorderWalkthroughPage />} />
             <Route path="/partners" element={<PartnersPage />} />

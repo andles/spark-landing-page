@@ -20,9 +20,10 @@ export default function RouteMetaUpdater() {
 
   useEffect(() => {
     const isDynamicUtilityRoute = pathname === '/book-a-call' || pathname.startsWith('/r/');
-    // Soro article URLs (/blog/?post=<slug>) get their head tags from the edge
-    // function and Soro's widget; resetting them to the /blog/ values here
-    // would point every article's canonical back at /blog/.
+    // Soro articles (/blog/<slug>/, and /blog/?post=<slug> inside the widget)
+    // get their head tags from the edge function and Soro's widget; resetting
+    // them here would point every article's canonical somewhere else.
+    if (/^\/blog\/[^/]+\/?$/.test(pathname)) return;
     if (findRouteMeta(pathname)?.path === '/blog' && new URLSearchParams(search).has('post')) return;
     const meta = findRouteMeta(pathname) ?? (!isDynamicUtilityRoute ? findRouteMeta('/404') : undefined);
     if (!meta) return;
