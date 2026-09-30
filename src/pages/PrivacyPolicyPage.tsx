@@ -177,7 +177,7 @@ export function PrivacyPolicyPage() {
             <strong className="text-[#f0f2f5]/80">How we use it.</strong> While the feature is on, Spark checks your Gmail inbox for new messages every few minutes. It reads each new message's sender and subject first. Only messages that look like they are about sales orders, purchase orders, invoices, quotes, or shipments are opened and checked as described in section 6.4. When a message is about an order, Spark creates or updates that order in your workspace and notifies you of anything you need to act on. When you first turn the feature on, Spark also checks messages from the previous 14 days so that orders already in your inbox are picked up. Spark does not read your sent mail, drafts, spam, or trash.
           </LegalP>
           <LegalP>
-            <strong className="text-[#f0f2f5]/80">What we store.</strong> For messages Spark identifies as related to an order, we store the message content with that order so you can see where each change came from. For all other messages, we keep only an internal message identifier and the date received, so the same message is not processed twice; we do not keep their sender, subject, or content.
+            <strong className="text-[#f0f2f5]/80">What we store.</strong> For messages Spark identifies as related to an order, we store the message content with that order so you can see where each change came from, for up to 90 days as described in section 6.5. For all other messages, we keep only an internal message identifier and the date received, so the same message is not processed twice; we do not keep their sender, subject, or content.
           </LegalP>
           <LegalP>
             <strong className="text-[#f0f2f5]/80">Turning it off.</strong> You can turn the feature off at any time on the Email accounts page. Spark stops reading your inbox immediately.
@@ -186,23 +186,26 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="6.4 How Spark checks a message">
           <LegalP>
-            To decide whether a message is about an order and to extract the order details (such as items, quantities, prices, and dates), Spark sends the message's sender, subject, and text to our AI processing provider, OpenAI. OpenAI processes this data only to return the result to Spark and does not use it to train its models. Spark may also draft a reply for you to review; a draft is never sent until you approve it.
+            To decide whether a message is about an order and to extract the order details (such as items, quantities, prices, and dates), Spark sends the message's sender, subject, and text to our AI processing provider, OpenAI. OpenAI processes this content under API terms that prohibit using it to train its models. OpenAI may keep API data for a limited period (up to 30 days) to monitor for abuse before deleting it. Spark may also draft a reply for you to review; a draft is never sent until you approve it.
           </LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="6.5 Security, retention, and deletion">
           <LegalP>
-            OAuth tokens and stored email content are encrypted in transit and at rest. You can disconnect a mailbox at any time from the Email accounts page (Profile → Email accounts). When you disconnect a Gmail account, we revoke Spark Inventory's access with Google and delete the stored tokens immediately. You can also revoke access from your Google Account at{" "}
+            OAuth tokens and stored email content are encrypted in transit and at rest. You can disconnect a mailbox at any time from the Email accounts page (Profile → Email accounts). When you disconnect a Gmail account, we revoke Spark Inventory's access with Google and delete the stored tokens immediately, and inbox sync stops. You can also revoke access from your Google Account at{" "}
             <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               myaccount.google.com/permissions
             </a>
-            . To have stored email content deleted, contact <LegalEmail email="support@sparkinventory.com" />.
+            .
+          </LegalP>
+          <LegalP>
+            Stored email content (sender, recipients, subject, and message text) is removed automatically 90 days after the message was received, whether or not the mailbox is still connected. After that, we keep only the message's internal identifier, the date it was received, how Spark classified it, and its link to the related order, customer, or supplier. Orders and notes you create or approve are part of your workspace data and are kept as described in Section 8. To have stored email content deleted sooner, contact <LegalEmail email="support@sparkinventory.com" />.
           </LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="6.6 Limited Use of Google user data">
           <LegalP>
-            Spark Inventory's use and transfer of information received from Google APIs to any other app will adhere to the{" "}
+            Spark Inventory's use and transfer of information received from Google APIs will adhere to the{" "}
             <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               Google API Services User Data Policy
             </a>
@@ -218,7 +221,7 @@ export function PrivacyPolicyPage() {
             <>We do not use Google user data for advertising, including retargeting, personalized, or interest-based advertising.</>,
             <>We do not use Google user data to determine credit-worthiness or for lending purposes.</>,
             <>We do not use Google user data to develop, train, or improve generalized artificial intelligence or machine learning models.</>,
-            <>We transfer Google user data to third parties only as needed to provide these features (our AI processing provider, as described in section 6.4), to comply with law, or as part of a merger or acquisition with your prior consent.</>,
+            <>We transfer Google user data to third parties only as needed to provide these features (our AI processing provider, OpenAI, as described in section 6.4), to comply with law, or as part of a merger or acquisition with your prior consent.</>,
             <>No one at Spark Inventory reads your Google user data unless you give us explicit permission to view specific messages (for example, for support), it is necessary for security purposes such as investigating abuse, it is required to comply with applicable law, or the data has been aggregated and anonymized for internal operations.</>,
           ]} />
         </LegalSubSection>
@@ -293,7 +296,7 @@ export function PrivacyPolicyPage() {
           We retain your account and workspace data for as long as your account is active. If you or your organization delete your account, we delete associated data within 30 days, except where we are required to retain it for legal, tax, or audit purposes.
         </LegalP>
         <LegalP>
-          Shopify-sourced information is retained and deleted according to the Shopify Integration section above. Certain non-personal business records and pseudonymous compliance receipts may be retained for the periods described there.
+          Email content received through forwarding or Gmail inbox sync is removed 90 days after it was received, as described in Section 6.5. Shopify-sourced information is retained and deleted according to the Shopify Integration section above. Certain non-personal business records and pseudonymous compliance receipts may be retained for the periods described there.
         </LegalP>
       </LegalSection>
 
@@ -349,18 +352,55 @@ export function PrivacyPolicyPage() {
         </LegalP>
       </LegalSection>
 
-      <LegalSection title="14. Analytics, Cookies and Marketing">
-        <LegalSubSection title="Product analytics and session replay">
+      <LegalSection title="14. Cookies, Local Storage, Analytics and Marketing">
+        <LegalP>
+          Cookies are small files a website stores in your browser. Local storage and session storage are similar browser features that keep information on your device; session storage is cleared when you close the tab. This section lists what our public website (sparkinventory.com) and our web application (app.sparkinventory.com) store in your browser and which third parties can set cookies through them. CookieYes shows a consent banner on both sites. Optional analytics and advertising cookies are not set until you accept them, and you can change your choice at any time.
+        </LegalP>
+
+        <LegalSubSection title="14.1 Strictly necessary storage">
+          <LegalP>These are needed for the website and App to work, so they are not controlled by the consent banner:</LegalP>
+          <LegalUl items={[
+            <><strong className="text-[#f0f2f5]/80">Your consent choice.</strong> CookieYes stores your cookie choices in a cookie named cookieyes-consent so we can respect them on both sites.</>,
+            <><strong className="text-[#f0f2f5]/80">Signing in.</strong> The App does not use cookies to keep you signed in. When you sign in, the App keeps your sign-in token and basic account and workspace details (such as your name, email address, and the workspace you selected) in your browser's local storage. They are removed when you sign out.</>,
+            <><strong className="text-[#f0f2f5]/80">Your settings.</strong> The App keeps display preferences in local storage, such as whether the sidebar or assistant panel is open, list views and sorting, and tips you have dismissed. It uses session storage for short-lived steps, such as returning you to the page you were on after you sign in. Our website uses session storage to record a booked demo only once per visit and to keep campaign parameters (such as utm_source) while you move between pages.</>,
+            <><strong className="text-[#f0f2f5]/80">Payments.</strong> When you add a payment method, the card form is provided by our payment processor and may set its own cookies for security and fraud prevention.</>,
+          ]} />
+        </LegalSubSection>
+
+        <LegalSubSection title="14.2 Analytics (only with your consent)">
           <LegalP>
-            We use PostHog on our public website and web application to understand usage and diagnose problems. We wait for your cookie choice before collecting these analytics. If you accept analytics cookies, we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
+            We use PostHog on our public website and web application to understand usage and diagnose problems. We wait for your cookie choice before collecting these analytics. If you accept analytics cookies, PostHog stores an analytics identifier and first-visit campaign details (such as the ad campaign or referring website that brought you to us) in a cookie shared by sparkinventory.com and app.sparkinventory.com and in local storage, and we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
           </LegalP>
           <LegalP>
-            If you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. You can change your choice using Privacy in the app sidebar or Privacy preferences in the website footer. CookieYes stores your choice, and advertising cookies remain a separate preference.
+            If you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser.
+          </LegalP>
+          <LegalP>
+            If you accept analytics cookies on our public website, we also load PHAS3, an attribution service that measures which marketing channels lead to visits, sign-ups, and booked demos. It does not load if you reject analytics cookies.
           </LegalP>
         </LegalSubSection>
-        <LegalP>
-          These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
-        </LegalP>
+
+        <LegalSubSection title="14.3 Advertising (only with your consent)">
+          <LegalUl items={[
+            <><strong className="text-[#f0f2f5]/80">Google Ads.</strong> Our website and App include the Google tag to measure when an ad click leads to a sign-up or booked demo. We use Google Consent Mode, so Google's advertising storage stays denied until you accept advertising cookies (and its analytics storage until you accept analytics cookies), and Google does not set advertising cookies before then. Until you accept, Google may receive cookieless signals (such as the page, the time, and whether consent was given) that do not use advertising cookies.</>,
+            <><strong className="text-[#f0f2f5]/80">LinkedIn Insight Tag.</strong> On our website and App, the LinkedIn Insight Tag loads only after you accept advertising cookies. It lets us measure the results of our LinkedIn advertising and may set LinkedIn cookies.</>,
+          ]} />
+        </LegalSubSection>
+
+        <LegalSubSection title="14.4 Features provided by other companies">
+          <LegalUl items={[
+            <><strong className="text-[#f0f2f5]/80">Scheduling.</strong> When you choose to book a call, our website loads Calendly's scheduling window. Calendly may set its own cookies under its privacy policy.</>,
+            <><strong className="text-[#f0f2f5]/80">Product updates.</strong> Inside the App, the "What's new" panel is provided by Headway and may use cookies or local storage to remember which updates you have already seen.</>,
+          ]} />
+        </LegalSubSection>
+
+        <LegalSubSection title="14.5 Your choices">
+          <LegalP>
+            You can change your choice at any time using Privacy preferences in the website footer or on your Profile page in the App. Advertising cookies are a separate preference from analytics cookies. You can also delete cookies and site data in your browser settings; clearing the App's local storage signs you out.
+          </LegalP>
+          <LegalP>
+            These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, Google user data, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
+          </LegalP>
+        </LegalSubSection>
       </LegalSection>
 
       <LegalSection title="15. Contact Us">
