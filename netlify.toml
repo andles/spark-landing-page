@@ -110,6 +110,14 @@
   status = 301
   force = true
 
+# Soro blog articles live at /blog/<slug>/. They have no file of their own:
+# they are served from the prerendered /blog/ page, which the edge function
+# netlify/edge-functions/soro-blog.ts turns into the article on each request.
+[[redirects]]
+  from = "/blog/:slug"
+  to = "/blog/index.html"
+  status = 200
+
 # Only the two genuinely client-only route families use the SPA shell.
 # Every public marketing route is a prerendered file; unknown paths therefore
 # fall through to Netlify's generated 404.html with a real 404 status.

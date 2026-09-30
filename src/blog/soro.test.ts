@@ -7,6 +7,7 @@ import {
   loadSoroArticles,
   renderArticlePage,
   renderBlogIndex,
+  renderMissingArticle,
   SORO_EMBED_URL,
   type SoroArticle,
 } from './soro';
@@ -23,6 +24,7 @@ const response = (body: string | object, ok = true) => ({
 
 // Shape of the prerendered dist/blog/index.html head and mount point.
 const blogHtml = `<html><head><title>Inventory Management Blog | Spark Inventory</title>
+<meta name="robots" content="index, follow, max-snippet:-1">
 <meta name="description" content="Blog description" />
 <link rel="canonical" href="https://sparkinventory.com/blog/">
 <meta property="og:type" content="website">
@@ -98,11 +100,11 @@ describe('renderArticlePage', () => {
   const page = renderArticlePage(blogHtml, article, '<p>Seasonal body.</p>');
 
   it('gives the article URL its own title, description, canonical and social tags', () => {
-    const url = 'https://sparkinventory.com/blog/?post=seasonal-demand-forecasting';
+    const url = 'https://sparkinventory.com/blog/seasonal-demand-forecasting/';
     expect(page).toContain('<title>Seasonal Demand &amp; &quot;Curves&quot; | Spark Inventory Blog</title>');
     expect(page).toContain('<meta name="description" content="How seasonal curves shape reorders.">');
     expect(page.match(/rel="canonical"/g)).toHaveLength(1);
-    expect(page).toContain(`<link rel="canonical" href="${url}" data-soro="true">`);
+    expect(page).toContain(`<link rel="canonical" href="${url}">`);
     expect(page).toContain(`<meta property="og:url" content="${url}">`);
     expect(page).toContain('<meta property="og:type" content="article">');
     expect(page).toContain('<meta property="og:image" content="https://cdn.example/s.jpg">');
@@ -112,7 +114,7 @@ describe('renderArticlePage', () => {
   });
 
   it('puts the article text in the widget mount point for crawlers', () => {
-    expect(page).toContain('<div id="soro-blog"><article><h2>Seasonal Demand &amp; &quot;Curves&quot;</h2>');
+    expect(page).toContain('<div id="soro-blog"><article class="soro-article"><h2>Seasonal Demand &amp; &quot;Curves&quot;</h2>');
     expect(page).toContain('<time datetime="2026-09-01">September 1, 2026</time><div><p>Seasonal body.</p></div>');
     expect(page.match(/<h1/g)).toHaveLength(1);
   });
@@ -120,13 +122,19 @@ describe('renderArticlePage', () => {
 
 it('renderBlogIndex links every article from /blog/', () => {
   const page = renderBlogIndex(blogHtml, [article]);
-  expect(page).toContain('<div id="soro-blog"><ul><li><a href="/blog/?post=seasonal-demand-forecasting">');
+  expect(page).toContain('<div id="soro-blog"><ul><li><a href="/blog/seasonal-demand-forecasting/">');
   expect(renderBlogIndex(blogHtml, [])).toBe(blogHtml);
 });
 
 it('appendArticlesToSitemap lists every article URL', () => {
   const xml = '<?xml version="1.0"?>\n<urlset>\n  <url><loc>https://sparkinventory.com/blog/</loc></url>\n</urlset>\n';
   expect(appendArticlesToSitemap(xml, [article])).toContain(
-    '  <url><loc>https://sparkinventory.com/blog/?post=seasonal-demand-forecasting</loc><lastmod>2026-09-01</lastmod></url>\n</urlset>',
+    '  <url><loc>https://sparkinventory.com/blog/seasonal-demand-forecasting/</loc><lastmod>2026-09-01</lastmod></url>\n</urlset>',
   );
+});
+
+it('renderMissingArticle keeps the article links but asks search engines not to index', () => {
+  const page = renderMissingArticle(blogHtml, [article]);
+  expect(page).toContain('<meta name="robots" content="noindex, follow">');
+  expect(page).toContain('<a href="/blog/seasonal-demand-forecasting/">');
 });

@@ -445,3 +445,26 @@ html {
   .dashboard-mockup:not(.is-visible) .dash-changes,
   .dashboard-mockup:not(.is-visible) .dash-row { opacity: 1; }
 }
+
+/* ── Soro blog article (/blog/<slug>/) ─────────────────────────────────────
+   The edge function renders the article text itself on these pages, so it
+   needs readable prose styles in place of Soro's widget styles. */
+.soro-article { max-width: 46rem; margin: 0 auto; color: #c9d0db; font-size: 1.0625rem; line-height: 1.8; }
+.soro-article > h2 { color: #fff; font-size: clamp(1.875rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.soro-article > time { display: block; margin-top: 0.75rem; color: #8b95a8; font-size: 0.875rem; }
+.soro-article > div { margin-top: 2rem; }
+.soro-article > div > * + * { margin-top: 1.25rem; }
+.soro-article h2, .soro-article h3, .soro-article h4 { color: #fff; font-weight: 650; line-height: 1.3; }
+.soro-article > div h2 { margin-top: 2.5rem; font-size: 1.625rem; }
+.soro-article > div h3 { margin-top: 2rem; font-size: 1.3125rem; }
+.soro-article > div h4 { margin-top: 1.75rem; font-size: 1.125rem; }
+.soro-article a { color: #67e8f9; text-decoration: underline; text-underline-offset: 3px; }
+.soro-article strong { color: #fff; }
+.soro-article ul { list-style: disc; padding-left: 1.5rem; }
+.soro-article ol { list-style: decimal; padding-left: 1.5rem; }
+.soro-article li + li { margin-top: 0.5rem; }
+.soro-article blockquote { border-left: 3px solid #22d3ee; padding-left: 1rem; color: #b8bfcc; }
+.soro-article img { max-width: 100%; height: auto; border-radius: 1rem; }
+.soro-article table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 0.9375rem; }
+.soro-article th, .soro-article td { border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.5rem 0.75rem; text-align: left; }
+.soro-article > p:last-child { margin-top: 3rem; font-size: 0.9375rem; }
