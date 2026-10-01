@@ -20,8 +20,8 @@ const steps: CaptureStep[] = [
     icon: Inbox,
   },
   {
-    title: "Orders stay current",
-    detail: "Spark creates or updates the matching order, links it to the email it came from, and notifies you of anything that needs your attention.",
+    title: "You approve the next step",
+    detail: "Spark links each message to the matching order and drafts the next step for your approval, such as a new sales order or receiving a shipped purchase order.",
     icon: Bell,
   },
 ];
@@ -36,14 +36,14 @@ interface ExampleMessage {
 const exampleMessages: ExampleMessage[] = [
   {
     from: "Supplier",
-    subject: "PO 1042 confirmed, ship date moved to Friday",
-    result: "Purchase order updated",
+    subject: "PO 1042 has shipped, tracking attached",
+    result: "Ready to receive",
     tone: "update",
   },
   {
     from: "Customer",
     subject: "Order for 24 cases, delivery next week",
-    result: "Sales order created",
+    result: "Sales order drafted",
     tone: "create",
   },
   {
@@ -89,8 +89,8 @@ export default function GmailOrderCaptureSection() {
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc] lg:text-lg">
             Connect your Gmail account and Spark watches your inbox for purchase orders and sales orders. When a customer
-            places an order or a supplier confirms, changes, or ships one, Spark updates your orders and tells you what
-            changed.
+            places an order or a supplier confirms or ships one, Spark links the email to the right order and drafts the next
+            step for you to approve.
           </p>
 
           <ol className="mt-8 space-y-5">
