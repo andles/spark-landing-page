@@ -390,7 +390,7 @@ export const routeMeta: RouteMeta[] = [
   {
     path: '/partners',
     title: 'Partners - SPARK Inventory',
-    description: 'Partner with SPARK: integrations, referrals, and solution partnerships for inventory-driven businesses.',
+    description: 'Partner with SPARK as a 3PL, an agency or consultant, or a referral partner, and grow with inventory-driven businesses.',
   },
   {
     path: '/contact',

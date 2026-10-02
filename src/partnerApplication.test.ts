@@ -8,6 +8,7 @@ import {
 import envProduction from '../.env.production?raw';
 
 const form = {
+  partnerType: 'agency' as const,
   email: 'jo@agency.com',
   fullName: 'Jo Doe',
   company: 'Agency',
