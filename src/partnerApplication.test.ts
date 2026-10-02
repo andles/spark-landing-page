@@ -5,6 +5,7 @@ import {
   partnerApplicationApiUrl,
   submitPartnerApplication,
 } from './partnerApplication';
+import envProduction from '../.env.production?raw';
 
 const form = {
   email: 'jo@agency.com',
@@ -65,5 +66,14 @@ describe('submitPartnerApplication', () => {
   it('fails when the worker fallback fails too', async () => {
     const fetchImpl = respond(500, 500);
     await expect(submitPartnerApplication(form, API, fetchImpl)).rejects.toThrow('Submission failed');
+  });
+});
+
+describe('production build', () => {
+  it('sends partner applications to the production Spark API', () => {
+    const value = envProduction.match(/^VITE_SPARK_API_URL=(.*)$/m)?.[1]?.trim();
+    expect(partnerApplicationApiUrl(value)).toBe(
+      'https://api.sparkinventory.com/api/v1/partner-program/applications',
+    );
   });
 });
