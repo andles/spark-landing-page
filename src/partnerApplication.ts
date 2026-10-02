@@ -1,3 +1,5 @@
+import type { PartnerTypeId } from './partnerTypes';
+
 /**
  * Sends the partner application form.
  *
@@ -7,6 +9,8 @@
  * an outage or to the order the two sites deploy in.
  */
 export interface PartnerApplicationForm {
+  /** The partnership applied for. The API ignores it until it knows partner types, so either site can deploy first. */
+  partnerType: PartnerTypeId;
   email: string;
   fullName: string;
   company: string;
