@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   PARTNER_APPLICATION_WORKER_URL,
   PartnerApplicationRejected,
+  missingApplicationFields,
   partnerApplicationApiUrl,
   submitPartnerApplication,
 } from './partnerApplication';
@@ -76,5 +77,20 @@ describe('production build', () => {
     expect(partnerApplicationApiUrl(value)).toBe(
       'https://api.sparkinventory.com/api/v1/partner-program/applications',
     );
+  });
+});
+
+describe('missingApplicationFields', () => {
+  it('needs nothing beyond the partnership, name, email and company', () => {
+    expect(missingApplicationFields(form)).toEqual([]);
+  });
+
+  it('names what is missing, in form order, starting with the partnership', () => {
+    expect(missingApplicationFields({ partnerType: null, fullName: ' ', email: 'jo@agency', company: '' })).toEqual([
+      'the partnership you are applying for',
+      'your full name',
+      'a valid email',
+      'your company',
+    ]);
   });
 });
