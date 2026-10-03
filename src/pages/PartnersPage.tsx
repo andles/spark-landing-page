@@ -6,7 +6,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/theme';
-import { PartnerApplicationRejected, submitPartnerApplication } from '../partnerApplication';
+import { PartnerApplicationRejected, missingApplicationFields, submitPartnerApplication } from '../partnerApplication';
 import { PARTNER_TYPES, isPartnerTypeId, partnerTypeById } from '../partnerTypes';
 import type { PartnerTypeId } from '../partnerTypes';
 
@@ -166,6 +166,8 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [showMissing, setShowMissing] = useState(false);
+  const missing = missingApplicationFields({ partnerType, ...fields });
 
   const updateField = (field: keyof FormFields, value: string) => {
     setFields((prev) => ({ ...prev, [field]: value }));
@@ -179,7 +181,12 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      if (!partnerType) return;
+      // The button is never disabled: a greyed-out button with no reason reads as the optional
+      // fields being required. Say what is missing instead.
+      if (!partnerType || missing.length) {
+        setShowMissing(true);
+        return;
+      }
       setIsSubmitting(true);
       setSubmitError('');
       try {
@@ -195,15 +202,8 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
         setIsSubmitting(false);
       }
     },
-    [partnerType, fields],
+    [partnerType, fields, missing.length],
   );
-
-  const isFormValid =
-    partnerType !== null &&
-    fields.email.includes('@') &&
-    fields.email.includes('.') &&
-    fields.fullName.trim().length > 0 &&
-    fields.company.trim().length > 0;
 
   const textField = (
     id: keyof FormFields,
@@ -213,7 +213,12 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
   ) => (
     <div>
       <label htmlFor={id} className={t.label}>
-        {label} {options.required && <span className="text-red-500">*</span>}
+        {label}{' '}
+        {options.required ? (
+          <span className="text-red-500">*</span>
+        ) : (
+          <span className={`font-normal ${t.muted}`}>(optional)</span>
+        )}
       </label>
       <input
         type={options.type ?? 'text'}
@@ -358,11 +363,16 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
                         type="submit"
                         size="lg"
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={!isFormValid || isSubmitting}
+                        disabled={isSubmitting}
                       >
                         {isSubmitting ? 'Submitting...' : 'Submit Application'}
                         {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2" />}
                       </Button>
+                      {showMissing && missing.length > 0 && (
+                        <p role="alert" className="text-red-500 text-sm text-center mt-2">
+                          Please add {missing.join(', ')}.
+                        </p>
+                      )}
                       {submitError && <p className="text-red-500 text-sm text-center mt-2">{submitError}</p>}
 
                       <p className={`text-center text-sm ${t.muted}`}>

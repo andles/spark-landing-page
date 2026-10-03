@@ -19,6 +19,22 @@ export interface PartnerApplicationForm {
   website: string;
 }
 
+/** The fields the form needs before it can send. Phone, LinkedIn and website are optional. */
+export type RequiredApplicationFields = Pick<PartnerApplicationForm, 'email' | 'fullName' | 'company'> & {
+  partnerType: PartnerTypeId | null;
+};
+
+/** What the applicant still has to fill in, in form order, worded to follow "Please add". */
+export function missingApplicationFields(form: RequiredApplicationFields): string[] {
+  const email = form.email.trim();
+  return [
+    !form.partnerType && 'the partnership you are applying for',
+    !form.fullName.trim() && 'your full name',
+    !(email.includes('@') && email.includes('.')) && 'a valid email',
+    !form.company.trim() && 'your company',
+  ].filter((field): field is string => typeof field === 'string');
+}
+
 export const PARTNER_APPLICATION_WORKER_URL = 'https://forms.sparkinventory.com/api/partner-application';
 
 export function partnerApplicationApiUrl(apiBase: string | undefined): string | null {
