@@ -2,9 +2,10 @@ import ProductProofCards from "./ProductProofCards";
 import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 
+const HOME_HERO_CTA_OPTIONS = { source: "home_hero" } as const;
 
 export default function AgencyHero() {
-  const { signupUrl } = useCtaLinks();
+  const { signupUrl, bookUrl } = useCtaLinks(HOME_HERO_CTA_OPTIONS);
   return (
     <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
@@ -40,7 +41,7 @@ export default function AgencyHero() {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Spark turns sales, inventory, and supply data from every channel into
+            Spark Inventory turns sales, inventory, and supply data from every channel into
             demand forecasts and draft purchase orders. Your team approves the
             plan, so cash stays out of overstock and bestsellers stay available.
           </p>
@@ -53,16 +54,22 @@ export default function AgencyHero() {
             >
               Start Free
             </a>
-            <BookACallButton className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
-              Book a 20-Minute Demo
+            <BookACallButton url={bookUrl} className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center">
+              Book a demo
             </BookACallButton>
           </div>
           <p className="mt-3 text-xs text-[#8b95a8]">
             Onboard with Sparki in app or your own AI assistant over MCP.
           </p>
+          <p className="mt-2 text-sm text-[#b8bfcc]">
+            Upgrading from Fishbowl, Cin7, or a spreadsheet?{" "}
+            <a href="#why-switch" className="font-semibold text-cyan-300 underline-offset-4 hover:underline">
+              See how the move works.
+            </a>
+          </p>
         </div>
 
-        <ProductProofCards />
+        <ProductProofCards showReorderLink />
 
       </div>
     </section>

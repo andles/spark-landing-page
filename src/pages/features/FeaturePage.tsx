@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, type LucideIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import AgencyHeader from '../../agency/AgencyHeader';
 import AgencyFooter from '../../agency/AgencyFooter';
 import BookACallButton from '../../agency/BookACallButton';
@@ -27,6 +27,10 @@ export interface FeaturePageProps {
   showcase?: ReactNode;
   nextCategory?: { name: string; href: string };
   prevCategory?: { name: string; href: string };
+  /** Page identifier added to signup and booking links (see ctaLinks.ts). */
+  ctaSource?: string;
+  /** Optional line under the closing CTA buttons. */
+  closingNote?: ReactNode;
 }
 
 const decisionSteps = [
@@ -38,7 +42,7 @@ const decisionSteps = [
   {
     number: '02',
     title: 'See the recommendation',
-    body: 'Spark turns sales, stock, and lead times into a clear next action with the reasoning attached.',
+    body: 'Spark Inventory turns sales, stock, and lead times into a clear next action with the reasoning attached.',
   },
   {
     number: '03',
@@ -62,8 +66,11 @@ export function FeaturePage({
   showcase,
   nextCategory,
   prevCategory,
+  ctaSource,
+  closingNote,
 }: FeaturePageProps) {
-  const { signupUrl } = useCtaLinks();
+  const ctaOptions = useMemo(() => (ctaSource ? { source: ctaSource } : undefined), [ctaSource]);
+  const { signupUrl, bookUrl } = useCtaLinks(ctaOptions);
 
   return (
     <div className="min-h-screen bg-[#06080d] text-white">
@@ -101,8 +108,8 @@ export function FeaturePage({
                   <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">
                     Start Free
                   </a>
-                  <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">
-                    Book a 20-Minute Demo
+                  <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">
+                    Book a demo
                   </BookACallButton>
                 </div>
                 <p className="mt-3 text-xs text-white/40">Onboard with Sparki in app or your own AI assistant over MCP.</p>
@@ -226,12 +233,13 @@ export function FeaturePage({
         <section className="relative overflow-hidden px-6 py-20 text-center md:px-8 lg:py-28">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_70%_at_50%_100%,rgba(6,182,212,0.11),transparent_68%)]" />
           <ScrollReveal className="relative mx-auto max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">See your own inventory plan in Spark</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">See your own inventory plan in Spark Inventory</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#b8bfcc]">Upload the data you already have and turn it into the next decisions your team needs to make.</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
-              <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a Demo</BookACallButton>
+              <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a demo</BookACallButton>
             </div>
+            {closingNote && <div className="mt-6 text-sm text-[#b8bfcc]">{closingNote}</div>}
           </ScrollReveal>
         </section>
       </main>

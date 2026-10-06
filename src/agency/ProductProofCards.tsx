@@ -1,4 +1,5 @@
-import { Boxes, ChartNoAxesCombined, Timer } from "lucide-react";
+import { ArrowRight, Boxes, ChartNoAxesCombined, Timer } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScrollReveal, { RevealItem } from "./ScrollReveal";
 
 const capabilities = [
@@ -28,7 +29,13 @@ const capabilities = [
   },
 ];
 
-export default function ProductProofCards() {
+/**
+ * The three approved Demand ESP proof cards. Reuse this component wherever the
+ * figures appear so the wording cannot drift from docs/demand-esp-evidence.md.
+ * `showReorderLink` adds the "Plan your next reorder" link to the purchasing
+ * page; leave it off on the purchasing page itself.
+ */
+export default function ProductProofCards({ showReorderLink = false }: { showReorderLink?: boolean }) {
   return (
     <div className="mt-8 lg:mt-10 w-full max-w-[1100px] mx-auto text-left">
       <ScrollReveal staggerChildren={120} className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
@@ -59,6 +66,16 @@ export default function ProductProofCards() {
         <h3 className="text-lg font-semibold text-white">Every SKU. Its own forecast.</h3>
         <p className="mt-2 text-sm leading-6 text-[#b8bfcc]">Demand ESP reads each item’s demand pattern and automatically selects a forecasting method. See the method chosen and the history behind your forecast.</p>
       </div>
+      {showReorderLink && (
+        <div className="mt-6 text-center">
+          <Link
+            to="/features/purchasing"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-cyan-100"
+          >
+            Plan your next reorder <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      )}
       <p className="mt-5 text-xs leading-5 text-[#a3adbd] text-center">
         Forecast and inventory results from public-data testing.
       </p>
@@ -66,18 +83,21 @@ export default function ProductProofCards() {
         <summary className="mx-auto w-fit cursor-pointer px-2 py-2 text-center text-[#b8bfcc] hover:text-white underline underline-offset-4 decoration-white/25 focus-visible:outline-2 focus-visible:outline-cyan-400 rounded">
           How we measured it
         </summary>
-        <div className="mt-4 border-t border-white/[0.08] pt-5 grid gap-5 md:grid-cols-2 text-xs leading-6">
+        <p className="mt-4 border-t border-white/[0.08] pt-5 text-xs leading-6">
+          The 19% and 12% figures were measured in September 2026 on an earlier version of our forecasting engine.
+        </p>
+        <div className="mt-4 grid gap-5 md:grid-cols-2 text-xs leading-6">
           <section>
             <h3 className="font-semibold text-white text-sm">A method for each demand pattern</h3>
             <p>Demand ESP selects statistical methods for steady, trending, seasonal, and intermittent demand, using the available sales history and fallbacks for limited data.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 12% measures</h3>
-            <p>In an inventory simulation using 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost.</p>
+            <p>In an inventory simulation using 400 Iowa public-data items, average on-hand inventory cost was approximately $4.12M for Spark Inventory versus $4.67M for last-month forecasting at an interpolated 98% fill rate. Both used the same order-up-to policy, a 14-day lead time, lost sales, and a uniform $12 unit cost.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What the 19% measures</h3>
-            <p>Retrospective testing on 799 Iowa items found six-month pooled weighted absolute percentage error (WAPE) of 22.0% for Spark versus 27.1% for last-month forecasting, a relative reduction of approximately 19%.</p>
+            <p>Retrospective testing on 799 Iowa items found six-month pooled weighted absolute percentage error (WAPE) of 22.0% for Spark Inventory versus 27.1% for last-month forecasting, a relative reduction of approximately 19%.</p>
           </section>
           <section>
             <h3 className="font-semibold text-white text-sm">What onboarding time measures</h3>

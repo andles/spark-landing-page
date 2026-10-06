@@ -1,6 +1,6 @@
 import { ArrowRight, Database, Layers3, ShieldCheck } from "lucide-react";
 import ScrollReveal, { RevealItem } from "../ScrollReveal";
-import { useCtaLinks } from "./links";
+import { useCtaLinks, SIGNUP_CTA } from "./links";
 
 const offerPoints = [
   {
@@ -66,7 +66,7 @@ export default function FishbowlOffer() {
             Free access runs to the end date of your current Fishbowl agreement. Migration and onboarding are included.
           </p>
           <a href={signupUrl} className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-5 text-sm font-semibold text-white transition hover:scale-[1.02] sm:self-auto">
-            Start Forecasting Free
+            {SIGNUP_CTA}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </ScrollReveal>

@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import ScrollReveal from "../ScrollReveal";
-import { useCtaLinks } from "./links";
+import { useCtaLinks, SIGNUP_CTA } from "./links";
 
 const sparkIncludes = [
   "Continuous forecasts and buying plans",
@@ -117,7 +117,7 @@ export default function FishbowlPriceComparison() {
                   <p className="mt-1 text-[11px] text-[#8b95a8]">Upgrade only when you need live intelligence and team access.</p>
                 </div>
                 <a href={signupUrl} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-5 text-sm font-semibold text-white transition hover:scale-[1.02]">
-                  Start Forecasting Free
+                  {SIGNUP_CTA}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

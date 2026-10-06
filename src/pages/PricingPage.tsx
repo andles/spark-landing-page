@@ -1,11 +1,12 @@
 import { ArrowRight, CircleCheck, Database, Gauge, UsersRound } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import AgencyCTASection from '../agency/AgencyCTASection';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
 import AgencyPricingSection from '../agency/AgencyPricingSection';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks, withSignupIntent } from '../agency/ctaLinks';
-import { pricingFaqs } from '../agency/pricingData';
+import { MIGRATION_HELP_LINE, pricingFaqs } from '../agency/pricingData';
 import { useScrollToHashOnMount } from '../hooks/useScrollToHash';
 
 const planSignals = [
@@ -22,12 +23,14 @@ const planSignals = [
   {
     icon: Database,
     title: 'A data foundation that compounds',
-    body: 'Bring data from commerce platforms, spreadsheets, or other systems. Spark preserves demand, supply, and decision context so every forecast starts smarter.',
+    body: 'Bring data from commerce platforms, spreadsheets, or other systems. Spark Inventory preserves demand, supply, and decision context so every forecast starts smarter.',
   },
 ] as const;
 
+const PRICING_HERO_CTA_OPTIONS = { source: 'pricing_page' } as const;
+
 export function PricingPage() {
-  const { signupUrl } = useCtaLinks();
+  const { signupUrl } = useCtaLinks(PRICING_HERO_CTA_OPTIONS);
   const freeSignupUrl = withSignupIntent(signupUrl, { plan: 'free' });
   useScrollToHashOnMount();
 
@@ -42,27 +45,27 @@ export function PricingPage() {
           <ScrollReveal className="relative z-10 mx-auto max-w-[1080px] text-center">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-lime-200">Spark Inventory pricing</p>
             <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-bold leading-[1.08] tracking-[-0.045em] sm:text-6xl lg:text-[4.85rem]">
-              Forecasting is free.
+              Upgrade from spreadsheets
               <span
                 className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text pb-[0.1em] text-transparent"
                 style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
               >
-                Upgrade when you need it live.
+                or legacy inventory software
               </span>
             </h1>
             <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-              Bring sales and inventory history from the systems you already use. Spark refreshes your forecast every month at $0, then adds live intelligence and execution when you need them. Manufacturing and multi-client operations have dedicated advanced paths.
+              Free covers one user. Pulse, Operate, and Scale add live planning, purchasing, and manufacturing, with unlimited users and a 14-day free trial.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={freeSignupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-8 text-sm font-semibold text-[#071009] transition-all hover:scale-[1.02] hover:bg-lime-200">
-                Start Forecasting Free
+                Start free
               </a>
               <a href="#plans" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold transition-colors hover:bg-white/[0.08]">
                 Compare Plans <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
             <div className="mx-auto mt-7 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-white/45">
-              {['$0 monthly forecasting', '1 user on Free', 'No SKU limits'].map((item) => (
+              {['1 user on Free', 'Unlimited users on paid plans', 'No SKU limits'].map((item) => (
                 <span key={item} className="inline-flex items-center gap-2"><CircleCheck className="h-3.5 w-3.5 text-lime-300" aria-hidden="true" />{item}</span>
               ))}
             </div>
@@ -85,6 +88,28 @@ export function PricingPage() {
                 </RevealItem>
               );
             })}
+          </ScrollReveal>
+        </section>
+
+        <section aria-labelledby="upgrading-heading" className="px-6 py-14 md:px-8 lg:py-16">
+          <ScrollReveal className="mx-auto max-w-[1080px] rounded-3xl border border-white/[0.08] bg-[#090d15] p-6 sm:p-8">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Upgrading from another system</p>
+            <h2 id="upgrading-heading" className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">Bring the history you already have</h2>
+            <ul className="mt-6 grid gap-4 text-sm leading-7 text-[#b8bfcc] md:grid-cols-2">
+              <li className="flex gap-3">
+                <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-lime-300" aria-hidden="true" />
+                <span>
+                  Moving from Fishbowl?{' '}
+                  <Link to="/fishbowl-alternative#offer" className="font-semibold text-cyan-200 underline-offset-4 hover:underline">
+                    See the Fishbowl bridge offer.
+                  </Link>
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-lime-300" aria-hidden="true" />
+                <span>{MIGRATION_HELP_LINE}</span>
+              </li>
+            </ul>
           </ScrollReveal>
         </section>
 

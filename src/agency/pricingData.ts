@@ -52,7 +52,7 @@ export const pricingTiers: PricingTier[] = [
       'Dead stock and days-of-supply reports',
       'Monthly reorder and buying plan',
     ],
-    ctaLabel: 'Start forecasting free',
+    ctaLabel: 'Start free',
     ctaKind: 'signup',
     signupPlan: 'free',
     accent: 'cyan',
@@ -177,6 +177,13 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     exploreLabel: 'Explore 3PL operations',
   },
 ];
+
+/**
+ * The one sitewide migration line (Revision 1, B3). Sourced from the
+ * Historical data migration row below. Restore an "agent-led import on every
+ * plan" clause only after plan entitlements are confirmed.
+ */
+export const MIGRATION_HELP_LINE = 'Guided migration and import help, with scoped historical migration from $500.';
 
 export const implementationServices = [
   {

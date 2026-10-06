@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
 import FishbowlBookLink from "./FishbowlBookLink";
-import { useCtaLinks, BOOKING_CTA } from "./links";
+import { useCtaLinks, BOOKING_CTA, SIGNUP_CTA } from "./links";
 
 export default function FishbowlCTA() {
   const { signupUrl } = useCtaLinks();
@@ -23,14 +23,14 @@ export default function FishbowlCTA() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
             Drop in the Fishbowl backup.
             <br className="hidden sm:block" />{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">See what Spark forecasts.</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Plan your next reorder in Spark Inventory.</span>
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed max-w-2xl">
             Sparki in app or your own AI assistant over MCP handles the mapping and prepares the import. You approve it, then compare Spark and Fishbowl on your own numbers.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={signupUrl} className="inline-flex items-center h-[46px] px-7 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300">
-              Start Forecasting Free
+              {SIGNUP_CTA}
             </a>
             <FishbowlBookLink
               className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300"

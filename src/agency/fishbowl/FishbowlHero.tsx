@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { CalendarDays, Check } from "lucide-react";
 import FishbowlBookLink from "./FishbowlBookLink";
-import { useCtaLinks, BOOKING_CTA } from "./links";
+import { useCtaLinks, BOOKING_CTA, SIGNUP_CTA } from "./links";
 
 export default function FishbowlHero() {
   const { signupUrl } = useCtaLinks();
@@ -33,9 +33,9 @@ export default function FishbowlHero() {
 
           <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
             <span data-fishbowl-variant-copy="organic">
-              <span className="text-[#f4f6f9]">Fishbowl tracks it.</span>
+              <span className="text-[#f4f6f9]">Upgrading from Fishbowl?</span>
               <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
-                Spark forecasts it.
+                Review your import before anything is committed.
               </span>
             </span>
             <span data-fishbowl-variant-copy="campaign" data-nosnippet>
@@ -48,7 +48,7 @@ export default function FishbowlHero() {
 
           <div data-fishbowl-variant-copy="organic">
             <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
-              Your Fishbowl backup. Your first Spark forecast.
+              Your Fishbowl backup. Your first Spark Inventory forecast.
             </h2>
             <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
               Drop in your database backup. Use Sparki in app or your own AI assistant over MCP to map your data and prepare the import. You review and approve, then see what to order and when.
@@ -59,14 +59,14 @@ export default function FishbowlHero() {
           </div>
 
           <p data-fishbowl-variant-copy="campaign" data-nosnippet className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
-            Spark forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
+            Spark Inventory forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
           </p>
 
           <div className="animate-fade-up delay-300 mx-auto mt-5 grid max-w-[760px] gap-2.5 text-left sm:mt-6 sm:grid-cols-2">
-            <a href="#price-compare" className="group rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] px-4 py-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.1]">
-              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-cyan-300">Ongoing free plan</span>
-              <strong className="mt-1 block text-sm font-semibold text-white">Forecast monthly for $0</strong>
-              <span className="mt-1 block text-xs text-[#8f99a9]">Upgrade when you need the forecast to stay live.</span>
+            <a href="#migrate" className="group rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] px-4 py-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.1]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-cyan-300">How the move works</span>
+              <strong className="mt-1 block text-sm font-semibold text-white">Backup in. Review the mapping. Approve the import.</strong>
+              <span className="mt-1 block text-xs text-[#8f99a9]">Nothing is imported until you approve it.</span>
             </a>
             <a href="#offer" className="group rounded-2xl border border-violet-300/20 bg-violet-300/[0.06] px-4 py-3 transition hover:border-violet-300/35 hover:bg-violet-300/[0.1]">
               <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-violet-300">Fishbowl bridge</span>
@@ -80,7 +80,7 @@ export default function FishbowlHero() {
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
             <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
-              Start Forecasting Free
+              {SIGNUP_CTA}
             </a>
             <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
               {BOOKING_CTA}
