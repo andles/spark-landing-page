@@ -100,15 +100,15 @@ const HOME_SCHEMA: Record<string, unknown>[] = [
 export const routeMeta: RouteMeta[] = [
   {
     path: '/',
-    title: 'AI Inventory Management & Demand Forecasting | Spark',
+    title: 'AI Inventory Management Software | Spark Inventory',
     description:
-      'Forecast demand, reduce stockouts, and turn live inventory data into draft purchase orders. Spark connects purchasing, sales, warehousing, manufacturing, and accounting.',
+      'Upgrade from spreadsheets or legacy inventory software to Spark Inventory: one system that plans every reorder, drafts purchase orders for your approval, and connects sales, warehousing, and accounting.',
     lastModified: '2026-08-31',
     schema: HOME_SCHEMA,
   },
   {
     path: '/3pl',
-    title: 'SPARK for 3PLs - AI Forecasting, Price Books & Run Planning',
+    title: 'AI Forecasting, Price Books & Run Planning for 3PLs | Spark Inventory',
     description:
       'Give clients AI forecasting and live visibility while your team manages price books, purchasing, run economics, and client workspaces in one platform.',
     lastModified: '2026-08-24',
@@ -124,7 +124,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/charity-retail',
-    title: 'AI Inventory Management for Charity Retail | Spark',
+    title: 'AI Inventory Management for Charity Retail | Spark Inventory',
     description:
       'Spark prices donated goods with computer vision and live resale comps, routes every item to its best channel, and turns dead stock into funding for the mission.',
     lastModified: '2026-08-26',
@@ -132,7 +132,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/reduce-stockouts-overstock',
-    title: 'Reduce Stockouts & Overstock with AI Forecasting - SPARK',
+    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
     lastModified: '2026-08-29',
@@ -140,7 +140,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/reduce-stockouts-&-overstock',
-    title: 'Reduce Stockouts & Overstock with AI Forecasting - SPARK',
+    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
     lastModified: '2026-08-29',
@@ -149,9 +149,9 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Fishbowl Alternative with Demand Forecasting | Spark',
+    title: 'Fishbowl Alternative with Demand Forecasting | Spark Inventory',
     description:
-      'Run Spark alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
+      'Run Spark Inventory alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
     lastModified: '2026-09-06',
     schema: [
       { ...buildFaqSchema('fishbowl'), '@id': `${SITE_URL}/fishbowl-alternative/#faq` },
@@ -173,44 +173,44 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/cin7-alternative',
-    title: 'Cin7 Alternative for Inventory Planning & Operations | Spark',
+    title: 'Cin7 Alternative: Plan and Migrate | Spark Inventory',
     description:
-      'Compare Spark with Cin7 Core and Omni across forecasting, purchasing, inventory operations, manufacturing, integrations, onboarding, and pricing.',
+      'Compare Spark Inventory with Cin7 Core and Omni across forecasting, purchasing, inventory operations, manufacturing, integrations, onboarding, and pricing, and see how migration works.',
     lastModified: '2026-09-01',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
   {
     path: '/zoho-inventory-alternative',
-    title: 'Zoho Inventory Alternative for Growing Sellers | Spark',
+    title: 'Zoho Inventory Alternative for Growing Sellers | Spark Inventory',
     description:
-      'Compare Spark with Zoho Inventory across order limits, planning depth, Shopify, Amazon, QuickBooks, shipping, manufacturing, and price.',
+      'Compare Spark Inventory with Zoho Inventory across order limits, planning depth, Shopify, Amazon, QuickBooks, shipping, manufacturing, and price, and see how migration works.',
     lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('zoho')],
   },
   {
     path: '/inflow-alternative',
-    title: 'inFlow Alternative for Planning & Purchasing | Spark',
+    title: 'inFlow Alternative for Planning and Purchasing | Spark Inventory',
     description:
-      'Compare Spark with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows.',
+      'Compare Spark Inventory with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows, and see how migration works.',
     lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('inflow')],
   },
   {
     path: '/meeting-confirmed',
-    title: 'Meeting Confirmed - SPARK Inventory',
+    title: 'Meeting Confirmed | Spark Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',
     noindex: true,
     headHtml: MEETING_CONFIRMED_CONVERSION_SNIPPET,
   },
   {
     path: '/404',
-    title: 'Page Not Found - SPARK Inventory',
+    title: 'Page Not Found | Spark Inventory',
     description: 'The page you requested could not be found. Browse Spark Inventory solutions, product features, or support.',
     noindex: true,
   },
   {
     path: '/features',
-    title: 'Inventory Management Features - Spark Inventory',
+    title: 'Inventory Management Features | Spark Inventory',
     description:
       'Explore Spark Inventory features for inventory, purchasing, sales, manufacturing, warehouses, QuickBooks, Sparki, and governed MCP automation.',
     lastModified: '2026-08-24',
@@ -218,42 +218,42 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/features/inventory',
-    title: 'Inventory Management Software - SPARK',
+    title: 'Inventory Management Software | Spark Inventory',
     description:
       'SKU and variant management, bundles and kits, barcodes, and real-time stock levels across every location and sales channel.',
     lastModified: '2026-08-31',
   },
   {
     path: '/features/purchasing',
-    title: 'Purchasing & Purchase Order Software - SPARK',
+    title: 'Purchasing and Reorder Planning Software | Spark Inventory',
     description:
-      'Purchase orders from request to receipt, supplier management, automated reordering, and AI-recommended order quantities.',
+      'Plan your next reorder with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving in Spark Inventory.',
     lastModified: '2026-08-31',
   },
   {
     path: '/features/sales',
-    title: 'Sales Orders & Invoicing Software - SPARK',
+    title: 'Sales Orders & Invoicing Software | Spark Inventory',
     description:
       'Sales order management, invoicing and billing, backorders, and multichannel order sync in one system of record.',
     lastModified: '2026-08-31',
   },
   {
     path: '/features/manufacturing',
-    title: 'Manufacturing & BOM Software - SPARK',
+    title: 'Manufacturing & BOM Software | Spark Inventory',
     description:
       'Multi-level bills of materials, manufacturing orders, and component availability planning tied directly to live inventory.',
     lastModified: '2026-08-31',
   },
   {
     path: '/features/warehousing',
-    title: 'Warehouse Management Software - SPARK',
+    title: 'Warehouse Management Software | Spark Inventory',
     description:
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
     lastModified: '2026-08-31',
   },
   {
     path: '/features/tools-services',
-    title: 'Sparki AI Agent & MCP Inventory Automation | Spark',
+    title: 'Sparki AI Agent & MCP Inventory Automation | Spark Inventory',
     description:
       'Meet Sparki, Spark’s in-app AI inventory agent, and connect ChatGPT, Claude, or another approved assistant through governed Spark MCP tools.',
     lastModified: '2026-08-31',
@@ -271,14 +271,14 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/features/accounting',
-    title: 'Accounting & QuickBooks Integration - SPARK',
+    title: 'Accounting & QuickBooks Integration | Spark Inventory',
     description:
       'Two-way QuickBooks Online sync: invoices, payments, and inventory adjustments flow automatically with no double entry.',
     lastModified: '2026-08-31',
   },
   {
     path: '/shopify-inventory-management',
-    title: 'Shopify Inventory Management & Forecasting Software | Spark',
+    title: 'Shopify Inventory Management & Forecasting Software | Spark Inventory',
     description:
       'Turn Shopify sales into forecasts, reorder recommendations, and draft purchase orders with agent-guided onboarding in Spark or over MCP.',
     lastModified: '2026-08-29',
@@ -286,9 +286,9 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/pricing',
-    title: 'Spark Inventory Pricing | Free Monthly Forecasting',
+    title: 'Spark Inventory Pricing | Plans and Migration',
     description:
-      'Forecast inventory free every month for one user. Compare Pulse and Operate for live planning and execution, plus advanced Scale and Custom paths.',
+      'Spark Inventory pricing: Free for one user, Pulse $99/mo, Operate $349/mo, Scale $749/mo. Unlimited users on paid plans, no SKU limits, and guided migration and import help from Fishbowl or spreadsheets.',
     lastModified: '2026-08-31',
     schema: [
       {
@@ -335,7 +335,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/what-is-inventory-management',
-    title: 'What Is Inventory Management? Planning Guide | Spark',
+    title: 'What Is Inventory Management? Planning Guide | Spark Inventory',
     description:
       'Learn inventory tracking, planning, reorder points, days of supply, lead-time demand, stockout causes, and how to evaluate inventory software.',
     lastModified: '2026-08-24',
@@ -366,7 +366,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/inventory-reorder-walkthrough',
-    title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark',
+    title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark Inventory',
     description:
       'Watch Spark connect sales history, demand forecasting, seasonality, stock, incoming supply, purchasing constraints, and human review into a draft purchase order.',
     lastModified: '2026-09-17',
@@ -389,25 +389,25 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/partners',
-    title: 'Partners - SPARK Inventory',
+    title: 'Partners | Spark Inventory',
     description: 'Partner with SPARK as a 3PL, an agency or consultant, or a referral partner, and grow with inventory-driven businesses.',
   },
   {
     path: '/contact',
-    title: 'Contact Us - SPARK Inventory',
+    title: 'Contact Us | Spark Inventory',
     description: 'Get in touch with the SPARK team for sales, support, or partnership questions.',
     webPageType: 'ContactPage',
   },
   {
     path: '/sitemap',
-    title: 'Sitemap - SPARK Inventory',
+    title: 'Sitemap | Spark Inventory',
     description: 'Browse every public Spark Inventory product, solution, company, support, and legal page.',
     lastModified: '2026-09-17',
     webPageType: 'CollectionPage',
   },
   {
     path: '/sms-program',
-    title: 'SMS Program Details - Spark Inventory',
+    title: 'SMS Program Details | Spark Inventory',
     description:
       'Spark Inventory transactional SMS program details, message frequency, opt-in, STOP and HELP instructions, costs, and privacy information.',
     lastModified: '2026-08-24',
@@ -420,37 +420,37 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/support',
-    title: 'Support - SPARK Inventory',
+    title: 'Support | Spark Inventory',
     description: 'Help and support resources for SPARK Intelligent Inventory.',
   },
   {
     path: '/privacy-policy',
-    title: 'Privacy Policy - SPARK Inventory',
+    title: 'Privacy Policy | Spark Inventory',
     description: 'How SPARK Intelligent Inventory collects, uses, and protects your data.',
   },
   {
     path: '/terms-of-service',
-    title: 'Terms of Service - SPARK Inventory',
+    title: 'Terms of Service | Spark Inventory',
     description: 'The terms governing use of SPARK Intelligent Inventory.',
   },
   {
     path: '/app-privacy',
-    title: 'App Privacy - SPARK Inventory',
+    title: 'App Privacy | Spark Inventory',
     description: 'Privacy details for the SPARK Inventory mobile and web apps.',
   },
   {
     path: '/data-safety',
-    title: 'Data Safety - SPARK Inventory',
+    title: 'Data Safety | Spark Inventory',
     description: 'How SPARK Inventory handles, stores, and secures your business data.',
   },
   {
     path: '/eula',
-    title: 'End User License Agreement - SPARK Inventory',
+    title: 'End User License Agreement | Spark Inventory',
     description: 'End user license agreement for SPARK Intelligent Inventory.',
   },
   {
     path: '/delete-account',
-    title: 'Delete Your Account - SPARK Inventory',
+    title: 'Delete Your Account | Spark Inventory',
     description: 'How to delete your SPARK Inventory account and associated data.',
   },
 ];

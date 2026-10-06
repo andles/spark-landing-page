@@ -1,10 +1,24 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { useCtaLinks } from "./ctaLinks";
+
+const HOME_COMPARISON_CTA_OPTIONS = { source: "home_why_upgrade" } as const;
+
+const upgradePaths = [
+  { label: "Moving from Fishbowl", to: "/fishbowl-alternative" },
+  { label: "Moving from Cin7", to: "/cin7-alternative" },
+  { label: "Moving from Zoho Inventory", to: "/zoho-inventory-alternative" },
+  { label: "Moving from inFlow", to: "/inflow-alternative" },
+] as const;
+
+const linkClass =
+  "inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-cyan-200 transition-colors hover:bg-white/[0.08]";
 
 const rows = [
   {
     category: "Pricing",
-    spark: "Free monthly forecasting for one user, unlimited users on paid plans, and predictable order bands. Upgrade for freshness, operating depth, or scale, not SKUs.",
+    spark: "Free for one user, unlimited users on paid plans, and predictable order bands. Upgrade for freshness, operating depth, or scale, not SKUs.",
     others: "Check user, SKU, warehouse, and connection limits, plus the cost of growing beyond them.",
   },
   {
@@ -19,7 +33,7 @@ const rows = [
   },
   {
     category: "Who does the work",
-    spark: "Spark drafts reorders, POs, and transfers. Your team just approves.",
+    spark: "Spark Inventory drafts reorders, POs, and transfers. Your team just approves.",
     others: "Check whether recommendations become reviewable drafts or require manual re-entry.",
   },
   {
@@ -40,9 +54,9 @@ const rows = [
 ];
 
 export default function AgencyComparisonSection() {
-  const { signupUrl } = useCtaLinks();
+  const { signupUrl } = useCtaLinks(HOME_COMPARISON_CTA_OPTIONS);
   return (
-    <section className="py-14 lg:py-20 bg-[#06080d] relative">
+    <section id="why-switch" className="scroll-mt-16 py-14 lg:py-20 bg-[#06080d] relative">
       <div className="absolute -top-[100px] right-[10%] w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
@@ -52,15 +66,29 @@ export default function AgencyComparisonSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            Why Teams Switch to Spark
+            Why teams upgrade to Spark Inventory
           </div>
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-white">See How Spark </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">Compares</span>
+            <span className="text-white">Upgrading from Fishbowl, Cin7, </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">or a spreadsheet?</span>
           </h2>
+          <p className="mt-5 text-base leading-7 text-[#b8bfcc]">
+            Bring your exports or database backup. Sparki in app, or your own AI assistant over MCP, maps and validates the data, and nothing is imported until you approve it.
+          </p>
+          <nav aria-label="Upgrade paths" className="mt-6 flex flex-wrap justify-center gap-2">
+            {upgradePaths.map((path) => (
+              <Link key={path.to} to={path.to} className={linkClass}>
+                {path.label} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            ))}
+            {/* Same-page section, so a plain hash link scrolls without a route change. */}
+            <a href="#agentic-onboarding" className={linkClass}>
+              Moving from spreadsheets <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </nav>
         </ScrollReveal>
 
         <ScrollReveal>
@@ -107,7 +135,7 @@ export default function AgencyComparisonSection() {
                 <div className="text-sm font-semibold text-cyan-400 mb-3">{row.category}</div>
                 <div className="space-y-3">
                   <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Spark</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Spark Inventory</div>
                     <p className="text-sm text-[#b8bfcc] leading-relaxed">{row.spark}</p>
                   </div>
                   <div className="border-t border-white/[0.04] pt-3">

@@ -17,8 +17,8 @@ export default function AgencyCTASection() {
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
         <ScrollReveal className="text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}>
-            See Your Own Inventory in{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Spark Today</span>
+            Bring Your Data.{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">See Your First Reorder Plan.</span>
           </h2>
           <p className="mt-5 text-[#b8bfcc] text-lg mx-auto leading-relaxed">
             Ask Sparki to onboard your data and build your first reorder plan. Prefer a walkthrough? Book a personalized call with our team.
@@ -31,7 +31,7 @@ export default function AgencyCTASection() {
               Start Free
             </a>
             <BookACallButton className="inline-flex items-center h-[46px] px-7 rounded-full glass border border-white/15 text-white text-sm font-semibold hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300">
-              Book a 20-Minute Demo
+              Book a demo
             </BookACallButton>
           </div>
           <p className="mt-3 text-xs text-white/40">Use Sparki in app or your own assistant over MCP. You approve every import.</p>

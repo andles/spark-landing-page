@@ -16,6 +16,7 @@ import AgencyHeader from '../AgencyHeader';
 import BookACallButton from '../BookACallButton';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
+import { MIGRATION_HELP_LINE } from '../pricingData';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
 
 const accentStyles = {
@@ -162,8 +163,8 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             {config.eyebrow}
           </div>
           <h1 className="mt-7 text-[2.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-white sm:text-6xl lg:text-[4.55rem]">
-            Using {config.name}?
-            <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Here’s the real tradeoff.</span>
+            Upgrading from {config.name}?
+            <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Review your import before anything is committed.</span>
           </h1>
           <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">{config.heroBody}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -171,7 +172,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
               url={bookUrl}
               className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}
             >
-              See It With Your Data
+              Book a demo
             </BookACallButton>
             <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.035] px-7 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[0.07]">
               Start Free
@@ -237,6 +238,7 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
             <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>With guided data mapping.</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app, or your compatible AI assistant through Spark MCP, can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-[#9aa4b4]">Need history moved for you? {MIGRATION_HELP_LINE}</p>
           <div className="mt-7 flex flex-wrap gap-2">
             {config.migrationSignals.map((signal) => (
               <span key={signal} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/55">{signal}</span>
@@ -400,7 +402,7 @@ function FitSection({ competitorKey }: { competitorKey: CompetitorKey }) {
       <div className="mx-auto max-w-[1120px]">
         <ScrollReveal className="text-center">
           <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>The fit check</p>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">When to stay. When to look at Spark.</h2>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">When to stay. When to look at Spark Inventory.</h2>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#b8bfcc]">{config.staySummary}</p>
         </ScrollReveal>
         <ScrollReveal staggerChildren={100} className="mt-12 grid gap-5 md:grid-cols-2">
@@ -414,7 +416,7 @@ function FitSection({ competitorKey }: { competitorKey: CompetitorKey }) {
           </RevealItem>
           <RevealItem index={1}>
             <article className={`h-full rounded-3xl border p-6 sm:p-8 ${colors.border} ${colors.soft}`}>
-              <p className={`font-mono text-[10px] uppercase tracking-[0.16em] ${colors.subtleText}`}>Look at Spark when</p>
+              <p className={`font-mono text-[10px] uppercase tracking-[0.16em] ${colors.subtleText}`}>Look at Spark Inventory when</p>
               <ul className="mt-6 space-y-4">
                 {config.switchReasons.map((reason) => <li key={reason} className="flex gap-3 text-sm leading-6 text-[#e0e4ea]"><CircleCheck className={`mt-1 h-4 w-4 shrink-0 ${colors.text}`} aria-hidden="true" />{reason}</li>)}
               </ul>
@@ -460,7 +462,7 @@ function FaqAndSources({ competitorKey }: { competitorKey: CompetitorKey }) {
             <p className="mt-3 text-xs leading-6 text-[#8b95a8]">{config.sourceNote}</p>
             <a href={config.sourceUrl} target="_blank" rel="noreferrer" className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${colors.text}`}>{config.sourceLabel}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
             <div className="mt-6 border-t border-white/[0.07] pt-5">
-              <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">Related Spark pages</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">Related Spark Inventory pages</p>
               <div className="mt-3 space-y-2">
                 {config.relatedLinks.map((link) => <Link key={link.href} to={link.href} className="group flex items-center justify-between rounded-xl px-3 py-2 text-xs text-white/55 transition hover:bg-white/[0.04] hover:text-white"><span>{link.label}</span><ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" /></Link>)}
               </div>
@@ -484,9 +486,9 @@ function ClosingCta({ competitorKey }: { competitorKey: CompetitorKey }) {
       <ScrollReveal className="relative z-10 mx-auto max-w-4xl">
         <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Decide with your own operation</p>
         <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">Bring the {config.name} data.<span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Let Sparki build the migration plan.</span></h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">See the mapping, validation, approval, and readiness workflow using the records your team actually depends on, then decide whether Spark is the better operating fit.</p>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">See the mapping, validation, approval, and readiness workflow using the records your team actually depends on, then decide whether Spark Inventory is the better operating fit.</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <BookACallButton url={bookUrl} className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}>See It With Your Data</BookACallButton>
+          <BookACallButton url={bookUrl} className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}>Book a demo</BookACallButton>
           <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.035] px-7 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[0.07]">Start Free</a>
         </div>
       </ScrollReveal>

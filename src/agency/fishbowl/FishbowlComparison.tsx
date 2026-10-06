@@ -3,7 +3,7 @@
 // Shares the table/card layout used by AgencyComparisonSection.tsx.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
-import { useCtaLinks } from "./links";
+import { useCtaLinks, SIGNUP_CTA } from "./links";
 
 const rows = [
   {
@@ -142,7 +142,7 @@ export default function FishbowlComparison() {
           <a href={signupUrl}
             className="inline-flex items-center h-[46px] px-8 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold hover:scale-[1.02] transition-all duration-300"
           >
-            Start Forecasting Free
+            {SIGNUP_CTA}
           </a>
         </div>
       </div>

@@ -64,7 +64,7 @@ export function ShopifyInventoryPage() {
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
-                <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a 20-Minute Demo</BookACallButton>
+                <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a demo</BookACallButton>
               </div>
               <p className="mt-3 text-xs text-white/40">Connect Shopify, ask Sparki, or onboard through your AI assistant over MCP.</p>
             </ScrollReveal>
@@ -152,7 +152,7 @@ export function ShopifyInventoryPage() {
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#b8bfcc]">Bring the data you already have. Spark will turn it into the decisions your team needs to review.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
-              <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white hover:bg-white/[0.08]">Book a Demo</BookACallButton>
+              <BookACallButton className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white hover:bg-white/[0.08]">Book a demo</BookACallButton>
             </div>
           </ScrollReveal>
         </section>

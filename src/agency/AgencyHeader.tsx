@@ -92,7 +92,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
               url={bookUrl}
               className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold whitespace-nowrap hover:scale-[1.02] transition-all duration-300 inline-flex items-center"
             >
-              Book a Demo
+              Book a demo
             </BookACallButton>
           ) : (
             <a
@@ -142,7 +142,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="https://app.sparkinventory.com" className="text-sm text-[#b8bfcc] hover:text-white py-1 transition-colors">Sign In</a>
             {cta === "demo" ? (
-              <BookACallButton url={bookUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Book a Demo</BookACallButton>
+              <BookACallButton url={bookUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Book a demo</BookACallButton>
             ) : (
               <a href={signupUrl} className="h-9 px-5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-semibold text-center inline-flex items-center justify-center">Start Free</a>
             )}

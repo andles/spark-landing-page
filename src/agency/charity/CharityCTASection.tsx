@@ -24,7 +24,7 @@ export default function CharityCTASection() {
               url={bookUrl}
               className="inline-flex h-[46px] items-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02]"
             >
-              Book a 20-Minute Demo
+              Book a demo
             </BookACallButton>
             <a
               href="/contact"

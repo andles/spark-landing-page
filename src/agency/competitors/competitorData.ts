@@ -66,7 +66,7 @@ export interface CompetitorConfig {
 
 const sharedRelatedLinks = [
   { href: '/shopify-inventory-management', label: 'Shopify inventory management' },
-  { href: '/features/purchasing', label: 'Purchasing and planning' },
+  { href: '/features/purchasing', label: 'Plan your next reorder' },
   { href: '/features/accounting', label: 'QuickBooks and accounting' },
   { href: '/fishbowl-alternative', label: 'Fishbowl alternative' },
 ];
@@ -80,13 +80,13 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     eyebrow: 'For teams evaluating life after Cin7 Core or Omni',
     accent: 'cyan',
     heroBody:
-      'Cin7 is built for broad multichannel operations. Spark takes a more focused route: one cloud inventory system for Shopify, Amazon, wholesale, and QuickBooks, with demand planning and governed AI workflows inside the product.',
+      'Cin7 is built for broad multichannel operations. Spark Inventory takes a more focused route: one cloud inventory system for Shopify, Amazon, wholesale, and QuickBooks, with demand planning and governed AI workflows inside the product.',
     sourceLabel: 'Cin7 pricing and plan details',
     sourceUrl: 'https://www.cin7.com/pricing/',
     snapshot: [
       { label: 'Cin7 Core', value: '$349–$1,199/mo', note: 'Three public Core tiers' },
       { label: 'Planning', value: 'ForesightAI add-on', note: 'Listed as an add-on across plans' },
-      { label: 'Spark', value: 'Free; paid from $99', note: 'Planning and governed MCP included' },
+      { label: 'Spark Inventory', value: 'Free; paid from $99', note: 'Planning and governed MCP included' },
     ],
     packagingComparison: {
       question: 'Is demand planning included in the inventory subscription, or added as a separate product?',
@@ -158,7 +158,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     comparison: [
       { category: 'Product model', competitor: 'Core and Omni cover different operating depths and buyer profiles.', spark: 'One cloud product with tiered capabilities.', lean: 'tradeoff' },
-      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free monthly forecasting; Pulse $99 and Operate $349. Advanced Scale is $749; Custom is quoted.', lean: 'spark' },
+      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free for one user; Pulse $99 and Operate $349. Advanced Scale is $749; Custom is quoted.', lean: 'spark' },
       { category: 'Forecasting', competitor: 'Cin7 ForesightAI is listed as an add-on.', spark: 'Forecasting, inventory risk, and draft purchase orders are part of the operating workflow.', lean: 'spark' },
       { category: 'Channels', competitor: 'More than 700 integrations and a mature partner ecosystem.', spark: 'Focused native paths for Shopify, Amazon, QuickBooks Online, and core commerce workflows.', lean: 'competitor' },
       { category: 'Order and integration limits', competitor: 'Published limits by Core tier, with more capacity available for purchase.', spark: 'Paid plans include 2,500 to 25,000 monthly orders; additional capacity comes in $49 blocks of 2,500.', lean: 'tradeoff' },
@@ -201,13 +201,13 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     eyebrow: 'For teams outgrowing Zoho Inventory',
     accent: 'emerald',
     heroBody:
-      'Zoho Inventory is capable, inexpensive, and especially strong inside the Zoho suite. Spark is for teams willing to pay more for a deeper planning loop: forecast demand, prepare the buy, review the reasoning, and keep Shopify, Amazon, and QuickBooks at the center.',
+      'Zoho Inventory is capable, inexpensive, and especially strong inside the Zoho suite. Spark Inventory is for teams willing to pay more for a deeper planning loop: forecast demand, prepare the buy, review the reasoning, and keep Shopify, Amazon, and QuickBooks at the center.',
     sourceLabel: 'Zoho Inventory pricing and limits',
     sourceUrl: 'https://www.zoho.com/us/inventory/pricing/',
     snapshot: [
       { label: 'Zoho', value: '$0–$249/mo', note: 'Annual billing, with order caps' },
       { label: 'Order ceiling', value: '50–15,000/mo', note: 'Varies by Zoho plan' },
-      { label: 'Spark', value: '$0-$749/mo', note: 'Monthly forecasting through manufacturing' },
+      { label: 'Spark Inventory', value: '$0-$749/mo', note: 'Monthly forecasting through manufacturing' },
     ],
     migrationSignals: ['Items + composites', 'Customers + vendors', 'Orders + purchasing history'],
     themes: [
@@ -253,7 +253,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free monthly forecasting for one user; Pulse begins at $99 per month.', lean: 'tradeoff' },
+      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free for one user; Pulse begins at $99 per month.', lean: 'tradeoff' },
       { category: 'Order limits', competitor: '50, 500, 3,000, 7,500, or 15,000 orders per month by plan.', spark: 'Free is forecast-only. Paid plans include 2,500, 10,000, or 25,000 monthly orders; overage is $49 per 2,500.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder levels, replenishment, and Zoho AI capabilities within a broad SMB inventory suite.', spark: 'Forecast-to-draft-PO workflow with reasoning and human approval.', lean: 'spark' },
       { category: 'Commerce', competitor: 'Native multichannel capabilities, including Shopify and Amazon.', spark: 'Focused Shopify and Amazon inventory-planning workflows.', lean: 'tradeoff' },
@@ -297,13 +297,13 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     eyebrow: 'For teams comparing inFlow Inventory and Spark',
     accent: 'amber',
     heroBody:
-      'inFlow is respected for approachable inventory control, barcode workflows, hardware, and support. Spark is the alternative when the harder problem is planning the buy, not scanning the bin, and you want the forecast, purchasing decision, and approval in one loop.',
+      'inFlow is respected for approachable inventory control, barcode workflows, hardware, and support. Spark Inventory is the alternative when the harder problem is planning the buy, not scanning the bin, and you want the forecast, purchasing decision, and approval in one loop.',
     sourceLabel: 'inFlow Inventory pricing and plan details',
     sourceUrl: 'https://www.inflowinventory.com/software-pricing-inflow',
     snapshot: [
       { label: 'inFlow Inventory', value: '$129–$699/mo', note: 'Annual billing, public tiers' },
       { label: 'Onboarding', value: '$499 once', note: 'Required on most higher plans' },
-      { label: 'Spark', value: 'Free; $99 live', note: 'Monthly audit through live planning' },
+      { label: 'Spark Inventory', value: 'Free; $99 live', note: 'Monthly plan on Free, live planning from Pulse' },
     ],
     migrationSignals: ['Products + barcodes', 'Customers + suppliers', 'Sales + purchasing history'],
     themes: [
@@ -349,7 +349,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free monthly forecasting for one user; Pulse begins at $99 per month.', lean: 'spark' },
+      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free for one user; Pulse begins at $99 per month.', lean: 'spark' },
       { category: 'Order limits', competitor: '100 monthly orders on Entrepreneur, 1,000 on Small Business, unlimited on Mid-Size.', spark: 'Free is forecast-only. Paid plans include 2,500, 10,000, or 25,000 monthly orders; overage is $49 per 2,500.', lean: 'tradeoff' },
       { category: 'Integrations', competitor: 'One, three, or five active integrations on public tiers; additional connections are available.', spark: 'One channel on Free and multiple channels from Pulse, without a per-connection meter.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder points, recommended reorder points, notifications, and PO generation.', spark: 'Demand and supply context produces a reasoned draft purchasing recommendation for approval.', lean: 'spark' },

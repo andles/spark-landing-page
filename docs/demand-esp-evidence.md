@@ -2,6 +2,10 @@
 
 Approved by the site owner in the landing-page review on 2026-09-14, including the instruction to commit and push to origin/main. Demand ESP (with a space) is the approved forecasting brand. The hero remains unchanged.
 
+## Engine version disclosure
+
+Both the 19% and 12% figures come from one run of build `9e710d402` (product base `9e2e1b8ca`), measured on 2026-09-14. The forecasting engine has changed since that build, so the "How we measured it" disclosure says the figures were "measured in September 2026 on an earlier version of our forecasting engine" (Revision 2.1 review, 2026-10-06). The figures stay as published until a re-measure on the current engine is reviewed; a re-measure replaces both the numbers and this note.
+
 ## 19% lower forecast error
 
 Source: Spark benchmark program, branch `claude/spark-demandiq-benchmark-4f5de7`, `benchmarks/demandiq/results/IOWA-FINAL-modeA-postfix-v1/analysis/tables.json`, `by_horizon["6"]`.

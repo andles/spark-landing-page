@@ -133,8 +133,8 @@ export default function InventoryReorderWalkthroughPage() {
             </ScrollReveal>
             <ScrollReveal delay={0.08} className="rounded-3xl border border-violet-300/15 bg-violet-300/[0.035] p-8 sm:p-10">
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-violet-300">Start at the right level</p>
-              <h2 className="mt-5 text-3xl font-semibold">Forecast free, then connect the operating loop</h2>
-              <p className="mt-5 text-sm leading-7 text-[#aab8c1]">Monthly forecasting is available on Spark's free plan. Purchasing and operational workflows are available when your team is ready to act on the plan.</p>
+              <h2 className="mt-5 text-3xl font-semibold">Start with the plan, then connect the operating loop</h2>
+              <p className="mt-5 text-sm leading-7 text-[#aab8c1]">Free covers one user with monthly forecasting in Spark Inventory. Purchasing and operational workflows are available when your team is ready to act on the plan.</p>
               <Link to="/pricing" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-violet-200">Compare plans <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </ScrollReveal>
           </div>
@@ -143,10 +143,10 @@ export default function InventoryReorderWalkthroughPage() {
         <section className="px-6 pb-24 md:px-8 lg:pb-32">
           <ScrollReveal className="mx-auto max-w-[1050px] rounded-[2rem] border border-white/[0.09] bg-gradient-to-br from-cyan-400/[0.08] to-violet-500/[0.08] px-7 py-14 text-center sm:px-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bring your data. Review the plan.</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#b8bfcc]">Start with free forecasting, or book a working session to see your purchasing workflow mapped in Spark.</p>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#b8bfcc]">Start free, or book a working session to see your purchasing workflow mapped in Spark Inventory.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start forecasting free</a>
-              <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Book a 20-Minute Demo</BookACallButton>
+              <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start free</a>
+              <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Book a demo</BookACallButton>
             </div>
           </ScrollReveal>
         </section>

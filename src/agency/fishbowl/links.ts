@@ -32,5 +32,11 @@ export function useCtaLinks(): CtaLinks {
   return useSharedCtaLinks(OPTIONS);
 }
 
-/** Secondary booking CTA label, used in the hero and closing section. */
-export const BOOKING_CTA = "Book 20 minutes";
+/**
+ * Secondary booking CTA label, used in the hero and closing section. Neutral,
+ * with no duration, so it never disagrees with the Calendly event length.
+ */
+export const BOOKING_CTA = "Book a demo";
+
+/** Primary signup CTA label, used on every signup button on this page. */
+export const SIGNUP_CTA = "Start your Fishbowl move";
