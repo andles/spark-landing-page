@@ -113,15 +113,21 @@ describe('renderArticlePage', () => {
     expect(page).not.toContain('CollectionPage');
   });
 
-  it('puts the article text in the widget mount point for crawlers', () => {
-    expect(page).toContain('<div id="soro-blog"><article class="soro-article"><h2>Seasonal Demand &amp; &quot;Curves&quot;</h2>');
-    expect(page).toContain('<time datetime="2026-09-01">September 1, 2026</time><div><p>Seasonal body.</p></div>');
+  it('makes the article title the page heading', () => {
     expect(page.match(/<h1/g)).toHaveLength(1);
+    expect(page).toContain('<h1>Seasonal Demand &amp; &quot;Curves&quot;</h1>');
+    expect(page).not.toContain('<h1>Spark Inventory Blog</h1>');
+  });
+
+  it('puts the article text in the widget mount point for crawlers', () => {
+    expect(page).toContain('<div id="soro-blog"><article class="soro-article"><time datetime="2026-09-01">September 1, 2026</time><div><p>Seasonal body.</p></div>');
+    expect(page).not.toContain('<h2>Seasonal Demand');
   });
 });
 
 it('renderBlogIndex links every article from /blog/', () => {
   const page = renderBlogIndex(blogHtml, [article]);
+  expect(page).toContain('<h1>Spark Inventory Blog</h1>');
   expect(page).toContain('<div id="soro-blog"><ul><li><a href="/blog/seasonal-demand-forecasting/">');
   expect(renderBlogIndex(blogHtml, [])).toBe(blogHtml);
 });

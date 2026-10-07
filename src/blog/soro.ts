@@ -144,10 +144,14 @@ function setHeadTag(html: string, pattern: RegExp, replacement: string) {
 
 const SORO_MOUNT = /<div id="soro-blog"><\/div>/;
 
+// The page's single h1, "Spark Inventory Blog" in the prerendered /blog/ page.
+const PAGE_HEADING = /(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/;
+
 /**
  * Turns the prerendered /blog/ page into the article's own page: title,
  * description, a self-referencing canonical, social tags, BlogPosting
- * structured data, and the article text inside the widget's mount point.
+ * structured data, the article title as the page's h1, and the article text
+ * inside the widget's mount point.
  */
 export function renderArticlePage(html: string, article: SoroArticle, content: string): string {
   const url = articleUrl(article.slug);
@@ -189,10 +193,12 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
     `<script id="route-jsonld" type="application/ld+json">${jsonLd(schema)}</script>`,
   );
 
+  page = page.replace(PAGE_HEADING, (_match, open: string, close: string) => `${open}${esc(article.title)}${close}`);
+
   const date = article.publishedDate ? `<time datetime="${article.publishedDate}">${formatArticleDate(article.publishedDate)}</time>` : '';
   return page.replace(
     SORO_MOUNT,
-    `<div id="soro-blog"><article class="soro-article"><h2>${esc(article.title)}</h2>${date}<div>${content}</div><p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+    `<div id="soro-blog"><article class="soro-article">${date}<div>${content}</div><p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
   );
 }
 
