@@ -16,6 +16,13 @@ export default function BlogPage() {
   const [edgeHtml] = useState(() =>
     typeof document === 'undefined' ? '' : document.getElementById('soro-blog')?.innerHTML ?? '',
   );
+  // On an article the edge function replaces the h1 with the article title.
+  // Keeping that heading lets hydration match the served page.
+  const [heading] = useState(() =>
+    slug && edgeHtml.includes('soro-article')
+      ? document.querySelector('main h1')?.textContent?.trim() || 'Spark Inventory Blog'
+      : 'Spark Inventory Blog',
+  );
 
   useEffect(() => {
     const embedHost = embedHostRef.current;
@@ -43,7 +50,7 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(6,182,212,0.13),transparent_68%)]" />
           <div className="relative z-10 mx-auto max-w-[1180px] text-center">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300">Ideas for inventory operators</p>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Spark Inventory Blog</h1>
+            <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">{heading}</h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
               Practical guidance on demand planning, purchasing, multichannel operations, and building a healthier inventory business.
             </p>
