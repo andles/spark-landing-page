@@ -34,6 +34,7 @@ const groups = [
       ['/features/warehousing', 'Warehouse Management'],
       ['/features/mobile', 'Mobile Warehouse App'],
       ['/features/signals-automation', 'Signals & Automation'],
+      ['/spark-solo', 'Spark Solo: Inventory by Text'],
       ['/features/wholesale-suppliers', 'Wholesale & Supplier Portals'],
       ['/integrations', 'Integrations'],
       ['/features/accounting', 'Accounting & QuickBooks'],

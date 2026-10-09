@@ -75,7 +75,7 @@ export function SignalsAutomationPage() {
       ctaSource="features-signals-automation"
       prevCategory={{ name: 'Mobile', href: '/features/mobile' }}
       nextCategory={{ name: 'Wholesale & Suppliers', href: '/features/wholesale-suppliers' }}
-      closingNote={<>Spark Solo texting is a paid add-on. See the <a href="/sms-program" className="underline hover:text-white">SMS program terms</a>.</>}
+      closingNote={<>Run Spark by text with <a href="/spark-solo" className="underline hover:text-white">Spark Solo</a>, a paid add-on. See the <a href="/sms-program" className="underline hover:text-white">SMS program terms</a>.</>}
     />
   );
 }

@@ -9,7 +9,7 @@ import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
 import {
-  buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, wholesaleFaqs,
+  buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, sparkSoloFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
 // Per-route SEO metadata - single source of truth.
 //
@@ -287,6 +287,29 @@ export const routeMeta: RouteMeta[] = [
       'Spark Signal turns reorder, backorder, demand, channel, and supplier changes into proposed actions. Write rules in plain English and choose Observe, Propose, or Autopilot.',
     lastModified: '2026-10-09',
     schema: [buildFaqPageSchema(`${SITE_URL}/features/signals-automation/#faq`, signalsFaqs)],
+  },
+  {
+    path: '/spark-solo',
+    title: 'Spark Solo: Inventory Management by Text | Spark Inventory',
+    description:
+      'Spark Solo is Spark Inventory’s text assistant. Ask about stock and orders by SMS, get urgent alerts and a daily brief, and confirm drafted purchase orders with one reply.',
+    lastModified: '2026-10-09',
+    schema: [
+      {
+        '@type': 'VideoObject',
+        '@id': `${SITE_URL}/spark-solo/#video`,
+        name: 'Spark Solo: from a text to a draft purchase order',
+        description: 'Ask Spark Solo what needs reordering by text, choose the item, reply yes, and a draft purchase order is created in Spark Inventory.',
+        thumbnailUrl: [`${SITE_URL}/media/spark-solo-text-to-po-poster.jpg`],
+        contentUrl: `${SITE_URL}/media/spark-solo-text-to-po.mp4`,
+        uploadDate: '2026-10-09',
+        duration: 'PT42S',
+        inLanguage: 'en',
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        isPartOf: { '@id': `${SITE_URL}/spark-solo/#webpage` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/spark-solo/#faq`, sparkSoloFaqs),
+    ],
   },
   {
     path: '/features/wholesale-suppliers',

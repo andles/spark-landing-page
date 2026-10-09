@@ -22,6 +22,7 @@ export const routeImports = {
   ToolsServicesPage: () => import('./pages/features/ToolsServicesPage'),
   AccountingPage: () => import('./pages/features/AccountingPage'),
   MobilePage: () => import('./pages/features/MobilePage'),
+  SparkSoloPage: () => import('./pages/features/SparkSoloPage'),
   SignalsAutomationPage: () => import('./pages/features/SignalsAutomationPage'),
   WholesaleSuppliersPage: () => import('./pages/features/WholesaleSuppliersPage'),
   IntegrationsPage: () => import('./pages/IntegrationsPage'),

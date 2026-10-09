@@ -12,6 +12,7 @@
 - [Warehouse management](https://sparkinventory.com/features/warehousing/): Multi-warehouse stock, bins, transfers, and cycle counts.
 - [Mobile warehouse app](https://sparkinventory.com/features/mobile/): Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android.
 - [Signals and automation](https://sparkinventory.com/features/signals-automation/): Spark Signal proposed actions, plain-English rules, Observe, Propose, or Autopilot modes, and Spark Solo by text.
+- [Spark Solo](https://sparkinventory.com/spark-solo/): Spark's text assistant. Ask about stock, sales, and purchase orders by SMS, get urgent alerts and daily summaries, and confirm drafted changes with a YES reply. Paid add-on for owners and admins.
 - [Wholesale and supplier portals](https://sparkinventory.com/features/wholesale-suppliers/): B2B wholesale store, vendor portal, EDI, and supplier invoice matching.
 - [Integrations](https://sparkinventory.com/integrations/): Shopify, Amazon, WooCommerce, Square, Faire, Etsy, Meta, QuickBooks Online, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants.
 - [Accounting and QuickBooks](https://sparkinventory.com/features/accounting/): QuickBooks Online sync for invoices, payments, and adjustments.

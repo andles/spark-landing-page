@@ -15,6 +15,7 @@ const productLinks = [
   { href: "/features/accounting", label: "Accounting", description: "QuickBooks, invoices, and payments" },
   { href: "/features/tools-services", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
   { href: "/features/signals-automation", label: "Signals & Automation", description: "Proposed actions, rules, and Spark Solo" },
+  { href: "/spark-solo", label: "Spark Solo", description: "Your inventory by text message" },
 ];
 
 const solutionLinks = [
