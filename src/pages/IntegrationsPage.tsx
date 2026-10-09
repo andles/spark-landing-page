@@ -6,6 +6,7 @@ import AgencyFooter from '../agency/AgencyFooter';
 import BookACallButton from '../agency/BookACallButton';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks } from '../agency/ctaLinks';
+import { integrationsFaqs } from './features/featureFaqs';
 
 interface Connector {
   name: string;
@@ -198,6 +199,27 @@ export function IntegrationsPage() {
                 </ScrollReveal>
               </section>
             ))}
+          </div>
+        </section>
+
+        <section className="relative border-t border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-24" aria-labelledby="integrations-faq-heading">
+          <div className="mx-auto grid max-w-[1080px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+            <ScrollReveal>
+              <p className="text-sm font-semibold text-cyan-300">Integrations, explained</p>
+              <h2 id="integrations-faq-heading" className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Connecting your systems to Spark</h2>
+              <p className="mt-4 max-w-md text-base leading-7 text-[#b8bfcc]">What connects today, what each connector does, and what to do if yours is not listed.</p>
+            </ScrollReveal>
+            <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+              {integrationsFaqs.map((faq, index) => (
+                <details key={faq.question} className="group" open={index === 0}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-left text-base font-semibold text-white marker:content-none">
+                    {faq.question}
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.10] text-cyan-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p className="max-w-3xl pb-5 pr-12 text-sm leading-7 text-[#9ba5b6]">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 

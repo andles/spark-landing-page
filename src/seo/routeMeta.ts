@@ -8,6 +8,9 @@ import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
+import {
+  buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, wholesaleFaqs,
+} from '../pages/features/featureFaqs';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -135,7 +138,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-29',
+    lastModified: '2026-10-09',
     schema: [buildFaqSchema('stockouts')],
   },
   {
@@ -143,7 +146,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-29',
+    lastModified: '2026-10-09',
     canonical: '/reduce-stockouts-overstock',
     schema: [buildFaqSchema('stockouts')],
   },
@@ -228,7 +231,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Purchasing and Reorder Planning Software | Spark Inventory',
     description:
       'Plan your next reorder with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving in Spark Inventory.',
-    lastModified: '2026-08-31',
+    lastModified: '2026-10-09',
   },
   {
     path: '/features/sales',
@@ -251,34 +254,68 @@ export const routeMeta: RouteMeta[] = [
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
     lastModified: '2026-08-31',
   },
-  // Preview pages awaiting review: noindex and out of the sitemap until approved.
   {
     path: '/features/mobile',
-    title: 'Mobile Warehouse App | Spark Inventory',
-    description: 'Receive, pick, pack, ship, count, and move stock from your phone with camera or hardware barcode scanning.',
+    title: 'Mobile Warehouse & Barcode Scanning App | Spark Inventory',
+    description:
+      'Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android with camera or rugged scanner support, all on the same live inventory.',
     lastModified: '2026-10-09',
-    noindex: true,
+    schema: [
+      {
+        '@type': 'SoftwareApplication',
+        '@id': `${SITE_URL}/features/mobile/#app`,
+        name: 'Spark Inventory Mobile',
+        applicationCategory: 'BusinessApplication',
+        applicationSubCategory: 'Warehouse management',
+        operatingSystem: 'iOS, iPadOS, Android',
+        description:
+          'Mobile warehouse app for Spark Inventory: scan-first receiving, pick lists with Auto Pick, packing, transfers, counts, signals, and the in-store Pickup Monitor.',
+        screenshot: [
+          `${SITE_URL}/screens/mobile-home.webp`,
+          `${SITE_URL}/screens/mobile-receiving.webp`,
+          `${SITE_URL}/screens/mobile-pick.webp`,
+        ],
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/features/mobile/#faq`, mobileFaqs),
+    ],
   },
   {
     path: '/features/signals-automation',
-    title: 'Inventory Signals & Automation Rules | Spark Inventory',
-    description: 'One inbox for proposed inventory actions, rules written in plain English, and Spark Solo by text.',
+    title: 'Inventory Alerts & Automation Rules | Spark Inventory',
+    description:
+      'Spark Signal turns reorder, backorder, demand, channel, and supplier changes into proposed actions. Write rules in plain English and choose Observe, Propose, or Autopilot.',
     lastModified: '2026-10-09',
-    noindex: true,
+    schema: [buildFaqPageSchema(`${SITE_URL}/features/signals-automation/#faq`, signalsFaqs)],
   },
   {
     path: '/features/wholesale-suppliers',
     title: 'B2B Wholesale Store, Vendor Portal & EDI | Spark Inventory',
-    description: 'A branded wholesale store, a supplier portal, EDI, and supplier invoice matching on the same inventory plan.',
+    description:
+      'Run a branded B2B wholesale store, give suppliers a vendor portal for POs and change requests, trade over EDI, and match supplier invoices on one inventory plan.',
     lastModified: '2026-10-09',
-    noindex: true,
+    schema: [buildFaqPageSchema(`${SITE_URL}/features/wholesale-suppliers/#faq`, wholesaleFaqs)],
   },
   {
     path: '/integrations',
-    title: 'Inventory Integrations | Spark Inventory',
-    description: 'Connect Shopify, Amazon, Faire, Etsy, QuickBooks, Xero, ShipStation, Flexport, EDI, and more to one inventory plan.',
+    title: 'Shopify, Amazon & QuickBooks Integrations | Spark Inventory',
+    description:
+      'Connect Shopify, Amazon FBA, WooCommerce, Square, Faire, Etsy, QuickBooks, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants to one inventory plan.',
     lastModified: '2026-10-09',
-    noindex: true,
+    webPageType: 'CollectionPage',
+    schema: [
+      {
+        '@type': 'ItemList',
+        '@id': `${SITE_URL}/integrations/#connectors`,
+        name: 'Spark Inventory integrations',
+        itemListElement: [
+          'Shopify', 'Spark Pickup for Shopify', 'Amazon Seller Central and FBA', 'WooCommerce', 'Square', 'Faire',
+          'Etsy', 'Meta Commerce', 'QuickBooks Online', 'Xero', 'Zoho Books', 'ShipStation', 'Flexport', 'EDI',
+          'Spark Payments', 'Gmail', 'Claude and ChatGPT',
+        ].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name })),
+      },
+      buildFaqPageSchema(`${SITE_URL}/integrations/#faq`, integrationsFaqs),
+    ],
   },
   {
     path: '/features/tools-services',

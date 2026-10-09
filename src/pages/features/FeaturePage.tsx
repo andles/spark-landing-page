@@ -23,6 +23,10 @@ export interface FeaturePageProps {
   gradientTo: string;
   features: FeatureItem[];
   faqs?: ReadonlyArray<{ question: string; answer: string }>;
+  /** FAQ section labels; default to the Sparki and MCP wording. */
+  faqEyebrow?: string;
+  faqTitle?: string;
+  faqIntro?: string;
   heroMedia?: ReactNode;
   showcase?: ReactNode;
   nextCategory?: { name: string; href: string };
@@ -62,6 +66,9 @@ export function FeaturePage({
   gradientTo,
   features,
   faqs,
+  faqEyebrow = 'Sparki and MCP, explained',
+  faqTitle = 'Answers before you connect an assistant',
+  faqIntro = 'Understand the agent, the protocol, and the controls that keep inventory work reviewable.',
   heroMedia,
   showcase,
   nextCategory,
@@ -191,9 +198,9 @@ export function FeaturePage({
           <section className="relative border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-24" aria-labelledby="feature-faq-heading">
             <div className="mx-auto grid max-w-[1080px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
               <ScrollReveal>
-                <p className="text-sm font-semibold text-cyan-300">Sparki and MCP, explained</p>
-                <h2 id="feature-faq-heading" className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Answers before you connect an assistant</h2>
-                <p className="mt-4 max-w-md text-base leading-7 text-[#b8bfcc]">Understand the agent, the protocol, and the controls that keep inventory work reviewable.</p>
+                <p className="text-sm font-semibold text-cyan-300">{faqEyebrow}</p>
+                <h2 id="feature-faq-heading" className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">{faqTitle}</h2>
+                <p className="mt-4 max-w-md text-base leading-7 text-[#b8bfcc]">{faqIntro}</p>
               </ScrollReveal>
 
               <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">

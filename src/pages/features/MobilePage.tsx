@@ -1,5 +1,6 @@
 import { Smartphone } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { mobileFaqs } from './featureFaqs';
 import { MobileFloorFlow } from './featureVisuals';
 import { MobileHeroScreen, MobileScreensGallery } from './mobileScreens';
 
@@ -70,6 +71,10 @@ export function MobilePage() {
       gradientFrom="from-sky-500"
       gradientTo="to-cyan-400"
       features={features}
+      faqs={mobileFaqs}
+      faqEyebrow="Mobile app questions"
+      faqTitle="Spark Inventory Mobile, answered"
+      faqIntro="How the app works on the floor, with your scanners, and at the pickup counter."
       heroMedia={<MobileHeroScreen />}
       showcase={<><MobileScreensGallery /><MobileFloorFlow /></>}
       ctaSource="features-mobile"

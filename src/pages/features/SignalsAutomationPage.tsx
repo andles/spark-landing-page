@@ -1,5 +1,6 @@
 import { BellRing } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { signalsFaqs } from './featureFaqs';
 import { AutomationShowcase, SignalInboxMockup } from './featureVisuals';
 
 const features = [
@@ -65,6 +66,10 @@ export function SignalsAutomationPage() {
       gradientFrom="from-amber-500"
       gradientTo="to-orange-400"
       features={features}
+      faqs={signalsFaqs}
+      faqEyebrow="Signals and rules, explained"
+      faqTitle="How Spark watches and acts"
+      faqIntro="What Spark Signal surfaces, how rules are built, and how much each one is allowed to do."
       heroMedia={<SignalInboxMockup />}
       showcase={<AutomationShowcase />}
       ctaSource="features-signals-automation"

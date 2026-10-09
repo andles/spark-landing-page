@@ -1,5 +1,6 @@
 import { Store } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { wholesaleFaqs } from './featureFaqs';
 import { SupplierFlow, VendorPortalMockup } from './featureVisuals';
 
 const features = [
@@ -57,6 +58,10 @@ export function WholesaleSuppliersPage() {
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"
       features={features}
+      faqs={wholesaleFaqs}
+      faqEyebrow="Wholesale and suppliers, explained"
+      faqTitle="Customers and suppliers in Spark"
+      faqIntro="How the B2B store, vendor portal, EDI, and invoice matching fit together."
       heroMedia={<VendorPortalMockup />}
       showcase={<SupplierFlow />}
       ctaSource="features-wholesale-suppliers"
