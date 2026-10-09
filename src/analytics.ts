@@ -35,15 +35,19 @@ export const attributionParams = [
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
 const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'meeting_booked']);
-// Cookieless (rejected) capture only counts visits. PostHog hashes the request
-// IP with $raw_user_agent, $host and $timezone, so those must survive or the
-// event is dropped at ingestion.
-const cookielessProperties = new Set(['token', 'route', 'signup_source', '$raw_user_agent', '$timezone']);
+// Cookieless capture (before a banner choice, and after a rejection) only
+// counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
+// $timezone, so those must survive or the event is dropped at ingestion. The
+// campaign values come from this page's URL, not from storage, so ad clicks
+// and UTM sources stay attributable without a cookie.
+const cookielessProperties = new Set(['token', 'route', 'signup_source', '$raw_user_agent', '$timezone', ...attributionParams]);
 const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'meeting_booked']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
+// Same-origin route to PostHog so ad blockers do not drop events. The Netlify
+// edge function netlify/edge-functions/posthog-relay.ts forwards it.
+export const posthogRelayPath = '/spk-r';
 let initialized = false;
-let appliedConsent: ReturnType<typeof getAnalyticsConsent> = 'pending';
 
 // Team devices opt out with ?spark_internal=1 (and back in with =0) so their
 // anonymous visits stop mixing with prospects. The flag stays on the device.
@@ -97,39 +101,37 @@ function registerAttribution(): void {
   posthog.register_once(campaign);
 }
 
+// Before a banner choice the SDK stays in its default cookieless state
+// (opt_out_capturing_by_default), which writes nothing to the browser. Only an
+// explicit choice, or losing an earlier acceptance, changes the stored state.
 function applyConsent(): void {
   const consent = getAnalyticsConsent();
-  if (consent !== appliedConsent || posthog.get_explicit_consent_status() !== (consent === 'accepted' ? 'granted' : 'denied')) {
+  const status = posthog.get_explicit_consent_status();
+  if (consent === 'accepted' && status !== 'granted') {
     posthog.stopSessionRecording();
-    if (consent === 'accepted') { posthog.opt_in_capturing({ captureEventName: false }); registerAttribution(); }
-    else posthog.opt_out_capturing();
-    appliedConsent = consent;
+    posthog.opt_in_capturing({ captureEventName: false });
+    registerAttribution();
+  } else if ((consent === 'rejected' && status !== 'denied') || (consent === 'pending' && status === 'granted')) {
+    posthog.stopSessionRecording();
+    posthog.opt_out_capturing();
   }
   if (replayAllowed()) posthog.startSessionRecording();
   else posthog.stopSessionRecording();
 }
 
 export function initializeAnalytics(): boolean {
-  const consent = getAnalyticsConsent();
-  if (consent === 'pending') {
-    if (initialized) {
-      posthog.stopSessionRecording();
-      posthog.opt_out_capturing();
-      appliedConsent = 'pending';
-    }
-    return false;
-  }
   if (initialized) {
     applyConsent();
     return true;
   }
   const token = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN?.trim();
-  const host = import.meta.env.VITE_POSTHOG_HOST?.trim();
-  if (!import.meta.env.PROD || typeof window === 'undefined' || !['sparkinventory.com', 'www.sparkinventory.com'].includes(window.location.hostname) || !token || !host) return false;
+  if (!import.meta.env.PROD || typeof window === 'undefined' || !['sparkinventory.com', 'www.sparkinventory.com'].includes(window.location.hostname) || !token) return false;
   posthog.init(token, {
-    api_host: host,
+    api_host: posthogRelayPath,
+    ui_host: 'https://us.posthog.com',
     defaults: '2026-05-30',
     cookieless_mode: 'on_reject',
+    opt_out_capturing_by_default: true,
     persistence: 'localStorage+cookie',
     cross_subdomain_cookie: true,
     cookieWinsOnConflict: true,
@@ -164,7 +166,7 @@ export function initializeAnalytics(): boolean {
     save_referrer: false,
     before_send: (event) => {
       const consent = getAnalyticsConsent();
-      if (!event || consent === 'pending' || suppressed()) return null;
+      if (!event || suppressed()) return null;
       if (event.event === '$snapshot') {
         if (consent !== 'accepted' || !replayAllowed()) return null;
         const properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) =>
@@ -173,7 +175,7 @@ export function initializeAnalytics(): boolean {
       }
       if (consent === 'accepted' && event.properties.$cookieless_mode === true) return null;
       if (!allowedEvents.has(event.event)) return null;
-      if (consent === 'rejected' && ['$identify', '$groupidentify'].includes(event.event)) return null;
+      if (consent !== 'accepted' && ['$identify', '$groupidentify'].includes(event.event)) return null;
       const properties: Record<string, unknown> = Object.fromEntries(Object.entries(event.properties).filter(([key]) => allowedProperties.has(key)));
       properties.route = eventRoute(event.properties);
       if (typeof properties.$prev_pageview_pathname === 'string') {
@@ -189,7 +191,7 @@ export function initializeAnalytics(): boolean {
         if (value) properties[key] = value.slice(0, 200);
         else delete properties[key];
       });
-      if (consent === 'rejected') {
+      if (consent !== 'accepted') {
         // Discard any event queued under a previously identified session.
         if (event.properties.$cookieless_mode !== true || !cookielessEvents.has(event.event)) return null;
         for (const key of Object.keys(properties)) {

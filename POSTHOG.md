@@ -2,11 +2,21 @@
 
 Production uses the same US project as the Spark web app. The browser ingestion
 token in `.env.production` is public. Hosting environment variables can override
-`VITE_POSTHOG_PROJECT_TOKEN` and `VITE_POSTHOG_HOST`.
+`VITE_POSTHOG_PROJECT_TOKEN`.
+
+The SDK sends to `/spk-r/` on our own domain, and the Netlify edge function
+`netlify/edge-functions/posthog-relay.ts` forwards it to PostHog US (events to
+`us.i.posthog.com`, SDK files to `us-assets.i.posthog.com`). Ad blockers drop
+requests to PostHog's domains, so this recovers those visits. The relay passes
+the visitor IP as `X-Forwarded-For` (needed for geolocation and the cookieless
+hash), never forwards site cookies, and strips any `Set-Cookie`.
 
 Capture requires a production build on sparkinventory.com or
-www.sparkinventory.com and affirmative CookieYes analytics consent. Preview,
-local and Sites domains are excluded. Consent changes stop or resume capture.
+www.sparkinventory.com. Preview, local and Sites domains are excluded. Until the
+visitor answers the CookieYes banner, visits are counted cookieless (see below),
+the same as after a rejection, and nothing is written to the browser. Accepting
+analytics switches to normal cookie capture; rejecting keeps it cookieless. A
+visit is counted once even when the choice is made on that page.
 The app uses the same CookieYes configuration; keep consent shared across the
 marketing and app subdomains in CookieYes settings.
 
@@ -35,11 +45,12 @@ later visit from the browser would repeat the first ad click and PostHog would
 put the session in that paid channel. `initial_referring_domain` stays on every
 event as the first-touch record.
 
-After a rejection, events are cookieless and keep only `route`, `signup_source`,
+Before a choice and after a rejection, events are cookieless and keep only
+`route`, `signup_source`, the UTM tags and Google click ids in that page's URL,
 `$raw_user_agent`, `$timezone` and `$host`, which PostHog needs with the request
 IP to compute its daily hash. Without the user agent and host those events were
-dropped at ingestion. `$pageleave` and `$web_vitals` are not sent after a
-rejection.
+dropped at ingestion. `$pageleave` and `$web_vitals` are not sent in cookieless
+mode.
 
 Team devices: open any page with `?spark_internal=1` to stop all capture and
 replay on that device (stored in localStorage), and `?spark_internal=0` to undo.
