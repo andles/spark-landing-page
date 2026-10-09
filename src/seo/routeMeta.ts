@@ -251,6 +251,35 @@ export const routeMeta: RouteMeta[] = [
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
     lastModified: '2026-08-31',
   },
+  // Preview pages awaiting review: noindex and out of the sitemap until approved.
+  {
+    path: '/features/mobile',
+    title: 'Mobile Warehouse App | Spark Inventory',
+    description: 'Receive, pick, pack, ship, count, and move stock from your phone with camera or hardware barcode scanning.',
+    lastModified: '2026-10-09',
+    noindex: true,
+  },
+  {
+    path: '/features/signals-automation',
+    title: 'Inventory Signals & Automation Rules | Spark Inventory',
+    description: 'One inbox for proposed inventory actions, rules written in plain English, and Spark Solo by text.',
+    lastModified: '2026-10-09',
+    noindex: true,
+  },
+  {
+    path: '/features/wholesale-suppliers',
+    title: 'B2B Wholesale Store, Vendor Portal & EDI | Spark Inventory',
+    description: 'A branded wholesale store, a supplier portal, EDI, and supplier invoice matching on the same inventory plan.',
+    lastModified: '2026-10-09',
+    noindex: true,
+  },
+  {
+    path: '/integrations',
+    title: 'Inventory Integrations | Spark Inventory',
+    description: 'Connect Shopify, Amazon, Faire, Etsy, QuickBooks, Xero, ShipStation, Flexport, EDI, and more to one inventory plan.',
+    lastModified: '2026-10-09',
+    noindex: true,
+  },
   {
     path: '/features/tools-services',
     title: 'Sparki AI Agent & MCP Inventory Automation | Spark Inventory',
