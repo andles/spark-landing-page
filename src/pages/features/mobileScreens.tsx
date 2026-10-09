@@ -46,7 +46,6 @@ export function MobileScreensGallery() {
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-300">In the app</p>
             <h2 id="mobile-screens-heading" className="mt-3 text-2xl font-semibold text-white sm:text-3xl">The screens your team works in</h2>
           </div>
-         
         </ScrollReveal>
         <ScrollReveal staggerChildren={80} className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
           {screens.map((screen, index) => (
