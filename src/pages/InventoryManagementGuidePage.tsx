@@ -75,7 +75,7 @@ export function InventoryManagementGuidePage() {
               </p>
               <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href="#inventory-loop" className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Learn the operating loop <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
-                <Link to="/features" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Explore Spark Features</Link>
+                <Link to="/features/" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Explore Spark Features</Link>
               </div>
             </ScrollReveal>
           </header>
@@ -176,7 +176,7 @@ export function InventoryManagementGuidePage() {
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-emerald-300">Software evaluation checklist</p>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Ask whether the system closes the loop</h2>
                 <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Feature counts can hide the handoffs where work falls back into spreadsheets. These questions expose whether the decision remains connected.</p>
-                <Link to="/pricing" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Compare Spark plans <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/pricing/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Compare Spark plans <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
               </ScrollReveal>
               <ScrollReveal staggerChildren={55} className="space-y-3">
                 {evaluationQuestions.map((question, index) => <RevealItem key={question} index={index}><div className="flex gap-4 rounded-2xl border border-white/[0.08] bg-[#090d15] p-5"><CircleCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-300" aria-hidden="true" /><p className="text-sm leading-7 text-white/70">{question}</p></div></RevealItem>)}
@@ -201,7 +201,7 @@ export function InventoryManagementGuidePage() {
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Put the model to work</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-5xl">See the inventory decision on your own data</h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Bring the current catalog, sales, stock, suppliers, and lead times. Sparki can map the foundation and prepare the first reviewable plan.</p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href="https://app.sparkinventory.com/sign-up" className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start Free</a><Link to="/features/purchasing" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Explore Purchasing & Planning</Link></div>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href="https://app.sparkinventory.com/sign-up" className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start Free</a><Link to="/features/purchasing/" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Explore Purchasing & Planning</Link></div>
             </ScrollReveal>
           </footer>
         </article>

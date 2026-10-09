@@ -51,8 +51,8 @@ export function ManufacturingPage() {
       gradientFrom="from-orange-500"
       gradientTo="to-amber-400"
       features={features}
-      prevCategory={{ name: 'Sales', href: '/features/sales' }}
-      nextCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
+      prevCategory={{ name: 'Sales', href: '/features/sales/' }}
+      nextCategory={{ name: 'Warehousing', href: '/features/warehousing/' }}
     />
   );
 }

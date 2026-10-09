@@ -65,8 +65,8 @@ export function WholesaleSuppliersPage() {
       heroMedia={<VendorPortalMockup />}
       showcase={<SupplierFlow />}
       ctaSource="features-wholesale-suppliers"
-      prevCategory={{ name: 'Signals & Automation', href: '/features/signals-automation' }}
-      nextCategory={{ name: 'Integrations', href: '/integrations' }}
+      prevCategory={{ name: 'Signals & Automation', href: '/features/signals-automation/' }}
+      nextCategory={{ name: 'Integrations', href: '/integrations/' }}
     />
   );
 }

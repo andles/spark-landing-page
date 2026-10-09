@@ -28,10 +28,10 @@ const principles = [
 ] as const;
 
 const audiences = [
-  ['Multichannel brands', 'Keep ecommerce, marketplaces, wholesale, and location inventory connected to one planning process.', '/features/inventory'],
-  ['Inventory operators', 'Replace static reorder sheets with explainable risk, timing, quantities, and draft purchase actions.', '/reduce-stockouts-overstock'],
-  ['3PL teams', 'Offer client-scoped inventory planning using price books, run economics, and governed operator workflows.', '/3pl'],
-  ['Manufacturers', 'Connect bills of materials, component availability, production work, and finished-goods demand.', '/features/manufacturing'],
+  ['Multichannel brands', 'Keep ecommerce, marketplaces, wholesale, and location inventory connected to one planning process.', '/features/inventory/'],
+  ['Inventory operators', 'Replace static reorder sheets with explainable risk, timing, quantities, and draft purchase actions.', '/reduce-stockouts-overstock/'],
+  ['3PL teams', 'Offer client-scoped inventory planning using price books, run economics, and governed operator workflows.', '/3pl/'],
+  ['Manufacturers', 'Connect bills of materials, component availability, production work, and finished-goods demand.', '/features/manufacturing/'],
 ] as const;
 
 export function AboutPage() {
@@ -121,7 +121,7 @@ export function AboutPage() {
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Who Spark is for</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Operators responsible for both availability and cash</h2>
               <p className="mt-5 text-sm leading-7 text-[#8b95a8]">The common thread is an inventory decision that has outgrown disconnected spreadsheets, store plugins, or reports without an execution path.</p>
-              <Link to="/what-is-inventory-management" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Read the inventory management guide <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/what-is-inventory-management/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Read the inventory management guide <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </ScrollReveal>
             <ScrollReveal staggerChildren={70} className="grid gap-3 sm:grid-cols-2">
               {audiences.map(([title, body, href], index) => (
@@ -145,7 +145,7 @@ export function AboutPage() {
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Use Sparki in app or your own compatible assistant over MCP to inspect the current operation, prepare the onboarding plan, and show exactly what is ready for approval.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start Free</a>
-              <Link to="/contact" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Contact Spark</Link>
+              <Link to="/contact/" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold hover:bg-white/[0.08]">Contact Spark</Link>
             </div>
           </ScrollReveal>
         </section>

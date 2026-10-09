@@ -55,8 +55,8 @@ export function SalesPage() {
       gradientFrom="from-blue-500"
       gradientTo="to-cyan-400"
       features={features}
-      prevCategory={{ name: 'Purchasing', href: '/features/purchasing' }}
-      nextCategory={{ name: 'Manufacturing', href: '/features/manufacturing' }}
+      prevCategory={{ name: 'Purchasing', href: '/features/purchasing/' }}
+      nextCategory={{ name: 'Manufacturing', href: '/features/manufacturing/' }}
     />
   );
 }

@@ -3,31 +3,31 @@ import BookACallButton from "./BookACallButton";
 import { useCtaLinks } from "./ctaLinks";
 
 const productLinks = [
-  { href: "/features", label: "All product features", description: "See the complete Spark platform" },
-  { href: "/what-is-inventory-management", label: "Inventory guide", description: "Learn the operating model and metrics" },
-  { href: "/features/inventory", label: "Inventory", description: "SKUs, stock, locations, and control" },
-  { href: "/features/purchasing", label: "Purchasing", description: "Planning, POs, suppliers, and receiving" },
-  { href: "/features/sales", label: "Sales", description: "Orders, invoices, customers, and returns" },
-  { href: "/features/wholesale-suppliers", label: "Wholesale & Suppliers", description: "B2B store, vendor portal, and EDI" },
-  { href: "/features/manufacturing", label: "Manufacturing", description: "BOMs, materials, and production" },
-  { href: "/features/warehousing", label: "Warehousing", description: "Bins, transfers, picking, and counts" },
-  { href: "/features/mobile", label: "Mobile App", description: "Receive, pick, pack, and ship by scan" },
-  { href: "/features/accounting", label: "Accounting", description: "QuickBooks, invoices, and payments" },
-  { href: "/features/tools-services", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
-  { href: "/features/signals-automation", label: "Signals & Automation", description: "Proposed actions, rules, and Spark Solo" },
-  { href: "/spark-solo", label: "Spark Solo", description: "Your inventory by text message" },
+  { href: "/features/", label: "All product features", description: "See the complete Spark platform" },
+  { href: "/what-is-inventory-management/", label: "Inventory guide", description: "Learn the operating model and metrics" },
+  { href: "/features/inventory/", label: "Inventory", description: "SKUs, stock, locations, and control" },
+  { href: "/features/purchasing/", label: "Purchasing", description: "Planning, POs, suppliers, and receiving" },
+  { href: "/features/sales/", label: "Sales", description: "Orders, invoices, customers, and returns" },
+  { href: "/features/wholesale-suppliers/", label: "Wholesale & Suppliers", description: "B2B store, vendor portal, and EDI" },
+  { href: "/features/manufacturing/", label: "Manufacturing", description: "BOMs, materials, and production" },
+  { href: "/features/warehousing/", label: "Warehousing", description: "Bins, transfers, picking, and counts" },
+  { href: "/features/mobile/", label: "Mobile App", description: "Receive, pick, pack, and ship by scan" },
+  { href: "/features/accounting/", label: "Accounting", description: "QuickBooks, invoices, and payments" },
+  { href: "/features/tools-services/", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
+  { href: "/features/signals-automation/", label: "Signals & Automation", description: "Proposed actions, rules, and Spark Solo" },
+  { href: "/spark-solo/", label: "Spark Solo", description: "Your inventory by text message" },
 ];
 
 const solutionLinks = [
-  { href: "/reduce-stockouts-overstock", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
-  { href: "/3pl", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
-  { href: "/in-store-pickup", label: "In-store pickup", description: "Location-aware promise and handoff" },
-  { href: "/charity-retail", label: "Charity retail", description: "Price, route, and sell every donated item" },
-  { href: "/shopify-inventory-management", label: "Shopify inventory", description: "Plan the next buy from Shopify demand" },
-  { href: "/fishbowl-alternative", label: "Fishbowl alternative", description: "A guided path out of Fishbowl" },
-  { href: "/cin7-alternative", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
-  { href: "/zoho-inventory-alternative", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
-  { href: "/inflow-alternative", label: "inFlow alternative", description: "Planning depth beyond the reorder point" },
+  { href: "/reduce-stockouts-overstock/", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
+  { href: "/3pl/", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
+  { href: "/in-store-pickup/", label: "In-store pickup", description: "Location-aware promise and handoff" },
+  { href: "/charity-retail/", label: "Charity retail", description: "Price, route, and sell every donated item" },
+  { href: "/shopify-inventory-management/", label: "Shopify inventory", description: "Plan the next buy from Shopify demand" },
+  { href: "/fishbowl-alternative/", label: "Fishbowl alternative", description: "A guided path out of Fishbowl" },
+  { href: "/cin7-alternative/", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
+  { href: "/zoho-inventory-alternative/", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
+  { href: "/inflow-alternative/", label: "inFlow alternative", description: "Planning depth beyond the reorder point" },
 ];
 
 function DesktopMenu({ label, links }: { label: string; links: typeof productLinks }) {
@@ -81,9 +81,9 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
         <nav className="hidden min-[900px]:flex items-center gap-5 2xl:gap-7">
           <DesktopMenu label="Product" links={productLinks} />
           <DesktopMenu label="Solutions" links={solutionLinks} />
-          <a href="/integrations" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
-          <a href="/pricing" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
-          <a href="/blog" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
+          <a href="/integrations/" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
+          <a href="/pricing/" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
+          <a href="/blog/" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
         </nav>
 
         {/* CTAs */}
@@ -138,9 +138,9 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
               {solutionLinks.map((link) => (
                 <a key={link.href} href={link.href} className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>{link.label}</a>
               ))}
-              <a href="/integrations" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
-              <a href="/pricing" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
-              <a href="/blog" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Blog</a>
+              <a href="/integrations/" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
+              <a href="/pricing/" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
+              <a href="/blog/" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Blog</a>
             </div>
           </div>
           <div className="pt-2 border-t border-white/[0.06] flex flex-col gap-2">

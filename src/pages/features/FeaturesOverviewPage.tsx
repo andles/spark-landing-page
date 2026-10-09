@@ -34,7 +34,7 @@ const capabilities: Capability[] = [
   {
     title: 'Inventory management',
     description: 'Keep items, variants, stock, locations, bundles, barcodes, and adjustments in one operating record.',
-    href: '/features/inventory',
+    href: '/features/inventory/',
     icon: Package,
     accent: 'from-emerald-400 to-cyan-400',
     highlights: ['SKU and variant control', 'Live stock by location', 'Audit-ready adjustments'],
@@ -42,7 +42,7 @@ const capabilities: Capability[] = [
   {
     title: 'Purchasing & planning',
     description: 'Turn demand, lead times, and supplier context into reviewable purchase decisions and tracked receipts.',
-    href: '/features/purchasing',
+    href: '/features/purchasing/',
     icon: Truck,
     accent: 'from-violet-400 to-fuchsia-400',
     highlights: ['Reorder recommendations', 'PO approvals and receiving', 'Supplier and landed-cost context'],
@@ -50,7 +50,7 @@ const capabilities: Capability[] = [
   {
     title: 'Sales & customers',
     description: 'Run quotes, orders, invoices, returns, and customer records against the same inventory truth.',
-    href: '/features/sales',
+    href: '/features/sales/',
     icon: ShoppingCart,
     accent: 'from-blue-400 to-cyan-300',
     highlights: ['Sales order workflows', 'Invoicing and returns', 'Customer-specific pricing'],
@@ -58,7 +58,7 @@ const capabilities: Capability[] = [
   {
     title: 'Manufacturing & BOMs',
     description: 'Connect components, bills of materials, production runs, and finished-goods availability to demand.',
-    href: '/features/manufacturing',
+    href: '/features/manufacturing/',
     icon: Factory,
     accent: 'from-orange-400 to-amber-300',
     highlights: ['Multi-level BOMs', 'Material availability', 'Production planning'],
@@ -66,7 +66,7 @@ const capabilities: Capability[] = [
   {
     title: 'Warehouse operations',
     description: 'Coordinate receiving, bins, transfers, picking, packing, and cycle counts across locations.',
-    href: '/features/warehousing',
+    href: '/features/warehousing/',
     icon: Warehouse,
     accent: 'from-slate-300 to-cyan-300',
     highlights: ['Bin-level inventory', 'Transfers and receiving', 'Pick, pack, and count'],
@@ -74,7 +74,7 @@ const capabilities: Capability[] = [
   {
     title: 'Mobile warehouse app',
     description: 'Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android with a scanner in hand.',
-    href: '/features/mobile',
+    href: '/features/mobile/',
     icon: Smartphone,
     accent: 'from-sky-400 to-cyan-300',
     highlights: ['Scan-first receiving', 'Pick lists with Auto Pick', 'Camera and rugged scanners'],
@@ -82,7 +82,7 @@ const capabilities: Capability[] = [
   {
     title: 'Signals & automation',
     description: 'Spark watches stock, demand, suppliers, and channels, then proposes the next action with the reasoning attached.',
-    href: '/features/signals-automation',
+    href: '/features/signals-automation/',
     icon: BellRing,
     accent: 'from-amber-400 to-orange-300',
     highlights: ['One inbox for proposed actions', 'Rules in plain English', 'Observe, Propose, or Autopilot'],
@@ -90,7 +90,7 @@ const capabilities: Capability[] = [
   {
     title: 'Spark Solo by text',
     description: 'Text Spark questions, get urgent alerts and a daily brief, and confirm drafted orders with one reply.',
-    href: '/spark-solo',
+    href: '/spark-solo/',
     icon: MessageSquareText,
     accent: 'from-cyan-400 to-violet-400',
     highlights: ['Ask in plain words', 'Morning brief and evening wrap', 'Nothing changes until you say YES'],
@@ -98,7 +98,7 @@ const capabilities: Capability[] = [
   {
     title: 'Wholesale & suppliers',
     description: 'Give wholesale customers a branded store and suppliers a portal for their purchase orders, with EDI alongside.',
-    href: '/features/wholesale-suppliers',
+    href: '/features/wholesale-suppliers/',
     icon: Store,
     accent: 'from-emerald-400 to-teal-300',
     highlights: ['B2B wholesale store', 'Vendor portal', 'EDI and invoice matching'],
@@ -106,7 +106,7 @@ const capabilities: Capability[] = [
   {
     title: 'QuickBooks & accounting',
     description: 'Keep invoices, payments, inventory adjustments, and financial context moving without double entry.',
-    href: '/features/accounting',
+    href: '/features/accounting/',
     icon: Calculator,
     accent: 'from-green-400 to-emerald-300',
     highlights: ['QuickBooks Online sync', 'Invoices and payments', 'Inventory valuation context'],
@@ -114,7 +114,7 @@ const capabilities: Capability[] = [
   {
     title: 'Sparki, MCP & automation',
     description: 'Onboard and operate with Sparki in app or your own AI assistant through Spark’s governed MCP tools.',
-    href: '/features/tools-services',
+    href: '/features/tools-services/',
     icon: Bot,
     accent: 'from-pink-400 to-violet-400',
     highlights: ['Agentic import and validation', 'Governed preview and approval', 'Readiness and demand analysis'],
@@ -122,7 +122,7 @@ const capabilities: Capability[] = [
   {
     title: 'Integrations',
     description: 'Connect the stores, marketplaces, accounting, and shipping tools you already use to one inventory plan.',
-    href: '/integrations',
+    href: '/integrations/',
     icon: Plug,
     accent: 'from-violet-400 to-indigo-300',
     highlights: ['Shopify, Amazon, Faire, Etsy', 'QuickBooks, Xero, Zoho Books', 'ShipStation, Flexport, EDI'],

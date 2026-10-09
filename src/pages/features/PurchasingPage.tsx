@@ -113,7 +113,7 @@ export function PurchasingPage() {
               <h2 className="mt-3 text-2xl font-semibold text-white">From demand signal to reviewed draft PO</h2>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[#9da8b9]">Watch a three minute walkthrough using real Spark Inventory screens and clearly labeled example data.</p>
             </div>
-            <Link to="/inventory-reorder-walkthrough" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-100">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/inventory-reorder-walkthrough/" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-100">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </section>
         </>
@@ -124,8 +124,8 @@ export function PurchasingPage() {
           <Link to="/#why-switch" className="font-semibold text-cyan-200 underline-offset-4 hover:underline">See how the move works.</Link>
         </>
       }
-      prevCategory={{ name: 'Inventory', href: '/features/inventory' }}
-      nextCategory={{ name: 'Sales', href: '/features/sales' }}
+      prevCategory={{ name: 'Inventory', href: '/features/inventory/' }}
+      nextCategory={{ name: 'Sales', href: '/features/sales/' }}
     />
   );
 }

@@ -39,7 +39,7 @@ export default function AgencyPage() {
                 <h2 className="mt-2 text-xl font-semibold text-white">See a reorder decision from demand signal to reviewed draft PO</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8b95a8]">Real product screens, clearly labeled example data, and the full planning context behind the action.</p>
               </div>
-              <Link to="/inventory-reorder-walkthrough" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-200">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/inventory-reorder-walkthrough/" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-cyan-200">Watch the walkthrough <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </div>
           </div>
         </section>

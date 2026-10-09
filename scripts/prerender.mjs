@@ -91,6 +91,8 @@ const esc = (s) =>
 
 const jsonLd = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 
+const routePaths = new Set(routeMeta.map((r) => r.path).filter((path) => path !== '/'));
+
 for (const route of routeMeta) {
   const appHtml = await renderToString(createApp(route.path));
   const h1Count = (appHtml.match(/<h1(?:\s|>)/g) ?? []).length;
@@ -100,6 +102,14 @@ for (const route of routeMeta) {
   // Netlify serves directory indexes at the trailing-slash URL (301 from the
   // bare path), so canonicals must use the trailing-slash form.
   const canonical = canonicalUrl(route);
+  // Internal links must use that form too. A bare-path link is a redirect
+  // that Search Console reports as "Page with redirect".
+  const bareLinks = [...appHtml.matchAll(/href="(\/[^"#?]*[^/"#?])(?:[#?][^"]*)?"/g)]
+    .map((m) => m[1])
+    .filter((path) => routePaths.has(path));
+  if (bareLinks.length) {
+    throw new Error(`${route.path} links to redirecting bare paths; add a trailing slash: ${[...new Set(bareLinks)].join(', ')}`);
+  }
   const socialImage = `${SITE_URL}/spark-demand-esp-social-v1.jpg`;
   const schemaGraph = buildSchemaGraph(route);
 

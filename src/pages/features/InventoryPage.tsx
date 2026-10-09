@@ -51,7 +51,7 @@ export function InventoryPage() {
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"
       features={features}
-      nextCategory={{ name: 'Purchasing', href: '/features/purchasing' }}
+      nextCategory={{ name: 'Purchasing', href: '/features/purchasing/' }}
     />
   );
 }

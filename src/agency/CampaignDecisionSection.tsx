@@ -53,7 +53,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
       { label: 'Operator decision', value: 'Review recommended cadence', note: 'Human-controlled next action' },
     ],
     cta: 'Explore AI tools for 3PL operations',
-    ctaHref: '/features/tools-services',
+    ctaHref: '/features/tools-services/',
   },
   stockouts: {
     eyebrow: 'Explainable inventory control',
@@ -86,7 +86,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
       { label: 'Action', value: 'Draft purchasing plan', note: 'Reviewed before execution' },
     ],
     cta: 'Explore purchasing and purchase orders',
-    ctaHref: '/features/purchasing',
+    ctaHref: '/features/purchasing/',
   },
   pickup: {
     eyebrow: 'A location-aware fulfillment loop',
@@ -119,7 +119,7 @@ const content: Record<CampaignDecisionKind, DecisionContent> = {
       { label: 'Handoff', value: 'Picked up · recorded', note: 'Order and stock aligned' },
     ],
     cta: 'Explore warehouse operations',
-    ctaHref: '/features/warehousing',
+    ctaHref: '/features/warehousing/',
   },
 };
 

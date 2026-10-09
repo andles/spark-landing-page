@@ -225,11 +225,11 @@ export function IntegrationsPage() {
 
         <nav aria-label="Related feature pages" className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-6 md:px-8">
           <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-4">
-            <Link to="/features/wholesale-suppliers" className="inline-flex items-center gap-2 text-sm text-[#b8bfcc] transition-colors hover:text-white">
+            <Link to="/features/wholesale-suppliers/" className="inline-flex items-center gap-2 text-sm text-[#b8bfcc] transition-colors hover:text-white">
               <ArrowLeft className="h-4 w-4" />
               Wholesale &amp; Suppliers
             </Link>
-            <Link to="/features" className="inline-flex items-center gap-2 text-right text-sm text-[#b8bfcc] transition-colors hover:text-white">
+            <Link to="/features/" className="inline-flex items-center gap-2 text-right text-sm text-[#b8bfcc] transition-colors hover:text-white">
               All features
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -246,7 +246,7 @@ export function IntegrationsPage() {
               <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a demo</BookACallButton>
             </div>
             <div className="mt-6 text-sm text-[#b8bfcc]">
-              Using NetSuite, BigCommerce, Walmart, ShipBob, or another system? <a href="/contact" className="underline hover:text-white">Ask us about it</a>.
+              Using NetSuite, BigCommerce, Walmart, ShipBob, or another system? <a href="/contact/" className="underline hover:text-white">Ask us about it</a>.
             </div>
           </ScrollReveal>
         </section>
