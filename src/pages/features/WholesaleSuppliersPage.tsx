@@ -1,5 +1,6 @@
 import { Store } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { SupplierFlow, VendorPortalMockup } from './featureVisuals';
 
 const features = [
   {
@@ -56,6 +57,8 @@ export function WholesaleSuppliersPage() {
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"
       features={features}
+      heroMedia={<VendorPortalMockup />}
+      showcase={<SupplierFlow />}
       ctaSource="features-wholesale-suppliers"
       prevCategory={{ name: 'Signals & Automation', href: '/features/signals-automation' }}
       nextCategory={{ name: 'Integrations', href: '/integrations' }}

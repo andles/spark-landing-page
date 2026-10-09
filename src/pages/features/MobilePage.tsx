@@ -1,5 +1,6 @@
 import { Smartphone } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { MobileFloorFlow, MobileReceivingMockup } from './featureVisuals';
 
 const features = [
   {
@@ -68,6 +69,8 @@ export function MobilePage() {
       gradientFrom="from-sky-500"
       gradientTo="to-cyan-400"
       features={features}
+      heroMedia={<MobileReceivingMockup />}
+      showcase={<MobileFloorFlow />}
       ctaSource="features-mobile"
       prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
       nextCategory={{ name: 'Signals & Automation', href: '/features/signals-automation' }}

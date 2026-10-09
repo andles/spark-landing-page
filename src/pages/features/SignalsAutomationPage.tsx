@@ -1,5 +1,6 @@
 import { BellRing } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { AutomationShowcase, SignalInboxMockup } from './featureVisuals';
 
 const features = [
   {
@@ -64,6 +65,8 @@ export function SignalsAutomationPage() {
       gradientFrom="from-amber-500"
       gradientTo="to-orange-400"
       features={features}
+      heroMedia={<SignalInboxMockup />}
+      showcase={<AutomationShowcase />}
       ctaSource="features-signals-automation"
       prevCategory={{ name: 'Mobile', href: '/features/mobile' }}
       nextCategory={{ name: 'Wholesale & Suppliers', href: '/features/wholesale-suppliers' }}
