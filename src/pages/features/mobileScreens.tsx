@@ -1,12 +1,6 @@
 // Screenshots of the Spark mobile app, captured from the app's own code
-// running with example data (public/screens/mobile-*.webp).
+// running with sample records (public/screens/mobile-*.webp).
 import ScrollReveal, { RevealItem } from '../../agency/ScrollReveal';
-
-const exampleTag = (
-  <span className="rounded-full border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45">
-    Example data
-  </span>
-);
 
 /** A phone bezel around one app screenshot (390 x 844 points). */
 function PhoneShot({ src, alt, eager = false }: { src: string; alt: string; eager?: boolean }) {
@@ -30,7 +24,7 @@ export function MobileHeroScreen() {
     <figure className="mx-auto w-full max-w-[300px]">
       <PhoneShot src="/screens/mobile-receiving.webp" alt="Receiving a purchase order in the Spark mobile app, with short, over-received, and unlisted lines flagged" eager />
       <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs text-white/40">
-        Receiving in the Spark mobile app {exampleTag}
+        Receiving in the Spark mobile app
       </figcaption>
     </figure>
   );
@@ -52,7 +46,7 @@ export function MobileScreensGallery() {
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-300">In the app</p>
             <h2 id="mobile-screens-heading" className="mt-3 text-2xl font-semibold text-white sm:text-3xl">The screens your team works in</h2>
           </div>
-          {exampleTag}
+         
         </ScrollReveal>
         <ScrollReveal staggerChildren={80} className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
           {screens.map((screen, index) => (

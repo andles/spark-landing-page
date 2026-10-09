@@ -5,7 +5,7 @@
 // modules/Signal/surfaces/markdown, i18n group markdown). Every number in the
 // mockups is example data and says so.
 import ScrollReveal from '../../agency/ScrollReveal';
-import { ExampleTag, type FlowStep } from './featureVisuals';
+import { type FlowStep } from './featureVisuals';
 
 const promoSteps: readonly FlowStep[] = [
   {
@@ -67,7 +67,7 @@ const attention = [
   { count: 1, dot: 'bg-emerald-600', label: 'event ended: compare with what you expected' },
 ];
 
-/** The Events tab of Demand ESP, recreated with example data. */
+/** The Events tab of Demand ESP, recreated from the web app. */
 export function DemandCalendarMockup() {
   return (
     <figure className="w-full min-w-0">
@@ -180,7 +180,7 @@ export function DemandCalendarMockup() {
         </div>
       </div>
       <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs text-white/40">
-        The Demand Calendar in Demand ESP <ExampleTag />
+        The Demand Calendar in Demand ESP
       </figcaption>
     </figure>
   );
@@ -188,13 +188,12 @@ export function DemandCalendarMockup() {
 
 /* ── Markdown proposal card ─────────────────────────────────────────────── */
 
-/** A slow mover markdown proposal as it appears in Spark Signal, with example data. */
+/** A slow mover markdown proposal as it appears in Spark Signal */
 function MarkdownProposalCard() {
   return (
     <div className="flex flex-col self-start rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">Slow mover markdown</p>
-        <span className="shrink-0 whitespace-nowrap"><ExampleTag /></span>
       </div>
       <h3 className="mt-4 text-base font-semibold text-white">Markdown proposals for what isn’t selling</h3>
       <p className="mt-2 text-sm leading-7 text-[#9da8b9]">
@@ -273,9 +272,6 @@ export function PromotionsPlanningSection({ variant = 'feature' }: { variant?: '
           <DemandCalendarMockup />
           <MarkdownProposalCard />
         </ScrollReveal>
-        <p className="mt-5 text-xs leading-6 text-white/45">
-          Ordering from the stock check creates a draft purchase order, which needs a plan that includes purchasing (Operate and above).
-        </p>
       </div>
     </section>
   );

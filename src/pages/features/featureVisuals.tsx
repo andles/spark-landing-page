@@ -3,14 +3,6 @@
 import { type ReactNode } from 'react';
 import ScrollReveal from '../../agency/ScrollReveal';
 
-export function ExampleTag() {
-  return (
-    <span className="rounded-full border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45">
-      Example data
-    </span>
-  );
-}
-
 export interface FlowStep {
   step: string;
   title: string;
@@ -120,7 +112,7 @@ export function SignalInboxMockup() {
         </ul>
       </div>
       <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs text-white/40">
-        The Spark Signal page <ExampleTag />
+        The Spark Signal page
       </figcaption>
     </figure>
   );
@@ -149,7 +141,7 @@ export function AutomationShowcase() {
           <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">New rule</p>
-              <ExampleTag />
+             
             </div>
             <p className="mt-4 rounded-xl border border-white/[0.08] bg-[#0a0d14] px-4 py-3 text-sm text-white">
               “When an item’s days of supply drops below its lead time, propose a reorder PO and ask the buyer to approve it.”
@@ -185,7 +177,7 @@ export function AutomationShowcase() {
           <div className="rounded-2xl border border-white/[0.08] bg-[#0a0d14] p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">Spark Solo by text</p>
-              <ExampleTag />
+             
             </div>
             <div className="mt-4 space-y-2.5 text-[13px] leading-5">
               <p className="mr-8 rounded-2xl rounded-bl-md bg-white/[0.06] px-3.5 py-2.5 text-white/85">Good morning. 2 items need a reorder today and PO-1042 arrives Thursday. Reply with a question anytime.</p>
@@ -260,7 +252,7 @@ export function VendorPortalMockup() {
         </div>
       </div>
       <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs text-white/40">
-        A purchase order in the vendor portal <ExampleTag />
+        A purchase order in the vendor portal
       </figcaption>
     </figure>
   );
