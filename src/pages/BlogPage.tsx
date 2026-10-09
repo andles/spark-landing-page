@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
+import { installSoroCardNavigation } from '../blog/soroCardNavigation';
 
 const SORO_EMBED_URL =
   'https://app.trysoro.com/api/embed/8a7f0d25-8c1f-451d-81aa-277ecf3a5ae9?theme=dark';
@@ -28,6 +29,10 @@ export default function BlogPage() {
     const embedHost = embedHostRef.current;
     if (!embedHost || slug) return;
 
+    // Soro's cards would otherwise open articles inside this page at
+    // /blog/?post=<slug>; they open /blog/<slug>/ instead.
+    const removeCardNavigation = installSoroCardNavigation(embedHost);
+
     const script = document.createElement('script');
     script.src = SORO_EMBED_URL;
     script.defer = true;
@@ -36,6 +41,7 @@ export default function BlogPage() {
     embedHost.appendChild(script);
 
     return () => {
+      removeCardNavigation();
       script.remove();
       document.getElementById('soro-blog')?.replaceChildren();
     };
