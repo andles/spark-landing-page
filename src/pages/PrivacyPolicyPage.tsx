@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 09/29/2026"
+      subtitle="Effective date: 10/09/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -367,12 +367,12 @@ export function PrivacyPolicyPage() {
           ]} />
         </LegalSubSection>
 
-        <LegalSubSection title="14.2 Analytics (only with your consent)">
+        <LegalSubSection title="14.2 Analytics">
           <LegalP>
-            We use PostHog on our public website and web application to understand usage and diagnose problems. We wait for your cookie choice before collecting these analytics. If you accept analytics cookies, PostHog stores an analytics identifier and first-visit campaign details (such as the ad campaign or referring website that brought you to us) in a cookie shared by sparkinventory.com and app.sparkinventory.com and in local storage, and we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
+            We use PostHog on our public website and web application to understand usage and diagnose problems. If you accept analytics cookies, PostHog stores an analytics identifier and first-visit campaign details (such as the ad campaign or referring website that brought you to us) in a cookie shared by sparkinventory.com and app.sparkinventory.com and in local storage, and we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
           </LegalP>
           <LegalP>
-            If you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser.
+            Until you make a cookie choice, and if you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. These measurements can include campaign details from the page address, such as UTM tags or a Google Ads click ID.
           </LegalP>
           <LegalP>
             If you accept analytics cookies on our public website, we also load PHAS3, an attribution service that measures which marketing channels lead to visits, sign-ups, and booked demos. It does not load if you reject analytics cookies.
