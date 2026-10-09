@@ -177,7 +177,7 @@ export function AutomationShowcase() {
           <div className="rounded-2xl border border-white/[0.08] bg-[#0a0d14] p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">Spark Solo by text</p>
-              <a href="/spark-solo" className="text-xs font-semibold text-cyan-300 hover:text-white">Meet Spark Solo</a>
+              <a href="/spark-solo/" className="text-xs font-semibold text-cyan-300 hover:text-white">Meet Spark Solo</a>
             </div>
             <div className="mt-4 space-y-2.5 text-[13px] leading-5">
               <p className="mr-8 rounded-2xl rounded-bl-md bg-white/[0.06] px-3.5 py-2.5 text-white/85">Spark Solo morning brief: 1 urgent, 6 open. A7: Classic Tee, Black, M is below its reorder point. Reply A7 for details, or ask me anything.</p>

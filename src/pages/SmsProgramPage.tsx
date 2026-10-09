@@ -102,7 +102,7 @@ export function SmsProgramPage() {
             </blockquote>
             <h2 className="mt-10 text-xl font-semibold">Privacy</h2>
             <p className="mt-3 text-sm leading-7 text-[#b8bfcc]">
-              No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. Phone numbers are shared only with the service provider used to deliver messages and receive delivery status. Carriers are not liable for delayed or undelivered messages. Read the complete <a href="/privacy-policy" className="text-cyan-300 hover:text-cyan-200">Privacy Policy</a> and <a href="/terms-of-service" className="text-cyan-300 hover:text-cyan-200">Terms of Service</a>.
+              No mobile information will be sold or shared with third parties for promotional or marketing purposes. Text messaging opt-in data and consent are not shared with any third party. Phone numbers are shared only with the service provider used to deliver messages and receive delivery status. Carriers are not liable for delayed or undelivered messages. Read the complete <a href="/privacy-policy/" className="text-cyan-300 hover:text-cyan-200">Privacy Policy</a> and <a href="/terms-of-service/" className="text-cyan-300 hover:text-cyan-200">Terms of Service</a>.
             </p>
           </ScrollReveal>
         </section>

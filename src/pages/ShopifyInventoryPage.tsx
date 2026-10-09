@@ -124,9 +124,9 @@ export function ShopifyInventoryPage() {
               <p className="text-sm font-semibold text-violet-300">Shopify inventory FAQ</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight">Answers before you connect your store</h2>
               <div className="mt-6 space-y-3 text-sm">
-                <a href="/features/inventory" className="block text-cyan-300 hover:text-cyan-200">Explore inventory management →</a>
-                <a href="/features/purchasing" className="block text-cyan-300 hover:text-cyan-200">Explore purchasing and POs →</a>
-                <a href="/features/accounting" className="block text-cyan-300 hover:text-cyan-200">Explore accounting integrations →</a>
+                <a href="/features/inventory/" className="block text-cyan-300 hover:text-cyan-200">Explore inventory management →</a>
+                <a href="/features/purchasing/" className="block text-cyan-300 hover:text-cyan-200">Explore purchasing and POs →</a>
+                <a href="/features/accounting/" className="block text-cyan-300 hover:text-cyan-200">Explore accounting integrations →</a>
               </div>
             </ScrollReveal>
             <div className="space-y-3">

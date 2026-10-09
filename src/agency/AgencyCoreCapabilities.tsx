@@ -14,7 +14,7 @@ const features = [
       </svg>
     ),
     title: "Order Management & Forecasting",
-    href: "/features/inventory",
+    href: "/features/inventory/",
     description: "See every order in real time and review recommendations for what to reorder, when, and how much. Demand ESP builds forecasts from your sales history.",
     bullets: [
       "Real-time order tracking across all channels",
@@ -33,7 +33,7 @@ const features = [
       </svg>
     ),
     title: "Spark Drafts, You Approve",
-    href: "/features/purchasing",
+    href: "/features/purchasing/",
     description: "Spark operates as your inventory manager. It consolidates the reorder decisions that need to be made and drafts the purchase orders, so your team reviews and approves while the system automates the rest.",
     bullets: [
       "Every inventory decision in one approval queue",
@@ -52,7 +52,7 @@ const features = [
       </svg>
     ),
     title: "Custom Reporting & Signal",
-    href: "/features/tools-services",
+    href: "/features/tools-services/",
     description: "Pull the numbers that actually matter to your business. Signal flags low stock, unusual velocity, and emerging trends so nothing slips through the cracks.",
     bullets: [
       "Custom dashboards with the metrics that matter",
@@ -71,7 +71,7 @@ const features = [
       </svg>
     ),
     title: "Unified Integrations & Workflow",
-    href: "/features/accounting",
+    href: "/features/accounting/",
     description: "Connect commerce, marketplaces, accounting, payments, and fulfillment in minutes. Your team works from one consistent source of truth.",
     bullets: [
       "One-click connections to the tools you already use",

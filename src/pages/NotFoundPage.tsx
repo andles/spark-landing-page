@@ -23,7 +23,7 @@ export function NotFoundPage() {
             <Link to="/" className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-6 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">
               Return home <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-            <Link to="/sitemap" className="inline-flex h-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">
+            <Link to="/sitemap/" className="inline-flex h-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">
               Browse the sitemap
             </Link>
           </div>

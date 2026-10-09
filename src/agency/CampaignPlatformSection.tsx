@@ -78,7 +78,7 @@ const content: Record<CampaignPlatformKind, PlatformContent> = {
       { topic: 'Control', old: 'Decision lives in email or a call', next: 'Evidence, review, and approval stay together' },
     ],
     linkLabel: 'See Spark pricing for your operating model',
-    linkHref: '/pricing',
+    linkHref: '/pricing/',
   },
   stockouts: {
     eyebrow: 'The replenishment operating layer',
@@ -123,7 +123,7 @@ const content: Record<CampaignPlatformKind, PlatformContent> = {
       { topic: 'Execution', old: 'Buyer rebuilds the PO manually', next: 'Draft purchasing action moves through approval' },
     ],
     linkLabel: 'See pricing for the planning workflow',
-    linkHref: '/pricing',
+    linkHref: '/pricing/',
   },
 };
 

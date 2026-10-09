@@ -6,10 +6,10 @@ import { useCtaLinks } from "./ctaLinks";
 const HOME_COMPARISON_CTA_OPTIONS = { source: "home_why_upgrade" } as const;
 
 const upgradePaths = [
-  { label: "Moving from Fishbowl", to: "/fishbowl-alternative" },
-  { label: "Moving from Cin7", to: "/cin7-alternative" },
-  { label: "Moving from Zoho Inventory", to: "/zoho-inventory-alternative" },
-  { label: "Moving from inFlow", to: "/inflow-alternative" },
+  { label: "Moving from Fishbowl", to: "/fishbowl-alternative/" },
+  { label: "Moving from Cin7", to: "/cin7-alternative/" },
+  { label: "Moving from Zoho Inventory", to: "/zoho-inventory-alternative/" },
+  { label: "Moving from inFlow", to: "/inflow-alternative/" },
 ] as const;
 
 const linkClass =

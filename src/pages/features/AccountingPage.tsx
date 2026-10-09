@@ -51,7 +51,7 @@ export function AccountingPage() {
       gradientFrom="from-green-600"
       gradientTo="to-emerald-500"
       features={features}
-      prevCategory={{ name: 'Tools & Services', href: '/features/tools-services' }}
+      prevCategory={{ name: 'Tools & Services', href: '/features/tools-services/' }}
     />
   );
 }

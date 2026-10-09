@@ -65,10 +65,10 @@ export interface CompetitorConfig {
 }
 
 const sharedRelatedLinks = [
-  { href: '/shopify-inventory-management', label: 'Shopify inventory management' },
-  { href: '/features/purchasing', label: 'Plan your next reorder' },
-  { href: '/features/accounting', label: 'QuickBooks and accounting' },
-  { href: '/fishbowl-alternative', label: 'Fishbowl alternative' },
+  { href: '/shopify-inventory-management/', label: 'Shopify inventory management' },
+  { href: '/features/purchasing/', label: 'Plan your next reorder' },
+  { href: '/features/accounting/', label: 'QuickBooks and accounting' },
+  { href: '/fishbowl-alternative/', label: 'Fishbowl alternative' },
 ];
 
 export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
@@ -76,7 +76,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     key: 'cin7',
     name: 'Cin7',
     fullName: 'Cin7 Core or Cin7 Omni',
-    slug: '/cin7-alternative',
+    slug: '/cin7-alternative/',
     eyebrow: 'For teams evaluating life after Cin7 Core or Omni',
     accent: 'cyan',
     heroBody:
@@ -197,7 +197,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     key: 'zoho',
     name: 'Zoho Inventory',
     fullName: 'Zoho Inventory',
-    slug: '/zoho-inventory-alternative',
+    slug: '/zoho-inventory-alternative/',
     eyebrow: 'For teams outgrowing Zoho Inventory',
     accent: 'emerald',
     heroBody:
@@ -293,7 +293,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     key: 'inflow',
     name: 'inFlow',
     fullName: 'inFlow Inventory',
-    slug: '/inflow-alternative',
+    slug: '/inflow-alternative/',
     eyebrow: 'For teams comparing inFlow Inventory and Spark',
     accent: 'amber',
     heroBody:

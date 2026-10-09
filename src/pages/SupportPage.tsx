@@ -44,7 +44,7 @@ export function SupportPage() {
 
         <LegalSubSection title="AI Assistant Connections">
           <LegalP>
-            Follow the <a href="/connect-spark-to-your-assistant" className="text-cyan-400 hover:text-cyan-300 transition-colors">ChatGPT and Claude connection guide</a> for setup, access levels, revocation, and troubleshooting.
+            Follow the <a href="/connect-spark-to-your-assistant/" className="text-cyan-400 hover:text-cyan-300 transition-colors">ChatGPT and Claude connection guide</a> for setup, access levels, revocation, and troubleshooting.
           </LegalP>
         </LegalSubSection>
 
@@ -77,8 +77,8 @@ export function SupportPage() {
 
       <LegalSection title="Privacy and Legal">
         <LegalUl items={[
-          <><a href="/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a></>,
-          <><a href="/terms-of-service" className="text-cyan-400 hover:text-cyan-300 transition-colors">Terms of Service</a></>,
+          <><a href="/privacy-policy/" className="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a></>,
+          <><a href="/terms-of-service/" className="text-cyan-400 hover:text-cyan-300 transition-colors">Terms of Service</a></>,
         ]} />
       </LegalSection>
 

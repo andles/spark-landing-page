@@ -55,8 +55,8 @@ export function WarehousingPage() {
       gradientFrom="from-slate-600"
       gradientTo="to-slate-500"
       features={features}
-      prevCategory={{ name: 'Manufacturing', href: '/features/manufacturing' }}
-      nextCategory={{ name: 'Tools & Services', href: '/features/tools-services' }}
+      prevCategory={{ name: 'Manufacturing', href: '/features/manufacturing/' }}
+      nextCategory={{ name: 'Tools & Services', href: '/features/tools-services/' }}
     />
   );
 }

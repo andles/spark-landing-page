@@ -84,7 +84,7 @@ export function ConnectAssistantPage() {
           An empty workspace needs data before stock and purchasing answers are useful.
           Recommendations depend on the information in Spark; missing demand or sourcing data
           can limit the answer. Free forecasting and paid operational workflows have different
-          feature access. See <a className={linkClass} href="/pricing">plans and pricing</a>.
+          feature access. See <a className={linkClass} href="/pricing/">plans and pricing</a>.
         </LegalP>
       </LegalSection>
 
@@ -99,8 +99,8 @@ export function ConnectAssistantPage() {
           Tool results are shared with the assistant you connect. Business records may include
           personal information, so only connect an assistant your organization permits for that
           data. Its provider's terms and your account settings apply to the returned information.
-          See our <a className={linkClass} href="/privacy-policy">Privacy Policy</a> and{" "}
-          <a className={linkClass} href="/terms-of-service">Terms of Service</a>.
+          See our <a className={linkClass} href="/privacy-policy/">Privacy Policy</a> and{" "}
+          <a className={linkClass} href="/terms-of-service/">Terms of Service</a>.
         </LegalP>
       </LegalSection>
 

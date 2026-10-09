@@ -100,7 +100,7 @@ export function PricingPage() {
                 <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-lime-300" aria-hidden="true" />
                 <span>
                   Moving from Fishbowl?{' '}
-                  <Link to="/fishbowl-alternative#offer" className="font-semibold text-cyan-200 underline-offset-4 hover:underline">
+                  <Link to="/fishbowl-alternative/#offer" className="font-semibold text-cyan-200 underline-offset-4 hover:underline">
                     See the Fishbowl bridge offer.
                   </Link>
                 </span>

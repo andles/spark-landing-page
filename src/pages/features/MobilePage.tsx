@@ -78,8 +78,8 @@ export function MobilePage() {
       heroMedia={<MobileHeroScreen />}
       showcase={<><MobileScreensGallery /><MobileFloorFlow /></>}
       ctaSource="features-mobile"
-      prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
-      nextCategory={{ name: 'Signals & Automation', href: '/features/signals-automation' }}
+      prevCategory={{ name: 'Warehousing', href: '/features/warehousing/' }}
+      nextCategory={{ name: 'Signals & Automation', href: '/features/signals-automation/' }}
     />
   );
 }

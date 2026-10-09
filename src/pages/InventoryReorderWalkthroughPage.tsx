@@ -129,13 +129,13 @@ export default function InventoryReorderWalkthroughPage() {
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-cyan-300">Choose your interface</p>
               <h2 className="mt-5 text-3xl font-semibold">Sparki and MCP support the same job</h2>
               <p className="mt-5 text-sm leading-7 text-[#aab8c1]">Work with Sparki inside Spark, or connect an approved assistant through MCP. In either interface, the flow is ask, inspect, prepare, and review.</p>
-              <Link to="/features/tools-services" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">Explore Sparki and MCP <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/features/tools-services/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">Explore Sparki and MCP <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </ScrollReveal>
             <ScrollReveal delay={0.08} className="rounded-3xl border border-violet-300/15 bg-violet-300/[0.035] p-8 sm:p-10">
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-violet-300">Start at the right level</p>
               <h2 className="mt-5 text-3xl font-semibold">Start with the plan, then connect the operating loop</h2>
               <p className="mt-5 text-sm leading-7 text-[#aab8c1]">Free covers one user with monthly forecasting in Spark Inventory. Purchasing and operational workflows are available when your team is ready to act on the plan.</p>
-              <Link to="/pricing" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-violet-200">Compare plans <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/pricing/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-violet-200">Compare plans <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </ScrollReveal>
           </div>
         </section>

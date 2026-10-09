@@ -48,7 +48,7 @@ const accentStyles: Record<PricingTier['accent'], { line: string; badge: string;
 function PricingCard({ tier, signupUrl }: { tier: PricingTier; signupUrl: string }) {
   const accent = accentStyles[tier.accent];
   const href = tier.ctaKind === 'contact'
-    ? '/contact'
+    ? '/contact/'
     : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
@@ -196,7 +196,7 @@ function AdvancedPlanCard({ tier, signupUrl }: { tier: AdvancedPricingTier; sign
   const Icon = tier.name === 'Scale' ? Factory : Network;
   const accent = accentStyles[tier.accent];
   const href = tier.ctaKind === 'contact'
-    ? '/contact'
+    ? '/contact/'
     : withSignupIntent(signupUrl, { plan: tier.signupPlan });
 
   return (
@@ -296,7 +296,7 @@ function AdvancedPlanLink() {
   return (
     <ScrollReveal className="mx-auto mt-8 max-w-[980px]">
       <a
-        href="/pricing#advanced-plans"
+        href="/pricing/#advanced-plans"
         className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-violet-300/15 bg-violet-300/[0.045] px-5 py-5 transition-colors hover:border-violet-300/30 hover:bg-violet-300/[0.07] sm:flex-row sm:items-center"
       >
         <div>

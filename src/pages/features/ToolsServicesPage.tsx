@@ -77,8 +77,8 @@ export function ToolsServicesPage() {
         />
       )}
       showcase={<AgentOnboardingSection />}
-      prevCategory={{ name: 'Warehousing', href: '/features/warehousing' }}
-      nextCategory={{ name: 'QuickBooks & Accounting', href: '/features/accounting' }}
+      prevCategory={{ name: 'Warehousing', href: '/features/warehousing/' }}
+      nextCategory={{ name: 'QuickBooks & Accounting', href: '/features/accounting/' }}
     />
   );
 }

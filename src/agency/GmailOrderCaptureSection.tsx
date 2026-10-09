@@ -176,7 +176,7 @@ export default function GmailOrderCaptureSection() {
           <p className="mt-6 border-l border-cyan-400/30 pl-4 text-sm leading-6 text-[#8b95a8]">
             Your email is used only to keep your orders up to date. It is never sold, used for advertising, or used to train
             AI models. Read how Spark handles Gmail data in our{" "}
-            <Link to="/privacy-policy" className="text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">
+            <Link to="/privacy-policy/" className="text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">
               Privacy Policy
             </Link>
             .

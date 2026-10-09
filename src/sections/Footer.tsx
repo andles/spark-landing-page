@@ -3,10 +3,10 @@ import { SocialLinks } from '../components/SocialLinks';
 import { useTheme } from '../context/theme';
 
 const footerLinks = [
-  { name: 'Partners', href: '/partners' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Privacy Policy', href: '/privacy-policy' },
-  { name: 'Terms of Service', href: '/terms-of-service' },
+  { name: 'Partners', href: '/partners/' },
+  { name: 'Contact', href: '/contact/' },
+  { name: 'Privacy Policy', href: '/privacy-policy/' },
+  { name: 'Terms of Service', href: '/terms-of-service/' },
 ];
 
 export function Footer() {

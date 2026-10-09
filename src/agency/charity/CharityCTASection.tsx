@@ -27,7 +27,7 @@ export default function CharityCTASection() {
               Book a demo
             </BookACallButton>
             <a
-              href="/contact"
+              href="/contact/"
               className="glass inline-flex h-[46px] items-center rounded-full border border-white/15 px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.06]"
             >
               Talk to the Spark team

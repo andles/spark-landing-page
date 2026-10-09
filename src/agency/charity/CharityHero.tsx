@@ -54,7 +54,7 @@ export default function CharityHero() {
               Book a demo
             </BookACallButton>
             <a
-              href="/contact"
+              href="/contact/"
               className="h-[46px] px-8 rounded-full glass border border-white/15 text-[#f0f2f5] font-semibold text-base hover:bg-white/[0.06] hover:border-white/25 hover:scale-[1.02] transition-all duration-300 inline-flex items-center justify-center"
             >
               Talk to the Spark team

@@ -69,7 +69,7 @@ export default function ProductProofCards({ showReorderLink = false }: { showReo
       {showReorderLink && (
         <div className="mt-6 text-center">
           <Link
-            to="/features/purchasing"
+            to="/features/purchasing/"
             className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-cyan-100"
           >
             Plan your next reorder <ArrowRight className="h-4 w-4" aria-hidden="true" />

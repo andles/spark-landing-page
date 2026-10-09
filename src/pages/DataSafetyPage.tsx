@@ -96,7 +96,7 @@ export function DataSafetyPage() {
           The Play Data Safety form considers "Camera" as part of <em>Photos and videos</em> only if you collect or upload images. We use the camera <strong className="text-[#f0f2f5]/80">only</strong> to decode barcodes on-device (frames are not stored or transmitted), so this is <strong className="text-[#f0f2f5]/80">No</strong> under "Photos and videos collected".
         </LegalP>
         <LegalP>
-          The Play Console will still flag the <code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">CAMERA</code> permission and require a privacy policy URL, which is provided at <a href="/privacy-policy" className="text-cyan-400 hover:text-cyan-300 transition-colors">sparkinventory.com/privacy-policy</a>.
+          The Play Console will still flag the <code className="text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded text-xs font-mono">CAMERA</code> permission and require a privacy policy URL, which is provided at <a href="/privacy-policy/" className="text-cyan-400 hover:text-cyan-300 transition-colors">sparkinventory.com/privacy-policy</a>.
         </LegalP>
       </LegalSection>
 

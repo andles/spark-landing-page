@@ -143,7 +143,7 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     accent: 'violet',
     operator: 'For manufacturers',
     fit: 'Production planning, component economics, and workflows that need structured implementation.',
-    exploreHref: '/features/manufacturing',
+    exploreHref: '/features/manufacturing/',
     exploreLabel: 'Explore manufacturing',
   },
   {
@@ -173,7 +173,7 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
     accent: 'fuchsia',
     operator: 'For 3PLs and service operators',
     fit: 'Client-separated inventory intelligence, shared operations, and a commercial model built for managed services.',
-    exploreHref: '/3pl',
+    exploreHref: '/3pl/',
     exploreLabel: 'Explore 3PL operations',
   },
 ];
