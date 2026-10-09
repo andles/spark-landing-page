@@ -3,7 +3,7 @@
 import { type ReactNode } from 'react';
 import ScrollReveal from '../../agency/ScrollReveal';
 
-function ExampleTag() {
+export function ExampleTag() {
   return (
     <span className="rounded-full border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45">
       Example data

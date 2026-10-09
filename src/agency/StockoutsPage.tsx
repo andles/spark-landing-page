@@ -12,6 +12,7 @@ import CampaignCTASection from "./CampaignCTASection";
 import CampaignDecisionSection from "./CampaignDecisionSection";
 import CampaignPlatformSection from "./CampaignPlatformSection";
 import AgencyFooter from "./AgencyFooter";
+import { PromotionsPlanningSection } from "../pages/features/PromotionsPlanningSection";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
 export default function StockoutsPage() {
@@ -27,6 +28,7 @@ export default function StockoutsPage() {
         <CampaignWorkflowSection kind="stockouts" />
         <CampaignDecisionSection kind="stockouts" />
         <CampaignPlatformSection kind="stockouts" />
+        <PromotionsPlanningSection variant="campaign" />
         <AgencyIntegrationsSection />
         <CampaignFAQSection kind="stockouts" />
         <CampaignCTASection kind="stockouts" />
