@@ -8,10 +8,14 @@ const productLinks = [
   { href: "/features/inventory", label: "Inventory", description: "SKUs, stock, locations, and control" },
   { href: "/features/purchasing", label: "Purchasing", description: "Planning, POs, suppliers, and receiving" },
   { href: "/features/sales", label: "Sales", description: "Orders, invoices, customers, and returns" },
+  { href: "/features/wholesale-suppliers", label: "Wholesale & Suppliers", description: "B2B store, vendor portal, and EDI" },
   { href: "/features/manufacturing", label: "Manufacturing", description: "BOMs, materials, and production" },
   { href: "/features/warehousing", label: "Warehousing", description: "Bins, transfers, picking, and counts" },
+  { href: "/features/mobile", label: "Mobile App", description: "Receive, pick, pack, and ship by scan" },
   { href: "/features/accounting", label: "Accounting", description: "QuickBooks, invoices, and payments" },
   { href: "/features/tools-services", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
+  { href: "/features/signals-automation", label: "Signals & Automation", description: "Proposed actions, rules, and Spark Solo" },
+  { href: "/spark-solo", label: "Spark Solo", description: "Your inventory by text message" },
 ];
 
 const solutionLinks = [
@@ -77,7 +81,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
         <nav className="hidden min-[900px]:flex items-center gap-5 2xl:gap-7">
           <DesktopMenu label="Product" links={productLinks} />
           <DesktopMenu label="Solutions" links={solutionLinks} />
-          <a href="/#integrations" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
+          <a href="/integrations" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Integrations</a>
           <a href="/pricing" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Pricing</a>
           <a href="/blog" className="whitespace-nowrap text-sm text-[#b8bfcc] hover:text-white transition-colors duration-200">Blog</a>
         </nav>
@@ -134,7 +138,7 @@ export default function AgencyHeader({ cta = "signup" }: { cta?: "signup" | "dem
               {solutionLinks.map((link) => (
                 <a key={link.href} href={link.href} className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>{link.label}</a>
               ))}
-              <a href="/#integrations" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
+              <a href="/integrations" className="mt-2 block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Integrations</a>
               <a href="/pricing" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
               <a href="/blog" className="block py-1.5 text-sm text-[#b8bfcc] hover:text-white" onClick={() => setMenuOpen(false)}>Blog</a>
             </div>

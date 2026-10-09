@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProductProofCards from '../../agency/ProductProofCards';
 import ScrollReveal from '../../agency/ScrollReveal';
 import { FeaturePage } from './FeaturePage';
+import { PromotionsPlanningSection } from './PromotionsPlanningSection';
 
 // Scope note: the flow below is limited to what drives the standard reorder
 // recommendation (forecast, lead times, and their variability, then reorder
@@ -104,6 +105,7 @@ export function PurchasingPage() {
             <ProductProofCards />
           </div>
         </section>
+        <PromotionsPlanningSection />
         <section className="px-6 pb-16 md:px-8 lg:pb-24">
           <div className="mx-auto flex max-w-[1120px] flex-col items-start justify-between gap-5 rounded-3xl border border-cyan-300/15 bg-cyan-300/[0.035] p-7 sm:flex-row sm:items-center sm:p-9">
             <div>

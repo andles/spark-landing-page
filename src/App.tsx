@@ -29,6 +29,11 @@ const ManufacturingPage = lazy(() => R.ManufacturingPage().then((m) => ({ defaul
 const WarehousingPage = lazy(() => R.WarehousingPage().then((m) => ({ default: m.WarehousingPage })));
 const ToolsServicesPage = lazy(() => R.ToolsServicesPage().then((m) => ({ default: m.ToolsServicesPage })));
 const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.AccountingPage })));
+const MobilePage = lazy(() => R.MobilePage().then((m) => ({ default: m.MobilePage })));
+const SparkSoloPage = lazy(() => R.SparkSoloPage().then((m) => ({ default: m.SparkSoloPage })));
+const SignalsAutomationPage = lazy(() => R.SignalsAutomationPage().then((m) => ({ default: m.SignalsAutomationPage })));
+const WholesaleSuppliersPage = lazy(() => R.WholesaleSuppliersPage().then((m) => ({ default: m.WholesaleSuppliersPage })));
+const IntegrationsPage = lazy(() => R.IntegrationsPage().then((m) => ({ default: m.IntegrationsPage })));
 const ShopifyInventoryPage = lazy(() => R.ShopifyInventoryPage().then((m) => ({ default: m.ShopifyInventoryPage })));
 const PricingPage = lazy(() => R.PricingPage().then((m) => ({ default: m.PricingPage })));
 const AboutPage = lazy(() => R.AboutPage().then((m) => ({ default: m.AboutPage })));
@@ -97,6 +102,11 @@ function App() {
             <Route path="/features/warehousing" element={<WarehousingPage />} />
             <Route path="/features/tools-services" element={<ToolsServicesPage />} />
             <Route path="/features/accounting" element={<AccountingPage />} />
+            <Route path="/features/mobile" element={<MobilePage />} />
+            <Route path="/spark-solo" element={<SparkSoloPage />} />
+            <Route path="/features/signals-automation" element={<SignalsAutomationPage />} />
+            <Route path="/features/wholesale-suppliers" element={<WholesaleSuppliersPage />} />
+            <Route path="/integrations" element={<IntegrationsPage />} />
             <Route path="/shopify-inventory-management" element={<ShopifyInventoryPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />

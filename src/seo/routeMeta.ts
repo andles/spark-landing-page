@@ -8,6 +8,9 @@ import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
+import {
+  buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, sparkSoloFaqs, wholesaleFaqs,
+} from '../pages/features/featureFaqs';
 // Per-route SEO metadata - single source of truth.
 //
 // Used in two places:
@@ -135,7 +138,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-29',
+    lastModified: '2026-10-09',
     schema: [buildFaqSchema('stockouts')],
   },
   {
@@ -143,7 +146,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
-    lastModified: '2026-08-29',
+    lastModified: '2026-10-09',
     canonical: '/reduce-stockouts-overstock',
     schema: [buildFaqSchema('stockouts')],
   },
@@ -228,7 +231,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Purchasing and Reorder Planning Software | Spark Inventory',
     description:
       'Plan your next reorder with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving in Spark Inventory.',
-    lastModified: '2026-08-31',
+    lastModified: '2026-10-09',
   },
   {
     path: '/features/sales',
@@ -250,6 +253,92 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
     lastModified: '2026-08-31',
+  },
+  {
+    path: '/features/mobile',
+    title: 'Mobile Warehouse & Barcode Scanning App | Spark Inventory',
+    description:
+      'Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android with camera or rugged scanner support, all on the same live inventory.',
+    lastModified: '2026-10-09',
+    schema: [
+      {
+        '@type': 'SoftwareApplication',
+        '@id': `${SITE_URL}/features/mobile/#app`,
+        name: 'Spark Inventory Mobile',
+        applicationCategory: 'BusinessApplication',
+        applicationSubCategory: 'Warehouse management',
+        operatingSystem: 'iOS, iPadOS, Android',
+        description:
+          'Mobile warehouse app for Spark Inventory: scan-first receiving, pick lists with Auto Pick, packing, transfers, counts, signals, and the in-store Pickup Monitor.',
+        screenshot: [
+          `${SITE_URL}/screens/mobile-home.webp`,
+          `${SITE_URL}/screens/mobile-receiving.webp`,
+          `${SITE_URL}/screens/mobile-pick.webp`,
+        ],
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/features/mobile/#faq`, mobileFaqs),
+    ],
+  },
+  {
+    path: '/features/signals-automation',
+    title: 'Inventory Alerts & Automation Rules | Spark Inventory',
+    description:
+      'Spark Signal turns reorder, backorder, demand, channel, and supplier changes into proposed actions. Write rules in plain English and choose Observe, Propose, or Autopilot.',
+    lastModified: '2026-10-09',
+    schema: [buildFaqPageSchema(`${SITE_URL}/features/signals-automation/#faq`, signalsFaqs)],
+  },
+  {
+    path: '/spark-solo',
+    title: 'Spark Solo: Inventory Management by Text | Spark Inventory',
+    description:
+      'Spark Solo is Spark Inventory’s text assistant. Ask about stock and orders by SMS, get urgent alerts and a daily brief, and confirm drafted purchase orders with one reply.',
+    lastModified: '2026-10-09',
+    schema: [
+      {
+        '@type': 'VideoObject',
+        '@id': `${SITE_URL}/spark-solo/#video`,
+        name: 'Spark Solo: from a text to a draft purchase order',
+        description: 'Ask Spark Solo what needs reordering by text, choose the item, reply yes, and a draft purchase order is created in Spark Inventory.',
+        thumbnailUrl: [`${SITE_URL}/media/spark-solo-text-to-po-poster.jpg`],
+        contentUrl: `${SITE_URL}/media/spark-solo-text-to-po.mp4`,
+        uploadDate: '2026-10-09',
+        duration: 'PT42S',
+        inLanguage: 'en',
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        isPartOf: { '@id': `${SITE_URL}/spark-solo/#webpage` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/spark-solo/#faq`, sparkSoloFaqs),
+    ],
+  },
+  {
+    path: '/features/wholesale-suppliers',
+    title: 'B2B Wholesale Store, Vendor Portal & EDI | Spark Inventory',
+    description:
+      'Run a branded B2B wholesale store, give suppliers a vendor portal for POs and change requests, trade over EDI, and match supplier invoices on one inventory plan.',
+    lastModified: '2026-10-09',
+    schema: [buildFaqPageSchema(`${SITE_URL}/features/wholesale-suppliers/#faq`, wholesaleFaqs)],
+  },
+  {
+    path: '/integrations',
+    title: 'Shopify, Amazon & QuickBooks Integrations | Spark Inventory',
+    description:
+      'Connect Shopify, Amazon FBA, WooCommerce, Square, Faire, Etsy, QuickBooks, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants to one inventory plan.',
+    lastModified: '2026-10-09',
+    webPageType: 'CollectionPage',
+    schema: [
+      {
+        '@type': 'ItemList',
+        '@id': `${SITE_URL}/integrations/#connectors`,
+        name: 'Spark Inventory integrations',
+        itemListElement: [
+          'Shopify', 'Spark Pickup for Shopify', 'Amazon Seller Central and FBA', 'WooCommerce', 'Square', 'Faire',
+          'Etsy', 'Meta Commerce', 'QuickBooks Online', 'Xero', 'Zoho Books', 'ShipStation', 'Flexport', 'EDI',
+          'Spark Payments', 'Gmail', 'Claude and ChatGPT',
+        ].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name })),
+      },
+      buildFaqPageSchema(`${SITE_URL}/integrations/#faq`, integrationsFaqs),
+    ],
   },
   {
     path: '/features/tools-services',

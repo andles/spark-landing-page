@@ -1,0 +1,41 @@
+# Spark Inventory
+
+> Spark Inventory is AI inventory management software for multichannel product businesses. Demand ESP forecasts demand, Spark turns it into reorder recommendations and reviewed purchase orders, and the same system runs sales, warehousing, manufacturing, accounting sync, a mobile warehouse app, wholesale and supplier portals, and automation. Teams onboard with Sparki in app or their own AI assistant over MCP.
+
+## Product
+
+- [All features](https://sparkinventory.com/features/): Overview of every Spark Inventory capability.
+- [Inventory management](https://sparkinventory.com/features/inventory/): Items, variants, stock by location, bundles, barcodes, and adjustments.
+- [Purchasing and reorder planning](https://sparkinventory.com/features/purchasing/): Demand ESP forecasts, reorder recommendations, draft purchase orders, promotions planning, and receiving.
+- [Sales orders and invoicing](https://sparkinventory.com/features/sales/): Quotes, sales orders, invoices, returns, and backorders.
+- [Manufacturing and BOMs](https://sparkinventory.com/features/manufacturing/): Bills of materials, manufacturing orders, and component availability.
+- [Warehouse management](https://sparkinventory.com/features/warehousing/): Multi-warehouse stock, bins, transfers, and cycle counts.
+- [Mobile warehouse app](https://sparkinventory.com/features/mobile/): Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android.
+- [Signals and automation](https://sparkinventory.com/features/signals-automation/): Spark Signal proposed actions, plain-English rules, Observe, Propose, or Autopilot modes, and Spark Solo by text.
+- [Spark Solo](https://sparkinventory.com/spark-solo/): Spark's text assistant. Ask about stock, sales, and purchase orders by SMS, get urgent alerts and daily summaries, and confirm drafted changes with a YES reply. Paid add-on for owners and admins.
+- [Wholesale and supplier portals](https://sparkinventory.com/features/wholesale-suppliers/): B2B wholesale store, vendor portal, EDI, and supplier invoice matching.
+- [Integrations](https://sparkinventory.com/integrations/): Shopify, Amazon, WooCommerce, Square, Faire, Etsy, Meta, QuickBooks Online, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants.
+- [Accounting and QuickBooks](https://sparkinventory.com/features/accounting/): QuickBooks Online sync for invoices, payments, and adjustments.
+- [Sparki, MCP, and AI tools](https://sparkinventory.com/features/tools-services/): The in-app AI agent and governed MCP tools for Claude, ChatGPT, and other assistants.
+- [Pricing](https://sparkinventory.com/pricing/): Plans and migration help.
+
+## Solutions
+
+- [Reduce stockouts and overstock](https://sparkinventory.com/reduce-stockouts-overstock/)
+- [Shopify inventory management](https://sparkinventory.com/shopify-inventory-management/)
+- [Inventory for 3PLs](https://sparkinventory.com/3pl/)
+- [In-store pickup](https://sparkinventory.com/in-store-pickup/)
+- [Charity retail](https://sparkinventory.com/charity-retail/)
+- [Connect Spark to your AI assistant](https://sparkinventory.com/connect-spark-to-your-assistant/)
+
+## Learn
+
+- [Inventory reorder walkthrough](https://sparkinventory.com/inventory-reorder-walkthrough/)
+- [What is inventory management?](https://sparkinventory.com/what-is-inventory-management/)
+- [Blog](https://sparkinventory.com/blog/)
+
+## Company
+
+- [About](https://sparkinventory.com/about/)
+- [Contact](https://sparkinventory.com/contact/)
+- [Support](https://sparkinventory.com/support/)

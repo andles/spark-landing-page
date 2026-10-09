@@ -8,7 +8,6 @@ const devices = [
   { name: "MacBook Pro", type: "desktop", status: "Active now", icon: "laptop", online: true },
   { name: "iPad Air", type: "tablet", status: "Active now", icon: "tablet", online: true },
   { name: "iPhone 15", type: "phone", status: "Synced 2m ago", icon: "phone", online: true },
-  { name: "Warehouse Scanner", type: "scanner", status: "Offline · 3 queued", icon: "scanner", online: false },
 ];
 
 const activity = [
@@ -58,7 +57,7 @@ export default function CrossPlatformMockup({ isActive }: Props) {
         </div>
         <div className="p-3 space-y-2 flex-1">
           <div className={base} style={{ opacity: animatedIn ? 1 : 0, transform: animatedIn ? "translateY(0)" : "translateY(8px)", transitionDelay: "0ms" }}>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-3 gap-1.5">
               {devices.map((d) => (
                 <div key={d.name} className={`rounded-lg border px-2 py-1.5 text-center ${d.online ? "border-white/[0.06] bg-white/[0.02]" : "border-amber-500/15 bg-amber-500/[0.03]"}`}>
                   <div className={`mx-auto mb-1 ${d.online ? "text-white/50" : "text-amber-400/60"}`}><DeviceIcon type={d.icon} className="w-3.5 h-3.5 mx-auto" /></div>
