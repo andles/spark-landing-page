@@ -75,11 +75,33 @@ describe('PostHog capture boundary', () => {
   expect(analyticsRoute('/pricing/')).toBe('/pricing');
  });
 
-it('waits for a choice and switches to cookieless capture on rejection', async () => {
+it('counts cookieless before a choice and switches with the banner', async () => {
   const analytics = await import('./analytics');
   document.cookie = '';
   analytics.capturePageview('/');
-  expect(sdk.init).not.toHaveBeenCalled();
+  expect(sdk.init.mock.calls[0][1]).toMatchObject({ cookieless_mode: 'on_reject', opt_out_capturing_by_default: true, opt_out_persistence_by_default: true });
+  // The default cookieless state needs no stored opt-out.
+  expect(sdk.opt_out_capturing).not.toHaveBeenCalled();
+  expect(sdk.opt_in_capturing).not.toHaveBeenCalled();
+  expect(sdk.capture).toHaveBeenCalledTimes(1);
+  document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
+  analytics.capturePageview('/');
+  expect(sdk.opt_in_capturing).toHaveBeenCalledTimes(1);
+  expect(sdk.capture).toHaveBeenCalledTimes(2);
+  document.cookie = '';
+  analytics.capturePageview('/');
+  expect(sdk.opt_out_capturing).toHaveBeenCalledTimes(1);
+  expect(sdk.capture).toHaveBeenCalledTimes(3);
+});
+
+it('sends through the first-party relay', async () => {
+  const analytics = await import('./analytics');
+  analytics.capturePageview('/');
+  expect(sdk.init.mock.calls[0][1]).toMatchObject({ api_host: '/spk-r', ui_host: 'https://us.posthog.com' });
+});
+
+it('switches to cookieless capture on rejection and back on acceptance', async () => {
+  const analytics = await import('./analytics');
   document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
   analytics.capturePageview('/');
   expect(sdk.capture).toHaveBeenCalledTimes(1);
@@ -104,12 +126,31 @@ it('re-enables capture on first load after consent is granted again', async () =
 
 
 describe('hybrid consent privacy boundary', () => {
-  it('does not interpret a first-visit default as rejection', async () => {
+  it('keeps a first-visit default cookieless without recording a rejection', async () => {
     const analytics = await import('./analytics');
     document.cookie = 'cookieyes-consent=action:no,consent:no,analytics:no';
     analytics.capturePageview('/');
-    expect(sdk.init).not.toHaveBeenCalled();
-    expect(sdk.capture).not.toHaveBeenCalled();
+    expect(sdk.opt_out_capturing).not.toHaveBeenCalled();
+    expect(sdk.register_once).not.toHaveBeenCalled();
+    expect(sdk.startSessionRecording).not.toHaveBeenCalled();
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: '$pageview', properties: { route: '/', distinct_id: 'anonymous' } })).toBeNull();
+    expect(filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, $session_id: 'session', $browser: 'Chrome' } }).properties)
+      .toEqual({ route: '/', utm_source: 'google', distinct_id: '$posthog_cookieless', $cookieless_mode: true, surface: 'landing', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
+    expect(filter({ event: '$identify', properties: { $cookieless_mode: true } })).toBeNull();
+  });
+  it('keeps the Google click id and UTM tags from the URL on cookieless visits', async () => {
+    const analytics = await import('./analytics');
+    document.cookie = '';
+    window.location.search = '?gclid=Cj0abc&utm_source=google&utm_medium=cpc&utm_campaign=brand&email=private@example.com';
+    analytics.capturePageview('/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, utm_term: 'stale' } });
+    expect(result.properties).toMatchObject({ gclid: 'Cj0abc', utm_source: 'google', utm_medium: 'cpc', utm_campaign: 'brand' });
+    expect(result.properties.utm_term).toBeUndefined();
+    expect(result.properties.email).toBeUndefined();
+    document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
+    expect(filter({ event: 'demo_clicked', properties: { route: '/', $cookieless_mode: true } }).properties.gclid).toBe('Cj0abc');
   });
   it('sends only cookieless measurements after rejection', async () => {
     const analytics = await import('./analytics');
@@ -202,14 +243,14 @@ describe('meeting_booked', () => {
     expect(bookings).toEqual([['meeting_booked', { route: '/meeting-confirmed', booking_source: 'fishbowl_lp' }]]);
     expect(sdk.init.mock.calls[0][1].before_send({ event: 'meeting_booked', properties: { route: '/meeting-confirmed', booking_source: 'demo' } })).not.toBeNull();
   });
-  it('waits for a consent choice before counting', async () => {
+  it('counts a booking cookieless before a consent choice, once', async () => {
     const analytics = await import('./analytics');
     document.cookie = '';
     analytics.captureMeetingBooked();
-    expect(sdk.capture).not.toHaveBeenCalled();
     document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
     analytics.captureMeetingBooked();
-    expect(sdk.capture).toHaveBeenCalledWith('meeting_booked', expect.objectContaining({ booking_source: 'fishbowl_lp' }));
+    const bookings = sdk.capture.mock.calls.filter(([name]) => name === 'meeting_booked');
+    expect(bookings).toEqual([['meeting_booked', { route: '/meeting-confirmed', booking_source: 'fishbowl_lp' }]]);
   });
 });
 

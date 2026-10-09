@@ -1,4 +1,4 @@
-import { getAnalyticsConsent, subscribeAnalyticsConsent } from './analyticsConsent';
+import { subscribeAnalyticsConsent } from './analyticsConsent';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { analyticsRoute, captureCta, captureMeetingBooked, capturePageview, initializeAnalytics } from './analytics';
@@ -10,9 +10,10 @@ export default function Analytics() {
   const previous = useRef<string | undefined>(undefined);
   useEffect(() => {
     if (!initializeAnalytics()) { previous.current = undefined; return; }
-    const key = JSON.stringify([pathname, getAnalyticsConsent()]);
-    if (previous.current === key) return;
-    previous.current = key;
+    // Count each page once. A banner choice on the same page switches the
+    // mode for later events but does not count the visit a second time.
+    if (previous.current === pathname) return;
+    previous.current = pathname;
     capturePageview(pathname);
     if (analyticsRoute(pathname) === '/meeting-confirmed') captureMeetingBooked();
   }, [pathname, consentRevision]);

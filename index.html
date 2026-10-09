@@ -39,13 +39,34 @@
     <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
     <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
-    <!-- PHAS3 attribution and conversion tracking. CookieYes loads this only
-         after the visitor grants analytics consent. -->
-    <script
-      async
-      data-cookieyes="cookieyes-analytics"
-      src="https://www.phas3.ai/api/tracking?id=049ae405-308e-4c3c-8b2d-9d10b5e16f9c"
-    ></script>
+    <!-- PHAS3 attribution and conversion tracking. Loaded only after the
+         visitor grants analytics consent, the same way as the LinkedIn tag
+         below. A data-cookieyes attribute alone did not hold it back: the
+         CookieYes script loads async, so the tag ran before any choice. -->
+    <script>
+      (function () {
+        var phas3Loaded = false;
+
+        function loadPhas3() {
+          if (phas3Loaded) return;
+          phas3Loaded = true;
+          var script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.phas3.ai/api/tracking?id=049ae405-308e-4c3c-8b2d-9d10b5e16f9c";
+          document.head.appendChild(script);
+        }
+
+        document.addEventListener("cookieyes_banner_load", function (eventData) {
+          var categories = eventData.detail && eventData.detail.categories;
+          if (categories && categories.analytics) loadPhas3();
+        });
+
+        document.addEventListener("cookieyes_consent_update", function (eventData) {
+          var accepted = eventData.detail && eventData.detail.accepted;
+          if (accepted && accepted.includes("analytics")) loadPhas3();
+        });
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/spark-favicon.png" />
     <link rel="canonical" href="https://sparkinventory.com/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
