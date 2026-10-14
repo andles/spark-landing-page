@@ -5,7 +5,7 @@ function runAnalytics(action: () => void): void {
 }
 
 import { findRouteMeta } from './seo/routeMeta';
-import posthog from 'posthog-js';
+import type { PostHog } from 'posthog-js';
 
 // Keep this capture contract aligned with the other Spark frontend. Only public
 // route labels and deliberately selected properties may leave the browser.
@@ -48,6 +48,12 @@ const internalDeviceKey = 'spark:analytics_internal';
 // edge function netlify/edge-functions/posthog-relay.ts forwards it.
 export const posthogRelayPath = '/spk-r';
 let initialized = false;
+// posthog-js is nearly half of the main bundle, so it loads as its own chunk
+// after the page has rendered. Calls made before then wait in pendingActions.
+let loadedSdk: PostHog | undefined;
+let sdkRequest: Promise<void> | undefined;
+let sdkLoadScheduled = false;
+const pendingActions: Array<(posthog: PostHog) => void> = [];
 
 // Team devices opt out with ?spark_internal=1 (and back in with =0) so their
 // anonymous visits stop mixing with prospects. The flag stays on the device.
@@ -81,7 +87,7 @@ function eventRoute(properties: Record<string, unknown>): string {
   return analyticsRoute(window.location.pathname);
 }
 
-function registerAttribution(): void {
+function registerAttribution(posthog: PostHog): void {
   const campaign: Record<string, string> = {};
   const params = new URLSearchParams(window.location.search);
   attributionParams.forEach((key) => {
@@ -104,13 +110,13 @@ function registerAttribution(): void {
 // Before a banner choice the SDK stays in its default cookieless state
 // (opt_out_capturing_by_default), which writes nothing to the browser. Only an
 // explicit choice, or losing an earlier acceptance, changes the stored state.
-function applyConsent(): void {
+function applyConsent(posthog: PostHog): void {
   const consent = getAnalyticsConsent();
   const status = posthog.get_explicit_consent_status();
   if (consent === 'accepted' && status !== 'granted') {
     posthog.stopSessionRecording();
     posthog.opt_in_capturing({ captureEventName: false });
-    registerAttribution();
+    registerAttribution(posthog);
   } else if ((consent === 'rejected' && status !== 'denied') || (consent === 'pending' && status === 'granted')) {
     posthog.stopSessionRecording();
     posthog.opt_out_capturing();
@@ -119,13 +125,82 @@ function applyConsent(): void {
   else posthog.stopSessionRecording();
 }
 
-export function initializeAnalytics(): boolean {
-  if (initialized) {
-    applyConsent();
-    return true;
+// Calls back once the page has painted its first content. The load event can
+// come before that paint, so waiting for load alone does not keep the SDK off
+// the first render. Background tabs never paint, so a timer stands in.
+function afterFirstContentfulPaint(callback: () => void): void {
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    callback();
+  };
+  const painted = () => performance.getEntriesByName('first-contentful-paint').length > 0;
+  if (painted()) return finish();
+  setTimeout(finish, 5000);
+  try {
+    const observer = new PerformanceObserver(() => {
+      if (!painted()) return;
+      observer.disconnect();
+      finish();
+    });
+    observer.observe({ type: 'paint', buffered: true });
+  } catch {
+    finish();
   }
+}
+
+// Loads the SDK once the page has loaded, painted, and the browser is idle, so
+// it stays off the first render. A click or key press loads it straight away so
+// CTA clicks are still counted.
+function scheduleSdkLoad(): void {
+  if (sdkLoadScheduled) return;
+  sdkLoadScheduled = true;
+  const load = () => { void loadAnalyticsSdk(); };
+  window.addEventListener('pointerdown', load, { once: true, passive: true });
+  window.addEventListener('keydown', load, { once: true });
+  const loadWhenIdle = () => afterFirstContentfulPaint(() => {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 3000 });
+    else setTimeout(load, 1000);
+  });
+  if (document.readyState === 'complete') loadWhenIdle();
+  else window.addEventListener('load', loadWhenIdle, { once: true });
+}
+
+export function loadAnalyticsSdk(): Promise<void> {
+  sdkRequest ??= import('posthog-js').then(({ default: posthog }) => {
+    loadedSdk = posthog;
+    for (const action of pendingActions.splice(0)) withAnalytics(action);
+  }, () => {
+    pendingActions.length = 0;
+    console.warn('PostHog analytics could not load.');
+  });
+  return sdkRequest;
+}
+
+// Runs the action now if the SDK is ready, otherwise once it loads.
+function withAnalytics(action: (posthog: PostHog) => void): void {
+  runAnalytics(() => {
+    if (!initializeAnalytics()) return;
+    if (loadedSdk) action(loadedSdk);
+    else pendingActions.push(action);
+  });
+}
+
+// True when analytics run on this page. Before the SDK has loaded this only
+// schedules the load; the SDK is initialized with the consent current then.
+export function initializeAnalytics(): boolean {
   const token = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN?.trim();
   if (!import.meta.env.PROD || typeof window === 'undefined' || !['sparkinventory.com', 'www.sparkinventory.com'].includes(window.location.hostname) || !token) return false;
+  const posthog = loadedSdk;
+  if (!posthog) {
+    scheduleSdkLoad();
+    return true;
+  }
+  if (initialized) {
+    applyConsent(posthog);
+    return true;
+  }
   posthog.init(token, {
     api_host: posthogRelayPath,
     ui_host: 'https://us.posthog.com',
@@ -210,7 +285,7 @@ export function initializeAnalytics(): boolean {
     },
   });
   initialized = true;
-  applyConsent();
+  applyConsent(posthog);
 
   return true;
 }
@@ -223,24 +298,19 @@ export function analyticsRoute(pathname: string): string {
 }
 
 export function capturePageview(pathname: string): void {
-  runAnalytics(() => {
-  if (initializeAnalytics()) posthog.capture('$pageview', { route: analyticsRoute(pathname) });
-
-  });
+  const route = analyticsRoute(pathname);
+  withAnalytics((posthog) => posthog.capture('$pageview', { route }));
 }
 
 export function captureCta(event: 'signup_clicked' | 'demo_clicked'): void {
-  runAnalytics(() => {
-  if (initializeAnalytics()) posthog.capture(event, { route: analyticsRoute(window.location.pathname) });
-
-  });
+  const route = analyticsRoute(window.location.pathname);
+  withAnalytics((posthog) => posthog.capture(event, { route }));
 }
 
 // Calendly redirects to /meeting-confirmed after a real booking. Count it once
 // per browser session so a refresh or a later consent change does not re-count.
 export function captureMeetingBooked(): void {
-  runAnalytics(() => {
-    if (!initializeAnalytics()) return;
+  withAnalytics((posthog) => {
     try { if (window.sessionStorage.getItem(meetingBookedKey)) return; } catch { /* storage unavailable */ }
     const params = new URLSearchParams(window.location.search);
     const bookingSource = params.get('source') === 'fishbowl_lp' || params.get('utm_content') === 'fishbowl_lp' ? 'fishbowl_lp' : 'demo';
