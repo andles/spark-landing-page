@@ -150,21 +150,16 @@ function afterFirstContentfulPaint(callback: () => void): void {
   }
 }
 
-// Loads the SDK once the page has loaded, painted, and the browser is idle, so
-// it stays off the first render. A click or key press loads it straight away so
-// CTA clicks are still counted.
+// Loads the SDK as soon as the page has painted, so it stays off the first
+// render but short visits are still counted. A click or key press before then
+// loads it straight away so CTA clicks are counted too.
 function scheduleSdkLoad(): void {
   if (sdkLoadScheduled) return;
   sdkLoadScheduled = true;
   const load = () => { void loadAnalyticsSdk(); };
   window.addEventListener('pointerdown', load, { once: true, passive: true });
   window.addEventListener('keydown', load, { once: true });
-  const loadWhenIdle = () => afterFirstContentfulPaint(() => {
-    if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 3000 });
-    else setTimeout(load, 1000);
-  });
-  if (document.readyState === 'complete') loadWhenIdle();
-  else window.addEventListener('load', loadWhenIdle, { once: true });
+  afterFirstContentfulPaint(load);
 }
 
 export function loadAnalyticsSdk(): Promise<void> {

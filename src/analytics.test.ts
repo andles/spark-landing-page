@@ -35,11 +35,9 @@ async function loadAnalytics() {
 }
 
 it('keeps the SDK off the first render and replays queued calls in order', async () => {
+  vi.useFakeTimers();
   const listeners = new Map<string, () => void>();
   Object.assign(window, { addEventListener: vi.fn((type: string, listener: () => void) => { listeners.set(type, listener); }) });
-  Object.assign(document, { readyState: 'loading' });
-  const requestIdleCallback = vi.fn();
-  Object.assign(window, { requestIdleCallback });
   let painted = false;
   vi.stubGlobal('performance', { getEntriesByName: (name: string) => (painted && name === 'first-contentful-paint' ? [{}] : []) });
   let onPaint = () => {};
@@ -47,20 +45,17 @@ it('keeps the SDK off the first render and replays queued calls in order', async
   const analytics = await import('./analytics');
   analytics.capturePageview('/');
   analytics.captureCta('demo_clicked');
+  await vi.dynamicImportSettled();
   expect(sdk.init).not.toHaveBeenCalled();
-  expect(requestIdleCallback).not.toHaveBeenCalled();
-  // Idle time after the page has loaded and painted, or the first click or key
-  // press, loads it.
-  expect([...listeners.keys()]).toEqual(['pointerdown', 'keydown', 'load']);
-  listeners.get('load')!();
-  expect(requestIdleCallback).not.toHaveBeenCalled();
+  // The first paint, or a click or key press before it, loads the SDK.
+  expect([...listeners.keys()]).toEqual(['pointerdown', 'keydown']);
   painted = true;
   onPaint();
-  expect(requestIdleCallback).toHaveBeenCalledTimes(1);
-  await analytics.loadAnalyticsSdk();
+  await vi.dynamicImportSettled();
   expect(sdk.init).toHaveBeenCalledTimes(1);
   expect(sdk.capture.mock.calls).toEqual([['$pageview', { route: '/' }], ['demo_clicked', { route: '/' }]]);
   expect(sdk.init.mock.invocationCallOrder[0]).toBeLessThan(sdk.capture.mock.invocationCallOrder[0]);
+  vi.useRealTimers();
 });
 
 describe('PostHog capture boundary', () => {
