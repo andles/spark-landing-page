@@ -7,7 +7,7 @@ const HOME_HERO_CTA_OPTIONS = { source: "home_hero" } as const;
 export default function AgencyHero() {
   const { signupUrl, bookUrl } = useCtaLinks(HOME_HERO_CTA_OPTIONS);
   return (
-    <section id="home-hero" className="relative min-h-screen bg-[#06080d]">
+    <section className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#06080d]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.12),transparent_60%)]" />
@@ -15,8 +15,11 @@ export default function AgencyHero() {
       <div className="absolute inset-0 dot-grid" />
       <div className="absolute inset-0 noise" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-24 pb-12">
+      {/* Content. Top-aligned rather than centered: Chrome can paint the hero
+          while its HTML is still arriving, and a centered block would jump
+          once the rest landed. The content is taller than the viewport on
+          phones, tablets and 1080p desktops, so it looks the same. */}
+      <div className="relative z-10 flex flex-col items-center justify-start min-h-screen px-6 pt-24 pb-12">
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow pill */}
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-sm text-[#b8bfcc] mb-4">
