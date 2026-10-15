@@ -26,9 +26,41 @@ beforeEach(() => {
 });
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
+// Imports the module with the SDK already loaded, as it is once the page has
+// rendered, so calls reach PostHog synchronously.
+async function loadAnalytics() {
+  const analytics = await import('./analytics');
+  await analytics.loadAnalyticsSdk();
+  return analytics;
+}
+
+it('keeps the SDK off the first render and replays queued calls in order', async () => {
+  vi.useFakeTimers();
+  const listeners = new Map<string, () => void>();
+  Object.assign(window, { addEventListener: vi.fn((type: string, listener: () => void) => { listeners.set(type, listener); }) });
+  let painted = false;
+  vi.stubGlobal('performance', { getEntriesByName: (name: string) => (painted && name === 'first-contentful-paint' ? [{}] : []) });
+  let onPaint = () => {};
+  vi.stubGlobal('PerformanceObserver', class { constructor(callback: () => void) { onPaint = callback; } observe() {} disconnect() {} });
+  const analytics = await import('./analytics');
+  analytics.capturePageview('/');
+  analytics.captureCta('demo_clicked');
+  await vi.dynamicImportSettled();
+  expect(sdk.init).not.toHaveBeenCalled();
+  // The first paint, or a click or key press before it, loads the SDK.
+  expect([...listeners.keys()]).toEqual(['pointerdown', 'keydown']);
+  painted = true;
+  onPaint();
+  await vi.dynamicImportSettled();
+  expect(sdk.init).toHaveBeenCalledTimes(1);
+  expect(sdk.capture.mock.calls).toEqual([['$pageview', { route: '/' }], ['demo_clicked', { route: '/' }]]);
+  expect(sdk.init.mock.invocationCallOrder[0]).toBeLessThan(sdk.capture.mock.invocationCallOrder[0]);
+  vi.useRealTimers();
+});
+
 describe('PostHog capture boundary', () => {
   it('does not initialize on previews, localhost, or missing configuration', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     window.location.hostname = 'preview.example.com';
     analytics.capturePageview('/');
     expect(sdk.init).not.toHaveBeenCalled();
@@ -42,7 +74,7 @@ describe('PostHog capture boundary', () => {
     expect(sdk.init).not.toHaveBeenCalled();
   });
   it('captures only chosen attribution and disables automatic collection', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     analytics.capturePageview('/pricing');
     expect(sdk.init).toHaveBeenCalledTimes(1);
@@ -50,7 +82,7 @@ describe('PostHog capture boundary', () => {
     expect(sdk.register_once).toHaveBeenCalledWith({ utm_source: 'google', initial_referring_domain: 'search.example' });
   });
   it('removes raw URLs, titles, record data and person properties before sending', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageview', $set_once: { $initial_current_url: 'private-reset-token' }, properties: { distinct_id: 'anonymous', route: '/', $current_url: 'https://sparkinventory.com/reset?token=secret', $title: 'Customer Name', $set: { email: 'private@example.com' }, $set_once: { $initial_current_url: 'secret' }, record: { name: 'private' } } });
@@ -60,7 +92,7 @@ describe('PostHog capture boundary', () => {
     expect(filter({ event: '$autocapture', properties: {} })).toBeNull();
   });
   it('does not let an unavailable SDK block navigation', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     sdk.init.mockImplementation(() => { throw new Error('SDK unavailable'); });
     expect(() => analytics.capturePageview('/')).not.toThrow();
@@ -69,14 +101,14 @@ describe('PostHog capture boundary', () => {
 });
 
  it('redacts unlisted prospect slugs and unknown paths', async () => {
-  const { analyticsRoute } = await import('./analytics');
+  const { analyticsRoute } = await loadAnalytics();
   expect(analyticsRoute('/r/private-prospect')).toBe('/r/:slug');
   expect(analyticsRoute('/private-customer')).toBe('/404');
   expect(analyticsRoute('/pricing/')).toBe('/pricing');
  });
 
 it('counts cookieless before a choice and switches with the banner', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   document.cookie = '';
   analytics.capturePageview('/');
   expect(sdk.init.mock.calls[0][1]).toMatchObject({ cookieless_mode: 'on_reject', opt_out_capturing_by_default: true, opt_out_persistence_by_default: true });
@@ -95,13 +127,13 @@ it('counts cookieless before a choice and switches with the banner', async () =>
 });
 
 it('sends through the first-party relay', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   analytics.capturePageview('/');
   expect(sdk.init.mock.calls[0][1]).toMatchObject({ api_host: '/spk-r', ui_host: 'https://us.posthog.com' });
 });
 
 it('switches to cookieless capture on rejection and back on acceptance', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
   analytics.capturePageview('/');
   expect(sdk.capture).toHaveBeenCalledTimes(1);
@@ -117,7 +149,7 @@ it('switches to cookieless capture on rejection and back on acceptance', async (
 });
 
 it('re-enables capture on first load after consent is granted again', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   sdk.has_opted_out_capturing.mockReturnValue(true);
   analytics.capturePageview('/');
   expect(sdk.init.mock.calls[0][1].opt_out_persistence_by_default).toBe(true);
@@ -127,7 +159,7 @@ it('re-enables capture on first load after consent is granted again', async () =
 
 describe('hybrid consent privacy boundary', () => {
   it('keeps a first-visit default cookieless without recording a rejection', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     document.cookie = 'cookieyes-consent=action:no,consent:no,analytics:no';
     analytics.capturePageview('/');
     expect(sdk.opt_out_capturing).not.toHaveBeenCalled();
@@ -140,7 +172,7 @@ describe('hybrid consent privacy boundary', () => {
     expect(filter({ event: '$identify', properties: { $cookieless_mode: true } })).toBeNull();
   });
   it('keeps the Google click id and UTM tags from the URL on cookieless visits', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     document.cookie = '';
     window.location.search = '?gclid=Cj0abc&utm_source=google&utm_medium=cpc&utm_campaign=brand&email=private@example.com';
     analytics.capturePageview('/');
@@ -153,7 +185,7 @@ describe('hybrid consent privacy boundary', () => {
     expect(filter({ event: 'demo_clicked', properties: { route: '/', $cookieless_mode: true } }).properties.gclid).toBe('Cj0abc');
   });
   it('sends only cookieless measurements after rejection', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
     analytics.capturePageview('/');
     expect(sdk.init.mock.calls[0][1].cookieless_mode).toBe('on_reject');
@@ -169,7 +201,7 @@ describe('hybrid consent privacy boundary', () => {
     expect(filter({event:'$pageview',properties:{route:'/',distinct_id:'old-user'}})).toBeNull();
   });
   it('masks replay, drops networks, and blocks payment subtrees', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     window.location.pathname = '/dashboard';
     analytics.capturePageview('/dashboard');
     expect(sdk.startSessionRecording).toHaveBeenCalled();
@@ -189,7 +221,7 @@ describe('hybrid consent privacy boundary', () => {
 });
 
 it('preserves attribution when rejection changes to acceptance', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
   analytics.capturePageview('/');
   expect(sdk.register_once).not.toHaveBeenCalled();
@@ -199,14 +231,14 @@ it('preserves attribution when rejection changes to acceptance', async () => {
 });
 
 it.each(['/meeting-confirmed/', '/MEETING-CONFIRMED', '/book-a-call/', '/r/prospect', '/R/PROSPECT/'])('excludes replay on equivalent booking route %s', async (pathname) => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   window.location.pathname = pathname;
   analytics.capturePageview(pathname);
   expect(sdk.startSessionRecording).not.toHaveBeenCalled();
 });
 
 it('keeps Google click ids and full UTM attribution for first-touch analysis', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   window.location.search = '?gclid=Cj0abc&gbraid=gb1&wbraid=wb1&utm_source=google&utm_medium=cpc&utm_campaign=brand&utm_term=fishbowl&utm_content=ad1&email=private@example.com';
   analytics.capturePageview('/pricing');
   expect(sdk.register_once).toHaveBeenCalledWith({ gclid: 'Cj0abc', gbraid: 'gb1', wbraid: 'wb1', utm_source: 'google', utm_medium: 'cpc', utm_campaign: 'brand', utm_term: 'fishbowl', utm_content: 'ad1', initial_referring_domain: 'search.example' });
@@ -218,7 +250,7 @@ it('keeps Google click ids and full UTM attribution for first-touch analysis', a
 });
 
 it('gives click events the same route-derived page URL as pageviews', async () => {
-  const analytics = await import('./analytics');
+  const analytics = await loadAnalytics();
   window.location.pathname = '/fishbowl-alternative';
   analytics.captureCta('demo_clicked');
   expect(sdk.capture).toHaveBeenCalledWith('demo_clicked', { route: '/fishbowl-alternative' });
@@ -236,7 +268,7 @@ describe('meeting_booked', () => {
     (window as unknown as { sessionStorage: Storage }).sessionStorage = globalThis.sessionStorage;
   });
   it('captures one booking per session without invitee details', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.captureMeetingBooked();
     analytics.captureMeetingBooked();
     const bookings = sdk.capture.mock.calls.filter(([name]) => name === 'meeting_booked');
@@ -244,7 +276,7 @@ describe('meeting_booked', () => {
     expect(sdk.init.mock.calls[0][1].before_send({ event: 'meeting_booked', properties: { route: '/meeting-confirmed', booking_source: 'demo' } })).not.toBeNull();
   });
   it('counts a booking cookieless before a consent choice, once', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     document.cookie = '';
     analytics.captureMeetingBooked();
     document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:yes';
@@ -256,7 +288,7 @@ describe('meeting_booked', () => {
 
 describe('coverage for bot filtering, channels, scroll depth and web vitals', () => {
   it('keeps the user agent, referring domain and timezone but never the full referrer', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageview', properties: { route: '/', $raw_user_agent: 'Mozilla/5.0', $referring_domain: 'www.google.com', $referrer: 'https://www.google.com/search?q=private', $timezone: 'America/Denver' } });
@@ -264,19 +296,19 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(result.properties.$referrer).toBeUndefined();
   });
   it('enables page leave and web vitals without network timing', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     expect(sdk.init.mock.calls[0][1]).toMatchObject({ capture_pageleave: true, capture_performance: { web_vitals: true, network_timing: false } });
   });
   it('labels page leave with a route and redacts the previous path', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageleave', properties: { $current_url: 'https://sparkinventory.com/r/private-prospect?x=1', $prev_pageview_pathname: '/r/private-prospect', $prev_pageview_max_scroll_percentage: 0.8, $prev_pageview_duration: 12 } });
     expect(result.properties).toMatchObject({ route: '/r/:slug', $prev_pageview_pathname: '/r/:slug', $prev_pageview_max_scroll_percentage: 0.8, $prev_pageview_duration: 12, $current_url: 'https://sparkinventory.com/r/:slug' });
   });
   it('keeps web vitals values but not their attribution objects', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$web_vitals', properties: { $current_url: 'https://sparkinventory.com/pricing?gclid=x', $web_vitals_LCP_value: 2100, $web_vitals_LCP_event: { attribution: { element: 'div.private' } } } });
@@ -284,7 +316,7 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(result.properties.$web_vitals_LCP_event).toBeUndefined();
   });
   it('reports campaign values only on the page whose URL carries them', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     window.location.search = '';
     analytics.capturePageview('/pricing');
     const filter = sdk.init.mock.calls[0][1].before_send;
@@ -294,7 +326,7 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(result.properties.initial_referring_domain).toBe('www.google.com');
   });
   it('reports a new ad click instead of the stored first-touch one', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     window.location.search = '?gclid=second-click';
     analytics.capturePageview('/pricing');
     const filter = sdk.init.mock.calls[0][1].before_send;
@@ -303,7 +335,7 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(result.properties.utm_source).toBeUndefined();
   });
   it('keeps what the cookieless hash needs and drops engagement events after rejection', async () => {
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
@@ -317,7 +349,7 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
   it('lets a team device opt out with spark_internal and back in', async () => {
     const store = new Map<string, string>();
     (window as unknown as { localStorage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'> }).localStorage = { getItem: (k) => store.get(k) ?? null, setItem: (k, v) => { store.set(k, v); }, removeItem: (k) => { store.delete(k); } };
-    const analytics = await import('./analytics');
+    const analytics = await loadAnalytics();
     window.location.search = '?spark_internal=1';
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
