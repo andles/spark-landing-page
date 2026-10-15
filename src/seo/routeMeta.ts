@@ -377,7 +377,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/pricing',
     title: 'Spark Inventory Pricing | Plans and Migration',
     description:
-      'Spark Inventory pricing: Free for one user, Pulse $99/mo, Operate $349/mo, Scale $749/mo. Unlimited users on paid plans, no SKU limits, and guided migration and import help from Fishbowl or spreadsheets.',
+      'Spark Inventory pricing: Free for one user, Solo $99/mo, Operate $349/mo, Scale $749/mo. Unlimited users on paid plans, no SKU limits, and guided migration and import help from Fishbowl or spreadsheets.',
     lastModified: '2026-08-31',
     schema: [
       {

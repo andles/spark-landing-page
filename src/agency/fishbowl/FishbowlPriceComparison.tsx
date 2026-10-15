@@ -22,7 +22,7 @@ export default function FishbowlPriceComparison() {
             What does it cost to get live forecasting?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#9da7b8] lg:text-lg">
-            Monthly forecasting is free with Spark. When it needs to stay live, Fishbowl includes demand forecasting on Scale or sells it as an add-on to Growth. Spark includes it on Pulse.
+            Monthly forecasting is free with Spark. When it needs to stay live, Fishbowl includes demand forecasting on Scale or sells it as an add-on to Growth. Spark includes it on Solo.
           </p>
         </ScrollReveal>
 
@@ -82,7 +82,7 @@ export default function FishbowlPriceComparison() {
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <p className="text-[11px] font-medium text-white/45">Spark Inventory</p>
-                      <h3 className="mt-1 text-base font-semibold tracking-tight text-white">Pulse</h3>
+                      <h3 className="mt-1 text-base font-semibold tracking-tight text-white">Solo</h3>
                     </div>
                     <span className="font-mono text-[8px] uppercase tracking-[0.1em] text-emerald-300">Included</span>
                   </div>
@@ -108,7 +108,7 @@ export default function FishbowlPriceComparison() {
               </div>
 
               <p className="mt-4 rounded-xl bg-white/[0.025] px-4 py-3 text-center text-[11px] leading-5 text-[#aeb6c3]">
-                <strong className="font-semibold text-white">Clear takeaway:</strong> Spark Pulse starts at $99/month with live forecasting and unlimited users. Fishbowl Growth is $429/month for 5 users with forecasting sold as an add-on, or included on Scale at $729/month.
+                <strong className="font-semibold text-white">Clear takeaway:</strong> The Spark Solo plan starts at $99/month with live forecasting and unlimited users. Fishbowl Growth is $429/month for 5 users with forecasting sold as an add-on, or included on Scale at $729/month.
               </p>
 
               <div className="mt-5 flex flex-col items-center justify-between gap-3 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.045] px-4 py-4 sm:flex-row">
