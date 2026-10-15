@@ -104,9 +104,11 @@
         }, { once: true });
       })();
     </script>
-    <!-- Inter is self-hosted (see src/index.css); preload the latin subset
-         used by virtually all text so the first paint uses the real font -->
-    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Inter is self-hosted (see src/index.css) and deliberately not
+         preloaded: Chrome holds the first paint until a preloaded font
+         arrives, and in Lighthouse's mobile runs that wait pushed the paint
+         back a full second. Headings paint in a size-matched fallback until
+         Inter loads. -->
     <title>AI Inventory Management &amp; Demand Forecasting | Spark</title>
   </head>
   <body>
