@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Can I start before choosing a paid plan?',
     answer:
-      'Yes. Free gives one user a refreshed monthly forecast, including stock-risk reports, reorder recommendations, and a buying plan. Pulse adds live intelligence at $99 per month. Operate adds purchasing, receiving, and fulfillment workflows. Paid plans include unlimited users.',
+      'Yes. Free gives one user a refreshed monthly forecast, including stock-risk reports, reorder recommendations, and a buying plan. Solo adds live intelligence at $99 per month. Operate adds purchasing, receiving, and fulfillment workflows. Paid plans include unlimited users.',
   },
   {
     question: 'Who is Spark best for?',

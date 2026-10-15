@@ -75,7 +75,7 @@ export default function FishbowlHero() {
             </a>
           </div>
           <p className="animate-fade-up delay-300 mx-auto mt-2 text-[11px] text-white/40 sm:text-xs">
-            Pulse is $99/month when you need live intelligence. Paid plans include unlimited users.
+            Solo is $99/month when you need live intelligence. Paid plans include unlimited users.
           </p>
 
           <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">

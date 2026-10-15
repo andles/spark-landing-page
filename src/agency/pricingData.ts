@@ -41,7 +41,7 @@ export const pricingTiers: PricingTier[] = [
     promise: 'See your forecast',
     description: 'Free forecasting for one operator, refreshed every month from the inventory data you already have.',
     users: '1 user',
-    overage: 'Upgrade to Pulse',
+    overage: 'Upgrade to Solo',
     refresh: 'Monthly',
     onboarding: 'Self-serve',
     aiCredits: '3,000 one-time',
@@ -58,7 +58,7 @@ export const pricingTiers: PricingTier[] = [
     accent: 'cyan',
   },
   {
-    name: 'Pulse',
+    name: 'Solo',
     stage: '02 / Know',
     price: '$99',
     period: '/mo',
@@ -78,7 +78,7 @@ export const pricingTiers: PricingTier[] = [
       'Multiple supported data connections',
       'Inventory policy management',
     ],
-    ctaLabel: 'Start Pulse free',
+    ctaLabel: 'Start Solo free',
     ctaKind: 'signup',
     signupPlan: 'pulse',
     trialLabel: '14-day free trial',
@@ -98,7 +98,7 @@ export const pricingTiers: PricingTier[] = [
     onboarding: 'Self-serve + services',
     aiCredits: 'Standard allotment',
     support: 'Email + AI',
-    inherits: 'Pulse',
+    inherits: 'Solo',
     features: [
       'One-click POs and full PO lifecycle',
       'Supplier quotes, terms, and price books',
@@ -211,11 +211,11 @@ export const implementationServices = [
 export const pricingFaqs = [
   {
     question: 'Is Free a trial?',
-    answer: 'No. Free is an ongoing single-user forecasting plan. Spark refreshes your forecast, stock-risk reports, reorder recommendations, and buying plan every month. Live order operations begin with Pulse.',
+    answer: 'No. Free is an ongoing single-user forecasting plan. Spark refreshes your forecast, stock-risk reports, reorder recommendations, and buying plan every month. Live order operations begin with Solo.',
   },
   {
-    question: 'What changes when I upgrade to Pulse?',
-    answer: 'Pulse removes the monthly refresh cycle. Forecasts, reorder alerts, stockout warnings, buying plans, demand analysis, and inventory policies stay live across multiple sales channels.',
+    question: 'What changes when I upgrade to Solo?',
+    answer: 'Solo removes the monthly refresh cycle. Forecasts, reorder alerts, stockout warnings, buying plans, demand analysis, and inventory policies stay live across multiple sales channels.',
   },
   {
     question: 'When do I need Operate?',
@@ -227,11 +227,11 @@ export const pricingFaqs = [
   },
   {
     question: 'Do paid plans include a free trial?',
-    answer: 'Yes. Pulse, Operate, and Scale include a 14-day free trial. You can explore the selected workflow before the paid subscription begins. Custom starts with a free, seeded 3PL workspace so multi-client operators can evaluate the model before a tailored agreement.',
+    answer: 'Yes. Solo, Operate, and Scale include a 14-day free trial. You can explore the selected workflow before the paid subscription begins. Custom starts with a free, seeded 3PL workspace so multi-client operators can evaluate the model before a tailored agreement.',
   },
   {
     question: 'How do order overages work?',
-    answer: 'Pulse, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free is forecast-only and has no order allowance. Custom volume is contracted.',
+    answer: 'Solo, Operate, and Scale add capacity in predictable 2,500-order blocks at $49 per block. Free is forecast-only and has no order allowance. Custom volume is contracted.',
   },
   {
     question: 'Do you charge per user, SKU, or warehouse?',

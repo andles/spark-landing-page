@@ -360,14 +360,14 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#9aa3b2] sm:text-lg">
-            Free refreshes monthly for one operator. Pulse keeps the intelligence live. Operate turns decisions into purchasing, receiving, and fulfillment.
+            Free refreshes monthly for one operator. Solo keeps the intelligence live. Operate turns decisions into purchasing, receiving, and fulfillment.
           </p>
         </ScrollReveal>
 
         <ScrollReveal className="mx-auto mt-9 flex max-w-4xl flex-col items-center justify-between gap-4 rounded-2xl border border-lime-200/20 bg-lime-300/[0.055] px-5 py-4 text-center sm:flex-row sm:text-left">
           <div>
             <p className="text-sm font-semibold text-lime-100">Free for one operator. Paid plans include the team and a 14-day free trial.</p>
-            <p className="mt-1 text-xs text-white/45">Users become unlimited from Pulse onward, so collaboration never becomes the upgrade trigger. Custom begins as a free, seeded 3PL workspace.</p>
+            <p className="mt-1 text-xs text-white/45">Users become unlimited from Solo onward, so collaboration never becomes the upgrade trigger. Custom begins as a free, seeded 3PL workspace.</p>
           </div>
           <span className="shrink-0 rounded-full border border-lime-200/20 bg-black/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-lime-200">14 days free on paid plans</span>
         </ScrollReveal>

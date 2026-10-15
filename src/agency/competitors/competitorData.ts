@@ -158,7 +158,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     comparison: [
       { category: 'Product model', competitor: 'Core and Omni cover different operating depths and buyer profiles.', spark: 'One cloud product with tiered capabilities.', lean: 'tradeoff' },
-      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free for one user; Pulse $99 and Operate $349. Advanced Scale is $749; Custom is quoted.', lean: 'spark' },
+      { category: 'Published price', competitor: 'Core: $349, $599, and $1,199 per month. Omni is quote-based.', spark: 'Free for one user; Solo $99 and Operate $349. Advanced Scale is $749; Custom is quoted.', lean: 'spark' },
       { category: 'Forecasting', competitor: 'Cin7 ForesightAI is listed as an add-on.', spark: 'Forecasting, inventory risk, and draft purchase orders are part of the operating workflow.', lean: 'spark' },
       { category: 'Channels', competitor: 'More than 700 integrations and a mature partner ecosystem.', spark: 'Focused native paths for Shopify, Amazon, QuickBooks Online, and core commerce workflows.', lean: 'competitor' },
       { category: 'Order and integration limits', competitor: 'Published limits by Core tier, with more capacity available for purchase.', spark: 'Paid plans include 2,500 to 25,000 monthly orders; additional capacity comes in $49 blocks of 2,500.', lean: 'tradeoff' },
@@ -249,11 +249,11 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         title: 'Compare the free plans honestly',
         body: 'Zoho’s free tier is a low-volume operating ledger. Spark Free is a single-user monthly forecasting workspace. The better entry point depends on whether the immediate job is recording stock or planning the next buy.',
         incumbent: 'Zoho has a forever-free plan and paid plans starting at $29 per organization per month when billed annually.',
-        spark: 'Spark Free provides monthly forecasting without live order operations; live intelligence begins with Pulse at $99 per month.',
+        spark: 'Spark Free provides monthly forecasting without live order operations; live intelligence begins with Solo at $99 per month.',
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free for one user; Pulse begins at $99 per month.', lean: 'tradeoff' },
+      { category: 'Starting price', competitor: 'Forever-free plan; paid plans start at $29 per month billed annually.', spark: 'Free for one user; Solo begins at $99 per month.', lean: 'tradeoff' },
       { category: 'Order limits', competitor: '50, 500, 3,000, 7,500, or 15,000 orders per month by plan.', spark: 'Free is forecast-only. Paid plans include 2,500, 10,000, or 25,000 monthly orders; overage is $49 per 2,500.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder levels, replenishment, and Zoho AI capabilities within a broad SMB inventory suite.', spark: 'Forecast-to-draft-PO workflow with reasoning and human approval.', lean: 'spark' },
       { category: 'Commerce', competitor: 'Native multichannel capabilities, including Shopify and Amazon.', spark: 'Focused Shopify and Amazon inventory-planning workflows.', lean: 'tradeoff' },
@@ -303,7 +303,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     snapshot: [
       { label: 'inFlow Inventory', value: '$129–$699/mo', note: 'Annual billing, public tiers' },
       { label: 'Onboarding', value: '$499 once', note: 'Required on most higher plans' },
-      { label: 'Spark Inventory', value: 'Free; $99 live', note: 'Monthly plan on Free, live planning from Pulse' },
+      { label: 'Spark Inventory', value: 'Free; $99 live', note: 'Monthly plan on Free, live planning from Solo' },
     ],
     migrationSignals: ['Products + barcodes', 'Customers + suppliers', 'Sales + purchasing history'],
     themes: [
@@ -329,7 +329,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         title: 'Put agent-led setup inside the product',
         body: 'inFlow’s onboarding package includes real customer-success help and is required on most higher plans. Spark uses Sparki or MCP to do the repeatable data work, with human judgment available when needed.',
         incumbent: 'The published onboarding package is $499; additional training and professional services are $199 per hour.',
-        spark: 'Free and Pulse are self-serve; historical migration services are available as a separately scoped one-time engagement.',
+        spark: 'Free and Solo are self-serve; historical migration services are available as a separately scoped one-time engagement.',
       },
       {
         number: '04',
@@ -349,11 +349,11 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       },
     ],
     comparison: [
-      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free for one user; Pulse begins at $99 per month.', lean: 'spark' },
+      { category: 'Starting price', competitor: '$129 per month billed annually for Entrepreneur.', spark: 'Free for one user; Solo begins at $99 per month.', lean: 'spark' },
       { category: 'Order limits', competitor: '100 monthly orders on Entrepreneur, 1,000 on Small Business, unlimited on Mid-Size.', spark: 'Free is forecast-only. Paid plans include 2,500, 10,000, or 25,000 monthly orders; overage is $49 per 2,500.', lean: 'tradeoff' },
-      { category: 'Integrations', competitor: 'One, three, or five active integrations on public tiers; additional connections are available.', spark: 'One channel on Free and multiple channels from Pulse, without a per-connection meter.', lean: 'tradeoff' },
+      { category: 'Integrations', competitor: 'One, three, or five active integrations on public tiers; additional connections are available.', spark: 'One channel on Free and multiple channels from Solo, without a per-connection meter.', lean: 'tradeoff' },
       { category: 'Planning', competitor: 'Reorder points, recommended reorder points, notifications, and PO generation.', spark: 'Demand and supply context produces a reasoned draft purchasing recommendation for approval.', lean: 'spark' },
-      { category: 'Onboarding', competitor: '$499 package required on Small Business and above; extra services are $199 per hour.', spark: 'Self-serve on Free and Pulse; historical migration is a separately scoped $500-$1,500 service.', lean: 'tradeoff' },
+      { category: 'Onboarding', competitor: '$499 package required on Small Business and above; extra services are $199 per hour.', spark: 'Self-serve on Free and Solo; historical migration is a separately scoped $500-$1,500 service.', lean: 'tradeoff' },
       { category: 'API and MCP', competitor: 'API access including MCP is an add-on on the first two tiers and included on Mid-Size.', spark: 'Governed MCP workflows are included in the product experience.', lean: 'spark' },
       { category: 'Barcode and hardware', competitor: 'Label design, Smart Scanner, portable printer, and Stockroom options.', spark: 'Barcode and warehouse workflows without a published rugged-hardware product line.', lean: 'competitor' },
       { category: 'Shipping labels', competitor: 'EasyPost integration supports comparing and buying labels in app.', spark: 'Use a separate shipping-label workflow alongside Spark.', lean: 'competitor' },

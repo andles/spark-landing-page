@@ -54,7 +54,7 @@ export function PricingPage() {
               </span>
             </h1>
             <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-              Free covers one user. Pulse, Operate, and Scale add live planning, purchasing, and manufacturing, with unlimited users and a 14-day free trial.
+              Free covers one user. Solo, Operate, and Scale add live planning, purchasing, and manufacturing, with unlimited users and a 14-day free trial.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={freeSignupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-8 text-sm font-semibold text-[#071009] transition-all hover:scale-[1.02] hover:bg-lime-200">
