@@ -109,6 +109,12 @@
          arrives, and in Lighthouse's mobile runs that wait pushed the paint
          back a full second. Headings paint in a size-matched fallback until
          Inter loads. -->
+    <!-- With nothing else holding the first paint, Chrome can paint the
+         homepage while the HTML is still arriving. A half-parsed hero then
+         re-centers once the rest arrives, which shifts the layout. Hold the
+         first paint until the hero is parsed. On pages without that id the
+         hold ends when the document finishes parsing. -->
+    <link rel="expect" href="#home-hero" blocking="render">
     <title>AI Inventory Management &amp; Demand Forecasting | Spark</title>
   </head>
   <body>

@@ -7,7 +7,7 @@ const HOME_HERO_CTA_OPTIONS = { source: "home_hero" } as const;
 export default function AgencyHero() {
   const { signupUrl, bookUrl } = useCtaLinks(HOME_HERO_CTA_OPTIONS);
   return (
-    <section className="relative min-h-screen bg-[#06080d]">
+    <section id="home-hero" className="relative min-h-screen bg-[#06080d]">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#06080d]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.12),transparent_60%)]" />
