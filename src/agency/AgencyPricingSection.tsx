@@ -2,7 +2,6 @@ import { ArrowRight, ArrowUpRight, Check, Factory, Network } from 'lucide-react'
 import ScrollReveal, { RevealItem } from './ScrollReveal';
 import {
   advancedPricingTiers,
-  implementationServices,
   pricingTiers,
   type AdvancedPricingTier,
   type PricingTier,
@@ -312,33 +311,6 @@ function AdvancedPlanLink() {
   );
 }
 
-function ServicesPricing() {
-  return (
-    <ScrollReveal className="mx-auto mt-24 max-w-[1320px]">
-      <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-300">Implementation and services</p>
-          <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Expert help, priced separately.</h3>
-          <p className="mt-4 text-sm leading-7 text-[#8f98a9] sm:text-base">
-            Self-serve stays self-serve. When migration, price books, or a custom operating model need hands-on work, the scope is explicit and one-time.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {implementationServices.map((service) => (
-            <article key={service.name} className="rounded-2xl border border-white/[0.08] bg-[#0a0d14] p-5">
-              <div className="flex items-start justify-between gap-4">
-                <h4 className="text-sm font-semibold text-white">{service.name}</h4>
-                <span className="shrink-0 font-mono text-xs text-violet-200">{service.price}</span>
-              </div>
-              <p className="mt-3 text-xs leading-6 text-[#828c9d]">{service.note}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </ScrollReveal>
-  );
-}
-
 export default function AgencyPricingSection({ detailed = false }: { detailed?: boolean }) {
   const { signupUrl } = useCtaLinks(detailed ? PRICING_PAGE_CTA_OPTIONS : HOME_PRICING_CTA_OPTIONS);
 
@@ -383,7 +355,6 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
         {!detailed && <AdvancedPlanLink />}
         {detailed && <PlanComparison />}
         {detailed && <AdvancedPlans signupUrl={signupUrl} />}
-        {detailed && <ServicesPricing />}
       </div>
     </section>
   );

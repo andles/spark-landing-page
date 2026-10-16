@@ -178,36 +178,6 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
   },
 ];
 
-/**
- * The one sitewide migration line (Revision 1, B3). Sourced from the
- * Historical data migration row below. Restore an "agent-led import on every
- * plan" clause only after plan entitlements are confirmed.
- */
-export const MIGRATION_HELP_LINE = 'Guided migration and import help, with scoped historical migration from $500.';
-
-export const implementationServices = [
-  {
-    name: 'Historical data migration',
-    price: '$500-$1,500',
-    note: 'Staged sales and purchase-order history imports, scoped by source and volume.',
-  },
-  {
-    name: 'Price book implementation',
-    price: '$1,500-$2,500',
-    note: 'Spec- or component-priced setup for Scale manufacturing workflows.',
-  },
-  {
-    name: 'Custom module build',
-    price: 'Quoted',
-    note: 'Additional builds beyond the scoped Scale implementation.',
-  },
-  {
-    name: '3PL client onboarding',
-    price: '$250 / client',
-    note: 'Available individually or bundled into a Custom annual commitment.',
-  },
-] as const;
-
 export const pricingFaqs = [
   {
     question: 'Is Free a trial?',

@@ -16,7 +16,6 @@ import AgencyHeader from '../AgencyHeader';
 import BookACallButton from '../BookACallButton';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
-import { MIGRATION_HELP_LINE } from '../pricingData';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
 
 const accentStyles = {
@@ -238,7 +237,6 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
             <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>With guided data mapping.</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app, or your compatible AI assistant through Spark MCP, can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-[#9aa4b4]">Need history moved for you? {MIGRATION_HELP_LINE}</p>
           <div className="mt-7 flex flex-wrap gap-2">
             {config.migrationSignals.map((signal) => (
               <span key={signal} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/55">{signal}</span>
