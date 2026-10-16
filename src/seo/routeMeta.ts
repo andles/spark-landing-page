@@ -105,7 +105,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/',
     title: 'AI Inventory Management Software | Spark Inventory',
     description:
-      'Upgrade from spreadsheets or legacy inventory software to Spark Inventory: one system that plans every reorder, drafts purchase orders for your approval, and connects sales, warehousing, and accounting.',
+      'Spark Inventory plans every reorder, drafts purchase orders for your approval, and connects sales, warehousing, and accounting in one system.',
     lastModified: '2026-08-31',
     schema: HOME_SCHEMA,
   },
@@ -178,7 +178,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/cin7-alternative',
     title: 'Cin7 Alternative: Plan and Migrate | Spark Inventory',
     description:
-      'Compare Spark Inventory with Cin7 Core and Omni across forecasting, purchasing, inventory operations, manufacturing, integrations, onboarding, and pricing, and see how migration works.',
+      'Compare Spark Inventory with Cin7 Core and Omni on forecasting, purchasing, manufacturing, integrations, and pricing, and see how migration works.',
     lastModified: '2026-09-01',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
@@ -186,7 +186,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/zoho-inventory-alternative',
     title: 'Zoho Inventory Alternative for Growing Sellers | Spark Inventory',
     description:
-      'Compare Spark Inventory with Zoho Inventory across order limits, planning depth, Shopify, Amazon, QuickBooks, shipping, manufacturing, and price, and see how migration works.',
+      'Compare Spark Inventory with Zoho Inventory on order limits, planning depth, Shopify, Amazon, QuickBooks, and price, and see how migration works.',
     lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('zoho')],
   },
@@ -194,7 +194,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/inflow-alternative',
     title: 'inFlow Alternative for Planning and Purchasing | Spark Inventory',
     description:
-      'Compare Spark Inventory with inFlow Inventory across forecasting, order limits, onboarding, MCP, barcodes, shipping, manufacturing, and purchasing workflows, and see how migration works.',
+      'Compare Spark Inventory with inFlow Inventory on forecasting, order limits, barcodes, manufacturing, and purchasing, and see how migration works.',
     lastModified: '2026-08-29',
     schema: [buildCompetitorFaqSchema('inflow')],
   },
@@ -230,7 +230,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/features/purchasing',
     title: 'Purchasing and Reorder Planning Software | Spark Inventory',
     description:
-      'Plan your next reorder with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving in Spark Inventory.',
+      'Plan reorders with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving.',
     lastModified: '2026-10-09',
   },
   {
@@ -284,7 +284,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/features/signals-automation',
     title: 'Inventory Alerts & Automation Rules | Spark Inventory',
     description:
-      'Spark Signal turns reorder, backorder, demand, channel, and supplier changes into proposed actions. Write rules in plain English and choose Observe, Propose, or Autopilot.',
+      'Spark Signal turns reorder, demand, and supplier changes into proposed actions. Write rules in plain English and choose Observe, Propose, or Autopilot.',
     lastModified: '2026-10-09',
     schema: [buildFaqPageSchema(`${SITE_URL}/features/signals-automation/#faq`, signalsFaqs)],
   },
@@ -292,7 +292,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/spark-solo',
     title: 'Spark Solo: Inventory Management by Text | Spark Inventory',
     description:
-      'Spark Solo is Spark Inventory’s text assistant. Ask about stock and orders by SMS, get urgent alerts and a daily brief, and confirm drafted purchase orders with one reply.',
+      'Spark Solo is Spark Inventory’s text assistant. Ask about stock by SMS, get alerts and a daily brief, and confirm draft purchase orders with one reply.',
     lastModified: '2026-10-09',
     schema: [
       {
@@ -315,7 +315,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/features/wholesale-suppliers',
     title: 'B2B Wholesale Store, Vendor Portal & EDI | Spark Inventory',
     description:
-      'Run a branded B2B wholesale store, give suppliers a vendor portal for POs and change requests, trade over EDI, and match supplier invoices on one inventory plan.',
+      'Run a branded B2B wholesale store, give suppliers a vendor portal for POs, trade over EDI, and match supplier invoices on one inventory plan.',
     lastModified: '2026-10-09',
     schema: [buildFaqPageSchema(`${SITE_URL}/features/wholesale-suppliers/#faq`, wholesaleFaqs)],
   },
@@ -323,7 +323,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/integrations',
     title: 'Shopify, Amazon & QuickBooks Integrations | Spark Inventory',
     description:
-      'Connect Shopify, Amazon FBA, WooCommerce, Square, Faire, Etsy, QuickBooks, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants to one inventory plan.',
+      'Connect Shopify, Amazon FBA, WooCommerce, Square, Etsy, QuickBooks, Xero, ShipStation, EDI, and AI assistants to one Spark Inventory plan.',
     lastModified: '2026-10-09',
     webPageType: 'CollectionPage',
     schema: [
@@ -377,7 +377,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/pricing',
     title: 'Spark Inventory Pricing | Plans and Migration',
     description:
-      'Spark Inventory pricing: Free for one user, Solo $99/mo, Operate $349/mo, Scale $749/mo. Unlimited users on paid plans, no SKU limits, and guided migration and import help from Fishbowl or spreadsheets.',
+      'Spark Inventory pricing: Free for one user, Solo $99/mo, Operate $349/mo, Scale $749/mo. Unlimited users on paid plans and no SKU limits.',
     lastModified: '2026-08-31',
     schema: [
       {
@@ -457,7 +457,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/inventory-reorder-walkthrough',
     title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark Inventory',
     description:
-      'Watch Spark connect sales history, demand forecasting, seasonality, stock, incoming supply, purchasing constraints, and human review into a draft purchase order.',
+      'Watch Spark turn sales history, seasonality, stock, incoming supply, and purchasing constraints into a draft purchase order you review.',
     lastModified: '2026-09-17',
     schema: [
       {
