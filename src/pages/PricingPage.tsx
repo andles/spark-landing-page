@@ -6,7 +6,7 @@ import AgencyHeader from '../agency/AgencyHeader';
 import AgencyPricingSection from '../agency/AgencyPricingSection';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks, withSignupIntent } from '../agency/ctaLinks';
-import { MIGRATION_HELP_LINE, pricingFaqs } from '../agency/pricingData';
+import { pricingFaqs } from '../agency/pricingData';
 import { useScrollToHashOnMount } from '../hooks/useScrollToHash';
 
 const planSignals = [
@@ -104,10 +104,6 @@ export function PricingPage() {
                     See the Fishbowl bridge offer.
                   </Link>
                 </span>
-              </li>
-              <li className="flex gap-3">
-                <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-lime-300" aria-hidden="true" />
-                <span>{MIGRATION_HELP_LINE}</span>
               </li>
             </ul>
           </ScrollReveal>

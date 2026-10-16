@@ -178,12 +178,6 @@ export const advancedPricingTiers: AdvancedPricingTier[] = [
   },
 ];
 
-/**
- * The one sitewide migration line (Revision 1, B3). Restore an "agent-led
- * import on every plan" clause only after plan entitlements are confirmed.
- */
-export const MIGRATION_HELP_LINE = 'Guided migration and import help, with scoped historical migration from $500.';
-
 export const pricingFaqs = [
   {
     question: 'Is Free a trial?',
