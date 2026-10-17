@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Buyer questions for evaluating an existing Fishbowl edition alongside Spark.
+// Fishbowl vs Spark, row by row, from Fishbowl's public pricing page.
 // Shares the table/card layout used by AgencyComparisonSection.tsx.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal from "../ScrollReveal";
@@ -7,39 +7,46 @@ import { useCtaLinks, SIGNUP_CTA } from "./links";
 
 const rows = [
   {
+    category: "Demand forecasting",
+    fishbowl:
+      "An add-on on Growth, or included when you move up to Scale at $729 a month.",
+    spark:
+      "Per-SKU forecasts, seasonal curves, and draft POs, free for one user. Live on Solo at $99 a month.",
+  },
+  {
+    category: "Users",
+    fishbowl:
+      "2, 5, or 10 users on Essentials, Growth, and Scale.",
+    spark:
+      "Unlimited users on every paid plan. No meter on SKUs or warehouses either.",
+  },
+  {
     category: "Custom reports",
     fishbowl:
-      "Check whether your required reports are included and how custom reporting is delivered and priced.",
+      "Custom reports are listed as an add-on.",
     spark:
       "Describe the report you want in the reports playground and it's built from your live data in seconds. Included on every plan.",
   },
   {
     category: "Shopify, Amazon, QuickBooks",
     fishbowl:
-      "Confirm the connectors, sync direction, and maintenance requirements for your edition.",
+      "Ecommerce and marketplace integrations are priced separately, and advanced integrations are add-ons.",
     spark:
       "Native connectors for Shopify, Amazon, and QuickBooks Online. Orders and stock levels sync both ways without a plugin to babysit.",
   },
   {
     category: "Customizing and extending",
     fishbowl:
-      "Check API access, extension options, and any implementation support your workflow requires.",
+      "An open API is listed on Advanced Manufacturing.",
     spark:
       "Full REST API and an MCP server, so your own tools and your own AI can read and write your inventory. No consultant in between.",
   },
   {
-    category: "Support and onboarding",
+    category: "Getting started",
     fishbowl:
-      "Compare available support channels, training, onboarding scope, and any additional fees.",
+      "Implementation is required, with a 6 to 8 week training certification. Data migration does not include history.",
     spark:
-      "A small team you can reach. Onboarding is consultative working sessions with a person, and it's included.",
-  },
-  {
-    category: "Where it runs",
-    fishbowl:
-      "Confirm whether your edition is hosted or self-managed and who maintains the server and updates.",
-    spark:
-      "Cloud-based. Nothing to install or maintain, same experience on desktop, tablet, and phone.",
+      "Sparki maps your Fishbowl backup, history included, and you approve the import. Onboarding is consultative working sessions with a person, and it's included.",
   },
 ];
 
@@ -67,11 +74,11 @@ export default function FishbowlComparison() {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
-            <span className="text-white">Compare the workflows </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">your team relies on</span>
+            <span className="text-white">Spark vs Fishbowl, </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">line by line</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            Compare reporting, integrations, onboarding, and daily operations.
+            Forecasting, team size, reporting, integrations, and getting started.
           </p>
         </ScrollReveal>
 
@@ -82,7 +89,7 @@ export default function FishbowlComparison() {
             <div className="grid grid-cols-[200px_1fr_1fr] border-b border-white/[0.08] bg-white/[0.02]">
               <div className="px-6 py-4" />
               <div className="px-6 py-4 border-l border-white/[0.06]">
-                <span className="text-sm font-semibold text-[#8b95a8]">Check in your Fishbowl edition</span>
+                <span className="text-sm font-semibold text-[#8b95a8]">Fishbowl</span>
               </div>
               <div className="px-6 py-4 border-l border-white/[0.06]">
                 <div className="flex items-center gap-2.5">
@@ -120,7 +127,7 @@ export default function FishbowlComparison() {
                 <div className="text-sm font-semibold text-cyan-400 mb-3">{row.category}</div>
                 <div className="space-y-3">
                   <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Check in your Fishbowl edition</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-mono mb-1">Fishbowl</div>
                     <p className="text-sm text-[#8b95a8] leading-relaxed">{row.fishbowl}</p>
                   </div>
                   <div className="border-t border-white/[0.04] pt-3">
@@ -134,8 +141,8 @@ export default function FishbowlComparison() {
         </ScrollReveal>
 
         <p className="mt-6 text-center text-xs text-[#8b95a8] max-w-2xl mx-auto">
-          Fishbowl column summarizes themes from 449 public Fishbowl Inventory reviews with a cons
-          section. Fishbowl is a trademark of its owner; Spark is not affiliated with Fishbowl.
+          Fishbowl details come from Fishbowl's public pricing page, checked October 17, 2026.
+          Fishbowl is a trademark of its owner; Spark is not affiliated with Fishbowl.
         </p>
 
         <div className="mt-8 text-center">
