@@ -145,6 +145,7 @@ function PackagingComparison({ competitorKey }: { competitorKey: CompetitorKey }
 function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
+  const copy = config.salesCopy;
   const { bookUrl, signupUrl } = useCtaLinks(config.ctaOptions);
 
   return (
@@ -162,8 +163,8 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             {config.eyebrow}
           </div>
           <h1 className="mt-7 text-[2.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-white sm:text-6xl lg:text-[4.55rem]">
-            Upgrading from {config.name}?
-            <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Review your import before anything is committed.</span>
+            {copy ? copy.heroHeadline.lead : `Upgrading from ${config.name}?`}
+            <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>{copy ? copy.heroHeadline.highlight : 'Review your import before anything is committed.'}</span>
           </h1>
           <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">{config.heroBody}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -177,7 +178,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
               Start Free
             </a>
           </div>
-          <p className="mt-4 text-xs leading-5 text-white/40">Agent-led mapping · validation before import · your team approves</p>
+          <p className="mt-4 text-xs leading-5 text-white/40">{copy ? copy.heroFootnote : 'Agent-led mapping · validation before import · your team approves'}</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.12}>
@@ -185,13 +186,23 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             <div className={`absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent ${colors.gradient} to-transparent`} />
             <div className="flex items-center justify-between border-b border-white/[0.07] bg-white/[0.025] px-5 py-4">
               <div>
-                <p className="font-mono text-[9px] tracking-[0.18em] text-white/35">EVALUATION BRIEF / LIVE SOURCES</p>
-                <p className="mt-1 text-sm font-semibold text-white">{config.fullName} → Spark Inventory</p>
+                <p className="font-mono text-[9px] tracking-[0.18em] text-white/35">{copy ? copy.heroPanel.kicker : 'EVALUATION BRIEF / LIVE SOURCES'}</p>
+                <p className="mt-1 text-sm font-semibold text-white">{copy ? copy.heroPanel.title : `${config.fullName} → Spark Inventory`}</p>
               </div>
-              <span className={`rounded-full border px-2.5 py-1 font-mono text-[9px] ${colors.border} ${colors.soft} ${colors.subtleText}`}>FACT-CHECKED</span>
+              <span className={`rounded-full border px-2.5 py-1 font-mono text-[9px] ${colors.border} ${colors.soft} ${colors.subtleText}`}>{copy ? copy.heroPanel.badge : 'FACT-CHECKED'}</span>
             </div>
 
-            {config.packagingComparison ? (
+            {copy ? (
+              <div className="grid gap-3 p-5 sm:p-6">
+                {copy.heroReasons.map((reason) => (
+                  <div key={reason.label} className={`rounded-2xl border p-4 ${colors.border} bg-white/[0.025]`}>
+                    <p className={`font-mono text-[9px] uppercase tracking-[0.16em] ${colors.text}`}>{reason.label}</p>
+                    <p className={`mt-2 text-lg font-semibold leading-snug tracking-tight ${colors.subtleText}`}>{reason.spark}</p>
+                    <p className="mt-2 text-xs leading-5 text-[#7f8999]">{config.name}: {reason.incumbent}</p>
+                  </div>
+                ))}
+              </div>
+            ) : config.packagingComparison ? (
               <PackagingComparison competitorKey={competitorKey} />
             ) : (
               <div className="grid gap-3 p-5 sm:p-6">
@@ -215,7 +226,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
-          <p className="mt-3 text-center text-[10px] leading-5 text-white/30">Prices and packaging can change. Vendor source checked August 24, 2026.</p>
+          <p className="mt-3 text-center text-[10px] leading-5 text-white/30">Prices and packaging can change. Vendor source checked {copy ? copy.sourceChecked : 'August 24, 2026'}.</p>
         </ScrollReveal>
       </div>
     </section>
@@ -287,14 +298,15 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
 function DecisionThemes({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
+  const copy = config.salesCopy;
 
   return (
     <section id="differences" className="scroll-mt-16 relative bg-[#06080d] px-6 py-20 md:px-8 lg:py-28">
       <div className="mx-auto max-w-[1240px]">
         <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Where the decision gets hard</p>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Five tradeoffs worth deciding explicitly</h2>
-          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">These are evaluation themes, not anonymous customer quotations. The factual details are checked against the vendor’s published pricing and product material.</p>
+          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{copy ? copy.themes.eyebrow : 'Where the decision gets hard'}</p>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{copy ? copy.themes.title : 'Five tradeoffs worth deciding explicitly'}</h2>
+          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">{copy ? copy.themes.body : 'These are evaluation themes, not anonymous customer quotations. The factual details are checked against the vendor’s published pricing and product material.'}</p>
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={90} className="mt-12 flex flex-wrap justify-center gap-5">
@@ -330,14 +342,16 @@ function DecisionThemes({ competitorKey }: { competitorKey: CompetitorKey }) {
 function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
+  const copy = config.salesCopy;
+  const showLean = !copy;
 
   return (
     <section id="compare" className="scroll-mt-16 relative overflow-hidden border-y border-white/[0.06] bg-white/[0.015] px-6 py-20 md:px-8 lg:py-28">
       <div className="relative mx-auto max-w-[1240px]">
         <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Honest side by side</p>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Choose the workflow that fits your team</h2>
-          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">Compare the workflows, integrations, and operating requirements that matter to your team.</p>
+          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{copy ? copy.comparison.eyebrow : 'Honest side by side'}</p>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{copy ? copy.comparison.title : 'Choose the workflow that fits your team'}</h2>
+          <p className="mt-5 text-base leading-8 text-[#b8bfcc]">{copy ? copy.comparison.body : 'Compare the workflows, integrations, and operating requirements that matter to your team.'}</p>
         </ScrollReveal>
 
         <ScrollReveal className="mt-12">
@@ -346,16 +360,16 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
               <caption className="sr-only">{config.fullName} and Spark Inventory comparison</caption>
               <colgroup>
                 <col className="w-[16%]" />
-                <col className="w-[35%]" />
-                <col className="w-[37%]" />
-                <col className="w-[12%]" />
+                <col className={showLean ? 'w-[35%]' : 'w-[38%]'} />
+                <col className={showLean ? 'w-[37%]' : 'w-[46%]'} />
+                {showLean && <col className="w-[12%]" />}
               </colgroup>
               <thead className="border-b border-white/[0.08] bg-white/[0.025] text-xs font-semibold text-white/50">
                 <tr>
                   <th scope="col" className="px-5 py-4">Decision</th>
                   <th scope="col" className="border-l border-white/[0.06] px-5 py-4">{config.fullName}</th>
                   <th scope="col" className="border-l border-white/[0.06] px-5 py-4">Spark Inventory</th>
-                  <th scope="col" className="border-l border-white/[0.06] px-4 py-4">Read</th>
+                  {showLean && <th scope="col" className="border-l border-white/[0.06] px-4 py-4">Read</th>}
                 </tr>
               </thead>
               <tbody>
@@ -364,7 +378,7 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
                     <th scope="row" className={`px-5 py-5 align-top text-sm font-semibold ${colors.text}`}>{row.category}</th>
                     <td className="border-l border-white/[0.05] px-5 py-5 align-top text-sm leading-6 text-[#8b95a8]">{row.competitor}</td>
                     <td className="border-l border-white/[0.05] px-5 py-5 align-top text-sm leading-6 text-[#c1c7d0]">{row.spark}</td>
-                    <td className="border-l border-white/[0.05] px-4 py-5 align-top"><span className={`inline-flex rounded-full border px-2.5 py-1 text-[9px] font-semibold leading-4 ${leanClasses[row.lean]}`}>{leanLabels[row.lean]}</span></td>
+                    {showLean && <td className="border-l border-white/[0.05] px-4 py-5 align-top"><span className={`inline-flex rounded-full border px-2.5 py-1 text-[9px] font-semibold leading-4 ${leanClasses[row.lean]}`}>{leanLabels[row.lean]}</span></td>}
                   </tr>
                 ))}
               </tbody>
@@ -376,7 +390,7 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
               <article key={row.category} className="rounded-2xl border border-white/[0.08] bg-[#090d15] p-5">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className={`text-sm font-semibold ${colors.text}`}>{row.category}</h3>
-                  <span className={`shrink-0 rounded-full border px-2 py-1 text-[9px] font-semibold ${leanClasses[row.lean]}`}>{leanLabels[row.lean]}</span>
+                  {showLean && <span className={`shrink-0 rounded-full border px-2 py-1 text-[9px] font-semibold ${leanClasses[row.lean]}`}>{leanLabels[row.lean]}</span>}
                 </div>
                 <div className="mt-4 space-y-4">
                   <div><p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">{config.name}</p><p className="mt-1.5 text-sm leading-6 text-[#8b95a8]">{row.competitor}</p></div>
@@ -394,6 +408,28 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
 function FitSection({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
+  const copy = config.salesCopy;
+
+  if (copy) {
+    return (
+      <section id="fit" className="scroll-mt-16 bg-[#06080d] px-6 py-20 md:px-8 lg:py-28">
+        <div className="mx-auto max-w-[880px]">
+          <ScrollReveal className="text-center">
+            <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{copy.fit.eyebrow}</p>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{copy.fit.title}</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#b8bfcc]">{config.staySummary}</p>
+          </ScrollReveal>
+          <ScrollReveal className="mt-12">
+            <article className={`rounded-3xl border p-6 sm:p-8 ${colors.border} ${colors.soft}`}>
+              <ul className="space-y-4">
+                {config.switchReasons.map((reason) => <li key={reason} className="flex gap-3 text-base leading-7 text-[#e0e4ea]"><CircleCheck className={`mt-1.5 h-4 w-4 shrink-0 ${colors.text}`} aria-hidden="true" />{reason}</li>)}
+              </ul>
+            </article>
+          </ScrollReveal>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="fit" className="scroll-mt-16 bg-[#06080d] px-6 py-20 md:px-8 lg:py-28">
@@ -476,15 +512,16 @@ function FaqAndSources({ competitorKey }: { competitorKey: CompetitorKey }) {
 function ClosingCta({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
+  const closing = config.salesCopy?.closing;
   const { bookUrl, signupUrl } = useCtaLinks(config.ctaOptions);
 
   return (
     <section id="start" className="scroll-mt-16 relative overflow-hidden bg-[#06080d] px-6 py-24 text-center md:px-8 lg:py-32">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_65%_at_50%_100%,rgba(139,92,246,0.15),transparent_68%)]" />
       <ScrollReveal className="relative z-10 mx-auto max-w-4xl">
-        <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Decide with your own operation</p>
-        <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">Bring the {config.name} data.<span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>Let Sparki build the migration plan.</span></h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">See the mapping, validation, approval, and readiness workflow using the records your team actually depends on, then decide whether Spark Inventory is the better operating fit.</p>
+        <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{closing ? closing.eyebrow : 'Decide with your own operation'}</p>
+        <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{closing ? closing.lead : `Bring the ${config.name} data.`}<span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>{closing ? closing.highlight : 'Let Sparki build the migration plan.'}</span></h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc]">{closing ? closing.body : 'See the mapping, validation, approval, and readiness workflow using the records your team actually depends on, then decide whether Spark Inventory is the better operating fit.'}</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <BookACallButton url={bookUrl} className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}>Book a demo</BookACallButton>
           <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.035] px-7 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[0.07]">Start Free</a>
@@ -496,15 +533,18 @@ function ClosingCta({ competitorKey }: { competitorKey: CompetitorKey }) {
 
 export default function CompetitorAlternativePage({ competitorKey }: { competitorKey: CompetitorKey }) {
   useScrollToHashOnMount();
+  // Sales-led pages put the reasons to switch first and the migration story after them.
+  const salesLed = Boolean(competitorConfigs[competitorKey].salesCopy);
 
   return (
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
         <EvidenceHero competitorKey={competitorKey} />
-        <MigrationSection competitorKey={competitorKey} />
+        {!salesLed && <MigrationSection competitorKey={competitorKey} />}
         <DecisionThemes competitorKey={competitorKey} />
         <ComparisonSection competitorKey={competitorKey} />
+        {salesLed && <MigrationSection competitorKey={competitorKey} />}
         <FitSection competitorKey={competitorKey} />
         <FaqAndSources competitorKey={competitorKey} />
         <ClosingCta competitorKey={competitorKey} />
