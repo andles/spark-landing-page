@@ -31,10 +31,10 @@ export default function FishbowlPriceComparison() {
             <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.07] bg-white/[0.025] px-5 py-4 sm:px-6">
               <div>
-                <p className="font-mono text-[9px] tracking-[0.18em] text-white/35">EVALUATION BRIEF / LIVE SOURCES</p>
+                <p className="font-mono text-[9px] tracking-[0.18em] text-white/35">FISHBOWL VS SPARK</p>
                 <p className="mt-1 text-sm font-semibold text-white">Fishbowl Inventory vs Spark Inventory</p>
               </div>
-              <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-2.5 py-1 font-mono text-[9px] text-cyan-200">FACT-CHECKED</span>
+              <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-2.5 py-1 font-mono text-[9px] text-cyan-200">AT A GLANCE</span>
             </div>
 
             <div className="p-5 sm:p-6">
@@ -134,7 +134,7 @@ export default function FishbowlPriceComparison() {
             </a>
           </div>
           <p className="mt-3 text-center text-[10px] leading-5 text-white/30">
-            This compares access to live demand forecasting, not complete platform feature parity. Vendor source checked September 17, 2026. Prices and packaging can change.
+            Fishbowl source checked October 17, 2026. Prices and packaging can change.
           </p>
         </ScrollReveal>
       </div>
