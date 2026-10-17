@@ -192,10 +192,10 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/inflow-alternative',
-    title: 'inFlow Alternative for Planning and Purchasing | Spark Inventory',
+    title: 'inFlow Alternative With Demand Forecasting | Spark Inventory',
     description:
-      'Compare Spark Inventory with inFlow Inventory on forecasting, order limits, barcodes, manufacturing, and purchasing, and see how migration works.',
-    lastModified: '2026-08-29',
+      'Switch from inFlow to Spark Inventory for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and an AI-led data import.',
+    lastModified: '2026-10-17',
     schema: [buildCompetitorFaqSchema('inflow')],
   },
   {
