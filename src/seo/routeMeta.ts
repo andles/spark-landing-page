@@ -176,18 +176,18 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/cin7-alternative',
-    title: 'Cin7 Alternative: Plan and Migrate | Spark Inventory',
+    title: 'Cin7 Alternative With Forecasting Included | Spark Inventory',
     description:
-      'Compare Spark Inventory with Cin7 Core and Omni on forecasting, purchasing, manufacturing, integrations, and pricing, and see how migration works.',
-    lastModified: '2026-09-01',
+      'Switch from Cin7 to Spark Inventory for demand forecasting with no add-on, unlimited users on paid plans, no per-connection fees, and an AI-led data import.',
+    lastModified: '2026-10-17',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
   {
     path: '/zoho-inventory-alternative',
-    title: 'Zoho Inventory Alternative for Growing Sellers | Spark Inventory',
+    title: 'Zoho Inventory Alternative With Forecasting | Spark Inventory',
     description:
-      'Compare Spark Inventory with Zoho Inventory on order limits, planning depth, Shopify, Amazon, QuickBooks, and price, and see how migration works.',
-    lastModified: '2026-08-29',
+      'Switch from Zoho Inventory to Spark for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and QuickBooks, Xero, or Zoho Books.',
+    lastModified: '2026-10-17',
     schema: [buildCompetitorFaqSchema('zoho')],
   },
   {
