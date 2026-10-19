@@ -48,8 +48,8 @@ export const signalsFaqs: Faq[] = [
     answer: 'Observe surfaces the signal in the feed without drafting an action. Propose drafts the action and waits for your approval. Autopilot drafts and runs the action, and you see the result already done. You can change the mode or turn a rule off at any time.',
   },
   {
-    question: 'What is Spark Solo?',
-    answer: 'Spark Solo is Spark’s text assistant. Owners and admins text Spark questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need a YES reply with a code first. Spark Solo is a paid add-on.',
+    question: 'What is Text with Sparki?',
+    answer: 'Text with Sparki lets owners and admins text Sparki, Spark Inventory’s AI assistant, questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need a YES reply with a code first. Text with Sparki is included on the Solo plan and up.',
   },
 ];
 
@@ -95,34 +95,34 @@ export const integrationsFaqs: Faq[] = [
   },
 ];
 
-export const sparkSoloFaqs: Faq[] = [
+export const textWithSparkiFaqs: Faq[] = [
   {
-    question: 'What is Spark Solo?',
-    answer: 'Spark Solo is Spark Inventory’s text assistant. Owners and admins text it questions about their stock, sales, and purchase orders, get urgent alerts and daily summaries, and approve changes by replying to a text. It runs on Sparki, the same agent as the in-app chat.',
+    question: 'What is Text with Sparki?',
+    answer: 'Text with Sparki lets owners and admins text Sparki, Spark Inventory’s AI assistant and the same Sparki as in the app. They ask about their stock, sales, and purchase orders, get urgent alerts and daily summaries, and approve changes by replying to a text. Sparki is an AI, not a person.',
   },
   {
-    question: 'What can I ask Spark Solo by text?',
+    question: 'What can I ask Sparki by text?',
     answer: 'Anything you would ask Sparki in the app about your account, such as what needs reordering, how much of an item is on hand, or where a purchase order stands. You can also ask it to draft a purchase order, a transfer, a stock adjustment, or a sales order.',
   },
   {
-    question: 'Can Spark Solo change my data without asking?',
-    answer: 'No. Spark drafts the change and texts you a short code. Nothing happens until you reply YES with that code, and a draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
+    question: 'Can Sparki change my data without asking?',
+    answer: 'No. Sparki drafts the change and texts you a short code. Nothing happens until you reply YES with that code, and a draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
   },
   {
-    question: 'Which texts does Spark Solo send?',
+    question: 'Which texts does Sparki send?',
     answer: 'Urgent alerts as they happen, a morning brief at 8 AM, an evening wrap at 6 PM, and a weekly pulse on Mondays, all in your local time. You choose which ones you get, the topics you want alerts about, your quiet hours, and the most texts per day.',
   },
   {
-    question: 'Who can use Spark Solo?',
-    answer: 'Account owners and admins with a US or Canadian mobile number. You turn it on in Spark under Profile, then SMS, by verifying your number and agreeing to the program terms.',
+    question: 'Who can use Text with Sparki?',
+    answer: 'Account owners and admins with a US mobile number. You turn it on in Spark under Profile, then SMS, by verifying your number and agreeing to the program terms.',
   },
   {
-    question: 'How much does Spark Solo cost?',
-    answer: 'Spark Solo is a paid add-on to your Spark Inventory account. Contact the Spark team to add it. Message and data rates from your carrier may apply.',
+    question: 'How much does Text with Sparki cost?',
+    answer: 'Text with Sparki is included on the Solo plan and up, with no extra charge from Spark for texts. Message and data rates from your carrier may apply.',
   },
   {
     question: 'How do I stop the texts?',
-    answer: 'Reply STOP at any time, or turn Spark Solo off in your profile. Reply HELP for support.',
+    answer: 'Reply STOP at any time, or turn Text with Sparki off in your profile. Reply HELP for support.',
   },
 ];
 

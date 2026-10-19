@@ -88,9 +88,9 @@ const capabilities: Capability[] = [
     highlights: ['One inbox for proposed actions', 'Rules in plain English', 'Observe, Propose, or Autopilot'],
   },
   {
-    title: 'Spark Solo by text',
-    description: 'Text Spark questions, get urgent alerts and a daily brief, and confirm drafted orders with one reply.',
-    href: '/spark-solo/',
+    title: 'Text with Sparki',
+    description: 'Text Sparki, Spark Inventory’s AI assistant, questions, get urgent alerts and a daily brief, and confirm drafted orders with one reply.',
+    href: '/text-with-sparki/',
     icon: MessageSquareText,
     accent: 'from-cyan-400 to-violet-400',
     highlights: ['Ask in plain words', 'Morning brief and evening wrap', 'Nothing changes until you say YES'],

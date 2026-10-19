@@ -1,4 +1,4 @@
-// Sections for the Spark Solo page. Message wording follows the product's own
+// Sections for the Text with Sparki page. Message wording follows the product's own
 // SMS templates (server Areas/SmsAssistant): codes are a letter and a digit,
 // and nothing changes until the owner replies YES with the code.
 import ScrollReveal, { RevealItem } from '../../agency/ScrollReveal';
@@ -7,27 +7,27 @@ const scheduledTexts = [
   {
     label: 'Urgent alerts',
     when: 'As they happen',
-    body: 'Spark Solo alert: A7: Classic Tee, Black, M will run out before the next delivery. Reply A7 for details, 1 A7 to approve, 2 A7 to dismiss, or ask me anything.',
+    body: 'Alert: A7: Classic Tee, Black, M will run out before the next delivery. Reply A7 for details, 1 A7 to approve, 2 A7 to dismiss, or ask me anything.',
   },
   {
     label: 'Morning brief',
     when: 'Every day at 8 AM',
-    body: 'Spark Solo morning brief: 1 urgent, 6 open. 2 reorders are ready to approve. Ask me anything.',
+    body: 'Morning brief: 1 urgent signal, 6 open signals. 2 reorders are ready to approve. Ask me anything.',
   },
   {
     label: 'Evening wrap',
     when: 'Every day at 6 PM',
-    body: 'Spark Solo evening wrap: 96 orders and $5,210.00 in sales today. Everything’s on track.',
+    body: 'Evening wrap: 96 orders and $5,210.00 in sales today. Everything’s on track.',
   },
   {
     label: 'Weekly pulse',
     when: 'Mondays at 8 AM',
-    body: 'Spark Solo weekly pulse: signals raised last week, what you handled by text, and what is still open.',
+    body: 'Weekly pulse: signals raised last week, what you handled by text, and what is still open.',
   },
 ];
 
-/** What Spark Solo sends without being asked. */
-export function SoloScheduleSection() {
+/** What Sparki sends without being asked. */
+export function SparkiScheduleSection() {
   return (
     <section aria-labelledby="solo-schedule-heading" className="px-6 pb-16 md:px-8 lg:pb-20">
       <div className="mx-auto max-w-[1120px]">
@@ -60,23 +60,23 @@ const replies = [
   { text: 'A7', meaning: 'Show the details behind alert A7.' },
   { text: '1 A7', meaning: 'Approve it.' },
   { text: '2 A7', meaning: 'Dismiss it.' },
-  { text: 'YES B3', meaning: 'Confirm the change Spark drafted as B3.' },
+  { text: 'YES B3', meaning: 'Confirm the change Sparki drafted as B3.' },
   { text: 'NO B3', meaning: 'Skip it. Nothing changes.' },
   { text: 'MORE', meaning: 'Send the rest of a long answer.' },
   { text: 'NEW', meaning: 'Start a fresh conversation.' },
 ];
 
 const guardrails = [
-  { title: 'Nothing changes until you say YES', body: 'Spark drafts the purchase order, transfer, or adjustment and texts you a code. It only runs when you reply YES with that code.' },
-  { title: 'It checks which one you mean', body: 'When a request could match more than one item, Spark asks before drafting anything.' },
+  { title: 'Nothing changes until you say YES', body: 'Sparki drafts the purchase order, transfer, or adjustment and texts you a code. It only runs when you reply YES with that code.' },
+  { title: 'It checks which one you mean', body: 'When a request could match more than one item, Sparki asks before drafting anything.' },
   { title: 'Codes expire', body: 'A drafted change has to be confirmed within 15 minutes. If the item changed in the meantime, nothing is done.' },
-  { title: 'Quiet hours and a daily limit', body: 'Set the hours Spark stays quiet and the most texts it sends per day. Replies to your own texts never count against it.' },
-  { title: 'Owners and admins only', body: 'Spark Solo answers the account owners and admins who turned it on, from the phone number they verified.' },
+  { title: 'Quiet hours and a daily limit', body: 'Set the hours Sparki stays quiet and the most texts it sends per day. Replies to your own texts never count against it.' },
+  { title: 'Owners and admins only', body: 'Sparki answers the account owners and admins who turned it on, from the phone number they verified.' },
   { title: 'One record', body: 'Text conversations show up in Spark’s chat history, and anything drafted by text is marked that way in the Action Center.' },
 ];
 
 /** Reply commands and the controls that keep texting safe. */
-export function SoloControlSection() {
+export function SparkiControlSection() {
   return (
     <section aria-labelledby="solo-control-heading" className="px-6 pb-16 md:px-8 lg:pb-24">
       <div className="mx-auto max-w-[1120px]">
@@ -84,7 +84,7 @@ export function SoloControlSection() {
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-300">Reply to act</p>
           <h2 id="solo-control-heading" className="mt-3 text-2xl font-semibold text-white sm:text-3xl">A few characters do the work</h2>
           <p className="mt-3 text-sm leading-7 text-[#9da8b9]">
-            Ask in plain words, or answer an alert with its code. Every item Spark texts you has a short code, like A7.
+            Ask in plain words, or answer an alert with its code. Every item Sparki texts you has a short code, like A7.
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">

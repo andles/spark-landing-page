@@ -33,7 +33,7 @@ export default function AgencyFooter() {
                     { label: "Warehouse Management", href: "/features/warehousing/" },
                     { label: "Mobile App", href: "/features/mobile/" },
                     { label: "Signals & Automation", href: "/features/signals-automation/" },
-                    { label: "Spark Solo", href: "/spark-solo/" },
+                    { label: "Text with Sparki", href: "/text-with-sparki/" },
                     { label: "Wholesale & Suppliers", href: "/features/wholesale-suppliers/" },
                     { label: "Integrations", href: "/integrations/" },
                     { label: "Manufacturing & BOM", href: "/features/manufacturing/" },

@@ -45,8 +45,8 @@ const features = [
     description: 'Spark checks a new rule against the ones you already have so two automations do not fight over the same item.',
   },
   {
-    title: 'Spark Solo by Text',
-    description: 'Owners and admins can text Spark questions about their account and get a morning summary, weekly summary, and urgent alerts. Changes made by text need a confirmation reply first.',
+    title: 'Text with Sparki',
+    description: 'Owners and admins can text Sparki, Spark Inventory’s AI assistant, questions about their account and get a morning brief, an evening wrap, a weekly pulse, and urgent alerts. Changes made by text need a confirmation reply first.',
   },
   {
     title: 'Scheduled Reports',
@@ -59,7 +59,7 @@ export function SignalsAutomationPage() {
     <FeaturePage
       title="Signals and Automation"
       heroOutcome="Spark Watches, You Decide"
-      subtitle="Spark Signal, rules, and Spark Solo"
+      subtitle="Spark Signal, rules, and Text with Sparki"
       description="Spark watches stock, demand, suppliers, and channels, then turns what it finds into proposed actions with the reasoning attached. You choose which ones run on their own."
       capabilityLabel="signals and automation"
       icon={BellRing}
@@ -75,7 +75,7 @@ export function SignalsAutomationPage() {
       ctaSource="features-signals-automation"
       prevCategory={{ name: 'Mobile', href: '/features/mobile/' }}
       nextCategory={{ name: 'Wholesale & Suppliers', href: '/features/wholesale-suppliers/' }}
-      closingNote={<>Run Spark by text with <a href="/spark-solo/" className="underline hover:text-white">Spark Solo</a>, a paid add-on. See the <a href="/sms-program/" className="underline hover:text-white">SMS program terms</a>.</>}
+      closingNote={<>Run your inventory by text with <a href="/text-with-sparki/" className="underline hover:text-white">Text with Sparki</a>, included on the Solo plan and up. See the <a href="/sms-program/" className="underline hover:text-white">SMS program terms</a>.</>}
     />
   );
 }
