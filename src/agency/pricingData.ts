@@ -74,6 +74,7 @@ export const pricingTiers: PricingTier[] = [
     inherits: 'Free',
     features: [
       'Continuous forecasts and buying plans',
+      'Text Sparki from your phone with Spark Solo',
       'Live reorder and stockout alerts',
       'Multiple supported data connections',
       'Inventory policy management',

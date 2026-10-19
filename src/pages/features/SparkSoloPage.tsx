@@ -80,7 +80,7 @@ export function SparkSoloPage() {
       ctaSource="spark-solo"
       prevCategory={{ name: 'Signals & Automation', href: '/features/signals-automation/' }}
       nextCategory={{ name: 'Mobile App', href: '/features/mobile/' }}
-      closingNote={<>Spark Solo is a paid add-on for account owners and admins with a US or Canadian mobile number. See the <a href="/sms-program/" className="underline hover:text-white">SMS program terms</a>.</>}
+      closingNote={<>Spark Solo is included on the Solo plan and up for account owners and admins with a US or Canadian mobile number. See the <a href="/sms-program/" className="underline hover:text-white">SMS program terms</a>.</>}
     />
   );
 }
