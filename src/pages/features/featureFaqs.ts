@@ -49,7 +49,7 @@ export const signalsFaqs: Faq[] = [
   },
   {
     question: 'What is Spark Solo?',
-    answer: 'Spark Solo is Spark’s text assistant. Owners and admins text Spark questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need a YES reply with a code first. Spark Solo is a paid add-on.',
+    answer: 'Spark Solo is Spark’s text assistant. Owners and admins text Spark questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need a YES reply with a code first. Spark Solo is included on the Solo plan and up.',
   },
 ];
 
@@ -118,7 +118,7 @@ export const sparkSoloFaqs: Faq[] = [
   },
   {
     question: 'How much does Spark Solo cost?',
-    answer: 'Spark Solo is a paid add-on to your Spark Inventory account. Contact the Spark team to add it. Message and data rates from your carrier may apply.',
+    answer: 'Spark Solo is included on the Solo plan and up, with no extra charge from Spark for texts. Message and data rates from your carrier may apply.',
   },
   {
     question: 'How do I stop the texts?',

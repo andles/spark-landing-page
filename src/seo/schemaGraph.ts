@@ -43,6 +43,16 @@ export function buildSchemaGraph(route: RouteMeta) {
           { '@type': 'ContactPoint', contactType: 'sales', email: 'info@sparkinventory.com' },
           { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@sparkinventory.com' },
         ],
+        sameAs: [
+          'https://www.linkedin.com/company/109048143/',
+          'https://www.youtube.com/@spark-inventory',
+          'https://www.facebook.com/sparkinventory',
+          'https://www.instagram.com/sparkinventory/',
+          'https://www.g2.com/products/spark-inventory/reviews',
+          'https://www.capterra.com/p/10055062/Spark/',
+          'https://alternativeto.net/software/spark-inventory/about/',
+          'https://sourceforge.net/software/product/Spark-Inventory/',
+        ],
       },
       {
         '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: 'Spark Inventory',
