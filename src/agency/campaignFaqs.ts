@@ -143,6 +143,26 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
       answer:
         "No. Run Spark alongside Fishbowl and compare both systems using your own data. Nothing is replaced until you decide the workflow is a fit.",
     },
+    {
+      question: "What are the main Fishbowl competitors?",
+      answer:
+        "Common Fishbowl competitors include Spark Inventory, inFlow, Cin7, and Zoho Inventory. Spark is built around the buying decision: it forecasts demand for every SKU, weighs stock on hand and incoming purchase orders, and prepares draft purchase orders for your team to approve. Forecasting is free for one user, and every paid plan includes unlimited users.",
+    },
+    {
+      question: "What are some apps like Fishbowl?",
+      answer:
+        "Apps like Fishbowl include Spark Inventory, inFlow, Cin7, and Zoho Inventory. If you are moving off Fishbowl, Spark runs alongside it: import your Fishbowl database backup, compare the two with your own data, and use Spark free until your current Fishbowl contract ends.",
+    },
+    {
+      question: "How does inFlow compare with Fishbowl?",
+      answer:
+        "inFlow Inventory starts at $99 a month billed annually for 2 team members, and Fishbowl Inventory starts at $229 a month billed annually for 2 users. inFlow sells manufacturing as a separate product from $169 a month, and Fishbowl keeps it in Fishbowl Advanced Manufacturing, quoted from $675 a month. Fishbowl includes demand forecasting on Scale at $729 a month or as a Growth add-on, while inFlow plans list reorder points. Spark forecasts every SKU free for one user, and Solo is $99 a month with unlimited users.",
+    },
+    {
+      question: "What do Fishbowl Inventory reviews say?",
+      answer:
+        "In public reviews, users credit Fishbowl for its manufacturing and inventory features and its QuickBooks connection. Recurring complaints include a steep learning curve, reporting they want to be better, and slow turnaround on issues that need a developer. Spark addresses these with reports you describe and build from live data, onboarding sessions with the team that builds the product, and an import you review before anything lands.",
+    },
   ],
   shopify: [
     {
