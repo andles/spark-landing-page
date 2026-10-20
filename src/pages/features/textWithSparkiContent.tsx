@@ -67,7 +67,7 @@ const replies = [
 ];
 
 const guardrails = [
-  { title: 'Nothing changes until you confirm', body: 'Reply 1 with an alert’s code to approve the change it names. Anything Sparki drafts for you, and anything that deletes, cancels, or messages someone outside your team, runs only when you reply YES with its code.' },
+  { title: 'Nothing changes until you confirm', body: 'Reply 1 with an alert’s code to approve the change it names. Anything Sparki drafts for you, and anything that deletes, cancels, issues an invoice, or messages someone outside your team, runs only when you reply YES with its code.' },
   { title: 'It checks which one you mean', body: 'When a request could match more than one item, Sparki asks before drafting anything.' },
   { title: 'Codes expire', body: 'A drafted change has to be confirmed within 15 minutes. If the item changed in the meantime, nothing is done.' },
   { title: 'Quiet hours and a daily limit', body: 'Set the hours Sparki stays quiet and the most texts it sends per day. Replies to your own texts never count against it.' },
