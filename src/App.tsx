@@ -30,7 +30,7 @@ const WarehousingPage = lazy(() => R.WarehousingPage().then((m) => ({ default: m
 const ToolsServicesPage = lazy(() => R.ToolsServicesPage().then((m) => ({ default: m.ToolsServicesPage })));
 const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.AccountingPage })));
 const MobilePage = lazy(() => R.MobilePage().then((m) => ({ default: m.MobilePage })));
-const SparkSoloPage = lazy(() => R.SparkSoloPage().then((m) => ({ default: m.SparkSoloPage })));
+const TextWithSparkiPage = lazy(() => R.TextWithSparkiPage().then((m) => ({ default: m.TextWithSparkiPage })));
 const SignalsAutomationPage = lazy(() => R.SignalsAutomationPage().then((m) => ({ default: m.SignalsAutomationPage })));
 const WholesaleSuppliersPage = lazy(() => R.WholesaleSuppliersPage().then((m) => ({ default: m.WholesaleSuppliersPage })));
 const IntegrationsPage = lazy(() => R.IntegrationsPage().then((m) => ({ default: m.IntegrationsPage })));
@@ -103,7 +103,7 @@ function App() {
             <Route path="/features/tools-services" element={<ToolsServicesPage />} />
             <Route path="/features/accounting" element={<AccountingPage />} />
             <Route path="/features/mobile" element={<MobilePage />} />
-            <Route path="/spark-solo" element={<SparkSoloPage />} />
+            <Route path="/text-with-sparki" element={<TextWithSparkiPage />} />
             <Route path="/features/signals-automation" element={<SignalsAutomationPage />} />
             <Route path="/features/wholesale-suppliers" element={<WholesaleSuppliersPage />} />
             <Route path="/integrations" element={<IntegrationsPage />} />

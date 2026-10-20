@@ -119,9 +119,9 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         number: '04',
         label: 'AI that acts',
         title: 'An AI teammate that does the work, with your approval',
-        body: 'Sparki works inside the app, Spark Signal proposes the next action, Spark Solo answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
+        body: 'Sparki works inside the app, Spark Signal proposes the next action, Sparki answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
         incumbent: 'API access is listed as an add-on on every Cin7 plan.',
-        spark: 'Sparki, Spark Signal, plain-English automation rules, Spark Solo by text, and governed MCP access.',
+        spark: 'Sparki, Spark Signal, plain-English automation rules, Text with Sparki, and governed MCP access.',
       },
       {
         number: '05',
@@ -148,7 +148,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { category: 'Integrations', competitor: '2, 4, or 6 integrations on Core plans, with more available for purchase.', spark: 'Multiple connections from Solo up, with no per-connection fee.', lean: 'spark' },
       { category: 'Product model', competitor: 'Choose between Core and Omni, two products for different buyers.', spark: 'One product with plans that add capability as you grow.', lean: 'spark' },
       { category: 'Wholesale and suppliers', competitor: 'B2B Portal is listed as an add-on on every plan.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
-      { category: 'AI', competitor: 'API access is listed as an add-on on every plan.', spark: 'Sparki agent, Spark Signal actions, automation rules, Spark Solo by text, and governed MCP.', lean: 'spark' },
+      { category: 'AI', competitor: 'API access is listed as an add-on on every plan.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
     ],
     stayReasons: [],
     switchReasons: [
@@ -258,9 +258,9 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         number: '05',
         label: 'AI that acts',
         title: 'An AI teammate that does the work, with your approval',
-        body: 'Sparki works inside the app, Spark Signal proposes the next action, Spark Solo answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
+        body: 'Sparki works inside the app, Spark Signal proposes the next action, Sparki answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
         incumbent: 'Workflow rules and custom functions you configure yourself.',
-        spark: 'Sparki, Spark Signal, plain-English automation rules, Spark Solo by text, and governed MCP access.',
+        spark: 'Sparki, Spark Signal, plain-English automation rules, Text with Sparki, and governed MCP access.',
       },
       {
         number: '06',
@@ -278,7 +278,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { category: 'Accounting', competitor: 'Built to pair with Zoho Books.', spark: 'QuickBooks Online, Xero, or Zoho Books.', lean: 'spark' },
       { category: 'Manufacturing', competitor: 'Composite items for kits and bundles.', spark: 'Multi-level BOMs, spec templates, and manufacturing orders on Scale.', lean: 'spark' },
       { category: 'Wholesale and suppliers', competitor: 'Customer portal from Standard; vendor portal from Premium.', spark: 'Wholesale store with cart and checkout, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
-      { category: 'AI', competitor: 'Workflow rules and custom functions you configure.', spark: 'Sparki agent, Spark Signal actions, automation rules, Spark Solo by text, and governed MCP.', lean: 'spark' },
+      { category: 'AI', competitor: 'Workflow rules and custom functions you configure.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
     ],
     stayReasons: [],
     switchReasons: [
@@ -380,9 +380,9 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         number: '04',
         label: 'AI that acts',
         title: 'An AI teammate that does the work, with your approval',
-        body: 'Sparki works inside the app, Spark Signal proposes the next action, Spark Solo answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
+        body: 'Sparki works inside the app, Spark Signal proposes the next action, Sparki answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
         incumbent: 'An AI Report Assistant, with Inventory API & MCP as a $49 monthly add-on on Lite and Core.',
-        spark: 'Sparki, Spark Signal, plain-English automation rules, Spark Solo by text, and governed MCP access.',
+        spark: 'Sparki, Spark Signal, plain-English automation rules, Text with Sparki, and governed MCP access.',
       },
       {
         number: '05',
@@ -410,7 +410,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { category: 'Manufacturing', competitor: 'A separate inFlow Manufacturing product, from $169 per month.', spark: 'Multi-level BOMs, spec templates, and manufacturing orders on Scale.', lean: 'spark' },
       { category: 'Mobile warehouse', competitor: 'inFlow Stockroom is a $39 monthly add-on.', spark: 'Receive, pick, pack, count, and move stock on iPhone, iPad, or Android, with the phone camera or Zebra and Sunmi scanners.', lean: 'spark' },
       { category: 'Wholesale and suppliers', competitor: 'Showroom B2B portal is a $39 monthly add-on on Lite and Core.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
-      { category: 'AI', competitor: 'AI Report Assistant; Inventory API & MCP is a $49 monthly add-on on Lite and Core.', spark: 'Sparki agent, Spark Signal actions, automation rules, Spark Solo by text, and governed MCP.', lean: 'spark' },
+      { category: 'AI', competitor: 'AI Report Assistant; Inventory API & MCP is a $49 monthly add-on on Lite and Core.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
     ],
     stayReasons: [],
     switchReasons: [

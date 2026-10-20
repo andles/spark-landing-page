@@ -14,8 +14,8 @@ const productLinks = [
   { href: "/features/mobile/", label: "Mobile App", description: "Receive, pick, pack, and ship by scan" },
   { href: "/features/accounting/", label: "Accounting", description: "QuickBooks, invoices, and payments" },
   { href: "/features/tools-services/", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
-  { href: "/features/signals-automation/", label: "Signals & Automation", description: "Proposed actions, rules, and Spark Solo" },
-  { href: "/spark-solo/", label: "Spark Solo", description: "Your inventory by text message" },
+  { href: "/features/signals-automation/", label: "Signals & Automation", description: "Proposed actions, rules, and Text with Sparki" },
+  { href: "/text-with-sparki/", label: "Text with Sparki", description: "Your inventory by text message" },
 ];
 
 const solutionLinks = [

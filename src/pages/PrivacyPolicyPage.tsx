@@ -229,12 +229,12 @@ export function PrivacyPolicyPage() {
 
       <LegalSection title="7. SMS / Text Message Communications">
         <LegalP>
-          This section describes how we collect, use, and protect the information you provide when you opt in to either of our SMS programs: Spark Inventory Notifications (one-way operational alerts) and Texting with Spark, also called Spark by Text (a two-way assistant for account owners and admins).
+          This section describes how we collect, use, and protect the information you provide when you opt in to either of our SMS programs: Spark Inventory Notifications (one-way operational alerts) and Text with Sparki (a two-way AI assistant for account owners and admins).
         </LegalP>
 
         <LegalSubSection title="What we collect when you opt in to SMS">
           <LegalP>
-            When you enable SMS notifications or turn on Texting with Spark from your Spark Inventory account settings, we collect and store:
+            When you enable SMS notifications or turn on Text with Sparki from your Spark Inventory account settings, we collect and store:
           </LegalP>
           <LegalUl items={[
             "The mobile phone number you provide",
@@ -247,13 +247,13 @@ export function PrivacyPolicyPage() {
             We also retain a per-message delivery log (timestamp, carrier-reported status, and provider message identifier) so that we can troubleshoot delivery problems and honor opt-out requests reliably.
           </LegalP>
           <LegalP>
-            If you use Texting with Spark, we also store the texts you send to your business's Spark number and Spark's replies, as part of your assistant conversation history.
+            If you use Text with Sparki, we also store the texts you send to Sparki's number and Spark's replies, as part of your assistant conversation history.
           </LegalP>
         </LegalSubSection>
 
         <LegalSubSection title="How we use this information">
           <LegalP>
-            Mobile phone numbers collected through SMS opt-in are used solely to deliver the program you enrolled in: the operational notifications you have subscribed to (inventory alerts, order updates, and similar operational events in your Spark account) or, for Texting with Spark, alerts, summaries, and replies to the texts you send; and to support opt-out (STOP) and help (HELP) requests. The text of messages you send to Spark is processed by our AI processing provider to generate a reply, as described in Section 5; your mobile phone number is not used for that purpose. We do not use SMS opt-in data for marketing or promotional outreach. We do not send marketing SMS.
+            Mobile phone numbers collected through SMS opt-in are used solely to deliver the program you enrolled in: the operational notifications you have subscribed to (inventory alerts, order updates, and similar operational events in your Spark account) or, for Text with Sparki, alerts, summaries, and replies to the texts you send; and to support opt-out (STOP) and help (HELP) requests. The text of messages you send to Spark is processed by our AI processing provider to generate a reply, as described in Section 5; your mobile phone number is not used for that purpose. We do not use SMS opt-in data for marketing or promotional outreach. We do not send marketing SMS.
           </LegalP>
         </LegalSubSection>
 
@@ -273,7 +273,7 @@ export function PrivacyPolicyPage() {
             <>Visiting <strong className="text-[#f0f2f5]/80">Profile → SMS notifications</strong> inside your Spark Inventory account and clicking "Turn off SMS".</>,
           ]} />
           <LegalP>
-            You can also leave Texting with Spark on its own from <strong className="text-[#f0f2f5]/80">Profile → SMS</strong>.
+            You can also leave Text with Sparki on its own from <strong className="text-[#f0f2f5]/80">Profile → SMS</strong>.
           </LegalP>
           <LegalP>
             Replying <strong className="text-[#f0f2f5]/80">HELP</strong> to any Spark Inventory SMS will return a brief description of the program and our support contact (<LegalEmail email="support@sparkinventory.com" />).

@@ -110,6 +110,13 @@
   status = 301
   force = true
 
+# Spark Solo was renamed Text with Sparki.
+[[redirects]]
+  from = "/spark-solo"
+  to = "/text-with-sparki/"
+  status = 301
+  force = true
+
 # Soro blog articles live at /blog/<slug>/. They have no file of their own:
 # they are served from the prerendered /blog/ page, which the edge function
 # netlify/edge-functions/soro-blog.ts turns into the article on each request.
