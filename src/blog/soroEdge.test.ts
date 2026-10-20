@@ -53,6 +53,24 @@ describe('soro-blog edge function', () => {
     expect(ctx.next).not.toHaveBeenCalled();
   });
 
+  it('redirects ?post= links on /blog and /blog/index.html in a single hop', async () => {
+    const edge = await loadEdgeFunction();
+    for (const path of ['/blog?post=purchase-planning-process', '/blog/index.html?post=purchase-planning-process']) {
+      const ctx = context();
+      const response = await edge(get(path), ctx);
+      expect(response.status).toBe(301);
+      expect(response.headers.get('location')).toBe('/blog/purchase-planning-process/');
+      expect(ctx.next).not.toHaveBeenCalled();
+    }
+  });
+
+  it('leaves /blog without ?post= to Netlify', async () => {
+    const edge = await loadEdgeFunction();
+    const ctx = context('', 301);
+    expect((await edge(get('/blog'), ctx)).status).toBe(301);
+    expect(ctx.next).toHaveBeenCalled();
+  });
+
   it('adds the trailing slash and sends malformed slugs to /blog/', async () => {
     const edge = await loadEdgeFunction();
     expect((await edge(get('/blog/purchase-planning-process'), context())).headers.get('location')).toBe('/blog/purchase-planning-process/');

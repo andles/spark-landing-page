@@ -86,13 +86,17 @@ const unavailable = () =>
     headers: { 'retry-after': '300', 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' },
   });
 
+const LEGACY_BLOG_PATHS = new Set(['/blog', '/blog/', '/blog/index.html']);
+
 export default async function soroBlog(request: Request, context: { next(): Promise<Response> }) {
   const url = new URL(request.url);
   const { pathname } = url;
 
-  // Old widget-style links (/blog/?post=<slug>) move permanently to the article's own URL.
+  // Old widget-style links (/blog/?post=<slug>) move permanently to the article's own URL
+  // in one hop. /blog?post= and /blog/index.html?post= are answered here too, so
+  // Netlify's own slash redirect never adds a second hop or drops the slug.
   const postParam = url.searchParams.get('post');
-  if (pathname === '/blog/' && postParam !== null) {
+  if (LEGACY_BLOG_PATHS.has(pathname) && postParam !== null) {
     return redirect(request, isArticleSlug(postParam) ? articlePath(postParam) : '/blog/');
   }
 
@@ -131,4 +135,4 @@ export default async function soroBlog(request: Request, context: { next(): Prom
   }
 }
 
-export const config = { path: ['/blog/', '/blog/*', '/sitemap.xml'], onError: 'bypass' };
+export const config = { path: ['/blog', '/blog/', '/blog/*', '/sitemap.xml'], onError: 'bypass' };
