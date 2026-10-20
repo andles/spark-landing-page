@@ -1,5 +1,6 @@
 import { Store } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 import { wholesaleFaqs } from './featureFaqs';
 import { SupplierFlow, VendorPortalMockup } from './featureVisuals';
 
@@ -63,7 +64,12 @@ export function WholesaleSuppliersPage() {
       faqTitle="Customers and suppliers in Spark"
       faqIntro="How the B2B store, vendor portal, EDI, and invoice matching fit together."
       heroMedia={<VendorPortalMockup />}
-      showcase={<SupplierFlow />}
+      showcase={(
+        <>
+          <YouTubeVideoSection videoKey="wholesale" />
+          <SupplierFlow />
+        </>
+      )}
       ctaSource="features-wholesale-suppliers"
       prevCategory={{ name: 'Signals & Automation', href: '/features/signals-automation/' }}
       nextCategory={{ name: 'Integrations', href: '/integrations/' }}
