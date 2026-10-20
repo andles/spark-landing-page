@@ -41,7 +41,7 @@ const rows = [
   {
     category: "Getting started",
     inflow: "A $499 onboarding package, required on most plans.",
-    fishbowl: "Implementation and training are sold as separate packages.",
+    fishbowl: "Implementation is a required package, with training certification included.",
     spark: "Import your Fishbowl backup and run Spark alongside it, free until your Fishbowl contract ends.",
   },
 ] as const;
