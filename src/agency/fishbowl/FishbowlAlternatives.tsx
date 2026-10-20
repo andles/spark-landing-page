@@ -3,9 +3,8 @@
 // "apps like fishbowl", "inflow vs fishbowl", "fishbowl inventory reviews".
 // The matching FAQ entries (and FAQPage schema) live in ../campaignFaqs.ts.
 // inFlow and Fishbowl details come from each company's public pricing page;
-// review themes come from Fishbowl's Capterra reviews page.
+// review themes come from public Fishbowl reviews.
 // ─────────────────────────────────────────────────────────────────────────────
-import { ArrowUpRight } from "lucide-react";
 import ScrollReveal from "../ScrollReveal";
 
 const competitorLinks = [
@@ -154,21 +153,12 @@ export default function FishbowlAlternatives() {
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-7">
               <h3 className="text-xl font-bold text-[#f0f2f5]">What Fishbowl Inventory reviews say</h3>
               <p className="mt-3 text-base leading-7 text-[#b8bfcc]">
-                On Capterra, reviewers credit Fishbowl for its manufacturing and inventory features and its QuickBooks
+                In public reviews, users credit Fishbowl for its manufacturing and inventory features and its QuickBooks
                 connection. The recurring complaints are a steep learning curve, reporting they want to be better, and
                 slow turnaround on issues that need a developer. Spark answers each one: describe the report you need and
                 it is built from your live data, onboarding is working sessions with the team that builds the product,
                 and you review the import before anything lands.
               </p>
-              <a
-                href="https://www.capterra.com/p/123794/Fishbowl/reviews"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cyan-200 hover:text-white"
-              >
-                Read Fishbowl reviews on Capterra
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
             </div>
           </ScrollReveal>
         </div>

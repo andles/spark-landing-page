@@ -161,7 +161,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "What do Fishbowl Inventory reviews say?",
       answer:
-        "On Capterra, reviewers credit Fishbowl for its manufacturing and inventory features and its QuickBooks connection. Recurring complaints include a steep learning curve, reporting they want to be better, and slow turnaround on issues that need a developer. Spark addresses these with reports you describe and build from live data, onboarding sessions with the team that builds the product, and an import you review before anything lands.",
+        "In public reviews, users credit Fishbowl for its manufacturing and inventory features and its QuickBooks connection. Recurring complaints include a steep learning curve, reporting they want to be better, and slow turnaround on issues that need a developer. Spark addresses these with reports you describe and build from live data, onboarding sessions with the team that builds the product, and an import you review before anything lands.",
     },
   ],
   shopify: [
