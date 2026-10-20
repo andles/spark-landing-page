@@ -106,7 +106,7 @@ export const textWithSparkiFaqs: Faq[] = [
   },
   {
     question: 'Can Sparki change my data without asking?',
-    answer: 'No. On an alert, reply 1 with its code to approve the change it names. For anything Sparki drafts, it texts you a short code, and nothing happens until you reply YES with that code. Deleting, cancelling, or messaging someone outside your team always needs YES. A draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
+    answer: 'No. On an alert, reply 1 with its code to approve the change it names. For anything Sparki drafts, it texts you a short code, and nothing happens until you reply YES with that code. Deleting, cancelling, issuing an invoice, or messaging someone outside your team always needs YES. A draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
   },
   {
     question: 'Which texts does Sparki send?',
