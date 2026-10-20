@@ -31,25 +31,81 @@ export interface YouTubeVideo {
 
 export const youtubeVideos: Record<YouTubeVideoKey, YouTubeVideo[]> = {
   quickbooks: [
-    { youtubeId: '', pagePath: '/features/accounting', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: 'UAXvTix7X4M',
+      pagePath: '/features/accounting',
+      name: 'QuickBooks Online Integration | Spark Inventory',
+      description:
+        'From inventory moves to accounting entries. Spark Inventory connects operational activity with QuickBooks Online: inventory asset entries, bills, invoices, payments, and cost of goods.',
+      uploadDate: '2026-10-19',
+      duration: 'PT36S',
+    },
   ],
   demand: [
-    { youtubeId: '', pagePath: '/reduce-stockouts-overstock', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: '7Z6vhlo30JE',
+      pagePath: '/reduce-stockouts-overstock',
+      name: 'Still Guessing What to Reorder? Meet Demand ESP | Spark Inventory',
+      description:
+        "Demand ESP is the forecasting inside Spark Inventory. It reads the sales history you already have and finds each item's own pattern to forecast what to reorder.",
+      uploadDate: '2026-10-19',
+      duration: 'PT31S',
+    },
   ],
   textWithSparki: [
-    { youtubeId: '', pagePath: '/text-with-sparki', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: 'pjbzNf9D6vY',
+      pagePath: '/text-with-sparki',
+      name: 'Meet Spark Solo: Inventory Work by Text | Spark Inventory',
+      description:
+        'Your inventory work, by text. Supplier updates, purchase orders, reorder decisions, and Demand ESP signals in one conversation. Review the next move on your phone, then hand work off to Spark or your AI assistant.',
+      uploadDate: '2026-10-19',
+      duration: 'PT1M9S',
+    },
   ],
   threePL: [
-    { youtubeId: '', pagePath: '/3pl', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: '__GiHXyAfag',
+      pagePath: '/3pl',
+      name: '3PL Inventory Control Tower | Spark Inventory',
+      description:
+        'Every client has its own demand pattern. This Spark tour moves from client health and demand risk to seasonal planning, forecast review, and purchasing.',
+      uploadDate: '2026-10-19',
+      duration: 'PT30S',
+    },
   ],
   wholesale: [
-    { youtubeId: '', pagePath: '/features/wholesale-suppliers', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: 'NQpKVnfCJZw',
+      pagePath: '/features/wholesale-suppliers',
+      name: 'From Wholesale Order to Fulfillment | Spark Inventory',
+      description:
+        "Spark brings customer ordering and the operator's sales-order workflow into one platform, so the team can see the order, track its stage, and keep work moving through fulfillment.",
+      uploadDate: '2026-10-19',
+      duration: 'PT13S',
+    },
   ],
   customerReturns: [
-    { youtubeId: '', pagePath: '/features/sales', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: 'j7p2s_2Rxiw',
+      pagePath: '/features/sales',
+      name: 'Customer Returns: From Sales Order Back to Stock | Spark Inventory',
+      description:
+        'Start from the original sales order, record the returned units, review the return, and receive them into a warehouse location so on-hand stock updates.',
+      uploadDate: '2026-10-19',
+      duration: 'PT32S',
+    },
   ],
   foundations: [
-    { youtubeId: '', pagePath: '/', name: '', description: '', uploadDate: '' },
+    {
+      youtubeId: 'Lw32t5H0aAw',
+      pagePath: '/',
+      name: 'Getting Started with Spark Inventory | Foundations',
+      description:
+        'Getting started with Spark Inventory. Choose the tools you use, bring in your records, and select your goal. Foundations shows the steps for that goal.',
+      uploadDate: '2026-10-19',
+      duration: 'PT42S',
+    },
   ],
 };
 

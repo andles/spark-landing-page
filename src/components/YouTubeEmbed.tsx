@@ -46,7 +46,7 @@ function YouTubeFacade({ video }: { video: YouTubeVideo }) {
           </button>
         )}
       </div>
-      <figcaption className="mt-3 px-1 text-sm font-semibold text-white">{video.name}</figcaption>
+      <figcaption className="mt-3 px-1 text-sm font-semibold text-white">{video.name.replace(/\s\|\sSpark Inventory$/, '')}</figcaption>
     </figure>
   );
 }
