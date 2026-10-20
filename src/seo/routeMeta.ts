@@ -155,7 +155,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Fishbowl Alternative with Demand Forecasting | Spark Inventory',
     description:
       'Run Spark Inventory alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
-    lastModified: '2026-09-06',
+    lastModified: '2026-10-20',
     schema: [
       { ...buildFaqSchema('fishbowl'), '@id': `${SITE_URL}/fishbowl-alternative/#faq` },
       {
