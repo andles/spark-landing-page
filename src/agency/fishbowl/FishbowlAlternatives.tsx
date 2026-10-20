@@ -40,8 +40,8 @@ const rows = [
   },
   {
     category: "Getting started",
-    inflow: "A $499 onboarding package, required on Core.",
-    fishbowl: "An implementation package is required, with a 6 to 8 week training certification.",
+    inflow: "A $499 onboarding package, required on most plans.",
+    fishbowl: "Implementation and training are sold as separate packages.",
     spark: "Import your Fishbowl backup and run Spark alongside it, free until your Fishbowl contract ends.",
   },
 ] as const;
@@ -92,7 +92,7 @@ export default function FishbowlAlternatives() {
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-7">
               <h3 className="text-xl font-bold text-[#f0f2f5]">inFlow vs Fishbowl</h3>
               <p className="mt-3 text-base leading-7 text-[#b8bfcc]">
-                Both cap users by plan and keep manufacturing in a separate product or tier. Spark puts the demand
+                Both include a set number of users per plan and sell manufacturing as a separate product or tier. Spark puts the demand
                 forecast at the center and does not charge per user.
               </p>
 
