@@ -49,7 +49,7 @@ export const signalsFaqs: Faq[] = [
   },
   {
     question: 'What is Text with Sparki?',
-    answer: 'Text with Sparki lets owners and admins text Sparki, Spark Inventory’s AI assistant, questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need a YES reply with a code first. Text with Sparki is included on the Solo plan and up.',
+    answer: 'Text with Sparki lets owners and admins text Sparki, Spark Inventory’s AI assistant, questions about their account and get urgent alerts, a morning brief, an evening wrap, and a weekly pulse. Changes made by text need your reply with a code first. Text with Sparki is included on the Solo plan and up.',
   },
 ];
 
@@ -106,7 +106,7 @@ export const textWithSparkiFaqs: Faq[] = [
   },
   {
     question: 'Can Sparki change my data without asking?',
-    answer: 'No. Sparki drafts the change and texts you a short code. Nothing happens until you reply YES with that code, and a draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
+    answer: 'No. On an alert, reply 1 with its code to approve the change it names. For anything Sparki drafts, it texts you a short code, and nothing happens until you reply YES with that code. Deleting, cancelling, or messaging someone outside your team always needs YES. A draft expires after 15 minutes. If the item changed before you confirmed, nothing is done.',
   },
   {
     question: 'Which texts does Sparki send?',

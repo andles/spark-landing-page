@@ -49,7 +49,7 @@ export function TextWithSparkiPage() {
       title="Text with Sparki"
       heroOutcome="Run Your Inventory by Text"
       subtitle="Spark Inventory’s AI assistant, by text"
-      description="Text Sparki, Spark Inventory’s AI assistant, a question and get the answer. Get urgent alerts and a daily brief. Draft a purchase order from the parking lot and confirm it with one reply. Nothing changes until you say YES."
+      description="Text Sparki, Spark Inventory’s AI assistant, a question and get the answer. Get urgent alerts and a daily brief. Draft a purchase order from the parking lot and confirm it with one reply. Nothing changes until you confirm it with its code."
       capabilityLabel="your inventory by text"
       icon={MessageSquareText}
       gradientFrom="from-cyan-500"

@@ -93,7 +93,7 @@ const capabilities: Capability[] = [
     href: '/text-with-sparki/',
     icon: MessageSquareText,
     accent: 'from-cyan-400 to-violet-400',
-    highlights: ['Ask in plain words', 'Morning brief and evening wrap', 'Nothing changes until you say YES'],
+    highlights: ['Ask in plain words', 'Morning brief and evening wrap', 'Nothing changes until you confirm'],
   },
   {
     title: 'Wholesale & suppliers',
