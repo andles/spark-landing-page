@@ -9,6 +9,7 @@ import CampaignCTASection from "./CampaignCTASection";
 import CampaignDecisionSection from "./CampaignDecisionSection";
 import CampaignPlatformSection from "./CampaignPlatformSection";
 import AgencyFooter from "./AgencyFooter";
+import { YouTubeVideoSection } from "../components/YouTubeEmbed";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
 export default function ThreePLPage() {
@@ -22,6 +23,7 @@ export default function ThreePLPage() {
         <AgencyTrustBar />
         <AgencyStats3PL />
         <ThreePLPriceRunSection />
+        <YouTubeVideoSection videoKey="threePL" />
         <CampaignDecisionSection kind="3pl" />
         <CampaignPlatformSection kind="3pl" />
         <AgencyIntegrationsSection />

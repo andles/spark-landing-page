@@ -1,5 +1,6 @@
 import { ShoppingCart } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 
 const features = [
   {
@@ -55,6 +56,7 @@ export function SalesPage() {
       gradientFrom="from-blue-500"
       gradientTo="to-cyan-400"
       features={features}
+      showcase={<YouTubeVideoSection videoKey="customerReturns" />}
       prevCategory={{ name: 'Purchasing', href: '/features/purchasing/' }}
       nextCategory={{ name: 'Manufacturing', href: '/features/manufacturing/' }}
     />

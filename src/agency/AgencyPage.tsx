@@ -13,6 +13,7 @@ import AgencyPricingSection from "./AgencyPricingSection";
 import AgencyFAQ from "./AgencyFAQ";
 import AgencyCTASection from "./AgencyCTASection";
 import AgencyFooter from "./AgencyFooter";
+import { YouTubeVideoSection } from "../components/YouTubeEmbed";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import MobileHeroShowcase from "./MobileHeroShowcase";
 import HeroVideoShowcase from "./HeroVideoShowcase";
@@ -46,6 +47,7 @@ export default function AgencyPage() {
         <AgencyTrustBar />
         <AgencyStats />
         <AgentOnboardingSection />
+        <YouTubeVideoSection videoKey="foundations" />
         <GmailOrderCaptureSection />
         <AgencyCoreCapabilities />
         <AgencyWhySpark />

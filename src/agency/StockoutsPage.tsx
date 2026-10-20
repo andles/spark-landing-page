@@ -12,6 +12,7 @@ import CampaignCTASection from "./CampaignCTASection";
 import CampaignDecisionSection from "./CampaignDecisionSection";
 import CampaignPlatformSection from "./CampaignPlatformSection";
 import AgencyFooter from "./AgencyFooter";
+import { YouTubeVideoSection } from "../components/YouTubeEmbed";
 import { PromotionsPlanningSection } from "../pages/features/PromotionsPlanningSection";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 
@@ -26,6 +27,7 @@ export default function StockoutsPage() {
         <AgencyTrustBar />
         <AgencyStatsStockouts />
         <CampaignWorkflowSection kind="stockouts" />
+        <YouTubeVideoSection videoKey="demand" />
         <CampaignDecisionSection kind="stockouts" />
         <CampaignPlatformSection kind="stockouts" />
         <PromotionsPlanningSection variant="campaign" />

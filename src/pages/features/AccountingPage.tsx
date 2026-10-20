@@ -1,5 +1,6 @@
 import { Calculator } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 
 const features = [
   {
@@ -51,6 +52,7 @@ export function AccountingPage() {
       gradientFrom="from-green-600"
       gradientTo="to-emerald-500"
       features={features}
+      showcase={<YouTubeVideoSection videoKey="quickbooks" />}
       prevCategory={{ name: 'Tools & Services', href: '/features/tools-services/' }}
     />
   );

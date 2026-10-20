@@ -1,6 +1,7 @@
 import { MessageSquareText } from 'lucide-react';
 import MarketingVideo from '../../agency/MarketingVideo';
 import { FeaturePage } from './FeaturePage';
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 import { textWithSparkiFaqs } from './featureFaqs';
 import { SparkiControlSection, SparkiScheduleSection } from './textWithSparkiContent';
 
@@ -73,6 +74,7 @@ export function TextWithSparkiPage() {
       )}
       showcase={(
         <>
+          <YouTubeVideoSection videoKey="textWithSparki" />
           <SparkiScheduleSection />
           <SparkiControlSection />
         </>

@@ -1,4 +1,5 @@
 import { SITE_URL, type RouteMeta } from './routeMeta';
+import { buildYouTubeVideoSchema } from '../content/youtubeVideos';
 
 export function canonicalUrl(route: RouteMeta) {
   const path = route.canonical ?? route.path;
@@ -26,7 +27,9 @@ export function buildSchemaGraph(route: RouteMeta) {
       },
     ],
   }];
-  const video = route.schema?.find((node) => node['@type'] === 'VideoObject');
+  const hostedVideos = (route.schema ?? []).filter((node) => node['@type'] === 'VideoObject');
+  const youtubeVideos = buildYouTubeVideoSchema(SITE_URL, route.path, hostedVideos.length);
+  const videos = [...hostedVideos, ...youtubeVideos];
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -67,7 +70,8 @@ export function buildSchemaGraph(route: RouteMeta) {
         primaryImageOfPage: { '@id': `${SITE_URL}/#primaryimage` },
         ...(route.lastModified ? { dateModified: route.lastModified } : {}),
         ...(route.path === '/' ? {} : { breadcrumb: { '@id': `${canonical}#breadcrumb` } }),
-        ...(video ? { video: { '@id': video['@id'] } } : {}),
+        ...(videos.length === 1 ? { video: { '@id': videos[0]['@id'] } } : {}),
+        ...(videos.length > 1 ? { video: videos.map((node) => ({ '@id': node['@id'] })) } : {}),
       },
       {
         '@type': 'ImageObject', '@id': `${SITE_URL}/#primaryimage`,
@@ -76,6 +80,7 @@ export function buildSchemaGraph(route: RouteMeta) {
       },
       ...breadcrumb,
       ...(route.schema ?? []),
+      ...youtubeVideos,
     ],
   };
 }
