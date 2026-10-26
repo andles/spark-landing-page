@@ -1,5 +1,6 @@
 import { Container } from '../components';
 import { SocialLinks } from '../components/SocialLinks';
+import { PrivacyChoicesButton } from '../components/PrivacyChoicesButton';
 import { useTheme } from '../context/theme';
 
 const footerLinks = [
@@ -49,7 +50,7 @@ export function Footer() {
           </p>
         </div>
       </Container>
-    <div className="text-center text-slate-300"><button type="button" className="cky-banner-element spark-privacy">Privacy preferences</button></div>
+    <PrivacyChoicesButton />
     </footer>
   );
 }

@@ -1,5 +1,5 @@
 import { maskReplayAttribute } from './replayPrivacy';
-import { getAnalyticsConsent, hasAnalyticsConsent } from './analyticsConsent';
+import { getAnalyticsConsent, hasReplayConsent } from './analyticsConsent';
 function runAnalytics(action: () => void): void {
   try { action(); } catch { console.warn("PostHog analytics could not capture this action."); }
 }
@@ -68,10 +68,11 @@ function suppressed(): boolean {
   }
 }
 
-// Recording is opt-in and excludes account, authentication and billing routes.
+// Recording needs an explicit opt-in, which the US notice never gives, and
+// excludes account, authentication and billing routes.
 function replayAllowed(): boolean {
   const path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
-  return !suppressed() && hasAnalyticsConsent() && !path.startsWith('/r/')
+  return !suppressed() && hasReplayConsent() && !path.startsWith('/r/')
     && !['/book-a-call', '/meeting-confirmed'].includes(path);
 }
 

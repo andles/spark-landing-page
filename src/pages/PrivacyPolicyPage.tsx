@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
   return (
     <LegalPageShell
       title="Privacy Policy"
-      subtitle="Effective date: 10/09/2026"
+      subtitle="Effective date: 10/26/2026"
     >
       <LegalP>
         This Privacy Policy describes how Spark Inventory, INC ("Spark Inventory", "we", "us", or "our") collects, uses, and shares information when you use the Spark Inventory mobile and web applications (the "App") and related services (together, the "Service"). By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -49,7 +49,7 @@ export function PrivacyPolicyPage() {
         <LegalSubSection title="1.5 Information we do not collect">
           <LegalUl items={[
             "We do not collect your contacts, photos, microphone audio, precise location, or biometric data.",
-            "We do not sell personal information. Our public website uses analytics and marketing technologies as described in Section 14. Shopify protected customer data and authenticated customer workspace data are not provided to these marketing vendors or used for advertising.",
+            "We do not sell personal information for money. Our public website and App use analytics and marketing technologies as described in Section 14. Under US state privacy laws, some advertising cookies may count as sharing personal information for cross-context behavioral advertising; you can opt out as described in Sections 10.1 and 14.5. Shopify protected customer data and authenticated customer workspace data are not provided to these marketing vendors or used for advertising.",
           ]} />
         </LegalSubSection>
       </LegalSection>
@@ -323,7 +323,7 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="10.1 California residents (CCPA/CPRA)">
           <LegalP>
-            California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect and the right not to be discriminated against for exercising these rights. We do not sell or share personal information for cross-context behavioral advertising.
+            California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect, the right to opt out of the sale or sharing of personal information, and the right not to be discriminated against for exercising these rights. We do not sell personal information for money. The Google Ads and LinkedIn advertising cookies described in Section 14.3 may count as sharing personal information for cross-context behavioral advertising. You can opt out with the "Do Not Sell or Share My Personal Information" link in the website footer or on your Profile page in the App, and we treat a Global Privacy Control signal from your browser as a valid opt-out. Residents of other US states with similar privacy laws have the same choices.
           </LegalP>
         </LegalSubSection>
 
@@ -354,7 +354,7 @@ export function PrivacyPolicyPage() {
 
       <LegalSection title="14. Cookies, Local Storage, Analytics and Marketing">
         <LegalP>
-          Cookies are small files a website stores in your browser. Local storage and session storage are similar browser features that keep information on your device; session storage is cleared when you close the tab. This section lists what our public website (sparkinventory.com) and our web application (app.sparkinventory.com) store in your browser and which third parties can set cookies through them. CookieYes shows a consent banner on both sites. Optional analytics and advertising cookies are not set until you accept them, and you can change your choice at any time.
+          Cookies are small files a website stores in your browser. Local storage and session storage are similar browser features that keep information on your device; session storage is cleared when you close the tab. This section lists what our public website (sparkinventory.com) and our web application (app.sparkinventory.com) store in your browser and which third parties can set cookies through them. CookieYes shows a cookie banner on both sites, and the kind of banner depends on where you are. Where the banner asks for your consent, such as in the European Economic Area and the United Kingdom, optional analytics and advertising cookies are not set until you accept them. In the United States, the banner is a notice: optional analytics and advertising cookies are on unless you opt out, and session replay is never used. You can change your choice at any time.
         </LegalP>
 
         <LegalSubSection title="14.1 Strictly necessary storage">
@@ -369,20 +369,20 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="14.2 Analytics">
           <LegalP>
-            We use PostHog on our public website and web application to understand usage and diagnose problems. If you accept analytics cookies, PostHog stores an analytics identifier and first-visit campaign details (such as the ad campaign or referring website that brought you to us) in a cookie shared by sparkinventory.com and app.sparkinventory.com and in local storage, and we can connect usage to your Spark account and workspace identifiers and record masked interactions on selected pages. Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
+            We use PostHog on our public website and web application to understand usage and diagnose problems. When analytics cookies are allowed (you accepted them, or you are in the United States and have not opted out), PostHog stores an analytics identifier and first-visit campaign details (such as the ad campaign or referring website that brought you to us) in a cookie shared by sparkinventory.com and app.sparkinventory.com and in local storage, and we can connect usage to your Spark account and workspace identifiers. Only if you accept analytics cookies in a banner that asks for your consent do we also record masked interactions on selected pages (session replay). Text, input values and element attributes are masked; payment forms, embedded frames and sensitive account or billing routes are excluded from replay. Replay console logs and network payloads are not collected.
           </LegalP>
           <LegalP>
-            Until you make a cookie choice, and if you reject optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. These measurements can include campaign details from the page address, such as UTM tags or a Google Ads click ID.
+            Until you make a choice in a banner that asks for your consent, and if you reject or opt out of optional analytics cookies, we use cookieless usage measurement without account or workspace identifiers or session replay. PostHog processes the request IP address and user agent to calculate a hash with a daily changing salt, rather than storing an analytics identifier in your browser. These measurements can include campaign details from the page address, such as UTM tags or a Google Ads click ID.
           </LegalP>
           <LegalP>
-            If you accept analytics cookies on our public website, we also load PHAS3, an attribution service that measures which marketing channels lead to visits, sign-ups, and booked demos. It does not load if you reject analytics cookies.
+            When analytics cookies are allowed on our public website, we also load PHAS3, an attribution service that measures which marketing channels lead to visits, sign-ups, and booked demos. It does not load if you reject or opt out of analytics cookies, or if your browser sends a Global Privacy Control signal.
           </LegalP>
         </LegalSubSection>
 
-        <LegalSubSection title="14.3 Advertising (only with your consent)">
+        <LegalSubSection title="14.3 Advertising">
           <LegalUl items={[
-            <><strong className="text-[#f0f2f5]/80">Google Ads.</strong> Our website and App include the Google tag to measure when an ad click leads to a sign-up or booked demo. We use Google Consent Mode, so Google's advertising storage stays denied until you accept advertising cookies (and its analytics storage until you accept analytics cookies), and Google does not set advertising cookies before then. Until you accept, Google may receive cookieless signals (such as the page, the time, and whether consent was given) that do not use advertising cookies.</>,
-            <><strong className="text-[#f0f2f5]/80">LinkedIn Insight Tag.</strong> On our website and App, the LinkedIn Insight Tag loads only after you accept advertising cookies. It lets us measure the results of our LinkedIn advertising and may set LinkedIn cookies.</>,
+            <><strong className="text-[#f0f2f5]/80">Google Ads.</strong> Our website and App include the Google tag to measure when an ad click leads to a sign-up or booked demo. We use Google Consent Mode, so Google's advertising storage stays denied unless advertising cookies are allowed (you accepted them, or you are in the United States and have not opted out), and its analytics storage stays denied unless analytics cookies are allowed. Google does not set advertising cookies before then, but may receive cookieless signals (such as the page, the time, and whether consent was given) that do not use advertising cookies. If your browser sends a Global Privacy Control signal, the Google tag does not load.</>,
+            <><strong className="text-[#f0f2f5]/80">LinkedIn Insight Tag.</strong> On our website and App, the LinkedIn Insight Tag loads only when advertising cookies are allowed and your browser does not send a Global Privacy Control signal. It lets us measure the results of our LinkedIn advertising and may set LinkedIn cookies.</>,
           ]} />
         </LegalSubSection>
 
@@ -395,7 +395,7 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="14.5 Your choices">
           <LegalP>
-            You can change your choice at any time using Privacy preferences in the website footer or on your Profile page in the App. Advertising cookies are a separate preference from analytics cookies. You can also delete cookies and site data in your browser settings; clearing the App's local storage signs you out.
+            You can change your choice at any time using Privacy preferences in the website footer or on your Profile page in the App. In the United States this link reads "Do Not Sell or Share My Personal Information" and opens the opt-out choices. Advertising cookies are a separate preference from analytics cookies. We honor Global Privacy Control: when your browser sends it, advertising tags and PHAS3 do not load, whatever your banner choice. You can also delete cookies and site data in your browser settings; clearing the App's local storage signs you out.
           </LegalP>
           <LegalP>
             These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, Google user data, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
