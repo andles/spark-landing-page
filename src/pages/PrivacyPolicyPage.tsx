@@ -323,7 +323,7 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="10.1 California residents (CCPA/CPRA)">
           <LegalP>
-            California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect, the right to opt out of the sale or sharing of personal information, and the right not to be discriminated against for exercising these rights. We do not sell personal information for money. The Google Ads and LinkedIn advertising cookies described in Section 14.3 may count as sharing personal information for cross-context behavioral advertising. You can opt out with the "Do Not Sell or Share My Personal Information" link in the website footer or on your Profile page in the App, and we treat a Global Privacy Control signal from your browser as a valid opt-out. Residents of other US states with similar privacy laws have the same choices.
+            California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect, the right to opt out of the sale or sharing of personal information, and the right not to be discriminated against for exercising these rights. We do not sell personal information for money. The Google Ads and LinkedIn advertising cookies described in Section 14.3 may count as sharing personal information for cross-context behavioral advertising. You can opt out with the "Your Privacy Choices" link, marked with the opt-out icon, in the website footer or on your Profile page in the App, and we treat a Global Privacy Control signal from your browser as a valid opt-out. Residents of other US states with similar privacy laws have the same choices.
           </LegalP>
         </LegalSubSection>
 
@@ -395,7 +395,7 @@ export function PrivacyPolicyPage() {
 
         <LegalSubSection title="14.5 Your choices">
           <LegalP>
-            You can change your choice at any time using Privacy preferences in the website footer or on your Profile page in the App. In the United States this link reads "Do Not Sell or Share My Personal Information" and opens the opt-out choices. Advertising cookies are a separate preference from analytics cookies. We honor Global Privacy Control: when your browser sends it, advertising tags and PHAS3 do not load, whatever your banner choice, and visitors who see the US notice are not recorded by session replay. You can also delete cookies and site data in your browser settings; clearing the App's local storage signs you out.
+            You can change your choice at any time using Privacy preferences in the website footer or on your Profile page in the App. In the United States this link reads "Your Privacy Choices", shows the opt-out icon, and opens the opt-out choices. Advertising cookies are a separate preference from analytics cookies. We honor Global Privacy Control: when your browser sends it, advertising tags and PHAS3 do not load, whatever your banner choice, and visitors who see the US notice are not recorded by session replay. You can also delete cookies and site data in your browser settings; clearing the App's local storage signs you out.
           </LegalP>
           <LegalP>
             These website marketing technologies are not applied to Shopify protected customer data, data stored inside authenticated Spark Inventory workspaces, Google user data, or mobile phone numbers and SMS opt-in data. No mobile information is shared with these partners or vendors.
