@@ -8,6 +8,7 @@ import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
+import { reorderPointFaqs } from '../content/reorderPoint';
 import {
   buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
@@ -450,6 +451,31 @@ export const routeMeta: RouteMeta[] = [
           ['What is a reorder point?', 'A reorder point is the inventory position at which replenishment should be triggered. A common starting formula is expected demand during lead time plus safety stock, but the useful decision also needs current allocations, incoming supply, supplier constraints, and changing demand.'],
           ['How does AI improve inventory management?', 'AI can profile source data, detect demand changes, surface missing planning inputs, calculate inventory risk, and prepare replenishment actions. The strongest workflow keeps the supporting evidence visible and gives people approval control over imports and operational writes.'],
         ].map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+      },
+    ],
+  },
+  {
+    path: '/reorder-point-calculator',
+    title: 'Reorder Point Calculator With Safety Stock | Spark Inventory',
+    description:
+      'Free reorder point calculator: enter daily demand and lead time, choose a safety stock method, and get the stock level that should trigger your next order.',
+    lastModified: '2026-10-26',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/reorder-point-calculator/#calculator`,
+        name: 'Reorder Point Calculator',
+        url: `${SITE_URL}/reorder-point-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/reorder-point-calculator/#faq`,
+        mainEntity: reorderPointFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
       },
     ],
   },

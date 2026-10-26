@@ -31,6 +31,7 @@ export const routeImports = {
   AboutPage: () => import('./pages/AboutPage'),
   BlogPage: () => import('./pages/BlogPage'),
   InventoryManagementGuidePage: () => import('./pages/InventoryManagementGuidePage'),
+  ReorderPointCalculatorPage: () => import('./pages/ReorderPointCalculatorPage'),
   InventoryReorderWalkthroughPage: () => import('./pages/InventoryReorderWalkthroughPage'),
   PartnersPage: () => import('./pages/PartnersPage'),
   PrivacyPolicyPage: () => import('./pages/PrivacyPolicyPage'),

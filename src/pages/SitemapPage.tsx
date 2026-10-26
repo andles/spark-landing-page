@@ -50,6 +50,7 @@ const groups = [
       ['/about/', 'About Spark Inventory'],
       ['/blog/', 'Spark Inventory Blog'],
       ['/what-is-inventory-management/', 'What Is Inventory Management?'],
+      ['/reorder-point-calculator/', 'Reorder Point Calculator'],
       ['/partners/', 'Partners'],
       ['/contact/', 'Contact'],
       ['/support/', 'Support'],
