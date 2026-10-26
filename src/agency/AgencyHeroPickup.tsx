@@ -47,7 +47,7 @@ export default function AgencyHeroPickup() {
 
           {/* Subtitle */}
           <p className="animate-fade-up delay-200 text-sm sm:text-base lg:text-lg text-[#b8bfcc] max-w-2xl mx-auto leading-relaxed mt-5">
-            Make an accurate pickup promise online, route the order to the right store, and give staff one clear flow from preparation to customer handoff.
+            Buy online, pick up in store (BOPIS) on accurate in-store inventory. Make the pickup promise online, route the order to the right store, and give staff one clear flow from preparation to customer handoff.
           </p>
 
           {/* CTA row: single "Book a Call" opens the Calendly scheduler in a
