@@ -102,6 +102,6 @@ export const reorderPointFaqs = [
   },
   {
     question: 'Why does a fixed reorder point stop working?',
-    answer: 'Demand and lead times change with seasons, promotions and suppliers, so a reorder point set once drifts out of date. Spark Inventory recalculates per SKU from sales history and seasonality with Demand ESP, then drafts the purchase order for a person to review.',
+    answer: 'Demand and lead times change with seasons, promotions and suppliers, so a reorder point set once drifts out of date. Spark Inventory recalculates it per SKU and per warehouse with Demand ESP: a forecast chosen by backtesting each SKU’s own history, safety stock sized from that forecast’s past misses and real supplier lead times, and an order quantity that respects minimum order quantities. It then drafts the purchase order for a person to review.',
   },
 ] as const;

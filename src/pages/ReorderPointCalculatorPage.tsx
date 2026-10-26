@@ -12,6 +12,28 @@ const methods: { id: SafetyStockMethod; label: string; summary: string }[] = [
   { id: 'days-of-cover', label: 'Days of cover', summary: 'Safety stock = average daily demand × safety days' },
 ];
 
+// How Spark goes past the textbook formula. Every row describes shipped
+// behavior in the Spark monorepo (Velocity reorder point, safety stock and
+// Demand ESP services); keep it that way when editing.
+const beyondFormulaRows = [
+  { input: 'Demand rate', basic: 'One average you type in.', spark: 'Demand ESP sorts every SKU as steady, trending, seasonal or intermittent, backtests several forecasting models on its own history and keeps the one that predicted best. The reorder point uses the forecast for the actual lead time window, not a flat average.' },
+  { input: 'Stockout days', basic: 'Counted as low demand.', spark: 'Sales lost while a SKU was out of stock are added back before forecasting, so a stockout does not teach the system to buy less.' },
+  { input: 'Seasonality and new items', basic: 'Not modeled.', spark: 'Seasonal curves per SKU. Items with less than a year of history borrow the seasonal shape of similar items, and new products start from look-alike items.' },
+  { input: 'Promotions and events', basic: 'Not modeled.', spark: 'Demand Calendar events and demand signals lift or lower the forecast for a set window, within bounds, and fade out after.' },
+  { input: 'Demand variability', basic: 'A standard deviation you estimate.', spark: 'Measured from the forecast’s own past misses over the lead time, so safety stock reflects how predictable each SKU really is. You set the target service level (95% by default).' },
+  { input: 'Lead time', basic: 'One number for every order.', spark: 'Learned from completed purchase orders per supplier, with lead time variability and on-time reliability tracked. Falls back to price book lead times by order size and supplier defaults when history is thin.' },
+  { input: 'What counts as stock', basic: 'Whatever number you compare it to.', spark: 'Inventory position: on hand plus open purchase orders and inbound transfers, less sales orders already committed by ship date.' },
+  { input: 'How much to order', basic: 'Not covered.', spark: 'Economic order quantity or days of cover, net of stock already on order and raised to the supplier’s minimum order quantity. Price breaks are compared across suppliers.' },
+  { input: 'Locations', basic: 'One location.', spark: 'Calculated per warehouse. Distribution centers plan for the stores they restock, and those stores get transfer proposals instead of purchase orders.' },
+];
+
+const beyondFormulaCards = [
+  { Icon: Calculator, title: 'Every number explained', body: 'Each reorder point comes with a breakdown of the forecast, lead time and safety stock behind it. Items with too little or too erratic history are flagged as low confidence instead of firing noisy alerts.' },
+  { Icon: TrendingUp, title: 'Reorder automation you control', body: 'A reorder rule sweeps every SKU and drafts one purchase order per supplier and warehouse. Run it in Observe, Propose or Autopilot mode, and switch it off or reschedule it from the Automation page.' },
+  { Icon: MessageSquareText, title: 'Text with Sparki', body: 'Get a text when an item reaches its reorder point and approve the drafted purchase order with one reply. Included on Solo ($99/mo) and up.' },
+  { Icon: Sparkles, title: 'Spark MCP', body: 'Ask Claude, ChatGPT or any MCP client what to reorder and why. Spark answers from your live stock, incoming supply and Demand ESP forecasts.' },
+];
+
 // Example values only. The page says so next to the inputs.
 const exampleValues = {
   averageDailyDemand: '10',
@@ -207,27 +229,39 @@ export function ReorderPointCalculatorPage() {
           <section className="px-6 py-20 md:px-8 lg:py-24">
             <div className="mx-auto max-w-[1120px]">
               <ScrollReveal className="max-w-3xl">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Beyond a fixed number</p>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">A reorder point is a trigger. Spark plans the buy.</h2>
-                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">A reorder point set once drifts as seasons, promotions and suppliers change. Spark Inventory keeps it current for every SKU and turns it into a purchase order your team approves.</p>
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Beyond the formula</p>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Every input above is a guess. Spark measures it.</h2>
+                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">This calculator takes one average demand, one lead time and one variability number you estimate. Spark Inventory works out each of them per SKU and per warehouse from your own sales and purchase history, keeps them current as demand moves, and turns the result into a purchase order your team approves.</p>
               </ScrollReveal>
-              <ScrollReveal staggerChildren={70} className="mt-10 grid gap-4 md:grid-cols-3">
-                {[
-                  [TrendingUp, 'Demand ESP', 'Spark’s forecasting engine learns each SKU’s sales history and seasonal curve, then recalculates reorder points, order quantities and days of supply as demand moves.'],
-                  [MessageSquareText, 'Text with Sparki', 'Get a text when an item reaches its reorder point and approve the drafted purchase order with one reply. Included on Solo ($99/mo) and up.'],
-                  [Sparkles, 'Spark MCP', 'Ask Claude, ChatGPT or any MCP client what to reorder and why. Spark answers from your live stock, incoming supply and forecasts.'],
-                ].map(([Icon, title, body], index) => {
-                  const ItemIcon = Icon as typeof TrendingUp;
-                  return (
-                    <RevealItem key={title as string} index={index}>
-                      <article className="h-full rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6">
-                        <ItemIcon className="h-5 w-5 text-cyan-300" aria-hidden="true" />
-                        <h3 className="mt-6 text-lg font-semibold">{title as string}</h3>
-                        <p className="mt-3 text-sm leading-6 text-[#8b95a8]">{body as string}</p>
-                      </article>
-                    </RevealItem>
-                  );
-                })}
+              <ScrollReveal staggerChildren={45} className="mt-10 overflow-hidden rounded-3xl border border-white/[0.08]">
+                <div className="hidden grid-cols-[0.75fr_0.9fr_1.8fr] gap-6 border-b border-white/[0.08] bg-white/[0.03] px-6 py-4 font-mono text-[11px] uppercase tracking-[0.16em] text-white/45 md:grid">
+                  <span>Input</span><span>This calculator</span><span>Spark Inventory</span>
+                </div>
+                {beyondFormulaRows.map((row, index) => (
+                  <RevealItem key={row.input} index={index}>
+                    <div className="grid gap-2 border-b border-white/[0.06] px-6 py-5 last:border-b-0 md:grid-cols-[0.75fr_0.9fr_1.8fr] md:gap-6">
+                      <h3 className="text-sm font-semibold text-white">{row.input}</h3>
+                      <p className="text-sm leading-6 text-white/45"><span className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/35 md:hidden">This calculator: </span>{row.basic}</p>
+                      <p className="text-sm leading-6 text-[#b8bfcc]"><span className="font-mono text-[11px] uppercase tracking-[0.14em] text-cyan-300 md:hidden">Spark: </span>{row.spark}</p>
+                    </div>
+                  </RevealItem>
+                ))}
+              </ScrollReveal>
+
+              <ScrollReveal className="mt-20 max-w-3xl">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">From number to purchase order</p>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">A reorder point is a trigger. Spark plans the buy.</h2>
+              </ScrollReveal>
+              <ScrollReveal staggerChildren={70} className="mt-10 grid gap-4 md:grid-cols-2">
+                {beyondFormulaCards.map(({ Icon, title, body }, index) => (
+                  <RevealItem key={title} index={index}>
+                    <article className="h-full rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6">
+                      <Icon className="h-5 w-5 text-cyan-300" aria-hidden="true" />
+                      <h3 className="mt-6 text-lg font-semibold">{title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#8b95a8]">{body}</p>
+                    </article>
+                  </RevealItem>
+                ))}
               </ScrollReveal>
             </div>
           </section>
