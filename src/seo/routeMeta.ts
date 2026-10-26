@@ -119,10 +119,10 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/in-store-pickup',
-    title: 'In-Store Pickup on Accurate Inventory | Spark Inventory',
+    title: 'BOPIS Software on Accurate In-Store Inventory | Spark Inventory',
     description:
-      'Run buy-online-pickup-in-store on inventory that is actually accurate. Real-time stock sync, pickup order tracking, and AI demand forecasting in one platform.',
-    lastModified: '2026-08-31',
+      'Buy online, pick up in store (BOPIS) on accurate in-store inventory: real-time stock by store, pickup order tracking, and AI forecasting.',
+    lastModified: '2026-10-26',
     schema: [buildFaqSchema('pickup')],
   },
   {
@@ -427,7 +427,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'What Is Inventory Management? Planning Guide | Spark Inventory',
     description:
       'Learn inventory tracking, planning, reorder points, days of supply, lead-time demand, stockout causes, and how to evaluate inventory software.',
-    lastModified: '2026-08-24',
+    lastModified: '2026-10-26',
     schema: [
       {
         '@type': 'Article',

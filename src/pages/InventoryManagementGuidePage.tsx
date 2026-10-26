@@ -129,7 +129,7 @@ export function InventoryManagementGuidePage() {
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">A practical planning trace</p>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Why “low stock” is not enough information</h2>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">The same on-hand quantity can lead to a different decision when demand velocity, incoming supply, lead time, supplier minimums, or capital constraints change.</p>
-                <p className="mt-5 rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] p-5 text-sm leading-7 text-amber-100/70">Combine reorder calculations with lead times, stock availability, and expected demand.</p>
+                <p className="mt-5 rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] p-5 text-sm leading-7 text-amber-100/70">Combine reorder calculations with lead times, stock availability, and expected demand. For a worked example, see <a href="/blog/how-to-calculate-reorder-quantities/" className="font-semibold text-amber-100 underline underline-offset-4 hover:text-white">how to find your reorder point and reorder quantity</a>.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={80} className="space-y-3">
                 {[

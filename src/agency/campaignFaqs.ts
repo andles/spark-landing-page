@@ -67,6 +67,11 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
   ],
   pickup: [
     {
+      question: "What is BOPIS software?",
+      answer:
+        "BOPIS (buy online, pick up in store) software lets shoppers order online and collect at a store. It only works when in-store inventory is accurate, so Spark tracks stock by store, routes each pickup order to the right location, and gives staff one flow from preparation to handoff.",
+    },
+    {
       question: "Does Spark in-store pickup work with Shopify?",
       answer:
         "Yes. Spark connects the Shopify order to the store fulfillment workflow so staff can see the pickup, prepare it, and complete the handoff from one operating view.",
