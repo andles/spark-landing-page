@@ -68,8 +68,8 @@ function suppressed(): boolean {
   }
 }
 
-// Recording needs an explicit opt-in, which the US notice never gives, and
-// excludes account, authentication and billing routes.
+// Recording follows hasReplayConsent and excludes account, authentication and
+// billing routes.
 function replayAllowed(): boolean {
   const path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
   return !suppressed() && hasReplayConsent() && !path.startsWith('/r/')

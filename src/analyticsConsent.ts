@@ -13,6 +13,9 @@ declare global {
   interface Window {
     getCkyConsent?: () => { activeLaw?: string };
   }
+  interface Navigator {
+    globalPrivacyControl?: boolean;
+  }
 }
 
 const optOutLaws = new Set(['ccpa']);
@@ -59,12 +62,18 @@ export function hasAnalyticsConsent(): boolean {
   return getAnalyticsConsent() === 'accepted';
 }
 
-// Session replay needs an explicit opt-in under every law. The US notice never
-// asks for one, so it allows analytics but not replay.
+export function hasGlobalPrivacyControl(): boolean {
+  return typeof navigator !== 'undefined' && navigator.globalPrivacyControl === true;
+}
+
+// Session replay follows analytics consent once CookieYes reports the law:
+// after an explicit Accept under an opt-in law, and under the US notice until
+// the visitor opts out of analytics. The US notice names the recording, and a
+// browser sending Global Privacy Control is never recorded under it.
 export function hasReplayConsent(): boolean {
   const law = consentLaw();
-  const values = consentValues();
-  return law !== '' && !isOptOutLaw(law) && values?.get('action') === 'yes' && values.get('analytics') === 'yes';
+  if (law === '' || !hasAnalyticsConsent()) return false;
+  return !isOptOutLaw(law) || !hasGlobalPrivacyControl();
 }
 
 export function subscribeAnalyticsConsent(onChange: () => void): () => void {
