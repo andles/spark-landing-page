@@ -4,6 +4,7 @@ import AgencyCTASection from '../agency/AgencyCTASection';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
 import AgencyPricingSection from '../agency/AgencyPricingSection';
+import CapterraReview from '../agency/CapterraReview';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks, withSignupIntent } from '../agency/ctaLinks';
 import { pricingFaqs } from '../agency/pricingData';
@@ -108,6 +109,8 @@ export function PricingPage() {
             </ul>
           </ScrollReveal>
         </section>
+
+        <CapterraReview className="pt-0 lg:pt-0" />
 
         <div id="plans" className="scroll-mt-16">
           <AgencyPricingSection detailed />

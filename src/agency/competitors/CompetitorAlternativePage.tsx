@@ -14,6 +14,7 @@ import { useScrollToHashOnMount } from '../../hooks/useScrollToHash';
 import AgencyFooter from '../AgencyFooter';
 import AgencyHeader from '../AgencyHeader';
 import BookACallButton from '../BookACallButton';
+import CapterraReview from '../CapterraReview';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
@@ -544,6 +545,7 @@ export default function CompetitorAlternativePage({ competitorKey }: { competito
         {!salesLed && <MigrationSection competitorKey={competitorKey} />}
         <DecisionThemes competitorKey={competitorKey} />
         <ComparisonSection competitorKey={competitorKey} />
+        {competitorKey === 'cin7' && <CapterraReview className="bg-[#06080d]" />}
         {salesLed && <MigrationSection competitorKey={competitorKey} />}
         <FitSection competitorKey={competitorKey} />
         <FaqAndSources competitorKey={competitorKey} />
