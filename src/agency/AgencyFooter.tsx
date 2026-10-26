@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import { SocialLinks } from "../components/SocialLinks";
+import { PrivacyChoicesButton } from "../components/PrivacyChoicesButton";
 
 export default function AgencyFooter() {
   return (
@@ -102,7 +103,7 @@ export default function AgencyFooter() {
           </div>
         </ScrollReveal>
       </div>
-    <div className="text-center text-slate-300"><button type="button" className="cky-banner-element spark-privacy">Privacy preferences</button></div>
+    <PrivacyChoicesButton />
     </footer>
   );
 }

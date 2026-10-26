@@ -202,6 +202,7 @@ describe('hybrid consent privacy boundary', () => {
   });
   it('masks replay, drops networks, and blocks payment subtrees', async () => {
     const analytics = await loadAnalytics();
+    Object.assign(window, { getCkyConsent: () => ({ activeLaw: 'gdpr' }) });
     window.location.pathname = '/dashboard';
     analytics.capturePageview('/dashboard');
     expect(sdk.startSessionRecording).toHaveBeenCalled();
@@ -217,6 +218,72 @@ describe('hybrid consent privacy boundary', () => {
     analytics.capturePageview('/');
     expect(sdk.stopSessionRecording).toHaveBeenCalled();
     expect(config.before_send(snapshot)).toBeNull();
+  });
+});
+
+describe('US notice banner (CookieYes ccpa law)', () => {
+  const usNotice = () => Object.assign(window, { getCkyConsent: () => ({ activeLaw: 'ccpa' }) });
+
+  it('captures with cookies from the notice defaults without a click', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    document.cookie = 'cookieyes-consent=consent:no,analytics:yes,advertisement:yes';
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).toHaveBeenCalledWith({ captureEventName: false });
+    expect(sdk.register_once).toHaveBeenCalled();
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: '$pageview', properties: { route: '/', distinct_id: 'visitor', $session_id: 'session' } }).properties)
+      .toMatchObject({ distinct_id: 'visitor', $session_id: 'session' });
+    expect(filter({ event: '$identify', properties: { distinct_id: 'visitor' } })).not.toBeNull();
+  });
+
+  const snapshot = { event: '$snapshot', properties: { $snapshot_data: [{ masked: true }], distinct_id: 'visitor' } };
+
+  it('records masked replay under the notice until the visitor opts out', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    window.location.pathname = '/pricing';
+    document.cookie = 'cookieyes-consent=consent:no,analytics:yes,advertisement:yes';
+    analytics.capturePageview('/pricing');
+    expect(sdk.startSessionRecording).toHaveBeenCalled();
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter(snapshot)).not.toBeNull();
+    document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:no,advertisement:no';
+    analytics.capturePageview('/pricing');
+    expect(sdk.stopSessionRecording).toHaveBeenCalled();
+    expect(filter(snapshot)).toBeNull();
+  });
+
+  it('never records a browser that sends Global Privacy Control under the notice', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    vi.stubGlobal('navigator', { globalPrivacyControl: true });
+    window.location.pathname = '/pricing';
+    document.cookie = 'cookieyes-consent=consent:no,analytics:yes,advertisement:yes';
+    analytics.capturePageview('/pricing');
+    expect(sdk.opt_in_capturing).toHaveBeenCalled();
+    expect(sdk.startSessionRecording).not.toHaveBeenCalled();
+    expect(sdk.init.mock.calls[0][1].before_send(snapshot)).toBeNull();
+  });
+
+  it('switches to cookieless capture when the visitor opts out of analytics', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    document.cookie = 'cookieyes-consent=action:yes,consent:yes,analytics:no,advertisement:no';
+    analytics.capturePageview('/');
+    expect(sdk.opt_out_capturing).toHaveBeenCalled();
+    expect(sdk.register_once).not.toHaveBeenCalled();
+  });
+
+  it('stays cookieless until CookieYes reports the law', async () => {
+    const analytics = await loadAnalytics();
+    Object.assign(window, { getCkyConsent: () => ({ activeLaw: '' }) });
+    document.cookie = 'cookieyes-consent=consent:no,analytics:yes,advertisement:yes';
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).not.toHaveBeenCalled();
+    usNotice();
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).toHaveBeenCalledTimes(1);
   });
 });
 

@@ -18,9 +18,9 @@
       html[data-fishbowl-variant="campaign"] [data-fishbowl-variant-copy="campaign"] { display: block; }
     </style>
     <!-- Google Consent Mode v2 default state. MUST run before CookieYes and
-         any Google tag. Opt-in posture: all non-essential storage denied until
-         the visitor consents via the CookieYes banner (which then calls
-         gtag('consent','update',...)). Do not move below the tags below. -->
+         any Google tag. All non-essential storage is denied until the
+         consent-gated tags script below reads CookieYes and calls
+         gtag('consent','update',...). Do not move below the tags below. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -39,13 +39,22 @@
     <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
     <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
-    <!-- PHAS3 attribution and conversion tracking. Loaded only after the
-         visitor grants analytics consent, the same way as the LinkedIn tag
-         below. A data-cookieyes attribute alone did not hold it back: the
-         CookieYes script loads async, so the tag ran before any choice. -->
-    <script>
+    <!-- Consent-gated tags: PHAS3 attribution, the LinkedIn Insight Tag and the
+         Google Consent Mode update. CookieYes picks the banner law per visitor
+         (gdpr opt-in for the EU and UK, ccpa notice for the US), and its
+         categories carry the choice under either law. Nothing loads until a
+         banner has loaded, so a region without a banner stays opted out, and
+         Global Privacy Control blocks every advertising and third-party
+         attribution tag whatever the categories say. Keep CookieYes's own
+         Google Consent Mode setting off: this script is the only writer.
+         The noscript LinkedIn pixel is omitted because it cannot be gated.
+         Keep aligned with web-app/index.html in the monorepo; covered by
+         src/consentGatedTags.test.ts. -->
+    <script id="consent-gated-tags">
       (function () {
         var phas3Loaded = false;
+        var linkedInLoaded = false;
+        var appliedGoogleConsent = "";
 
         function loadPhas3() {
           if (phas3Loaded) return;
@@ -56,15 +65,51 @@
           document.head.appendChild(script);
         }
 
-        document.addEventListener("cookieyes_banner_load", function (eventData) {
-          var categories = eventData.detail && eventData.detail.categories;
-          if (categories && categories.analytics) loadPhas3();
-        });
+        function loadLinkedInInsightTag() {
+          if (linkedInLoaded) return;
+          linkedInLoaded = true;
 
-        document.addEventListener("cookieyes_consent_update", function (eventData) {
-          var accepted = eventData.detail && eventData.detail.accepted;
-          if (accepted && accepted.includes("analytics")) loadPhas3();
-        });
+          window._linkedin_partner_id = "9629434";
+          window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+          window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+
+          if (!window.lintrk) {
+            window.lintrk = function (firstArgument, secondArgument) {
+              window.lintrk.q.push([firstArgument, secondArgument]);
+            };
+            window.lintrk.q = [];
+          }
+
+          var insightScript = document.createElement("script");
+          insightScript.type = "text/javascript";
+          insightScript.async = true;
+          insightScript.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+          document.head.appendChild(insightScript);
+        }
+
+        function applyConsent() {
+          var consent = typeof window.getCkyConsent === "function" ? window.getCkyConsent() : null;
+          if (!consent || !consent.activeLaw || !consent.categories) return;
+          var gpc = navigator.globalPrivacyControl === true;
+          var analytics = consent.categories.analytics === true;
+          var advertising = !gpc && consent.categories.advertisement === true;
+          var ads = advertising ? "granted" : "denied";
+          var googleConsent = ads + (analytics ? ",granted" : ",denied");
+          if (googleConsent !== appliedGoogleConsent) {
+            appliedGoogleConsent = googleConsent;
+            gtag("consent", "update", {
+              ad_storage: ads,
+              ad_user_data: ads,
+              ad_personalization: ads,
+              analytics_storage: analytics ? "granted" : "denied"
+            });
+          }
+          if (analytics && !gpc) loadPhas3();
+          if (advertising) loadLinkedInInsightTag();
+        }
+
+        document.addEventListener("cookieyes_banner_load", applyConsent);
+        document.addEventListener("cookieyes_consent_update", applyConsent);
       })();
     </script>
     <link rel="icon" type="image/png" href="/spark-favicon.png" />
@@ -86,6 +131,10 @@
       });
 
       (function () {
+        // Global Privacy Control opts the browser out of advertising, so the
+        // tag never loads for it. Otherwise CookieYes holds the script back
+        // until its category is allowed.
+        if (navigator.globalPrivacyControl === true) return;
         var loaded = false;
         var fallbackTimer;
         function loadGoogleTag() {
@@ -114,46 +163,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- LinkedIn Insight Tag. The loader follows CookieYes's custom-script
-         consent events and runs only after advertising consent. The noscript
-         pixel is omitted because it cannot be gated by the consent banner. -->
-    <script>
-      (function () {
-        var linkedInLoaded = false;
-
-        function loadLinkedInInsightTag() {
-          if (linkedInLoaded) return;
-          linkedInLoaded = true;
-
-          window._linkedin_partner_id = "9629434";
-          window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-          window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
-
-          if (!window.lintrk) {
-            window.lintrk = function (firstArgument, secondArgument) {
-              window.lintrk.q.push([firstArgument, secondArgument]);
-            };
-            window.lintrk.q = [];
-          }
-
-          var firstScript = document.getElementsByTagName("script")[0];
-          var insightScript = document.createElement("script");
-          insightScript.type = "text/javascript";
-          insightScript.async = true;
-          insightScript.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-          firstScript.parentNode.insertBefore(insightScript, firstScript);
-        }
-
-        document.addEventListener("cookieyes_banner_load", function (eventData) {
-          var categories = eventData.detail && eventData.detail.categories;
-          if (categories && categories.advertisement) loadLinkedInInsightTag();
-        });
-
-        document.addEventListener("cookieyes_consent_update", function (eventData) {
-          var accepted = eventData.detail && eventData.detail.accepted;
-          if (accepted && accepted.includes("advertisement")) loadLinkedInInsightTag();
-        });
-      })();
-    </script>
   </body>
 </html>
