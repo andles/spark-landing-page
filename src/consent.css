@@ -21,6 +21,12 @@
 .cky-consent-container .cky-btn-reject { background: var(--consent-background, #fff) !important; color: var(--consent-title, #203047) !important; border-color: var(--consent-border, #ccd9e5) !important; }
 .cky-consent-container .cky-btn-accept { background: var(--consent-accent, #087faf) !important; color: var(--consent-accent-text, #fff) !important; border-color: var(--consent-accent, #087faf) !important; }
 .cky-consent-container .cky-btn-customize { grid-column: 1 / -1 !important; grid-row: 2 !important; border: 0 !important; background: transparent !important; color: var(--consent-text, #50627a) !important; min-height: 30px !important; }
+/* The US notice has one control, the opt-out link. Give it the whole row as an
+   outlined button so it does not wrap inside the two-column grid above. */
+.cky-consent-container .cky-notice-btn-wrapper:has(> .cky-btn-do-not-sell) { grid-template-columns: 1fr !important; }
+.cky-consent-container .cky-btn-do-not-sell { display: flex !important; align-items: center !important; justify-content: center !important; width: 100% !important; background: transparent !important; color: var(--consent-title, #203047) !important; border: 1px solid var(--consent-border, #ccd9e5) !important; text-decoration: none !important; white-space: nowrap !important; }
+.cky-consent-container .cky-btn-do-not-sell:hover { border-color: var(--consent-accent, #087faf) !important; }
+.cky-consent-container [data-cky-tag="powered-by"] { border-top: 0 !important; }
 .cky-consent-container .cky-btn:focus-visible, .spark-privacy:focus-visible { outline: 3px solid #38bdf8 !important; outline-offset: 3px !important; }
 .spark-privacy { font-size: 11px; line-height: 1.2; min-height: 36px; padding: 10px 8px; white-space: nowrap; cursor: pointer; }
 .spark-privacy:hover { text-decoration: underline; text-underline-offset: 3px; }
