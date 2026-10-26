@@ -11,3 +11,7 @@ export function ZohoInventoryAlternativePage() {
 export function InflowAlternativePage() {
   return <CompetitorAlternativePage competitorKey="inflow" />;
 }
+
+export function LinnworksAlternativePage() {
+  return <CompetitorAlternativePage competitorKey="linnworks" />;
+}
