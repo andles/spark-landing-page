@@ -1,6 +1,6 @@
 import type { CtaLinkOptions } from '../ctaLinks';
 
-export type CompetitorKey = 'cin7' | 'zoho' | 'inflow';
+export type CompetitorKey = 'cin7' | 'zoho' | 'inflow' | 'linnworks';
 export type ComparisonLean = 'spark' | 'competitor' | 'tradeoff';
 
 export interface CompetitorFaq {
@@ -469,6 +469,138 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ctaOptions: {
       source: 'inflow_lp',
       defaults: { utm_source: 'inflow_lp', utm_medium: 'website', utm_campaign: 'competitor' },
+    },
+  },
+  linnworks: {
+    key: 'linnworks',
+    name: 'Linnworks',
+    fullName: 'Linnworks',
+    slug: '/linnworks-alternative/',
+    eyebrow: 'For teams switching from Linnworks',
+    accent: 'cyan',
+    heroBody:
+      'Spark Inventory is built around the buying decision. Demand ESP forecasts every SKU, sizes safety stock from real supplier lead times, and drafts the purchase order for your team to approve. Pricing is published, forecasting is included from the Free plan, and Sparki moves your Linnworks data for you.',
+    sourceLabel: 'Linnworks pricing',
+    sourceUrl: 'https://www.linnworks.com/pricing/',
+    snapshot: [],
+    migrationSignals: ['Products + SKUs', 'Suppliers + purchase orders', 'Orders + sales history'],
+    themes: [
+      {
+        number: '01',
+        label: 'Forecasting',
+        title: 'Forecasting is the product, not an add-on',
+        body: 'Demand ESP sorts every SKU as steady, trending, seasonal or intermittent, picks the forecasting model that best predicts its own history, adds back sales lost to stockouts, and turns the result into a reorder point and a draft purchase order.',
+        incumbent: 'Stock forecasting is a paid add-on to Linnworks Advanced. Seasonality and promotions are adjusted manually in the built-in version.',
+        spark: 'Per-SKU Demand ESP forecasts with automatic seasonality, demand events, and draft POs, starting on the Free plan.',
+      },
+      {
+        number: '02',
+        label: 'Alerts',
+        title: 'Know when to reorder, by text',
+        body: 'Spark watches inventory position (on hand, open purchase orders, inbound transfers and committed sales orders) against each reorder point. Text with Sparki tells you when an item needs ordering, and you approve the drafted PO with one reply.',
+        incumbent: 'Linnworks says alerts are not currently available for stock forecasting.',
+        spark: 'Live reorder alerts and Text with Sparki on Solo ($99/mo) and up.',
+      },
+      {
+        number: '03',
+        label: 'Pricing',
+        title: 'A price you can see before you talk to sales',
+        body: 'Spark publishes every plan. Start free, or start a 14-day trial of any paid plan, without a call or a quote.',
+        incumbent: 'Quote-based pricing tiered by monthly orders, with overage charges. Every package has a one-off onboarding fee.',
+        spark: 'Free; Solo $99, Operate $349, Scale $749 a month. No onboarding fee.',
+      },
+      {
+        number: '04',
+        label: 'AI that acts',
+        title: 'An AI teammate that does the work, with your approval',
+        body: 'Sparki works inside the app, Spark Signal proposes the next action, Sparki answers by text, and Claude, ChatGPT or any MCP client can connect through Spark MCP. Every change waits for a person to approve it.',
+        incumbent: 'Spotlight AI is listed among Linnworks features.',
+        spark: 'Sparki, Spark Signal, reorder rules in Observe, Propose or Autopilot mode, Text with Sparki, and governed MCP access.',
+      },
+      {
+        number: '05',
+        label: 'Switching',
+        title: 'An import you review, not a project you staff',
+        body: 'Hand Sparki your Linnworks exports. It profiles the files, maps and validates the records, and shows you the proposed import before anything lands.',
+        incumbent: 'A guided onboarding plan with a one-off fee on every package.',
+        spark: 'Self-serve, agent-led import with your approval at every step. No onboarding fee.',
+      },
+      {
+        number: '06',
+        label: 'One system',
+        title: 'Wholesale, manufacturing and scanning on the same plan',
+        body: 'A B2B wholesale store, supplier portal, EDI, bills of materials and the mobile warehouse app all run on the same inventory and the same forecast in Spark.',
+        incumbent: 'Warehouse management, listing, and forecasting are separately priced modules.',
+        spark: 'Wholesale, supplier, EDI and mobile workflows in the same system, with manufacturing on Scale.',
+      },
+    ],
+    comparison: [
+      { category: 'Demand forecasting', competitor: 'Paid add-on to Linnworks Advanced; seasonality and promotions adjusted manually.', spark: 'Demand ESP per-SKU forecasts with automatic seasonality and a buying plan. Free for one user.', lean: 'spark' },
+      { category: 'Reorder alerts', competitor: 'Not currently available for stock forecasting.', spark: 'Live reorder alerts and Text with Sparki from Solo up.', lean: 'spark' },
+      { category: 'Safety stock and lead times', competitor: 'Sales velocity and supplier lead times.', spark: 'Safety stock sized from forecast error and lead time variability learned from your purchase orders.', lean: 'spark' },
+      { category: 'Published price', competitor: 'Quote-based, tiered by monthly orders with overage charges.', spark: 'Free; Solo $99, Operate $349, and Scale $749 per month, each paid plan with a 14-day free trial.', lean: 'spark' },
+      { category: 'Getting started', competitor: 'One-off onboarding fee on every package.', spark: 'Sparki maps and validates your Linnworks exports for approval. No onboarding fee.', lean: 'spark' },
+      { category: 'Marketplace channels', competitor: '100+ channel integrations and listing management tools.', spark: 'Shopify, Amazon, WooCommerce, Square, Faire, Etsy, and Meta shops, with no per-connection fee.', lean: 'tradeoff' },
+      { category: 'Wholesale and suppliers', competitor: 'Focused on ecommerce order management.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
+      { category: 'AI', competitor: 'Spotlight AI.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
+    ],
+    stayReasons: [],
+    switchReasons: [
+      'You want forecasting and draft purchase orders included, not priced as an add-on.',
+      'You want to be told when to reorder, by text, instead of checking a report.',
+      'You want to see the price before you talk to sales, with no onboarding fee.',
+      'You sell wholesale or make products as well as selling online, and want it in one system.',
+      'You want an AI agent to handle setup and routine work, with a person approving every change.',
+    ],
+    staySummary: 'Order routing keeps you shipping. The buying decision decides how much cash sits on your shelves, and that is where Spark is built to help.',
+    salesCopy: {
+      heroHeadline: { lead: 'Switching from Linnworks?', highlight: 'Forecasting and reorder alerts included.' },
+      heroFootnote: 'Published pricing · Forecasting from the Free plan · Sparki handles the import',
+      heroPanel: { kicker: 'LINNWORKS VS SPARK', title: 'What changes when you switch', badge: 'AT A GLANCE' },
+      heroReasons: [
+        { label: 'Forecasting', incumbent: 'A paid add-on to Linnworks Advanced', spark: 'Demand ESP forecasts and draft POs, free to start' },
+        { label: 'Reorder alerts', incumbent: 'Not currently available for stock forecasting', spark: 'Live alerts and Text with Sparki from Solo up' },
+        { label: 'Pricing', incumbent: 'Quote-based, plus a one-off onboarding fee', spark: 'Published plans from $0. No onboarding fee.' },
+      ],
+      sourceChecked: 'October 26, 2026',
+      themes: {
+        eyebrow: 'Why Spark',
+        title: 'Six reasons teams pick Spark over Linnworks',
+        body: 'Each one is a workflow you can open in Spark today. Linnworks details come from Linnworks’ public pricing and stock forecasting pages.',
+      },
+      comparison: {
+        eyebrow: 'Side by side',
+        title: 'Spark vs Linnworks, line by line',
+        body: 'Linnworks does not publish prices, so this compares packaging and capability.',
+      },
+      fit: { eyebrow: 'Is Spark right for you?', title: 'Spark is built for teams that' },
+      closing: {
+        eyebrow: 'See it with your own data',
+        lead: 'Bring your Linnworks data.',
+        highlight: 'See your forecast and buying plan.',
+        body: 'Start free and get a forecast from the records you already have, or book a demo and walk through the switch using your own Linnworks exports.',
+      },
+    },
+    sourceNote: 'Linnworks pricing model, onboarding fee, add-on packaging, forecasting method, and alert availability were checked against Linnworks’ public pricing and stock forecasting pages on October 26, 2026. Spark details reflect current Spark pricing and the product as it ships today.',
+    trademark: 'Linnworks, SkuVault, and Inventory Planner are trademarks of their respective owners. Spark Inventory is not affiliated with or endorsed by Linnworks.',
+    relatedLinks: [
+      { href: '/features/purchasing/', label: 'Forecasting and reorder planning' },
+      { href: '/reorder-point-calculator/', label: 'Reorder point calculator' },
+      { href: '/features/wholesale-suppliers/', label: 'Wholesale and supplier portals' },
+      { href: '/integrations/', label: 'Integrations' },
+      { href: '/pricing/', label: 'Pricing' },
+    ],
+    faqs: [
+      { question: 'How hard is it to switch from Linnworks?', answer: 'Export your products, suppliers, purchase orders, and order history from Linnworks and hand them to Sparki in app, or to your own AI assistant through Spark MCP. Spark profiles the files, maps and validates the records, and shows you the proposed import. Nothing lands until you approve it, and there is no onboarding fee.' },
+      { question: 'Is forecasting included in Spark?', answer: 'Yes. Demand ESP forecasts every SKU from its own sales history, including seasonality, and builds a reorder and buying plan on the Free plan. Solo ($99/mo) and up add continuous forecasts, live reorder alerts, and Text with Sparki.' },
+      { question: 'How does Spark decide when to reorder?', answer: 'Spark compares each item’s inventory position (on hand plus open purchase orders and inbound transfers, less committed sales orders) to a reorder point it recalculates per SKU and per warehouse. Safety stock comes from how far past forecasts missed and how much supplier lead times vary, at the service level you choose.' },
+      { question: 'Does Spark connect to Amazon and Shopify?', answer: 'Yes. Spark connects to Shopify, Amazon, WooCommerce, Square, Faire, Etsy, and Meta shops, plus QuickBooks Online, Xero, Zoho Books, ShipStation, and Flexport, with no per-connection fee from Solo up.' },
+      { question: 'Does Spark charge per user?', answer: 'No. Solo, Operate, and Scale include unlimited users. Free is a single-user forecasting plan.' },
+      { question: 'Can we try Spark before we switch?', answer: 'Yes. Start on the Free forecasting plan with your own data, or start a 14-day free trial of Solo, Operate, or Scale. You can also book a demo and walk through the switch using your Linnworks exports.' },
+    ],
+    ctaOptions: {
+      source: 'linnworks_lp',
+      defaults: { utm_source: 'linnworks_lp', utm_medium: 'website', utm_campaign: 'competitor' },
     },
   },
 };

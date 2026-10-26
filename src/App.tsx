@@ -19,6 +19,7 @@ const FishbowlPage = lazy(R.FishbowlPage);
 const Cin7AlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.Cin7AlternativePage })));
 const ZohoInventoryAlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.ZohoInventoryAlternativePage })));
 const InflowAlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.InflowAlternativePage })));
+const LinnworksAlternativePage = lazy(() => R.CompetitorAlternativePages().then((m) => ({ default: m.LinnworksAlternativePage })));
 const MeetingConfirmedPage = lazy(R.MeetingConfirmedPage);
 const ProspectReportRoute = lazy(R.ProspectReportRoute);
 const FeaturesOverviewPage = lazy(() => R.FeaturesOverviewPage().then((m) => ({ default: m.FeaturesOverviewPage })));
@@ -95,6 +96,7 @@ function App() {
             <Route path="/cin7-alternative" element={<Cin7AlternativePage />} />
             <Route path="/zoho-inventory-alternative" element={<ZohoInventoryAlternativePage />} />
             <Route path="/inflow-alternative" element={<InflowAlternativePage />} />
+            <Route path="/linnworks-alternative" element={<LinnworksAlternativePage />} />
             <Route path="/features" element={<FeaturesOverviewPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />

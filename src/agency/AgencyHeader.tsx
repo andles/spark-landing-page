@@ -29,6 +29,7 @@ const solutionLinks = [
   { href: "/cin7-alternative/", label: "Cin7 alternative", description: "Compare planning, packaging, and fit" },
   { href: "/zoho-inventory-alternative/", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
   { href: "/inflow-alternative/", label: "inFlow alternative", description: "Planning depth beyond the reorder point" },
+  { href: "/linnworks-alternative/", label: "Linnworks alternative", description: "Forecasting and reorder alerts included" },
 ];
 
 function DesktopMenu({ label, links }: { label: string; links: typeof productLinks }) {

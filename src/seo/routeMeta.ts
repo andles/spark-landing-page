@@ -200,6 +200,14 @@ export const routeMeta: RouteMeta[] = [
     schema: [buildCompetitorFaqSchema('inflow')],
   },
   {
+    path: '/linnworks-alternative',
+    title: 'Linnworks Alternative With Forecasting Included | Spark Inventory',
+    description:
+      'Switch from Linnworks to Spark Inventory for Demand ESP forecasting with no add-on, live reorder alerts by text, published pricing, and no onboarding fee.',
+    lastModified: '2026-10-26',
+    schema: [buildCompetitorFaqSchema('linnworks')],
+  },
+  {
     path: '/meeting-confirmed',
     title: 'Meeting Confirmed | Spark Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',
