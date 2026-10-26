@@ -540,7 +540,6 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { category: 'Safety stock and lead times', competitor: 'Sales velocity and supplier lead times.', spark: 'Safety stock sized from forecast error and lead time variability learned from your purchase orders.', lean: 'spark' },
       { category: 'Published price', competitor: 'Quote-based, tiered by monthly orders with overage charges.', spark: 'Free; Solo $99, Operate $349, and Scale $749 per month, each paid plan with a 14-day free trial.', lean: 'spark' },
       { category: 'Getting started', competitor: 'One-off onboarding fee on every package.', spark: 'Sparki maps and validates your Linnworks exports for approval. No onboarding fee.', lean: 'spark' },
-      { category: 'Marketplace channels', competitor: '100+ channel integrations and listing management tools.', spark: 'Shopify, Amazon, WooCommerce, Square, Faire, Etsy, and Meta shops, with no per-connection fee.', lean: 'tradeoff' },
       { category: 'Wholesale and suppliers', competitor: 'Focused on ecommerce order management.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
       { category: 'AI', competitor: 'Spotlight AI.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
     ],
