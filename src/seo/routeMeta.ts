@@ -8,6 +8,7 @@ import { pricingFaqs } from '../agency/pricingData';
 import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
+import { eoqFaqs } from '../content/eoq';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import {
   buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
@@ -484,6 +485,31 @@ export const routeMeta: RouteMeta[] = [
         '@type': 'FAQPage',
         '@id': `${SITE_URL}/reorder-point-calculator/#faq`,
         mainEntity: reorderPointFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
+      },
+    ],
+  },
+  {
+    path: '/eoq-calculator',
+    title: 'EOQ Calculator: Economic Order Quantity | Spark Inventory',
+    description:
+      'Free EOQ calculator: enter annual demand, cost per order and holding cost to find the order size with the lowest total cost, with an optional supplier minimum.',
+    lastModified: '2026-10-28',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/eoq-calculator/#calculator`,
+        name: 'EOQ Calculator',
+        url: `${SITE_URL}/eoq-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/eoq-calculator/#faq`,
+        mainEntity: eoqFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
       },
     ],
   },

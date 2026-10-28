@@ -32,6 +32,7 @@ export const routeImports = {
   BlogPage: () => import('./pages/BlogPage'),
   InventoryManagementGuidePage: () => import('./pages/InventoryManagementGuidePage'),
   ReorderPointCalculatorPage: () => import('./pages/ReorderPointCalculatorPage'),
+  EoqCalculatorPage: () => import('./pages/EoqCalculatorPage'),
   InventoryReorderWalkthroughPage: () => import('./pages/InventoryReorderWalkthroughPage'),
   PartnersPage: () => import('./pages/PartnersPage'),
   PrivacyPolicyPage: () => import('./pages/PrivacyPolicyPage'),

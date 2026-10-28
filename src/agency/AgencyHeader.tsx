@@ -6,6 +6,7 @@ const productLinks = [
   { href: "/features/", label: "All product features", description: "See the complete Spark platform" },
   { href: "/what-is-inventory-management/", label: "Inventory guide", description: "Learn the operating model and metrics" },
   { href: "/reorder-point-calculator/", label: "Reorder point calculator", description: "Free tool: reorder point and safety stock" },
+  { href: "/eoq-calculator/", label: "EOQ calculator", description: "Free tool: economic order quantity" },
   { href: "/features/inventory/", label: "Inventory", description: "SKUs, stock, locations, and control" },
   { href: "/features/purchasing/", label: "Purchasing", description: "Planning, POs, suppliers, and receiving" },
   { href: "/features/sales/", label: "Sales", description: "Orders, invoices, customers, and returns" },
