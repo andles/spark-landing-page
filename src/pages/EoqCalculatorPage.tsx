@@ -3,6 +3,7 @@ import { ArrowRight, Calculator, CircleCheck, MessageSquareText, Sparkles, Trend
 import { Link } from 'react-router-dom';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
+import NumberField from '../agency/CalculatorNumberField';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { calculateEoq, eoqFaqs, type HoldingCostMode } from '../content/eoq';
 
@@ -46,29 +47,6 @@ const exampleValues = {
 type FieldName = keyof typeof exampleValues;
 
 const usd = (value: number) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-
-function NumberField({ id, label, hint, value, onChange, prefix, suffix }: { id: string; label: string; hint?: string; value: string; onChange: (value: string) => void; prefix?: string; suffix: string }) {
-  return (
-    <label htmlFor={id} className="block">
-      <span className="text-sm font-medium text-white/85">{label}</span>
-      <div className="mt-2 flex items-center rounded-xl border border-white/[0.1] bg-[#06080d] focus-within:border-cyan-300/50">
-        {prefix && <span className="pl-4 text-sm text-white/45">{prefix}</span>}
-        <input
-          id={id}
-          type="number"
-          inputMode="decimal"
-          min={0}
-          step="any"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          className={`w-full bg-transparent py-3 pr-4 text-base text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${prefix ? 'pl-1.5' : 'pl-4'}`}
-        />
-        <span className="shrink-0 pr-4 text-xs text-white/45">{suffix}</span>
-      </div>
-      {hint && <span className="mt-1.5 block text-xs leading-5 text-white/40">{hint}</span>}
-    </label>
-  );
-}
 
 function EoqCalculator() {
   const idPrefix = useId();
@@ -208,7 +186,7 @@ export function EoqCalculatorPage() {
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Balance the cost of ordering against the cost of holding</h2>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">Small, frequent orders keep stock low but cost more in purchase orders, receiving and freight. Large, rare orders save on ordering but tie up cash and shelf space. EOQ is the order size where those two yearly costs are equal and their total is lowest.</p>
                 <p className="mt-6 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.04] p-5 font-mono text-sm leading-7 text-cyan-100">EOQ = √(2 × annual demand × cost per order ÷ holding cost per unit per year)</p>
-                <p className="mt-5 text-sm leading-7 text-[#8b95a8]">EOQ answers how much to order. For when to order, use the <Link to="/reorder-point-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">reorder point calculator</Link>.</p>
+                <p className="mt-5 text-sm leading-7 text-[#8b95a8]">EOQ answers how much to order. For when to order, use the <Link to="/reorder-point-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">reorder point calculator</Link>. To see how fast your stock sells through, try the <Link to="/inventory-turnover-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">inventory turnover calculator</Link>.</p>
               </ScrollReveal>
               <ScrollReveal>
                 <div className="rounded-3xl border border-white/[0.08] bg-[#090d15] p-6 sm:p-8">

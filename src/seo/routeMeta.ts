@@ -9,6 +9,7 @@ import { toolsServicesFaqs } from '../pages/features/toolsServicesData';
 import { fishbowlVideo } from '../agency/fishbowl/fishbowlVideo';
 import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReorderWalkthrough';
 import { eoqFaqs } from '../content/eoq';
+import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import {
   buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
@@ -510,6 +511,31 @@ export const routeMeta: RouteMeta[] = [
         '@type': 'FAQPage',
         '@id': `${SITE_URL}/eoq-calculator/#faq`,
         mainEntity: eoqFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
+      },
+    ],
+  },
+  {
+    path: '/inventory-turnover-calculator',
+    title: 'Inventory Turnover Calculator: Ratio and Days | Spark Inventory',
+    description:
+      'Free inventory turnover calculator: enter cost of goods sold and beginning and ending inventory to get your turnover ratio and days in inventory.',
+    lastModified: '2026-10-28',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/inventory-turnover-calculator/#calculator`,
+        name: 'Inventory Turnover Calculator',
+        url: `${SITE_URL}/inventory-turnover-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/inventory-turnover-calculator/#faq`,
+        mainEntity: inventoryTurnoverFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
       },
     ],
   },
