@@ -11,6 +11,7 @@ import { inventoryReorderWalkthroughTranscript } from '../content/inventoryReord
 import { eoqFaqs } from '../content/eoq';
 import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
+import { safetyStockFaqs } from '../content/safetyStock';
 import {
   buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
@@ -536,6 +537,31 @@ export const routeMeta: RouteMeta[] = [
         '@type': 'FAQPage',
         '@id': `${SITE_URL}/inventory-turnover-calculator/#faq`,
         mainEntity: inventoryTurnoverFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
+      },
+    ],
+  },
+  {
+    path: '/safety-stock-calculator',
+    title: 'Safety Stock Calculator With Formula and Z Score | Spark Inventory',
+    description:
+      'Free safety stock calculator: combine demand and lead time variability at any service level, see the Z score and what a higher service level costs, and get your reorder point.',
+    lastModified: '2026-10-28',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/safety-stock-calculator/#calculator`,
+        name: 'Safety Stock Calculator',
+        url: `${SITE_URL}/safety-stock-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/safety-stock-calculator/#faq`,
+        mainEntity: safetyStockFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
       },
     ],
   },

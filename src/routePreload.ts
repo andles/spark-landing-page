@@ -34,6 +34,7 @@ export const routeImports = {
   ReorderPointCalculatorPage: () => import('./pages/ReorderPointCalculatorPage'),
   EoqCalculatorPage: () => import('./pages/EoqCalculatorPage'),
   InventoryTurnoverCalculatorPage: () => import('./pages/InventoryTurnoverCalculatorPage'),
+  SafetyStockCalculatorPage: () => import('./pages/SafetyStockCalculatorPage'),
   InventoryReorderWalkthroughPage: () => import('./pages/InventoryReorderWalkthroughPage'),
   PartnersPage: () => import('./pages/PartnersPage'),
   PrivacyPolicyPage: () => import('./pages/PrivacyPolicyPage'),
