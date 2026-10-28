@@ -102,6 +102,6 @@ export const eoqFaqs = [
   },
   {
     question: 'How does Spark Inventory use EOQ?',
-    answer: 'Spark calculates EOQ per SKU and warehouse from its own demand rate, which Demand ESP keeps current from each SKU’s sales history and seasonality. Ordering cost ($50 by default) and holding rate (24% a year by default) are workspace settings you can change. The reorder quantity is netted against stock already available and on order and raised to the supplier’s minimum, and the result becomes a drafted purchase order for a person to approve.',
+    answer: 'Spark calculates EOQ per SKU and warehouse from Demand ESP’s forecast instead of a flat yearly average. Demand ESP picks the best forecasting model for each SKU by backtesting its own history, accounts for seasonality, stockouts and planned promotions, and updates as sales come in. Ordering cost ($50 by default) and holding rate (24% a year by default) are workspace settings you can change. The reorder quantity is netted against stock already available and on order and raised to the supplier’s minimum, and the result becomes a drafted purchase order for a person to approve.',
   },
 ] as const;

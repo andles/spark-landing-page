@@ -15,7 +15,10 @@ const holdingModes: { id: HoldingCostMode; label: string }[] = [
 // behavior in the Spark monorepo (Velocity EOQ and reorder point services,
 // Demand ESP); keep it that way when editing.
 const beyondFormulaRows = [
-  { input: 'Annual demand', basic: 'One yearly total you type in.', spark: 'Taken from the demand rate Spark keeps per SKU and warehouse. Demand ESP backtests forecasting models on each SKU’s own history, keeps the best one and applies its seasonal curve, so the EOQ moves when demand does.' },
+  { input: 'Annual demand', basic: 'One yearly total you type in.', spark: 'Demand ESP’s forecast for the coming lead time, per SKU and warehouse, turned into a yearly rate. It is recalculated as the forecast updates, so order sizes grow into a busy season and shrink after it.' },
+  { input: 'Demand pattern', basic: 'Assumes demand is steady all year.', spark: 'Demand ESP sorts every SKU as steady, trending, seasonal or intermittent, backtests several forecasting models on its own history and keeps the one that predicted best.' },
+  { input: 'Stockout days', basic: 'Counted as low demand.', spark: 'Sales lost while a SKU was out of stock are added back before forecasting, so a stockout does not shrink the next order.' },
+  { input: 'Promotions and new items', basic: 'Not modeled.', spark: 'Demand Calendar events lift or lower the forecast for a set window. New products start from the history of similar items instead of a blank.' },
   { input: 'Ordering cost', basic: 'A guess per order.', spark: 'A workspace setting, $50 per order by default. Change it once and every SKU’s EOQ updates.' },
   { input: 'Holding cost', basic: 'A rate you estimate.', spark: 'A workspace setting, 24% of unit cost a year by default, applied to each item’s own cost.' },
   { input: 'Stock already on hand or ordered', basic: 'Not considered.', spark: 'The reorder quantity is netted against available stock and open purchase orders, so you do not buy twice.' },
@@ -225,8 +228,8 @@ export function EoqCalculatorPage() {
             <div className="mx-auto max-w-[1120px]">
               <ScrollReveal className="max-w-3xl">
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Beyond the formula</p>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">EOQ is only as good as its demand number. Spark keeps it current.</h2>
-                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">This calculator assumes demand is flat all year and nothing is already on order. Spark Inventory calculates EOQ for every SKU and warehouse from a demand rate it keeps up to date, nets out stock you already have and turns the result into a purchase order your team approves.</p>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">EOQ is only as good as its demand number. Demand ESP forecasts it.</h2>
+                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">This calculator assumes demand is flat all year and nothing is already on order. Spark Inventory feeds EOQ with Demand ESP, its forecasting engine, so every SKU and warehouse gets an order size based on what it is expected to sell next, not last year’s average. Spark then nets out stock you already have and turns the result into a purchase order your team approves.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={45} className="mt-10 overflow-hidden rounded-3xl border border-white/[0.08]">
                 <div className="hidden grid-cols-[0.75fr_0.9fr_1.8fr] gap-6 border-b border-white/[0.08] bg-white/[0.03] px-6 py-4 font-mono text-[11px] uppercase tracking-[0.16em] text-white/45 md:grid">
