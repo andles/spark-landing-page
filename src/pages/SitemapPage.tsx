@@ -52,6 +52,7 @@ const groups = [
       ['/blog/', 'Spark Inventory Blog'],
       ['/what-is-inventory-management/', 'What Is Inventory Management?'],
       ['/reorder-point-calculator/', 'Reorder Point Calculator'],
+      ['/eoq-calculator/', 'EOQ Calculator'],
       ['/partners/', 'Partners'],
       ['/contact/', 'Contact'],
       ['/support/', 'Support'],

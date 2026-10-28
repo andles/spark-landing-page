@@ -41,6 +41,7 @@ const AboutPage = lazy(() => R.AboutPage().then((m) => ({ default: m.AboutPage }
 const BlogPage = lazy(R.BlogPage);
 const InventoryManagementGuidePage = lazy(() => R.InventoryManagementGuidePage().then((m) => ({ default: m.InventoryManagementGuidePage })));
 const ReorderPointCalculatorPage = lazy(() => R.ReorderPointCalculatorPage().then((m) => ({ default: m.ReorderPointCalculatorPage })));
+const EoqCalculatorPage = lazy(() => R.EoqCalculatorPage().then((m) => ({ default: m.EoqCalculatorPage })));
 const InventoryReorderWalkthroughPage = lazy(R.InventoryReorderWalkthroughPage);
 const PartnersPage = lazy(() => R.PartnersPage().then((m) => ({ default: m.PartnersPage })));
 const PrivacyPolicyPage = lazy(() => R.PrivacyPolicyPage().then((m) => ({ default: m.PrivacyPolicyPage })));
@@ -117,6 +118,7 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPage />} />
             <Route path="/what-is-inventory-management" element={<InventoryManagementGuidePage />} />
             <Route path="/reorder-point-calculator" element={<ReorderPointCalculatorPage />} />
+            <Route path="/eoq-calculator" element={<EoqCalculatorPage />} />
             <Route path="/inventory-reorder-walkthrough" element={<InventoryReorderWalkthroughPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
