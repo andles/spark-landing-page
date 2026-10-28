@@ -53,6 +53,7 @@ const groups = [
       ['/what-is-inventory-management/', 'What Is Inventory Management?'],
       ['/reorder-point-calculator/', 'Reorder Point Calculator'],
       ['/eoq-calculator/', 'EOQ Calculator'],
+      ['/inventory-turnover-calculator/', 'Inventory Turnover Calculator'],
       ['/partners/', 'Partners'],
       ['/contact/', 'Contact'],
       ['/support/', 'Support'],
