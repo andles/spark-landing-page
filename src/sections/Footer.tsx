@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className={`border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 ${isNextGen ? 'border-white/10' : 'border-gray-800'}`}>
           <p className={`text-sm ${isNextGen ? 'text-white/30' : 'text-gray-500'}`}>
-            © {new Date().getFullYear()} Spark Inventory. All rights reserved.
+            © {new Date().getFullYear()} Spark Inventory, Inc. All rights reserved. 2880 North 840 East Street, Provo, UT 84604
           </p>
         </div>
       </Container>

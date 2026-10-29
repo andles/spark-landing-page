@@ -206,7 +206,7 @@ export default function MeetingConfirmedPage() {
       {/* Slim footer: only what is needed */}
       <footer className="relative z-10 border-t border-white/[0.06] py-6">
         <div className="max-w-[720px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[#8b95a8] text-xs">&copy; 2026 Spark Inventory. All rights reserved.</p>
+          <p className="text-[#8b95a8] text-xs">&copy; 2026 Spark Inventory, Inc. All rights reserved. 2880 North 840 East Street, Provo, UT 84604</p>
           <div className="flex items-center gap-4">
             <a href="/privacy-policy/" className="text-[#8b95a8] text-xs hover:text-white transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60">Privacy</a>
             <a href="/support/" className="text-[#8b95a8] text-xs hover:text-white transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60">Support</a>
