@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Check, Mail, User, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Mail, MapPin, User, MessageSquare } from 'lucide-react';
 import { Container, Button } from '../components';
 import { Header, Footer } from '../sections';
 import { useTheme } from '../context/theme';
@@ -74,6 +74,17 @@ function ContactPageClassic() {
                         info@sparkinventory.com
                       </a>
                     </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-5 h-5 text-white" />
+                    </div>
+                    <address className="not-italic text-white font-medium leading-relaxed">
+                      Spark Inventory, Inc<br />
+                      2880 North 840 East Street<br />
+                      Provo, UT 84604<br />
+                      <a href="mailto:support@sparkinventory.com" className="hover:underline">support@sparkinventory.com</a>
+                    </address>
                   </div>
                 </div>
               </div>
@@ -259,6 +270,17 @@ function ContactPageNextGen() {
                         info@sparkinventory.com
                       </a>
                     </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-cyan-500/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <address className="not-italic text-white font-medium leading-relaxed">
+                      Spark Inventory, Inc<br />
+                      2880 North 840 East Street<br />
+                      Provo, UT 84604<br />
+                      <a href="mailto:support@sparkinventory.com" className="hover:text-cyan-400 transition-colors">support@sparkinventory.com</a>
+                    </address>
                   </div>
                 </div>
               </div>

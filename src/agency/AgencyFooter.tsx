@@ -104,7 +104,7 @@ export default function AgencyFooter() {
 
         <ScrollReveal delay={0.2}>
           <div className="border-t border-white/[0.06] mt-12 pt-8">
-            <p className="text-white text-sm text-center">&copy; 2026 Spark Inventory. All rights reserved.</p>
+            <p className="text-white text-sm text-center">&copy; 2026 Spark Inventory, Inc. All rights reserved. 2880 North 840 East Street, Provo, UT 84604</p>
           </div>
         </ScrollReveal>
       </div>
