@@ -58,6 +58,7 @@ export default function AgencyFooter() {
                   <li><a href="/zoho-inventory-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Zoho Inventory Alternative</a></li>
                   <li><a href="/inflow-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">inFlow Alternative</a></li>
                   <li><a href="/linnworks-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Linnworks Alternative</a></li>
+                  <li><a href="/shopify-stocky-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Shopify Stocky Alternative</a></li>
                 </ul>
               </div>
               <div>

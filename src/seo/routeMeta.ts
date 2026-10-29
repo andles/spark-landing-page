@@ -211,6 +211,14 @@ export const routeMeta: RouteMeta[] = [
     schema: [buildCompetitorFaqSchema('linnworks')],
   },
   {
+    path: '/shopify-stocky-alternative',
+    title: 'Shopify Stocky Alternative After the Shutdown | Spark Inventory',
+    description:
+      'Stocky shut down August 31, 2026. Import your Stocky purchase order history into Spark, learn real supplier lead times, and get Demand ESP forecasts and reorder alerts by text.',
+    lastModified: '2026-10-29',
+    schema: [buildCompetitorFaqSchema('stocky')],
+  },
+  {
     path: '/meeting-confirmed',
     title: 'Meeting Confirmed | Spark Inventory',
     description: 'Your call is booked. Here is what to expect and how to prepare.',

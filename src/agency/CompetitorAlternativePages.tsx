@@ -15,3 +15,7 @@ export function InflowAlternativePage() {
 export function LinnworksAlternativePage() {
   return <CompetitorAlternativePage competitorKey="linnworks" />;
 }
+
+export function StockyAlternativePage() {
+  return <CompetitorAlternativePage competitorKey="stocky" />;
+}

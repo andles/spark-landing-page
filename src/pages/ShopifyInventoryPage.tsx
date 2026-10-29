@@ -127,6 +127,7 @@ export function ShopifyInventoryPage() {
                 <a href="/features/inventory/" className="block text-cyan-300 hover:text-cyan-200">Explore inventory management →</a>
                 <a href="/features/purchasing/" className="block text-cyan-300 hover:text-cyan-200">Explore purchasing and POs →</a>
                 <a href="/features/accounting/" className="block text-cyan-300 hover:text-cyan-200">Explore accounting integrations →</a>
+                <a href="/shopify-stocky-alternative/" className="block text-cyan-300 hover:text-cyan-200">Replacing Stocky after the shutdown →</a>
               </div>
             </ScrollReveal>
             <div className="space-y-3">
