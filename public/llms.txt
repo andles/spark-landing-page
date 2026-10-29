@@ -26,6 +26,7 @@
 - [Inventory for 3PLs](https://sparkinventory.com/3pl/)
 - [In-store pickup](https://sparkinventory.com/in-store-pickup/)
 - [Charity retail](https://sparkinventory.com/charity-retail/)
+- [Inventory software for accountants and bookkeepers](https://sparkinventory.com/accountants/): Why accountants recommend Spark to product and manufacturing clients, what syncs to QuickBooks Online, Xero, and Zoho Books, and how the partner program works.
 - [Connect Spark to your AI assistant](https://sparkinventory.com/connect-spark-to-your-assistant/)
 
 ## Learn

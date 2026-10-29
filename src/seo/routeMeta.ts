@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { buildFaqSchema } from '../agency/campaignFaqs';
+import { buildAccountantFaqSchema } from '../agency/accountants/accountantFaqs';
 import { buildCharityFaqSchema } from '../agency/charity/charityFaqs';
 import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
@@ -128,6 +129,14 @@ export const routeMeta: RouteMeta[] = [
       'Buy online, pick up in store (BOPIS) on accurate in-store inventory: real-time stock by store, pickup order tracking, and AI forecasting.',
     lastModified: '2026-10-26',
     schema: [buildFaqSchema('pickup')],
+  },
+  {
+    path: '/accountants',
+    title: 'Inventory Software for Accountants and Bookkeepers | Spark Inventory',
+    description:
+      'Recommend Spark Inventory to clients who hold stock or manufacture. Clean QuickBooks Online, Xero, and Zoho Books sync, landed cost, COGS reports, and a partner program.',
+    lastModified: '2026-10-29',
+    schema: [buildAccountantFaqSchema()],
   },
   {
     path: '/charity-retail',
