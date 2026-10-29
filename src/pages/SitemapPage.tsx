@@ -15,6 +15,7 @@ const groups = [
       ['/reduce-stockouts-overstock/', 'Reduce Stockouts & Overstock'],
       ['/in-store-pickup/', 'In-Store Pickup'],
       ['/charity-retail/', 'Charity Retail'],
+      ['/accountants/', 'For Accountants and Bookkeepers'],
       ['/fishbowl-alternative/', 'Fishbowl Alternative'],
       ['/cin7-alternative/', 'Cin7 Alternative'],
       ['/zoho-inventory-alternative/', 'Zoho Inventory Alternative'],

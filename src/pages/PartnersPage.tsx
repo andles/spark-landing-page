@@ -397,6 +397,13 @@ function PartnersPageView({ t }: { t: PartnersTheme }) {
                 Each partnership comes with a partner portal, sales and marketing materials, and a dedicated contact on
                 our team. They differ in how you work with your clients and how you earn.
               </p>
+              <p className={`-mt-7 mb-10 max-w-3xl text-sm ${t.body}`}>
+                Accountant or bookkeeper?{' '}
+                <Link to="/accountants/" className={t.link}>
+                  See how firms recommend Spark to clients who hold inventory
+                </Link>
+                .
+              </p>
 
               <div className="grid md:grid-cols-3 gap-6">
                 {PARTNER_TYPES.map((type) => {

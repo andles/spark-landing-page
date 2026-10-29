@@ -19,6 +19,8 @@ export interface YouTubeVideo {
   youtubeId: string;
   /** Route path the video is embedded on, matching routeMeta. */
   pagePath: string;
+  /** Other route paths that embed the same video. */
+  alsoOn?: string[];
   /** Video title as published on YouTube. */
   name: string;
   /** Video description as published on YouTube. */
@@ -34,6 +36,7 @@ export const youtubeVideos: Record<YouTubeVideoKey, YouTubeVideo[]> = {
     {
       youtubeId: 'UAXvTix7X4M',
       pagePath: '/features/accounting',
+      alsoOn: ['/accountants'],
       name: 'QuickBooks Online Integration | Spark Inventory',
       description:
         'From inventory moves to accounting entries. Spark Inventory connects operational activity with QuickBooks Online: inventory asset entries, bills, invoices, payments, and cost of goods.',
@@ -128,7 +131,7 @@ export function buildYouTubeVideoSchema(siteUrl: string, routePath: string, offs
   const pageUrl = routePath === '/' ? `${siteUrl}/` : `${siteUrl}${routePath}/`;
   return Object.values(youtubeVideos)
     .flat()
-    .filter((video) => video.youtubeId && video.pagePath === routePath)
+    .filter((video) => video.youtubeId && (video.pagePath === routePath || video.alsoOn?.includes(routePath)))
     .map((video, index) => {
       const position = index + offset;
       return {

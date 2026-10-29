@@ -52,6 +52,7 @@ export default function AgencyFooter() {
                   <li><a href="/3pl/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>
                   <li><a href="/in-store-pickup/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">In-Store Pickup</a></li>
                   <li><a href="/charity-retail/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Charity Retail</a></li>
+                  <li><a href="/accountants/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">For Accountants</a></li>
                   <li><a href="/shopify-inventory-management/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Shopify Inventory</a></li>
                   <li><a href="/fishbowl-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Fishbowl Alternative</a></li>
                   <li><a href="/cin7-alternative/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Cin7 Alternative</a></li>

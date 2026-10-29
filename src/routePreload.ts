@@ -7,6 +7,7 @@ export const routeImports = {
   ThreePLPage: () => import('./agency/ThreePLPage'),
   PickupPage: () => import('./agency/PickupPage'),
   CharityRetailPage: () => import('./agency/charity/CharityRetailPage'),
+  AccountantsPage: () => import('./agency/accountants/AccountantsPage'),
   BookRedirect: () => import('./agency/BookRedirect'),
   StockoutsPage: () => import('./agency/StockoutsPage'),
   FishbowlPage: () => import('./agency/FishbowlPage'),
