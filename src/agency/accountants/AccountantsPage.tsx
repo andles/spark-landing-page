@@ -24,6 +24,7 @@ import AgencyHeader from "../AgencyHeader";
 import AgencyFooter from "../AgencyFooter";
 import BookACallButton from "../BookACallButton";
 import ScrollReveal, { RevealItem } from "../ScrollReveal";
+import { YouTubeVideoSection } from "../../components/YouTubeEmbed";
 import { useCtaLinks } from "../ctaLinks";
 import { useScrollToHashOnMount } from "../../hooks/useScrollToHash";
 import { partnerTypeById } from "../../partnerTypes";
@@ -467,6 +468,7 @@ export default function AccountantsPage() {
         <Hero />
         <ProblemSection />
         <LedgerFlowSection />
+        <YouTubeVideoSection videoKey="quickbooks" />
         <CleanNumbersSection />
         <ManufacturingAndAdvisorySection />
         <PartnershipSection />
