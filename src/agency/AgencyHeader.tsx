@@ -33,6 +33,7 @@ const solutionLinks = [
   { href: "/zoho-inventory-alternative/", label: "Zoho Inventory alternative", description: "Move beyond caps and suite gravity" },
   { href: "/inflow-alternative/", label: "inFlow alternative", description: "Planning depth beyond the reorder point" },
   { href: "/linnworks-alternative/", label: "Linnworks alternative", description: "Forecasting and reorder alerts included" },
+  { href: "/shopify-stocky-alternative/", label: "Stocky alternative", description: "Keep your Stocky PO history after the shutdown" },
 ];
 
 function DesktopMenu({ label, links }: { label: string; links: typeof productLinks }) {

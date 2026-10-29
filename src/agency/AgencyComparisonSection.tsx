@@ -11,6 +11,7 @@ const upgradePaths = [
   { label: "Moving from Zoho Inventory", to: "/zoho-inventory-alternative/" },
   { label: "Moving from inFlow", to: "/inflow-alternative/" },
   { label: "Moving from Linnworks", to: "/linnworks-alternative/" },
+  { label: "Replacing Stocky", to: "/shopify-stocky-alternative/" },
 ] as const;
 
 const linkClass =

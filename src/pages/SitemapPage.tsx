@@ -20,6 +20,7 @@ const groups = [
       ['/zoho-inventory-alternative/', 'Zoho Inventory Alternative'],
       ['/inflow-alternative/', 'inFlow Alternative'],
       ['/linnworks-alternative/', 'Linnworks Alternative'],
+      ['/shopify-stocky-alternative/', 'Shopify Stocky Alternative'],
     ],
   },
   {

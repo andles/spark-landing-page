@@ -1,6 +1,6 @@
 import type { CtaLinkOptions } from '../ctaLinks';
 
-export type CompetitorKey = 'cin7' | 'zoho' | 'inflow' | 'linnworks';
+export type CompetitorKey = 'cin7' | 'zoho' | 'inflow' | 'linnworks' | 'stocky';
 export type ComparisonLean = 'spark' | 'competitor' | 'tradeoff';
 
 export interface CompetitorFaq {
@@ -600,6 +600,137 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ctaOptions: {
       source: 'linnworks_lp',
       defaults: { utm_source: 'linnworks_lp', utm_medium: 'website', utm_campaign: 'competitor' },
+    },
+  },
+  stocky: {
+    key: 'stocky',
+    name: 'Stocky',
+    fullName: 'Shopify after Stocky',
+    slug: '/shopify-stocky-alternative/',
+    eyebrow: 'For Shopify stores replacing Stocky',
+    accent: 'emerald',
+    heroBody:
+      'Shopify retired Stocky on August 31, 2026. Native Shopify now covers purchase orders, transfers and stock counts, but your Stocky purchase order history cannot be imported into Shopify. Spark imports it, learns each supplier’s real lead time from it, and pairs it with Demand ESP forecasts so every reorder point and draft PO is built from your own data.',
+    sourceLabel: 'Shopify: Transitioning from Stocky',
+    sourceUrl: 'https://help.shopify.com/en/manual/products/inventory/transitioning-from-stocky',
+    snapshot: [],
+    migrationSignals: ['Stocky purchase order exports', 'Suppliers + lead times', 'Shopify products + order history'],
+    themes: [
+      {
+        number: '01',
+        label: 'Your history',
+        title: 'Keep the purchase order history Shopify cannot take',
+        body: 'Export your Stocky purchase orders before the export window closes and hand them to Sparki. Spark imports them as closed orders, creates the suppliers they name, and measures how long each supplier actually took to deliver. Those lead times feed every reorder point from day one.',
+        incumbent: 'Shopify says historical purchase orders cannot be imported, and suppliers cannot be exported from Stocky.',
+        spark: 'Historical PO import that seeds suppliers and real lead times, reviewed before anything lands.',
+      },
+      {
+        number: '02',
+        label: 'Forecasting',
+        title: 'A forecast for every SKU, not a suggestion list',
+        body: 'Demand ESP sorts every SKU as steady, trending, seasonal or intermittent, then backtests several forecasting models against that SKU’s own history and keeps the one that predicted it best. It adds back sales lost while you were out of stock, and handles seasonality, new items and promotions.',
+        incumbent: 'Shopify now points to Sidekick reorder suggestions and custom reports.',
+        spark: 'Per-SKU Demand ESP forecasts with backtested model choice, stockout correction, and an A to D trust grade on each forecast.',
+      },
+      {
+        number: '03',
+        label: 'Reorder points',
+        title: 'Safety stock sized from how wrong the forecast has been',
+        body: 'Spark sets each reorder point from the forecast, the supplier’s lead time and how much both have varied. Safety stock is sized from the forecast’s own past misses at the service level you choose, so steady sellers carry less and erratic ones carry more.',
+        incumbent: 'Shopify’s guide describes no reorder point calculation. Min and max levels are set by hand in metafields.',
+        spark: 'Reorder points and safety stock recalculated per SKU and per location, with the math shown.',
+      },
+      {
+        number: '04',
+        label: 'Text with Sparki',
+        title: 'Know when to reorder, by text',
+        body: 'Spark watches on hand, open purchase orders and committed orders against every reorder point. Text with Sparki tells you when an item needs ordering, answers questions about stock from your phone, and you approve the drafted PO with one reply.',
+        incumbent: 'Shopify suggests building low-stock alerts yourself in Shopify Flow.',
+        spark: 'Live reorder and stockout alerts plus Text with Sparki on Solo ($99/mo) and up.',
+      },
+      {
+        number: '05',
+        label: 'Spark MCP',
+        title: 'Bring your own AI assistant',
+        body: 'Connect Claude, ChatGPT or any MCP client to Spark through Spark MCP. Ask about stock health, forecasts and open purchase orders, or run the Stocky import from your assistant. Every change waits for a person to approve it.',
+        incumbent: 'Sidekick works inside Shopify admin.',
+        spark: 'Sparki in app, Text with Sparki, and governed Spark MCP access for the assistant you already use.',
+      },
+      {
+        number: '06',
+        label: 'Operations',
+        title: 'Purchasing, receiving and counts in one place',
+        body: 'On Operate, Spark runs the full purchase order lifecycle, supplier terms and price books, receiving with exceptions, landed cost, transfers, bin locations and cycle counts, and keeps Shopify stock levels in sync.',
+        incumbent: 'Shopify transfers move stock between locations only, not between bins, and landed cost allocation needs another app.',
+        spark: 'Bin-level moves, landed cost on receipts, and cycle counts by location or ABC class on Operate ($349/mo).',
+      },
+    ],
+    comparison: [
+      { category: 'Historical purchase orders', competitor: 'Cannot be imported into Shopify.', spark: 'Imported as closed POs, with supplier lead times measured from them.', lean: 'spark' },
+      { category: 'Suppliers', competitor: 'Cannot be exported from Stocky. Currency and terms are saved per PO, not on the supplier.', spark: 'Created from your PO history, with default terms, lead times and price books.', lean: 'spark' },
+      { category: 'Demand forecasting', competitor: 'Sidekick suggestions and custom reports.', spark: 'Demand ESP per-SKU forecasts with backtested model choice, stockout correction, seasonality and A to D trust grades.', lean: 'spark' },
+      { category: 'Reorder points and safety stock', competitor: 'Min and max set by hand in metafields.', spark: 'Calculated per SKU and location from forecast error and lead time variability.', lean: 'spark' },
+      { category: 'Reorder alerts', competitor: 'Build your own in Shopify Flow.', spark: 'Live alerts and Text with Sparki from Solo up.', lean: 'spark' },
+      { category: 'Purchase orders, receiving and transfers', competitor: 'Native in Shopify admin at no extra cost.', spark: 'Full PO lifecycle, receiving exceptions and bin moves on Operate ($349/mo).', lean: 'tradeoff' },
+      { category: 'Price', competitor: 'Included with Shopify.', spark: 'Free forecasting plan; Solo $99, Operate $349, Scale $749 a month, each paid plan with a 14-day trial.', lean: 'competitor' },
+    ],
+    stayReasons: [],
+    switchReasons: [
+      'You want your Stocky purchase order history and supplier lead times kept, not left in a spreadsheet.',
+      'You want a real forecast for every SKU, including seasonality, promotions and new items.',
+      'You want reorder points and safety stock calculated for you, not typed into metafields.',
+      'You want to be told when to reorder, by text, and approve the PO with one reply.',
+      'You want to ask your own AI assistant about stock through Spark MCP.',
+    ],
+    staySummary: 'If you only need to create and receive purchase orders, native Shopify may be enough. Spark is for stores that want the buying decision itself made from their data.',
+    salesCopy: {
+      heroHeadline: { lead: 'Stocky is gone.', highlight: 'Keep your history. Get a real forecast.' },
+      heroFootnote: 'Imports Stocky PO history · Forecasting from the Free plan · Text with Sparki from Solo',
+      heroPanel: { kicker: 'STOCKY VS SPARK', title: 'What changes after Stocky', badge: 'AT A GLANCE' },
+      heroReasons: [
+        { label: 'PO history', incumbent: 'Cannot be imported into Shopify', spark: 'Imported, with real supplier lead times' },
+        { label: 'Forecasting', incumbent: 'Sidekick suggestions and reports', spark: 'Demand ESP per-SKU forecasts, free to start' },
+        { label: 'Reorder alerts', incumbent: 'Build them yourself in Flow', spark: 'Live alerts and Text with Sparki' },
+      ],
+      sourceChecked: 'October 29, 2026',
+      themes: {
+        eyebrow: 'Why Spark',
+        title: 'Six reasons Stocky stores move to Spark',
+        body: 'Each one is a workflow you can open in Spark today. Stocky and Shopify details come from Shopify’s own Stocky transition guide.',
+      },
+      comparison: {
+        eyebrow: 'Side by side',
+        title: 'Shopify after Stocky vs Spark',
+        body: 'Native Shopify replaces Stocky’s basic workflows. This compares what is left once Stocky is gone.',
+      },
+      fit: { eyebrow: 'Is Spark right for you?', title: 'Spark is built for Shopify stores that' },
+      closing: {
+        eyebrow: 'Before the export window closes',
+        lead: 'Export your Stocky purchase orders.',
+        highlight: 'Turn them into lead times and a forecast.',
+        body: 'Shopify says Stocky data stays exportable for at least 90 days after August 31, 2026. Export it now, start free, and let Sparki import it.',
+      },
+    },
+    sourceNote: 'Stocky’s retirement date, App Store delisting, export window, and what native Shopify does and does not replace were checked against Shopify’s Help Center guide, Transitioning from Stocky, on October 29, 2026. Spark details reflect current Spark pricing and the product as it ships today.',
+    trademark: 'Shopify and Stocky are trademarks of Shopify Inc. Spark Inventory is not affiliated with or endorsed by Shopify.',
+    relatedLinks: [
+      { href: '/shopify-inventory-management/', label: 'Shopify inventory management' },
+      { href: '/features/purchasing/', label: 'Forecasting and reorder planning' },
+      { href: '/reorder-point-calculator/', label: 'Reorder point calculator' },
+      { href: '/safety-stock-calculator/', label: 'Safety stock calculator' },
+      { href: '/pricing/', label: 'Pricing' },
+    ],
+    faqs: [
+      { question: 'Is Stocky still available?', answer: 'No. Shopify delisted Stocky from the App Store on February 2, 2026, and Stocky stopped working on August 31, 2026. Shopify says you keep read-only access to export your data for at least 90 days after that date.' },
+      { question: 'What should I export from Stocky?', answer: 'Export your purchase orders, including supplier, order and received dates, items, quantities and costs, using Stocky’s built-in reports. Shopify cannot import historical purchase orders and suppliers cannot be exported directly, so the purchase order export is the record of who you buy from and how long they take.' },
+      { question: 'Can Spark import my Stocky purchase orders?', answer: 'Yes. Hand the export to Sparki in app, or to your own AI assistant through Spark MCP. Spark maps and validates the file, shows you the proposed import, and writes the orders as closed history once you approve. It creates the suppliers they name and measures each supplier’s real lead time, which feeds reorder points.' },
+      { question: 'How is Demand ESP different from Shopify’s reorder suggestions?', answer: 'Demand ESP forecasts every SKU from its own history. It backtests several models per SKU and keeps the one that predicted best, adds back sales lost to stockouts, and handles seasonality, new items and promotions. Each forecast gets an A to D trust grade, and safety stock is sized from the forecast’s past errors.' },
+      { question: 'Which Spark plan replaces Stocky?', answer: 'Free gives one user a monthly forecast and buying plan. Solo ($99/mo) adds live forecasts, reorder alerts and Text with Sparki. Operate ($349/mo) runs purchase orders, receiving, transfers and bin moves in Spark. Each paid plan has a 14-day free trial.' },
+      { question: 'Does Spark keep Shopify stock levels in sync?', answer: 'Yes. Spark connects to Shopify, imports your products and order history, and keeps inventory levels in sync across your Shopify locations. It also connects to Amazon, WooCommerce, Square, Faire, Etsy, QuickBooks Online and Xero.' },
+    ],
+    ctaOptions: {
+      source: 'stocky_lp',
+      defaults: { utm_source: 'stocky_lp', utm_medium: 'website', utm_campaign: 'competitor' },
     },
   },
 };
