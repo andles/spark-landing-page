@@ -24,14 +24,29 @@ export const accountantFaqs: AccountantFaq[] = [
       "Usually when inventory stops fitting in the books: the client sells on several channels, holds stock in more than one location, reorders from suppliers on a regular cycle, or builds products from components. At that point stock counts, purchase orders, and COGS need a system built for inventory, with the ledger kept in sync.",
   },
   {
-    question: "How does Spark handle landed cost and COGS?",
+    question: "When does Spark post cost of goods sold to QuickBooks Online, Xero, or Zoho Books?",
     answer:
-      "Spark allocates shipping, duties, and other expenses to purchase orders so landed cost is recorded on receipts. Inventory valuation and COGS reports summarize stock value and cost of goods sold for the books.",
+      "When the stock ships. Each shipment posts its own journal (Dr Cost of Goods Sold, Cr Inventory Asset), dated the day the stock left and valued at the cost Spark's cost ledger relieved for those units. Channel orders from Shopify, Amazon, and other marketplaces post the same way. Invoices carry revenue, receivables, and tax only, so cost is never booked twice.",
+  },
+  {
+    question: "Does Spark use FIFO or average cost?",
+    answer:
+      "Either, set per item. A FIFO item relieves its oldest cost layers first; an average item relieves its running weighted average. For example, receive 10 units at $5 and 10 at $8, then ship 12: on FIFO the shipment posts $66 of COGS, not the $96 that costing at the latest price would give.",
+  },
+  {
+    question: "How does Spark handle landed cost?",
+    answer:
+      "Spark allocates shipping, duties, and other charges to purchase order lines, and received units enter stock at that landed cost. COGS therefore includes what it took to get the goods on the shelf. Inventory valuation and COGS reports summarize stock value and cost of goods sold for the books.",
+  },
+  {
+    question: "What happens to COGS when a customer returns stock or a cost is corrected later?",
+    answer:
+      "A customer return puts its units back at the cost they left at (Dr Inventory Asset, Cr Cost of Goods Sold), never at the sale price. If a receipt's cost is corrected after some of its units sold, Spark posts a correction journal that re-values the units that already left and the stock still on hand.",
   },
   {
     question: "Can Spark track raw materials and finished goods for manufacturing clients?",
     answer:
-      "Yes. Spark supports multi-level bills of materials, manufacturing orders, and component availability on the Scale plan, so raw materials, sub-assemblies, and finished goods are tracked in the same system as the rest of the client's inventory.",
+      "Yes. Spark supports multi-level bills of materials, manufacturing orders, and component availability on the Scale plan. When a work order completes, the finished goods enter stock carrying the cost their materials relieved plus labor and other conversion costs, and units that fail QA go to Scrapped Inventory.",
   },
   {
     question: "Can I see my client's inventory data in Spark?",
