@@ -2,7 +2,9 @@
 // and CPA firms who recommend Spark to product and manufacturing clients.
 // Follows the CharityRetailPage section styles. Partner terms come from
 // partnerTypes.ts and accounting claims match /features/accounting and the
-// integrations FAQ, so nothing here promises more than those pages do.
+// integrations FAQ, so nothing here promises more than those pages do. The
+// COGS section follows the monorepo's docs/accounting-inventory-journals.md
+// and docs/accounting-cogs-at-shipment.md.
 import {
   ArrowRight,
   BookOpenCheck,
@@ -16,6 +18,9 @@ import {
   LineChart,
   PackageSearch,
   Receipt,
+  RotateCcw,
+  ScanLine,
+  ShieldCheck,
   ShoppingCart,
   Truck,
   type LucideIcon,
@@ -75,8 +80,41 @@ const problems: Card[] = [
 ];
 
 const flowInputs = ["Sales orders", "Purchase orders and receipts", "Inventory adjustments"];
-const flowOutputs = ["Invoices", "Bills", "Credit notes", "Payments"];
+const flowOutputs = ["Invoices", "Bills", "Credit notes", "Payments", "Cost of goods journals"];
 const ledgers = ["QuickBooks Online", "Xero", "Zoho Books"];
+
+const cogsPoints: Card[] = [
+  {
+    title: "One journal per shipment",
+    body: "When stock ships, Spark posts Dr Cost of Goods Sold, Cr Inventory Asset for that shipment, dated the day it left. Shopify, Amazon, and other channel orders included.",
+    icon: Truck,
+  },
+  {
+    title: "FIFO or weighted average, per item",
+    body: "FIFO items relieve their oldest cost layers first. Average items relieve the running average. The journal carries the cost the layers actually released.",
+    icon: Layers,
+  },
+  {
+    title: "Landed cost in every layer",
+    body: "Receipts enter stock at cost plus allocated freight, duties, and other charges, so COGS includes what it took to get the goods on the shelf.",
+    icon: Receipt,
+  },
+  {
+    title: "Returns reverse at cost",
+    body: "A customer return puts its units back at the cost they left at (Dr Inventory Asset, Cr COGS), never at the sale price. A voided delivery reverses the same way.",
+    icon: RotateCcw,
+  },
+  {
+    title: "Late cost corrections ripple through",
+    body: "Correct a receipt's cost after some units sold and Spark posts a correction journal that re-values what already left and what is still on hand.",
+    icon: ScanLine,
+  },
+  {
+    title: "Posted once, with a safety net",
+    body: "Each stock movement is claimed once, so nothing posts twice. A check every five minutes posts any shipment whose journal did not go through.",
+    icon: ShieldCheck,
+  },
+];
 
 const capabilities: Card[] = [
   {
@@ -276,6 +314,45 @@ function LedgerFlowSection() {
   );
 }
 
+function CogsSection() {
+  return (
+    <section id="cogs" className="scroll-mt-16 py-14 lg:py-20 relative border-y border-white/[0.06] bg-white/[0.018]">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 items-end mb-10">
+          <ScrollReveal>
+            <SectionEyebrow>Cost of goods sold, done right</SectionEyebrow>
+            <h2 className="text-3xl lg:text-[2.6rem] font-bold text-white leading-tight tracking-tight" style={headingFont}>
+              COGS posted when stock ships,{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                at what it actually cost.
+              </span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <p className="text-[#b8bfcc] text-base lg:text-lg leading-relaxed max-w-lg">
+              Spark keeps the value of your client's stock, so every unit that leaves is relieved in the books once,
+              at the cost Spark's cost ledger released for it. Invoices carry revenue, receivables, and tax. The
+              shipment carries the cost. Inventory Asset in QuickBooks Online, Xero, or Zoho Books keeps matching
+              the stock in Spark.
+            </p>
+          </ScrollReveal>
+        </div>
+        <CardGrid cards={cogsPoints} columns="md:grid-cols-2 lg:grid-cols-3" />
+        <ScrollReveal className="mt-6">
+          <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.04] p-6 lg:p-7">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-cyan-300 mb-3">Example: why the cost layer matters</p>
+            <p className="text-sm lg:text-base leading-relaxed text-white/85">
+              Receive 10 units at $5, then 10 at $8, and ship 12. On FIFO, Spark posts $66 of COGS (10 × $5 + 2 × $8)
+              and leaves 8 units at $8 on the books. Costing the shipment at the latest price would book $96 and leave
+              Inventory Asset $30 short.
+            </p>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
 function CleanNumbersSection() {
   return (
     <section className="py-14 lg:py-20 relative">
@@ -469,6 +546,7 @@ export default function AccountantsPage() {
         <ProblemSection />
         <LedgerFlowSection />
         <YouTubeVideoSection videoKey="quickbooks" />
+        <CogsSection />
         <CleanNumbersSection />
         <ManufacturingAndAdvisorySection />
         <PartnershipSection />

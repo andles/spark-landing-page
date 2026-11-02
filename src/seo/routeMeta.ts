@@ -134,8 +134,8 @@ export const routeMeta: RouteMeta[] = [
     path: '/accountants',
     title: 'Inventory Software for Accountants and Bookkeepers | Spark Inventory',
     description:
-      'Recommend Spark Inventory to clients who hold stock or manufacture. Clean QuickBooks Online, Xero, and Zoho Books sync, landed cost, COGS reports, and a partner program.',
-    lastModified: '2026-10-29',
+      'Recommend Spark Inventory to clients who hold stock or manufacture. COGS posted at shipment with FIFO or average cost, landed cost, and QuickBooks Online, Xero, and Zoho Books sync.',
+    lastModified: '2026-11-02',
     schema: [buildAccountantFaqSchema()],
   },
   {
