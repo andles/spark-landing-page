@@ -147,6 +147,17 @@ const SORO_MOUNT = /<div id="soro-blog"><\/div>/;
 // The page's single h1, "Spark Inventory Blog" in the prerendered /blog/ page.
 const PAGE_HEADING = /(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/;
 
+// Search results cut titles at about 60 characters. The article title always
+// comes first; the brand suffix shrinks, then drops, so it never pushes the
+// title past that limit.
+const TITLE_LIMIT = 60;
+const TITLE_SUFFIXES = [' | Spark Inventory Blog', ' | Spark Inventory', ' | Spark'];
+
+export function articlePageTitle(articleTitle: string): string {
+  const fit = TITLE_SUFFIXES.find((suffix) => articleTitle.length + suffix.length <= TITLE_LIMIT);
+  return fit === undefined ? articleTitle : `${articleTitle}${fit}`;
+}
+
 /**
  * Turns the prerendered /blog/ page into the article's own page: title,
  * description, a self-referencing canonical, social tags, BlogPosting
@@ -155,7 +166,7 @@ const PAGE_HEADING = /(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/;
  */
 export function renderArticlePage(html: string, article: SoroArticle, content: string): string {
   const url = articleUrl(article.slug);
-  const title = `${article.title} | Spark Inventory Blog`;
+  const title = articlePageTitle(article.title);
   const description = article.excerpt || `${article.title}, from the Spark Inventory blog.`;
   const schema = {
     '@context': 'https://schema.org',
