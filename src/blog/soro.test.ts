@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import {
   appendArticlesToSitemap,
+  articlePageTitle,
   cleanArticleHtml,
   extractSoroArticles,
   loadSoroArticleContent,
@@ -123,6 +124,14 @@ describe('renderArticlePage', () => {
     expect(page).toContain('<div id="soro-blog"><article class="soro-article"><time datetime="2026-09-01">September 1, 2026</time><div><p>Seasonal body.</p></div>');
     expect(page).not.toContain('<h2>Seasonal Demand');
   });
+});
+
+it('articlePageTitle keeps article titles first and within 60 characters', () => {
+  expect(articlePageTitle('Seasonal Demand Forecasting')).toBe('Seasonal Demand Forecasting | Spark Inventory Blog');
+  expect(articlePageTitle('How to Set Reorder Points for Seasonality')).toBe('How to Set Reorder Points for Seasonality | Spark Inventory');
+  expect(articlePageTitle('How to Set Reorder Points for Seasonal SKUs in Q4')).toBe('How to Set Reorder Points for Seasonal SKUs in Q4 | Spark');
+  const long = 'Safety Stock Formulas Every Multichannel Seller Should Know Now';
+  expect(articlePageTitle(long)).toBe(long);
 });
 
 it('renderBlogIndex links every article from /blog/', () => {

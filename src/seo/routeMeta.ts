@@ -116,7 +116,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/3pl',
-    title: 'AI Forecasting, Price Books & Run Planning for 3PLs | Spark Inventory',
+    title: 'AI Forecasting, Price Books & Run Planning for 3PLs | Spark',
     description:
       'Give clients AI forecasting and live visibility while your team manages price books, purchasing, run economics, and client workspaces in one platform.',
     lastModified: '2026-08-24',
@@ -124,7 +124,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/in-store-pickup',
-    title: 'BOPIS Software on Accurate In-Store Inventory | Spark Inventory',
+    title: 'BOPIS Software on Accurate In-Store Inventory | Spark',
     description:
       'Buy online, pick up in store (BOPIS) on accurate in-store inventory: real-time stock by store, pickup order tracking, and AI forecasting.',
     lastModified: '2026-10-26',
@@ -132,7 +132,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/accountants',
-    title: 'Inventory Software for Accountants and Bookkeepers | Spark Inventory',
+    title: 'Inventory Software for Accountants and Bookkeepers | Spark',
     description:
       'Recommend Spark Inventory to clients who hold stock or manufacture. COGS posted at shipment with FIFO or average cost, landed cost, and QuickBooks Online, Xero, and Zoho Books sync.',
     lastModified: '2026-11-02',
@@ -148,7 +148,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/reduce-stockouts-overstock',
-    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
+    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
     lastModified: '2026-10-09',
@@ -156,7 +156,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/reduce-stockouts-&-overstock',
-    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark Inventory',
+    title: 'Reduce Stockouts & Overstock with AI Forecasting | Spark',
     description:
       'Reduce excess inventory and stockouts with explainable AI forecasting, adaptive reorder recommendations, and reviewed purchase orders.',
     lastModified: '2026-10-09',
@@ -213,7 +213,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/linnworks-alternative',
-    title: 'Linnworks Alternative With Forecasting Included | Spark Inventory',
+    title: 'Linnworks Alternative With Forecasting Included | Spark',
     description:
       'Switch from Linnworks to Spark Inventory for Demand ESP forecasting with no add-on, live reorder alerts by text, published pricing, and no onboarding fee.',
     lastModified: '2026-10-26',
@@ -221,7 +221,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/shopify-stocky-alternative',
-    title: 'Shopify Stocky Alternative After the Shutdown | Spark Inventory',
+    title: 'Shopify Stocky Alternative After the Shutdown | Spark',
     description:
       'Stocky shut down August 31, 2026. Import your Stocky purchase order history into Spark, learn real supplier lead times, and get Demand ESP forecasts and reorder alerts by text.',
     lastModified: '2026-10-29',
@@ -319,7 +319,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/text-with-sparki',
-    title: 'Text with Sparki: Inventory Management by Text | Spark Inventory',
+    title: 'Text with Sparki: Inventory Management by Text | Spark',
     description:
       'Text Sparki, Spark Inventory’s AI assistant. Ask about stock by SMS, get alerts and a daily brief, and confirm draft purchase orders with one reply.',
     lastModified: '2026-10-09',
@@ -396,7 +396,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/shopify-inventory-management',
-    title: 'Shopify Inventory Management & Forecasting Software | Spark Inventory',
+    title: 'Shopify Inventory Management & Forecasting Software | Spark',
     description:
       'Turn Shopify sales into forecasts, reorder recommendations, and draft purchase orders with agent-guided onboarding in Spark or over MCP.',
     lastModified: '2026-08-29',
@@ -453,7 +453,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/what-is-inventory-management',
-    title: 'What Is Inventory Management? Planning Guide | Spark Inventory',
+    title: 'What Is Inventory Management? Planning Guide | Spark',
     description:
       'Learn inventory tracking, planning, reorder points, days of supply, lead-time demand, stockout causes, and how to evaluate inventory software.',
     lastModified: '2026-10-26',
@@ -534,7 +534,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/inventory-turnover-calculator',
-    title: 'Inventory Turnover Calculator: Ratio and Days | Spark Inventory',
+    title: 'Inventory Turnover Calculator: Ratio and Days | Spark',
     description:
       'Free inventory turnover calculator: enter cost of goods sold and beginning and ending inventory to get your turnover ratio and days in inventory.',
     lastModified: '2026-10-28',
@@ -559,7 +559,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/safety-stock-calculator',
-    title: 'Safety Stock Calculator With Formula and Z Score | Spark Inventory',
+    title: 'Safety Stock Calculator With Formula and Z Score | Spark',
     description:
       'Free safety stock calculator: combine demand and lead time variability at any service level, see the Z score and what a higher service level costs, and get your reorder point.',
     lastModified: '2026-10-28',
@@ -584,7 +584,7 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/inventory-reorder-walkthrough',
-    title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark Inventory',
+    title: 'Inventory Reorder Walkthrough: Forecast to Draft PO | Spark',
     description:
       'Watch Spark turn sales history, seasonality, stock, incoming supply, and purchasing constraints into a draft purchase order you review.',
     lastModified: '2026-09-17',
