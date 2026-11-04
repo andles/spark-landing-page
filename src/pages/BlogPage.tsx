@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
+import { capturePageNotFound } from '../analytics';
 import { installSoroCardNavigation } from '../blog/soroCardNavigation';
 
 const SORO_EMBED_URL =
@@ -24,6 +25,13 @@ export default function BlogPage() {
       ? document.querySelector('main h1')?.textContent?.trim() || 'Spark Inventory Blog'
       : 'Spark Inventory Blog',
   );
+
+  // A /blog/<slug>/ address with no Soro article gets the article list with a
+  // 404 status from the edge function, which renders no article. Report it
+  // like any other missing page.
+  useEffect(() => {
+    if (slug && edgeHtml && !edgeHtml.includes('soro-article')) capturePageNotFound(window.location.pathname);
+  }, [slug, edgeHtml]);
 
   useEffect(() => {
     const embedHost = embedHostRef.current;

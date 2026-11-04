@@ -87,8 +87,9 @@ describe('PostHog capture boundary', () => {
     const filter = sdk.init.mock.calls[0][1].before_send;
     const result = filter({ event: '$pageview', $set_once: { $initial_current_url: 'private-reset-token' }, properties: { distinct_id: 'anonymous', route: '/', $current_url: 'https://sparkinventory.com/reset?token=secret', $title: 'Customer Name', $set: { email: 'private@example.com' }, $set_once: { $initial_current_url: 'secret' }, record: { name: 'private' } } });
     expect(result.$set_once).toBeUndefined();
-    // The page URL in this suite carries ?utm_source=google, so the landing hit reports it.
-    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', utm_source: 'google', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
+    // The page URL in this suite carries ?utm_source=google, so the landing hit
+    // reports it. The referrer's path and query (?secret=value) never leave.
+    expect(result.properties).toEqual({ distinct_id: 'anonymous', route: '/', surface: 'landing', utm_source: 'google', $referrer: 'https://search.example/', $referring_domain: 'search.example', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
     expect(filter({ event: '$autocapture', properties: {} })).toBeNull();
   });
   it('does not let an unavailable SDK block navigation', async () => {
@@ -168,7 +169,7 @@ describe('hybrid consent privacy boundary', () => {
     const filter = sdk.init.mock.calls[0][1].before_send;
     expect(filter({ event: '$pageview', properties: { route: '/', distinct_id: 'anonymous' } })).toBeNull();
     expect(filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, $session_id: 'session', $browser: 'Chrome' } }).properties)
-      .toEqual({ route: '/', utm_source: 'google', distinct_id: '$posthog_cookieless', $cookieless_mode: true, surface: 'landing', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
+      .toEqual({ route: '/', utm_source: 'google', $referrer: 'https://search.example/', $referring_domain: 'search.example', distinct_id: '$posthog_cookieless', $cookieless_mode: true, surface: 'landing', $host: 'sparkinventory.com', $pathname: '/', $current_url: 'https://sparkinventory.com/' });
     expect(filter({ event: '$identify', properties: { $cookieless_mode: true } })).toBeNull();
   });
   it('keeps the Google click id and UTM tags from the URL on cookieless visits', async () => {
@@ -354,13 +355,27 @@ describe('meeting_booked', () => {
 });
 
 describe('coverage for bot filtering, channels, scroll depth and web vitals', () => {
-  it('keeps the user agent, referring domain and timezone but never the full referrer', async () => {
+  it('reports the browser referrer reduced to its origin, never the full URL', async () => {
     const analytics = await loadAnalytics();
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
-    const result = filter({ event: '$pageview', properties: { route: '/', $raw_user_agent: 'Mozilla/5.0', $referring_domain: 'www.google.com', $referrer: 'https://www.google.com/search?q=private', $timezone: 'America/Denver' } });
-    expect(result.properties).toMatchObject({ $raw_user_agent: 'Mozilla/5.0', $referring_domain: 'www.google.com', $timezone: 'America/Denver', $host: 'sparkinventory.com' });
-    expect(result.properties.$referrer).toBeUndefined();
+    // The SDK adds no referrer while save_referrer is off; before_send must.
+    const result = filter({ event: '$pageview', properties: { route: '/', $raw_user_agent: 'Mozilla/5.0', $timezone: 'America/Denver' } });
+    expect(result.properties).toMatchObject({ $raw_user_agent: 'Mozilla/5.0', $referrer: 'https://search.example/', $referring_domain: 'search.example', $timezone: 'America/Denver', $host: 'sparkinventory.com' });
+    const stale = filter({ event: '$pageview', properties: { route: '/', $referrer: 'https://www.google.com/search?q=private', $referring_domain: 'www.google.com' } });
+    expect(stale.properties).toMatchObject({ $referrer: 'https://search.example/', $referring_domain: 'search.example' });
+  });
+  it('reports a visit with no referrer as direct, the way PostHog does', async () => {
+    const analytics = await loadAnalytics();
+    Object.assign(document, { referrer: '' });
+    analytics.capturePageview('/');
+    const result = sdk.init.mock.calls[0][1].before_send({ event: '$pageview', properties: { route: '/' } });
+    expect(result.properties).toMatchObject({ $referrer: '$direct', $referring_domain: '$direct' });
+  });
+  it('keeps referrer settings that keep the full referrer out of the cookie', async () => {
+    const analytics = await loadAnalytics();
+    analytics.capturePageview('/');
+    expect(sdk.init.mock.calls[0][1]).toMatchObject({ save_referrer: false, save_campaign_params: false });
   });
   it('enables page leave and web vitals without network timing', async () => {
     const analytics = await loadAnalytics();
@@ -406,9 +421,9 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     document.cookie = 'cookieyes-consent=action:yes,consent:no,analytics:no';
     analytics.capturePageview('/');
     const filter = sdk.init.mock.calls[0][1].before_send;
-    const result = filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $referring_domain: 'www.google.com', $browser: 'Chrome' } });
-    expect(result.properties).toMatchObject({ distinct_id: '$posthog_cookieless', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $host: 'sparkinventory.com' });
-    expect(result.properties.$referring_domain).toBeUndefined();
+    const result = filter({ event: '$pageview', properties: { route: '/', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $browser: 'Chrome' } });
+    // The referrer stays so PostHog can give cookieless sessions a channel.
+    expect(result.properties).toMatchObject({ distinct_id: '$posthog_cookieless', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0', $timezone: 'Europe/Berlin', $host: 'sparkinventory.com', $referrer: 'https://search.example/', $referring_domain: 'search.example', utm_source: 'google' });
     expect(result.properties.$browser).toBeUndefined();
     expect(filter({ event: '$pageleave', properties: { $cookieless_mode: true } })).toBeNull();
     expect(filter({ event: '$web_vitals', properties: { $cookieless_mode: true } })).toBeNull();
@@ -426,5 +441,34 @@ describe('coverage for bot filtering, channels, scroll depth and web vitals', ()
     expect(filter({ event: '$pageview', properties: { route: '/' } })).toBeNull();
     window.location.search = '?spark_internal=0';
     expect(filter({ event: '$pageview', properties: { route: '/' } })).not.toBeNull();
+  });
+  it('labels Soro articles by slug instead of /404', async () => {
+    const analytics = await loadAnalytics();
+    expect(analytics.analyticsRoute('/blog/purchase-order-approval-workflow/')).toBe('/blog/purchase-order-approval-workflow');
+    expect(analytics.analyticsRoute('/blog/')).toBe('/blog');
+    expect(analytics.analyticsRoute('/blog/Bad_Slug/')).toBe('/404');
+    expect(analytics.analyticsRoute('/blog/a/b/')).toBe('/404');
+  });
+});
+
+describe('page not found', () => {
+  it('reports the missing path and referrer, without the query string', async () => {
+    const analytics = await loadAnalytics();
+    window.location.pathname = '/old-pricing-page/';
+    window.location.search = '?utm_source=facebook&utm_content=oct30_fb&email=private@example.com';
+    analytics.capturePageNotFound(window.location.pathname);
+    expect(sdk.capture).toHaveBeenCalledWith('page_not_found', { route: '/404', missing_path: '/old-pricing-page/' });
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: 'page_not_found', properties: { route: '/404', missing_path: '/old-pricing-page/' } });
+    expect(result.properties).toMatchObject({ route: '/404', missing_path: '/old-pricing-page/', utm_source: 'facebook', utm_content: 'oct30_fb', $referrer: 'https://search.example/', $current_url: 'https://sparkinventory.com/404' });
+    expect(JSON.stringify(result)).not.toContain('private@example.com');
+  });
+  it('is sent cookieless too, so visitors who have not chosen are counted', async () => {
+    const analytics = await loadAnalytics();
+    document.cookie = '';
+    analytics.capturePageNotFound('/missing/');
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    const result = filter({ event: 'page_not_found', properties: { route: '/404', missing_path: '/missing/', $cookieless_mode: true, $raw_user_agent: 'Mozilla/5.0' } });
+    expect(result.properties).toMatchObject({ distinct_id: '$posthog_cookieless', missing_path: '/missing/', $referring_domain: 'search.example' });
   });
 });
