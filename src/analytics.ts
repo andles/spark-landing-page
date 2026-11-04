@@ -17,8 +17,11 @@ const allowedProperties = new Set([
   '$groups', '$group_type', '$group_key', 'surface', 'route', 'signup_source', 'booking_source',
   'initial_referring_domain',
   // PostHog needs the user agent for bot classification and the cookieless
-  // hash, and the referring domain (never the full referrer URL) for channels.
-  '$raw_user_agent', '$referring_domain', '$timezone',
+  // hash, and the referrer for channels. The referrer is set in before_send,
+  // reduced to its origin (see referrerProperties).
+  '$raw_user_agent', '$referrer', '$referring_domain', '$timezone',
+  // The path a page_not_found event reports, without its query string.
+  'missing_path',
   // Scroll depth and time on page. $prev_pageview_pathname is rewritten to a
   // route label in before_send.
   '$prev_pageview_pathname', '$prev_pageview_duration',
@@ -34,14 +37,16 @@ export const attributionParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
-const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'meeting_booked']);
+const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'meeting_booked', 'page_not_found']);
 // Cookieless capture (before a banner choice, and after a rejection) only
 // counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
 // $timezone, so those must survive or the event is dropped at ingestion. The
-// campaign values come from this page's URL, not from storage, so ad clicks
-// and UTM sources stay attributable without a cookie.
-const cookielessProperties = new Set(['token', 'route', 'signup_source', '$raw_user_agent', '$timezone', ...attributionParams]);
-const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'meeting_booked']);
+// campaign values come from this page's URL and the referrer from the browser,
+// not from storage, so ad clicks, UTM sources and search or social referrals
+// stay attributable without a cookie. Without the referrer PostHog has no
+// channel for a session and reports it as Unknown.
+const cookielessProperties = new Set(['token', 'route', 'signup_source', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
+const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'meeting_booked', 'page_not_found']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
 // Same-origin route to PostHog so ad blockers do not drop events. The Netlify
@@ -106,6 +111,28 @@ function registerAttribution(posthog: PostHog): void {
     }
   }
   posthog.register_once(campaign);
+}
+
+// The page's referrer as PostHog reports it: $referrer and $referring_domain,
+// or $direct for both when there is none. The SDK's save_referrer stays off
+// because it would keep the full referrer URL in the shared cookie, and with it
+// off the SDK puts no referrer on events at all, so it is set here for every
+// event, cookieless ones included. The URL is reduced to its origin, which is
+// all most sites send anyway, so a search query or private path never leaves.
+// After client-side navigation document.referrer still names the page that
+// opened the site, the same session-wide value the SDK would report.
+export function referrerProperties(): { $referrer: string; $referring_domain: string } {
+  try {
+    if (document.referrer) {
+      const referrer = new URL(document.referrer);
+      if (referrer.protocol === 'https:' || referrer.protocol === 'http:') {
+        return { $referrer: `${referrer.origin}/`, $referring_domain: referrer.host };
+      }
+    }
+  } catch {
+    // Invalid browser referrers count as direct.
+  }
+  return { $referrer: '$direct', $referring_domain: '$direct' };
 }
 
 // Before a banner choice the SDK stays in its default cookieless state
@@ -262,6 +289,7 @@ export function initializeAnalytics(): boolean {
         if (value) properties[key] = value.slice(0, 200);
         else delete properties[key];
       });
+      Object.assign(properties, referrerProperties());
       if (consent !== 'accepted') {
         // Discard any event queued under a previously identified session.
         if (event.properties.$cookieless_mode !== true || !cookielessEvents.has(event.event)) return null;
@@ -288,6 +316,10 @@ export function initializeAnalytics(): boolean {
 
 export function analyticsRoute(pathname: string): string {
   if (pathname.startsWith('/r/')) return '/r/:slug';
+  // Soro articles are public pages at /blog/<slug>/ with no route entry of
+  // their own. Without this every article view was counted as /404.
+  const article = /^\/blog\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/.exec(pathname);
+  if (article) return `/blog/${article[1]}`;
   if (pathname === '/book-a-call') return pathname;
   const normalized = pathname.replace(/\/+$/, '') || '/';
   return findRouteMeta(normalized) ? normalized : '/404';
@@ -296,6 +328,16 @@ export function analyticsRoute(pathname: string): string {
 export function capturePageview(pathname: string): void {
   const route = analyticsRoute(pathname);
   withAnalytics((posthog) => posthog.capture('$pageview', { route }));
+}
+
+// Sent by the not-found page (and by a /blog/<slug>/ address with no article)
+// with the address that was asked for, so broken inbound links can be found
+// and redirected. The query string stays out; UTM tags and click ids from it
+// are added in before_send like on any event, and the referrer says which site
+// carried the link.
+export function capturePageNotFound(pathname: string): void {
+  const missingPath = pathname.slice(0, 300);
+  withAnalytics((posthog) => posthog.capture('page_not_found', { route: '/404', missing_path: missingPath }));
 }
 
 export function captureCta(event: 'signup_clicked' | 'demo_clicked'): void {

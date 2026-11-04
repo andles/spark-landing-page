@@ -24,10 +24,14 @@ Events: public-route `$pageview`, `$pageleave` (scroll depth and time on page
 via the `$prev_pageview_*` properties, with the previous path reduced to a route
 label), `$web_vitals` (the `_value` numbers only), `signup_clicked`, `demo_clicked`, and
 `meeting_booked` (once per session on `/meeting-confirmed`, the Calendly
-redirect, with `booking_source` of `fishbowl_lp` or `demo`). Every event carries
+redirect, with `booking_source` of `fishbowl_lp` or `demo`), and `page_not_found`
+(sent by the 404 page and by a `/blog/<slug>/` address with no Soro article,
+with `missing_path` set to the requested path without its query string; use it
+to find broken inbound links). Every event carries
 `route`, `surface=landing`, and a `$current_url` rebuilt from the route, so filter
 marketing traffic on `surface = 'landing'`.
-Prospect slugs and unknown paths are redacted. The app identifies signup users
+Prospect slugs and unknown paths are redacted. Soro articles are reported as
+`/blog/<slug>` (before Nov 2026 they were all counted as `/404`). The app identifies signup users
 and records `signup_completed`; both SDKs share cookie identity and the same
 explicit attribution-cookie properties: first-touch `utm_source`, `utm_medium`,
 `utm_campaign`, `utm_term`, `utm_content`, the Google click ids `gclid`,
@@ -35,9 +39,13 @@ explicit attribution-cookie properties: first-touch `utm_source`, `utm_medium`,
 `web-app/src/helpers/posthogAnalytics.ts` in spark-monorepo.
 
 Events also keep `$raw_user_agent` (PostHog bot classification and the
-cookieless hash), `$referring_domain` (channel classification; the full
-`$referrer` URL is dropped), `$timezone`, and a fixed `$host` of
-`sparkinventory.com`.
+cookieless hash), `$timezone`, and a fixed `$host` of `sparkinventory.com`.
+`$referrer` and `$referring_domain` are set in `before_send` from
+`document.referrer`, reduced to its origin (`https://www.google.com/`), or
+`$direct` for both when there is none. The SDK's `save_referrer` stays off
+because it would store the full referrer URL in the shared cookie, and with it
+off the SDK adds no referrer to events. Until Nov 2026 events had no referrer at
+all, so PostHog put about 90% of sessions in the Unknown channel.
 
 Campaign values: the cookie keeps first-touch values for the app, but an event
 only reports a UTM or click id that is in the current page's URL. Otherwise every
@@ -47,7 +55,8 @@ event as the first-touch record.
 
 Before a choice and after a rejection, events are cookieless and keep only
 `route`, `signup_source`, the UTM tags and Google click ids in that page's URL,
-`$raw_user_agent`, `$timezone` and `$host`, which PostHog needs with the request
+the origin-only `$referrer` and `$referring_domain`, `missing_path` on
+`page_not_found`, `$raw_user_agent`, `$timezone` and `$host`, which PostHog needs with the request
 IP to compute its daily hash. Without the user agent and host those events were
 dropped at ingestion. `$pageleave` and `$web_vitals` are not sent in cookieless
 mode.

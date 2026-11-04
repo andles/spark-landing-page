@@ -1,9 +1,19 @@
 import { ArrowRight, Compass } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { capturePageNotFound } from '../analytics';
 import AgencyFooter from '../agency/AgencyFooter';
 import AgencyHeader from '../agency/AgencyHeader';
 
 export function NotFoundPage() {
+  // Netlify serves this page at the address that was asked for, with a 404
+  // status, so the address bar keeps it. Report that address so the broken
+  // link can be found; /404 itself is the page's own review route.
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname.replace(/\/+$/, '') !== '/404') capturePageNotFound(pathname);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
