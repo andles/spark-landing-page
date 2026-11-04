@@ -20,6 +20,7 @@ import FishbowlOffer from "./fishbowl/FishbowlOffer";
 import CampaignWorkflowSection from "./CampaignWorkflowSection";
 import FishbowlMigration from "./fishbowl/FishbowlMigration";
 import FishbowlComparison from "./fishbowl/FishbowlComparison";
+import FishbowlFit from "./fishbowl/FishbowlFit";
 import FishbowlTrust from "./fishbowl/FishbowlTrust";
 import FishbowlAlternatives from "./fishbowl/FishbowlAlternatives";
 import CampaignFAQSection from "./CampaignFAQSection";
@@ -57,6 +58,7 @@ export default function FishbowlPage() {
         <CampaignWorkflowSection kind="fishbowl" />
         <FishbowlMigration />
         <FishbowlComparison />
+        <FishbowlFit />
         <FishbowlTrust />
         <FishbowlAlternatives />
         <CampaignFAQSection kind="fishbowl" />

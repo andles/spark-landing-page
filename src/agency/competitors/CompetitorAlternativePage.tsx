@@ -4,6 +4,7 @@ import {
   Bot,
   Check,
   CircleCheck,
+  CircleMinus,
   GitCompareArrows,
   ScanSearch,
   ShieldCheck,
@@ -14,9 +15,9 @@ import { useScrollToHashOnMount } from '../../hooks/useScrollToHash';
 import AgencyFooter from '../AgencyFooter';
 import AgencyHeader from '../AgencyHeader';
 import BookACallButton from '../BookACallButton';
-import CapterraReview from '../CapterraReview';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
+import { otherComparisonPages } from './comparisonPages';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
 
 const accentStyles = {
@@ -150,7 +151,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
   const { bookUrl, signupUrl } = useCtaLinks(config.ctaOptions);
 
   return (
-    <section className="relative overflow-hidden bg-[#06080d] px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
+    <section className="relative overflow-hidden bg-[#06080d] px-5 pb-16 pt-24 sm:px-6 sm:pt-28 md:px-8 lg:pb-28 lg:pt-32">
       <div className="absolute inset-0 dot-grid opacity-35" />
       <div className="absolute inset-0 noise opacity-60" />
       <div
@@ -158,17 +159,19 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
         style={{ background: colors.glow }}
       />
       <div className="relative z-10 mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-16">
-        <ScrollReveal>
-          <div className={`inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-sm ${colors.border} ${colors.soft} ${colors.subtleText}`}>
+        {/* Not wrapped in ScrollReveal: the first screen must be visible in the
+            prerendered HTML, before any JavaScript runs. */}
+        <div>
+          <div className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm ${colors.border} ${colors.soft} ${colors.subtleText}`}>
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             {config.eyebrow}
           </div>
-          <h1 className="mt-7 text-[2.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-white sm:text-6xl lg:text-[4.55rem]">
+          <h1 className="mt-5 text-[2.35rem] font-bold leading-[1.05] tracking-[-0.04em] text-white sm:mt-7 sm:text-6xl lg:text-[4.55rem]">
             {copy ? copy.heroHeadline.lead : `Upgrading from ${config.name}?`}
             <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>{copy ? copy.heroHeadline.highlight : 'Review your import before anything is committed.'}</span>
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">{config.heroBody}</p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[#b8bfcc] sm:mt-7 sm:text-lg sm:leading-8">{config.heroBody}</p>
+          <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
             <BookACallButton
               url={bookUrl}
               className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}
@@ -180,9 +183,9 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             </a>
           </div>
           <p className="mt-4 text-xs leading-5 text-white/40">{copy ? copy.heroFootnote : 'Agent-led mapping · validation before import · your team approves'}</p>
-        </ScrollReveal>
+        </div>
 
-        <ScrollReveal delay={0.12}>
+        <div>
           <div className="relative overflow-hidden rounded-[30px] border border-white/[0.1] bg-[#090d15]/95 shadow-[0_38px_120px_rgba(0,0,0,0.5)]">
             <div className={`absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent ${colors.gradient} to-transparent`} />
             <div className="flex items-center justify-between border-b border-white/[0.07] bg-white/[0.025] px-5 py-4">
@@ -227,8 +230,10 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
-          <p className="mt-3 text-center text-[10px] leading-5 text-white/30">Prices and packaging can change. Vendor source checked {copy ? copy.sourceChecked : 'August 24, 2026'}.</p>
-        </ScrollReveal>
+          {!config.notFitReasons && (
+            <p className="mt-3 text-center text-[10px] leading-5 text-white/30">Prices and packaging can change. Vendor source checked {copy ? copy.sourceChecked : 'August 24, 2026'}.</p>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -243,17 +248,34 @@ function MigrationSection({ competitorKey }: { competitorKey: CompetitorKey }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_60%_at_18%_50%,rgba(139,92,246,0.08),transparent_70%)]" />
       <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
         <ScrollReveal>
-          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>Agent-led migration</p>
+          <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{config.migrationPlan ? `Migrating from ${config.name}` : 'Agent-led migration'}</p>
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
             Move the operation.
             <span className={`block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>With guided data mapping.</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#b8bfcc]">Sparki in app, or your compatible AI assistant through Spark MCP, can inspect the exports, build the mapping, validate the proposal, and stop for approval before import.</p>
-          <div className="mt-7 flex flex-wrap gap-2">
-            {config.migrationSignals.map((signal) => (
-              <span key={signal} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/55">{signal}</span>
-            ))}
-          </div>
+          {config.migrationPlan ? (
+            <div className="mt-7 space-y-6">
+              <div>
+                <h3 className="text-sm font-semibold text-white">What moves over</h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {config.migrationPlan.moves.map((item) => (
+                    <li key={item} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/65">{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-white">How long it takes</h3>
+                <p className="mt-2 max-w-xl text-sm leading-7 text-[#b8bfcc]">{config.migrationPlan.timeline}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-7 flex flex-wrap gap-2">
+              {config.migrationSignals.map((signal) => (
+                <span key={signal} className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-white/55">{signal}</span>
+              ))}
+            </div>
+          )}
         </ScrollReveal>
 
         <ScrollReveal delay={0.12}>
@@ -367,7 +389,7 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
               </colgroup>
               <thead className="border-b border-white/[0.08] bg-white/[0.025] text-xs font-semibold text-white/50">
                 <tr>
-                  <th scope="col" className="px-5 py-4">Decision</th>
+                  <th scope="col" className="px-5 py-4">Feature</th>
                   <th scope="col" className="border-l border-white/[0.06] px-5 py-4">{config.fullName}</th>
                   <th scope="col" className="border-l border-white/[0.06] px-5 py-4">Spark Inventory</th>
                   {showLean && <th scope="col" className="border-l border-white/[0.06] px-4 py-4">Read</th>}
@@ -400,6 +422,12 @@ function ComparisonSection({ competitorKey }: { competitorKey: CompetitorKey }) 
               </article>
             ))}
           </div>
+          {config.notFitReasons && (
+            <p className="mt-5 text-center text-xs leading-5 text-[#8b95a8]">
+              {config.sourceNote}{' '}
+              <a href={config.sourceUrl} target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-white">{config.sourceLabel}</a>
+            </p>
+          )}
         </ScrollReveal>
       </div>
     </section>
@@ -410,6 +438,37 @@ function FitSection({ competitorKey }: { competitorKey: CompetitorKey }) {
   const config = competitorConfigs[competitorKey];
   const colors = accentStyles[config.accent];
   const copy = config.salesCopy;
+
+  if (copy && config.notFitReasons) {
+    return (
+      <section id="fit" className="scroll-mt-16 bg-[#06080d] px-6 py-20 md:px-8 lg:py-28">
+        <div className="mx-auto max-w-[1120px]">
+          <ScrollReveal className="text-center">
+            <p className={`font-mono text-xs uppercase tracking-[0.18em] ${colors.text}`}>{copy.fit.eyebrow}</p>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{copy.fit.title}</h2>
+          </ScrollReveal>
+          <ScrollReveal staggerChildren={100} className="mt-12 grid gap-5 md:grid-cols-2">
+            <RevealItem index={0}>
+              <article className={`h-full rounded-3xl border p-6 sm:p-8 ${colors.border} ${colors.soft}`}>
+                <h3 className={`font-mono text-[11px] uppercase tracking-[0.16em] ${colors.subtleText}`}>Spark fits teams that</h3>
+                <ul className="mt-6 space-y-4">
+                  {config.switchReasons.map((reason) => <li key={reason} className="flex gap-3 text-sm leading-6 text-[#e0e4ea]"><CircleCheck className={`mt-1 h-4 w-4 shrink-0 ${colors.text}`} aria-hidden="true" />{reason}</li>)}
+                </ul>
+              </article>
+            </RevealItem>
+            <RevealItem index={1}>
+              <article className="h-full rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6 sm:p-8">
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/55">Spark may not fit if</h3>
+                <ul className="mt-6 space-y-4">
+                  {config.notFitReasons.map((reason) => <li key={reason} className="flex gap-3 text-sm leading-6 text-[#c7cdd7]"><CircleMinus className="mt-1 h-4 w-4 shrink-0 text-white/40" aria-hidden="true" />{reason}</li>)}
+                </ul>
+              </article>
+            </RevealItem>
+          </ScrollReveal>
+        </div>
+      </section>
+    );
+  }
 
   if (copy) {
     return (
@@ -492,17 +551,28 @@ function FaqAndSources({ competitorKey }: { competitorKey: CompetitorKey }) {
 
         <ScrollReveal delay={0.12}>
           <aside className="rounded-3xl border border-white/[0.08] bg-[#090d15] p-6 sm:p-7 lg:sticky lg:top-24">
-            <div className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${colors.border} ${colors.soft}`}><ShieldCheck className={`h-5 w-5 ${colors.text}`} aria-hidden="true" /></div>
-            <h2 className="mt-5 text-lg font-semibold text-white">Evidence and disclosure</h2>
-            <p className="mt-3 text-xs leading-6 text-[#8b95a8]">{config.sourceNote}</p>
-            <a href={config.sourceUrl} target="_blank" rel="noreferrer" className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${colors.text}`}>{config.sourceLabel}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+            {config.notFitReasons ? (
+              <>
+                <h2 className="text-lg font-semibold text-white">Compare Spark</h2>
+                <div className="mt-3 space-y-2">
+                  {otherComparisonPages(config.slug).map((page) => <Link key={page.href} to={page.href} className="group flex items-center justify-between rounded-xl px-3 py-2 text-sm text-white/65 transition hover:bg-white/[0.04] hover:text-white"><span>{page.label}</span><ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" /></Link>)}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${colors.border} ${colors.soft}`}><ShieldCheck className={`h-5 w-5 ${colors.text}`} aria-hidden="true" /></div>
+                <h2 className="mt-5 text-lg font-semibold text-white">Evidence and disclosure</h2>
+                <p className="mt-3 text-xs leading-6 text-[#8b95a8]">{config.sourceNote}</p>
+                <a href={config.sourceUrl} target="_blank" rel="noreferrer" className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${colors.text}`}>{config.sourceLabel}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+              </>
+            )}
             <div className="mt-6 border-t border-white/[0.07] pt-5">
               <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">Related Spark Inventory pages</p>
               <div className="mt-3 space-y-2">
                 {config.relatedLinks.map((link) => <Link key={link.href} to={link.href} className="group flex items-center justify-between rounded-xl px-3 py-2 text-xs text-white/55 transition hover:bg-white/[0.04] hover:text-white"><span>{link.label}</span><ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" /></Link>)}
               </div>
             </div>
-            <p className="mt-6 border-t border-white/[0.07] pt-5 text-[10px] leading-5 text-white/30">{config.trademark}</p>
+            {!config.notFitReasons && <p className="mt-6 border-t border-white/[0.07] pt-5 text-[10px] leading-5 text-white/30">{config.trademark}</p>}
           </aside>
         </ScrollReveal>
       </div>
@@ -545,7 +615,6 @@ export default function CompetitorAlternativePage({ competitorKey }: { competito
         {!salesLed && <MigrationSection competitorKey={competitorKey} />}
         <DecisionThemes competitorKey={competitorKey} />
         <ComparisonSection competitorKey={competitorKey} />
-        {competitorKey === 'cin7' && <CapterraReview className="bg-[#06080d]" />}
         {salesLed && <MigrationSection competitorKey={competitorKey} />}
         <FitSection competitorKey={competitorKey} />
         <FaqAndSources competitorKey={competitorKey} />

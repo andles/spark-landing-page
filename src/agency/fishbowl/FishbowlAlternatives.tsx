@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Direct answers to the Fishbowl comparison searches: "fishbowl competitors",
 // "apps like fishbowl", "inflow vs fishbowl", "fishbowl inventory reviews".
-// The matching FAQ entries (and FAQPage schema) live in ../campaignFaqs.ts.
+// The "main Fishbowl competitors" FAQ entry (and FAQPage schema) lives in ../campaignFaqs.ts.
 // inFlow and Fishbowl details come from each company's public pricing page;
 // review themes come from public Fishbowl reviews.
 // ─────────────────────────────────────────────────────────────────────────────

@@ -33,13 +33,13 @@ export default function FishbowlHero() {
 
           <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
             <span data-fishbowl-variant-copy="organic">
-              <span className="text-[#f4f6f9]">Switching from Fishbowl?</span>
+              <span className="text-[#f4f6f9]">Fishbowl Alternative</span>
               <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
-                Spark forecasts every SKU and drafts the buy.
+                that forecasts every SKU and drafts the buy
               </span>
             </span>
             <span data-fishbowl-variant-copy="campaign" data-nosnippet>
-              <span className="text-[#f4f6f9]">Live in Minutes.</span>
+              <span className="text-[#f4f6f9]">Fishbowl Alternative, Live in Minutes.</span>
               <span className="mt-2 block text-balance bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-[1.85rem] leading-[1.1] text-transparent sm:text-4xl lg:text-[3.1rem]">
                 Free until your Fishbowl Contract Ends
               </span>
@@ -50,16 +50,27 @@ export default function FishbowlHero() {
             <h2 className="animate-fade-up delay-200 mx-auto mt-5 max-w-[710px] text-lg font-semibold leading-snug tracking-tight text-cyan-200 sm:mt-6 sm:text-2xl">
               Your Fishbowl backup. Your first Spark Inventory forecast.
             </h2>
-            <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.86rem] leading-[1.55] text-[#afb7c5] sm:text-base sm:leading-7 lg:text-lg">
-              Drop in your database backup. Use Sparki in app or your own AI assistant over MCP to map your data and prepare the import. You review and approve, then see what to order and when.
-            </p>
-            <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-sm leading-6 text-[#d0d6e0] sm:text-base">
-              Run alongside Fishbowl, free until your current contract ends.
+            <p className="animate-fade-up delay-200 mx-auto mt-3 max-w-[710px] text-[0.95rem] leading-[1.6] text-[#c3cad6] sm:text-base sm:leading-7 lg:text-lg">
+              Teams switch from Fishbowl to Spark to plan purchases from a demand forecast instead of building the plan by hand. Spark forecasts every SKU and drafts the purchase order for your review, and paid plans include unlimited users. Import your Fishbowl backup and run Spark alongside it, free until your current Fishbowl contract ends.
             </p>
           </div>
 
           <p data-fishbowl-variant-copy="campaign" data-nosnippet className="animate-fade-up delay-200 mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-cyan-200 sm:mt-6 sm:text-lg">
-            Spark Inventory forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, folds in what you know is coming, and grades its own confidence. Then it hands you the reorder points and draft POs.
+            Teams switch from Fishbowl to Spark to plan purchases from a demand forecast. Spark forecasts each product on its own pattern, seasonal, growing, steady, or sporadic, and hands you reorder points and draft POs to approve. Import your Fishbowl backup and run Spark alongside it.
+          </p>
+
+          <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
+            <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
+              {SIGNUP_CTA}
+            </a>
+            <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
+              {BOOKING_CTA}
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+            </FishbowlBookLink>
+          </div>
+
+          <p className="animate-fade-up delay-300 mx-auto mt-3 max-w-md text-xs leading-5 text-[#9da7b8] sm:text-sm">
+            Bring your backup. Choose Sparki or your AI over MCP. You approve the import.
           </p>
 
           <div className="animate-fade-up delay-300 mx-auto mt-5 grid max-w-[760px] gap-2.5 text-left sm:mt-6 sm:grid-cols-2">
@@ -78,19 +89,6 @@ export default function FishbowlHero() {
             Solo is $99/month when you need live intelligence. Paid plans include unlimited users.
           </p>
 
-          <div className="animate-fade-up delay-300 mt-5 flex flex-col justify-center gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
-            <a href={signupUrl} className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white shadow-[0_14px_50px_rgba(6,182,212,0.18)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(139,92,246,0.24)] sm:text-base">
-              {SIGNUP_CTA}
-            </a>
-            <FishbowlBookLink className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.045] px-7 text-sm font-semibold text-[#f0f2f5] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-white/25 hover:bg-white/[0.075] sm:text-base">
-              {BOOKING_CTA}
-              <CalendarDays className="h-4 w-4" aria-hidden="true" />
-            </FishbowlBookLink>
-          </div>
-
-          <p className="animate-fade-up delay-300 mx-auto mt-3 max-w-md text-xs leading-5 text-[#9da7b8] sm:text-sm">
-            Bring your backup. Choose Sparki or your AI over MCP. You approve the import.
-          </p>
 
           <div className="animate-fade-up delay-300 mx-auto mt-5 hidden max-w-2xl items-center justify-center gap-5 text-xs text-[#8993a3] sm:flex">
             {["Fishbowl keeps running", "Database backup to forecast", "No commitment to compare"].map((item) => (

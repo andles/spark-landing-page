@@ -7,6 +7,13 @@ import { useCtaLinks, SIGNUP_CTA } from "./links";
 
 const rows = [
   {
+    category: "Published price",
+    fishbowl:
+      "Essentials $229, Growth $429, and Scale $729 a month, billed annually. Final pricing is quoted.",
+    spark:
+      "Free forecasting plan for one user. Solo $99, Operate $349, and Scale $749 a month, each with a 14-day free trial.",
+  },
+  {
     category: "Demand forecasting",
     fishbowl:
       "An add-on on Growth, or included when you move up to Scale at $729 a month.",
@@ -42,6 +49,20 @@ const rows = [
       "Full REST API and an MCP server, so your own tools and your own AI can read and write your inventory. No consultant in between.",
   },
   {
+    category: "Manufacturing",
+    fishbowl:
+      "Fishbowl Advanced Manufacturing adds MRP, production scheduling, work orders, and job and labor costing, from $675 a month.",
+    spark:
+      "Multi-level BOMs, spec templates, and manufacturing orders on Scale.",
+  },
+  {
+    category: "Accounting",
+    fishbowl:
+      "QuickBooks Online and Xero sync. Advanced Manufacturing also integrates with QuickBooks Desktop and Enterprise.",
+    spark:
+      "QuickBooks Online, Xero, or Zoho Books.",
+  },
+  {
     category: "Getting started",
     fishbowl:
       "Implementation is required, with a 6 to 8 week training certification. Data migration does not include history.",
@@ -75,10 +96,10 @@ export default function FishbowlComparison() {
             style={{ fontFamily: "var(--font-display, 'Inter', sans-serif)" }}
           >
             <span className="text-white">Spark vs Fishbowl, </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">line by line</span>
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">feature by feature</span>
           </h2>
           <p className="mt-5 text-lg text-[#b8bfcc] leading-relaxed">
-            Forecasting, team size, reporting, integrations, and getting started.
+            Price, forecasting, team size, reporting, integrations, manufacturing, and getting started.
           </p>
         </ScrollReveal>
 
@@ -141,8 +162,11 @@ export default function FishbowlComparison() {
         </ScrollReveal>
 
         <p className="mt-6 text-center text-xs text-[#8b95a8] max-w-2xl mx-auto">
-          Fishbowl details come from Fishbowl's public pricing page, checked October 17, 2026.
-          Fishbowl is a trademark of its owner; Spark is not affiliated with Fishbowl.
+          Fishbowl details come from{" "}
+          <a href="https://www.fishbowlinventory.com/pricing" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-white">
+            Fishbowl's public pricing page
+          </a>
+          , checked November 4, 2026.
         </p>
 
         <div className="mt-8 text-center">

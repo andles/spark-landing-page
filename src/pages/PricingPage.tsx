@@ -8,6 +8,7 @@ import CapterraReview from '../agency/CapterraReview';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks, withSignupIntent } from '../agency/ctaLinks';
 import { pricingFaqs } from '../agency/pricingData';
+import { comparisonPages } from '../agency/competitors/comparisonPages';
 import { useScrollToHashOnMount } from '../hooks/useScrollToHash';
 
 const planSignals = [
@@ -106,6 +107,17 @@ export function PricingPage() {
                   </Link>
                 </span>
               </li>
+              {comparisonPages.filter((page) => page.competitor !== 'Fishbowl').map((page) => (
+                <li key={page.href} className="flex gap-3">
+                  <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-lime-300" aria-hidden="true" />
+                  <span>
+                    Moving from {page.competitor}?{' '}
+                    <Link to={page.href} className="font-semibold text-cyan-200 underline-offset-4 hover:underline">
+                      Compare {page.label}.
+                    </Link>
+                  </span>
+                </li>
+              ))}
             </ul>
           </ScrollReveal>
         </section>

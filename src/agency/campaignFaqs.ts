@@ -109,9 +109,9 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
         "Spark runs alongside Fishbowl while you evaluate it. Fishbowl keeps running as it does today. Drop your database backup into Spark, let Sparki prepare the import, and compare the two using your own inventory before you decide whether to switch.",
     },
     {
-      question: "What is Spark Inventory, and why consider it as a Fishbowl alternative?",
+      question: "How does Spark migrate data out of Fishbowl?",
       answer:
-        "Spark Inventory is inventory management and demand forecasting software. Fishbowl teams can use Spark to forecast demand by product, calculate reorder points, and prepare draft purchase orders. Start by importing a Fishbowl database backup and evaluating Spark alongside your existing system.",
+        "Drop your Fishbowl database backup into the importer. Sparki identifies the records and relationships, maps the fields, validates the data, and presents the exact import for your approval. Items, inventory levels, customers, vendors, sales history, and purchase orders come across, so Spark can rebuild both demand and supply context.",
     },
     {
       question: "How does Spark forecast seasonal or sporadic demand?",
@@ -119,54 +119,14 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
         "Spark forecasts each product according to its sales pattern, including seasonal, growing, steady, and sporadic demand. It incorporates what your team knows is coming and gives each forecast a confidence grade, so you can judge how much to rely on the recommendation.",
     },
     {
-      question: "Does Spark send purchase orders automatically?",
-      answer:
-        "Spark turns forecasts into reorder points and draft purchase orders. Your team reviews the recommendations and approves the purchase orders before they are sent or committed.",
-    },
-    {
-      question: "How does Spark migrate data out of Fishbowl?",
-      answer:
-        "Drop your Fishbowl database backup into the importer. Sparki identifies the records and relationships, maps the fields, validates the data, and presents the exact import for your approval.",
-    },
-    {
-      question: "Will our historical sales and purchasing data come across?",
-      answer:
-        "Yes. Catalog, customers, vendors, historical sales, purchase orders, and inventory levels can be brought into the governed onboarding flow so Spark can rebuild both demand and supply context.",
-    },
-    {
-      question: "Can Spark replace custom Fishbowl reports?",
-      answer:
-        "Spark includes custom reporting and an AI-assisted reports playground. Your team can describe the view it needs, save it, rerun it, and work from live inventory data without a consultant for every change.",
-    },
-    {
       question: "Does Spark connect to Shopify and QuickBooks?",
       answer:
-        "Yes. Spark supports commerce and accounting integrations to keep inventory, orders, and financial workflows connected.",
-    },
-    {
-      question: "Do we have to commit before seeing Spark with our data?",
-      answer:
-        "No. Run Spark alongside Fishbowl and compare both systems using your own data. Nothing is replaced until you decide the workflow is a fit.",
+        "Yes. Spark connects to Shopify, Amazon, WooCommerce, Square, Faire, Etsy, and Meta shops, and syncs with QuickBooks Online, Xero, or Zoho Books. It does not connect to QuickBooks Desktop or QuickBooks Enterprise.",
     },
     {
       question: "What are the main Fishbowl competitors?",
       answer:
         "Common Fishbowl competitors include Spark Inventory, inFlow, Cin7, and Zoho Inventory. Spark is built around the buying decision: it forecasts demand for every SKU, weighs stock on hand and incoming purchase orders, and prepares draft purchase orders for your team to approve. Forecasting is free for one user, and every paid plan includes unlimited users.",
-    },
-    {
-      question: "What are some apps like Fishbowl?",
-      answer:
-        "Apps like Fishbowl include Spark Inventory, inFlow, Cin7, and Zoho Inventory. If you are moving off Fishbowl, Spark runs alongside it: import your Fishbowl database backup, compare the two with your own data, and use Spark free until your current Fishbowl contract ends.",
-    },
-    {
-      question: "How does inFlow compare with Fishbowl?",
-      answer:
-        "inFlow Inventory starts at $99 a month billed annually for 2 team members, and Fishbowl Inventory starts at $229 a month billed annually for 2 users. inFlow sells manufacturing as a separate product from $169 a month, and Fishbowl keeps it in Fishbowl Advanced Manufacturing, quoted from $675 a month. Fishbowl includes demand forecasting on Scale at $729 a month or as a Growth add-on, while inFlow plans list reorder points. Spark forecasts every SKU free for one user, and Solo is $99 a month with unlimited users.",
-    },
-    {
-      question: "What do Fishbowl Inventory reviews say?",
-      answer:
-        "In public reviews, users credit Fishbowl for its manufacturing and inventory features and its QuickBooks connection. Recurring complaints include a steep learning curve, reporting they want to be better, and slow turnaround on issues that need a developer. Spark addresses these with reports you describe and build from live data, onboarding sessions with the team that builds the product, and an import you review before anything lands.",
     },
   ],
   shopify: [

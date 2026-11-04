@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // "What changes when you switch": the centerpiece of the Fishbowl page.
-// Five cards in the AgencyWhySpark card style. Each pairs one Spark capability
-// with the Fishbowl review complaint it answers, so the mapping is explicit.
+// Five cards in the AgencyWhySpark card style, one Spark capability each.
 // ─────────────────────────────────────────────────────────────────────────────
 import ScrollReveal, { RevealItem } from "../ScrollReveal";
 
@@ -25,7 +24,6 @@ const cards = [
     title: "Know what to order, not just what you have",
     description:
       "Spark reads your sales history, changing velocity, seasonality, inventory position, and supplier lead times. It forecasts demand by SKU, flags stockout and overstock risk, and turns the result into reorder points and draft POs.",
-    complaint: "It tracks stock, but doesn't tell me what to buy.",
     features: ["Demand forecast by SKU", "Stockout and overstock risk", "Draft purchase orders"],
   },
   {
@@ -41,7 +39,6 @@ const cards = [
     title: "Your Fishbowl data comes with you, in minutes",
     description:
       "Drop in your Fishbowl database backup. Sparki in app or your own AI assistant over MCP maps the data, prepares the import, validates the result, and asks you to approve it before anything lands.",
-    complaint: "Switching sounds worse than staying.",
     features: ["Automatic field mapping", "Sales history included", "Undo any import"],
   },
   {
@@ -56,8 +53,7 @@ const cards = [
     ),
     title: "Point your own AI at your inventory",
     description:
-      "Spark ships an MCP server, so Claude, ChatGPT, or whatever your team already uses can query stock, draft POs, and answer questions about your data. The thing Fishbowl won't do, you can now ask for in plain English.",
-    complaint: "Missing features, and no way to customize.",
+      "Spark ships an MCP server, so Claude, ChatGPT, or whatever your team already uses can query stock, draft POs, and answer questions about your data. When you need something new, ask for it in plain English.",
     features: ["Works with any MCP client", "Full REST API too", "No consultant required"],
   },
   {
@@ -73,7 +69,6 @@ const cards = [
     title: "The report you need, built in seconds, not billed by the hour",
     description:
       "Describe the report in the reports playground and Spark builds it from your live data. Margin by channel, aging stock by vendor, whatever the meeting needs. Save it, share it, run it again tomorrow.",
-    complaint: "Reporting is weak, and custom reports cost extra.",
     features: ["Describe it, get it", "Save and rerun", "Export anywhere"],
   },
   {
@@ -89,7 +84,6 @@ const cards = [
     title: "Start with an agent and a person when you need one",
     description:
       "Sparki in app or your own AI assistant over MCP handles the repeatable migration work. When your operation needs judgment, the Spark team can work through it with you while you get started.",
-    complaint: "Steep learning curve, and support that doesn't pick up.",
     features: ["Free monthly forecast", "Agentic onboarding", "Talk to a human"],
   },
 ];
@@ -124,7 +118,7 @@ export default function FishbowlMigration() {
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={120} className="flex flex-wrap justify-center gap-5">
-          {cards.map(({ number, badge, badgeColor, iconBg, icon, title, description, complaint, features }, i) => (
+          {cards.map(({ number, badge, badgeColor, iconBg, icon, title, description, features }, i) => (
             <RevealItem
               key={badge}
               index={i}
@@ -145,13 +139,6 @@ export default function FishbowlMigration() {
                 >
                   {badge}
                 </span>
-
-                {/* The complaint this answers */}
-                <p className="text-xs text-[#8b95a8] mb-2">
-                  <span className="text-white/40 uppercase tracking-wider font-mono text-[10px]">Fishbowl users report</span>
-                  <br />
-                  <span className="italic">"{complaint}"</span>
-                </p>
 
                 {/* Title + description */}
                 <h3

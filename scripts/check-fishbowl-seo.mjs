@@ -38,7 +38,7 @@ const schema = JSON.parse(scripts[0][1]);
 assert.deepEqual(schema, buildSchemaGraph(route), 'Prerender and navigation schema must match');
 const faq = schema['@graph'].filter((node) => node['@type'] === 'FAQPage');
 assert.equal(faq.length, 1);
-assert(faq[0].mainEntity.length >= 10);
+assert(faq[0].mainEntity.length >= 4 && faq[0].mainEntity.length <= 6);
 for (const question of faq[0].mainEntity) {
   assert(bodyText.includes(question.name), `Missing visible question: ${question.name}`);
   assert(bodyText.includes(question.acceptedAnswer.text), `Missing visible answer: ${question.name}`);
