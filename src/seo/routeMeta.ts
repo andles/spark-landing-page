@@ -165,10 +165,10 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Fishbowl Alternative with Demand Forecasting | Spark Inventory',
+    title: 'Fishbowl Alternative with Forecasting | Spark Inventory',
     description:
       'Run Spark Inventory alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
-    lastModified: '2026-10-20',
+    lastModified: '2026-11-04',
     schema: [
       { ...buildFaqSchema('fishbowl'), '@id': `${SITE_URL}/fishbowl-alternative/#faq` },
       {
@@ -189,26 +189,26 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/cin7-alternative',
-    title: 'Cin7 Alternative With Forecasting Included | Spark Inventory',
+    title: 'Cin7 Alternative: Forecasting Included | Spark Inventory',
     description:
       'Switch from Cin7 to Spark Inventory for demand forecasting with no add-on, unlimited users on paid plans, no per-connection fees, and an AI-led data import.',
-    lastModified: '2026-10-17',
+    lastModified: '2026-11-04',
     schema: [buildCompetitorFaqSchema('cin7')],
   },
   {
     path: '/zoho-inventory-alternative',
-    title: 'Zoho Inventory Alternative With Forecasting | Spark Inventory',
+    title: 'Zoho Inventory Alternative with Forecasting | Spark',
     description:
       'Switch from Zoho Inventory to Spark for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and QuickBooks, Xero, or Zoho Books.',
-    lastModified: '2026-10-17',
+    lastModified: '2026-11-04',
     schema: [buildCompetitorFaqSchema('zoho')],
   },
   {
     path: '/inflow-alternative',
-    title: 'inFlow Alternative With Demand Forecasting | Spark Inventory',
+    title: 'inFlow Alternative with Forecasting | Spark Inventory',
     description:
       'Switch from inFlow to Spark Inventory for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and an AI-led data import.',
-    lastModified: '2026-10-17',
+    lastModified: '2026-11-04',
     schema: [buildCompetitorFaqSchema('inflow')],
   },
   {

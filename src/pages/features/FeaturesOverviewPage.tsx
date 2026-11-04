@@ -20,6 +20,7 @@ import AgencyHeader from '../../agency/AgencyHeader';
 import BookACallButton from '../../agency/BookACallButton';
 import ScrollReveal, { RevealItem } from '../../agency/ScrollReveal';
 import { useCtaLinks } from '../../agency/ctaLinks';
+import { comparisonPages } from '../../agency/competitors/comparisonPages';
 
 interface Capability {
   title: string;
@@ -228,6 +229,22 @@ export function FeaturesOverviewPage() {
                 </RevealItem>
               ))}
             </ScrollReveal>
+          </div>
+        </section>
+
+        <section aria-labelledby="compare-heading" className="px-6 pb-20 md:px-8 lg:pb-28">
+          <div className="mx-auto max-w-[1080px] rounded-3xl border border-white/[0.08] bg-[#090d15] p-6 sm:p-8">
+            <h2 id="compare-heading" className="text-2xl font-bold tracking-tight">Compare Spark with other inventory systems</h2>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {comparisonPages.map((page) => (
+                <li key={page.href}>
+                  <Link to={page.href} className="group flex min-h-11 items-center justify-between rounded-xl border border-white/[0.08] px-4 py-3 text-sm font-semibold text-white/80 transition hover:border-cyan-300/30 hover:text-white">
+                    {page.label}
+                    <ArrowRight className="h-4 w-4 text-cyan-300 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>

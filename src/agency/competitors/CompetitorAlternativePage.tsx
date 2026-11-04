@@ -17,6 +17,7 @@ import BookACallButton from '../BookACallButton';
 import CapterraReview from '../CapterraReview';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
+import { comparisonPages } from './comparisonPages';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
 
 const accentStyles = {
@@ -150,7 +151,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
   const { bookUrl, signupUrl } = useCtaLinks(config.ctaOptions);
 
   return (
-    <section className="relative overflow-hidden bg-[#06080d] px-6 pb-20 pt-28 md:px-8 lg:pb-28 lg:pt-32">
+    <section className="relative overflow-hidden bg-[#06080d] px-5 pb-16 pt-24 sm:px-6 sm:pt-28 md:px-8 lg:pb-28 lg:pt-32">
       <div className="absolute inset-0 dot-grid opacity-35" />
       <div className="absolute inset-0 noise opacity-60" />
       <div
@@ -158,17 +159,19 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
         style={{ background: colors.glow }}
       />
       <div className="relative z-10 mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-16">
-        <ScrollReveal>
-          <div className={`inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-sm ${colors.border} ${colors.soft} ${colors.subtleText}`}>
+        {/* Not wrapped in ScrollReveal: the first screen must be visible in the
+            prerendered HTML, before any JavaScript runs (LCP). */}
+        <div>
+          <div className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm ${colors.border} ${colors.soft} ${colors.subtleText}`}>
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             {config.eyebrow}
           </div>
-          <h1 className="mt-7 text-[2.7rem] font-bold leading-[1.03] tracking-[-0.04em] text-white sm:text-6xl lg:text-[4.55rem]">
+          <h1 className="mt-5 text-[2.35rem] font-bold leading-[1.05] tracking-[-0.04em] text-white sm:mt-7 sm:text-6xl lg:text-[4.55rem]">
             {copy ? copy.heroHeadline.lead : `Upgrading from ${config.name}?`}
             <span className={`mt-1 block bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>{copy ? copy.heroHeadline.highlight : 'Review your import before anything is committed.'}</span>
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">{config.heroBody}</p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[#b8bfcc] sm:mt-7 sm:text-lg sm:leading-8">{config.heroBody}</p>
+          <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
             <BookACallButton
               url={bookUrl}
               className={`inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r ${colors.button} px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]`}
@@ -180,9 +183,9 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             </a>
           </div>
           <p className="mt-4 text-xs leading-5 text-white/40">{copy ? copy.heroFootnote : 'Agent-led mapping · validation before import · your team approves'}</p>
-        </ScrollReveal>
+        </div>
 
-        <ScrollReveal delay={0.12}>
+        <div>
           <div className="relative overflow-hidden rounded-[30px] border border-white/[0.1] bg-[#090d15]/95 shadow-[0_38px_120px_rgba(0,0,0,0.5)]">
             <div className={`absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent ${colors.gradient} to-transparent`} />
             <div className="flex items-center justify-between border-b border-white/[0.07] bg-white/[0.025] px-5 py-4">
@@ -228,7 +231,7 @@ function EvidenceHero({ competitorKey }: { competitorKey: CompetitorKey }) {
             </a>
           </div>
           <p className="mt-3 text-center text-[10px] leading-5 text-white/30">Prices and packaging can change. Vendor source checked {copy ? copy.sourceChecked : 'August 24, 2026'}.</p>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
@@ -496,6 +499,14 @@ function FaqAndSources({ competitorKey }: { competitorKey: CompetitorKey }) {
             <h2 className="mt-5 text-lg font-semibold text-white">Evidence and disclosure</h2>
             <p className="mt-3 text-xs leading-6 text-[#8b95a8]">{config.sourceNote}</p>
             <a href={config.sourceUrl} target="_blank" rel="noreferrer" className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${colors.text}`}>{config.sourceLabel}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+            {comparisonPages.some((page) => page.href === config.slug) && (
+              <div className="mt-6 border-t border-white/[0.07] pt-5">
+                <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">Compare Spark</p>
+                <div className="mt-3 space-y-2">
+                  {comparisonPages.filter((page) => page.href !== config.slug).map((page) => <Link key={page.href} to={page.href} className="group flex items-center justify-between rounded-xl px-3 py-2 text-xs text-white/55 transition hover:bg-white/[0.04] hover:text-white"><span>{page.label}</span><ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" /></Link>)}
+                </div>
+              </div>
+            )}
             <div className="mt-6 border-t border-white/[0.07] pt-5">
               <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/30">Related Spark Inventory pages</p>
               <div className="mt-3 space-y-2">

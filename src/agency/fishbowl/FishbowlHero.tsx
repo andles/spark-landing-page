@@ -33,13 +33,13 @@ export default function FishbowlHero() {
 
           <h1 className="animate-fade-up delay-100 mt-4 text-[2.35rem] font-bold leading-[1.02] tracking-[-0.035em] sm:mt-5 sm:text-5xl lg:text-[4.35rem]">
             <span data-fishbowl-variant-copy="organic">
-              <span className="text-[#f4f6f9]">Switching from Fishbowl?</span>
+              <span className="text-[#f4f6f9]">Fishbowl Alternative</span>
               <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
-                Spark forecasts every SKU and drafts the buy.
+                that forecasts every SKU and drafts the buy
               </span>
             </span>
             <span data-fishbowl-variant-copy="campaign" data-nosnippet>
-              <span className="text-[#f4f6f9]">Live in Minutes.</span>
+              <span className="text-[#f4f6f9]">Fishbowl Alternative, Live in Minutes.</span>
               <span className="mt-2 block text-balance bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-[1.85rem] leading-[1.1] text-transparent sm:text-4xl lg:text-[3.1rem]">
                 Free until your Fishbowl Contract Ends
               </span>
