@@ -23,6 +23,7 @@ export const routeImports = {
   ToolsServicesPage: () => import('./pages/features/ToolsServicesPage'),
   AccountingPage: () => import('./pages/features/AccountingPage'),
   MobilePage: () => import('./pages/features/MobilePage'),
+  DemandForecastingPage: () => import('./pages/features/DemandForecastingPage'),
   TextWithSparkiPage: () => import('./pages/features/TextWithSparkiPage'),
   SignalsAutomationPage: () => import('./pages/features/SignalsAutomationPage'),
   WholesaleSuppliersPage: () => import('./pages/features/WholesaleSuppliersPage'),

@@ -3,6 +3,7 @@ import {
   BellRing,
   Bot,
   Calculator,
+  ChartNoAxesCombined,
   Factory,
   MessageSquareText,
   Package,
@@ -39,6 +40,14 @@ const capabilities: Capability[] = [
     icon: Package,
     accent: 'from-emerald-400 to-cyan-400',
     highlights: ['SKU and variant control', 'Live stock by location', 'Audit-ready adjustments'],
+  },
+  {
+    title: 'Demand forecasting',
+    description: 'Demand ESP picks a forecasting method for every SKU and corrects for stockouts and promotions before you plan a reorder.',
+    href: '/demand-forecasting-software/',
+    icon: ChartNoAxesCombined,
+    accent: 'from-cyan-400 to-violet-400',
+    highlights: ['A method per SKU', 'Stockout and promotion correction', 'Forecast ranges and backtests'],
   },
   {
     title: 'Purchasing & planning',
