@@ -255,16 +255,44 @@ describe('US notice banner (CookieYes ccpa law)', () => {
     expect(filter(snapshot)).toBeNull();
   });
 
-  it('never records a browser that sends Global Privacy Control under the notice', async () => {
+  it('treats Global Privacy Control as an opt-out under the notice', async () => {
     const analytics = await loadAnalytics();
     usNotice();
     vi.stubGlobal('navigator', { globalPrivacyControl: true });
     window.location.pathname = '/pricing';
     document.cookie = 'cookieyes-consent=consent:no,analytics:yes,advertisement:yes';
     analytics.capturePageview('/pricing');
-    expect(sdk.opt_in_capturing).toHaveBeenCalled();
+    expect(sdk.opt_in_capturing).not.toHaveBeenCalled();
+    expect(sdk.register_once).not.toHaveBeenCalled();
     expect(sdk.startSessionRecording).not.toHaveBeenCalled();
     expect(sdk.init.mock.calls[0][1].before_send(snapshot)).toBeNull();
+  });
+
+  // CookieYes writes analytics:no before any choice under the US notice (its
+  // ccpa default for the category is off). That is not an opt-out.
+  it('captures with cookies when CookieYes writes analytics:no before any choice', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    document.cookie = 'cookieyes-consent=action:no,consent:yes,analytics:no,advertisement:no';
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).toHaveBeenCalledWith({ captureEventName: false });
+    expect(sdk.register_once).toHaveBeenCalled();
+    expect(sdk.opt_out_capturing).not.toHaveBeenCalled();
+  });
+  it('captures with cookies under the notice before CookieYes writes its cookie', async () => {
+    const analytics = await loadAnalytics();
+    usNotice();
+    document.cookie = '';
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).toHaveBeenCalled();
+  });
+  it('keeps an opt-in law cookieless until an explicit Accept', async () => {
+    const analytics = await loadAnalytics();
+    Object.assign(window, { getCkyConsent: () => ({ activeLaw: 'gdpr' }) });
+    document.cookie = 'cookieyes-consent=action:no,consent:no,analytics:no';
+    analytics.capturePageview('/');
+    expect(sdk.opt_in_capturing).not.toHaveBeenCalled();
+    expect(sdk.opt_out_capturing).not.toHaveBeenCalled();
   });
 
   it('switches to cookieless capture when the visitor opts out of analytics', async () => {
