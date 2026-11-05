@@ -209,7 +209,7 @@ export function ReorderPointCalculatorPage() {
               <ScrollReveal className="max-w-3xl">
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Beyond the formula</p>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Every input above is a guess. Spark measures it.</h2>
-                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">This calculator takes one average demand, one lead time and one variability number you estimate. Spark Inventory works out each of them per SKU and per warehouse from your own sales and purchase history, keeps them current as demand moves, and turns the result into a purchase order your team approves.</p>
+                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">This calculator takes one average demand, one lead time and one variability number you estimate. Spark Inventory works out each of them per SKU and per warehouse from your own sales and purchase history, keeps them current as demand moves, and turns the result into a purchase order your team approves. See how Spark’s <Link to="/demand-forecasting-software/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">demand forecasting software</Link> picks a method for every SKU.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={45} className="mt-10 overflow-hidden rounded-3xl border border-white/[0.08]">
                 <div className="hidden grid-cols-[0.75fr_0.9fr_1.8fr] gap-6 border-b border-white/[0.08] bg-white/[0.03] px-6 py-4 font-mono text-[11px] uppercase tracking-[0.16em] text-white/45 md:grid">
@@ -260,9 +260,9 @@ export function ReorderPointCalculatorPage() {
             <ScrollReveal className="mx-auto max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Free for one user</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-5xl">Get a reorder point for every SKU</h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Connect your sales history and Spark forecasts demand per SKU and builds a monthly reorder and buying plan from it. No spreadsheet to maintain.</p>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Connect your sales history and Spark forecasts demand per SKU and turns it into monthly reorder recommendations. No spreadsheet to maintain.</p>
               <ul className="mx-auto mt-6 flex max-w-xl flex-col gap-2 text-left text-sm text-white/70 sm:items-center">
-                {['Free: per-SKU demand forecasts and seasonal curves', 'Free: a monthly reorder and buying plan', 'Solo ($99/mo): continuous forecasts, live reorder alerts and Text with Sparki'].map((item) => <li key={item} className="flex items-center gap-3"><CircleCheck className="h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true" />{item}</li>)}
+                {['Free: per-SKU demand forecasts and seasonal curves', 'Free: monthly reorder recommendations', 'Solo ($99/mo): continuous forecasts, live reorder alerts and Text with Sparki'].map((item) => <li key={item} className="flex items-center gap-3"><CircleCheck className="h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true" />{item}</li>)}
               </ul>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href="https://app.sparkinventory.com/sign-up" className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start Free <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
