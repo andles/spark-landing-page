@@ -1,5 +1,6 @@
 export { FeaturePage } from './FeaturePage';
 export { InventoryPage } from './InventoryPage';
+export { DemandForecastingPage } from './DemandForecastingPage';
 export { PurchasingPage } from './PurchasingPage';
 export { SalesPage } from './SalesPage';
 export { ManufacturingPage } from './ManufacturingPage';

@@ -35,7 +35,7 @@ const capabilities = [
  * `showReorderLink` adds the "Plan your next reorder" link to the purchasing
  * page; leave it off on the purchasing page itself.
  */
-export default function ProductProofCards({ showReorderLink = false }: { showReorderLink?: boolean }) {
+export default function ProductProofCards({ showReorderLink = false, showMethodLink = true }: { showReorderLink?: boolean; showMethodLink?: boolean }) {
   return (
     <div className="mt-8 lg:mt-10 w-full max-w-[1100px] mx-auto text-left">
       <ScrollReveal staggerChildren={120} className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
@@ -65,6 +65,14 @@ export default function ProductProofCards({ showReorderLink = false }: { showReo
         </p>
         <h3 className="text-lg font-semibold text-white">Every SKU. Its own forecast.</h3>
         <p className="mt-2 text-sm leading-6 text-[#b8bfcc]">Demand ESP reads each item’s demand pattern and automatically selects a forecasting method. See the method chosen and the history behind your forecast.</p>
+        {showMethodLink && (
+          <Link
+            to="/demand-forecasting-software/"
+            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-cyan-100"
+          >
+            How Demand ESP works <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        )}
       </div>
       {showReorderLink && (
         <div className="mt-6 text-center">

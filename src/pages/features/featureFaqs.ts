@@ -95,6 +95,29 @@ export const integrationsFaqs: Faq[] = [
   },
 ];
 
+export const demandForecastingFaqs: Faq[] = [
+  {
+    question: 'What forecasting methods does Demand ESP use?',
+    answer: 'Demand ESP uses statistical methods matched to each item’s demand pattern: simple exponential smoothing for steady demand, damped Holt for trending demand, Holt-Winters for seasonal demand, and TSB for intermittent demand. It compares the eligible methods on the item’s own recent months and keeps the most accurate one, or the month by month median of them when that beats every single method.',
+  },
+  {
+    question: 'How does Demand ESP handle stockouts?',
+    answer: 'A month an item was out of stock understates demand. Demand ESP counts the days each warehouse actually had the item in stock and scales that month’s sales up to what it would have sold, so the forecast is not dragged down by lost sales.',
+  },
+  {
+    question: 'How much sales history do I need?',
+    answer: 'Three complete months of sales are enough for a forecast. With six months or more, Demand ESP fits each method’s parameters to the item, and with a year or more it can find the item’s own seasonality. Newer items can borrow the seasonal shape of similar items.',
+  },
+  {
+    question: 'Can I forecast a product that has not sold yet?',
+    answer: 'Yes. A new item can start from a lookalike group of similar items or from a reference item you choose, and you can add a launch curve or a demand signal for what you expect.',
+  },
+  {
+    question: 'Is there a free plan?',
+    answer: 'Yes. The Free plan gives one user a per-SKU forecast with seasonal curves, refreshed monthly. Paid plans start at $99 a month with live forecasts, purchasing, unlimited users and Text with Sparki, and include a 14-day free trial.',
+  },
+];
+
 export const textWithSparkiFaqs: Faq[] = [
   {
     question: 'What is Text with Sparki?',

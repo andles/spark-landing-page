@@ -33,6 +33,7 @@ const WarehousingPage = lazy(() => R.WarehousingPage().then((m) => ({ default: m
 const ToolsServicesPage = lazy(() => R.ToolsServicesPage().then((m) => ({ default: m.ToolsServicesPage })));
 const AccountingPage = lazy(() => R.AccountingPage().then((m) => ({ default: m.AccountingPage })));
 const MobilePage = lazy(() => R.MobilePage().then((m) => ({ default: m.MobilePage })));
+const DemandForecastingPage = lazy(() => R.DemandForecastingPage().then((m) => ({ default: m.DemandForecastingPage })));
 const TextWithSparkiPage = lazy(() => R.TextWithSparkiPage().then((m) => ({ default: m.TextWithSparkiPage })));
 const SignalsAutomationPage = lazy(() => R.SignalsAutomationPage().then((m) => ({ default: m.SignalsAutomationPage })));
 const WholesaleSuppliersPage = lazy(() => R.WholesaleSuppliersPage().then((m) => ({ default: m.WholesaleSuppliersPage })));
@@ -106,6 +107,7 @@ function App() {
             <Route path="/shopify-stocky-alternative" element={<StockyAlternativePage />} />
             <Route path="/features" element={<FeaturesOverviewPage />} />
             <Route path="/features/inventory" element={<InventoryPage />} />
+            <Route path="/demand-forecasting-software" element={<DemandForecastingPage />} />
             <Route path="/features/purchasing" element={<PurchasingPage />} />
             <Route path="/features/sales" element={<SalesPage />} />
             <Route path="/features/manufacturing" element={<ManufacturingPage />} />

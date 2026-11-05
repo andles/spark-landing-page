@@ -14,7 +14,7 @@ import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import { safetyStockFaqs } from '../content/safetyStock';
 import {
-  buildFaqPageSchema, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
+  buildFaqPageSchema, demandForecastingFaqs, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
 // Per-route SEO metadata - single source of truth.
 //
@@ -254,6 +254,14 @@ export const routeMeta: RouteMeta[] = [
     description:
       'SKU and variant management, bundles and kits, barcodes, and real-time stock levels across every location and sales channel.',
     lastModified: '2026-08-31',
+  },
+  {
+    path: '/demand-forecasting-software',
+    title: 'Demand Forecasting Software for Every SKU | Spark Inventory',
+    description:
+      'Demand ESP picks a forecasting method for every SKU, corrects for stockouts and promotions, and turns forecasts into draft purchase orders.',
+    lastModified: '2026-11-05',
+    schema: [buildFaqPageSchema(`${SITE_URL}/demand-forecasting-software/#faq`, demandForecastingFaqs)],
   },
   {
     path: '/features/purchasing',

@@ -31,6 +31,7 @@ const groups = [
       ['/pricing/', 'Pricing & Plans'],
       ['/features/', 'All Product Features'],
       ['/features/inventory/', 'Inventory Management'],
+      ['/demand-forecasting-software/', 'Demand Forecasting Software (Demand ESP)'],
       ['/features/purchasing/', 'Purchasing & Purchase Orders'],
       ['/features/sales/', 'Sales Orders & Invoicing'],
       ['/features/manufacturing/', 'Manufacturing & BOMs'],

@@ -48,6 +48,7 @@ export const youtubeVideos: Record<YouTubeVideoKey, YouTubeVideo[]> = {
     {
       youtubeId: '7Z6vhlo30JE',
       pagePath: '/reduce-stockouts-overstock',
+      alsoOn: ['/demand-forecasting-software'],
       name: 'Still Guessing What to Reorder? Meet Demand ESP | Spark Inventory',
       description:
         "Demand ESP is the forecasting inside Spark Inventory. It reads the sales history you already have and finds each item's own pattern to forecast what to reorder.",
