@@ -229,7 +229,7 @@ export function SafetyStockCalculatorPage() {
               <ScrollReveal className="max-w-3xl">
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-violet-300">Demand ESP</p>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">The formula is standard. The inputs are where Spark is different.</h2>
-                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Spark Inventory uses the same service level formula for every SKU and warehouse. What changes the answer is where the variability and lead time come from. Demand ESP, Spark’s forecasting engine, measures them from your own history and keeps them current.</p>
+                <p className="mt-4 text-sm leading-7 text-[#8b95a8]">Spark Inventory uses the same service level formula for every SKU and warehouse. What changes the answer is where the variability and lead time come from. Demand ESP, Spark’s forecasting engine, measures them from your own history and keeps them current. See how Spark’s <Link to="/demand-forecasting-software/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">demand forecasting software</Link> picks a method for every SKU.</p>
               </ScrollReveal>
               <ScrollReveal staggerChildren={60} className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {demandEspCards.map(({ Icon, title, body }, index) => (
@@ -277,9 +277,9 @@ export function SafetyStockCalculatorPage() {
             <ScrollReveal className="mx-auto max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Free for one user</p>
               <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-5xl">Get the right buffer for every SKU</h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Connect your sales history and Demand ESP forecasts every SKU, flags stock risk and builds a monthly reorder and buying plan from it. No spreadsheet to maintain.</p>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#b8bfcc]">Connect your sales history and Demand ESP forecasts every SKU, flags stock risk and turns it into monthly reorder recommendations. No spreadsheet to maintain.</p>
               <ul className="mx-auto mt-6 flex max-w-xl flex-col gap-2 text-left text-sm text-white/70 sm:items-center">
-                {['Free: per-SKU Demand ESP forecasts and seasonal curves', 'Free: stock-risk reports and a monthly buying plan', 'Solo ($99/mo): continuous forecasts, live reorder alerts and Text with Sparki'].map((item) => <li key={item} className="flex items-center gap-3"><CircleCheck className="h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true" />{item}</li>)}
+                {['Free: per-SKU Demand ESP forecasts and seasonal curves', 'Free: stock-risk reports and monthly reorder recommendations', 'Solo ($99/mo): continuous forecasts, live reorder alerts and Text with Sparki'].map((item) => <li key={item} className="flex items-center gap-3"><CircleCheck className="h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true" />{item}</li>)}
               </ul>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href="https://app.sparkinventory.com/sign-up" className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold">Start Free <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
