@@ -12,9 +12,14 @@ the visitor IP as `X-Forwarded-For` (needed for geolocation and the cookieless
 hash), never forwards site cookies, and strips any `Set-Cookie`.
 
 Capture requires a production build on sparkinventory.com or
-www.sparkinventory.com. Preview, local and Sites domains are excluded. Until the
-visitor answers the CookieYes banner, visits are counted cookieless (see below),
-the same as after a rejection, and nothing is written to the browser. Accepting
+www.sparkinventory.com. Preview, local and Sites domains are excluded. Under an opt-in
+law (the GDPR banner for Europe), until the visitor answers the CookieYes
+banner, visits are counted cookieless (see below), the same as after a
+rejection, and nothing is written to the browser. Under the US notice (CookieYes
+law `ccpa`, used outside Europe) analytics is on until the visitor opts out,
+as the privacy policy says. CookieYes writes `analytics:no` there before any
+choice (its ccpa default for the category is off), so only an explicit choice
+(`action:yes`) or Global Privacy Control switches a US visitor to cookieless. Accepting
 analytics switches to normal cookie capture; rejecting keeps it cookieless. A
 visit is counted once even when the choice is made on that page.
 The app uses the same CookieYes configuration; keep consent shared across the

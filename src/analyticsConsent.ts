@@ -1,10 +1,14 @@
 // CookieYes owns the consent choice on both Spark domains, and its geo rules
 // pick the law per visitor. Under an opt-in law (gdpr: EU and UK) nothing
 // counts until action:yes records a decision, so an initial analytics:no is
-// not a rejection. Under an opt-out law (ccpa: the US notice) the category
-// values CookieYes writes on the first visit are the choice until the visitor
-// opts out. An unknown law (CookieYes not loaded yet, or no banner configured
-// for the region) is treated as opt-in.
+// not a rejection. Under an opt-out law (ccpa: the US notice) analytics is on
+// until the visitor opts out, as the privacy policy says. CookieYes writes
+// analytics:no before any choice there too (its ccpa default for the category
+// is off, and the only dashboard switch for it also loads the category before
+// consent under GDPR), so its first-visit values are not read as an opt-out:
+// only an explicit choice (action:yes) or Global Privacy Control turns
+// analytics off. An unknown law (CookieYes not loaded yet, or no banner
+// configured for the region) is treated as opt-in.
 // Keep this file aligned with web-app/src/helpers/analyticsConsent.ts in the
 // monorepo.
 export type AnalyticsConsent = 'pending' | 'accepted' | 'rejected';
@@ -51,8 +55,10 @@ export function isOptOutLaw(law = consentLaw()): boolean {
 
 export function getAnalyticsConsent(): AnalyticsConsent {
   const values = consentValues();
-  if (!values) return 'pending';
-  if (values.get('action') !== 'yes' && !isOptOutLaw()) return 'pending';
+  if (values?.get('action') !== 'yes') {
+    if (!isOptOutLaw()) return 'pending';
+    return hasGlobalPrivacyControl() ? 'rejected' : 'accepted';
+  }
   if (values.get('analytics') === 'yes') return 'accepted';
   if (values.get('analytics') === 'no') return 'rejected';
   return 'pending';
