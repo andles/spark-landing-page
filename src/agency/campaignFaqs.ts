@@ -161,7 +161,7 @@ export const campaignFaqs: Record<CampaignKind, CampaignFaq[]> = {
     {
       question: "How does inFlow compare with Fishbowl?",
       answer:
-        "inFlow Inventory starts at $99 a month billed annually for 2 team members, and Fishbowl Inventory starts at $229 a month billed annually for 2 users. inFlow sells manufacturing as a separate product from $169 a month, and Fishbowl keeps it in Fishbowl Advanced Manufacturing, quoted from $675 a month. Fishbowl includes demand forecasting on Scale at $729 a month or as a Growth add-on, while inFlow plans list reorder points. Spark forecasts every SKU free for one user, and Solo is $99 a month with unlimited users.",
+        "inFlow Inventory starts at $99 a month billed annually for 2 team members, and Fishbowl Inventory starts at $229 a month billed annually for 2 users. inFlow adds manufacturing to any plan as a package from $69 a month, and Fishbowl keeps it in Fishbowl Advanced Manufacturing, quoted from $675 a month. Fishbowl includes demand forecasting on Scale at $729 a month or as a Growth add-on, while inFlow plans list reorder points. Spark forecasts every SKU free for one user, and Solo is $99 a month with unlimited users.",
     },
     {
       question: "What do Fishbowl Inventory reviews say?",

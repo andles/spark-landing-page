@@ -10,6 +10,7 @@ const groups = [
     title: 'Solutions',
     description: 'Inventory workflows built around a specific business problem or operating model.',
     links: [
+      ['/small-business-inventory-software/', 'Small Business Inventory Software'],
       ['/shopify-inventory-management/', 'Shopify Inventory Management'],
       ['/3pl/', 'Inventory Intelligence for 3PLs'],
       ['/reduce-stockouts-overstock/', 'Reduce Stockouts & Overstock'],

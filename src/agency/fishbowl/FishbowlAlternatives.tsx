@@ -22,7 +22,7 @@ const rows = [
   },
   {
     category: "Users",
-    inflow: "2, 5, 10, or 20 team members by plan, then $29 per extra member each month.",
+    inflow: "2, 5, 10, or 20 team members by plan.",
     fishbowl: "2, 5, or 10 users on Essentials, Growth, and Scale.",
     spark: "Unlimited users on every paid plan.",
   },
@@ -34,13 +34,13 @@ const rows = [
   },
   {
     category: "Manufacturing",
-    inflow: "A separate inFlow Manufacturing product, from $169 a month.",
+    inflow: "A manufacturing package added to any plan, from $69 a month.",
     fishbowl: "Not in Fishbowl Inventory plans. Fishbowl Advanced Manufacturing is quoted from $675 a month.",
     spark: "Multi-level BOMs and manufacturing orders on Scale.",
   },
   {
     category: "Getting started",
-    inflow: "A $499 onboarding package, required on most plans.",
+    inflow: "A $499 onboarding package, required on Core, Pro, and Max.",
     fishbowl: "Implementation is a required package, with training certification included.",
     spark: "Import your Fishbowl backup and run Spark alongside it, free until your Fishbowl contract ends.",
   },
@@ -137,10 +137,10 @@ export default function FishbowlAlternatives() {
 
               <p className="mt-4 text-xs text-[#8b95a8]">
                 Sources:{" "}
-                <a href="https://www.inflowinventory.com/software-pricing-inflow" target="_blank" rel="noreferrer" className="underline hover:text-white">
+                <a href="https://www.inflowinventory.com/software-pricing-inflow-2026" target="_blank" rel="noreferrer" className="underline hover:text-white">
                   inFlow pricing
-                </a>{" "}
-                and{" "}
+                </a>
+                , checked November 6, 2026, and{" "}
                 <a href="https://www.fishbowlinventory.com/pricing" target="_blank" rel="noreferrer" className="underline hover:text-white">
                   Fishbowl pricing
                 </a>

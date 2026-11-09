@@ -1,4 +1,5 @@
 import type { CtaLinkOptions } from '../ctaLinks';
+import { alternativesShortlists } from './alternativesData';
 
 export type CompetitorKey = 'cin7' | 'zoho' | 'inflow' | 'linnworks' | 'stocky';
 export type ComparisonLean = 'spark' | 'competitor' | 'tradeoff';
@@ -160,7 +161,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     staySummary: 'Inventory is where your cash sits, and the buying decision is where you win or lose it. Spark is built around that decision.',
     salesCopy: {
-      heroHeadline: { lead: 'Cin7 Alternative', highlight: 'with forecasting on every plan' },
+      heroHeadline: { lead: 'Cin7 Alternatives', highlight: 'and the one with forecasting on every plan' },
       heroFootnote: 'Forecasting included · Unlimited users on paid plans · Sparki handles the import',
       heroPanel: { kicker: 'CIN7 VS SPARK', title: 'What changes when you switch', badge: 'AT A GLANCE' },
       heroReasons: [
@@ -197,6 +198,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { href: '/pricing/', label: 'Pricing' },
     ],
     faqs: [
+      { question: 'What are the best Cin7 alternatives?', answer: alternativesShortlists.cin7.summary },
       { question: 'How hard is it to switch from Cin7?', answer: 'Export your products, customers, suppliers, and order history from Cin7 and hand them to Sparki in app, or to your own AI assistant through Spark MCP. Spark profiles the files, maps and validates the records, and shows you the proposed import. Nothing lands until you approve it, and there is no onboarding fee.' },
       { question: 'Is demand forecasting included with Spark?', answer: 'Yes. Forecasting is the core of Spark, not an add-on. The Free plan gives one user a monthly forecast and buying plan, and Solo and above keep it live with reorder alerts and draft purchase orders.' },
       { question: 'Does Spark charge per user?', answer: 'No. Solo, Operate, and Scale include unlimited users, and Spark does not meter SKUs or warehouses. Free is a single-user forecasting plan.' },
@@ -290,7 +292,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     staySummary: 'The subscription is rarely the expensive part of inventory. Cash tied up in the wrong stock and sales lost to stockouts cost more, and the buying decision is where Spark is built to help.',
     salesCopy: {
-      heroHeadline: { lead: 'Zoho Inventory Alternative', highlight: 'that plans the buy from a forecast' },
+      heroHeadline: { lead: 'Zoho Inventory Alternatives', highlight: 'and the one that plans the buy from a forecast' },
       heroFootnote: 'Unlimited users on paid plans · Free forecasting plan · Sparki handles the import',
       heroPanel: { kicker: 'ZOHO VS SPARK', title: 'What changes when you switch', badge: 'AT A GLANCE' },
       heroReasons: [
@@ -327,6 +329,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { href: '/pricing/', label: 'Pricing' },
     ],
     faqs: [
+      { question: 'What are the best Zoho Inventory alternatives?', answer: alternativesShortlists.zoho.summary },
       { question: 'How hard is it to switch from Zoho Inventory?', answer: 'Export your items, customers, vendors, and order history from Zoho Inventory and hand them to Sparki in app, or to your own AI assistant through Spark MCP. Spark profiles the files, maps and validates the records, and shows you the proposed import. Nothing lands until you approve it, and there is no onboarding fee.' },
       { question: 'Can I keep Zoho Books?', answer: 'Yes. Spark sends invoices, bills, credit notes, and vendor credits to Zoho Books, QuickBooks Online, or Xero, so you can keep your books where they are.' },
       { question: 'Why pay for Spark when Zoho Inventory starts at $29?', answer: 'Because the subscription is rarely the expensive part of inventory. Cash tied up in the wrong stock and sales lost to stockouts cost more, and the buying decision is what Spark is built around. Paid plans also include unlimited users, so the price does not climb as the team grows.' },
@@ -348,7 +351,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     heroBody:
       'Teams switch from inFlow to Spark when fixed reorder points stop keeping up with demand. Spark forecasts every SKU, including seasonal swings, and drafts the purchase order for your review. Paid plans include unlimited users with no onboarding fee, and Sparki maps your inFlow exports for you.',
     sourceLabel: 'inFlow Inventory pricing',
-    sourceUrl: 'https://www.inflowinventory.com/software-pricing-inflow',
+    sourceUrl: 'https://www.inflowinventory.com/software-pricing-inflow-2026',
     snapshot: [],
     migrationSignals: ['Products + barcodes', 'Customers + suppliers', 'Sales + purchasing history'],
     themes: [
@@ -365,7 +368,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         label: 'Your team',
         title: 'Bring everyone in without counting seats',
         body: 'Buyers, warehouse staff, and the owner all work from the same plan. Spark does not charge per user on paid plans, and it does not meter SKUs or warehouses either.',
-        incumbent: '2, 5, 10, or 20 team members by plan, then $29 per extra member each month.',
+        incumbent: '2, 5, 10, or 20 team members by plan.',
         spark: 'Unlimited users on Solo, Operate, and Scale.',
       },
       {
@@ -373,7 +376,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         label: 'One system',
         title: 'Manufacturing, wholesale, and scanning in one place',
         body: 'Bills of materials, manufacturing orders, a B2B wholesale store, a supplier portal, EDI, and the mobile warehouse app all run on the same inventory and the same plan in Spark.',
-        incumbent: 'Manufacturing is a separate inFlow product from $169 a month. Stockroom, Showroom, lot numbers, and serial numbers are monthly add-ons on its entry plans.',
+        incumbent: 'Manufacturing is a package added to any plan from $69 a month. Showroom, lot numbers, and serial numbers are add-ons on its entry plans, and the Stockroom scanning app starts at $39 a month.',
         spark: 'Multi-level BOMs and manufacturing orders on Scale, plus wholesale, supplier, EDI, and mobile workflows in the same system.',
       },
       {
@@ -381,7 +384,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         label: 'AI that acts',
         title: 'An AI teammate that does the work, with your approval',
         body: 'Sparki works inside the app, Spark Signal proposes the next action, Sparki answers by text, and your own assistant can connect over MCP. Every change waits for a person to approve it.',
-        incumbent: 'An AI Report Assistant, with Inventory API & MCP as a $49 monthly add-on on Lite and Core.',
+        incumbent: 'The AI Report Assistant and inFlow API & MCP are add-ons on Lite and Core.',
         spark: 'Sparki, Spark Signal, plain-English automation rules, Text with Sparki, and governed MCP access.',
       },
       {
@@ -389,7 +392,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         label: 'Switching',
         title: 'Move over without buying an onboarding package',
         body: 'Hand Sparki your inFlow exports. It profiles the files, maps and validates the records, and shows you the proposed import before anything lands.',
-        incumbent: 'A $499 onboarding package, listed as required on Core.',
+        incumbent: 'A $499 onboarding package, required on Core, Pro, and Max.',
         spark: 'Self-serve, agent-led import with your approval at every step. No onboarding fee.',
       },
       {
@@ -397,20 +400,20 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         label: 'Channels',
         title: 'Every channel feeds one plan',
         body: 'Shopify, Amazon, WooCommerce, Square, Faire, Etsy, and Meta shops flow into one forecast, with QuickBooks Online, Xero, Zoho Books, ShipStation, and Flexport alongside.',
-        incumbent: 'More than 95 integrations.',
+        incumbent: 'Unlimited integrations on every plan.',
         spark: 'Multiple connections from Solo up, with no per-connection fee.',
       },
     ],
     comparison: [
       { category: 'Demand forecasting', competitor: 'Reorder points and recommended reorder points.', spark: 'Per-SKU forecasts, seasonal curves, and a buying plan. Free for one user.', lean: 'spark' },
       { category: 'Purchasing', competitor: 'Reorder by purchase order.', spark: 'Draft POs sized from demand, stock, incoming supply, and lead times, with the reasoning shown for approval.', lean: 'spark' },
-      { category: 'Users', competitor: '2, 5, 10, or 20 team members by plan; $29 per extra member per month.', spark: 'Unlimited users on every paid plan.', lean: 'spark' },
-      { category: 'Locations', competitor: 'One location on Lite and five on Core; $39 per extra location per month.', spark: 'No warehouse meter on any plan.', lean: 'spark' },
-      { category: 'Getting started', competitor: '$499 onboarding package, listed as required on Core.', spark: 'Sparki maps and validates your inFlow exports for approval. No onboarding fee.', lean: 'spark' },
-      { category: 'Manufacturing', competitor: 'A separate inFlow Manufacturing product, from $169 per month.', spark: 'Multi-level BOMs, spec templates, and manufacturing orders on Scale.', lean: 'spark' },
-      { category: 'Mobile warehouse', competitor: 'inFlow Stockroom is a $39 monthly add-on.', spark: 'Receive, pick, pack, count, and move stock on iPhone, iPad, or Android, with the phone camera or Zebra and Sunmi scanners.', lean: 'spark' },
-      { category: 'Wholesale and suppliers', competitor: 'Showroom B2B portal is a $39 monthly add-on on Lite and Core.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
-      { category: 'AI', competitor: 'AI Report Assistant; Inventory API & MCP is a $49 monthly add-on on Lite and Core.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
+      { category: 'Users', competitor: '2, 5, 10, or 20 team members by plan.', spark: 'Unlimited users on every paid plan.', lean: 'spark' },
+      { category: 'Locations', competitor: 'One location on Lite, five on Core, and unlimited on Pro and Max.', spark: 'No warehouse meter on any plan.', lean: 'spark' },
+      { category: 'Getting started', competitor: '$499 onboarding package, required on Core, Pro, and Max.', spark: 'Sparki maps and validates your inFlow exports for approval. No onboarding fee.', lean: 'spark' },
+      { category: 'Manufacturing', competitor: 'A manufacturing package added to any plan, from $69 per month.', spark: 'Multi-level BOMs, spec templates, and manufacturing orders on Scale.', lean: 'spark' },
+      { category: 'Mobile warehouse', competitor: 'The inFlow Stockroom scanning app, from $39 per month.', spark: 'Receive, pick, pack, count, and move stock on iPhone, iPad, or Android, with the phone camera or Zebra and Sunmi scanners.', lean: 'spark' },
+      { category: 'Wholesale and suppliers', competitor: 'Showroom B2B portal is an add-on on Lite and Core.', spark: 'Wholesale store, supplier portal, EDI, and supplier invoice matching.', lean: 'spark' },
+      { category: 'AI', competitor: 'AI Report Assistant and inFlow API & MCP are add-ons on Lite and Core.', spark: 'Sparki agent, Spark Signal actions, automation rules, Text with Sparki, and governed MCP.', lean: 'spark' },
     ],
     stayReasons: [],
     switchReasons: [
@@ -422,15 +425,15 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
     ],
     staySummary: 'Inventory is where your cash sits, and the buying decision is where you win or lose it. Spark is built around that decision.',
     salesCopy: {
-      heroHeadline: { lead: 'inFlow Alternative', highlight: 'that plans the buy, not just the reorder point' },
+      heroHeadline: { lead: 'inFlow Alternatives', highlight: 'and the one that plans the buy, not just the reorder point' },
       heroFootnote: 'Unlimited users on paid plans · Free forecasting plan · Sparki handles the import',
       heroPanel: { kicker: 'INFLOW VS SPARK', title: 'What changes when you switch', badge: 'AT A GLANCE' },
       heroReasons: [
-        { label: 'Team seats', incumbent: '2 to 20 members by plan, then $29 per extra member each month', spark: 'Unlimited users on every paid plan' },
+        { label: 'Team seats', incumbent: '2 to 20 team members by plan', spark: 'Unlimited users on every paid plan' },
         { label: 'Planning', incumbent: 'Reorder points and recommended reorder points', spark: 'Per-SKU demand forecasts and draft POs, free to start' },
-        { label: 'Setup', incumbent: '$499 onboarding package, required on Core', spark: 'Sparki maps your inFlow exports. No onboarding fee.' },
+        { label: 'Setup', incumbent: '$499 onboarding package, required on Core and above', spark: 'Sparki maps your inFlow exports. No onboarding fee.' },
       ],
-      sourceChecked: 'November 4, 2026',
+      sourceChecked: 'November 6, 2026',
       themes: {
         eyebrow: 'Why Spark',
         title: 'Six reasons teams pick Spark over inFlow',
@@ -449,7 +452,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
         body: 'Start free and get a forecast from the records you already have, or book a demo and walk through the switch using your own inFlow exports.',
       },
     },
-    sourceNote: 'inFlow prices, team-member and location limits, add-ons, the onboarding package, and inFlow Manufacturing pricing were checked against inFlow’s public pricing page on November 4, 2026. Spark details reflect current Spark pricing and the product as it ships today.',
+    sourceNote: 'inFlow prices, team-member and location limits, add-ons, the onboarding package, and manufacturing package pricing were checked against inFlow’s public pricing page on November 6, 2026. Spark details reflect current Spark pricing and the product as it ships today.',
     trademark: 'inFlow, inFlow Inventory, inFlow Manufacturing, inFlow Stockroom, and Showroom are trademarks of Archon Systems Inc. Spark Inventory is not affiliated with or endorsed by inFlow or Archon Systems.',
     relatedLinks: [
       { href: '/features/purchasing/', label: 'Forecasting and reorder planning' },
@@ -459,6 +462,7 @@ export const competitorConfigs: Record<CompetitorKey, CompetitorConfig> = {
       { href: '/pricing/', label: 'Pricing' },
     ],
     faqs: [
+      { question: 'What are the best inFlow alternatives?', answer: alternativesShortlists.inflow.summary },
       { question: 'How hard is it to switch from inFlow?', answer: 'Export your products, customers, suppliers, and order history from inFlow and hand them to Sparki in app, or to your own AI assistant through Spark MCP. Spark profiles the files, maps and validates the records, and shows you the proposed import. Nothing lands until you approve it, and there is no onboarding fee.' },
       { question: 'Does Spark charge per user?', answer: 'No. Solo, Operate, and Scale include unlimited users, and Spark does not meter SKUs or warehouses. Free is a single-user forecasting plan.' },
       { question: 'Does Spark work with barcode scanners?', answer: 'Yes. The Spark mobile warehouse app runs on iPhone, iPad, and Android. Scan with the phone camera or with keyboard-mode hardware scanners such as Zebra and Sunmi devices to receive, pick, pack, count, and move stock.' },

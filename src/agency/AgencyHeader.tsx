@@ -23,6 +23,7 @@ const productLinks = [
 ];
 
 const solutionLinks = [
+  { href: "/small-business-inventory-software/", label: "Small business", description: "Free to start, unlimited users when you grow" },
   { href: "/reduce-stockouts-overstock/", label: "Reduce stockouts", description: "Explainable risk and replenishment" },
   { href: "/3pl/", label: "Inventory for 3PLs", description: "Client workspaces, price books, and runs" },
   { href: "/in-store-pickup/", label: "In-store pickup", description: "Location-aware promise and handoff" },
