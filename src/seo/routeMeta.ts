@@ -3,6 +3,7 @@
 import { buildFaqSchema } from '../agency/campaignFaqs';
 import { buildAccountantFaqSchema } from '../agency/accountants/accountantFaqs';
 import { buildCharityFaqSchema } from '../agency/charity/charityFaqs';
+import { buildAlternativesItemListSchema } from '../agency/competitors/alternativesData';
 import { buildCompetitorFaqSchema } from '../agency/competitors/competitorData';
 import { homeFaqs } from '../agency/homeFaqs';
 import { pricingFaqs } from '../agency/pricingData';
@@ -13,6 +14,7 @@ import { eoqFaqs } from '../content/eoq';
 import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import { safetyStockFaqs } from '../content/safetyStock';
+import { smallBusinessFaqs } from '../content/smallBusiness';
 import {
   buildFaqPageSchema, demandForecastingFaqs, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
@@ -189,27 +191,27 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/cin7-alternative',
-    title: 'Cin7 Alternative: Forecasting Included | Spark Inventory',
+    title: 'Cin7 Alternatives: 5 Options Compared | Spark Inventory',
     description:
-      'Switch from Cin7 to Spark Inventory for demand forecasting with no add-on, unlimited users on paid plans, no per-connection fees, and an AI-led data import.',
-    lastModified: '2026-11-04',
-    schema: [buildCompetitorFaqSchema('cin7')],
+      'Compare 5 Cin7 alternatives on price, users, and planning. Spark includes demand forecasts and draft POs with no add-on and unlimited users on paid plans.',
+    lastModified: '2026-11-06',
+    schema: [buildCompetitorFaqSchema('cin7'), buildAlternativesItemListSchema('cin7', '/cin7-alternative')],
   },
   {
     path: '/zoho-inventory-alternative',
-    title: 'Zoho Inventory Alternative with Forecasting | Spark',
+    title: 'Zoho Inventory Alternatives: 5 Options Compared | Spark',
     description:
-      'Switch from Zoho Inventory to Spark for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and QuickBooks, Xero, or Zoho Books.',
-    lastModified: '2026-11-04',
-    schema: [buildCompetitorFaqSchema('zoho')],
+      'Compare 5 Zoho Inventory alternatives on price, users, and planning. Spark includes demand forecasts and draft POs, with unlimited users on paid plans.',
+    lastModified: '2026-11-06',
+    schema: [buildCompetitorFaqSchema('zoho'), buildAlternativesItemListSchema('zoho', '/zoho-inventory-alternative')],
   },
   {
     path: '/inflow-alternative',
-    title: 'inFlow Alternative with Forecasting | Spark Inventory',
+    title: 'inFlow Alternatives: 5 Options Compared | Spark Inventory',
     description:
-      'Switch from inFlow to Spark Inventory for per-SKU demand forecasts, reviewed purchase orders, unlimited users on paid plans, and an AI-led data import.',
-    lastModified: '2026-11-04',
-    schema: [buildCompetitorFaqSchema('inflow')],
+      'Compare 5 inFlow alternatives on price, users, and planning. Spark includes demand forecasts and draft POs, unlimited users, and no onboarding fee.',
+    lastModified: '2026-11-06',
+    schema: [buildCompetitorFaqSchema('inflow'), buildAlternativesItemListSchema('inflow', '/inflow-alternative')],
   },
   {
     path: '/linnworks-alternative',
@@ -401,6 +403,14 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Two-way QuickBooks Online sync: invoices, payments, and inventory adjustments flow automatically with no double entry.',
     lastModified: '2026-08-31',
+  },
+  {
+    path: '/small-business-inventory-software',
+    title: 'Inventory Software for Small Business, Free to Start | Spark',
+    description:
+      'Small business inventory software: track stock, scan barcodes, forecast demand per SKU, and draft purchase orders. Free for one user, paid from $99.',
+    lastModified: '2026-11-09',
+    schema: [buildFaqPageSchema(`${SITE_URL}/small-business-inventory-software/#faq`, smallBusinessFaqs)],
   },
   {
     path: '/shopify-inventory-management',

@@ -17,6 +17,8 @@ import BookACallButton from '../BookACallButton';
 import CapterraReview from '../CapterraReview';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
 import { useCtaLinks } from '../ctaLinks';
+import AlternativesShortlist from './AlternativesShortlist';
+import { alternativesShortlists, type ShortlistKey } from './alternativesData';
 import { comparisonPages } from './comparisonPages';
 import { competitorConfigs, type ComparisonLean, type CompetitorKey } from './competitorData';
 
@@ -547,12 +549,15 @@ export default function CompetitorAlternativePage({ competitorKey }: { competito
   useScrollToHashOnMount();
   // Sales-led pages put the reasons to switch first and the migration story after them.
   const salesLed = Boolean(competitorConfigs[competitorKey].salesCopy);
+  // Pages searched as "X alternatives" answer with the shortlist right after the hero.
+  const shortlistKey = competitorKey in alternativesShortlists ? (competitorKey as ShortlistKey) : null;
 
   return (
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
         <EvidenceHero competitorKey={competitorKey} />
+        {shortlistKey && <AlternativesShortlist shortlistKey={shortlistKey} />}
         {!salesLed && <MigrationSection competitorKey={competitorKey} />}
         <DecisionThemes competitorKey={competitorKey} />
         <ComparisonSection competitorKey={competitorKey} />
