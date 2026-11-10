@@ -85,8 +85,16 @@ export function calculateReorderPoint(input: ReorderPointInput): ReorderPointRes
 
 export const reorderPointFaqs = [
   {
+    question: 'What is a reorder point (ROP) in inventory?',
+    answer: 'The reorder point, or ROP, is the inventory level at which you place a new order for an item. It is set so the new stock arrives just as you reach your safety stock. Some teams call it the reorder level or the replenishment point.',
+  },
+  {
     question: 'What is the reorder point formula?',
     answer: 'Reorder point = (average daily demand × average lead time in days) + safety stock. The first part covers what you expect to sell while you wait for the order to arrive. Safety stock covers demand or delays above that average.',
+  },
+  {
+    question: 'How do you calculate a reorder point?',
+    answer: 'Multiply average daily demand by the supplier lead time in days to get lead time demand, then add safety stock. For example, an item that sells 10 units a day with a 14-day lead time has a lead time demand of 140 units. With 60 units of safety stock, the reorder point is 200 units. These numbers are illustrative.',
   },
   {
     question: 'How do I calculate safety stock?',
@@ -95,6 +103,10 @@ export const reorderPointFaqs = [
   {
     question: 'What is a good service level?',
     answer: 'Many businesses start at 95%, which means a 5% chance of running out during a given lead time. Fast movers and items that lose a sale when out of stock often justify 97.5% or 99%. Slow, costly or easily substituted items can sit lower. Higher service levels need disproportionately more safety stock.',
+  },
+  {
+    question: 'What is the difference between reorder point and EOQ?',
+    answer: 'The reorder point tells you when to order: the stock level that triggers a purchase order. Economic order quantity (EOQ) tells you how much to order: the quantity that balances ordering costs against holding costs. Most teams use both, ordering the EOQ each time stock reaches the reorder point.',
   },
   {
     question: 'Should I compare the reorder point to on-hand stock?',

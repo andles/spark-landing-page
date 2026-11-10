@@ -43,6 +43,10 @@
 
 - [Inventory reorder walkthrough](https://sparkinventory.com/inventory-reorder-walkthrough/)
 - [What is inventory management?](https://sparkinventory.com/what-is-inventory-management/)
+- [Reorder point formula and calculator](https://sparkinventory.com/reorder-point-calculator/): Reorder point = (average daily demand × average lead time) + safety stock, with a worked example, three safety stock methods, and a free calculator.
+- [Safety stock calculator](https://sparkinventory.com/safety-stock-calculator/)
+- [EOQ calculator](https://sparkinventory.com/eoq-calculator/)
+- [Inventory turnover calculator](https://sparkinventory.com/inventory-turnover-calculator/)
 - [Blog](https://sparkinventory.com/blog/)
 
 ## Company

@@ -166,11 +166,14 @@ export function ReorderPointCalculatorPage() {
                 <Calculator className="h-4 w-4" aria-hidden="true" /> Free inventory tool
               </div>
               <h1 className="mt-7 text-4xl font-bold leading-[1.04] tracking-tight sm:text-6xl">
-                Reorder point calculator
-                <span className="block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">with safety stock</span>
+                Reorder point formula
+                <span className="block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">and calculator</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Enter your daily demand and supplier lead time to find the stock level that should trigger your next purchase order. Pick the safety stock method that matches the data you have.
+                The reorder point (ROP) is the stock level that should trigger your next purchase order. Reorder point = (average daily demand × average lead time in days) + safety stock.
+              </p>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#8b95a8]">
+                Enter your own numbers below and pick the safety stock method that matches the data you have.
               </p>
             </ScrollReveal>
           </header>
@@ -185,7 +188,7 @@ export function ReorderPointCalculatorPage() {
             <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.8fr_1fr] lg:gap-20">
               <ScrollReveal>
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">The reorder point formula</p>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Lead time demand plus a buffer</h2>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">How to calculate a reorder point</h2>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">The reorder point is the inventory position at which you place the next order. Order at that level and the new stock should arrive just as the old stock runs down to your safety buffer.</p>
                 <p className="mt-6 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.04] p-5 font-mono text-sm leading-7 text-cyan-100">Reorder point = (average daily demand × average lead time) + safety stock</p>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">To size the buffer at any service level, use the <Link to="/safety-stock-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">safety stock calculator</Link>. For how much to order once you hit it, try the <Link to="/eoq-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">EOQ calculator</Link> or see <a href="/blog/how-to-calculate-reorder-quantities/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">how to calculate reorder quantities</a>.</p>

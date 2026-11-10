@@ -502,10 +502,10 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/reorder-point-calculator',
-    title: 'Reorder Point Calculator With Safety Stock | Spark Inventory',
+    title: 'Reorder Point Formula and Calculator With Safety Stock | Spark',
     description:
-      'Free reorder point calculator: enter daily demand and lead time, choose a safety stock method, and get the stock level that should trigger your next order.',
-    lastModified: '2026-10-26',
+      'Reorder point formula: (average daily demand × lead time) + safety stock. Worked example, three safety stock methods, and a free reorder point calculator.',
+    lastModified: '2026-11-09',
     schema: [
       {
         '@type': 'WebApplication',
