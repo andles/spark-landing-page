@@ -315,42 +315,61 @@ export default function AgencyPricingSection({ detailed = false }: { detailed?: 
   const { signupUrl } = useCtaLinks(detailed ? PRICING_PAGE_CTA_OPTIONS : HOME_PRICING_CTA_OPTIONS);
 
   return (
-    <section id="pricing" className="relative scroll-mt-16 overflow-hidden bg-[#06080d] py-16 lg:py-24">
+    <section id="pricing" className={`relative scroll-mt-16 overflow-hidden bg-[#06080d] ${detailed ? 'pb-16 pt-8 lg:pb-24 lg:pt-10' : 'py-16 lg:py-24'}`}>
       <div className="pointer-events-none absolute -left-[260px] -top-[180px] h-[900px] w-[900px] bg-[radial-gradient(circle,rgba(6,182,212,0.09),transparent_62%)]" />
       <div className="pointer-events-none absolute -bottom-[200px] -right-[260px] h-[900px] w-[900px] bg-[radial-gradient(circle,rgba(217,70,239,0.08),transparent_62%)]" />
 
       <div className="relative z-10 mx-auto max-w-[1480px] px-5 md:px-8 lg:px-10">
-        <ScrollReveal className="mx-auto max-w-4xl text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.23em] text-cyan-300">Three clear starting points</p>
-          <h2 className="mt-5 text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-            {detailed ? 'Choose the planning cadence ' : 'Start free. '}
-            <span
-              className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text text-transparent sm:inline"
-              style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
-            >
-              {detailed ? 'your operation needs.' : 'Upgrade when your team runs on it.'}
-            </span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#9aa3b2] sm:text-lg">
-            Free refreshes monthly for one operator. Solo keeps the intelligence live. Operate turns decisions into purchasing, receiving, and fulfillment.
-          </p>
-        </ScrollReveal>
+        {detailed ? (
+          // The pricing page hero already explains Free, the paid plans and
+          // the trial, so the plan cards follow a one-line heading there.
+          <h2 className="text-center font-mono text-[10px] uppercase tracking-[0.23em] text-cyan-300">Plans and prices</h2>
+        ) : (
+          <>
+            <ScrollReveal className="mx-auto max-w-4xl text-center">
+              <p className="font-mono text-[10px] uppercase tracking-[0.23em] text-cyan-300">Three clear starting points</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
+                {'Start free. '}
+                <span
+                  className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text text-transparent sm:inline"
+                  style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
+                >
+                  Upgrade when your team runs on it.
+                </span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#9aa3b2] sm:text-lg">
+                Free refreshes monthly for one operator. Solo keeps the intelligence live. Operate turns decisions into purchasing, receiving, and fulfillment.
+              </p>
+            </ScrollReveal>
 
-        <ScrollReveal className="mx-auto mt-9 flex max-w-4xl flex-col items-center justify-between gap-4 rounded-2xl border border-lime-200/20 bg-lime-300/[0.055] px-5 py-4 text-center sm:flex-row sm:text-left">
-          <div>
-            <p className="text-sm font-semibold text-lime-100">Free for one operator. Paid plans include the team and a 14-day free trial.</p>
-            <p className="mt-1 text-xs text-white/45">Users become unlimited from Solo onward, so collaboration never becomes the upgrade trigger. Custom begins as a free, seeded 3PL workspace.</p>
+            <ScrollReveal className="mx-auto mt-9 flex max-w-4xl flex-col items-center justify-between gap-4 rounded-2xl border border-lime-200/20 bg-lime-300/[0.055] px-5 py-4 text-center sm:flex-row sm:text-left">
+              <div>
+                <p className="text-sm font-semibold text-lime-100">Free for one operator. Paid plans include the team and a 14-day free trial.</p>
+                <p className="mt-1 text-xs text-white/45">Users become unlimited from Solo onward, so collaboration never becomes the upgrade trigger. Custom begins as a free, seeded 3PL workspace.</p>
+              </div>
+              <span className="shrink-0 rounded-full border border-lime-200/20 bg-black/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-lime-200">14 days free on paid plans</span>
+            </ScrollReveal>
+          </>
+        )}
+
+        {detailed ? (
+          // On the pricing page the cards sit in the first screen, so they
+          // render at once instead of waiting for the scroll reveal, which
+          // on a phone needs a tenth of the tall stacked grid in view.
+          <div className="mx-auto mt-6 grid max-w-[1180px] gap-5 lg:grid-cols-3 lg:items-stretch">
+            {pricingTiers.map((tier) => (
+              <PricingCard key={tier.name} tier={tier} signupUrl={signupUrl} />
+            ))}
           </div>
-          <span className="shrink-0 rounded-full border border-lime-200/20 bg-black/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-lime-200">14 days free on paid plans</span>
-        </ScrollReveal>
-
-        <ScrollReveal staggerChildren={90} className="mx-auto mt-14 grid max-w-[1180px] gap-5 lg:grid-cols-3 lg:items-stretch">
-          {pricingTiers.map((tier, index) => (
-            <RevealItem key={tier.name} index={index}>
-              <PricingCard tier={tier} signupUrl={signupUrl} />
-            </RevealItem>
-          ))}
-        </ScrollReveal>
+        ) : (
+          <ScrollReveal staggerChildren={90} className="mx-auto mt-14 grid max-w-[1180px] gap-5 lg:grid-cols-3 lg:items-stretch">
+            {pricingTiers.map((tier, index) => (
+              <RevealItem key={tier.name} index={index}>
+                <PricingCard tier={tier} signupUrl={signupUrl} />
+              </RevealItem>
+            ))}
+          </ScrollReveal>
+        )}
 
         {!detailed && <AdvancedPlanLink />}
         {detailed && <PlanComparison />}
