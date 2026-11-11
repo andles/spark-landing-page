@@ -40,39 +40,46 @@ export function PricingPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative overflow-hidden px-6 pb-16 pt-28 md:px-8 lg:pb-20 lg:pt-32">
+        <section className="relative overflow-hidden px-6 pb-2 pt-24 md:px-8 lg:pt-28">
           <div className="absolute inset-0 dot-grid opacity-25" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_-10%,rgba(163,230,53,0.12),rgba(6,182,212,0.08)_38%,transparent_68%)]" />
           <div className="absolute -right-48 top-28 h-[560px] w-[560px] rounded-full bg-violet-500/[0.1] blur-[130px]" />
-          <ScrollReveal className="relative z-10 mx-auto max-w-[1080px] text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-lime-200">Spark Inventory pricing</p>
-            <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-bold leading-[1.08] tracking-[-0.045em] sm:text-6xl lg:text-[4.85rem]">
-              Upgrade from spreadsheets
+          <div className="relative z-10 mx-auto max-w-[1080px] text-center">
+            <h1 className="mx-auto max-w-5xl text-3xl font-bold leading-[1.08] tracking-[-0.045em] sm:text-5xl">
+              Spark Inventory pricing
               <span
-                className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text pb-[0.1em] text-transparent"
+                className="block bg-gradient-to-r from-lime-200 via-cyan-200 to-violet-300 bg-clip-text pb-[0.1em] text-xl text-transparent sm:text-4xl"
                 style={{ fontFamily: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}
               >
-                or legacy inventory software
+                Start free. Upgrade from spreadsheets or legacy software.
               </span>
             </h1>
-            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-[#b8bfcc] sm:text-base sm:leading-7">
               Free covers one user. Solo, Operate, and Scale add live planning, purchasing, and manufacturing, with unlimited users and a 14-day free trial.
             </p>
-            <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={freeSignupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-8 text-sm font-semibold text-[#071009] transition-all hover:scale-[1.02] hover:bg-lime-200">
                 Start free
               </a>
-              <a href="#plans" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold transition-colors hover:bg-white/[0.08]">
+              <a href="#plans" className="hidden h-12 items-center sm:inline-flex justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold transition-colors hover:bg-white/[0.08]">
                 Compare Plans <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
-            <div className="mx-auto mt-7 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-white/45">
+            <div className="mx-auto mt-5 hidden max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-white/45 sm:flex">
               {['1 user on Free', 'Unlimited users on paid plans', 'No SKU limits'].map((item) => (
                 <span key={item} className="inline-flex items-center gap-2"><CircleCheck className="h-3.5 w-3.5 text-lime-300" aria-hidden="true" />{item}</span>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
         </section>
+
+        {/* Plans and prices come straight after the hero, so a visitor who
+            only reads the first screen still sees what each plan costs. */}
+        <div id="plans" className="scroll-mt-16">
+          <AgencyPricingSection detailed />
+        </div>
+
+        <CapterraReview className="pt-0 lg:pt-0" />
 
         <section className="border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-20">
           <ScrollReveal staggerChildren={90} className="mx-auto grid max-w-[1180px] gap-4 md:grid-cols-3">
@@ -121,12 +128,6 @@ export function PricingPage() {
             </ul>
           </ScrollReveal>
         </section>
-
-        <CapterraReview className="pt-0 lg:pt-0" />
-
-        <div id="plans" className="scroll-mt-16">
-          <AgencyPricingSection detailed />
-        </div>
 
         <section id="faq" className="scroll-mt-16 border-y border-white/[0.06] bg-[#080b12] px-6 py-20 md:px-8 lg:py-24">
           <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.65fr_1fr] lg:gap-20">
