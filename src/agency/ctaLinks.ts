@@ -23,7 +23,7 @@ export const SIGNUP_URL_BASE =
   import.meta.env.VITE_SIGNUP_URL_BASE?.trim() || "https://app.sparkinventory.com/sign-up";
 
 /** Attribution params preserved across the landing, booking, and signup flow. */
-const FORWARDED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "li_fat_id"];
+const FORWARDED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "li_fat_id", "oppref"];
 
 export interface CtaLinkOptions {
   /** Applied only when the visitor arrived without their own UTMs. */

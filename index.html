@@ -39,8 +39,9 @@
     <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
     <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/ef5cba13a3fdf3dd6aa6cb2ff6a16792/script.js"></script>
     <!-- End cookieyes banner -->
-    <!-- Consent-gated tags: PHAS3 attribution, the LinkedIn Insight Tag and the
-         Google Consent Mode update. CookieYes picks the banner law per visitor
+    <!-- Consent-gated tags: PHAS3 attribution, the LinkedIn Insight Tag, the
+         OpenAI Measurement Pixel (ChatGPT Ads) and the Google Consent Mode
+         update. CookieYes picks the banner law per visitor
          (gdpr opt-in for the EU and UK, ccpa notice for the US), and its
          categories carry the choice under either law. Nothing loads until a
          banner has loaded, so a region without a banner stays opted out, and
@@ -54,7 +55,33 @@
       (function () {
         var phas3Loaded = false;
         var linkedInLoaded = false;
+        var openAiPixelLoaded = false;
         var appliedGoogleConsent = "";
+
+        // OpenAI Measurement Pixel: the official snippet's command queue, then
+        // the SDK. It captures the ad click reference (oppref) from the landing
+        // URL into a cookie on sparkinventory.com, which the app's Pixel reads
+        // at signup. Loads only with advertising consent; a later opt-out sets
+        // the Pixel's own consent to false, which stops events and clears its
+        // cookies. Same Pixel ID as the app (consent-gated-tags.js there).
+        function loadOpenAiPixel() {
+          if (!window.oaiq) {
+            var queue = function () {
+              queue.q.push(arguments);
+            };
+            queue.q = [];
+            window.oaiq = queue;
+          }
+          window.oaiq("consent", true);
+          if (openAiPixelLoaded) return;
+          openAiPixelLoaded = true;
+          window.oaiq("init", { pixelId: "9NcMuYMsWiBSTq3HTBYb7f" });
+
+          var pixelScript = document.createElement("script");
+          pixelScript.async = true;
+          pixelScript.src = "https://bzrcdn.openai.com/sdk/oaiq.min.js";
+          document.head.appendChild(pixelScript);
+        }
 
         function loadPhas3() {
           if (phas3Loaded) return;
@@ -105,7 +132,12 @@
             });
           }
           if (analytics && !gpc) loadPhas3();
-          if (advertising) loadLinkedInInsightTag();
+          if (advertising) {
+            loadLinkedInInsightTag();
+            loadOpenAiPixel();
+          } else if (openAiPixelLoaded) {
+            window.oaiq("consent", false);
+          }
         }
 
         document.addEventListener("cookieyes_banner_load", applyConsent);
