@@ -5,6 +5,7 @@ import {
   noticeButtonsSelector,
   okClass,
   optOutSelector,
+  type NoticeEnvironment,
 } from './consentNoticeOk';
 
 // A stand-in for the few DOM calls the module makes, matching CookieYes's
@@ -38,7 +39,9 @@ class FakeElement {
   }
 }
 
-function notice({ law }: { law: 'ccpa' | 'gdpr' }, { close = true } = {}) {
+type NoticeOptions = { close?: boolean; gpc?: boolean; cookieYesReady?: boolean };
+
+function notice(law: 'ccpa' | 'gdpr', { close = true, gpc = false, cookieYesReady = true }: NoticeOptions = {}) {
   const buttons = new FakeElement([noticeButtonsSelector]);
   if (law === 'ccpa') buttons.append(new FakeElement([optOutSelector]));
   else buttons.append(new FakeElement(['.cky-btn-accept']));
@@ -48,35 +51,72 @@ function notice({ law }: { law: 'ccpa' | 'gdpr' }, { close = true } = {}) {
       selector === noticeButtonsSelector ? buttons : selector === closeButtonSelector ? closeButton : null,
     createElement: () => new FakeElement(),
   } as unknown as Document;
-  return { root, buttons, closeButton };
+  const actions: string[] = [];
+  const environment: NoticeEnvironment = {
+    root,
+    performBannerAction: cookieYesReady ? (action) => actions.push(action) : undefined,
+    globalPrivacyControl: () => gpc,
+  };
+  const pressOk = () => buttons.children.find((child) => child.className.includes(okClass))!.click();
+  return { environment, buttons, closeButton, actions, pressOk };
 }
 
 describe('the US notice OK button', () => {
-  it('is added once beside the opt-out link and closes the notice', () => {
-    const { root, buttons, closeButton } = notice({ law: 'ccpa' });
+  it('is added once, after the opt-out link', () => {
+    const { environment, buttons } = notice('ccpa');
 
-    expect(addNoticeOkButton(root)).toBe(true);
-    expect(addNoticeOkButton(root)).toBe(true);
+    expect(addNoticeOkButton(environment)).toBe(true);
+    expect(addNoticeOkButton(environment)).toBe(true);
 
     const ok = buttons.children.filter((child) => child.className.includes(okClass));
     expect(ok).toHaveLength(1);
     expect(ok[0].textContent).toBe('OK');
     expect(ok[0].type).toBe('button');
-    ok[0].click();
+    expect(buttons.children.at(-1)).toBe(ok[0]);
+  });
+
+  // A bare close would keep a pre-choice analytics:no and, with action:yes,
+  // read as an opt-out (analyticsConsent.ts).
+  it('records accept_all, keeping collection on as the notice says', () => {
+    const { environment, closeButton, actions, pressOk } = notice('ccpa');
+    addNoticeOkButton(environment);
+
+    pressOk();
+
+    expect(actions).toEqual(['accept_all']);
+    expect(closeButton!.clicks).toBe(0);
+  });
+
+  it('only closes the notice for a browser sending Global Privacy Control', () => {
+    const { environment, closeButton, actions, pressOk } = notice('ccpa', { gpc: true });
+    addNoticeOkButton(environment);
+
+    pressOk();
+
+    expect(actions).toEqual([]);
+    expect(closeButton!.clicks).toBe(1);
+  });
+
+  it('falls back to closing when CookieYes exposes no banner action', () => {
+    const { environment, closeButton, pressOk } = notice('ccpa', { cookieYesReady: false });
+    addNoticeOkButton(environment);
+
+    pressOk();
+
     expect(closeButton!.clicks).toBe(1);
   });
 
   it('is not added to the opt-in banner, where Accept and Reject stay equal', () => {
-    const { root, buttons } = notice({ law: 'gdpr' });
+    const { environment, buttons } = notice('gdpr');
 
-    expect(addNoticeOkButton(root)).toBe(false);
+    expect(addNoticeOkButton(environment)).toBe(false);
     expect(buttons.children.some((child) => child.className.includes(okClass))).toBe(false);
   });
 
-  it('is not added when CookieYes renders no close button for it to press', () => {
-    const { root, buttons } = notice({ law: 'ccpa' }, { close: false });
+  it('is not added when CookieYes renders no close button', () => {
+    const { environment, buttons } = notice('ccpa', { close: false });
 
-    expect(addNoticeOkButton(root)).toBe(false);
+    expect(addNoticeOkButton(environment)).toBe(false);
     expect(buttons.children).toHaveLength(1);
   });
 });
