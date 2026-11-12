@@ -1,3 +1,4 @@
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 import { ArrowRight, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductProofCards from '../../agency/ProductProofCards';
@@ -72,6 +73,7 @@ export function PurchasingPage() {
       features={features}
       showcase={
         <>
+        <YouTubeVideoSection videoKey="purchasing" />
         <section aria-labelledby="reorder-flow-heading" className="px-6 pb-16 md:px-8 lg:pb-20">
           <div className="mx-auto max-w-[1120px]">
             <ScrollReveal className="max-w-3xl">

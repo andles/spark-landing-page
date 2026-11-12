@@ -1,3 +1,4 @@
+import { YouTubeVideoSection } from '../../components/YouTubeEmbed';
 import { Warehouse } from 'lucide-react';
 import { FeaturePage } from './FeaturePage';
 
@@ -55,6 +56,7 @@ export function WarehousingPage() {
       gradientFrom="from-slate-600"
       gradientTo="to-slate-500"
       features={features}
+      showcase={<YouTubeVideoSection videoKey="warehousing" />}
       prevCategory={{ name: 'Manufacturing', href: '/features/manufacturing/' }}
       nextCategory={{ name: 'Tools & Services', href: '/features/tools-services/' }}
     />
