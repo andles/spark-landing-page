@@ -30,6 +30,7 @@ export const routeImports = {
   IntegrationsPage: () => import('./pages/IntegrationsPage'),
   ShopifyInventoryPage: () => import('./pages/ShopifyInventoryPage'),
   SmallBusinessInventoryPage: () => import('./pages/SmallBusinessInventoryPage'),
+  AiAssistantInventoryPage: () => import('./pages/AiAssistantInventoryPage'),
   PricingPage: () => import('./pages/PricingPage'),
   AboutPage: () => import('./pages/AboutPage'),
   BlogPage: () => import('./pages/BlogPage'),

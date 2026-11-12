@@ -37,7 +37,7 @@ export const attributionParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
-const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'meeting_booked', 'page_not_found']);
+const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'meeting_booked', 'page_not_found']);
 // Cookieless capture (before a banner choice, and after a rejection) only
 // counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
 // $timezone, so those must survive or the event is dropped at ingestion. The
@@ -46,7 +46,7 @@ const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$ident
 // stay attributable without a cookie. Without the referrer PostHog has no
 // channel for a session and reports it as Unknown.
 const cookielessProperties = new Set(['token', 'route', 'signup_source', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
-const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'meeting_booked', 'page_not_found']);
+const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'meeting_booked', 'page_not_found']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
 // Same-origin route to PostHog so ad blockers do not drop events. The Netlify
@@ -340,7 +340,7 @@ export function capturePageNotFound(pathname: string): void {
   withAnalytics((posthog) => posthog.capture('page_not_found', { route: '/404', missing_path: missingPath }));
 }
 
-export function captureCta(event: 'signup_clicked' | 'demo_clicked'): void {
+export function captureCta(event: 'signup_clicked' | 'demo_clicked' | 'assistant_install_clicked'): void {
   const route = analyticsRoute(window.location.pathname);
   withAnalytics((posthog) => posthog.capture(event, { route }));
 }

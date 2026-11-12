@@ -24,6 +24,8 @@ export default function Analytics() {
       const url = new URL(link.href);
       if (url.hostname === 'calendly.com' || (url.origin === window.location.origin && url.pathname === '/book-a-call')) captureCta('demo_clicked');
       if (url.hostname === 'app.sparkinventory.com' && ['/sign-up', '/shopify-trial'].includes(url.pathname)) captureCta('signup_clicked');
+      // The Spark Inventory listing in ChatGPT's plugin directory: an install, not a sign-up yet.
+      if (url.hostname === 'chatgpt.com' && url.pathname.startsWith('/plugins/')) captureCta('assistant_install_clicked');
     };
     document.addEventListener('click', trackLink);
     return () => document.removeEventListener('click', trackLink);

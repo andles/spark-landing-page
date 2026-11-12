@@ -61,8 +61,11 @@ export default function AgencyHero() {
               Book a demo
             </BookACallButton>
           </div>
-          <p className="mt-3 text-xs text-[#8b95a8]">
-            Onboard with Sparki in app or your own AI assistant over MCP.
+          <p className="mt-3 text-sm text-[#b8bfcc]">
+            Use ChatGPT or Claude?{" "}
+            <a href="/chatgpt-inventory-management/" className="font-semibold text-cyan-300 underline-offset-4 hover:underline">
+              Run Spark from your AI assistant.
+            </a>
           </p>
           <p className="mt-2 text-sm text-[#b8bfcc]">
             Upgrading from Fishbowl, Cin7, or a spreadsheet?{" "}
