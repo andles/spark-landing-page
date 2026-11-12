@@ -5,6 +5,7 @@ import LegalPageShell, {
   LegalUl,
   LegalEmail,
 } from "../agency/LegalPageShell";
+import { CHATGPT_PLUGIN_URL } from "../content/aiAssistants";
 
 const linkClass = "text-cyan-400 hover:text-cyan-300 transition-colors";
 
@@ -34,7 +35,12 @@ export function ConnectAssistantPage() {
         <pre className="overflow-x-auto rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] p-5 text-sm text-cyan-200" aria-label="Spark MCP server URL"><code>https://api.sparkinventory.com/mcp</code></pre>
         <LegalSubSection title="In ChatGPT">
           <LegalP>
-            Enable <strong>Settings → Security and login → Developer mode</strong>, then open{" "}
+            Spark Inventory is published in ChatGPT's plugin directory. Open the{" "}
+            <a className={linkClass} href={CHATGPT_PLUGIN_URL}>Spark Inventory plugin</a>, select{" "}
+            <strong>Install plugin</strong>, then complete Spark sign-in and consent below. No developer settings are needed.
+          </LegalP>
+          <LegalP>
+            To connect a custom MCP app instead (for testing, or where your workspace policy requires it), enable <strong>Settings → Security and login → Developer mode</strong>, then open{" "}
             <a className={linkClass} href="https://chatgpt.com/plugins">ChatGPT Plugins</a> and select <strong>+</strong>.
             If this opens a conversation with Plugin Creator, use the separate <strong>Create MCP app</strong> control.
             Plugin Creator is a conversational builder, not the MCP connection form.

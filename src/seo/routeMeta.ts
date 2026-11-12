@@ -15,6 +15,7 @@ import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import { safetyStockFaqs } from '../content/safetyStock';
 import { smallBusinessFaqs } from '../content/smallBusiness';
+import { assistantFaqs } from '../content/aiAssistants';
 import {
   buildFaqPageSchema, demandForecastingFaqs, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
@@ -413,6 +414,14 @@ export const routeMeta: RouteMeta[] = [
     schema: [buildFaqPageSchema(`${SITE_URL}/small-business-inventory-software/#faq`, smallBusinessFaqs)],
   },
   {
+    path: '/chatgpt-inventory-management',
+    title: 'Inventory Management in ChatGPT and Claude | Spark Inventory',
+    description:
+      'Ask ChatGPT or Claude what to reorder and why. Spark answers from your live stock, sales, and supplier data and drafts purchase orders you approve.',
+    lastModified: '2026-11-12',
+    schema: [buildFaqPageSchema(`${SITE_URL}/chatgpt-inventory-management/#faq`, assistantFaqs)],
+  },
+  {
     path: '/shopify-inventory-management',
     title: 'Shopify Inventory Management & Forecasting Software | Spark',
     description:
@@ -652,7 +661,7 @@ export const routeMeta: RouteMeta[] = [
     path: '/connect-spark-to-your-assistant',
     title: 'Connect Spark Inventory to ChatGPT or Claude',
     description: 'Connect your Spark workspace to an AI assistant. Learn about setup, read and write access, data sharing, revocation, and troubleshooting.',
-    lastModified: '2026-09-25',
+    lastModified: '2026-11-12',
   },
   {
     path: '/support',
