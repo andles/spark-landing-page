@@ -14,7 +14,7 @@ function runTags({ gpc = false }: { gpc?: boolean } = {}) {
   const googleConsent: Array<Record<string, string>> = [];
   let ckyConsent: { activeLaw: string; categories: Categories } | undefined;
   const element = () => ({ async: false, type: '', src: '' });
-  const window: Record<string, unknown> = {
+  const window: Record<string, unknown> & { oaiq?: { q: ArrayLike<unknown>[] } } = {
     getCkyConsent: () => ckyConsent ?? { activeLaw: '', categories: {} },
   };
   new Function('window', 'navigator', 'document', 'gtag', script)(
@@ -33,7 +33,8 @@ function runTags({ gpc = false }: { gpc?: boolean } = {}) {
     ckyConsent = { activeLaw, categories };
     listeners.get(event)?.();
   };
-  return { fire, loaded, googleConsent };
+  const pixelCommands = () => (window.oaiq?.q ?? []).map((args) => Array.from(args));
+  return { fire, loaded, googleConsent, pixelCommands };
 }
 
 describe('consent-gated tags', () => {
@@ -50,7 +51,7 @@ describe('consent-gated tags', () => {
     expect(tags.loaded).toEqual([]);
     expect(tags.googleConsent).toEqual([{ ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' }]);
     tags.fire('cookieyes_consent_update', 'gdpr', { analytics: true, advertisement: true });
-    expect(tags.loaded).toEqual(['www.phas3.ai', 'snap.licdn.com']);
+    expect(tags.loaded).toEqual(['www.phas3.ai', 'snap.licdn.com', 'bzrcdn.openai.com']);
     expect(tags.googleConsent.at(-1)).toEqual({ ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
   });
 
@@ -58,8 +59,29 @@ describe('consent-gated tags', () => {
     const tags = runTags();
     tags.fire('cookieyes_consent_update', 'ccpa', { analytics: true, advertisement: true });
     tags.fire('cookieyes_banner_load', 'ccpa', { analytics: true, advertisement: true });
-    expect(tags.loaded).toEqual(['www.phas3.ai', 'snap.licdn.com']);
+    expect(tags.loaded).toEqual(['www.phas3.ai', 'snap.licdn.com', 'bzrcdn.openai.com']);
     expect(tags.googleConsent).toHaveLength(1);
+  });
+
+  it('initializes the OpenAI Pixel once with consent, and withdraws it on opt-out', () => {
+    const tags = runTags();
+    tags.fire('cookieyes_banner_load', 'gdpr', { analytics: false, advertisement: false });
+    expect(tags.pixelCommands()).toEqual([]);
+    tags.fire('cookieyes_consent_update', 'gdpr', { analytics: true, advertisement: true });
+    tags.fire('cookieyes_consent_update', 'gdpr', { analytics: true, advertisement: true });
+    expect(tags.loaded.filter((host) => host === 'bzrcdn.openai.com')).toHaveLength(1);
+    expect(tags.pixelCommands()).toEqual([
+      ['consent', true],
+      ['init', { pixelId: '9NcMuYMsWiBSTq3HTBYb7f' }],
+      ['consent', true],
+    ]);
+    tags.fire('cookieyes_consent_update', 'gdpr', { analytics: true, advertisement: false });
+    expect(tags.pixelCommands().at(-1)).toEqual(['consent', false]);
+  });
+
+  it('forwards the ChatGPT Ads click reference on signup links', async () => {
+    const { buildCtaUrls } = await import('./agency/ctaLinks');
+    expect(new URL(buildCtaUrls('?oppref=gAAAAAb123').signupUrl).searchParams.get('oppref')).toBe('gAAAAAb123');
   });
 
   it('honors a US opt-out of selling and sharing', () => {
