@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import './consent.css'
+import { installNoticeOkButton } from './consentNoticeOk'
 import App from './App.tsx'
 import Analytics from './AnalyticsTracker'
 import RouteMetaUpdater from './seo/RouteMetaUpdater'
@@ -16,6 +17,8 @@ const app = (
     </BrowserRouter>
   </StrictMode>
 )
+
+installNoticeOkButton()
 
 const container = document.getElementById('root')!
 
