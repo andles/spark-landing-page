@@ -97,13 +97,11 @@ describe('the US notice OK button', () => {
     expect(closeButton!.clicks).toBe(1);
   });
 
-  it('falls back to closing when CookieYes exposes no banner action', () => {
-    const { environment, closeButton, pressOk } = notice('ccpa', { cookieYesReady: false });
-    addNoticeOkButton(environment);
+  it('is not added when CookieYes exposes no accept_all action', () => {
+    const { environment, buttons } = notice('ccpa', { cookieYesReady: false });
 
-    pressOk();
-
-    expect(closeButton!.clicks).toBe(1);
+    expect(addNoticeOkButton(environment)).toBe(false);
+    expect(buttons.children).toHaveLength(1);
   });
 
   it('is not added to the opt-in banner, where Accept and Reject stay equal', () => {

@@ -37,22 +37,21 @@ export type NoticeEnvironment = {
 function browserEnvironment(): NoticeEnvironment {
   return {
     root: document,
-    // Read when OK is pressed: CookieYes defines it after its script loads.
-    get performBannerAction() {
-      return window.performBannerAction;
-    },
+    performBannerAction: window.performBannerAction,
     globalPrivacyControl: hasGlobalPrivacyControl,
   };
 }
 
 // Adds the OK button to the US notice once. Returns whether the notice now
-// has one. Without CookieYes's close button the notice cannot be dismissed
-// under Global Privacy Control, so none is added.
+// has one. None is added unless CookieYes exposes both its close button (for
+// Global Privacy Control) and its accept_all action: a fallback to the bare
+// close would bring back the opt-out described above.
 export function addNoticeOkButton(environment: NoticeEnvironment = browserEnvironment()): boolean {
   const { root } = environment;
   const buttons = root.querySelector(noticeButtonsSelector);
   const close = root.querySelector<HTMLElement>(closeButtonSelector);
-  if (!buttons || !close || !buttons.querySelector(optOutSelector)) return false;
+  const accept = environment.performBannerAction;
+  if (!buttons || !close || !accept || !buttons.querySelector(optOutSelector)) return false;
   if (buttons.querySelector(`.${okClass}`)) return true;
 
   const ok = root.createElement('button');
@@ -60,8 +59,7 @@ export function addNoticeOkButton(environment: NoticeEnvironment = browserEnviro
   ok.className = `cky-btn ${okClass}`;
   ok.textContent = 'OK';
   ok.addEventListener('click', () => {
-    const accept = environment.performBannerAction;
-    if (environment.globalPrivacyControl() || !accept) close.click();
+    if (environment.globalPrivacyControl()) close.click();
     else accept('accept_all');
   });
   buttons.append(ok);
