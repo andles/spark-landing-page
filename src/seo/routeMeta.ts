@@ -263,7 +263,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Demand Forecasting Software for Every SKU | Spark Inventory',
     description:
       'Demand ESP picks a forecasting method for every SKU, corrects for stockouts and promotions, and turns forecasts into draft purchase orders.',
-    lastModified: '2026-11-05',
+    lastModified: '2026-11-12',
     schema: [buildFaqPageSchema(`${SITE_URL}/demand-forecasting-software/#faq`, demandForecastingFaqs)],
   },
   {
@@ -271,7 +271,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Purchasing and Reorder Planning Software | Spark Inventory',
     description:
       'Plan reorders with Demand ESP forecasts, then turn recommendations into reviewed draft purchase orders, supplier workflows, and receiving.',
-    lastModified: '2026-10-09',
+    lastModified: '2026-11-12',
   },
   {
     path: '/features/sales',
@@ -292,7 +292,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Warehouse Management Software | Spark Inventory',
     description:
       'Multi-warehouse inventory, bin-level locations, transfers, and cycle counts with real-time accuracy.',
-    lastModified: '2026-08-31',
+    lastModified: '2026-11-12',
   },
   {
     path: '/features/mobile',

@@ -3,6 +3,7 @@ import AgencyHeader from '../agency/AgencyHeader';
 import AgencyFooter from '../agency/AgencyFooter';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
 import { useCtaLinks } from '../agency/ctaLinks';
+import { YouTubeVideoSection } from '../components/YouTubeEmbed';
 import {
   CHATGPT_PLUGIN_URL,
   SPARK_MCP_URL,
@@ -53,6 +54,8 @@ export function AiAssistantInventoryPage() {
             </ScrollReveal>
           </div>
         </section>
+
+        <YouTubeVideoSection videoKey="aiAssistant" />
 
         <section className="border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:px-8 lg:py-20">
           <div className="mx-auto max-w-[1080px]">

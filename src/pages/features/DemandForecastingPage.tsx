@@ -89,6 +89,7 @@ export function DemandForecastingPage() {
       showcase={(
         <>
           <YouTubeVideoSection videoKey="demand" />
+          <YouTubeVideoSection videoKey="forecastFromExport" />
 
           <section aria-labelledby="patterns-heading" className="px-6 pb-16 md:px-8 lg:pb-20">
             <div className="mx-auto max-w-[1120px]">
