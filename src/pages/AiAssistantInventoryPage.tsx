@@ -1,4 +1,4 @@
-import { MessageSquare, ShieldCheck } from 'lucide-react';
+import { Check, MessageSquare, ShieldCheck, Sparkles } from 'lucide-react';
 import AgencyHeader from '../agency/AgencyHeader';
 import AgencyFooter from '../agency/AgencyFooter';
 import ScrollReveal, { RevealItem } from '../agency/ScrollReveal';
@@ -12,9 +12,14 @@ import {
   assistantPrompts,
   assistantSafeguards,
   assistantSteps,
+  exampleConversation,
 } from '../content/aiAssistants';
 
 const CTA_OPTIONS = { source: 'chatgpt-inventory-management' } as const;
+
+// Visitors from ChatGPT ads arrive expecting "free" (Nov 2026). Say it in the
+// first screen, next to the buttons, not only in the small print.
+const heroFacts = ['Free for one user', 'No credit card', 'You choose read-only or write access'];
 
 const primaryButton =
   'inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]';
@@ -28,30 +33,70 @@ export function AiAssistantInventoryPage() {
     <div className="min-h-screen bg-[#06080d] text-white">
       <AgencyHeader />
       <main>
-        <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-8 lg:pb-24 lg:pt-32">
+        <section className="relative overflow-hidden px-6 pb-12 pt-28 md:px-8 lg:pb-16 lg:pt-32">
           <div className="absolute inset-0 dot-grid opacity-35" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_0%,rgba(34,197,94,0.13),transparent_65%)]" />
           <div className="relative z-10 mx-auto max-w-[1180px] text-center">
             <ScrollReveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-4 py-2 text-sm text-emerald-200">
                 <MessageSquare className="h-4 w-4" aria-hidden="true" />
-                Inventory management in ChatGPT and Claude
+                Free to start in ChatGPT and Claude
               </div>
               <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.6rem]">
                 Run Your Inventory
                 <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 bg-clip-text text-transparent">From a Conversation</span>
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Ask ChatGPT or Claude what is running low, what to buy, and why. Spark answers from your live workspace with demand forecasts per SKU, days of supply, lead times, and supplier terms, then drafts the purchase orders you approve.
+                Ask ChatGPT or Claude what is running low and what to buy. Spark answers from your own sales, stock and supplier data, then drafts the purchase orders you approve.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href={CHATGPT_PLUGIN_URL} target="_blank" rel="noopener noreferrer" className={primaryButton}>Add to ChatGPT</a>
                 <a href="#claude" className={secondaryButton}>Connect Claude</a>
               </div>
+              <ul className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#c9d1dc]">
+                {heroFacts.map((fact) => (
+                  <li key={fact} className="inline-flex items-center gap-2">
+                    <Check className="h-4 w-4 text-emerald-300" aria-hidden="true" />
+                    {fact}
+                  </li>
+                ))}
+              </ul>
               <p className="mt-3 text-xs text-white/50">
-                Needs a Spark account. New to Spark? <a href={signupUrl} className="text-cyan-300 underline-offset-4 hover:underline">Start free</a>, or create one when you first connect.
+                New to Spark? Create your free account when you first connect, or <a href={signupUrl} className="text-cyan-300 underline-offset-4 hover:underline">start free here</a>.
               </p>
             </ScrollReveal>
+          </div>
+        </section>
+
+        <section aria-labelledby="example-heading" className="px-6 pb-16 md:px-8 lg:pb-20">
+          <div className="mx-auto max-w-[760px]">
+            <h2 id="example-heading" className="text-center text-sm font-semibold text-emerald-300">What an answer looks like</h2>
+            <div className="mt-5 rounded-3xl border border-white/[0.08] bg-[#0a0d14] p-4 shadow-2xl shadow-emerald-500/[0.04] sm:p-6">
+              <p className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-white/[0.08] px-4 py-3 text-sm text-white sm:text-base">
+                {exampleConversation.question}
+              </p>
+              <div className="mt-4 flex gap-3">
+                <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500" aria-hidden="true">
+                  <Sparkles className="h-4 w-4 text-white" />
+                </span>
+                <div className="min-w-0 flex-1 text-sm leading-6 text-[#d7dce5] sm:text-base sm:leading-7">
+                  <p>{exampleConversation.intro}</p>
+                  <ul className="mt-3 divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.08]">
+                    {exampleConversation.items.map((item) => (
+                      <li key={item.sku} className="flex flex-col gap-1 bg-white/[0.02] px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                        <span>
+                          <span className="block font-semibold text-white">{item.sku}</span>
+                          <span className="block text-sm text-[#8b95a8]">{item.reason}</span>
+                        </span>
+                        <span className="shrink-0 font-semibold text-emerald-300">{item.order}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-3">{exampleConversation.close}</p>
+                </div>
+              </div>
+            </div>
+            <p className="mt-3 text-center text-xs text-white/40">Example answer with sample data. Spark answers from your own workspace.</p>
           </div>
         </section>
 

@@ -427,7 +427,7 @@ export const routeMeta: RouteMeta[] = [
     title: 'Inventory Management in ChatGPT and Claude | Spark Inventory',
     description:
       'Ask ChatGPT or Claude what to reorder and why. Spark answers from your live stock, sales, and supplier data and drafts purchase orders you approve.',
-    lastModified: '2026-11-12',
+    lastModified: '2026-11-13',
     schema: [buildFaqPageSchema(`${SITE_URL}/chatgpt-inventory-management/#faq`, assistantFaqs)],
   },
   {

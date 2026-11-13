@@ -25,6 +25,24 @@ export const assistantPrompts = [
   "Draft purchase orders for the recommended reorders, but don't send anything yet.",
 ];
 
+/**
+ * The example conversation shown near the top of the page, so a visitor sees
+ * what an answer looks like before scrolling. Illustrative sample data, not a
+ * customer's results: the page labels it as an example (AGENTS.md "Marketing
+ * evidence"). The question is the first starter prompt from the ChatGPT
+ * listing; the answer follows the shape of Spark's reorder recommendations.
+ */
+export const exampleConversation = {
+  question: 'What should I reorder this week, and why?',
+  intro: 'Three items will run short before new stock could arrive:',
+  items: [
+    { sku: 'Ceramic mug, 12 oz', reason: '9 days of stock left, supplier takes 21 days', order: 'Order 240' },
+    { sku: 'Linen tea towel', reason: 'Seasonal peak starts in 3 weeks', order: 'Order 180' },
+    { sku: 'Bamboo tray, large', reason: '14 days left, 60 already on order', order: 'Order 40' },
+  ],
+  close: 'Want me to draft these as purchase orders? Nothing is sent until you approve.',
+} as const;
+
 export const assistantCapabilities = [
   {
     title: 'Plan purchasing',
