@@ -651,6 +651,13 @@ export const routeMeta: RouteMeta[] = [
     webPageType: 'CollectionPage',
   },
   {
+    path: '/chew-on-this-webinar',
+    title: 'Webinar: The Inventory Ops You Should Have Automated by Now | Spark Inventory',
+    description:
+      'Free live webinar with Spark Inventory and Chew On This, December 1, 2026 at 2:00 PM CST: five inventory workflows Shopify brands still run by hand, with a live demo.',
+    lastModified: '2026-11-12',
+  },
+  {
     path: '/sms-program',
     title: 'SMS Program Details | Spark Inventory',
     description:

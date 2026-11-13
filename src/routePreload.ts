@@ -52,5 +52,6 @@ export const routeImports = {
   ContactPage: () => import('./pages/ContactPage'),
   SitemapPage: () => import('./pages/SitemapPage'),
   SmsProgramPage: () => import('./pages/SmsProgramPage'),
+  ChewOnThisWebinarPage: () => import('./pages/ChewOnThisWebinarPage'),
   NotFoundPage: () => import('./pages/NotFoundPage'),
 };
