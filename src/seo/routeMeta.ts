@@ -16,6 +16,7 @@ import { reorderPointFaqs } from '../content/reorderPoint';
 import { safetyStockFaqs } from '../content/safetyStock';
 import { smallBusinessFaqs } from '../content/smallBusiness';
 import { assistantFaqs } from '../content/aiAssistants';
+import { aiInventoryFaqs } from '../content/aiInventoryManagement';
 import {
   buildFaqPageSchema, demandForecastingFaqs, integrationsFaqs, mobileFaqs, signalsFaqs, textWithSparkiFaqs, wholesaleFaqs,
 } from '../pages/features/featureFaqs';
@@ -412,6 +413,14 @@ export const routeMeta: RouteMeta[] = [
       'Small business inventory software: track stock, scan barcodes, forecast demand per SKU, and draft purchase orders. Free for one user, paid from $99.',
     lastModified: '2026-11-09',
     schema: [buildFaqPageSchema(`${SITE_URL}/small-business-inventory-software/#faq`, smallBusinessFaqs)],
+  },
+  {
+    path: '/ai-inventory-management',
+    title: 'AI Inventory Management: What It Does | Spark Inventory',
+    description:
+      'How AI inventory management works: per-SKU forecasts, stockout correction, safety stock and draft orders you approve, and what to check before you buy.',
+    lastModified: '2026-11-13',
+    schema: [buildFaqPageSchema(`${SITE_URL}/ai-inventory-management/#faq`, aiInventoryFaqs)],
   },
   {
     path: '/chatgpt-inventory-management',

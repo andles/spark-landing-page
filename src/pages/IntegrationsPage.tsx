@@ -160,7 +160,11 @@ export function IntegrationsPage() {
                 <p className="mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
                   Connect the stores, marketplaces, accounting, and shipping tools you already use. Spark pulls them into one inventory plan and sends the results back where your team works.
                 </p>
-                <nav aria-label="Integration categories" className="mt-8 flex flex-wrap gap-2">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a href={signupUrl} className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-7 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">Start Free</a>
+                  <BookACallButton url={bookUrl} className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]">Book a demo</BookACallButton>
+                </div>
+                <nav aria-label="Integration categories" className="mt-6 flex flex-wrap gap-2">
                   {groups.map((group) => (
                     <a key={group.id} href={`#${group.id}`} className="rounded-full border border-white/[0.10] bg-white/[0.03] px-4 py-2 text-xs font-semibold text-[#b8bfcc] transition-colors hover:border-white/20 hover:text-white">
                       {group.label}

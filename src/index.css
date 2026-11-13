@@ -485,3 +485,15 @@ html {
 .soro-article table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 0.9375rem; }
 .soro-article th, .soro-article td { border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.5rem 0.75rem; text-align: left; }
 .soro-article > p:last-child { margin-top: 3rem; font-size: 0.9375rem; }
+
+/* Sign-up offers the edge function adds to each article (src/blog/soro.ts). */
+.soro-article > .soro-cta-intro { margin-top: 1.25rem; border-left: 3px solid #22d3ee; padding: 0.25rem 0 0.25rem 1rem; color: #b8bfcc; font-size: 0.9375rem; line-height: 1.6; }
+.soro-article > .soro-cta-intro a { font-weight: 600; white-space: nowrap; }
+.soro-article > .soro-cta-end { margin-top: 3rem; border: 1px solid rgba(34, 211, 238, 0.25); border-radius: 1.25rem; background: rgba(34, 211, 238, 0.05); padding: 1.75rem; }
+.soro-article > .soro-cta-end > * + * { margin-top: 0.75rem; }
+.soro-article > .soro-cta-end .soro-cta-eyebrow { color: #67e8f9; font-size: 0.8125rem; font-weight: 600; }
+.soro-article > .soro-cta-end h2 { font-size: 1.5rem; }
+.soro-article > .soro-cta-end p { font-size: 1rem; line-height: 1.7; }
+.soro-article > .soro-cta-end .soro-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin-top: 1.25rem; }
+.soro-article > .soro-cta-end a.soro-cta-button { display: inline-flex; height: 3rem; align-items: center; border-radius: 9999px; background: linear-gradient(to right, #06b6d4, #8b5cf6); padding: 0 1.75rem; color: #fff; font-size: 0.875rem; font-weight: 600; text-decoration: none; }
+.soro-article > .soro-cta-end a.soro-cta-secondary { font-size: 0.875rem; font-weight: 600; }
