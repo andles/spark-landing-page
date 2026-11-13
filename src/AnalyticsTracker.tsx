@@ -2,6 +2,7 @@ import { subscribeAnalyticsConsent } from './analyticsConsent';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { analyticsRoute, captureCta, captureMeetingBooked, capturePageview, initializeAnalytics } from './analytics';
+import { rememberFirstReferrer, withSignupReferrer } from './signupReferrer';
 
 export default function Analytics() {
   const { pathname } = useLocation();
@@ -18,9 +19,13 @@ export default function Analytics() {
     if (analyticsRoute(pathname) === '/meeting-confirmed') captureMeetingBooked();
   }, [pathname, consentRevision]);
   useEffect(() => {
+    rememberFirstReferrer();
     const trackLink = (event: MouseEvent) => {
       const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
       if (!(link instanceof HTMLAnchorElement)) return;
+      // Runs before the browser follows the link, so the sign-up page receives ref=.
+      const forwarded = withSignupReferrer(link.href);
+      if (forwarded !== link.href) link.href = forwarded;
       const url = new URL(link.href);
       if (url.hostname === 'calendly.com' || (url.origin === window.location.origin && url.pathname === '/book-a-call')) captureCta('demo_clicked');
       if (url.hostname === 'app.sparkinventory.com' && ['/sign-up', '/shopify-trial'].includes(url.pathname)) captureCta('signup_clicked');
