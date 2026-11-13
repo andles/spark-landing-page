@@ -6,6 +6,7 @@ import {
   extractSoroArticles,
   loadSoroArticleContent,
   loadSoroArticles,
+  articleSignupUrl,
   renderArticlePage,
   renderBlogIndex,
   renderMissingArticle,
@@ -120,8 +121,17 @@ describe('renderArticlePage', () => {
     expect(page).not.toContain('<h1>Spark Inventory Blog</h1>');
   });
 
+  it('offers a free sign-up under the date and after the article, tagged with the article', () => {
+    const signup = 'https://app.sparkinventory.com/sign-up?source=blog-seasonal-demand-forecasting&amp;utm_content=blog-seasonal-demand-forecasting';
+    expect(page.match(new RegExp(signup.replace(/[?]/g, '\\?'), 'g'))).toHaveLength(2);
+    expect(page).toMatch(/<\/time><aside class="soro-cta-intro"[^>]*>[^<]*<a href="[^"]+">Start free<\/a><\/aside><div><p>Seasonal body\.<\/p><\/div><aside class="soro-cta-end"/);
+    // The link back to the blog stays last, after the offer.
+    expect(page).toMatch(/<\/aside><p><a href="\/blog\/">All Spark Inventory Blog articles<\/a><\/p><\/article>/);
+  });
+
   it('puts the article text in the widget mount point for crawlers', () => {
-    expect(page).toContain('<div id="soro-blog"><article class="soro-article"><time datetime="2026-09-01">September 1, 2026</time><div><p>Seasonal body.</p></div>');
+    expect(page).toContain('<div id="soro-blog"><article class="soro-article"><time datetime="2026-09-01">September 1, 2026</time>');
+    expect(page).toContain('<div><p>Seasonal body.</p></div>');
     expect(page).not.toContain('<h2>Seasonal Demand');
   });
 });
@@ -152,4 +162,11 @@ it('renderMissingArticle keeps the article links but asks search engines not to 
   const page = renderMissingArticle(blogHtml, [article]);
   expect(page).toContain('<meta name="robots" content="noindex, follow">');
   expect(page).toContain('<a href="/blog/seasonal-demand-forecasting/">');
+});
+
+it('articleSignupUrl opens the app sign-up with the article as its source', () => {
+  const url = new URL(articleSignupUrl('set-supplier-lead-times'));
+  expect(url.origin + url.pathname).toBe('https://app.sparkinventory.com/sign-up');
+  expect(url.searchParams.get('source')).toBe('blog-set-supplier-lead-times');
+  expect(url.searchParams.get('utm_content')).toBe('blog-set-supplier-lead-times');
 });

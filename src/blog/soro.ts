@@ -209,7 +209,44 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   const date = article.publishedDate ? `<time datetime="${article.publishedDate}">${formatArticleDate(article.publishedDate)}</time>` : '';
   return page.replace(
     SORO_MOUNT,
-    `<div id="soro-blog"><article class="soro-article">${date}<div>${content}</div><p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+    `<div id="soro-blog"><article class="soro-article">${date}${articleIntroCta(article.slug)}<div>${content}</div>${articleEndCta(article.slug)}<p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+  );
+}
+
+// Most blog readers arrive from a Google search and leave after this one page
+// (PostHog, Nov 2026), and until now an article offered no way to try Spark.
+// Each article carries a one-line offer under the date and a fuller one after
+// the text. Both open the app's sign-up, which AnalyticsTracker records as
+// signup_clicked, tagged with the article so sign-ups can be traced to it.
+// Copy follows AGENTS.md "Marketing evidence": workflows only, no outcome claims.
+const SIGNUP_URL = 'https://app.sparkinventory.com/sign-up';
+
+export const articleSignupUrl = (slug: string) => {
+  const source = `blog-${slug}`;
+  return `${SIGNUP_URL}?${new URLSearchParams({ source, utm_content: source }).toString()}`;
+};
+
+function articleIntroCta(slug: string): string {
+  return (
+    '<aside class="soro-cta-intro" aria-label="Try Spark Inventory">' +
+    'Spark Inventory forecasts demand for every SKU and tells you what to reorder. Free for one user. ' +
+    `<a href="${esc(articleSignupUrl(slug))}">Start free</a>` +
+    '</aside>'
+  );
+}
+
+function articleEndCta(slug: string): string {
+  return (
+    '<aside class="soro-cta-end" aria-labelledby="soro-cta-end-heading">' +
+    '<p class="soro-cta-eyebrow">Put this into practice</p>' +
+    '<h2 id="soro-cta-end-heading">Run these numbers on your own sales history</h2>' +
+    '<p>Connect your store or accounting system, or import a spreadsheet. Spark forecasts each item from its own history, ' +
+    'flags what will run short, and recommends what to reorder and when. Free is an ongoing plan for one user, not a trial.</p>' +
+    '<p class="soro-cta-actions">' +
+    `<a class="soro-cta-button" href="${esc(articleSignupUrl(slug))}">Start free</a>` +
+    '<a class="soro-cta-secondary" href="/demand-forecasting-software/">How Spark forecasts demand</a>' +
+    '</p>' +
+    '</aside>'
   );
 }
 
