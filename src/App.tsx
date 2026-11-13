@@ -62,6 +62,7 @@ const DeleteAccountPage = lazy(() => R.DeleteAccountPage().then((m) => ({ defaul
 const ContactPage = lazy(() => R.ContactPage().then((m) => ({ default: m.ContactPage })));
 const SitemapPage = lazy(() => R.SitemapPage().then((m) => ({ default: m.SitemapPage })));
 const SmsProgramPage = lazy(() => R.SmsProgramPage().then((m) => ({ default: m.SmsProgramPage })));
+const ChewOnThisWebinarPage = lazy(R.ChewOnThisWebinarPage);
 const NotFoundPage = lazy(() => R.NotFoundPage().then((m) => ({ default: m.NotFoundPage })));
 
 function HomePage() {
@@ -146,6 +147,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/sitemap" element={<SitemapPage />} />
             <Route path="/sms-program" element={<SmsProgramPage />} />
+            <Route path="/chew-on-this-webinar" element={<ChewOnThisWebinarPage />} />
             <Route path="/404" element={<NotFoundPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
