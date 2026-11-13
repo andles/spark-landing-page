@@ -17,6 +17,7 @@ const productLinks = [
   { href: "/features/warehousing/", label: "Warehousing", description: "Bins, transfers, picking, and counts" },
   { href: "/features/mobile/", label: "Mobile App", description: "Receive, pick, pack, and ship by scan" },
   { href: "/features/accounting/", label: "Accounting", description: "QuickBooks, invoices, and payments" },
+  { href: "/ai-inventory-management/", label: "AI inventory management", description: "What AI does for inventory, and what to check" },
   { href: "/chatgpt-inventory-management/", label: "Spark in ChatGPT & Claude", description: "Ask what to reorder from your AI assistant" },
   { href: "/features/tools-services/", label: "Sparki & MCP", description: "Agentic onboarding and automation" },
   { href: "/features/signals-automation/", label: "Signals & Automation", description: "Proposed actions, rules, and Text with Sparki" },

@@ -10,6 +10,7 @@ const groups = [
     title: 'Solutions',
     description: 'Inventory workflows built around a specific business problem or operating model.',
     links: [
+      ['/ai-inventory-management/', 'AI Inventory Management: What It Does and What to Check'],
       ['/small-business-inventory-software/', 'Small Business Inventory Software'],
       ['/chatgpt-inventory-management/', 'Inventory Management in ChatGPT and Claude'],
       ['/shopify-inventory-management/', 'Shopify Inventory Management'],

@@ -39,6 +39,7 @@ const SignalsAutomationPage = lazy(() => R.SignalsAutomationPage().then((m) => (
 const WholesaleSuppliersPage = lazy(() => R.WholesaleSuppliersPage().then((m) => ({ default: m.WholesaleSuppliersPage })));
 const IntegrationsPage = lazy(() => R.IntegrationsPage().then((m) => ({ default: m.IntegrationsPage })));
 const ShopifyInventoryPage = lazy(() => R.ShopifyInventoryPage().then((m) => ({ default: m.ShopifyInventoryPage })));
+const AiInventoryManagementPage = lazy(() => R.AiInventoryManagementPage().then((m) => ({ default: m.AiInventoryManagementPage })));
 const SmallBusinessInventoryPage = lazy(() => R.SmallBusinessInventoryPage().then((m) => ({ default: m.SmallBusinessInventoryPage })));
 const AiAssistantInventoryPage = lazy(() => R.AiAssistantInventoryPage().then((m) => ({ default: m.AiAssistantInventoryPage })));
 const PricingPage = lazy(() => R.PricingPage().then((m) => ({ default: m.PricingPage })));
@@ -123,6 +124,7 @@ function App() {
             <Route path="/features/wholesale-suppliers" element={<WholesaleSuppliersPage />} />
             <Route path="/integrations" element={<IntegrationsPage />} />
             <Route path="/shopify-inventory-management" element={<ShopifyInventoryPage />} />
+            <Route path="/ai-inventory-management" element={<AiInventoryManagementPage />} />
             <Route path="/small-business-inventory-software" element={<SmallBusinessInventoryPage />} />
             <Route path="/chatgpt-inventory-management" element={<AiAssistantInventoryPage />} />
             <Route path="/pricing" element={<PricingPage />} />

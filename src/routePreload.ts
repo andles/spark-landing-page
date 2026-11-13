@@ -29,6 +29,7 @@ export const routeImports = {
   WholesaleSuppliersPage: () => import('./pages/features/WholesaleSuppliersPage'),
   IntegrationsPage: () => import('./pages/IntegrationsPage'),
   ShopifyInventoryPage: () => import('./pages/ShopifyInventoryPage'),
+  AiInventoryManagementPage: () => import('./pages/AiInventoryManagementPage'),
   SmallBusinessInventoryPage: () => import('./pages/SmallBusinessInventoryPage'),
   AiAssistantInventoryPage: () => import('./pages/AiAssistantInventoryPage'),
   PricingPage: () => import('./pages/PricingPage'),

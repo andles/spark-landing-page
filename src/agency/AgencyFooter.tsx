@@ -49,6 +49,7 @@ export default function AgencyFooter() {
                 <h4 className="text-white text-sm font-semibold mb-4">Solutions</h4>
                 <ul className="space-y-2.5">
                   <li><a href="/small-business-inventory-software/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Small Business Inventory</a></li>
+                  <li><a href="/ai-inventory-management/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">AI Inventory Management</a></li>
                   <li><a href="/chatgpt-inventory-management/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Spark in ChatGPT &amp; Claude</a></li>
                   <li><a href="/reduce-stockouts-overstock/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Reduce Stockouts</a></li>
                   <li><a href="/3pl/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory for 3PLs</a></li>

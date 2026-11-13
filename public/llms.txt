@@ -22,6 +22,7 @@
 ## Solutions
 
 - [Small business inventory software](https://sparkinventory.com/small-business-inventory-software/): Inventory software for small product businesses: stock by location, barcode scanning, per-SKU demand forecasts, and draft purchase orders. Free for one user; paid plans from $99 a month with unlimited users. Includes a cost comparison of five tools and a buyer's checklist.
+- [AI inventory management](https://sparkinventory.com/ai-inventory-management/): What AI does in inventory management (per-SKU forecasts, stockout correction, safety stock from forecast error and lead times, reorder recommendations and draft purchase orders, automation you approve, plain-language questions) and six questions for evaluating AI inventory software. Shows how Spark Inventory does each part.
 - [Inventory management in ChatGPT and Claude](https://sparkinventory.com/chatgpt-inventory-management/): Spark Inventory is a plugin in ChatGPT's plugin directory and a custom connector for Claude. Ask what is running low, what to reorder and why, and have the assistant draft purchase orders you approve. Needs a Spark account; read-only or read and write access is approved by a Spark admin.
 - [Reduce stockouts and overstock](https://sparkinventory.com/reduce-stockouts-overstock/)
 - [Shopify inventory management](https://sparkinventory.com/shopify-inventory-management/)
