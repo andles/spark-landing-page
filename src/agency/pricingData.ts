@@ -1,5 +1,5 @@
 export type PricingCtaKind = 'signup' | 'contact';
-export type SignupPlanSlug = 'free' | 'pulse' | 'operate' | 'scale' | 'custom';
+export type SignupPlanSlug = 'free' | 'solo' | 'operate' | 'scale' | 'custom';
 
 export interface PricingTier {
   name: string;
@@ -81,7 +81,7 @@ export const pricingTiers: PricingTier[] = [
     ],
     ctaLabel: 'Start Solo free',
     ctaKind: 'signup',
-    signupPlan: 'pulse',
+    signupPlan: 'solo',
     trialLabel: '14-day free trial',
     accent: 'sky',
   },
