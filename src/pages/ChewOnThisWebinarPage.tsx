@@ -129,7 +129,7 @@ function RegistrationForm() {
       <div className="flex flex-col gap-1.5">
         <h2 className="m-0 text-2xl font-bold tracking-[-0.025em] text-[#F0F2F5]">Save your seat</h2>
         <p className="m-0 text-sm text-[#8B95A8]">
-          Registering saves your webinar seat and creates your Spark account with a 30-day Operate trial. No card needed. Can't make it live on Dec 1? We'll send the recording.
+          Registering saves your webinar seat and creates your Spark account with a 30-day Operate trial. No card needed. Can't make it live on Dec 2? We'll send the recording.
         </p>
       </div>
       <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
@@ -238,7 +238,7 @@ export default function ChewOnThisWebinarPage() {
                 Five workflows most Shopify brands still run by hand, from reorder timing to slow-mover markdowns, and how to hand each one off. 45 minutes, live demo included.
               </p>
               <div className="mt-1 flex flex-wrap gap-2.5">
-                <Pill icon={<><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>}>Monday, December 1, 2026</Pill>
+                <Pill icon={<><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>}>Wednesday, December 2, 2026</Pill>
                 <Pill icon={<><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>}>2:00 PM CST</Pill>
                 <Pill icon={<><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" /></>}>Live on Zoom, recording sent to all registrants</Pill>
               </div>
