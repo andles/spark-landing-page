@@ -1,8 +1,8 @@
-import { useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
+import { useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { captureCta } from '../analytics';
-import { getTurnstileToken } from '../turnstile';
 import {
+  CHEW_WEBINAR_CAMPAIGN_KEY,
   EMPTY_WEBINAR_REGISTRATION,
   missingWebinarFields,
   registerForWebinar,
@@ -16,9 +16,9 @@ import {
 // ─────────────────────────────────────────────────────────────────────────────
 // /chew-on-this-webinar: Spark x Chew On This live webinar registration.
 //
-// "Register and reserve my trial" creates the visitor's Free Spark account
-// from this page (POST /api/v1/authentication/registration), then opens it in
-// the app, signed in, through app.sparkinventory.com/welcome. See
+// "Register and reserve my trial" creates the visitor's Spark account from this
+// page through the webinar's onboarding campaign (30-day Operate trial), then
+// opens it in the app, signed in, through app.sparkinventory.com/welcome. See
 // src/webinarSignup.ts for the contract and the session hand-off.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -63,9 +63,9 @@ const FIELDS: {
   required?: boolean;
 }[] = [
   { key: 'company', label: 'Company name', type: 'text', autoComplete: 'organization', required: true },
-  { key: 'website', label: 'Website', type: 'text', autoComplete: 'url', placeholder: 'yourstore.com' },
+  { key: 'website', label: 'Company website', type: 'text', autoComplete: 'url', placeholder: 'yourstore.com', required: true },
   { key: 'email', label: 'Work email', type: 'email', autoComplete: 'email', required: true },
-  { key: 'phone', label: 'Phone number', type: 'tel', autoComplete: 'tel' },
+  { key: 'phone', label: 'Phone number', type: 'tel', autoComplete: 'tel', required: true },
   { key: 'password', label: 'Create a password', type: 'password', autoComplete: 'new-password', required: true },
 ];
 
@@ -89,10 +89,6 @@ function RegistrationForm() {
   const [missing, setMissing] = useState<string[]>([]);
   const [failure, setFailure] = useState<WebinarSignupError | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // Taken once: the server refuses a submit faster than a person could fill the form.
-  const [renderedAt] = useState(() => Date.now());
-  const honeypotRef = useRef<HTMLInputElement>(null);
-  const turnstileRef = useRef<HTMLDivElement>(null);
 
   const update = (next: WebinarRegistration) => {
     setFields(next);
@@ -111,13 +107,9 @@ function RegistrationForm() {
     setIsSubmitting(true);
     captureCta('signup_clicked');
     try {
-      const turnstileToken = turnstileRef.current ? await getTurnstileToken(turnstileRef.current) : undefined;
       const refreshToken = await registerForWebinar(fields, {
         timezone: signupTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone),
-        turnstileToken,
-        formElapsedMs: Date.now() - renderedAt,
-        fax: honeypotRef.current?.value || undefined,
-        campaignToken: import.meta.env.VITE_CHEW_WEBINAR_CAMPAIGN_TOKEN,
+        campaignKey: CHEW_WEBINAR_CAMPAIGN_KEY,
       });
       // Replace, so Back does not return to a form whose account already exists.
       window.location.replace(welcomeUrl(refreshToken));
@@ -137,7 +129,7 @@ function RegistrationForm() {
       <div className="flex flex-col gap-1.5">
         <h2 className="m-0 text-2xl font-bold tracking-[-0.025em] text-[#F0F2F5]">Save your seat</h2>
         <p className="m-0 text-sm text-[#8B95A8]">
-          Registering saves your webinar seat and creates your free Spark account, ready for your 30-day Operate trial. Can't make it live on Dec 1? We'll send the recording.
+          Registering saves your webinar seat and creates your Spark account with a 30-day Operate trial. No card needed. Can't make it live on Dec 1? We'll send the recording.
         </p>
       </div>
       <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
@@ -172,11 +164,6 @@ function RegistrationForm() {
           )}
         </div>
       ))}
-      {/* Honeypot: hidden from people and assistive tech; only a bot fills it in. */}
-      <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
-        <label htmlFor="webinar-fax">Fax</label>
-        <input ref={honeypotRef} id="webinar-fax" name="fax" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
       <label htmlFor="webinar-consent" className="flex cursor-pointer items-start gap-3 text-sm leading-5 text-[#B8BFCC]">
         <input
           id="webinar-consent"
@@ -192,7 +179,6 @@ function RegistrationForm() {
           <Link to="/privacy-policy/" target="_blank" className="font-semibold text-[#A2F4FD] underline underline-offset-2 hover:text-[#53EAFD]">Privacy Policy</Link>.
         </span>
       </label>
-      <div ref={turnstileRef} />
       {missing.length > 0 && (
         <p role="alert" className="m-0 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
           Please add {missing.join(', ')}.

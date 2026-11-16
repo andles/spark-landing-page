@@ -1,12 +1,15 @@
 /**
- * Webinar registration creates the visitor's Spark account right here: the form posts the
- * same sign-up the app's own /sign-up page sends (POST /api/v1/authentication/registration,
- * which answers sparkinventory.com cross-origin), as a fresh Free account.
+ * Webinar registration creates the visitor's Spark account right here, through the webinar's
+ * onboarding campaign: the form posts the campaign quick start the app's own campaign link uses
+ * (POST /api/v1/authentication/shopify-trial-registration, which answers sparkinventory.com
+ * cross-origin). The campaign, not this page, decides the offer: today a 30-day Operate trial
+ * that starts at sign-up, with no card, then the campaign discount.
  *
  * The answer carries the new session. It is handed to the app by sending the refresh token to
  * app.sparkinventory.com/welcome in the URL fragment (never sent to a server). That page trades
  * it at /authentication/session/resume, which rotates it, so the copy in the URL is spent on
- * arrival and the visitor lands signed in to their new account.
+ * arrival and the visitor lands signed in to their new account (or on Shopify's connect step,
+ * when their website is a Shopify store).
  */
 export interface WebinarRegistration {
   firstName: string;
@@ -16,7 +19,7 @@ export interface WebinarRegistration {
   email: string;
   phone: string;
   password: string;
-  /** Agreed to the Terms of Service and Privacy Policy, as the app's sign-up page requires. */
+  /** Agreed to the Terms of Service and Privacy Policy. */
   consent: boolean;
 }
 
@@ -31,8 +34,11 @@ export const EMPTY_WEBINAR_REGISTRATION: WebinarRegistration = {
   consent: false,
 };
 
-/** The consent version the server records; keep in step with DataConsentRecord.CurrentVersion. */
-export const DATA_CONSENT_VERSION = '2026-08-29.v1';
+/**
+ * The Chew On This webinar's onboarding campaign (Super Admin, Foundations quick start). Its key
+ * is public: it is the `campaign` parameter of the campaign's own sign-up link.
+ */
+export const CHEW_WEBINAR_CAMPAIGN_KEY = '3de24189cad94f4154b83214b4dd253a03340c2e58359cba81ca706e03496f36';
 
 export const DEFAULT_API_BASE = 'https://api.sparkinventory.com';
 export const DEFAULT_APP_URL = 'https://app.sparkinventory.com';
@@ -53,10 +59,9 @@ export function signupTimezone(browserTimezone: string | undefined): string {
   return browserTimezone && US_TIMEZONES.has(browserTimezone) ? browserTimezone : FALLBACK_TIMEZONE;
 }
 
-/** Ten US digits from whatever was typed, or '' for a blank field; null when it cannot be one. */
+/** Ten US digits from whatever was typed, or null when it cannot be one. */
 export function usPhoneDigits(phone: string): string | null {
   let digits = phone.replace(/\D/g, '');
-  if (!digits) return '';
   if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
   return digits.length === 10 ? digits : null;
 }
@@ -67,8 +72,9 @@ export function missingWebinarFields(form: WebinarRegistration): string[] {
     !form.firstName.trim() && 'your first name',
     !form.lastName.trim() && 'your last name',
     !form.company.trim() && 'your company name',
+    !/^[^\s.]+\.[^\s]+$/.test(form.website.trim()) && 'your company website',
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) && 'a valid work email',
-    usPhoneDigits(form.phone) === null && 'a 10-digit US phone number (or leave it blank)',
+    usPhoneDigits(form.phone) === null && 'a 10-digit US phone number',
     !form.password && 'a password',
     !form.consent && 'your agreement to the Terms of Service and Privacy Policy',
   ].filter((field): field is string => typeof field === 'string');
@@ -76,38 +82,23 @@ export function missingWebinarFields(form: WebinarRegistration): string[] {
 
 export interface RegistrationExtras {
   timezone: string;
-  turnstileToken?: string;
-  /** Milliseconds since the form appeared; the server refuses a submit faster than a person. */
-  formElapsedMs: number;
-  /** The hidden honeypot field; only a bot fills it. */
-  fax?: string;
-  /** Optional Super Admin onboarding campaign (no preset plan, so the account stays Free). */
-  campaignToken?: string;
+  /** The onboarding campaign whose offer the account gets. */
+  campaignKey: string;
 }
 
-export function registrationBody(form: WebinarRegistration, extras: RegistrationExtras): Record<string, unknown> {
-  const body: Record<string, unknown> = {
-    name: form.company.trim(),
+/** The campaign quick start's request, the same contract the app's campaign sign-up page sends. */
+export function registrationBody(form: WebinarRegistration, extras: RegistrationExtras): Record<string, string> {
+  return {
+    campaignKey: extras.campaignKey.trim(),
+    fullName: `${form.firstName.trim()} ${form.lastName.trim()}`,
+    companyName: form.company.trim(),
+    companyWebsite: form.website.trim(),
     email: form.email.trim(),
+    phone: usPhoneDigits(form.phone) ?? form.phone.trim(),
     password: form.password,
-    firstName: form.firstName.trim(),
-    lastName: form.lastName.trim(),
-    country: 'US',
-    currency: 'USD',
+    passwordConfirmation: form.password,
     defaultTimezone: extras.timezone,
-    selectedPlan: 'free',
-    consentVersion: DATA_CONSENT_VERSION,
-    formElapsedMs: extras.formElapsedMs,
   };
-  const phone = usPhoneDigits(form.phone);
-  if (phone) body.phone = phone;
-  const website = form.website.trim();
-  if (website) body.website = website;
-  if (extras.turnstileToken) body.turnstileToken = extras.turnstileToken;
-  if (extras.fax) body.fax = extras.fax;
-  const campaign = extras.campaignToken?.trim();
-  if (campaign) body.campaignToken = campaign;
-  return body;
 }
 
 /** A refusal worded for the visitor, and whether signing in is the way forward. */
@@ -160,7 +151,7 @@ export async function registerForWebinar(
 ): Promise<string> {
   let res: Response;
   try {
-    res = await fetchImpl(`${apiBase.replace(/\/+$/, '')}/api/v1/authentication/registration`, {
+    res = await fetchImpl(`${apiBase.replace(/\/+$/, '')}/api/v1/authentication/shopify-trial-registration`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(registrationBody(form, extras)),

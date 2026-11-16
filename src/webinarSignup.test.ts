@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import {
-  DATA_CONSENT_VERSION,
+  CHEW_WEBINAR_CAMPAIGN_KEY,
   EMPTY_WEBINAR_REGISTRATION,
   missingWebinarFields,
   registerForWebinar,
@@ -21,36 +21,24 @@ const form = {
   password: 'correct horse battery staple',
   consent: true,
 };
-const extras = { timezone: 'America/Chicago', formElapsedMs: 12_000, turnstileToken: 'ts-token' };
+const extras = { timezone: 'America/Chicago', campaignKey: ` ${CHEW_WEBINAR_CAMPAIGN_KEY} ` };
 
 const json = (status: number, body: unknown) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 
 describe('registrationBody', () => {
-  it('sends the same Free sign-up the app sends', () => {
+  it("sends the campaign quick start the app's own campaign page sends", () => {
     expect(registrationBody(form, extras)).toEqual({
-      name: 'Brand & Co',
+      campaignKey: CHEW_WEBINAR_CAMPAIGN_KEY,
+      fullName: 'Ana Lee',
+      companyName: 'Brand & Co',
+      companyWebsite: 'brand.com',
       email: 'ana@brand.com',
-      password: 'correct horse battery staple',
-      firstName: 'Ana',
-      lastName: 'Lee',
-      country: 'US',
-      currency: 'USD',
-      defaultTimezone: 'America/Chicago',
-      selectedPlan: 'free',
-      consentVersion: DATA_CONSENT_VERSION,
-      formElapsedMs: 12_000,
       phone: '4155551234',
-      website: 'brand.com',
-      turnstileToken: 'ts-token',
+      password: 'correct horse battery staple',
+      passwordConfirmation: 'correct horse battery staple',
+      defaultTimezone: 'America/Chicago',
     });
-  });
-
-  it('leaves out blank optional fields and adds a configured campaign', () => {
-    const body = registrationBody({ ...form, phone: '', website: ' ' }, { ...extras, campaignToken: ' tok ' });
-    expect(body).not.toHaveProperty('phone');
-    expect(body).not.toHaveProperty('website');
-    expect(body.campaignToken).toBe('tok');
   });
 });
 
@@ -59,9 +47,9 @@ describe('registerForWebinar', () => {
     const fetchImpl = vi.fn().mockResolvedValue(json(201, { token: 'a', refreshToken: 'sess.secret' }));
     await expect(registerForWebinar(form, extras, 'https://api.example.com/', fetchImpl)).resolves.toBe('sess.secret');
     const [url, init] = fetchImpl.mock.calls[0];
-    expect(url).toBe('https://api.example.com/api/v1/authentication/registration');
+    expect(url).toBe('https://api.example.com/api/v1/authentication/shopify-trial-registration');
     expect(init.method).toBe('POST');
-    expect(JSON.parse(init.body).selectedPlan).toBe('free');
+    expect(JSON.parse(init.body).campaignKey).toBe(CHEW_WEBINAR_CAMPAIGN_KEY);
   });
 
   it('points an existing account at sign-in', async () => {
@@ -102,21 +90,25 @@ describe('welcomeUrl', () => {
 });
 
 describe('form rules', () => {
-  it('asks for everything the account needs; website and phone are optional', () => {
+  it('asks for everything the campaign sign-up needs', () => {
     expect(missingWebinarFields(EMPTY_WEBINAR_REGISTRATION)).toEqual([
       'your first name',
       'your last name',
       'your company name',
+      'your company website',
       'a valid work email',
+      'a 10-digit US phone number',
       'a password',
       'your agreement to the Terms of Service and Privacy Policy',
     ]);
     expect(missingWebinarFields(form)).toEqual([]);
-    expect(missingWebinarFields({ ...form, phone: '555-12' })).toEqual(['a 10-digit US phone number (or leave it blank)']);
+    expect(missingWebinarFields({ ...form, phone: '555-12' })).toEqual(['a 10-digit US phone number']);
+    expect(missingWebinarFields({ ...form, website: 'brand' })).toEqual(['your company website']);
+    expect(missingWebinarFields({ ...form, website: 'https://www.brand.com/shop' })).toEqual([]);
   });
 
   it('normalizes US phone numbers', () => {
-    expect(usPhoneDigits('')).toBe('');
+    expect(usPhoneDigits('')).toBeNull();
     expect(usPhoneDigits('(415) 555-1234')).toBe('4155551234');
     expect(usPhoneDigits('14155551234')).toBe('4155551234');
     expect(usPhoneDigits('555-1234')).toBeNull();
