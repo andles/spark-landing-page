@@ -27,7 +27,11 @@ marketing and app subdomains in CookieYes settings.
 
 Events: public-route `$pageview`, `$pageleave` (scroll depth and time on page
 via the `$prev_pageview_*` properties, with the previous path reduced to a route
-label), `$web_vitals` (the `_value` numbers only), `signup_clicked`, `demo_clicked`, and
+label), `$web_vitals` (the `_value` numbers only), `signup_clicked`, `demo_clicked`,
+`assistant_install_clicked` (with `assistant` of `chatgpt` for the ChatGPT plugin
+directory link, or `claude` for the "Connect Claude" button), `mcp_url_copied`
+(`assistant=claude`, when a visitor copies the MCP server URL, the step that
+actually connects Claude), and
 `meeting_booked` (once per session on `/meeting-confirmed`, the Calendly
 redirect, with `booking_source` of `fishbowl_lp` or `demo`), and `page_not_found`
 (sent by the 404 page and by a `/blog/<slug>/` address with no Soro article,

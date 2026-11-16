@@ -1,0 +1,58 @@
+# Spark Inventory
+
+> Spark Inventory is AI inventory management software for multichannel product businesses. Demand ESP forecasts demand, Spark turns it into reorder recommendations and reviewed purchase orders, and the same system runs sales, warehousing, manufacturing, accounting sync, a mobile warehouse app, wholesale and supplier portals, and automation. Teams onboard with Sparki in app or their own AI assistant over MCP.
+
+## Product
+
+- [All features](https://sparkinventory.com/features/): Overview of every Spark Inventory capability.
+- [Inventory management](https://sparkinventory.com/features/inventory/): Items, variants, stock by location, bundles, barcodes, and adjustments.
+- [Purchasing and reorder planning](https://sparkinventory.com/features/purchasing/): Demand ESP forecasts, reorder recommendations, draft purchase orders, promotions planning, and receiving.
+- [Sales orders and invoicing](https://sparkinventory.com/features/sales/): Quotes, sales orders, invoices, returns, and backorders.
+- [Manufacturing and BOMs](https://sparkinventory.com/features/manufacturing/): Bills of materials, manufacturing orders, and component availability.
+- [Warehouse management](https://sparkinventory.com/features/warehousing/): Multi-warehouse stock, bins, transfers, and cycle counts.
+- [Mobile warehouse app](https://sparkinventory.com/features/mobile/): Receive, pick, pack, ship, count, and move stock from iPhone, iPad, or Android.
+- [Signals and automation](https://sparkinventory.com/features/signals-automation/): Spark Signal proposed actions, plain-English rules, Observe, Propose, or Autopilot modes, and Text with Sparki by text.
+- [Text with Sparki](https://sparkinventory.com/text-with-sparki/): Text Sparki, Spark Inventory's AI assistant. Ask about stock, sales, and purchase orders by SMS, get urgent alerts and daily summaries, and confirm drafted changes with a YES reply. Included on the Solo plan and up for owners and admins.
+- [Wholesale and supplier portals](https://sparkinventory.com/features/wholesale-suppliers/): B2B wholesale store, vendor portal, EDI, and supplier invoice matching.
+- [Integrations](https://sparkinventory.com/integrations/): Shopify, Amazon, WooCommerce, Square, Faire, Etsy, Meta, QuickBooks Online, Xero, Zoho Books, ShipStation, Flexport, EDI, Gmail, and AI assistants.
+- [Accounting and QuickBooks](https://sparkinventory.com/features/accounting/): QuickBooks Online sync for invoices, payments, and adjustments.
+- [Sparki, MCP, and AI tools](https://sparkinventory.com/features/tools-services/): The in-app AI agent and governed MCP tools for Claude, ChatGPT, and other assistants.
+- [Pricing](https://sparkinventory.com/pricing/): Plans and migration help.
+
+## Solutions
+
+- [Small business inventory software](https://sparkinventory.com/small-business-inventory-software/): Inventory software for small product businesses: stock by location, barcode scanning, per-SKU demand forecasts, and draft purchase orders. Free for one user; paid plans from $99 a month with unlimited users. Includes a cost comparison of five tools and a buyer's checklist.
+- [AI inventory management](https://sparkinventory.com/ai-inventory-management/): What AI does in inventory management (per-SKU forecasts, stockout correction, safety stock from forecast error and lead times, reorder recommendations and draft purchase orders, automation you approve, plain-language questions) and six questions for evaluating AI inventory software. Shows how Spark Inventory does each part.
+- [Inventory management in ChatGPT and Claude](https://sparkinventory.com/chatgpt-inventory-management/): Spark Inventory is a plugin in ChatGPT's plugin directory and a custom connector for Claude. Ask what is running low, what to reorder and why, and have the assistant draft purchase orders you approve. Needs a Spark account; read-only or read and write access is approved by a Spark admin.
+- [Reduce stockouts and overstock](https://sparkinventory.com/reduce-stockouts-overstock/)
+- [Shopify inventory management](https://sparkinventory.com/shopify-inventory-management/)
+- [Inventory for 3PLs](https://sparkinventory.com/3pl/)
+- [In-store pickup](https://sparkinventory.com/in-store-pickup/)
+- [Charity retail](https://sparkinventory.com/charity-retail/)
+- [Inventory software for accountants and bookkeepers](https://sparkinventory.com/accountants/): Why accountants recommend Spark to product and manufacturing clients, how Spark posts cost of goods sold at shipment (FIFO or average, landed cost) to QuickBooks Online, Xero, and Zoho Books, and how the partner program works.
+- [Connect Spark to your AI assistant](https://sparkinventory.com/connect-spark-to-your-assistant/)
+
+## Compare
+
+- [Zoho Inventory alternatives](https://sparkinventory.com/zoho-inventory-alternative/): Five Zoho Inventory alternatives compared on price, users, and purchase planning, with Spark Inventory side by side.
+- [inFlow alternatives](https://sparkinventory.com/inflow-alternative/): Five inFlow alternatives compared on price, users, and purchase planning, with Spark Inventory side by side.
+- [Cin7 alternatives](https://sparkinventory.com/cin7-alternative/): Five Cin7 alternatives compared on price, users, and purchase planning, with Spark Inventory side by side.
+- [Fishbowl alternative](https://sparkinventory.com/fishbowl-alternative/)
+- [Linnworks alternative](https://sparkinventory.com/linnworks-alternative/)
+- [Shopify Stocky alternative](https://sparkinventory.com/shopify-stocky-alternative/)
+
+## Learn
+
+- [Inventory reorder walkthrough](https://sparkinventory.com/inventory-reorder-walkthrough/)
+- [What is inventory management?](https://sparkinventory.com/what-is-inventory-management/)
+- [Reorder point formula and calculator](https://sparkinventory.com/reorder-point-calculator/): Reorder point = (average daily demand × average lead time) + safety stock, with a worked example, three safety stock methods, and a free calculator.
+- [Safety stock calculator](https://sparkinventory.com/safety-stock-calculator/)
+- [EOQ calculator](https://sparkinventory.com/eoq-calculator/)
+- [Inventory turnover calculator](https://sparkinventory.com/inventory-turnover-calculator/)
+- [Blog](https://sparkinventory.com/blog/)
+
+## Company
+
+- [About](https://sparkinventory.com/about/)
+- [Contact](https://sparkinventory.com/contact/)
+- [Support](https://sparkinventory.com/support/)

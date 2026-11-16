@@ -500,3 +500,26 @@ describe('page not found', () => {
     expect(result.properties).toMatchObject({ distinct_id: '$posthog_cookieless', missing_path: '/missing/', $referring_domain: 'search.example' });
   });
 });
+
+describe('AI assistant install tracking', () => {
+  const origin = 'https://sparkinventory.com';
+  it('maps install and connect links to the assistant they are for', async () => {
+    const { ctaForLink } = await import('./analytics');
+    expect(ctaForLink(new URL('https://chatgpt.com/plugins/plugin_asdk_app_x'), origin)).toEqual({ event: 'assistant_install_clicked', assistant: 'chatgpt' });
+    expect(ctaForLink(new URL('https://sparkinventory.com/chatgpt-inventory-management/#claude'), origin)).toEqual({ event: 'assistant_install_clicked', assistant: 'claude' });
+    expect(ctaForLink(new URL('https://app.sparkinventory.com/sign-up?ref=chatgpt.com'), origin)).toEqual({ event: 'signup_clicked' });
+    expect(ctaForLink(new URL('https://calendly.com/spark/demo'), origin)).toEqual({ event: 'demo_clicked' });
+    expect(ctaForLink(new URL('https://sparkinventory.com/pricing/'), origin)).toBeUndefined();
+    expect(ctaForLink(new URL('https://chatgpt.com/'), origin)).toBeUndefined();
+  });
+  it('sends the assistant with the click, including on cookieless visits', async () => {
+    const analytics = await loadAnalytics();
+    window.location.pathname = '/chatgpt-inventory-management';
+    analytics.captureCta('mcp_url_copied', 'claude');
+    expect(sdk.capture).toHaveBeenCalledWith('mcp_url_copied', { route: '/chatgpt-inventory-management', assistant: 'claude' });
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: 'assistant_install_clicked', properties: { route: '/chatgpt-inventory-management', assistant: 'chatgpt' } }).properties.assistant).toBe('chatgpt');
+    document.cookie = '';
+    expect(filter({ event: 'mcp_url_copied', properties: { route: '/chatgpt-inventory-management', assistant: 'claude', $cookieless_mode: true } }).properties.assistant).toBe('claude');
+  });
+});

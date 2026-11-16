@@ -16,6 +16,8 @@ const allowedProperties = new Set([
   '$viewport_height', '$viewport_width', '$is_identified', '$process_person_profile',
   '$groups', '$group_type', '$group_key', 'surface', 'route', 'signup_source', 'booking_source',
   'initial_referring_domain',
+  // Which AI assistant an install or connect click was for: chatgpt or claude.
+  'assistant',
   // PostHog needs the user agent for bot classification and the cookieless
   // hash, and the referrer for channels. The referrer is set in before_send,
   // reduced to its origin (see referrerProperties).
@@ -37,7 +39,7 @@ export const attributionParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
-const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'meeting_booked', 'page_not_found']);
+const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found']);
 // Cookieless capture (before a banner choice, and after a rejection) only
 // counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
 // $timezone, so those must survive or the event is dropped at ingestion. The
@@ -45,8 +47,8 @@ const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$ident
 // not from storage, so ad clicks, UTM sources and search or social referrals
 // stay attributable without a cookie. Without the referrer PostHog has no
 // channel for a session and reports it as Unknown.
-const cookielessProperties = new Set(['token', 'route', 'signup_source', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
-const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'meeting_booked', 'page_not_found']);
+const cookielessProperties = new Set(['token', 'route', 'signup_source', 'assistant', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
+const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
 // Same-origin route to PostHog so ad blockers do not drop events. The Netlify
@@ -340,9 +342,26 @@ export function capturePageNotFound(pathname: string): void {
   withAnalytics((posthog) => posthog.capture('page_not_found', { route: '/404', missing_path: missingPath }));
 }
 
-export function captureCta(event: 'signup_clicked' | 'demo_clicked' | 'assistant_install_clicked'): void {
+export type AssistantName = 'chatgpt' | 'claude';
+type CtaEvent = 'signup_clicked' | 'demo_clicked' | 'assistant_install_clicked' | 'mcp_url_copied';
+
+export function captureCta(event: CtaEvent, assistant?: AssistantName): void {
   const route = analyticsRoute(window.location.pathname);
-  withAnalytics((posthog) => posthog.capture(event, { route }));
+  withAnalytics((posthog) => posthog.capture(event, assistant ? { route, assistant } : { route }));
+}
+
+// The call-to-action a clicked link stands for, if any.
+// - Calendly or /book-a-call: a demo request.
+// - The app's sign-up or Shopify trial page: a sign-up.
+// - The Spark Inventory listing in ChatGPT's plugin directory: a ChatGPT install, not a sign-up yet.
+// - The "Connect Claude" button, which jumps to the connector instructions on the same page
+//   (Claude has no install link; the visitor copies the server URL, see mcp_url_copied).
+export function ctaForLink(url: URL, pageOrigin: string): { event: CtaEvent; assistant?: AssistantName } | undefined {
+  if (url.hostname === 'calendly.com' || (url.origin === pageOrigin && url.pathname === '/book-a-call')) return { event: 'demo_clicked' };
+  if (url.hostname === 'app.sparkinventory.com' && ['/sign-up', '/shopify-trial'].includes(url.pathname)) return { event: 'signup_clicked' };
+  if (url.hostname === 'chatgpt.com' && url.pathname.startsWith('/plugins/')) return { event: 'assistant_install_clicked', assistant: 'chatgpt' };
+  if (url.origin === pageOrigin && url.hash === '#claude') return { event: 'assistant_install_clicked', assistant: 'claude' };
+  return undefined;
 }
 
 // Calendly redirects to /meeting-confirmed after a real booking. Count it once
