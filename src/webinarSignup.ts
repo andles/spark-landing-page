@@ -38,7 +38,7 @@ export const EMPTY_WEBINAR_REGISTRATION: WebinarRegistration = {
  * The Chew On This webinar's onboarding campaign (Super Admin, Foundations quick start). Its key
  * is public: it is the `campaign` parameter of the campaign's own sign-up link.
  */
-export const CHEW_WEBINAR_CAMPAIGN_KEY = '3de24189cad94f4154b83214b4dd253a03340c2e58359cba81ca706e03496f36';
+export const CHEW_WEBINAR_CAMPAIGN_KEY = 'ae6050d9319cfefd7580b93164054e8fb66df6c8557e14d69f16c3b12c68d984';
 
 export const DEFAULT_API_BASE = 'https://api.sparkinventory.com';
 export const DEFAULT_APP_URL = 'https://app.sparkinventory.com';
