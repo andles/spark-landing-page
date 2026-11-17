@@ -523,3 +523,22 @@ describe('AI assistant install tracking', () => {
     expect(filter({ event: 'mcp_url_copied', properties: { route: '/chatgpt-inventory-management', assistant: 'claude', $cookieless_mode: true } }).properties.assistant).toBe('claude');
   });
 });
+
+describe('ChatGPT ad page', () => {
+  it('reports the example answer as seen on the ad route, including on cookieless visits', async () => {
+    const analytics = await loadAnalytics();
+    window.location.pathname = '/reorder-in-chatgpt/';
+    analytics.captureExampleAnswerViewed();
+    expect(sdk.capture).toHaveBeenCalledWith('example_answer_viewed', { route: '/reorder-in-chatgpt' });
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: 'example_answer_viewed', properties: { route: '/reorder-in-chatgpt' } })?.properties.route).toBe('/reorder-in-chatgpt');
+    document.cookie = '';
+    const cookieless = filter({ event: 'example_answer_viewed', properties: { route: '/reorder-in-chatgpt', $cookieless_mode: true } });
+    expect(cookieless?.properties).toMatchObject({ route: '/reorder-in-chatgpt', distinct_id: '$posthog_cookieless' });
+  });
+  it('keeps the ad page out of search', async () => {
+    const { findRouteMeta } = await import('./seo/routeMeta');
+    expect(findRouteMeta('/reorder-in-chatgpt')?.noindex).toBe(true);
+    expect(findRouteMeta('/chatgpt-inventory-management')?.noindex).toBeFalsy();
+  });
+});

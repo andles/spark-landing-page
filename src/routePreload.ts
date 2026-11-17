@@ -32,6 +32,7 @@ export const routeImports = {
   AiInventoryManagementPage: () => import('./pages/AiInventoryManagementPage'),
   SmallBusinessInventoryPage: () => import('./pages/SmallBusinessInventoryPage'),
   AiAssistantInventoryPage: () => import('./pages/AiAssistantInventoryPage'),
+  ChatgptAdPage: () => import('./pages/ChatgptAdPage'),
   PricingPage: () => import('./pages/PricingPage'),
   AboutPage: () => import('./pages/AboutPage'),
   BlogPage: () => import('./pages/BlogPage'),
