@@ -431,6 +431,15 @@ export const routeMeta: RouteMeta[] = [
     schema: [buildFaqPageSchema(`${SITE_URL}/chatgpt-inventory-management/#faq`, assistantFaqs)],
   },
   {
+    // Landing page for paid ChatGPT ads only. Kept out of search so it never
+    // competes with /chatgpt-inventory-management/ (see content/chatgptAd.ts).
+    path: '/reorder-in-chatgpt',
+    title: 'Know What to Reorder in ChatGPT, Free | Spark Inventory',
+    description:
+      'Ask ChatGPT what to reorder this week. Spark answers from your own sales and stock. Free for one user, no credit card.',
+    noindex: true,
+  },
+  {
     path: '/shopify-inventory-management',
     title: 'Shopify Inventory Management & Forecasting Software | Spark',
     description:

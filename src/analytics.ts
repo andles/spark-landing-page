@@ -39,7 +39,7 @@ export const attributionParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
-const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found']);
+const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed']);
 // Cookieless capture (before a banner choice, and after a rejection) only
 // counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
 // $timezone, so those must survive or the event is dropped at ingestion. The
@@ -48,7 +48,7 @@ const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$ident
 // stay attributable without a cookie. Without the referrer PostHog has no
 // channel for a session and reports it as Unknown.
 const cookielessProperties = new Set(['token', 'route', 'signup_source', 'assistant', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
-const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found']);
+const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
 // Same-origin route to PostHog so ad blockers do not drop events. The Netlify
@@ -348,6 +348,15 @@ type CtaEvent = 'signup_clicked' | 'demo_clicked' | 'assistant_install_clicked' 
 export function captureCta(event: CtaEvent, assistant?: AssistantName): void {
   const route = analyticsRoute(window.location.pathname);
   withAnalytics((posthog) => posthog.capture(event, assistant ? { route, assistant } : { route }));
+}
+
+// Sent once per page view when at least half of the example answer is on
+// screen. ChatGPT ad visitors almost never scroll, and $pageleave scroll depth
+// is missing for cookieless visits, so this says directly whether a visitor
+// saw the answer. Counted in cookieless mode too, like the CTA clicks.
+export function captureExampleAnswerViewed(): void {
+  const route = analyticsRoute(window.location.pathname);
+  withAnalytics((posthog) => posthog.capture('example_answer_viewed', { route }));
 }
 
 // The call-to-action a clicked link stands for, if any.

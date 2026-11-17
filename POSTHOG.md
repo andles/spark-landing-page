@@ -32,6 +32,10 @@ label), `$web_vitals` (the `_value` numbers only), `signup_clicked`, `demo_click
 directory link, or `claude` for the "Connect Claude" button), `mcp_url_copied`
 (`assistant=claude`, when a visitor copies the MCP server URL, the step that
 actually connects Claude), and
+`example_answer_viewed` (once per page view on `/reorder-in-chatgpt`, the
+ChatGPT ads page, when at least half of the example answer is on screen; ad
+visitors rarely scroll and cookieless visits have no scroll depth, so this says
+whether they saw it), and
 `meeting_booked` (once per session on `/meeting-confirmed`, the Calendly
 redirect, with `booking_source` of `fishbowl_lp` or `demo`), and `page_not_found`
 (sent by the 404 page and by a `/blog/<slug>/` address with no Soro article,
