@@ -542,3 +542,58 @@ describe('ChatGPT ad page', () => {
     expect(findRouteMeta('/chatgpt-inventory-management')?.noindex).toBeFalsy();
   });
 });
+
+describe('waiting for CookieYes before the first capture', () => {
+  async function importBeforeCookieYes() {
+    vi.useFakeTimers();
+    // The page has already painted, so the SDK load itself is not held.
+    vi.stubGlobal('performance', { getEntriesByName: () => [{}] });
+    const listeners = new Map<string, () => void>();
+    document.cookie = '';
+    Object.assign(window, { getCkyConsent: () => ({ activeLaw: '' }), addEventListener: vi.fn() });
+    Object.assign(document, {
+      visibilityState: 'visible',
+      addEventListener: vi.fn((type: string, listener: () => void) => { listeners.set(type, listener); }),
+      removeEventListener: vi.fn(),
+    });
+    const analytics = await import('./analytics');
+    void analytics.loadAnalyticsSdk();
+    await vi.dynamicImportSettled();
+    return { analytics, listeners };
+  }
+  afterEach(() => { vi.useRealTimers(); });
+
+  it('sends the first pageview with cookies once the US banner loads', async () => {
+    const { analytics, listeners } = await importBeforeCookieYes();
+    analytics.capturePageview('/reorder-in-chatgpt');
+    expect(sdk.init).not.toHaveBeenCalled();
+    Object.assign(window, { getCkyConsent: () => ({ activeLaw: 'ccpa' }) });
+    listeners.get('cookieyes_banner_load')?.();
+    expect(sdk.opt_in_capturing).toHaveBeenCalled();
+    expect(sdk.opt_in_capturing.mock.invocationCallOrder[0]).toBeLessThan(sdk.capture.mock.invocationCallOrder[0]);
+    expect(sdk.capture).toHaveBeenCalledWith('$pageview', { route: '/reorder-in-chatgpt' });
+  });
+
+  it('stops waiting after the timeout and stays cookieless', async () => {
+    const { analytics } = await importBeforeCookieYes();
+    analytics.capturePageview('/');
+    vi.advanceTimersByTime(2500);
+    expect(sdk.capture).toHaveBeenCalledWith('$pageview', { route: '/' });
+    expect(sdk.opt_in_capturing).not.toHaveBeenCalled();
+  });
+
+  it('does not hold a CTA click', async () => {
+    const { analytics } = await importBeforeCookieYes();
+    analytics.capturePageview('/');
+    analytics.captureCta('assistant_install_clicked', 'chatgpt');
+    expect(sdk.capture.mock.calls).toEqual([['$pageview', { route: '/' }], ['assistant_install_clicked', { route: '/', assistant: 'chatgpt' }]]);
+  });
+
+  it('starts when the tab is hidden', async () => {
+    const { analytics, listeners } = await importBeforeCookieYes();
+    analytics.capturePageview('/');
+    Object.assign(document, { visibilityState: 'hidden' });
+    listeners.get('visibilitychange')?.();
+    expect(sdk.capture).toHaveBeenCalledWith('$pageview', { route: '/' });
+  });
+});

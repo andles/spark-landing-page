@@ -22,6 +22,12 @@ choice (its ccpa default for the category is off), so only an explicit choice
 (`action:yes`) or Global Privacy Control switches a US visitor to cookieless. Accepting
 analytics switches to normal cookie capture; rejecting keeps it cookieless. A
 visit is counted once even when the choice is made on that page.
+CookieYes loads asynchronously, often after the first paint, so after loading
+the SDK waits up to 2.5 seconds for the banner to report the visitor's law
+before the first capture. Without the wait a US visitor's first pageview went
+out cookieless and later events under a cookie id, so one visit counted as two
+visitors and the cookie session had no pageview. A CTA click or the tab being
+hidden ends the wait at once.
 The app uses the same CookieYes configuration; keep consent shared across the
 marketing and app subdomains in CookieYes settings.
 
