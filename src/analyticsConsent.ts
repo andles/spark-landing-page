@@ -49,6 +49,14 @@ export function consentLaw(): string {
   }
 }
 
+// True once the visitor's consent state can be read: CookieYes has reported
+// the law for this visitor, or an earlier banner choice is stored. Before
+// then a US visitor reads as pending, the same as an EU visitor who has not
+// answered yet.
+export function consentResolved(): boolean {
+  return consentLaw() !== '' || consentValues()?.get('action') === 'yes';
+}
+
 export function isOptOutLaw(law = consentLaw()): boolean {
   return optOutLaws.has(law);
 }

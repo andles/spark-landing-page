@@ -1,5 +1,5 @@
 import { maskReplayAttribute } from './replayPrivacy';
-import { getAnalyticsConsent, hasReplayConsent } from './analyticsConsent';
+import { consentResolved, getAnalyticsConsent, hasReplayConsent } from './analyticsConsent';
 function runAnalytics(action: () => void): void {
   try { action(); } catch { console.warn("PostHog analytics could not capture this action."); }
 }
@@ -61,6 +61,10 @@ let loadedSdk: PostHog | undefined;
 let sdkRequest: Promise<void> | undefined;
 let sdkLoadScheduled = false;
 const pendingActions: Array<(posthog: PostHog) => void> = [];
+// How long the SDK waits for CookieYes after it has loaded. See waitForConsent.
+export const consentWaitMs = 2500;
+let flushNow: (() => void) | undefined;
+let urgent = false;
 
 // Team devices opt out with ?spark_internal=1 (and back in with =0) so their
 // anonymous visits stop mixing with prospects. The flag stays on the device.
@@ -192,11 +196,40 @@ function scheduleSdkLoad(): void {
   afterFirstContentfulPaint(load);
 }
 
+// CookieYes loads asynchronously and often reports the visitor's law after the
+// first paint. Until it does, a US visitor reads as pending, so starting the
+// SDK then sent the first pageview cookieless and every later event under a
+// cookie id, splitting one visit into two visitors (about a third of cookie
+// sessions in Nov 2026 had no pageview of their own). Wait for the banner,
+// for at most consentWaitMs. A CTA click, or the tab being hidden, starts
+// straight away so the click or a short visit is not lost to navigation.
+function waitForConsent(callback: () => void): void {
+  if (urgent || consentResolved()) return callback();
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    flushNow = undefined;
+    clearTimeout(timer);
+    document.removeEventListener('cookieyes_banner_load', finish);
+    document.removeEventListener('visibilitychange', onHidden);
+    callback();
+  };
+  const onHidden = () => { if (document.visibilityState === 'hidden') finish(); };
+  const timer = setTimeout(finish, consentWaitMs);
+  flushNow = finish;
+  document.addEventListener('cookieyes_banner_load', finish);
+  document.addEventListener('visibilitychange', onHidden);
+}
+
 export function loadAnalyticsSdk(): Promise<void> {
-  sdkRequest ??= import('posthog-js').then(({ default: posthog }) => {
-    loadedSdk = posthog;
-    for (const action of pendingActions.splice(0)) withAnalytics(action);
-  }, () => {
+  sdkRequest ??= import('posthog-js').then(({ default: posthog }) => new Promise<void>((resolve) => {
+    waitForConsent(() => {
+      loadedSdk = posthog;
+      for (const action of pendingActions.splice(0)) withAnalytics(action);
+      resolve();
+    });
+  }), () => {
     pendingActions.length = 0;
     console.warn('PostHog analytics could not load.');
   });
@@ -348,6 +381,9 @@ type CtaEvent = 'signup_clicked' | 'demo_clicked' | 'assistant_install_clicked' 
 export function captureCta(event: CtaEvent, assistant?: AssistantName): void {
   const route = analyticsRoute(window.location.pathname);
   withAnalytics((posthog) => posthog.capture(event, assistant ? { route, assistant } : { route }));
+  // The click usually leaves the page, so do not hold it for CookieYes.
+  urgent = true;
+  flushNow?.();
 }
 
 // Sent once per page view when at least half of the example answer is on
