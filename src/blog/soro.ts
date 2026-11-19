@@ -209,7 +209,89 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   const date = article.publishedDate ? `<time datetime="${article.publishedDate}">${formatArticleDate(article.publishedDate)}</time>` : '';
   return page.replace(
     SORO_MOUNT,
-    `<div id="soro-blog"><article class="soro-article">${date}${articleIntroCta(article.slug)}<div>${content}</div>${articleEndCta(article.slug)}<p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+    `<div id="soro-blog"><article class="soro-article">${date}${articleIntroCta(article.slug)}<div>${content}</div>${articleRelatedGuides(article.slug)}${articleEndCta(article.slug)}<p><a href="/blog/">All Spark Inventory Blog articles</a></p></article></div>`,
+  );
+}
+
+// Internal links for the guides closest to page one in US Google search.
+// Search Console (US, Oct 20 to Nov 16 2026) put each of these between average
+// position 10 and 20, and the only page linking to any of them was /blog/.
+// Each guide is linked from the feature pages listed in `featurePages`
+// (FeaturePage's "Guides" section, via guidesForFeature) and from the other
+// guides here. The anchor text is the US search the page should rank for.
+export interface ArticleGuide {
+  slug: string;
+  /** Link text: the search the guide answers. */
+  anchor: string;
+  summary: string;
+  /** The product page that does what the guide describes; the end offer's secondary link. */
+  feature: { href: string; label: string };
+  /** Feature pages that link to this guide, as /path/ with a trailing slash. */
+  featurePages: readonly string[];
+  related: readonly string[];
+}
+
+export const ARTICLE_GUIDES: readonly ArticleGuide[] = [
+  {
+    slug: 'ecommerce-demand-forecasting-software',
+    anchor: 'Ecommerce demand forecasting',
+    summary: 'The inputs behind an ecommerce forecast, a worked example, and how it becomes a reorder decision.',
+    feature: { href: '/demand-forecasting-software/', label: 'How Spark forecasts demand' },
+    featurePages: ['/demand-forecasting-software/', '/features/purchasing/', '/features/inventory/'],
+    related: ['set-supplier-lead-times', 'returns-inventory-management-ecommerce'],
+  },
+  {
+    slug: 'set-supplier-lead-times',
+    anchor: 'How to set supplier lead times',
+    summary: 'Set lead times by supplier or by product from purchase order history, and keep them apart from safety stock.',
+    feature: { href: '/features/purchasing/', label: 'Purchasing and reorder planning in Spark' },
+    featurePages: ['/features/purchasing/', '/demand-forecasting-software/'],
+    related: ['ecommerce-demand-forecasting-software', 'what-is-inventory-aging'],
+  },
+  {
+    slug: 'returns-inventory-management-ecommerce',
+    anchor: 'Returns inventory management for ecommerce',
+    summary: 'How returned inventory changes the next buying decision, and how to keep returns out of the forecast.',
+    feature: { href: '/features/warehousing/', label: 'Warehouse management in Spark' },
+    featurePages: ['/features/warehousing/', '/demand-forecasting-software/'],
+    related: ['ecommerce-demand-forecasting-software', 'what-is-inventory-aging'],
+  },
+  {
+    slug: 'what-is-inventory-aging',
+    anchor: 'What is inventory aging?',
+    summary: 'How to measure the age of stock and turn an aging report into the next reorder decision.',
+    feature: { href: '/features/inventory/', label: 'Inventory management in Spark' },
+    featurePages: ['/features/inventory/', '/features/warehousing/'],
+    related: ['returns-inventory-management-ecommerce', 'set-supplier-lead-times'],
+  },
+  {
+    slug: 'cloud-based-inventory-management',
+    anchor: 'Cloud-based inventory management',
+    summary: 'How cloud inventory software works, cloud versus on-premise, costs, and a checklist for choosing one.',
+    feature: { href: '/features/inventory/', label: 'Inventory management in Spark' },
+    featurePages: ['/features/inventory/'],
+    related: ['ecommerce-demand-forecasting-software', 'what-is-inventory-aging'],
+  },
+];
+
+const guideBySlug = (slug: string) => ARTICLE_GUIDES.find((guide) => guide.slug === slug);
+
+/** The guides a feature page links to, in ARTICLE_GUIDES order. */
+export function guidesForFeature(featurePath: string): ArticleGuide[] {
+  return ARTICLE_GUIDES.filter((guide) => guide.featurePages.includes(featurePath));
+}
+
+function articleRelatedGuides(slug: string): string {
+  const guide = guideBySlug(slug);
+  if (!guide) return '';
+  const related = guide.related.map(guideBySlug).filter((item): item is ArticleGuide => Boolean(item));
+  // The guide's feature page is the end offer's secondary link, so it is not repeated here.
+  const items = related.map((item) => `<li><a href="${articlePath(item.slug)}">${esc(item.anchor)}</a>: ${esc(item.summary)}</li>`).join('');
+  return (
+    '<nav class="soro-related" aria-labelledby="soro-related-heading">' +
+    '<h2 id="soro-related-heading">Related guides</h2>' +
+    `<ul>${items}</ul>` +
+    '</nav>'
   );
 }
 
@@ -236,6 +318,7 @@ function articleIntroCta(slug: string): string {
 }
 
 function articleEndCta(slug: string): string {
+  const secondary = guideBySlug(slug)?.feature ?? { href: '/demand-forecasting-software/', label: 'How Spark forecasts demand' };
   return (
     '<aside class="soro-cta-end" aria-labelledby="soro-cta-end-heading">' +
     '<p class="soro-cta-eyebrow">Put this into practice</p>' +
@@ -244,7 +327,7 @@ function articleEndCta(slug: string): string {
     'flags what will run short, and recommends what to reorder and when. Free is an ongoing plan for one user, not a trial.</p>' +
     '<p class="soro-cta-actions">' +
     `<a class="soro-cta-button" href="${esc(articleSignupUrl(slug))}">Start free</a>` +
-    '<a class="soro-cta-secondary" href="/demand-forecasting-software/">How Spark forecasts demand</a>' +
+    `<a class="soro-cta-secondary" href="${secondary.href}">${esc(secondary.label)}</a>` +
     '</p>' +
     '</aside>'
   );

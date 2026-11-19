@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import {
   appendArticlesToSitemap,
+  ARTICLE_GUIDES,
+  guidesForFeature,
   articlePageTitle,
   cleanArticleHtml,
   extractSoroArticles,
@@ -169,4 +171,50 @@ it('articleSignupUrl opens the app sign-up with the article as its source', () =
   expect(url.origin + url.pathname).toBe('https://app.sparkinventory.com/sign-up');
   expect(url.searchParams.get('source')).toBe('blog-set-supplier-lead-times');
   expect(url.searchParams.get('utm_content')).toBe('blog-set-supplier-lead-times');
+});
+
+describe('related guides', () => {
+  const guidePage = renderArticlePage(blogHtml, { ...article, slug: 'set-supplier-lead-times', title: 'Supplier Lead Time' }, '<p>Body.</p>');
+
+  it('links a guide to its related guides between the text and the end offer', () => {
+    expect(guidePage).toMatch(/<div><p>Body\.<\/p><\/div><nav class="soro-related"[^>]*><h2 id="soro-related-heading">Related guides<\/h2><ul>/);
+    expect(guidePage).toContain('<a href="/blog/ecommerce-demand-forecasting-software/">Ecommerce demand forecasting</a>');
+    expect(guidePage).toContain('<a href="/blog/what-is-inventory-aging/">What is inventory aging?</a>');
+    expect(guidePage).not.toContain('href="/blog/set-supplier-lead-times/"');
+  });
+
+  it("points the end offer's secondary link at the guide's feature page", () => {
+    expect(guidePage).toContain('<a class="soro-cta-secondary" href="/features/purchasing/">Purchasing and reorder planning in Spark</a>');
+  });
+
+  it('leaves other articles without a related block and with the default secondary link', () => {
+    const page = renderArticlePage(blogHtml, article, '<p>Seasonal body.</p>');
+    expect(page).not.toContain('soro-related');
+    expect(page).toContain('<a class="soro-cta-secondary" href="/demand-forecasting-software/">How Spark forecasts demand</a>');
+  });
+
+  it('only relates guides that exist, never the guide itself', () => {
+    const slugs = new Set(ARTICLE_GUIDES.map((guide) => guide.slug));
+    expect(slugs.size).toBe(ARTICLE_GUIDES.length);
+    for (const guide of ARTICLE_GUIDES) {
+      expect(guide.related.length).toBeGreaterThan(0);
+      for (const slug of guide.related) {
+        expect(slugs.has(slug)).toBe(true);
+        expect(slug).not.toBe(guide.slug);
+      }
+    }
+  });
+
+  it('gives every guide at least one feature page that links to it', () => {
+    for (const guide of ARTICLE_GUIDES) {
+      expect(guide.featurePages.length).toBeGreaterThan(0);
+      for (const path of guide.featurePages) expect(path).toMatch(/^\/[a-z0-9/-]+\/$/);
+    }
+    expect(guidesForFeature('/features/inventory/').map((guide) => guide.slug)).toEqual([
+      'ecommerce-demand-forecasting-software',
+      'what-is-inventory-aging',
+      'cloud-based-inventory-management',
+    ]);
+    expect(guidesForFeature('/features/mobile/')).toEqual([]);
+  });
 });

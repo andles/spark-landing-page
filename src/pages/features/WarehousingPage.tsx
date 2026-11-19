@@ -56,6 +56,7 @@ export function WarehousingPage() {
       gradientFrom="from-slate-600"
       gradientTo="to-slate-500"
       features={features}
+      guidesPath="/features/warehousing/"
       showcase={<YouTubeVideoSection videoKey="warehousing" />}
       prevCategory={{ name: 'Manufacturing', href: '/features/manufacturing/' }}
       nextCategory={{ name: 'Tools & Services', href: '/features/tools-services/' }}

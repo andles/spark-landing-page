@@ -50,6 +50,7 @@ export function InventoryPage() {
       icon={Package}
       gradientFrom="from-emerald-500"
       gradientTo="to-teal-400"
+      guidesPath="/features/inventory/"
       features={features}
       nextCategory={{ name: 'Purchasing', href: '/features/purchasing/' }}
     />

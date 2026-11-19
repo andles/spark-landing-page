@@ -66,6 +66,7 @@ export function PurchasingPage() {
       subtitle="Purchasing with Demand ESP"
       capabilityLabel="purchasing"
       description="Demand ESP forecasts each item from your sales history. Spark Inventory combines that forecast with supplier lead times and, as order history builds, how much they vary to set reorder points, then proposes draft purchase orders for your team to review. Receipt variances and supplier price books live in the same system, so you or your assistant can check them before you approve."
+      guidesPath="/features/purchasing/"
       ctaSource="features_purchasing"
       icon={Truck}
       gradientFrom="from-violet-500"
