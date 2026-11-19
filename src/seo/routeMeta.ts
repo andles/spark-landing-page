@@ -606,8 +606,8 @@ export const routeMeta: RouteMeta[] = [
     path: '/safety-stock-calculator',
     title: 'Safety Stock Calculator With Formula and Z Score | Spark',
     description:
-      'Free safety stock calculator: combine demand and lead time variability at any service level, see the Z score and what a higher service level costs, and get your reorder point.',
-    lastModified: '2026-10-28',
+      'Free safety stock calculator and formula: how to calculate safety stock from demand and lead time variability, with Z scores and a worked example.',
+    lastModified: '2026-11-19',
     schema: [
       {
         '@type': 'WebApplication',

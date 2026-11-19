@@ -115,6 +115,14 @@ export function calculateSafetyStockDetails(input: SafetyStockInput): SafetyStoc
 
 export const safetyStockFaqs = [
   {
+    question: 'How do you calculate safety stock?',
+    answer: 'Measure your average daily demand and its standard deviation, your average supplier lead time in days and its standard deviation, and pick a service level. Look up its Z score (1.645 for 95%), then multiply Z by the square root of (lead time × demand standard deviation² + daily demand² × lead time standard deviation²). For example, 10 units a day with a standard deviation of 3, a 14 day lead time that varies by 2 days, at 95%: 1.645 × √(126 + 400) ≈ 38 units.',
+  },
+  {
+    question: 'What is safety inventory?',
+    answer: 'Safety inventory is another name for safety stock: the units you keep on hand beyond expected demand during a lead time, so demand spikes and late deliveries do not cause a stockout. The formula and the calculator on this page work the same way whichever term you use.',
+  },
+  {
     question: 'What is the safety stock formula?',
     answer: 'The most complete version is safety stock = Z × √(average lead time × σ_demand² + average daily demand² × σ_lead time²), where Z comes from your target service level, σ_demand is the standard deviation of daily demand and σ_lead time is the standard deviation of the lead time in days. If your lead time never varies, it simplifies to Z × σ_demand × √(lead time).',
   },

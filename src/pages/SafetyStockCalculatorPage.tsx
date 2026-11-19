@@ -190,7 +190,7 @@ export function SafetyStockCalculatorPage() {
                 <span className="block bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">with service level and Z score</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#b8bfcc] sm:text-lg">
-                Work out how much buffer stock to hold against demand spikes and late deliveries, see what each extra point of service level costs, and get the reorder point that goes with it.
+                Safety stock, also called safety inventory, is the extra stock you hold so a demand spike or a late delivery does not leave you out of stock. Work out how much to hold, see what each extra point of service level costs, and get the reorder point that goes with it.
               </p>
             </ScrollReveal>
           </header>
@@ -205,9 +205,10 @@ export function SafetyStockCalculatorPage() {
             <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.8fr_1fr] lg:gap-20">
               <ScrollReveal>
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">The safety stock formula</p>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">A buffer sized to how unpredictable you are</h2>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">How to calculate safety stock</h2>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">Safety stock covers the gap between average demand during a lead time and what can actually happen: a busy week, a late truck, or both. The service level formula scales that buffer by how much demand and lead time vary, and by how rarely you are willing to run out.</p>
                 <p className="mt-6 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.04] p-5 font-mono text-sm leading-7 text-cyan-100">Safety stock = Z × √(lead time × σ_demand² + daily demand² × σ_lead time²)</p>
+                <p className="mt-5 text-sm leading-7 text-[#8b95a8]">Without enough history to measure variability, the simpler max and average formula is safety stock = (maximum daily demand × maximum lead time) − (average daily demand × average lead time). It is quick, but it often oversizes the buffer because it assumes the worst day and the worst delivery happen together.</p>
                 <p className="mt-5 text-sm leading-7 text-[#8b95a8]">Safety stock sets the floor. Use the <Link to="/reorder-point-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">reorder point calculator</Link> for when to order and the <Link to="/eoq-calculator/" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">EOQ calculator</Link> for how much.</p>
               </ScrollReveal>
               <ScrollReveal>
