@@ -117,6 +117,23 @@ describe('renderArticlePage', () => {
     expect(page).not.toContain('CollectionPage');
   });
 
+  it('publishes the article and its breadcrumb as structured data', () => {
+    const json = /<script id="route-jsonld" type="application\/ld\+json">([\s\S]*?)<\/script>/.exec(page)?.[1] ?? '';
+    const graph = JSON.parse(json)['@graph'];
+    const url = 'https://sparkinventory.com/blog/seasonal-demand-forecasting/';
+    const posting = graph.find((node: { '@type': string }) => node['@type'] === 'BlogPosting');
+    expect(posting.datePublished).toBe(article.publishedDate);
+    expect(posting.dateModified).toBe(article.publishedDate);
+    expect(posting.breadcrumb).toEqual({ '@id': `${url}#breadcrumb` });
+    const crumbs = graph.find((node: { '@type': string }) => node['@type'] === 'BreadcrumbList');
+    expect(crumbs['@id']).toBe(`${url}#breadcrumb`);
+    expect(crumbs.itemListElement.map((item: { name: string; item: string }) => [item.name, item.item])).toEqual([
+      ['Spark Inventory', 'https://sparkinventory.com/'],
+      ['Blog', 'https://sparkinventory.com/blog/'],
+      [article.title, url],
+    ]);
+  });
+
   it('makes the article title the page heading', () => {
     expect(page.match(/<h1/g)).toHaveLength(1);
     expect(page).toContain('<h1>Seasonal Demand &amp; &quot;Curves&quot;</h1>');

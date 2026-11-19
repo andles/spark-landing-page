@@ -160,8 +160,8 @@ export function articlePageTitle(articleTitle: string): string {
 
 /**
  * Turns the prerendered /blog/ page into the article's own page: title,
- * description, a self-referencing canonical, social tags, BlogPosting
- * structured data, the article title as the page's h1, and the article text
+ * description, a self-referencing canonical, social tags, BlogPosting and
+ * BreadcrumbList structured data, the article title as the page's h1, and the article text
  * inside the widget's mount point.
  */
 export function renderArticlePage(html: string, article: SoroArticle, content: string): string {
@@ -169,19 +169,31 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   const title = articlePageTitle(article.title);
   const description = article.excerpt || `${article.title}, from the Spark Inventory blog.`;
   const schema = {
-    '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     '@id': `${url}#article`,
     headline: article.title,
     description,
     url,
     mainEntityOfPage: url,
-    ...(article.publishedDate ? { datePublished: article.publishedDate } : {}),
+    // Soro exposes only the publication date, so it is also the last modified
+    // date until Soro reports edits.
+    ...(article.publishedDate ? { datePublished: article.publishedDate, dateModified: article.publishedDate } : {}),
     ...(article.image ? { image: article.image } : {}),
     author: { '@type': 'Organization', name: 'Spark Inventory', url: `${SITE_URL}/` },
     publisher: { '@id': `${SITE_URL}/#organization` },
     isPartOf: { '@type': 'Blog', '@id': `${SITE_URL}/blog/#blog`, url: `${SITE_URL}/blog/` },
+    breadcrumb: { '@id': `${url}#breadcrumb` },
   };
+  const breadcrumb = {
+    '@type': 'BreadcrumbList',
+    '@id': `${url}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Spark Inventory', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog/` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: url },
+    ],
+  };
+  const graph = { '@context': 'https://schema.org', '@graph': [schema, breadcrumb] };
 
   let page = html;
   page = setHeadTag(page, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
@@ -201,7 +213,7 @@ export function renderArticlePage(html: string, article: SoroArticle, content: s
   page = setHeadTag(
     page,
     /<script id="route-jsonld" type="application\/ld\+json">[\s\S]*?<\/script>/,
-    `<script id="route-jsonld" type="application/ld+json">${jsonLd(schema)}</script>`,
+    `<script id="route-jsonld" type="application/ld+json">${jsonLd(graph)}</script>`,
   );
 
   page = page.replace(PAGE_HEADING, (_match, open: string, close: string) => `${open}${esc(article.title)}${close}`);
