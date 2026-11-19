@@ -6,6 +6,8 @@ import AgencyFooter from '../../agency/AgencyFooter';
 import BookACallButton from '../../agency/BookACallButton';
 import ScrollReveal, { RevealItem } from '../../agency/ScrollReveal';
 import { useCtaLinks } from '../../agency/ctaLinks';
+import { guidesForFeature } from '../../blog/soro';
+import { BlogGuidesSection } from '../../components/BlogGuidesSection';
 
 export interface FeatureItem {
   title: string;
@@ -35,6 +37,8 @@ export interface FeaturePageProps {
   ctaSource?: string;
   /** Optional line under the closing CTA buttons. */
   closingNote?: ReactNode;
+  /** This page's path (as /path/), to list the blog guides it links to (ARTICLE_GUIDES in blog/soro.ts). */
+  guidesPath?: string;
 }
 
 const decisionSteps = [
@@ -75,6 +79,7 @@ export function FeaturePage({
   prevCategory,
   ctaSource,
   closingNote,
+  guidesPath,
 }: FeaturePageProps) {
   const ctaOptions = useMemo(() => (ctaSource ? { source: ctaSource } : undefined), [ctaSource]);
   const { signupUrl, bookUrl } = useCtaLinks(ctaOptions);
@@ -217,6 +222,8 @@ export function FeaturePage({
             </div>
           </section>
         )}
+
+        {guidesPath && <BlogGuidesSection guides={guidesForFeature(guidesPath)} />}
 
         {(prevCategory || nextCategory) && (
           <nav aria-label="Related feature pages" className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-6 md:px-8">

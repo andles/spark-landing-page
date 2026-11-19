@@ -82,6 +82,7 @@ export function DemandForecastingPage() {
       gradientFrom="from-cyan-500"
       gradientTo="to-violet-500"
       features={features}
+      guidesPath="/demand-forecasting-software/"
       faqs={demandForecastingFaqs}
       faqEyebrow="Demand ESP, explained"
       faqTitle="Demand forecasting questions"

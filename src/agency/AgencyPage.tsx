@@ -14,6 +14,8 @@ import AgencyFAQ from "./AgencyFAQ";
 import AgencyCTASection from "./AgencyCTASection";
 import AgencyFooter from "./AgencyFooter";
 import { YouTubeVideoSection } from "../components/YouTubeEmbed";
+import { BlogGuidesSection } from "../components/BlogGuidesSection";
+import { ARTICLE_GUIDES } from "../blog/soro";
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import MobileHeroShowcase from "./MobileHeroShowcase";
 import HeroVideoShowcase from "./HeroVideoShowcase";
@@ -56,6 +58,7 @@ export default function AgencyPage() {
         <AgencyComparisonSection />
         <AgencyPricingSection />
         <AgencyFAQ />
+        <BlogGuidesSection guides={ARTICLE_GUIDES} title="Inventory planning guides" />
         <AgencyCTASection />
       </main>
       <AgencyFooter />
