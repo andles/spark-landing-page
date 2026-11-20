@@ -48,7 +48,7 @@ const rows = [
 
 export default function FishbowlAlternatives() {
   return (
-    <section id="alternatives" className="scroll-mt-16 relative bg-[#06080d] py-14 lg:py-20">
+    <section id="competitors" className="scroll-mt-16 relative bg-[#06080d] py-14 lg:py-20">
       <div className="relative z-10 mx-auto max-w-[1180px] px-6 md:px-8 lg:px-12">
         <ScrollReveal className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-sm font-semibold text-cyan-300">Comparing Fishbowl alternatives</p>

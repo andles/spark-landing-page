@@ -169,12 +169,13 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: '/fishbowl-alternative',
-    title: 'Fishbowl Alternative with Forecasting | Spark Inventory',
+    title: 'Fishbowl Alternatives: 5 Options Compared | Spark Inventory',
     description:
-      'Run Spark Inventory alongside Fishbowl, import your database backup in minutes, and forecast what to order next. Free until your current Fishbowl contract ends.',
-    lastModified: '2026-11-04',
+      'Compare 5 Fishbowl alternatives on price, users, and planning. Spark imports your Fishbowl backup, forecasts each SKU, and is free until your contract ends.',
+    lastModified: '2026-11-20',
     schema: [
       { ...buildFaqSchema('fishbowl'), '@id': `${SITE_URL}/fishbowl-alternative/#faq` },
+      buildAlternativesItemListSchema('fishbowl'),
       {
         '@type': 'VideoObject',
         '@id': `${SITE_URL}/fishbowl-alternative/#video`,
@@ -197,7 +198,7 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Compare 5 Cin7 alternatives on price, users, and planning. Spark includes demand forecasts and draft POs with no add-on and unlimited users on paid plans.',
     lastModified: '2026-11-06',
-    schema: [buildCompetitorFaqSchema('cin7'), buildAlternativesItemListSchema('cin7', '/cin7-alternative')],
+    schema: [buildCompetitorFaqSchema('cin7'), buildAlternativesItemListSchema('cin7')],
   },
   {
     path: '/zoho-inventory-alternative',
@@ -205,7 +206,7 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Compare 5 Zoho Inventory alternatives on price, users, and planning. Spark includes demand forecasts and draft POs, with unlimited users on paid plans.',
     lastModified: '2026-11-06',
-    schema: [buildCompetitorFaqSchema('zoho'), buildAlternativesItemListSchema('zoho', '/zoho-inventory-alternative')],
+    schema: [buildCompetitorFaqSchema('zoho'), buildAlternativesItemListSchema('zoho')],
   },
   {
     path: '/inflow-alternative',
@@ -213,7 +214,7 @@ export const routeMeta: RouteMeta[] = [
     description:
       'Compare 5 inFlow alternatives on price, users, and planning. Spark includes demand forecasts and draft POs, unlimited users, and no onboarding fee.',
     lastModified: '2026-11-06',
-    schema: [buildCompetitorFaqSchema('inflow'), buildAlternativesItemListSchema('inflow', '/inflow-alternative')],
+    schema: [buildCompetitorFaqSchema('inflow'), buildAlternativesItemListSchema('inflow')],
   },
   {
     path: '/linnworks-alternative',

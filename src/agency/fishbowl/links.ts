@@ -14,7 +14,7 @@ export const LEAD_SOURCE = "fishbowl_lp";
 export const FISHBOWL_CALENDLY_URL =
   import.meta.env.VITE_FISHBOWL_CALENDLY_URL?.trim() || CALENDLY_URL;
 
-const OPTIONS: CtaLinkOptions = {
+export const FISHBOWL_CTA_OPTIONS: CtaLinkOptions = {
   source: LEAD_SOURCE,
   bookUrlBase: FISHBOWL_CALENDLY_URL,
   defaults: {
@@ -25,11 +25,11 @@ const OPTIONS: CtaLinkOptions = {
 };
 
 /** Default (no incoming UTMs) links. Used for the prerendered HTML. */
-export const { bookUrl: BOOK_URL, signupUrl: SIGNUP_URL } = buildCtaUrls("", OPTIONS);
+export const { bookUrl: BOOK_URL, signupUrl: SIGNUP_URL } = buildCtaUrls("", FISHBOWL_CTA_OPTIONS);
 
 /** CTA links that merge in the current page's UTMs (see ../ctaLinks). */
 export function useCtaLinks(): CtaLinks {
-  return useSharedCtaLinks(OPTIONS);
+  return useSharedCtaLinks(FISHBOWL_CTA_OPTIONS);
 }
 
 /**

@@ -557,7 +557,7 @@ export default function CompetitorAlternativePage({ competitorKey }: { competito
       <AgencyHeader />
       <main>
         <EvidenceHero competitorKey={competitorKey} />
-        {shortlistKey && <AlternativesShortlist shortlistKey={shortlistKey} />}
+        {shortlistKey && <AlternativesShortlist shortlistKey={shortlistKey} ctaOptions={competitorConfigs[competitorKey].ctaOptions} />}
         {!salesLed && <MigrationSection competitorKey={competitorKey} />}
         <DecisionThemes competitorKey={competitorKey} />
         <ComparisonSection competitorKey={competitorKey} />

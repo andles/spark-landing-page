@@ -9,6 +9,11 @@
 // Sitelink anchors (Google Ads sitelink assets deep-link into the page):
 //   #migrate  FishbowlMigration      #reports / #sync  FishbowlComparison
 // Booking CTAs open Calendly in a modal and preserve campaign attribution.
+//
+// Organic visitors (no utm_content) see the "5 Fishbowl alternatives" shortlist
+// right after the hero, the same answer-first layout as /inflow-alternative/.
+// Ad visitors keep the campaign page they were sent to; see index.html for the
+// variant switch.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useScrollToHashOnMount } from "../hooks/useScrollToHash";
 import FishbowlHeader from "./fishbowl/FishbowlHeader";
@@ -22,6 +27,8 @@ import FishbowlMigration from "./fishbowl/FishbowlMigration";
 import FishbowlComparison from "./fishbowl/FishbowlComparison";
 import FishbowlTrust from "./fishbowl/FishbowlTrust";
 import FishbowlAlternatives from "./fishbowl/FishbowlAlternatives";
+import AlternativesShortlist from "./competitors/AlternativesShortlist";
+import { FISHBOWL_CTA_OPTIONS } from "./fishbowl/links";
 import CampaignFAQSection from "./CampaignFAQSection";
 import FishbowlCTA from "./fishbowl/FishbowlCTA";
 import AgencyFooter from "./AgencyFooter";
@@ -36,6 +43,9 @@ export default function FishbowlPage() {
       <FishbowlHeader />
       <main>
         <FishbowlHero />
+        <div data-fishbowl-variant-copy="organic">
+          <AlternativesShortlist shortlistKey="fishbowl" ctaOptions={FISHBOWL_CTA_OPTIONS} />
+        </div>
         <div className="mx-auto w-full max-w-[1180px] px-5 pb-4 sm:px-6 md:px-8 lg:px-12">
           <MarketingVideo
             mp4Src={fishbowlVideo.mp4Src}
