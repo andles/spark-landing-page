@@ -51,6 +51,9 @@ const ReorderPointCalculatorPage = lazy(() => R.ReorderPointCalculatorPage().the
 const EoqCalculatorPage = lazy(() => R.EoqCalculatorPage().then((m) => ({ default: m.EoqCalculatorPage })));
 const InventoryTurnoverCalculatorPage = lazy(() => R.InventoryTurnoverCalculatorPage().then((m) => ({ default: m.InventoryTurnoverCalculatorPage })));
 const SafetyStockCalculatorPage = lazy(() => R.SafetyStockCalculatorPage().then((m) => ({ default: m.SafetyStockCalculatorPage })));
+const SellThroughRateCalculatorPage = lazy(() => R.SellThroughRateCalculatorPage().then((m) => ({ default: m.SellThroughRateCalculatorPage })));
+const WeeksOfSupplyCalculatorPage = lazy(() => R.WeeksOfSupplyCalculatorPage().then((m) => ({ default: m.WeeksOfSupplyCalculatorPage })));
+const KittingInventoryPage = lazy(() => R.KittingInventoryPage().then((m) => ({ default: m.KittingInventoryPage })));
 const InventoryReorderWalkthroughPage = lazy(R.InventoryReorderWalkthroughPage);
 const PartnersPage = lazy(() => R.PartnersPage().then((m) => ({ default: m.PartnersPage })));
 const PrivacyPolicyPage = lazy(() => R.PrivacyPolicyPage().then((m) => ({ default: m.PrivacyPolicyPage })));
@@ -138,6 +141,9 @@ function App() {
             <Route path="/eoq-calculator" element={<EoqCalculatorPage />} />
             <Route path="/inventory-turnover-calculator" element={<InventoryTurnoverCalculatorPage />} />
             <Route path="/safety-stock-calculator" element={<SafetyStockCalculatorPage />} />
+            <Route path="/sell-through-rate-calculator" element={<SellThroughRateCalculatorPage />} />
+            <Route path="/weeks-of-supply-calculator" element={<WeeksOfSupplyCalculatorPage />} />
+            <Route path="/kitting-inventory" element={<KittingInventoryPage />} />
             <Route path="/inventory-reorder-walkthrough" element={<InventoryReorderWalkthroughPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
