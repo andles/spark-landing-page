@@ -76,6 +76,8 @@ export default function AgencyFooter() {
                   <li><a href="/safety-stock-calculator/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Safety Stock Calculator</a></li>
                   <li><a href="/eoq-calculator/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">EOQ Calculator</a></li>
                   <li><a href="/inventory-turnover-calculator/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Inventory Turnover Calculator</a></li>
+                  <li><a href="/sell-through-rate-calculator/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Sell-Through Rate Calculator</a></li>
+                  <li><a href="/weeks-of-supply-calculator/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Weeks of Supply Calculator</a></li>
                   <li><a href="/partners/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Partners</a></li>
                   <li><a href="/#faq" className="text-white/60 text-sm hover:text-white transition-colors duration-200">FAQ</a></li>
                   <li><a href="/support/" className="text-white/60 text-sm hover:text-white transition-colors duration-200">Support</a></li>

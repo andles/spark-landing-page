@@ -49,6 +49,9 @@
 - [Safety stock calculator](https://sparkinventory.com/safety-stock-calculator/)
 - [EOQ calculator](https://sparkinventory.com/eoq-calculator/)
 - [Inventory turnover calculator](https://sparkinventory.com/inventory-turnover-calculator/)
+- [Sell-through rate calculator](https://sparkinventory.com/sell-through-rate-calculator/): Sell-through rate = units sold ÷ (beginning inventory + units received) × 100, with a worked example.
+- [Weeks of supply calculator](https://sparkinventory.com/weeks-of-supply-calculator/): Weeks of supply = units on hand ÷ average weekly sales, plus days of supply and order size to a target.
+- [Kitting inventory](https://sparkinventory.com/kitting-inventory/): How to track kits and their components, with a calculator for how many kits you can make.
 - [Blog](https://sparkinventory.com/blog/)
 
 ## Company

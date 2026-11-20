@@ -14,6 +14,9 @@ import { eoqFaqs } from '../content/eoq';
 import { inventoryTurnoverFaqs } from '../content/inventoryTurnover';
 import { reorderPointFaqs } from '../content/reorderPoint';
 import { safetyStockFaqs } from '../content/safetyStock';
+import { sellThroughFaqs } from '../content/sellThrough';
+import { weeksOfSupplyFaqs } from '../content/weeksOfSupply';
+import { kittingFaqs } from '../content/kitting';
 import { smallBusinessFaqs } from '../content/smallBusiness';
 import { assistantFaqs } from '../content/aiAssistants';
 import { aiInventoryFaqs } from '../content/aiInventoryManagement';
@@ -627,6 +630,56 @@ export const routeMeta: RouteMeta[] = [
         mainEntity: safetyStockFaqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
       },
     ],
+  },
+  {
+    path: '/sell-through-rate-calculator',
+    title: 'Sell-Through Rate Calculator and Formula | Spark Inventory',
+    description:
+      'Free sell-through rate calculator: enter units on hand, received and sold to get your rate, units left and weeks to sell out, with the formula and an example.',
+    lastModified: '2026-11-20',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/sell-through-rate-calculator/#calculator`,
+        name: 'Sell-Through Rate Calculator',
+        url: `${SITE_URL}/sell-through-rate-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/sell-through-rate-calculator/#faq`, sellThroughFaqs),
+    ],
+  },
+  {
+    path: '/weeks-of-supply-calculator',
+    title: 'Weeks of Supply Formula and Calculator | Spark Inventory',
+    description:
+      'Weeks of supply formula and free calculator: divide units on hand by weekly sales to get weeks and days of supply, and how much to order to reach a target.',
+    lastModified: '2026-11-20',
+    schema: [
+      {
+        '@type': 'WebApplication',
+        '@id': `${SITE_URL}/weeks-of-supply-calculator/#calculator`,
+        name: 'Weeks of Supply Calculator',
+        url: `${SITE_URL}/weeks-of-supply-calculator/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      buildFaqPageSchema(`${SITE_URL}/weeks-of-supply-calculator/#faq`, weeksOfSupplyFaqs),
+    ],
+  },
+  {
+    path: '/kitting-inventory',
+    title: 'Kitting Inventory Software: Track Kits and Components | Spark',
+    description:
+      'What kitting is, how to track kit inventory, and a free calculator for how many kits you can make. Spark tracks kits, bundles and every component.',
+    lastModified: '2026-11-20',
+    schema: [buildFaqPageSchema(`${SITE_URL}/kitting-inventory/#faq`, kittingFaqs)],
   },
   {
     path: '/inventory-reorder-walkthrough',

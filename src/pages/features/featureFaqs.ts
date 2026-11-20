@@ -149,7 +149,7 @@ export const textWithSparkiFaqs: Faq[] = [
   },
 ];
 
-export function buildFaqPageSchema(id: string, faqs: Faq[]) {
+export function buildFaqPageSchema(id: string, faqs: readonly Faq[]) {
   return {
     '@type': 'FAQPage',
     '@id': id,
