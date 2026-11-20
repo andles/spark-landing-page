@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Shortlists for the plural "X alternatives" searches. Search Console shows the
-// Zoho Inventory, inFlow, and Cin7 pages earning impressions for "zoho inventory
-// alternatives", "inflow alternatives", and "cin7 alternatives", where
-// searchers expect a list of options rather than a single product pitch.
+// Zoho Inventory, inFlow, Cin7, and Fishbowl pages earning impressions for
+// "zoho inventory alternatives", "inflow alternatives", "cin7 alternatives",
+// and "fishbowl alternatives", where searchers expect a list of options rather
+// than a single product pitch.
 //
 // Every competitor fact below comes from that vendor's public pricing page,
 // checked on ALTERNATIVES_CHECKED. Re-check the source before changing a fact,
@@ -105,6 +106,8 @@ export interface AlternativesShortlist {
   /** Answer-first summary, also used as the FAQ answer. */
   summary: string;
   options: AlternativeKey[];
+  /** The Spark page this shortlist sits on, with a trailing slash. */
+  pagePath: string;
 }
 
 function listNames(keys: AlternativeKey[]) {
@@ -112,8 +115,9 @@ function listNames(keys: AlternativeKey[]) {
   return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
 }
 
-function shortlist(incumbent: string, options: AlternativeKey[], fits: string): AlternativesShortlist {
+function shortlist(incumbent: string, pagePath: string, options: AlternativeKey[], fits: string): AlternativesShortlist {
   return {
+    pagePath,
     incumbent,
     eyebrow: `${incumbent} alternatives`,
     title: `${options.length} ${incumbent} alternatives, compared`,
@@ -125,30 +129,39 @@ function shortlist(incumbent: string, options: AlternativeKey[], fits: string): 
 export const alternativesShortlists = {
   zoho: shortlist(
     'Zoho Inventory',
+    '/zoho-inventory-alternative/',
     ['spark', 'inflow', 'cin7', 'katana', 'fishbowl'],
     'Spark is the pick for teams that want demand forecasts and draft purchase orders included on every plan, with unlimited users on paid plans. inFlow fits barcode-driven stock control, Cin7 Core fits established multichannel brands, Katana fits manufacturers that want a vendor-built setup, and Fishbowl fits QuickBooks-centered warehouses.',
   ),
   inflow: shortlist(
     'inFlow',
+    '/inflow-alternative/',
     ['spark', 'zoho', 'cin7', 'fishbowl', 'katana'],
     'Spark is the pick for teams that want demand forecasts and draft purchase orders included on every plan, with unlimited users on paid plans. Zoho Inventory fits small teams that want a low entry price, Cin7 Core fits established multichannel brands, Fishbowl fits QuickBooks-centered warehouses, and Katana fits manufacturers that want a vendor-built setup.',
   ),
   cin7: shortlist(
     'Cin7',
+    '/cin7-alternative/',
     ['spark', 'katana', 'fishbowl', 'inflow', 'zoho'],
     'Spark is the pick for teams that want demand forecasts and draft purchase orders on every plan, with no forecasting add-on and unlimited users on paid plans. Katana fits manufacturers that want a vendor-built setup, Fishbowl fits QuickBooks-centered warehouses, inFlow fits barcode-driven stock control, and Zoho Inventory fits small teams that want a low entry price.',
+  ),
+  fishbowl: shortlist(
+    'Fishbowl',
+    '/fishbowl-alternative/',
+    ['spark', 'inflow', 'cin7', 'katana', 'zoho'],
+    'Spark is the pick for teams that want demand forecasts and draft purchase orders on every plan, with no forecasting add-on and unlimited users on paid plans. inFlow fits barcode-driven stock control, Cin7 Core fits established multichannel brands, Katana fits manufacturers that want a vendor-built setup, and Zoho Inventory fits small teams that want a low entry price.',
   ),
 } as const satisfies Record<string, AlternativesShortlist>;
 
 export type ShortlistKey = keyof typeof alternativesShortlists;
 
 /** ItemList structured data naming each option in the order shown on the page. */
-export function buildAlternativesItemListSchema(key: ShortlistKey, pagePath: string) {
+export function buildAlternativesItemListSchema(key: ShortlistKey) {
   const list = alternativesShortlists[key];
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    '@id': `${SITE_URL}${pagePath}/#alternatives`,
+    '@id': `${SITE_URL}${list.pagePath}#alternatives`,
     name: list.title.charAt(0).toUpperCase() + list.title.slice(1),
     numberOfItems: list.options.length,
     itemListElement: list.options.map((optionKey, index) => ({

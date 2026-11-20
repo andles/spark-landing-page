@@ -2,7 +2,7 @@ import { ArrowRight, ArrowUpRight, CircleCheck, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BookACallButton from '../BookACallButton';
 import ScrollReveal, { RevealItem } from '../ScrollReveal';
-import { useCtaLinks } from '../ctaLinks';
+import { useCtaLinks, type CtaLinkOptions } from '../ctaLinks';
 import {
   ALTERNATIVES_CHECKED,
   alternativeOptions,
@@ -10,7 +10,6 @@ import {
   type AlternativeOption,
   type ShortlistKey,
 } from './alternativesData';
-import { competitorConfigs } from './competitorData';
 
 const factRows = [
   { label: 'Best for', field: 'bestFor' },
@@ -19,8 +18,8 @@ const factRows = [
   { label: 'Buying plan', field: 'planning' },
 ] as const satisfies ReadonlyArray<{ label: string; field: keyof AlternativeOption }>;
 
-function SparkPick({ option, shortlistKey }: { option: AlternativeOption; shortlistKey: ShortlistKey }) {
-  const { signupUrl, bookUrl } = useCtaLinks(competitorConfigs[shortlistKey].ctaOptions);
+function SparkPick({ option, ctaOptions }: { option: AlternativeOption; ctaOptions: CtaLinkOptions }) {
+  const { signupUrl, bookUrl } = useCtaLinks(ctaOptions);
 
   return (
     <article className="relative overflow-hidden rounded-[28px] border border-cyan-300/25 bg-[linear-gradient(145deg,rgba(34,211,238,0.10),rgba(139,92,246,0.07))] p-6 shadow-[0_24px_70px_rgba(6,182,212,0.10)] sm:p-8">
@@ -95,9 +94,16 @@ function AlternativeCard({ option, position, currentHref }: { option: Alternativ
   );
 }
 
-export default function AlternativesShortlist({ shortlistKey }: { shortlistKey: ShortlistKey }) {
+export default function AlternativesShortlist({
+  shortlistKey,
+  ctaOptions,
+}: {
+  shortlistKey: ShortlistKey;
+  /** The host page's CTA attribution, so Start Free and Book a demo credit the right page. */
+  ctaOptions: CtaLinkOptions;
+}) {
   const list = alternativesShortlists[shortlistKey];
-  const currentHref = competitorConfigs[shortlistKey].slug;
+  const currentHref = list.pagePath;
   const [first, ...rest] = list.options.map((key) => alternativeOptions[key]);
 
   return (
@@ -112,7 +118,7 @@ export default function AlternativesShortlist({ shortlistKey }: { shortlistKey: 
         </ScrollReveal>
 
         <ScrollReveal className="mt-12">
-          <SparkPick option={first} shortlistKey={shortlistKey} />
+          <SparkPick option={first} ctaOptions={ctaOptions} />
         </ScrollReveal>
 
         <ScrollReveal staggerChildren={90} className="mt-5 grid gap-5 md:grid-cols-2">
