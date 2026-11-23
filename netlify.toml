@@ -117,6 +117,27 @@
   status = 301
   force = true
 
+# Webinar email and newsletter links broke on 2026-11-23: a "Register" button
+# pointed at /chew-on-this-webinar/Register, and unrendered Markdown links
+# appended ")" or "](...)" to the address. Send anything under the webinar
+# path back to the page. The rule is not forced, so the prerendered
+# /chew-on-this-webinar/index.html still serves the page itself.
+[[redirects]]
+  from = "/chew-on-this-webinar/*"
+  to = "/chew-on-this-webinar/"
+  status = 301
+
+# Truncated copies of the same links (an email encoding artifact).
+[[redirects]]
+  from = "/chew-on-this-w="
+  to = "/chew-on-this-webinar/"
+  status = 301
+
+[[redirects]]
+  from = "/chew-on-this-webin="
+  to = "/chew-on-this-webinar/"
+  status = 301
+
 # Soro blog articles live at /blog/<slug>/. They have no file of their own:
 # they are served from the prerendered /blog/ page, which the edge function
 # netlify/edge-functions/soro-blog.ts turns into the article on each request.
