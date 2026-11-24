@@ -62,10 +62,11 @@ export const THIRD_PARTY = {
     'frame-src': ['https://www.youtube-nocookie.com', 'https://www.youtube.com'],
     'img-src': ['https://i.ytimg.com'],
   },
-  // Soro blog embed on /blog.
+  // Soro blog embed on /blog. Article images come from Soro's Supabase storage.
   soro: {
     'script-src': ['https://app.trysoro.com'],
     'connect-src': ['https://app.trysoro.com'],
+    'img-src': ['https://afocirmbqdxnkyescnev.supabase.co'],
   },
   sparkForms: {
     'connect-src': ['https://forms.sparkinventory.com'],
