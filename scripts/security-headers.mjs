@@ -8,12 +8,12 @@
 // [[headers]] blocks in netlify.toml, which carry the other security
 // headers (nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy).
 //
-// Rollout: the structural directives (frame-ancestors, object-src,
-// base-uri) are enforced now. The full allowlist ships as
-// Content-Security-Policy-Report-Only until a browser session on
-// production, with every consent category accepted, shows no "violates the
-// following Content Security Policy directive" console messages. Then set
-// ENFORCE_ALLOWLIST to true so the full policy is enforced.
+// Rollout: the full allowlist first shipped as Report-Only. On 2026-11-24 a
+// production browser session with CookieYes, the Google tag, LinkedIn, the
+// OpenAI pixel, Phas3 and the Soro blog embed loaded reported no
+// violations, so the full policy is now enforced. To trial a large change
+// to the allowlist, set ENFORCE_ALLOWLIST to false for a deploy: the
+// baseline stays enforced and the full policy is reported only.
 //
 // Hashing at build time means an edit to an inline script in index.html
 // (Google tag, consent-gated tags, campaign scripts) is allowed by the
@@ -93,7 +93,7 @@ const BASE = {
 
 const DIRECTIVE_ORDER = Object.keys(BASE);
 
-export const ENFORCE_ALLOWLIST = false;
+export const ENFORCE_ALLOWLIST = true;
 
 // Directives that cannot break a third-party tag, enforced from day one.
 export const ENFORCED_BASELINE = "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests";
