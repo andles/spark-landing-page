@@ -36,6 +36,17 @@
   to = "/spa-shell.html"
   status = 200
 
+# Security headers for every response. The Content-Security-Policy is
+# generated at build time (scripts/security-headers.mjs writes _headers)
+# because it carries hashes of the inline scripts in index.html.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), usb=()"
+
 # Hashed build assets never change, so cache forever
 [[headers]]
   for = "/assets/*"
