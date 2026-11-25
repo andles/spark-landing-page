@@ -74,9 +74,24 @@ describe('registerForWebinar', () => {
     await expect(registerForWebinar(form, extras, 'https://api.example.com', fetchImpl)).rejects.toThrow(/Something went wrong/);
   });
 
+  it.each([
+    [json(409, { error: 'email_already_registered' }), { reason: 'already_registered', status: 409, serverCode: 'email_already_registered' }],
+    [json(400, { error: 'signup_blocked', reason: 'verification_failed' }), { reason: 'verification_failed', status: 400, serverCode: 'signup_blocked' }],
+    [json(429, {}), { reason: 'rate_limited', status: 429 }],
+    [json(400, { error: 'password_rejected', errorMessage: 'Use at least 12 characters.' }), { reason: 'invalid', status: 400, serverCode: 'password_rejected', serverMessage: 'Use at least 12 characters.' }],
+    [json(500, { errorMessage: 'NullReferenceException' }), { reason: 'server_error', status: 500 }],
+    [json(201, {}), { reason: 'handoff_failed', status: 201 }],
+  ])('says why a registration failed, for analytics (%#)', async (response, details) => {
+    const fetchImpl = vi.fn().mockResolvedValue(response);
+    const error = await registerForWebinar(form, extras, 'https://api.example.com', fetchImpl).catch((e) => e);
+    expect(error.details).toEqual(details);
+  });
+
   it('reports a network failure', async () => {
     const fetchImpl = vi.fn().mockRejectedValue(new TypeError('Failed to fetch'));
-    await expect(registerForWebinar(form, extras, 'https://api.example.com', fetchImpl)).rejects.toThrow(/could not reach Spark/);
+    const error = await registerForWebinar(form, extras, 'https://api.example.com', fetchImpl).catch((e) => e);
+    expect(error.message).toMatch(/could not reach Spark/);
+    expect(error.details).toEqual({ reason: 'network' });
   });
 });
 

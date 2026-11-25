@@ -7,6 +7,9 @@ function runAnalytics(action: () => void): void {
 import { findRouteMeta } from './seo/routeMeta';
 import type { PostHog } from 'posthog-js';
 
+// Why the webinar form's registration was refused: a reason code, the HTTP
+// status, the server's error code and its 4xx message with emails scrubbed.
+const signupFailureProperties = ['reason', 'status', 'server_code', 'server_message'];
 // Keep this capture contract aligned with the other Spark frontend. Only public
 // route labels and deliberately selected properties may leave the browser.
 const allowedProperties = new Set([
@@ -24,6 +27,8 @@ const allowedProperties = new Set([
   '$raw_user_agent', '$referrer', '$referring_domain', '$timezone',
   // The path a page_not_found event reports, without its query string.
   'missing_path',
+  // Why a signup_failed registration was refused (see captureSignupFailed).
+  ...signupFailureProperties,
   // Scroll depth and time on page. $prev_pageview_pathname is rewritten to a
   // route label in before_send.
   '$prev_pageview_pathname', '$prev_pageview_duration',
@@ -39,7 +44,7 @@ export const attributionParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid',
 ] as const;
 attributionParams.forEach((key) => allowedProperties.add(key));
-const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed']);
+const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$identify', '$groupidentify', 'signup_completed', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed', 'signup_failed']);
 // Cookieless capture (before a banner choice, and after a rejection) only
 // counts visits. PostHog hashes the request IP with $raw_user_agent, $host and
 // $timezone, so those must survive or the event is dropped at ingestion. The
@@ -47,8 +52,8 @@ const allowedEvents = new Set(['$pageview', '$pageleave', '$web_vitals', '$ident
 // not from storage, so ad clicks, UTM sources and search or social referrals
 // stay attributable without a cookie. Without the referrer PostHog has no
 // channel for a session and reports it as Unknown.
-const cookielessProperties = new Set(['token', 'route', 'signup_source', 'assistant', 'missing_path', '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
-const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed']);
+const cookielessProperties = new Set(['token', 'route', 'signup_source', 'assistant', 'missing_path', ...signupFailureProperties, '$raw_user_agent', '$timezone', '$referrer', '$referring_domain', ...attributionParams]);
+const cookielessEvents = new Set(['$pageview', 'signup_clicked', 'demo_clicked', 'assistant_install_clicked', 'mcp_url_copied', 'meeting_booked', 'page_not_found', 'example_answer_viewed', 'signup_failed']);
 const meetingBookedKey = 'spark:meeting_booked';
 const internalDeviceKey = 'spark:analytics_internal';
 // Same-origin route to PostHog so ad blockers do not drop events. The Netlify
@@ -382,6 +387,27 @@ export function captureCta(event: CtaEvent, assistant?: AssistantName): void {
   const route = analyticsRoute(window.location.pathname);
   withAnalytics((posthog) => posthog.capture(event, assistant ? { route, assistant } : { route }));
   // The click usually leaves the page, so do not hold it for CookieYes.
+  urgent = true;
+  flushNow?.();
+}
+
+// Sent when the webinar form's registration is refused, with why, so failed
+// sign-ups can be told apart (an existing account, a blocked email, a password
+// rule, a server error). Email addresses are scrubbed from the server message.
+export function captureSignupFailed(details: {
+  reason: string;
+  status?: number;
+  serverCode?: string;
+  serverMessage?: string;
+}): void {
+  const route = analyticsRoute(window.location.pathname);
+  const properties: Record<string, string | number> = { route, reason: details.reason };
+  if (details.status !== undefined) properties.status = details.status;
+  if (details.serverCode) properties.server_code = details.serverCode;
+  if (details.serverMessage) {
+    properties.server_message = details.serverMessage.replace(/[^\s@]+@[^\s@]+/g, '[email]').slice(0, 200);
+  }
+  withAnalytics((posthog) => posthog.capture('signup_failed', properties));
   urgent = true;
   flushNow?.();
 }

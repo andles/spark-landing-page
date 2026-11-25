@@ -524,6 +524,20 @@ describe('AI assistant install tracking', () => {
   });
 });
 
+describe('webinar signup failures', () => {
+  it('reports why a registration was refused, scrubbing emails, including on cookieless visits', async () => {
+    const analytics = await loadAnalytics();
+    window.location.pathname = '/chew-on-this-webinar/';
+    analytics.captureSignupFailed({ reason: 'invalid', status: 400, serverCode: 'password_rejected', serverMessage: 'ana@brand.com needs a longer password.' });
+    const properties = { route: '/chew-on-this-webinar', reason: 'invalid', status: 400, server_code: 'password_rejected', server_message: '[email] needs a longer password.' };
+    expect(sdk.capture).toHaveBeenCalledWith('signup_failed', properties);
+    const filter = sdk.init.mock.calls[0][1].before_send;
+    expect(filter({ event: 'signup_failed', properties })?.properties).toMatchObject(properties);
+    document.cookie = '';
+    expect(filter({ event: 'signup_failed', properties: { ...properties, $cookieless_mode: true } })?.properties).toMatchObject(properties);
+  });
+});
+
 describe('ChatGPT ad page', () => {
   it('reports the example answer as seen on the ad route, including on cookieless visits', async () => {
     const analytics = await loadAnalytics();
