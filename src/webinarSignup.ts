@@ -101,14 +101,39 @@ export function registrationBody(form: WebinarRegistration, extras: Registration
   };
 }
 
-/** A refusal worded for the visitor, and whether signing in is the way forward. */
+/**
+ * Why a registration failed, for analytics: the server's block reason (disposable_email,
+ * undeliverable_email, verification_failed, rejected) or one of the outcomes below.
+ */
+export type WebinarFailureReason =
+  | 'already_registered'
+  | 'rate_limited'
+  | 'invalid'
+  | 'server_error'
+  | 'network'
+  | 'handoff_failed'
+  | string;
+
+export interface WebinarFailureDetails {
+  reason: WebinarFailureReason;
+  /** HTTP status, when the server answered. */
+  status?: number;
+  /** The server's own error code, such as password_rejected. */
+  serverCode?: string;
+  /** The server's message for a 4xx refusal, which is what the visitor read. */
+  serverMessage?: string;
+}
+
+/** A refusal worded for the visitor, whether signing in is the way forward, and why it happened. */
 export class WebinarSignupError extends Error {
   readonly alreadyRegistered: boolean;
+  readonly details: WebinarFailureDetails;
 
-  constructor(message: string, alreadyRegistered = false) {
+  constructor(message: string, alreadyRegistered = false, details: WebinarFailureDetails = { reason: 'server_error' }) {
     super(message);
     this.name = 'WebinarSignupError';
     this.alreadyRegistered = alreadyRegistered;
+    this.details = details;
   }
 }
 
@@ -126,18 +151,22 @@ export async function readSignupRefusal(res: Response): Promise<WebinarSignupErr
   } catch {
     // Not JSON: the generic message below.
   }
-  if (res.status === 409 || body.error === 'email_already_registered') {
-    return new WebinarSignupError('That email already has a Spark account. Sign in to it instead; your webinar seat is the same.', true);
+  const status = res.status;
+  const serverCode = typeof body.error === 'string' ? body.error : undefined;
+  if (status === 409 || body.error === 'email_already_registered') {
+    return new WebinarSignupError('That email already has a Spark account. Sign in to it instead; your webinar seat is the same.', true, { reason: 'already_registered', status, serverCode });
   }
   if (body.error === 'signup_blocked' && body.reason && BLOCKED_MESSAGES[body.reason]) {
-    return new WebinarSignupError(BLOCKED_MESSAGES[body.reason]);
+    return new WebinarSignupError(BLOCKED_MESSAGES[body.reason], false, { reason: body.reason, status, serverCode });
   }
-  if (res.status === 429) {
-    return new WebinarSignupError('Too many sign-ups from this network just now. Please try again in a few minutes.');
+  if (status === 429) {
+    return new WebinarSignupError('Too many sign-ups from this network just now. Please try again in a few minutes.', false, { reason: 'rate_limited', status, serverCode });
   }
   const serverMessage = body.errorMessage || body.message;
-  if (res.status < 500 && serverMessage) return new WebinarSignupError(serverMessage);
-  return new WebinarSignupError('Something went wrong creating your account. Please try again.');
+  if (status < 500 && serverMessage) {
+    return new WebinarSignupError(serverMessage, false, { reason: 'invalid', status, serverCode, serverMessage });
+  }
+  return new WebinarSignupError('Something went wrong creating your account. Please try again.', false, { reason: status < 500 ? 'invalid' : 'server_error', status, serverCode });
 }
 
 type Fetch = (input: string, init: RequestInit) => Promise<Response>;
@@ -157,13 +186,13 @@ export async function registerForWebinar(
       body: JSON.stringify(registrationBody(form, extras)),
     });
   } catch {
-    throw new WebinarSignupError('We could not reach Spark. Check your connection and try again.');
+    throw new WebinarSignupError('We could not reach Spark. Check your connection and try again.', false, { reason: 'network' });
   }
   if (!res.ok) throw await readSignupRefusal(res);
   const session = (await res.json().catch(() => null)) as { refreshToken?: string } | null;
   if (!session?.refreshToken) {
     // The account exists; only the hand-off failed, so signing in finishes the job.
-    throw new WebinarSignupError('Your account is ready. Sign in with the email and password you just chose.', true);
+    throw new WebinarSignupError('Your account is ready. Sign in with the email and password you just chose.', true, { reason: 'handoff_failed', status: res.status });
   }
   return session.refreshToken;
 }

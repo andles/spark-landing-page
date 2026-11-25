@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { captureCta } from '../analytics';
+import { captureCta, captureSignupFailed } from '../analytics';
 import {
   CHEW_WEBINAR_CAMPAIGN_KEY,
   EMPTY_WEBINAR_REGISTRATION,
@@ -114,7 +114,9 @@ function RegistrationForm() {
       // Replace, so Back does not return to a form whose account already exists.
       window.location.replace(welcomeUrl(refreshToken));
     } catch (error) {
-      setFailure(error instanceof WebinarSignupError ? error : new WebinarSignupError('Something went wrong creating your account. Please try again.'));
+      const refusal = error instanceof WebinarSignupError ? error : new WebinarSignupError('Something went wrong creating your account. Please try again.');
+      captureSignupFailed(refusal.details);
+      setFailure(refusal);
       setIsSubmitting(false);
     }
   };
