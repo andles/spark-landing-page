@@ -71,7 +71,26 @@ export const THIRD_PARTY = {
   sparkForms: {
     'connect-src': ['https://forms.sparkinventory.com'],
   },
+  // The Spark API the site posts to cross-origin: webinar registration
+  // (src/webinarSignup.ts) and partner applications (src/partnerApplication.ts).
+  // Without it the enforced policy blocks those fetches and registration fails.
+  sparkApi: {
+    'connect-src': ['https://api.sparkinventory.com'],
+  },
 };
+
+// Origin of a build-time API override (VITE_SPARK_API_URL), so a build that
+// points the forms at another API also allows it.
+export function apiOverrideOrigin(apiUrl = process.env.VITE_SPARK_API_URL) {
+  const trimmed = apiUrl?.trim();
+  if (!trimmed) return null;
+  try {
+    const url = new URL(trimmed);
+    return url.protocol === 'https:' ? url.origin : null;
+  } catch {
+    return null;
+  }
+}
 
 const BASE = {
   'default-src': ["'self'"],
@@ -130,6 +149,8 @@ export function buildContentSecurityPolicy(htmlDocuments) {
       for (const source of sources) directives[name].add(source);
     }
   }
+  const apiOrigin = apiOverrideOrigin();
+  if (apiOrigin) directives['connect-src'].add(apiOrigin);
   const hashes = new Set(htmlDocuments.flatMap(inlineScriptHashes));
   for (const hash of [...hashes].sort()) directives['script-src'].add(hash);
   return [...DIRECTIVE_ORDER.map((name) => `${name} ${[...directives[name]].join(' ')}`), 'upgrade-insecure-requests'].join('; ');

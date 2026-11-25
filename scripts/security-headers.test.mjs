@@ -4,10 +4,12 @@ import { describe, expect, it } from 'vitest';
 import {
   ENFORCED_BASELINE,
   THIRD_PARTY,
+  apiOverrideOrigin,
   buildContentSecurityPolicy,
   headersFile,
   inlineScriptHashes,
 } from './security-headers.mjs';
+import { DEFAULT_API_BASE } from '../src/webinarSignup';
 
 const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const sha = (text) => `'sha256-${createHash('sha256').update(text, 'utf8').digest('base64')}'`;
@@ -53,5 +55,17 @@ describe('security headers', () => {
     for (const tag of Object.values(THIRD_PARTY)) {
       for (const sources of Object.values(tag)) for (const source of sources) expect(source).toMatch(/^https:\/\/[a-z0-9*.-]+$/);
     }
+  });
+
+  it('allows the Spark API the webinar and partner forms post to', () => {
+    const connectSrc = directive(buildContentSecurityPolicy([indexHtml]), 'connect-src');
+    expect(connectSrc.split(' ')).toContain(new URL(DEFAULT_API_BASE).origin);
+  });
+
+  it('allows an https API override and ignores anything else', () => {
+    expect(apiOverrideOrigin('https://api.staging.example.com/v1/')).toBe('https://api.staging.example.com');
+    expect(apiOverrideOrigin('http://localhost:5000')).toBeNull();
+    expect(apiOverrideOrigin('not a url')).toBeNull();
+    expect(apiOverrideOrigin('  ')).toBeNull();
   });
 });
